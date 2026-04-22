@@ -1,0 +1,14 @@
+=== LLM Response Log — 20260416_142604 ===
+
+--- [EXTRACTOR] attempt @ 14:26:13.351 ---
+{
+  "attempts": [
+    "Patient attempted to use nicotine gum.",
+    "Patient attempted to gradually reduce smoking with the intention to quit."
+  ],
+  "evidence": [
+    "\"What's been on your mind lately about quitting?\"",
+    "\"gradually reducing smoking with the intention to quit\""
+  ]
+}
+

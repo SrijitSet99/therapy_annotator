@@ -1,0 +1,48 @@
+=== LLM Response Log — 20260416_162629 ===
+
+=== LLM Response Log — 20260416_162629 ===
+
+--- [CONFIDENCE_CHECK] attempt @ 16:26:33.131 ---
+{
+  "confidence": 0.2,
+  "issues": [
+    "Hallucination: The extracted data states 'Patient attempted to quit smoking.' and 'Patient used nicotine gum to quit smoking.' which are not explicitly stated in the conversation. This is a hallucination.",
+    "Omission: The conversation provides no information about the *number* of previous attempts, only that the patient is considering quitting.  Quantifying the attempts is crucial for clinical data validation.",
+    "Omission: The conversation does not provide any details about *why* the patient is considering quitting, or any other relevant contextual information."
+  ]
+}
+
+--- [CONFIDENCE_CHECK] readiness @ 16:26:35.902 ---
+{
+  "confidence": 0.85,
+  "issues": [
+    "Minor hallucination: The statement 'indicating they are in the initial stages of seeking help' is inferred, not directly stated in the conversation. While plausible, it's a slight overreach of interpretation.",
+    "Omission: The conversation lacks any explicit mention of the patient's current smoking status. While the counselor asks about quitting, the patient hasn't provided this crucial information."
+  ]
+}
+
+--- [CONFIDENCE_CHECK] concern @ 16:26:38.436 ---
+{
+  "confidence": 0.2,
+  "issues": [
+    "Hallucination: The extracted data includes 'weight gain' which was not stated in the conversation.",
+    "Omission: The conversation explicitly asks if the patient is thinking about quitting smoking, a core concern related to the prompt. This is not explicitly captured.",
+    "Implied concern about stress is weakly supported and requires further validation."
+  ]
+}
+
+--- [CONFIDENCE_CHECK] triggers @ 16:26:41.092 ---
+{
+  "confidence": 0.2,
+  "issues": [
+    "Hallucination: The extracted data includes 'stress', 'after meals', 'boredom', 'morning routine', and 'coffee' as smoking triggers, none of which were explicitly stated in the conversation.",
+    "Omission: The conversation does not provide any information about the patient's reasons for wanting to quit smoking, beyond a general inquiry about their motivation."
+  ]
+}
+
+--- [CONFIDENCE_CHECK] advice @ 16:26:42.592 ---
+{
+  "confidence": 0.95,
+  "issues": []
+}
+

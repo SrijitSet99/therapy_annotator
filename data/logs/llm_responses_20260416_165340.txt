@@ -1,0 +1,44 @@
+=== LLM Response Log — 20260416_165340 ===
+
+=== LLM Response Log — 20260416_165340 ===
+
+--- [CONFIDENCE_CHECK] attempt @ 16:53:44.810 ---
+{
+  "confidence": 0.5,
+  "issues": [
+    "Grounding & Veracity: The statement 'The patient has tried to quit smoking twice before.' is extracted, but the source text only states 'Patient has tried to quit smoking twice before.' This is a perfect match, fulfilling the grounding requirement. No logical leaps were present.",
+    "Hallucination Check: No data points exist in the source text that are not present in the extraction.",
+    "Sensitivity (Omission) Check: The source text contains the key phrase 'tried to quit smoking twice before,' fulfilling the sensitivity requirement. No other relevant keywords were missed.",
+    "Taxonomy Alignment: While not explicitly stated, the phrase 'tried to quit smoking' implies a quit attempt, aligning with a general understanding of behavioral health interventions. A more granular taxonomy would require further information, but the current extraction is acceptable given the limited source data."
+  ]
+}
+
+--- [CONFIDENCE_CHECK] readiness @ 16:53:46.352 ---
+{
+  "confidence": 0.9,
+  "issues": []
+}
+
+--- [CONFIDENCE_CHECK] concern @ 16:53:49.899 ---
+{
+  "confidence": 0.75,
+  "issues": [
+    "Potential Omission: While the transcript contains 'I am worried about weight gain,' it doesn't explicitly capture the potential underlying anxiety related to the *previous failed quit attempts*. This represents a missed opportunity to identify a psychological concern. Confidence reduced slightly due to this potential oversight.",
+    "Severity Calibration - Minor: 'I am worried about weight gain' is a reasonable representation, but a more precise categorization might benefit from acknowledging the potential anxiety associated with the repeated failures.  A score of 7 reflects this slight under-emphasis of the psychological component."
+  ]
+}
+
+--- [CONFIDENCE_CHECK] triggers @ 16:53:52.829 ---
+{
+  "confidence": 0.8,
+  "issues": [
+    "{'category': 'Grounding Check', 'description': \"The trigger 'past failures' is strongly implied, but could benefit from explicit phrasing for greater clarity. While the patient's prior attempts to quit smoking are a relevant failure, explicitly stating 'past failures' strengthens the grounding.\", 'recommendation': \"Consider adding 'past failures' for enhanced grounding.\"}"
+  ]
+}
+
+--- [CONFIDENCE_CHECK] advice @ 16:53:54.322 ---
+{
+  "confidence": 0.95,
+  "issues": []
+}
+

@@ -1,0 +1,120 @@
+=== LLM Response Log — 20260416_162541 ===
+
+--- [EXTRACTOR] attempt @ 16:25:49.698 ---
+{
+  "attempts": [
+    "Patient attempted to quit smoking.",
+    "Patient used nicotine gum to quit smoking."
+  ],
+  "evidence": [
+    "Patient: hi",
+    "Patient: Are you thinking about quitting smoking?"
+  ]
+}
+
+--- [DEBATE] attempt @ 16:25:52.638 ---
+{
+  "attempts": [
+    "Patient attempted to quit smoking.",
+    "Patient used nicotine gum to quit smoking."
+  ],
+  "evidence": [
+    "Patient: hi",
+    "Patient: Are you thinking about quitting smoking?"
+  ],
+  "_debate_rounds": 1,
+  "_debate_converged": false
+}
+
+--- [EXTRACTOR] readiness @ 16:25:52.640 ---
+{
+  "readiness_stage": "contemplation",
+  "evidence": "The patient simply said 'hi,' indicating they are in the initial stages of seeking help and haven't yet explicitly stated a desire to quit smoking or committed to any action. The counselor then directly asks if they are thinking about quitting, suggesting a contemplation stage where consideration is present but not yet a firm commitment."
+}
+
+--- [DEBATE] readiness @ 16:25:56.150 ---
+{
+  "readiness_stage": "contemplation",
+  "evidence": "The patient simply said 'hi,' indicating they are in the initial stages of seeking help and haven't yet explicitly stated a desire to quit smoking or committed to any action. The counselor then directly asks if they are thinking about quitting, suggesting a contemplation stage where consideration is present but not yet a firm commitment.",
+  "_debate_rounds": 0,
+  "_debate_converged": true
+}
+
+--- [EXTRACTOR] concern @ 16:25:56.151 ---
+{
+  "concerns": [
+    "weight gain",
+    "stress"
+  ],
+  "evidence": [
+    "\"hi\"",
+    "Implied concern about stress due to seeking help for quitting smoking"
+  ]
+}
+
+--- [DEBATE] concern @ 16:25:58.860 ---
+{
+  "concerns": [
+    "weight gain",
+    "stress"
+  ],
+  "evidence": [
+    "\"hi\"",
+    "Implied concern about stress due to seeking help for quitting smoking"
+  ],
+  "_debate_rounds": 1,
+  "_debate_converged": false
+}
+
+--- [EXTRACTOR] triggers @ 16:25:58.863 ---
+{
+  "triggers": [
+    "stress",
+    "after meals",
+    "boredom",
+    "morning routine",
+    "coffee"
+  ],
+  "evidence": []
+}
+
+--- [DEBATE] triggers @ 16:26:01.625 ---
+{
+  "triggers": [
+    "stress",
+    "after meals",
+    "boredom",
+    "morning routine",
+    "coffee"
+  ],
+  "evidence": [],
+  "_debate_rounds": 1,
+  "_debate_converged": false
+}
+
+--- [EXTRACTOR] advice @ 16:26:01.627 ---
+{
+  "advice": [
+    "Be friendly and approachable.",
+    "Ask the patient if they are thinking about quitting smoking."
+  ],
+  "evidence": [
+    "Hi! I'm eDOSTHI, your friendly AI coach.",
+    "What brings you here today? Are you thinking about quitting smoking?"
+  ]
+}
+
+--- [DEBATE] advice @ 16:26:03.046 ---
+{
+  "advice": [
+    "Be friendly and approachable.",
+    "Ask the patient if they are thinking about quitting smoking."
+  ],
+  "evidence": [
+    "Hi! I'm eDOSTHI, your friendly AI coach.",
+    "What brings you here today? Are you thinking about quitting smoking?"
+  ],
+  "_debate_rounds": 0,
+  "_debate_converged": true
+}
+

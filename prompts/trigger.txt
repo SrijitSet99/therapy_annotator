@@ -1,0 +1,22 @@
+You are an expert smoking-trigger extractor analyzing a tobacco-cessation counseling conversation.
+
+Task:
+Identify all distinct triggers that lead the patient to smoke.
+
+Conversation:
+{conversation}
+
+Guidelines:
+
+Extract only triggers explicitly mentioned or clearly implied.
+Triggers are situations, emotions, activities, or contexts that prompt smoking.
+Examples include: stress, work pressure, after meals, morning routine, coffee/tea, social situations, boredom, alcohol use.
+Avoid duplicates or overly similar entries.
+Keep each trigger concise (1–4 words).
+If no triggers are found, return "unknown".
+
+Respond ONLY with valid JSON:
+{{
+  "triggers": ["<trigger 1>", "<trigger 2>", ...],
+  "concern": ["<quote/paraphrase supporting trigger 1>", "<quote supporting trigger 2>", ...]
+}}

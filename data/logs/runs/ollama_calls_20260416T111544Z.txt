@@ -1,0 +1,121 @@
+
+================================================================================
+OLLAMA CALL 0001
+================================================================================
+timestamp: 2026-04-16T11:15:44.454685+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a Clinical Health Psychologist and NLP Validator. Your specialty is identifying "Patient-Reported Concerns" (PRCs) related to tobacco use, withdrawal, and long-term health risks from clinical transcripts.
+
+Objective: Audit the extraction of smoking-related concerns (`{'concerns': ['weight gain', 'health issues']}`) against the source text (`I am worried about gaining weight if I quit. I am also concerned about my health.`) to ensure every patient worry—whether explicit or subtle—is captured with clinical accuracy.
+
+Phase 1: The "Concern" Rigor Audit
+Evaluate the extraction using these specialized clinical checks:
+
+1.  Implicit Concern Detection: Did the patient express concern through a question or a "hedged" statement? (e.g., *"I've noticed I'm winded lately, but maybe it's just age."*) If the extraction missed the underlying health anxiety, flag it as an omission.
+2.  Severity Calibration: Ensure the concern wasn't "watered down." If a patient says they are *"terrified of lung cancer,"* an extraction of *"worried about health"* is a precision error in severity.
+3.  Temporal Attribution: Distinguish between **historical concerns** (things they used to worry about) and **active concerns** (current anxieties).
+4.  Categorization Accuracy: Verify the `concern_type` using this taxonomy:
+    * Physiological: Cough, breathlessness, sleep issues.
+    * Psychological: Anxiety about failing to quit, mood swings, irritability.
+    * Social/Financial: Cost of smoking, stigma, impact on family.
+    * Relapse Triggers: Situational concerns (e.g., "drinking with friends").
+
+Phase 2: Confidence Scoring
+Assign a Confidence Score (0 - 10):
+* 9–10: Captured all nuances, including subtextual concerns and correct intensity.
+* 7–8: Missed a minor/passing concern; minor category misalignment.
+* 5–6: Failed to capture a primary concern or misinterpreted the patient's emotional tone.
+* < 5: Failed to distinguish between the clinician's advice and the patient's actual concern.
+
+
+Respond ONLY with valid JSON:
+{
+  "confidence": 0.0,
+  "issues": ["<issue 1>", "..."]
+}
+
+RESPONSE:
+Okay, I'm ready to begin the audit. Please provide the clinical transcript. I will analyze it according to the specified criteria and respond with a JSON output as described.
+
+
+================================================================================
+OLLAMA CALL 0002
+================================================================================
+timestamp: 2026-04-16T11:15:46.252655+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a very strict clinical data validator. Compare the EXTRACTED DATA against the CONVERSATION.
+
+CONVERSATION:
+I smoke when I am stressed or after drinking coffee.
+
+EXTRACTED DATA (smoking triggers):
+{'triggers': ['stress', 'coffee']}
+
+Your task:
+1. Very Strictly Check for hallucinations (data not in the text).
+2. Very Strictly Check for omissions (important data missed).
+3. Assign a confidence score between 0.0 and 1.0.
+
+Respond ONLY with valid JSON:
+{
+  "confidence": 0.0,
+  "issues": ["<issue 1>", "..."]
+}
+
+
+RESPONSE:
+```json
+{
+  "confidence": 0.8,
+  "issues": ["Omission: The conversation explicitly states 'after drinking coffee' as a trigger, which is not included in the extracted data."]
+}
+```
+
+================================================================================
+OLLAMA CALL 0003
+================================================================================
+timestamp: 2026-04-16T11:15:47.694940+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a very strict clinical data validator. Compare the EXTRACTED DATA against the CONVERSATION.
+
+CONVERSATION:
+You should try nicotine gum to help quit smoking.
+
+EXTRACTED DATA (cessation advice or guidance):
+{'advice': ['try nicotine gum']}
+
+Your task:
+1. Very Strictly Check for hallucinations (data not in the text).
+2. Very Strictly Check for omissions (important data missed).
+3. Assign a confidence score between 0.0 and 1.0.
+
+Respond ONLY with valid JSON:
+{
+  "confidence": 0.0,
+  "issues": ["<issue 1>", "..."]
+}
+
+
+RESPONSE:
+```json
+{
+  "confidence": 1.0,
+  "issues": []
+}
+```
+

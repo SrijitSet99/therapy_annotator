@@ -1,0 +1,44 @@
+=== LLM Response Log — 20260416_194446 ===
+
+--- [CONFIDENCE_CHECK] attempt @ 19:44:47.512 ---
+{
+  "confidence": 1.0,
+  "issues": []
+}
+
+--- [CONFIDENCE_CHECK] readiness @ 19:44:51.048 ---
+{
+  "confidence": 0.7,
+  "issues": [
+    "The classification of Precontemplation (implied by the initial focus on cravings and lack of coping strategies) is defensible given the patient's initial statement about difficulty quitting due to cravings and lack of alternative coping mechanisms. However, the counselor's subsequent suggestions of alternative strategies and asking about healthy ways to manage stress introduces elements of Contemplation. There's a minor evidence gap \u2013 the patient hasn't yet explicitly stated an intention to change.",
+    "The conversation demonstrates a slight shift towards Preparation. The counselor is actively offering suggestions for coping mechanisms (deep breaths, walk, etc.) and prompting the patient to consider them. This moves beyond simply acknowledging the problem (precontemplation) and begins to explore potential solutions, a key characteristic of the Preparation stage."
+  ]
+}
+
+--- [CONFIDENCE_CHECK] concern @ 19:44:54.469 ---
+{
+  "confidence": 0.85,
+  "issues": [
+    "Minor omission: The patient's initial statement regarding 'difficulty quitting' could be categorized more precisely. While 'Difficulty managing stress' is present, a more granular concern like 'Fear of relapse' or 'Lack of confidence in ability to quit' was not explicitly captured. This represents a minor missed opportunity for deeper exploration.",
+    "Category Alignment - Psychological: The concern regarding 'Stress' is correctly categorized, but a deeper dive into the *source* of the stress could benefit from a more specific psychological categorization. While 'Difficulty managing stress' is present, the conversation doesn't explicitly state the *type* of stress (e.g., anxiety, depression, etc.)."
+  ]
+}
+
+--- [CONFIDENCE_CHECK] triggers @ 19:44:57.315 ---
+{
+  "confidence": 0.6,
+  "issues": [
+    "Omission Detection: The conversation explicitly states 'cravings can be tough!' and 'Stress can definitely trigger the urge to smoke.' and 'I find it difficult to quit smokung because of my cravings'. The extraction only includes 'cravings' and 'stress', omitting the explicit mention of cravings as a trigger.",
+    "Classification Accuracy: The trigger 'cravings' is correctly classified as an emotional trigger. However, the trigger 'stress' is classified as an emotional trigger, which is accurate. No other misclassifications were found."
+  ]
+}
+
+--- [CONFIDENCE_CHECK] advice @ 19:44:59.553 ---
+{
+  "confidence": 0.95,
+  "issues": [
+    "The 'evidence' field contains verbatim repetition of the counselor's prompts, which are not considered advice. This is an omission of distilled advice.",
+    "The 'evidence' field includes the patient's response 'thanks', which is not relevant advice or guidance. This is an omission."
+  ]
+}
+

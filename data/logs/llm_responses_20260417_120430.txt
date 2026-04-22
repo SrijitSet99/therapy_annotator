@@ -1,0 +1,41 @@
+=== LLM Response Log — 20260417_120430 ===
+
+--- [CONFIDENCE_CHECK] attempt @ 12:04:31.832 ---
+{
+  "confidence": 1.0,
+  "issues": []
+}
+
+--- [CONFIDENCE_CHECK] readiness @ 12:04:34.848 ---
+{
+  "confidence": 0.7,
+  "issues": [
+    "The classification of precontemplation is borderline. While the patient states 'I want to quit smoking,' this is a very initial statement and lacks any indication of behavioral intention or commitment. A stronger statement about considering quitting or having thought about it would more firmly support precontemplation. However, the counselor's follow-up question about motivation suggests a nascent level of contemplation is present.",
+    "There is a slight evidence gap. The conversation lacks concrete evidence to definitively place the patient in precontemplation. The patient's immediate desire to quit could also be interpreted as early contemplation."
+  ]
+}
+
+--- [CONFIDENCE_CHECK] concern @ 12:04:37.714 ---
+{
+  "confidence": 0.8,
+  "issues": [
+    "Minor omission: The conversation doesn't explicitly state a concern regarding potential mood swings or irritability, although the patient's initial statement ('I want to quit smoking') suggests a potential psychological concern related to the impact of smoking on mood. This warrants further exploration.",
+    "Category Alignment: While 'Cravings' is accurately identified, a more granular categorization of the patient's initial statement ('I want to quit smoking') could benefit from including 'Motivation' as a primary concern. This reflects the underlying driver for cessation."
+  ]
+}
+
+--- [CONFIDENCE_CHECK] triggers @ 12:04:40.178 ---
+{
+  "confidence": 0.95,
+  "issues": [
+    "Omission Detection: The conversation clearly indicates a desire to quit smoking, which represents a 'situational' trigger. The extraction only captures 'want to quit smoking' and misses the explicit statement of intent.",
+    "Classification Accuracy: The trigger 'want to quit smoking' is correctly classified as 'situational'. However, a more granular classification could benefit the system, perhaps adding a sub-category of 'behavioral intention'."
+  ]
+}
+
+--- [CONFIDENCE_CHECK] advice @ 12:04:41.228 ---
+{
+  "confidence": 0.95,
+  "issues": []
+}
+

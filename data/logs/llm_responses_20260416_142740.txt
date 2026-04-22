@@ -1,0 +1,42 @@
+=== LLM Response Log — 20260416_142740 ===
+
+--- [EXTRACTOR] attempt @ 14:27:43.649 ---
+{
+  "attempts": [
+    "Patient attempted to gradually reduce smoking with the intention to quit.",
+    "Patient attempted temporary abstinence (unknown duration)."
+  ],
+  "evidence": [
+    "Patient: hi",
+    "Patient: hi"
+  ]
+}
+
+--- [DEBATE] attempt @ 14:27:43.651 ---
+{
+  "attempts": [
+    "Patient attempted to gradually reduce smoking with the intention to quit.",
+    "Patient attempted temporary abstinence (unknown duration)."
+  ],
+  "evidence": [
+    "Patient: hi",
+    "Patient: hi"
+  ],
+  "_debate_rounds": 1,
+  "_debate_converged": false
+}
+
+--- [EXTRACTOR] readiness @ 14:27:43.654 ---
+{
+  "readiness_stage": "precontemplation",
+  "evidence": "The patient simply said 'hi' and hasn't expressed any thoughts about quitting smoking or seeking support, indicating they are not yet considering the behavior change."
+}
+
+--- [DEBATE] readiness @ 14:27:43.656 ---
+{
+  "readiness_stage": "precontemplation",
+  "evidence": "The patient simply said 'hi' and hasn't expressed any thoughts about quitting smoking or seeking support, indicating they are not yet considering the behavior change.",
+  "_debate_rounds": 1,
+  "_debate_converged": false
+}
+

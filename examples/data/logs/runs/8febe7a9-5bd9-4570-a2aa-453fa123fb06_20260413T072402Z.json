@@ -1,0 +1,381 @@
+{
+  "events": {
+    "agent_manager": {
+      "confidence_result": {
+        "advice": {
+          "confidence": 0.85,
+          "issues": [
+            "Omission: The patient stated 'I want to quit'. This core statement should be included in the 'advice' field."
+          ],
+          "severity": "none"
+        },
+        "attempt": {
+          "confidence": 0.2,
+          "issues": [
+            "Hallucination: The extracted data claims 'attempts' is an empty list, which is incorrect. The patient stated 'I want to quit'.",
+            "Omission: The conversation clearly states the patient's motivation is 'health'. This is a crucial piece of information missing from the extracted data.",
+            "Omission: The counselor explicitly states 'Health is a great reason!' and then probes for specific concerns. This is entirely absent from the extracted data."
+          ],
+          "severity": "none"
+        },
+        "concern": {
+          "confidence": 0.2,
+          "issues": [
+            "Hallucination: The extracted data includes 'withdrawal symptoms' and 'stress' which were not mentioned in the conversation.",
+            "Omission: The patient explicitly stated 'health' as their motivation, a key factor driving their desire to quit. This is missing from the extracted data."
+          ],
+          "severity": "none"
+        },
+        "readiness": {
+          "confidence": 0.8,
+          "issues": [
+            "Hallucination: The statement 'but the counselor immediately followed up by asking about the motivation, suggesting they are not yet fully committed to the change' is an interpretation and not directly stated in the conversation. It's a reasonable inference but not a fact.",
+            "Omission: The conversation doesn't explicitly state the patient's level of commitment or confidence. While the counselor's follow-up suggests contemplation, a more direct statement would strengthen the assessment."
+          ],
+          "severity": "none"
+        },
+        "triggers": {
+          "confidence": 0.8,
+          "issues": [
+            "Missing specific health concerns. The conversation establishes 'health' as a motivator but doesn't elicit details about *which* health concerns are driving the desire to quit. This is a significant omission."
+          ],
+          "severity": "none"
+        }
+      },
+      "confidence_results": {
+        "advice": {
+          "confidence": 0.85,
+          "issues": [
+            "Omission: The patient stated 'I want to quit'. This core statement should be included in the 'advice' field."
+          ],
+          "severity": "none"
+        },
+        "attempt": {
+          "confidence": 0.2,
+          "issues": [
+            "Hallucination: The extracted data claims 'attempts' is an empty list, which is incorrect. The patient stated 'I want to quit'.",
+            "Omission: The conversation clearly states the patient's motivation is 'health'. This is a crucial piece of information missing from the extracted data.",
+            "Omission: The counselor explicitly states 'Health is a great reason!' and then probes for specific concerns. This is entirely absent from the extracted data."
+          ],
+          "severity": "none"
+        },
+        "concern": {
+          "confidence": 0.2,
+          "issues": [
+            "Hallucination: The extracted data includes 'withdrawal symptoms' and 'stress' which were not mentioned in the conversation.",
+            "Omission: The patient explicitly stated 'health' as their motivation, a key factor driving their desire to quit. This is missing from the extracted data."
+          ],
+          "severity": "none"
+        },
+        "readiness": {
+          "confidence": 0.8,
+          "issues": [
+            "Hallucination: The statement 'but the counselor immediately followed up by asking about the motivation, suggesting they are not yet fully committed to the change' is an interpretation and not directly stated in the conversation. It's a reasonable inference but not a fact.",
+            "Omission: The conversation doesn't explicitly state the patient's level of commitment or confidence. While the counselor's follow-up suggests contemplation, a more direct statement would strengthen the assessment."
+          ],
+          "severity": "none"
+        },
+        "triggers": {
+          "confidence": 0.8,
+          "issues": [
+            "Missing specific health concerns. The conversation establishes 'health' as a motivator but doesn't elicit details about *which* health concerns are driving the desire to quit. This is a significant omission."
+          ],
+          "severity": "none"
+        }
+      },
+      "extractor_output": {
+        "advice": {
+          "advice": [
+            "That's a great start!",
+            "Health is a great reason!",
+            "What specific health concerns or benefits are driving your desire to quit smoking?"
+          ],
+          "evidence": [
+            "Hi! I'm eDOSTHI, your motivational interviewing chatbot. I'm here to help you quit smoking. What's been your experience with quitting so far?",
+            "That's a great start! What’s motivated you to want to quit smoking now?",
+            "Health is a great reason! What specific health concerns or benefits are driving your desire to quit smoking?"
+          ]
+        },
+        "attempt": {
+          "attempts": [],
+          "longest_attempt": null,
+          "most_recent_attempt": "I want to quit"
+        },
+        "concern": {
+          "concerns": [
+            "withdrawal symptoms",
+            "stress"
+          ],
+          "primary_concern": "withdrawal symptoms"
+        },
+        "readiness": {
+          "evidence": "The patient stated 'I want to quit,' indicating they are considering quitting, but the counselor immediately followed up by asking about the motivation, suggesting they are not yet fully committed to the change.",
+          "readiness_stage": "contemplation"
+        },
+        "triggers": {
+          "triggers": [
+            "health",
+            "want to quit"
+          ]
+        }
+      },
+      "final_output": {
+        "advice": {
+          "_debate_converged": true,
+          "_debate_rounds": 0,
+          "advice": [
+            "That's a great start!",
+            "Health is a great reason!",
+            "What specific health concerns or benefits are driving your desire to quit smoking?"
+          ],
+          "evidence": [
+            "Hi! I'm eDOSTHI, your motivational interviewing chatbot. I'm here to help you quit smoking. What's been your experience with quitting so far?",
+            "That's a great start! What’s motivated you to want to quit smoking now?",
+            "Health is a great reason! What specific health concerns or benefits are driving your desire to quit smoking?"
+          ]
+        },
+        "attempt": {
+          "_debate_converged": true,
+          "_debate_rounds": 10,
+          "attempts": [
+            "I want to quit",
+            "health"
+          ],
+          "counselor_response": "Health is a great reason! What specific health concerns or benefits are driving your desire to quit smoking?",
+          "longest_attempt": "I want to quit",
+          "longest_attempt_note": "Patient’s initial statement of intent to quit smoking.",
+          "most_recent_attempt": "health",
+          "stated_reason": "Health (general) - seeking specific concerns"
+        },
+        "concern": {
+          "_debate_converged": true,
+          "_debate_rounds": 1,
+          "agreement_reached": false,
+          "concerns": [
+            "health"
+          ],
+          "health_concerns": [
+            "health"
+          ],
+          "primary_concern": "health",
+          "severity": "high"
+        },
+        "readiness": {
+          "_debate_converged": true,
+          "_debate_rounds": 0,
+          "evidence": "The patient stated 'I want to quit,' indicating they are considering quitting, but the counselor immediately followed up by asking about the motivation, suggesting they are not yet fully committed to the change.",
+          "readiness_stage": "contemplation"
+        },
+        "triggers": {
+          "_debate_converged": true,
+          "_debate_rounds": 0,
+          "triggers": [
+            "health",
+            "want to quit"
+          ]
+        }
+      }
+    },
+    "consensus_agent": {
+      "output": {
+        "consensus": {
+          "dissenting_fields": [],
+          "main_concern": "health",
+          "primary_trigger": "want to quit",
+          "quit_attempt_history": "Patient initially stated 'I want to quit'. Subsequent conversation focused on exploring the motivation behind this desire, specifically related to health concerns.",
+          "recommended_intervention": [
+            "Explore specific health concerns driving the desire to quit (e.g., lung cancer, heart disease).",
+            "Assess the patient’s understanding of the risks associated with smoking.",
+            "Discuss potential benefits of quitting, beyond general health (e.g., improved taste, smell, energy).",
+            "Utilize motivational interviewing techniques to strengthen the patient’s commitment to change.",
+            "Assess the patient's understanding of the risks associated with smoking.",
+            "Discuss potential benefits of quitting (e.g., improved breathing, increased energy).",
+            "Utilize open-ended questions to further elicit the patient’s thoughts and feelings about quitting."
+          ],
+          "stage_of_change": "contemplation",
+          "vote_agreement": 1.0
+        }
+      }
+    },
+    "longitudinal_sanity": {
+      "output": {
+        "longitudinal_sanity": {
+          "flags": [],
+          "passed": true,
+          "severity": "none"
+        }
+      }
+    },
+    "profile_update_agent": {
+      "output": {
+        "dataset_row": {
+          "confidence_score": 1.0,
+          "debate_rounds_used": 11,
+          "inconsistencies": [],
+          "longitudinal_flags": [],
+          "longitudinal_sanity_passed": true,
+          "main_concern": "health",
+          "primary_trigger": "want to quit",
+          "quit_attempt_history": "The patient expressed a desire to quit smoking, prompting the counselor to explore the underlying motivations, specifically focusing on health concerns.",
+          "reasoning_summary": "The patient is in the contemplation stage, having articulated a desire to quit, and their primary motivation is health concerns. The counselor is appropriately recommending a motivational interviewing approach to delve deeper into these concerns and build commitment to change.",
+          "recommended_intervention": [
+            "Explore specific health concerns driving the desire to quit (e.g., lung cancer, heart disease).",
+            "Assess the patient’s understanding of the risks associated with smoking.",
+            "Discuss potential benefits of quitting, beyond general health (e.g., improved taste, smell, energy).",
+            "Utilize motivational interviewing techniques to strengthen the patient’s commitment to change.",
+            "Assess the patient's understanding of the risks associated with smoking.",
+            "Discuss potential benefits of quitting (e.g., improved breathing, increased energy).",
+            "Utilize open-ended questions to further elicit the patient’s thoughts and feelings about quitting."
+          ],
+          "sanity_passed": true,
+          "session_number": 1,
+          "stage_of_change": "contemplation",
+          "vote_agreement": 1.0
+        },
+        "longitudinal_output": {
+          "current_annotation": {
+            "confidence_score": 1.0,
+            "debate_rounds_used": 11,
+            "inconsistencies": [],
+            "longitudinal_flags": [],
+            "longitudinal_sanity_passed": true,
+            "main_concern": "health",
+            "primary_trigger": "want to quit",
+            "quit_attempt_history": "The patient expressed a desire to quit smoking, prompting the counselor to explore the underlying motivations, specifically focusing on health concerns.",
+            "reasoning_summary": "The patient is in the contemplation stage, having articulated a desire to quit, and their primary motivation is health concerns. The counselor is appropriately recommending a motivational interviewing approach to delve deeper into these concerns and build commitment to change.",
+            "recommended_intervention": [
+              "Explore specific health concerns driving the desire to quit (e.g., lung cancer, heart disease).",
+              "Assess the patient’s understanding of the risks associated with smoking.",
+              "Discuss potential benefits of quitting, beyond general health (e.g., improved taste, smell, energy).",
+              "Utilize motivational interviewing techniques to strengthen the patient’s commitment to change.",
+              "Assess the patient's understanding of the risks associated with smoking.",
+              "Discuss potential benefits of quitting (e.g., improved breathing, increased energy).",
+              "Utilize open-ended questions to further elicit the patient’s thoughts and feelings about quitting."
+            ],
+            "sanity_passed": true,
+            "session_number": 1,
+            "stage_of_change": "contemplation",
+            "vote_agreement": 1.0
+          },
+          "delta": null,
+          "interventions_tried": [],
+          "longitudinal_flags": [],
+          "overall_progress": "unknown",
+          "patient_id": "8febe7a9-5bd9-4570-a2aa-453fa123fb06",
+          "persistent_concerns": [],
+          "persistent_triggers": [],
+          "relapse_detected": false,
+          "session_number": 1,
+          "stage_trajectory": [
+            "contemplation"
+          ],
+          "stagnation_detected": false
+        },
+        "patient_profile_id": "8febe7a9-5bd9-4570-a2aa-453fa123fb06",
+        "session_count": 1
+      }
+    },
+    "reasoning_agent": {
+      "output": {
+        "dataset_row": {
+          "confidence_score": 1.0,
+          "debate_rounds_used": 11,
+          "inconsistencies": [],
+          "main_concern": "health",
+          "primary_trigger": "want to quit",
+          "quit_attempt_history": "The patient expressed a desire to quit smoking, prompting the counselor to explore the underlying motivations, specifically focusing on health concerns.",
+          "reasoning_summary": "The patient is in the contemplation stage, having articulated a desire to quit, and their primary motivation is health concerns. The counselor is appropriately recommending a motivational interviewing approach to delve deeper into these concerns and build commitment to change.",
+          "recommended_intervention": [
+            "Explore specific health concerns driving the desire to quit (e.g., lung cancer, heart disease).",
+            "Assess the patient’s understanding of the risks associated with smoking.",
+            "Discuss potential benefits of quitting, beyond general health (e.g., improved taste, smell, energy).",
+            "Utilize motivational interviewing techniques to strengthen the patient’s commitment to change.",
+            "Assess the patient's understanding of the risks associated with smoking.",
+            "Discuss potential benefits of quitting (e.g., improved breathing, increased energy).",
+            "Utilize open-ended questions to further elicit the patient’s thoughts and feelings about quitting."
+          ],
+          "sanity_passed": true,
+          "stage_of_change": "contemplation",
+          "vote_agreement": 1.0
+        }
+      }
+    },
+    "run_chat": {
+      "final_result": {
+        "dataset_row": {
+          "confidence_score": 1.0,
+          "debate_rounds_used": 11,
+          "inconsistencies": [],
+          "longitudinal_flags": [],
+          "longitudinal_sanity_passed": true,
+          "main_concern": "health",
+          "primary_trigger": "want to quit",
+          "quit_attempt_history": "The patient expressed a desire to quit smoking, prompting the counselor to explore the underlying motivations, specifically focusing on health concerns.",
+          "reasoning_summary": "The patient is in the contemplation stage, having articulated a desire to quit, and their primary motivation is health concerns. The counselor is appropriately recommending a motivational interviewing approach to delve deeper into these concerns and build commitment to change.",
+          "recommended_intervention": [
+            "Explore specific health concerns driving the desire to quit (e.g., lung cancer, heart disease).",
+            "Assess the patient’s understanding of the risks associated with smoking.",
+            "Discuss potential benefits of quitting, beyond general health (e.g., improved taste, smell, energy).",
+            "Utilize motivational interviewing techniques to strengthen the patient’s commitment to change.",
+            "Assess the patient's understanding of the risks associated with smoking.",
+            "Discuss potential benefits of quitting (e.g., improved breathing, increased energy).",
+            "Utilize open-ended questions to further elicit the patient’s thoughts and feelings about quitting."
+          ],
+          "sanity_passed": true,
+          "session_number": 1,
+          "stage_of_change": "contemplation",
+          "vote_agreement": 1.0
+        },
+        "longitudinal_output": {
+          "current_annotation": {
+            "confidence_score": 1.0,
+            "debate_rounds_used": 11,
+            "inconsistencies": [],
+            "longitudinal_flags": [],
+            "longitudinal_sanity_passed": true,
+            "main_concern": "health",
+            "primary_trigger": "want to quit",
+            "quit_attempt_history": "The patient expressed a desire to quit smoking, prompting the counselor to explore the underlying motivations, specifically focusing on health concerns.",
+            "reasoning_summary": "The patient is in the contemplation stage, having articulated a desire to quit, and their primary motivation is health concerns. The counselor is appropriately recommending a motivational interviewing approach to delve deeper into these concerns and build commitment to change.",
+            "recommended_intervention": [
+              "Explore specific health concerns driving the desire to quit (e.g., lung cancer, heart disease).",
+              "Assess the patient’s understanding of the risks associated with smoking.",
+              "Discuss potential benefits of quitting, beyond general health (e.g., improved taste, smell, energy).",
+              "Utilize motivational interviewing techniques to strengthen the patient’s commitment to change.",
+              "Assess the patient's understanding of the risks associated with smoking.",
+              "Discuss potential benefits of quitting (e.g., improved breathing, increased energy).",
+              "Utilize open-ended questions to further elicit the patient’s thoughts and feelings about quitting."
+            ],
+            "sanity_passed": true,
+            "session_number": 1,
+            "stage_of_change": "contemplation",
+            "vote_agreement": 1.0
+          },
+          "delta": null,
+          "interventions_tried": [],
+          "longitudinal_flags": [],
+          "overall_progress": "unknown",
+          "patient_id": "8febe7a9-5bd9-4570-a2aa-453fa123fb06",
+          "persistent_concerns": [],
+          "persistent_triggers": [],
+          "relapse_detected": false,
+          "session_number": 1,
+          "stage_trajectory": [
+            "contemplation"
+          ],
+          "stagnation_detected": false
+        },
+        "patient_id": "8febe7a9-5bd9-4570-a2aa-453fa123fb06",
+        "session_number": 1
+      },
+      "transcript": {
+        "session_id": "8febe7a9-5bd9-4570-a2aa-453fa123fb06",
+        "transcript": "Patient: hi\nCounselor: Hi! I'm eDOSTHI, your motivational interviewing chatbot. I'm here to help you quit smoking. What's been your experience with quitting so far?\nPatient: I want to quit\nCounselor: That's a great start! What's motivated you to want to quit smoking now?\nPatient: health\nCounselor: Health is a great reason! What specific health concerns or benefits are driving your desire to quit smoking?"
+      }
+    }
+  },
+  "meta": {
+    "session_id": "8febe7a9-5bd9-4570-a2aa-453fa123fb06",
+    "started_at": "20260413T072402Z"
+  }
+}

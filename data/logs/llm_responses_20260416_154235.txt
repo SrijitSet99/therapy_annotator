@@ -1,0 +1,42 @@
+=== LLM Response Log — 20260416_154235 ===
+
+--- [EXTRACTOR] attempt @ 15:42:43.794 ---
+{
+  "attempts": [
+    "Patient attempted to reduce smoking gradually.",
+    "Patient attempted to stop abruptly."
+  ],
+  "evidence": [
+    "Patient: What's been your biggest struggle with quitting so far?",
+    "Patient: Hi"
+  ]
+}
+
+--- [DEBATE] attempt @ 15:42:43.795 ---
+{
+  "attempts": [
+    "Patient attempted to reduce smoking gradually.",
+    "Patient attempted to stop abruptly."
+  ],
+  "evidence": [
+    "Patient: What's been your biggest struggle with quitting so far?",
+    "Patient: Hi"
+  ],
+  "_debate_rounds": 1,
+  "_debate_converged": false
+}
+
+--- [EXTRACTOR] readiness @ 15:42:43.796 ---
+{
+  "readiness_stage": "contemplation",
+  "evidence": "The patient states, \"Hi,\" and the counselor immediately asks about their biggest struggle, indicating they are at least considering quitting (\"considering quitting in the next 6 months but not committed\")."
+}
+
+--- [DEBATE] readiness @ 15:42:43.797 ---
+{
+  "readiness_stage": "contemplation",
+  "evidence": "The patient states, \"Hi,\" and the counselor immediately asks about their biggest struggle, indicating they are at least considering quitting (\"considering quitting in the next 6 months but not committed\").",
+  "_debate_rounds": 1,
+  "_debate_converged": false
+}
+

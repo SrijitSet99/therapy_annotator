@@ -1,0 +1,27 @@
+=== Prompt Log — 20260413_122552 ===
+
+--- [CRITIC] @ 12:26:09.430 ---
+You are a clinical annotation critic reviewing an extraction from a tobacco-cessation counseling conversation.
+
+CONVERSATION:
+Patient: hi
+Counselor: Hi! I'm eDOSTHI, your motivational interviewing chatbot. I'm here to help you quit smoking. What brings you to this moment, and what's your motivation to quit?
+
+CURRENT EXTRACTION (attempt):
+{'attempts': [], 'most_recent_attempt': None, 'longest_attempt': None}
+
+Your task:
+1. Identify any inaccuracies, hallucinations, omissions, or unsupported claims.
+2. Suggest specific improvements.
+3. Decide if the extraction is now acceptable.
+
+Respond ONLY with valid JSON:
+{
+  "issues": ["<issue 1>", "..."],
+  "suggestions": ["<suggestion 1>", "..."],
+  "agreement_reached": true,
+  "severity": "none"
+}
+
+============================================================
+

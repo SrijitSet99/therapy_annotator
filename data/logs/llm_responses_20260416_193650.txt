@@ -1,0 +1,42 @@
+=== LLM Response Log — 20260416_193650 ===
+
+--- [CONFIDENCE_CHECK] attempt @ 19:36:53.384 ---
+{
+  "confidence": 0.6,
+  "issues": [
+    "Omission Check: The conversation lacks explicit details regarding the *type* of attempts. While the extraction includes 'I've tried to quit before' and 'I've had a few attempts in the past,' it doesn't capture the method of those attempts (e.g., NRT, counseling, etc.).",
+    "Grounding and Veracity: The statement 'Patient: hi' is not directly related to a quit attempt and is therefore an extraneous element in the extraction. It needs to be removed to ensure 100% fidelity."
+  ]
+}
+
+--- [CONFIDENCE_CHECK] readiness @ 19:36:54.407 ---
+{
+  "confidence": 1.0,
+  "issues": []
+}
+
+--- [CONFIDENCE_CHECK] concern @ 19:36:57.937 ---
+{
+  "confidence": 0.75,
+  "issues": [
+    "Implicit Concern Detection: The conversation immediately prompts the patient about their concerns, but doesn't explicitly capture any underlying anxieties or fears beyond the stated desire to quit. A potential missed opportunity is the patient's vulnerability to the AI coach, which could represent a deeper anxiety about dependence or a fear of failure. This represents a minor omission.",
+    "Categorization Accuracy: 'Weight gain' and 'Anxiety' are appropriately categorized. However, the extraction lacks nuance. The conversation doesn't provide enough information to definitively categorize the anxiety as psychological or physiological. Further probing would be needed.",
+    "Temporal Attribution: The conversation focuses on the present moment \u2013 what's on the patient's mind *lately* about quitting. It doesn't address historical concerns or potential future anxieties."
+  ]
+}
+
+--- [CONFIDENCE_CHECK] triggers @ 19:37:00.668 ---
+{
+  "confidence": 1.0,
+  "issues": [
+    "Omission Detection: The conversation clearly indicates the patient's concern revolves around quitting smoking. A trigger of 'smoking' or 'desire to smoke' should have been extracted. This is a critical omission as it forms the core of the patient's stated concern.",
+    "Classification Accuracy: While no triggers were extracted, if a trigger *were* present, 'desire to smoke' would be correctly classified as an 'emotional' trigger due to its connection to the patient's thoughts and feelings about quitting."
+  ]
+}
+
+--- [CONFIDENCE_CHECK] advice @ 19:37:01.614 ---
+{
+  "confidence": 0.95,
+  "issues": []
+}
+

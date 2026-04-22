@@ -1,0 +1,201 @@
+
+================================================================================
+OLLAMA CALL 0001
+================================================================================
+timestamp: 2026-04-16T10:46:39.406745+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a very strict clinical data validator. Compare the EXTRACTED DATA against the CONVERSATION.
+
+CONVERSATION:
+Patient has tried to quit smoking twice before.
+
+EXTRACTED DATA (previous smoking quit attempt):
+{'quit_attempts': 2, 'last_attempt': '6 months ago'}
+
+
+Your task:
+1. Very Strictly Check for hallucinations (data not in the text).
+2. Very Strictly Check for omissions (important data missed).
+3. Assign a confidence score between 0.0 and 1.0.
+
+Respond ONLY with valid JSON:
+{
+  "confidence": 0.0,
+  "issues": ["<issue 1>", "..."]
+}
+
+
+RESPONSE:
+```json
+{
+  "confidence": 0.7,
+  "issues": [
+    "Omission: The conversation states the patient has tried to quit smoking 'twice before'. The extracted data only captures 'quit_attempts': 2. It misses the specific timeframe of the previous attempts.",
+    "Omission: The conversation does not provide information about the last attempt's duration ('6 months ago'). This value is extracted but not explicitly stated in the conversation."
+  ]
+}
+```
+
+================================================================================
+OLLAMA CALL 0002
+================================================================================
+timestamp: 2026-04-16T10:46:41.672406+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a very strict clinical data validator. Compare the EXTRACTED DATA against the CONVERSATION.
+
+CONVERSATION:
+Patient has tried to quit smoking twice before.
+
+EXTRACTED DATA (readiness to quit smoking):
+{'readiness_stage': 'contemplation'}
+
+
+Your task:
+1. Very Strictly Check for hallucinations (data not in the text).
+2. Very Strictly Check for omissions (important data missed).
+3. Assign a confidence score between 0.0 and 1.0.
+
+Respond ONLY with valid JSON:
+{
+  "confidence": 0.0,
+  "issues": ["<issue 1>", "..."]
+}
+
+
+RESPONSE:
+```json
+{
+  "confidence": 0.6,
+  "issues": ["Omission: The conversation states the patient has *tried* to quit twice, implying prior attempts. The extracted data only labels this as 'contemplation' without specifying the nature of the attempts. A more complete representation would include details about the attempts themselves."]
+}
+```
+
+================================================================================
+OLLAMA CALL 0003
+================================================================================
+timestamp: 2026-04-16T10:46:43.822204+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a very strict clinical data validator. Compare the EXTRACTED DATA against the CONVERSATION.
+
+CONVERSATION:
+Patient has tried to quit smoking twice before.
+
+EXTRACTED DATA (health or personal concern related to smoking):
+{'concerns': ['health issues']}
+
+
+Your task:
+1. Very Strictly Check for hallucinations (data not in the text).
+2. Very Strictly Check for omissions (important data missed).
+3. Assign a confidence score between 0.0 and 1.0.
+
+Respond ONLY with valid JSON:
+{
+  "confidence": 0.0,
+  "issues": ["<issue 1>", "..."]
+}
+
+
+RESPONSE:
+```json
+{
+  "confidence": 0.95,
+  "issues": ["Omission: The conversation explicitly states the patient has attempted to quit smoking twice before. The extracted data only identifies 'health issues' without capturing the prior quit attempts, which is a crucial detail related to the concern."]
+}
+```
+
+================================================================================
+OLLAMA CALL 0004
+================================================================================
+timestamp: 2026-04-16T10:46:46.650939+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a very strict clinical data validator. Compare the EXTRACTED DATA against the CONVERSATION.
+
+CONVERSATION:
+Patient has tried to quit smoking twice before.
+
+EXTRACTED DATA (smoking triggers):
+{'triggers': ['stress']}
+
+
+Your task:
+1. Very Strictly Check for hallucinations (data not in the text).
+2. Very Strictly Check for omissions (important data missed).
+3. Assign a confidence score between 0.0 and 1.0.
+
+Respond ONLY with valid JSON:
+{
+  "confidence": 0.0,
+  "issues": ["<issue 1>", "..."]
+}
+
+
+RESPONSE:
+```json
+{
+  "confidence": 0.2,
+  "issues": [
+    "Omission: The conversation explicitly states the patient has attempted to quit smoking twice before. This information regarding prior attempts is a critical trigger and should be included in the 'smoking triggers' list. The current extraction only includes 'stress', which is not supported by the conversation.",
+    "Hallucination: The conversation does not mention 'stress' as a trigger. This is an added element not present in the original text."
+  ]
+}
+```
+
+================================================================================
+OLLAMA CALL 0005
+================================================================================
+timestamp: 2026-04-16T10:46:48.756863+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a very strict clinical data validator. Compare the EXTRACTED DATA against the CONVERSATION.
+
+CONVERSATION:
+Patient has tried to quit smoking twice before.
+
+EXTRACTED DATA (cessation advice or guidance):
+{'advice': ['try nicotine replacement']}
+
+
+Your task:
+1. Very Strictly Check for hallucinations (data not in the text).
+2. Very Strictly Check for omissions (important data missed).
+3. Assign a confidence score between 0.0 and 1.0.
+
+Respond ONLY with valid JSON:
+{
+  "confidence": 0.0,
+  "issues": ["<issue 1>", "..."]
+}
+
+
+RESPONSE:
+```json
+{
+  "confidence": 0.2,
+  "issues": ["The extracted data suggests 'try nicotine replacement' without context of prior cessation attempts. The conversation explicitly states the patient has *tried* to quit twice, indicating a need for advice related to that experience. The advice is too generic."]
+}
+```

@@ -1,0 +1,138 @@
+=== LLM Response Log — 20260416_194354 ===
+
+--- [EXTRACTOR] attempt @ 19:44:08.047 ---
+{
+  "attempts": [
+    "The patient has previously attempted to quit smoking because of cravings.",
+    "The patient has previously attempted to quit smoking due to stress."
+  ],
+  "evidence": [
+    "Patient: I find it difficult to quit smokung because of my cravings",
+    "Patient: Stress"
+  ]
+}
+
+--- [DEBATE] attempt @ 19:44:11.652 ---
+{
+  "attempts": [
+    "The patient has previously attempted to quit smoking because of cravings.",
+    "The patient has previously attempted to quit smoking due to stress."
+  ],
+  "evidence": [
+    "Patient: I find it difficult to quit smokung because of my cravings",
+    "Patient: Stress"
+  ],
+  "_debate_rounds": 1,
+  "_debate_converged": false
+}
+
+--- [EXTRACTOR] readiness @ 19:44:11.654 ---
+{
+  "readiness_stage": "contemplation",
+  "evidence": "The patient states, \"I find it difficult to quit smokung because of my cravings,\" indicating awareness of the problem. Additionally, they respond with \"Nothing. Can you suggest some,\" suggesting they are considering options without having yet taken concrete action to quit."
+}
+
+--- [DEBATE] readiness @ 19:44:15.276 ---
+{
+  "readiness_stage": "contemplation",
+  "evidence": "The patient states, \"I find it difficult to quit smokung because of my cravings,\" indicating awareness of the problem. Additionally, they respond with \"Nothing. Can you suggest some,\" suggesting they are considering options without having yet taken concrete action to quit.",
+  "_debate_rounds": 1,
+  "_debate_converged": false
+}
+
+--- [EXTRACTOR] concern @ 19:44:15.280 ---
+{
+  "concerns": [
+    "Cravings for cigarettes",
+    "Difficulty managing stress"
+  ],
+  "evidence": [
+    "I find it difficult to quit smokung because of my cravings",
+    "Stress can definitely trigger the urge to smoke. Have you noticed any patterns or habits around how you cope with stress besides smoking?"
+  ]
+}
+
+--- [DEBATE] concern @ 19:44:18.668 ---
+{
+  "concerns": [
+    "Cravings for cigarettes",
+    "Difficulty managing stress"
+  ],
+  "evidence": [
+    "I find it difficult to quit smokung because of my cravings",
+    "Stress can definitely trigger the urge to smoke. Have you noticed any patterns or habits around how you cope with stress besides smoking?"
+  ],
+  "_debate_rounds": 0,
+  "_debate_converged": true
+}
+
+--- [EXTRACTOR] triggers @ 19:44:18.671 ---
+{
+  "triggers": [
+    "stress",
+    "cravings"
+  ],
+  "evidence": [
+    "I find it difficult to quit smokung because of my cravings",
+    "Stress can definitely trigger the urge to smoke"
+  ]
+}
+
+--- [DEBATE] triggers @ 19:44:21.435 ---
+{
+  "triggers": [
+    "stress",
+    "cravings"
+  ],
+  "evidence": [
+    "I find it difficult to quit smokung because of my cravings",
+    "Stress can definitely trigger the urge to smoke"
+  ],
+  "_debate_rounds": 1,
+  "_debate_converged": false
+}
+
+--- [EXTRACTOR] advice @ 19:44:21.438 ---
+{
+  "advice": [
+    "Take a few deep breaths",
+    "Go for a short walk",
+    "Do some stretching or yoga",
+    "Listen to calming music",
+    "Practice progressive muscle relaxation",
+    "Write down your thoughts and feelings in a journal",
+    "Quitting smoking is a journey, and it's okay to take it one step at a time.",
+    "What's one small step you can take today towards quitting smoking?"
+  ],
+  "evidence": [
+    "Here are some ideas: Take a few deep breaths, Go for a short walk, Do some stretching or yoga, Listen to calming music, Practice progressive muscle relaxation, Write down your thoughts and feelings in a journal",
+    "When you feel stressed, what do you think would be a healthy way to manage those feelings?",
+    "Let's explore some alternatives together! When you feel stressed, what do you think would be a healthy way to manage those feelings?",
+    "You're welcome! Remember, quitting smoking is a journey, and it's okay to take it one step at a time.",
+    "What's one small step you can take today towards quitting smoking?"
+  ]
+}
+
+--- [DEBATE] advice @ 19:44:24.328 ---
+{
+  "advice": [
+    "Take a few deep breaths",
+    "Go for a short walk",
+    "Do some stretching or yoga",
+    "Listen to calming music",
+    "Practice progressive muscle relaxation",
+    "Write down your thoughts and feelings in a journal",
+    "Quitting smoking is a journey, and it's okay to take it one step at a time.",
+    "What's one small step you can take today towards quitting smoking?"
+  ],
+  "evidence": [
+    "Here are some ideas: Take a few deep breaths, Go for a short walk, Do some stretching or yoga, Listen to calming music, Practice progressive muscle relaxation, Write down your thoughts and feelings in a journal",
+    "When you feel stressed, what do you think would be a healthy way to manage those feelings?",
+    "Let's explore some alternatives together! When you feel stressed, what do you think would be a healthy way to manage those feelings?",
+    "You're welcome! Remember, quitting smoking is a journey, and it's okay to take it one step at a time.",
+    "What's one small step you can take today towards quitting smoking?"
+  ],
+  "_debate_rounds": 0,
+  "_debate_converged": true
+}
+

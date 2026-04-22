@@ -1,0 +1,42 @@
+=== LLM Response Log — 20260416_160820 ===
+
+--- [EXTRACTOR] attempt @ 16:08:29.768 ---
+{
+  "attempts": [
+    "Patient attempted to use a nicotine patch to quit smoking.",
+    "Patient attempted to gradually reduce smoking with the intention to quit."
+  ],
+  "evidence": [
+    "Patient: \u2018Are you thinking about quitting smoking or looking for support in your journey?\u2019",
+    "Patient: \u2018\u2026with the intention to quit\u2019"
+  ]
+}
+
+--- [DEBATE] attempt @ 16:08:29.769 ---
+{
+  "attempts": [
+    "Patient attempted to use a nicotine patch to quit smoking.",
+    "Patient attempted to gradually reduce smoking with the intention to quit."
+  ],
+  "evidence": [
+    "Patient: \u2018Are you thinking about quitting smoking or looking for support in your journey?\u2019",
+    "Patient: \u2018\u2026with the intention to quit\u2019"
+  ],
+  "_debate_rounds": 1,
+  "_debate_converged": false
+}
+
+--- [EXTRACTOR] readiness @ 16:08:29.772 ---
+{
+  "readiness_stage": "contemplation",
+  "evidence": "The patient stated they are 'looking for support in your journey,' indicating they are considering quitting (contemplation) but haven't yet made a firm commitment or taken concrete steps towards cessation."
+}
+
+--- [DEBATE] readiness @ 16:08:29.773 ---
+{
+  "readiness_stage": "contemplation",
+  "evidence": "The patient stated they are 'looking for support in your journey,' indicating they are considering quitting (contemplation) but haven't yet made a firm commitment or taken concrete steps towards cessation.",
+  "_debate_rounds": 1,
+  "_debate_converged": false
+}
+

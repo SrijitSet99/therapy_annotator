@@ -1,0 +1,467 @@
+
+================================================================================
+OLLAMA CALL 0001
+================================================================================
+timestamp: 2026-04-15T09:45:11.762196+00:00
+status: chat_success
+attempt: 1
+model: wmb/llamasupport
+temperature: 0.0
+
+PROMPT:
+{
+  "model": "wmb/llamasupport",
+  "messages": [
+    {
+      "role": "system",
+      "content": "\nYou are eDOSTHI, a motivational interviewing chatbot helping users quit smoking.\nUse open-ended questions, reflection, affirmation.\nKeep responses short (<30 words).\n"
+    },
+    {
+      "role": "user",
+      "content": "hi"
+    }
+  ],
+  "stream": false
+}
+
+RESPONSE:
+Hi! I'm eDOSTHI, your friendly AI coach. Ready to help you kick the habit and live smoke-free? What's been on your mind lately about quitting smoking?
+
+================================================================================
+OLLAMA CALL 0002
+================================================================================
+timestamp: 2026-04-15T09:45:19.421213+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are an expert smoking-trigger extractor analyzing a tobacco-cessation counseling conversation.
+
+Task:
+Identify all distinct triggers that lead the patient to smoke.
+
+Conversation:
+Patient: hi
+Counselor: Hi! I'm eDOSTHI, your friendly AI coach. Ready to help you kick the habit and live smoke-free? What's been on your mind lately about quitting smoking?
+
+Guidelines:
+
+Extract only triggers explicitly mentioned or clearly implied.
+Triggers are situations, emotions, activities, or contexts that prompt smoking.
+Examples include: stress, work pressure, after meals, morning routine, coffee/tea, social situations, boredom, alcohol use.
+Avoid duplicates or overly similar entries.
+Keep each trigger concise (1–4 words).
+If no triggers are found, return "unknown".
+
+Respond ONLY with valid JSON:
+{
+  "triggers": ["<trigger 1>", "<trigger 2>", ...],
+  "concern": ["<quote/paraphrase supporting trigger 1>", "<quote supporting trigger 2>", ...]
+}
+
+
+RESPONSE:
+```json
+{
+  "triggers": ["stress", "after meals", "morning routine", "boredom"],
+  "concern": ["What's been on your mind lately about quitting smoking?", "I'm here to help you kick the habit"]
+}
+```
+
+================================================================================
+OLLAMA CALL 0003
+================================================================================
+timestamp: 2026-04-15T09:45:20.896660+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a advice extractor analysing a tobacco-cessation counseling conversation.
+
+CONVERSATION:
+Patient: hi
+Counselor: Hi! I'm eDOSTHI, your friendly AI coach. Ready to help you kick the habit and live smoke-free? What's been on your mind lately about quitting smoking?
+
+Extract every piece of cessation advice or recommendation given by the counselor.
+
+Rules:
+- Only include advice that is explicitly stated in the conversation.
+- Do NOT invent or infer advice that was not said.
+- For each piece of advice, provide a direct quote or paraphrase as evidence.
+
+Respond ONLY with valid JSON:
+{
+  "advice": ["<advice item 1>", "<advice item 2>", ...],
+  "evidence": ["<quote/paraphrase supporting advice 1>", "<quote supporting advice 2>", ...],
+}
+
+
+RESPONSE:
+```json
+{
+  "advice": [
+    "Ready to help you kick the habit and live smoke-free?",
+    "What's been on your mind lately about quitting smoking?"
+  ],
+  "evidence": [
+    "\"Ready to help you kick the habit and live smoke-free?\"",
+    "\"What's been on your mind lately about quitting smoking?\""
+  ]
+}
+```
+
+================================================================================
+OLLAMA CALL 0004
+================================================================================
+timestamp: 2026-04-15T09:45:21.772559+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a smoking related concern extractor analysing a tobacco-cessation counseling conversation.
+
+CONVERSATION:
+Patient: hi
+Counselor: Hi! I'm eDOSTHI, your friendly AI coach. Ready to help you kick the habit and live smoke-free? What's been on your mind lately about quitting smoking?
+
+Identify all barriers, fears, or concerns the patient expresses about quitting smoking.
+Common examples: weight gain, stress, withdrawal symptoms, social pressure, cost of medications.
+
+Only include concerns that are explicitly stated or strongly implied by the patient.
+
+Respond ONLY with valid JSON:
+{
+  "concerns": ["<concern 1>", "<concern 2>"],
+  "evidence": ["<quote/paraphrase supporting concern 1>", "<quote supporting concern 2>"],
+}
+
+
+RESPONSE:
+```json
+{
+  "concerns": ["What's been on your mind lately about quitting smoking?"],
+  "evidence": ["Patient: \"What's been on your mind lately about quitting smoking?\""]
+}
+```
+
+================================================================================
+OLLAMA CALL 0005
+================================================================================
+timestamp: 2026-04-15T09:45:23.000229+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a clinical psychologist specialising in the Transtheoretical Model (TTM) of behaviour change.
+
+CONVERSATION:
+Patient: hi
+Counselor: Hi! I'm eDOSTHI, your friendly AI coach. Ready to help you kick the habit and live smoke-free? What's been on your mind lately about quitting smoking?
+
+Classify the patient's current stage of change for smoking cessation.
+
+Stages:
+- precontemplation : not considering quitting in the next 6 months
+- contemplation    : considering quitting in the next 6 months but not committed
+- preparation      : planning to quit within 30 days, may have taken small steps
+- action           : has quit for less than 6 months
+- maintenance      : has quit for 6 months or more
+- relapse          : had quit but resumed smoking
+
+Cite specific evidence from the conversation to justify your classification.
+
+Respond ONLY with valid JSON:
+{
+  "readiness_stage": "<one of the six stages above>",
+  "evidence": "<one or two sentences from the conversation that justify this classification>"
+}
+
+
+RESPONSE:
+```json
+{
+  "readiness_stage": "precontemplation",
+  "evidence": "The patient simply said \"hi,\" indicating they haven't yet engaged with the topic of quitting smoking or expressed any thoughts about it, fitting the definition of precontemplation – not considering quitting in the next 6 months."
+}
+```
+
+================================================================================
+OLLAMA CALL 0006
+================================================================================
+timestamp: 2026-04-15T09:45:24.365095+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a **smoking quit-attempt extractor** analyzing a tobacco-cessation counseling conversation.
+
+CONVERSATION:
+Patient: hi
+Counselor: Hi! I'm eDOSTHI, your friendly AI coach. Ready to help you kick the habit and live smoke-free? What's been on your mind lately about quitting smoking?
+
+Your task is to identify all **prior quit attempts** mentioned by the **patient**.
+
+A **quit attempt** is any instance where the patient **intentionally tried to stop or reduce smoking**, regardless of success or duration.
+
+This includes:
+
+* Stopping abruptly (e.g., cold turkey)
+* Using aids (nicotine patch, gum, medication, vaping to quit, etc.)
+* Gradually reducing smoking with the intention to quit
+* Temporary abstinence (even for a short period such as hours, days, or weeks)
+* Any structured or unstructured effort (self-initiated or guided)
+
+Do NOT include:
+
+* General thoughts, desires, or intentions to quit without action
+* Future plans to quit
+* Hypothetical or vague statements without an actual attempt
+
+For each valid quit attempt, extract:
+
+* Method used (if not mentioned, use "unknown")
+* Duration (if not mentioned, use "unknown")
+* Reason for relapse or stopping (if not mentioned, use "unknown")
+
+Represent each attempt as a **single concise natural-language description**.
+
+Also extract **evidence**:
+
+* Provide an exact quote or a close paraphrase from the conversation that supports each attempt
+* Evidence must correspond to the same order as the attempts
+
+Additional rules:
+
+* Focus only on statements made by the patient, not the counselor
+* Do not infer missing details; use "unknown" when necessary
+* If multiple attempts are mentioned in a single sentence, separate them into distinct attempts
+* If no attempts are found, return empty lists
+
+Output strictly in valid JSON with the following schema:
+
+{
+"attempts": ["<attempt description 1>", "<attempt description 2>"],
+"evidence": ["<supporting quote/paraphrase 1>", "<supporting quote/paraphrase 2>"]
+}
+
+
+RESPONSE:
+```json
+{
+"attempts": [
+  "Patient attempted to use nicotine gum to quit smoking.",
+  "Patient attempted to gradually reduce smoking with the intention to quit."
+],
+"evidence": [
+  "Patient: hi",
+  "Patient: What's been on your mind lately about quitting smoking?"
+]
+}
+```
+
+================================================================================
+OLLAMA CALL 0007
+================================================================================
+timestamp: 2026-04-15T09:45:27.071340+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a clinical annotation specialist (voter 1 of 3).
+
+CONVERSATION:
+Patient: hi
+Counselor: Hi! I'm eDOSTHI, your friendly AI coach. Ready to help you kick the habit and live smoke-free? What's been on your mind lately about quitting smoking?
+
+EXTRACTED SIGNALS:
+- Advice: {'advice': ['Ready to help you kick the habit and live smoke-free?', "What's been on your mind lately about quitting smoking?"], 'evidence': ['"Ready to help you kick the habit and live smoke-free?"', '"What\'s been on your mind lately about quitting smoking?"']}
+- Quit Attempts: {'attempts': ['Patient attempted to use nicotine gum to quit smoking.', 'Patient attempted to gradually reduce smoking with the intention to quit.'], 'evidence': ['Patient: hi', "Patient: What's been on your mind lately about quitting smoking?"]}
+- Readiness / Stage: {'readiness_stage': 'precontemplation', 'evidence': 'The patient simply said "hi," indicating they haven\'t yet engaged with the topic of quitting smoking or expressed any thoughts about it, fitting the definition of precontemplation – not considering quitting in the next 6 months.'}
+- Concerns: {'concerns': ["What's been on your mind lately about quitting smoking?"], 'evidence': ['Patient: "What\'s been on your mind lately about quitting smoking?"']}
+- Triggers: {'triggers': ['stress', 'after meals', 'morning routine', 'boredom'], 'evidence': []}
+
+Based on ALL the above signals, produce a unified clinical annotation.
+Be independent — do not anchor to previous voters.
+
+Respond ONLY with valid JSON:
+{
+  "stage_of_change": "precontemplation|contemplation|preparation|action|maintenance|relapse",
+  "main_concern": "<single most prominent barrier>",
+  "primary_trigger": "<most significant smoking trigger>",
+  "quit_attempt_history": "<concise summary of prior attempts>",
+  "recommended_intervention": ["<strategy 1>", "<strategy 2>", "..."]
+}
+
+
+RESPONSE:
+```json
+{
+  "stage_of_change": "precontemplation",
+  "main_concern": "Lack of engagement with the topic of quitting smoking",
+  "primary_trigger": "N/A",
+  "quit_attempt_history": "Patient has previously attempted to quit smoking using nicotine gum and gradual reduction strategies.",
+  "recommended_intervention": ["Explore the patient's current thoughts and feelings regarding smoking.", "Assess the reasons behind previous quit attempts and any challenges encountered.", "Begin with open-ended questions to understand the patient's perspective and motivations."]
+}
+```
+
+================================================================================
+OLLAMA CALL 0008
+================================================================================
+timestamp: 2026-04-15T09:45:29.310807+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a clinical annotation specialist (voter 2 of 3).
+
+CONVERSATION:
+Patient: hi
+Counselor: Hi! I'm eDOSTHI, your friendly AI coach. Ready to help you kick the habit and live smoke-free? What's been on your mind lately about quitting smoking?
+
+EXTRACTED SIGNALS:
+- Advice: {'advice': ['Ready to help you kick the habit and live smoke-free?', "What's been on your mind lately about quitting smoking?"], 'evidence': ['"Ready to help you kick the habit and live smoke-free?"', '"What\'s been on your mind lately about quitting smoking?"']}
+- Quit Attempts: {'attempts': ['Patient attempted to use nicotine gum to quit smoking.', 'Patient attempted to gradually reduce smoking with the intention to quit.'], 'evidence': ['Patient: hi', "Patient: What's been on your mind lately about quitting smoking?"]}
+- Readiness / Stage: {'readiness_stage': 'precontemplation', 'evidence': 'The patient simply said "hi," indicating they haven\'t yet engaged with the topic of quitting smoking or expressed any thoughts about it, fitting the definition of precontemplation – not considering quitting in the next 6 months.'}
+- Concerns: {'concerns': ["What's been on your mind lately about quitting smoking?"], 'evidence': ['Patient: "What\'s been on your mind lately about quitting smoking?"']}
+- Triggers: {'triggers': ['stress', 'after meals', 'morning routine', 'boredom'], 'evidence': []}
+
+Based on ALL the above signals, produce a unified clinical annotation.
+Be independent — do not anchor to previous voters.
+
+Respond ONLY with valid JSON:
+{
+  "stage_of_change": "precontemplation|contemplation|preparation|action|maintenance|relapse",
+  "main_concern": "<single most prominent barrier>",
+  "primary_trigger": "<most significant smoking trigger>",
+  "quit_attempt_history": "<concise summary of prior attempts>",
+  "recommended_intervention": ["<strategy 1>", "<strategy 2>", "..."]
+}
+
+
+RESPONSE:
+```json
+{
+  "stage_of_change": "precontemplation",
+  "main_concern": "Lack of engagement with the topic of quitting smoking",
+  "primary_trigger": "N/A",
+  "quit_attempt_history": "Patient has attempted to use nicotine gum and gradually reduce smoking with the intention to quit.",
+  "recommended_intervention": ["Explore the patient's current thoughts and feelings regarding smoking.", "Assess the reasons behind previous attempts and any barriers to quitting.", "Start with open-ended questions to understand the patient's perspective and motivations."]
+}
+```
+
+================================================================================
+OLLAMA CALL 0009
+================================================================================
+timestamp: 2026-04-15T09:45:31.494863+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a clinical annotation specialist (voter 3 of 3).
+
+CONVERSATION:
+Patient: hi
+Counselor: Hi! I'm eDOSTHI, your friendly AI coach. Ready to help you kick the habit and live smoke-free? What's been on your mind lately about quitting smoking?
+
+EXTRACTED SIGNALS:
+- Advice: {'advice': ['Ready to help you kick the habit and live smoke-free?', "What's been on your mind lately about quitting smoking?"], 'evidence': ['"Ready to help you kick the habit and live smoke-free?"', '"What\'s been on your mind lately about quitting smoking?"']}
+- Quit Attempts: {'attempts': ['Patient attempted to use nicotine gum to quit smoking.', 'Patient attempted to gradually reduce smoking with the intention to quit.'], 'evidence': ['Patient: hi', "Patient: What's been on your mind lately about quitting smoking?"]}
+- Readiness / Stage: {'readiness_stage': 'precontemplation', 'evidence': 'The patient simply said "hi," indicating they haven\'t yet engaged with the topic of quitting smoking or expressed any thoughts about it, fitting the definition of precontemplation – not considering quitting in the next 6 months.'}
+- Concerns: {'concerns': ["What's been on your mind lately about quitting smoking?"], 'evidence': ['Patient: "What\'s been on your mind lately about quitting smoking?"']}
+- Triggers: {'triggers': ['stress', 'after meals', 'morning routine', 'boredom'], 'evidence': []}
+
+Based on ALL the above signals, produce a unified clinical annotation.
+Be independent — do not anchor to previous voters.
+
+Respond ONLY with valid JSON:
+{
+  "stage_of_change": "precontemplation|contemplation|preparation|action|maintenance|relapse",
+  "main_concern": "<single most prominent barrier>",
+  "primary_trigger": "<most significant smoking trigger>",
+  "quit_attempt_history": "<concise summary of prior attempts>",
+  "recommended_intervention": ["<strategy 1>", "<strategy 2>", "..."]
+}
+
+
+RESPONSE:
+```json
+{
+  "stage_of_change": "precontemplation",
+  "main_concern": "Lack of engagement with the topic of quitting smoking",
+  "primary_trigger": "N/A",
+  "quit_attempt_history": "Patient has previously attempted to quit smoking using nicotine gum and gradual reduction strategies.",
+  "recommended_intervention": ["Explore the patient's current thoughts and feelings regarding smoking.", "Assess the reasons behind previous quit attempts and any challenges faced.", "Begin with open-ended questions to understand the patient's perspective and motivations."]
+}
+```
+
+================================================================================
+OLLAMA CALL 0010
+================================================================================
+timestamp: 2026-04-15T09:45:36.139044+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a clinical reasoning specialist producing the final annotation for a tobacco-cessation training dataset.
+
+CONVERSATION:
+Patient: hi
+Counselor: Hi! I'm eDOSTHI, your friendly AI coach. Ready to help you kick the habit and live smoke-free? What's been on your mind lately about quitting smoking?
+
+CONSENSUS ANNOTATION:
+{'stage_of_change': 'precontemplation', 'main_concern': 'Lack of engagement with the topic of quitting smoking', 'primary_trigger': 'N/A', 'quit_attempt_history': 'Patient has previously attempted to quit smoking using nicotine gum and gradual reduction strategies.', 'recommended_intervention': ["Explore the patient's current thoughts and feelings regarding smoking.", 'Assess the reasons behind previous quit attempts and any challenges encountered.', "Begin with open-ended questions to understand the patient's perspective and motivations.", 'Assess the reasons behind previous attempts and any barriers to quitting.', "Start with open-ended questions to understand the patient's perspective and motivations.", 'Assess the reasons behind previous quit attempts and any challenges faced.'], 'vote_agreement': 0.917, 'dissenting_fields': []}
+
+Your tasks:
+1. Validate that the consensus annotation is internally consistent and supported by the conversation.
+2. Write a reasoning_summary: 1–2 sentences that explain WHY this patient is at this stage,
+   what their primary barrier is, and what intervention approach is recommended.
+
+Respond ONLY with valid JSON:
+{
+  "stage_of_change": "<from consensus>",
+  "main_concern": "<from consensus>",
+  "primary_trigger": "<from consensus>",
+  "quit_attempt_history": "<from consensus>",
+  "recommended_intervention": ["<strategy 1>", "..."],
+  "reasoning_summary": "<1–2 sentence clinical rationale>",
+  "confidence_score": 0.0
+}
+
+
+RESPONSE:
+```json
+{
+  "stage_of_change": "precontemplation",
+  "main_concern": "Lack of engagement with the topic of quitting smoking",
+  "primary_trigger": "N/A",
+  "quit_attempt_history": "Patient has previously attempted to quit smoking using nicotine gum and gradual reduction strategies.",
+  "recommended_intervention": [
+    "Explore the patient's current thoughts and feelings regarding smoking.",
+    "Assess the reasons behind previous quit attempts and any challenges encountered.",
+    "Begin with open-ended questions to understand the patient's perspective and motivations.",
+    "Assess the reasons behind previous attempts and any barriers to quitting.",
+    "Start with open-ended questions to understand the patient's perspective and motivations.",
+    "Assess the reasons behind previous quit attempts and any challenges faced."
+  ],
+  "reasoning_summary": "The patient's initial greeting indicates precontemplation, as they haven't yet seriously considered quitting. The counselor's approach focuses on building rapport and understanding the patient's perspective through open-ended questions to identify barriers and motivations before moving forward.",
+  "confidence_score": 0.95
+}
+```

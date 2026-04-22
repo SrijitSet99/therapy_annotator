@@ -1,0 +1,49 @@
+=== LLM Response Log — 20260416_165548 ===
+
+--- [CONFIDENCE_CHECK] attempt @ 16:55:53.219 ---
+{
+  "confidence": 0.3,
+  "issues": [
+    "Grounding & Veracity: The statement 'Patient attempted to gradually reduce smoking with the intention to quit.' is not directly supported by the source text. The counselor explicitly states the patient 'took the first step towards quitting smoking,' but doesn't confirm a gradual reduction attempt. This represents a logical leap.",
+    "Hallucination Check: The extraction includes the statement 'Patient attempted to temporarily abstain for a short period.' This statement is entirely fabricated and does not appear in the source text.",
+    "Sensitivity (Omission) Check: The source text contains the key phrase 'want to kick the habit,' indicating an intention to quit. However, it lacks specific details about the type or duration of the attempt, which could be valuable for further analysis.",
+    "Taxonomy Alignment: While the general intent of 'kick the habit' aligns with a quit attempt, the extraction lacks specific details to categorize the attempt type (e.g., Cold Turkey, NRT, etc.)."
+  ]
+}
+
+--- [CONFIDENCE_CHECK] readiness @ 16:55:56.893 ---
+{
+  "confidence": 0.8,
+  "issues": [
+    "{'category': 'Grounding Check', 'description': \"The extraction claims the patient is in 'contemplation' based on the initial 'hi'. While the patient's greeting *does* indicate recognition of the problem, it's a very weak signal. The counselor's follow-up question is far more indicative of contemplation.  It's an implication, not an explicit statement.\", 'recommendation': \"Consider a lower confidence score or a more nuanced trigger type (e.g., 'initial recognition' or 'pre-contemplation')\"}"
+  ]
+}
+
+--- [CONFIDENCE_CHECK] concern @ 16:56:01.499 ---
+{
+  "confidence": 0.75,
+  "issues": [
+    "Implicit Concern Detection: The patient's initial question, 'What motivated you to want to kick the habit?' represents an implicit concern regarding the potential difficulties and anxieties associated with quitting. While present, a more granular extraction focusing on the *fear* of relapse or the *emotional* challenges might have been beneficial. This is a minor misalignment.",
+    "Severity Calibration: The statement is straightforward and doesn't require severity adjustment. 'Kick the habit' implies a concern, but the intensity is accurately represented by the extraction.",
+    "Temporal Attribution: The concern is presented as current \u2013 the patient is actively seeking the reason for wanting to quit. No temporal misattribution is present.",
+    "Categorization Accuracy: Categorization as 'Psychological' is appropriate given the focus on motivation and the underlying anxieties associated with the process of quitting."
+  ]
+}
+
+--- [CONFIDENCE_CHECK] triggers @ 16:56:08.590 ---
+{
+  "confidence": 0.6,
+  "issues": [
+    "{'category': 'Omission Detection', 'description': \"The conversation explicitly states the patient's motivation is 'stress'. The extraction misses 'stress' as a trigger. This is a significant omission.\", 'phrase': \"You've taken the first step towards quitting smoking - that's amazing! What motivated you to want to kick the habit?\", 'trigger_type': 'stress'}",
+    "{'category': 'Grounding Check', 'description': \"The inclusion of 'after meals', 'morning routine', and 'boredom' lacks strong grounding in the conversation. While these *could* be related to smoking cessation, they are not explicitly mentioned or strongly implied by the counselor's initial statement. These appear to be speculative triggers.\", 'trigger': 'after meals', 'trigger_type': 'after meals'}",
+    "{'category': 'Grounding Check', 'description': \"Similar to 'after meals', 'morning routine' and 'boredom' are not supported by the conversation and represent an inference.\", 'trigger': 'morning routine', 'trigger_type': 'morning routine'}",
+    "{'category': 'Grounding Check', 'description': \"Similar to 'after meals', 'morning routine' and 'boredom' are not supported by the conversation and represent an inference.\", 'trigger': 'boredom', 'trigger_type': 'boredom'}"
+  ]
+}
+
+--- [CONFIDENCE_CHECK] advice @ 16:56:10.119 ---
+{
+  "confidence": 1.0,
+  "issues": []
+}
+

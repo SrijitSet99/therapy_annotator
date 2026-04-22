@@ -1,0 +1,8 @@
+=== LLM Response Log — 20260417_120453 ===
+
+--- [REVISION] readiness @ 12:04:55.110 ---
+{
+  "readiness_stage": "precontemplation",
+  "evidence": "Patient states 'I want to quit smoking,' indicating a desire to quit but without any indication of behavioral intention or commitment. Counselor's follow-up question about motivation suggests a nascent level of contemplation is present."
+}
+

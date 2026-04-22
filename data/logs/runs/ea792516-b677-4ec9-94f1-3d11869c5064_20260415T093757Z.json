@@ -1,0 +1,14 @@
+{
+  "events": {
+    "run_chat": {
+      "transcript": {
+        "session_id": "ea792516-b677-4ec9-94f1-3d11869c5064",
+        "transcript": "Patient: Hi\nCounselor: Welcome! I'm eDOSTHI. You've taken the first step towards quitting smoking. What's driving you to want to stop this time?"
+      }
+    }
+  },
+  "meta": {
+    "session_id": "ea792516-b677-4ec9-94f1-3d11869c5064",
+    "started_at": "20260415T093757Z"
+  }
+}

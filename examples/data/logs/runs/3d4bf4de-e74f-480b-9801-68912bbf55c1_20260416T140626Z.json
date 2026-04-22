@@ -1,0 +1,317 @@
+{
+  "events": {
+    "agent_manager": {
+      "confidence_results": {
+        "advice": {
+          "confidence": 0.95,
+          "issues": []
+        },
+        "attempt": {
+          "confidence": 1.0,
+          "issues": []
+        },
+        "concern": {
+          "confidence": 0.75,
+          "issues": [
+            "Minor omission: While the patient initiated the conversation, a more explicit expression of concern regarding the *motivation* for quitting (e.g., 'I'm worried about my health,' 'I want to be around for my family') was not captured. This represents a slight underrepresentation of psychological concerns.",
+            "Category Alignment - Potential: The initial statement 'What’s been on your mind lately about quitting?' could be interpreted as a broad inquiry, potentially missing a more specific concern if the patient had articulated one. Further probing would be needed to confirm the precise category."
+          ]
+        },
+        "readiness": {
+          "confidence": 1.0,
+          "issues": []
+        },
+        "triggers": {
+          "confidence": 1.0,
+          "issues": [
+            "Omission Detection: The conversation clearly indicates the patient is struggling with quitting smoking. The trigger 'craving' is entirely absent from the extraction, despite being a central theme of the conversation. This is a significant omission.",
+            "Classification Accuracy: While the conversation doesn't explicitly state 'craving', it strongly implies it. The absence of 'craving' as a trigger type is a misclassification. It should be categorized as 'Emotional' due to the patient's stated concern about quitting."
+          ]
+        }
+      },
+      "extractor_output": {
+        "advice": {
+          "advice": [
+            "I'm eDOSTHI, your friendly AI coach to help you quit smoking."
+          ],
+          "evidence": [
+            "Hi! I'm eDOSTHI, your friendly AI coach to help you quit smoking."
+          ]
+        },
+        "attempt": {
+          "attempts": [
+            "I've tried to quit before.",
+            "I've had a few attempts in the past."
+          ],
+          "evidence": [
+            "Patient: hi",
+            "Patient: I've had a few attempts in the past."
+          ]
+        },
+        "concern": {
+          "concerns": [
+            "Weight gain",
+            "Anxiety"
+          ],
+          "evidence": [
+            "What’s been on your mind lately about quitting?",
+            "I'm eDOSTHI, your friendly AI coach to help you quit smoking. What’s been on your mind lately about quitting?"
+          ]
+        },
+        "readiness": {
+          "evidence": "The patient stated \"hi\" and then asked \"What's been on your mind lately about quitting?\" This indicates they are aware of the need to quit and considering it, aligning with the contemplation stage.",
+          "readiness_stage": "contemplation"
+        },
+        "triggers": {
+          "evidence": [],
+          "triggers": []
+        }
+      },
+      "final_output": {
+        "advice": {
+          "_debate_converged": true,
+          "_debate_rounds": 0,
+          "advice": [
+            "I'm eDOSTHI, your friendly AI coach to help you quit smoking."
+          ],
+          "evidence": [
+            "Hi! I'm eDOSTHI, your friendly AI coach to help you quit smoking."
+          ]
+        },
+        "attempt": {
+          "_debate_converged": false,
+          "_debate_rounds": 1,
+          "attempts": [
+            "I've tried to quit before.",
+            "I've had a few attempts in the past."
+          ],
+          "evidence": [
+            "Patient: hi",
+            "Patient: I've had a few attempts in the past."
+          ]
+        },
+        "concern": {
+          "_debate_converged": false,
+          "_debate_rounds": 1,
+          "concerns": [
+            "Weight gain",
+            "Anxiety"
+          ],
+          "evidence": [
+            "What’s been on your mind lately about quitting?",
+            "I'm eDOSTHI, your friendly AI coach to help you quit smoking. What’s been on your mind lately about quitting?"
+          ]
+        },
+        "readiness": {
+          "_debate_converged": true,
+          "_debate_rounds": 0,
+          "evidence": "The patient stated \"hi\" and then asked \"What's been on your mind lately about quitting?\" This indicates they are aware of the need to quit and considering it, aligning with the contemplation stage.",
+          "readiness_stage": "contemplation"
+        },
+        "triggers": {
+          "_debate_converged": true,
+          "_debate_rounds": 0,
+          "evidence": [],
+          "triggers": []
+        }
+      },
+      "revised_output": {
+        "attempt": {
+          "attempts": [],
+          "evidence": []
+        },
+        "concern": {
+          "concerns": [],
+          "evidence": []
+        },
+        "readiness": {
+          "evidence": null,
+          "readiness_stage": "unknown"
+        }
+      }
+    },
+    "consensus_agent": {
+      "output": {
+        "consensus": {
+          "dissenting_fields": [],
+          "main_concern": "Starting the conversation about quitting smoking",
+          "primary_trigger": "None",
+          "quit_attempt_history": "No prior quit attempts recorded.",
+          "recommended_intervention": [
+            "Explore patient's reasons for wanting to quit.",
+            "Assess current smoking habits and patterns.",
+            "Introduce eDOSTHI's role and capabilities.",
+            "Introduce the role of eDOSTHI as a supportive AI coach."
+          ],
+          "stage_of_change": "precontemplation",
+          "vote_agreement": 1.0
+        }
+      }
+    },
+    "longitudinal_sanity": {
+      "output": {
+        "longitudinal_sanity": {
+          "flags": [],
+          "passed": true,
+          "severity": "none"
+        }
+      }
+    },
+    "profile_update_agent": {
+      "output": {
+        "dataset_row": {
+          "confidence_score": 1.0,
+          "debate_rounds_used": 0,
+          "inconsistencies": [],
+          "longitudinal_flags": [],
+          "longitudinal_sanity_passed": true,
+          "main_concern": "Starting the conversation about quitting smoking",
+          "primary_trigger": "None",
+          "quit_attempt_history": "No prior quit attempts recorded.",
+          "reasoning_summary": "The patient's initial greeting indicates they are likely in precontemplation, having not yet considered quitting. The counselor's opening focuses on establishing rapport and initiating a discussion about the patient's motivations, aligning with an exploratory approach to address this initial stage.",
+          "recommended_intervention": [
+            "Explore patient's reasons for wanting to quit.",
+            "Assess current smoking habits and patterns.",
+            "Introduce eDOSTHI’s role and capabilities.",
+            "Introduce the role of eDOSTHI as a supportive AI coach."
+          ],
+          "sanity_passed": true,
+          "session_number": 1,
+          "stage_of_change": "precontemplation",
+          "vote_agreement": 1.0
+        },
+        "longitudinal_output": {
+          "current_annotation": {
+            "confidence_score": 1.0,
+            "debate_rounds_used": 0,
+            "inconsistencies": [],
+            "longitudinal_flags": [],
+            "longitudinal_sanity_passed": true,
+            "main_concern": "Starting the conversation about quitting smoking",
+            "primary_trigger": "None",
+            "quit_attempt_history": "No prior quit attempts recorded.",
+            "reasoning_summary": "The patient's initial greeting indicates they are likely in precontemplation, having not yet considered quitting. The counselor's opening focuses on establishing rapport and initiating a discussion about the patient's motivations, aligning with an exploratory approach to address this initial stage.",
+            "recommended_intervention": [
+              "Explore patient's reasons for wanting to quit.",
+              "Assess current smoking habits and patterns.",
+              "Introduce eDOSTHI’s role and capabilities.",
+              "Introduce the role of eDOSTHI as a supportive AI coach."
+            ],
+            "sanity_passed": true,
+            "session_number": 1,
+            "stage_of_change": "precontemplation",
+            "vote_agreement": 1.0
+          },
+          "delta": null,
+          "interventions_tried": [],
+          "longitudinal_flags": [],
+          "overall_progress": "unknown",
+          "patient_id": "3d4bf4de-e74f-480b-9801-68912bbf55c1",
+          "persistent_concerns": [],
+          "persistent_triggers": [],
+          "relapse_detected": false,
+          "session_number": 1,
+          "stage_trajectory": [
+            "precontemplation"
+          ],
+          "stagnation_detected": false
+        },
+        "patient_profile_id": "3d4bf4de-e74f-480b-9801-68912bbf55c1",
+        "session_count": 1
+      }
+    },
+    "reasoning_agent": {
+      "output": {
+        "dataset_row": {
+          "confidence_score": 1.0,
+          "debate_rounds_used": 0,
+          "inconsistencies": [],
+          "main_concern": "Starting the conversation about quitting smoking",
+          "primary_trigger": "None",
+          "quit_attempt_history": "No prior quit attempts recorded.",
+          "reasoning_summary": "The patient's initial greeting indicates they are likely in precontemplation, having not yet considered quitting. The counselor's opening focuses on establishing rapport and initiating a discussion about the patient's motivations, aligning with an exploratory approach to address this initial stage.",
+          "recommended_intervention": [
+            "Explore patient's reasons for wanting to quit.",
+            "Assess current smoking habits and patterns.",
+            "Introduce eDOSTHI’s role and capabilities.",
+            "Introduce the role of eDOSTHI as a supportive AI coach."
+          ],
+          "sanity_passed": true,
+          "stage_of_change": "precontemplation",
+          "vote_agreement": 1.0
+        }
+      }
+    },
+    "run_chat": {
+      "final_result": {
+        "dataset_row": {
+          "confidence_score": 1.0,
+          "debate_rounds_used": 0,
+          "inconsistencies": [],
+          "longitudinal_flags": [],
+          "longitudinal_sanity_passed": true,
+          "main_concern": "Starting the conversation about quitting smoking",
+          "primary_trigger": "None",
+          "quit_attempt_history": "No prior quit attempts recorded.",
+          "reasoning_summary": "The patient's initial greeting indicates they are likely in precontemplation, having not yet considered quitting. The counselor's opening focuses on establishing rapport and initiating a discussion about the patient's motivations, aligning with an exploratory approach to address this initial stage.",
+          "recommended_intervention": [
+            "Explore patient's reasons for wanting to quit.",
+            "Assess current smoking habits and patterns.",
+            "Introduce eDOSTHI’s role and capabilities.",
+            "Introduce the role of eDOSTHI as a supportive AI coach."
+          ],
+          "sanity_passed": true,
+          "session_number": 1,
+          "stage_of_change": "precontemplation",
+          "vote_agreement": 1.0
+        },
+        "longitudinal_output": {
+          "current_annotation": {
+            "confidence_score": 1.0,
+            "debate_rounds_used": 0,
+            "inconsistencies": [],
+            "longitudinal_flags": [],
+            "longitudinal_sanity_passed": true,
+            "main_concern": "Starting the conversation about quitting smoking",
+            "primary_trigger": "None",
+            "quit_attempt_history": "No prior quit attempts recorded.",
+            "reasoning_summary": "The patient's initial greeting indicates they are likely in precontemplation, having not yet considered quitting. The counselor's opening focuses on establishing rapport and initiating a discussion about the patient's motivations, aligning with an exploratory approach to address this initial stage.",
+            "recommended_intervention": [
+              "Explore patient's reasons for wanting to quit.",
+              "Assess current smoking habits and patterns.",
+              "Introduce eDOSTHI’s role and capabilities.",
+              "Introduce the role of eDOSTHI as a supportive AI coach."
+            ],
+            "sanity_passed": true,
+            "session_number": 1,
+            "stage_of_change": "precontemplation",
+            "vote_agreement": 1.0
+          },
+          "delta": null,
+          "interventions_tried": [],
+          "longitudinal_flags": [],
+          "overall_progress": "unknown",
+          "patient_id": "3d4bf4de-e74f-480b-9801-68912bbf55c1",
+          "persistent_concerns": [],
+          "persistent_triggers": [],
+          "relapse_detected": false,
+          "session_number": 1,
+          "stage_trajectory": [
+            "precontemplation"
+          ],
+          "stagnation_detected": false
+        },
+        "patient_id": "3d4bf4de-e74f-480b-9801-68912bbf55c1",
+        "session_number": 1
+      },
+      "transcript": {
+        "session_id": "3d4bf4de-e74f-480b-9801-68912bbf55c1",
+        "transcript": "Patient: hi\nCounselor: Hi! I'm eDOSTHI, your friendly AI coach to help you quit smoking. What's been on your mind lately about quitting?"
+      }
+    }
+  },
+  "meta": {
+    "session_id": "3d4bf4de-e74f-480b-9801-68912bbf55c1",
+    "started_at": "20260416T140626Z"
+  }
+}

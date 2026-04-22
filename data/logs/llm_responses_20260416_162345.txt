@@ -1,0 +1,38 @@
+=== LLM Response Log — 20260416_162345 ===
+
+--- [CONFIDENCE_CHECK] attempt @ 16:23:46.844 ---
+{
+  "confidence": 1.0,
+  "issues": []
+}
+
+--- [CONFIDENCE_CHECK] readiness @ 16:23:48.287 ---
+{
+  "confidence": 0.95,
+  "issues": []
+}
+
+--- [CONFIDENCE_CHECK] concern @ 16:23:50.943 ---
+{
+  "confidence": 0.8,
+  "issues": [
+    "Hallucination: 'Implied concern about weight gain due to previous attempts.' - This is an interpretation, not directly stated in the conversation. While plausible, it requires additional information to be a factual extraction.",
+    "Omission: The conversation doesn't explicitly state the *reason* for the previous attempts to quit. Adding 'reason for previous attempts' would improve the extraction."
+  ]
+}
+
+--- [CONFIDENCE_CHECK] triggers @ 16:23:54.067 ---
+{
+  "confidence": 0.2,
+  "issues": [
+    "Omission: The conversation explicitly states the patient has attempted quitting twice before. This information regarding prior attempts is missing from the 'triggers' field.  It's a crucial factor in understanding smoking patterns.",
+    "Hallucination: The extracted data includes a list of 'triggers' ('stress', 'after meals', 'morning routine', 'social situations', 'boredom', 'coffee') without any evidence or justification from the conversation. This is an unsupported assertion."
+  ]
+}
+
+--- [CONFIDENCE_CHECK] advice @ 16:23:55.560 ---
+{
+  "confidence": 0.95,
+  "issues": []
+}
+

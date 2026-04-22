@@ -1,0 +1,112 @@
+=== LLM Response Log — 20260417_120355 ===
+
+--- [EXTRACTOR] attempt @ 12:04:05.847 ---
+{
+  "attempts": [
+    "I want to quit smoking"
+  ],
+  "evidence": [
+    "Patient: I want to quit smoking"
+  ]
+}
+
+--- [DEBATE] attempt @ 12:04:07.006 ---
+{
+  "attempts": [
+    "I want to quit smoking"
+  ],
+  "evidence": [
+    "Patient: I want to quit smoking"
+  ],
+  "_debate_rounds": 0,
+  "_debate_converged": true
+}
+
+--- [EXTRACTOR] readiness @ 12:04:07.008 ---
+{
+  "readiness_stage": "contemplation",
+  "evidence": "The patient stated, \"I want to quit smoking,\" indicating awareness of the problem, and the counselor immediately followed up by asking, \"What specifically motivated you to want to quit this time around?\" This exchange demonstrates the patient is in the contemplation stage, actively considering the behavior change."
+}
+
+--- [DEBATE] readiness @ 12:04:10.234 ---
+{
+  "readiness_stage": "contemplation",
+  "evidence": "The patient stated, \"I want to quit smoking,\" indicating awareness of the problem, and the counselor immediately followed up by asking, \"What specifically motivated you to want to quit this time around?\" This exchange demonstrates the patient is in the contemplation stage, actively considering the behavior change.",
+  "_debate_rounds": 1,
+  "_debate_converged": false
+}
+
+--- [EXTRACTOR] concern @ 12:04:10.236 ---
+{
+  "concerns": [
+    "Cravings",
+    "Fear of failure"
+  ],
+  "evidence": [
+    "I want to quit smoking",
+    "What specifically motivated you to want to quit this time around?"
+  ]
+}
+
+--- [DEBATE] concern @ 12:04:13.241 ---
+{
+  "concerns": [
+    "Cravings",
+    "Fear of failure"
+  ],
+  "evidence": [
+    "I want to quit smoking",
+    "What specifically motivated you to want to quit this time around?"
+  ],
+  "_debate_rounds": 0,
+  "_debate_converged": true
+}
+
+--- [EXTRACTOR] triggers @ 12:04:13.243 ---
+{
+  "triggers": [
+    "want to quit smoking"
+  ],
+  "evidence": [
+    "I want to quit smoking"
+  ]
+}
+
+--- [DEBATE] triggers @ 12:04:16.113 ---
+{
+  "triggers": [
+    "want to quit smoking"
+  ],
+  "evidence": [
+    "I want to quit smoking"
+  ],
+  "_debate_rounds": 0,
+  "_debate_converged": true
+}
+
+--- [EXTRACTOR] advice @ 12:04:16.117 ---
+{
+  "advice": [
+    "That's a great step forward!",
+    "What specifically motivated you to want to quit this time around?"
+  ],
+  "evidence": [
+    "I'm eDOSTHI, your friendly AI companion to help you quit smoking. What's been on your mind lately about quitting?",
+    "What specifically motivated you to want to quit this time around?"
+  ]
+}
+
+--- [DEBATE] advice @ 12:04:17.163 ---
+{
+  "advice": [
+    "That's a great step forward!",
+    "What specifically motivated you to want to quit this time around?"
+  ],
+  "evidence": [
+    "I'm eDOSTHI, your friendly AI companion to help you quit smoking. What's been on your mind lately about quitting?",
+    "What specifically motivated you to want to quit this time around?"
+  ],
+  "_debate_rounds": 0,
+  "_debate_converged": true
+}
+

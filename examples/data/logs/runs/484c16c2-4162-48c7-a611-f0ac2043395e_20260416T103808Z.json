@@ -1,0 +1,275 @@
+{
+  "events": {
+    "agent_manager": {
+      "confidence_results": {
+        "advice": {
+          "confidence": 0.0,
+          "issues": [
+            "signal not extracted"
+          ]
+        },
+        "attempt": {
+          "confidence": 0.5,
+          "issues": [
+            "'AgentRegistry' object has no attribute 'run_one'"
+          ]
+        },
+        "concern": {
+          "confidence": 0.0,
+          "issues": [
+            "signal not extracted"
+          ]
+        },
+        "readiness": {
+          "confidence": 0.5,
+          "issues": [
+            "'AgentRegistry' object has no attribute 'run_one'"
+          ]
+        },
+        "triggers": {
+          "confidence": 0.0,
+          "issues": [
+            "signal not extracted"
+          ]
+        }
+      },
+      "extractor_output": {
+        "attempt": {
+          "attempts": [
+            "Patient attempted to use a nicotine patch to quit smoking.",
+            "Patient attempted to gradually reduce smoking with the intention to quit."
+          ],
+          "evidence": [
+            "Patient: ‘Are you thinking about quitting smoking or looking for support in your journey?’",
+            "Patient: ‘…with the intention to quit’"
+          ]
+        },
+        "readiness": {
+          "evidence": "The patient stated they are 'looking for support in your journey,' indicating they are considering quitting (contemplation) but haven't yet made a firm commitment or taken concrete steps towards cessation.",
+          "readiness_stage": "contemplation"
+        }
+      },
+      "final_output": {
+        "attempt": {
+          "_debate_converged": false,
+          "_debate_rounds": 1,
+          "attempts": [
+            "Patient attempted to use a nicotine patch to quit smoking.",
+            "Patient attempted to gradually reduce smoking with the intention to quit."
+          ],
+          "evidence": [
+            "Patient: ‘Are you thinking about quitting smoking or looking for support in your journey?’",
+            "Patient: ‘…with the intention to quit’"
+          ]
+        },
+        "readiness": {
+          "_debate_converged": false,
+          "_debate_rounds": 1,
+          "evidence": "The patient stated they are 'looking for support in your journey,' indicating they are considering quitting (contemplation) but haven't yet made a firm commitment or taken concrete steps towards cessation.",
+          "readiness_stage": "contemplation"
+        }
+      }
+    },
+    "consensus_agent": {
+      "output": {
+        "consensus": {
+          "dissenting_fields": [],
+          "main_concern": "Lack of firm commitment",
+          "primary_trigger": "N/A",
+          "quit_attempt_history": "Patient has previously attempted to quit smoking using a nicotine patch and gradually reducing smoking with the intention to quit.",
+          "recommended_intervention": [
+            "Motivational Interviewing to explore ambivalence about quitting.",
+            "Goal setting and action planning to develop a concrete quit plan.",
+            "Exploring the reasons behind previous attempts to identify potential barriers and facilitators.",
+            "Goal setting and action planning to move towards a commitment to cessation.",
+            "Explore potential barriers and develop coping strategies.",
+            "Goal setting to establish specific, measurable, achievable, relevant, and time-bound (SMART) goals related to smoking cessation.",
+            "Exploring the reasons behind previous attempts and addressing any underlying barriers."
+          ],
+          "stage_of_change": "contemplation",
+          "vote_agreement": 0.833
+        }
+      }
+    },
+    "longitudinal_sanity": {
+      "output": {
+        "longitudinal_sanity": {
+          "flags": [],
+          "passed": true,
+          "severity": "none"
+        }
+      }
+    },
+    "profile_update_agent": {
+      "output": {
+        "dataset_row": {
+          "confidence_score": 0.95,
+          "debate_rounds_used": 2,
+          "inconsistencies": [],
+          "longitudinal_flags": [],
+          "longitudinal_sanity_passed": true,
+          "main_concern": "Lack of firm commitment",
+          "primary_trigger": "N/A",
+          "quit_attempt_history": "Patient has previously attempted to quit smoking using a nicotine patch and gradually reducing smoking with the intention to quit.",
+          "reasoning_summary": "The patient indicates they are seeking support, coupled with a history of previous attempts, suggesting they are likely in the contemplation stage, weighing the pros and cons of quitting. Therefore, the recommended intervention focuses on exploring ambivalence and developing a concrete, actionable plan to move towards a firm commitment to cessation.",
+          "recommended_intervention": [
+            "Motivational Interviewing to explore ambivalence about quitting.",
+            "Goal setting and action planning to develop a concrete quit plan.",
+            "Exploring the reasons behind previous attempts to identify potential barriers and facilitators.",
+            "Goal setting and action planning to move towards a commitment to cessation.",
+            "Explore potential barriers and develop coping strategies.",
+            "Goal setting to establish specific, measurable, achievable, relevant, and time-bound (SMART) goals related to smoking cessation.",
+            "Exploring the reasons behind previous attempts and addressing any underlying barriers."
+          ],
+          "sanity_passed": true,
+          "session_number": 1,
+          "stage_of_change": "contemplation",
+          "vote_agreement": 0.833
+        },
+        "longitudinal_output": {
+          "current_annotation": {
+            "confidence_score": 0.95,
+            "debate_rounds_used": 2,
+            "inconsistencies": [],
+            "longitudinal_flags": [],
+            "longitudinal_sanity_passed": true,
+            "main_concern": "Lack of firm commitment",
+            "primary_trigger": "N/A",
+            "quit_attempt_history": "Patient has previously attempted to quit smoking using a nicotine patch and gradually reducing smoking with the intention to quit.",
+            "reasoning_summary": "The patient indicates they are seeking support, coupled with a history of previous attempts, suggesting they are likely in the contemplation stage, weighing the pros and cons of quitting. Therefore, the recommended intervention focuses on exploring ambivalence and developing a concrete, actionable plan to move towards a firm commitment to cessation.",
+            "recommended_intervention": [
+              "Motivational Interviewing to explore ambivalence about quitting.",
+              "Goal setting and action planning to develop a concrete quit plan.",
+              "Exploring the reasons behind previous attempts to identify potential barriers and facilitators.",
+              "Goal setting and action planning to move towards a commitment to cessation.",
+              "Explore potential barriers and develop coping strategies.",
+              "Goal setting to establish specific, measurable, achievable, relevant, and time-bound (SMART) goals related to smoking cessation.",
+              "Exploring the reasons behind previous attempts and addressing any underlying barriers."
+            ],
+            "sanity_passed": true,
+            "session_number": 1,
+            "stage_of_change": "contemplation",
+            "vote_agreement": 0.833
+          },
+          "delta": null,
+          "interventions_tried": [],
+          "longitudinal_flags": [],
+          "overall_progress": "unknown",
+          "patient_id": "484c16c2-4162-48c7-a611-f0ac2043395e",
+          "persistent_concerns": [],
+          "persistent_triggers": [],
+          "relapse_detected": false,
+          "session_number": 1,
+          "stage_trajectory": [
+            "contemplation"
+          ],
+          "stagnation_detected": false
+        },
+        "patient_profile_id": "484c16c2-4162-48c7-a611-f0ac2043395e",
+        "session_count": 1
+      }
+    },
+    "reasoning_agent": {
+      "output": {
+        "dataset_row": {
+          "confidence_score": 0.95,
+          "debate_rounds_used": 2,
+          "inconsistencies": [],
+          "main_concern": "Lack of firm commitment",
+          "primary_trigger": "N/A",
+          "quit_attempt_history": "Patient has previously attempted to quit smoking using a nicotine patch and gradually reducing smoking with the intention to quit.",
+          "reasoning_summary": "The patient indicates they are seeking support, coupled with a history of previous attempts, suggesting they are likely in the contemplation stage, weighing the pros and cons of quitting. Therefore, the recommended intervention focuses on exploring ambivalence and developing a concrete, actionable plan to move towards a firm commitment to cessation.",
+          "recommended_intervention": [
+            "Motivational Interviewing to explore ambivalence about quitting.",
+            "Goal setting and action planning to develop a concrete quit plan.",
+            "Exploring the reasons behind previous attempts to identify potential barriers and facilitators.",
+            "Goal setting and action planning to move towards a commitment to cessation.",
+            "Explore potential barriers and develop coping strategies.",
+            "Goal setting to establish specific, measurable, achievable, relevant, and time-bound (SMART) goals related to smoking cessation.",
+            "Exploring the reasons behind previous attempts and addressing any underlying barriers."
+          ],
+          "sanity_passed": true,
+          "stage_of_change": "contemplation",
+          "vote_agreement": 0.833
+        }
+      }
+    },
+    "run_chat": {
+      "final_result": {
+        "dataset_row": {
+          "confidence_score": 0.95,
+          "debate_rounds_used": 2,
+          "inconsistencies": [],
+          "longitudinal_flags": [],
+          "longitudinal_sanity_passed": true,
+          "main_concern": "Lack of firm commitment",
+          "primary_trigger": "N/A",
+          "quit_attempt_history": "Patient has previously attempted to quit smoking using a nicotine patch and gradually reducing smoking with the intention to quit.",
+          "reasoning_summary": "The patient indicates they are seeking support, coupled with a history of previous attempts, suggesting they are likely in the contemplation stage, weighing the pros and cons of quitting. Therefore, the recommended intervention focuses on exploring ambivalence and developing a concrete, actionable plan to move towards a firm commitment to cessation.",
+          "recommended_intervention": [
+            "Motivational Interviewing to explore ambivalence about quitting.",
+            "Goal setting and action planning to develop a concrete quit plan.",
+            "Exploring the reasons behind previous attempts to identify potential barriers and facilitators.",
+            "Goal setting and action planning to move towards a commitment to cessation.",
+            "Explore potential barriers and develop coping strategies.",
+            "Goal setting to establish specific, measurable, achievable, relevant, and time-bound (SMART) goals related to smoking cessation.",
+            "Exploring the reasons behind previous attempts and addressing any underlying barriers."
+          ],
+          "sanity_passed": true,
+          "session_number": 1,
+          "stage_of_change": "contemplation",
+          "vote_agreement": 0.833
+        },
+        "longitudinal_output": {
+          "current_annotation": {
+            "confidence_score": 0.95,
+            "debate_rounds_used": 2,
+            "inconsistencies": [],
+            "longitudinal_flags": [],
+            "longitudinal_sanity_passed": true,
+            "main_concern": "Lack of firm commitment",
+            "primary_trigger": "N/A",
+            "quit_attempt_history": "Patient has previously attempted to quit smoking using a nicotine patch and gradually reducing smoking with the intention to quit.",
+            "reasoning_summary": "The patient indicates they are seeking support, coupled with a history of previous attempts, suggesting they are likely in the contemplation stage, weighing the pros and cons of quitting. Therefore, the recommended intervention focuses on exploring ambivalence and developing a concrete, actionable plan to move towards a firm commitment to cessation.",
+            "recommended_intervention": [
+              "Motivational Interviewing to explore ambivalence about quitting.",
+              "Goal setting and action planning to develop a concrete quit plan.",
+              "Exploring the reasons behind previous attempts to identify potential barriers and facilitators.",
+              "Goal setting and action planning to move towards a commitment to cessation.",
+              "Explore potential barriers and develop coping strategies.",
+              "Goal setting to establish specific, measurable, achievable, relevant, and time-bound (SMART) goals related to smoking cessation.",
+              "Exploring the reasons behind previous attempts and addressing any underlying barriers."
+            ],
+            "sanity_passed": true,
+            "session_number": 1,
+            "stage_of_change": "contemplation",
+            "vote_agreement": 0.833
+          },
+          "delta": null,
+          "interventions_tried": [],
+          "longitudinal_flags": [],
+          "overall_progress": "unknown",
+          "patient_id": "484c16c2-4162-48c7-a611-f0ac2043395e",
+          "persistent_concerns": [],
+          "persistent_triggers": [],
+          "relapse_detected": false,
+          "session_number": 1,
+          "stage_trajectory": [
+            "contemplation"
+          ],
+          "stagnation_detected": false
+        },
+        "patient_id": "484c16c2-4162-48c7-a611-f0ac2043395e",
+        "session_number": 1
+      },
+      "transcript": {
+        "session_id": "484c16c2-4162-48c7-a611-f0ac2043395e",
+        "transcript": "Patient: Hi\nCounselor: Nice to meet you! What brings you here today? Are you thinking about quitting smoking or looking for support in your journey?"
+      }
+    }
+  },
+  "meta": {
+    "session_id": "484c16c2-4162-48c7-a611-f0ac2043395e",
+    "started_at": "20260416T103808Z"
+  }
+}

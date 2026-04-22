@@ -1,0 +1,399 @@
+{
+  "events": {
+    "agent_manager": {
+      "confidence_result": {
+        "advice": {
+          "confidence": 0.8,
+          "issues": [
+            "The 'evidence' field contains a hallucination. 'Use motivational interviewing' is not explicitly stated in the conversation. It's an interpretation of the chatbot's role, not a direct quote.",
+            "The conversation lacks specific details about the patient's motivation. While the prompt asks 'What's your motivation for quitting today?', the conversation doesn't capture the patient's response. This represents a significant omission."
+          ],
+          "severity": "none"
+        },
+        "attempt": {
+          "confidence": 0.1,
+          "issues": [
+            "Missing motivation for quitting. The conversation explicitly asks 'What's your motivation for quitting today?' and the extracted data contains no mention of this.",
+            "Most recent attempt is None, indicating no attempt was made to provide an answer."
+          ],
+          "severity": "none"
+        },
+        "concern": {
+          "confidence": 0.2,
+          "issues": [
+            "The extracted data includes 'hi' as a concern, which is a greeting and not a stated concern related to quitting smoking. This is an omission of the patient's stated motivation.",
+            "The primary_concern field is set to None, which is incorrect given the conversation's focus on quitting smoking."
+          ],
+          "severity": "none"
+        },
+        "readiness": {
+          "confidence": 0.85,
+          "issues": [
+            "The assessment of 'precontemplation' is reasonable given the patient's initial greeting, however, a more nuanced assessment might consider it as 'exploratory' rather than definitively 'precontemplation'. The evidence provided is accurate based on the conversation.",
+            "There is no omission of key data. The response correctly identifies the patient's lack of engagement with the core topic."
+          ],
+          "severity": "none"
+        },
+        "triggers": {
+          "confidence": 0.2,
+          "issues": [
+            "Hallucination: The extracted triggers ('stress', 'after meals', 'morning routine') were not mentioned in the conversation. The patient simply said 'hi'.",
+            "Omission: The conversation lacks any information about the patient's reasons for wanting to quit smoking, which is a crucial element for motivational interviewing."
+          ],
+          "severity": "none"
+        }
+      },
+      "confidence_results": {
+        "advice": {
+          "confidence": 0.8,
+          "issues": [
+            "The 'evidence' field contains a hallucination. 'Use motivational interviewing' is not explicitly stated in the conversation. It's an interpretation of the chatbot's role, not a direct quote.",
+            "The conversation lacks specific details about the patient's motivation. While the prompt asks 'What's your motivation for quitting today?', the conversation doesn't capture the patient's response. This represents a significant omission."
+          ],
+          "severity": "none"
+        },
+        "attempt": {
+          "confidence": 0.1,
+          "issues": [
+            "Missing motivation for quitting. The conversation explicitly asks 'What's your motivation for quitting today?' and the extracted data contains no mention of this.",
+            "Most recent attempt is None, indicating no attempt was made to provide an answer."
+          ],
+          "severity": "none"
+        },
+        "concern": {
+          "confidence": 0.2,
+          "issues": [
+            "The extracted data includes 'hi' as a concern, which is a greeting and not a stated concern related to quitting smoking. This is an omission of the patient's stated motivation.",
+            "The primary_concern field is set to None, which is incorrect given the conversation's focus on quitting smoking."
+          ],
+          "severity": "none"
+        },
+        "readiness": {
+          "confidence": 0.85,
+          "issues": [
+            "The assessment of 'precontemplation' is reasonable given the patient's initial greeting, however, a more nuanced assessment might consider it as 'exploratory' rather than definitively 'precontemplation'. The evidence provided is accurate based on the conversation.",
+            "There is no omission of key data. The response correctly identifies the patient's lack of engagement with the core topic."
+          ],
+          "severity": "none"
+        },
+        "triggers": {
+          "confidence": 0.2,
+          "issues": [
+            "Hallucination: The extracted triggers ('stress', 'after meals', 'morning routine') were not mentioned in the conversation. The patient simply said 'hi'.",
+            "Omission: The conversation lacks any information about the patient's reasons for wanting to quit smoking, which is a crucial element for motivational interviewing."
+          ],
+          "severity": "none"
+        }
+      },
+      "extractor_output": {
+        "advice": {
+          "advice": [
+            "Support you in quitting smoking",
+            "Use motivational interviewing"
+          ],
+          "evidence": [
+            "I'm here to support you in quitting smoking.",
+            "I'm eDOSTHI, your motivational interviewing chatbot."
+          ]
+        },
+        "attempt": {
+          "attempts": [],
+          "longest_attempt": null,
+          "most_recent_attempt": null
+        },
+        "concern": {
+          "concerns": [
+            "hi"
+          ],
+          "primary_concern": null
+        },
+        "readiness": {
+          "evidence": "The patient simply said \"hi,\" indicating they haven't yet engaged with the topic of quitting smoking or expressed any desire to change their behavior. The counselor's initial question about motivation suggests the patient hasn't yet seriously considered quitting.",
+          "readiness_stage": "precontemplation"
+        },
+        "triggers": {
+          "triggers": [
+            "stress",
+            "after meals",
+            "morning routine"
+          ]
+        }
+      },
+      "final_output": {
+        "advice": {
+          "_debate_converged": true,
+          "_debate_rounds": 0,
+          "advice": [
+            "Support you in quitting smoking",
+            "Use motivational interviewing"
+          ],
+          "evidence": [
+            "I'm here to support you in quitting smoking.",
+            "I'm eDOSTHI, your motivational interviewing chatbot."
+          ]
+        },
+        "attempt": {
+          "_debate_converged": true,
+          "_debate_rounds": 13,
+          "attempts": [
+            "chatbot_introduction",
+            "question_about_motivation"
+          ],
+          "chatbot_response": "Hello! I'm eDOSTHI, your motivational interviewing chatbot. I'm here to support you in quitting smoking. What’s your motivation for quitting today?",
+          "confidence": 0.6,
+          "conversation_stage": "initial_turn",
+          "intent": "greeting",
+          "longest_attempt": "hi",
+          "most_recent_attempt": "hi",
+          "speaker": "Patient",
+          "utterance": "hi"
+        },
+        "concern": {
+          "_debate_converged": true,
+          "_debate_rounds": 4,
+          "concerns": [],
+          "conversation_stage": "initial interaction – eliciting motivation",
+          "primary_concern": "exploration of patient's motivation"
+        },
+        "readiness": {
+          "_debate_converged": true,
+          "_debate_rounds": 0,
+          "evidence": "The patient simply said \"hi,\" indicating they haven't yet engaged with the topic of quitting smoking or expressed any desire to change their behavior. The counselor's initial question about motivation suggests the patient hasn't yet seriously considered quitting.",
+          "readiness_stage": "precontemplation"
+        },
+        "triggers": {
+          "_debate_converged": true,
+          "_debate_rounds": 1,
+          "conversation_summary": "Patient identified stress, cravings after meals, and the morning routine as reasons for wanting to quit.",
+          "counselor_response": "That's really helpful to know. It sounds like these are significant factors for you. Let's talk more about how we can address these.",
+          "identified_motivations": [
+            "stress",
+            "post-meal cravings",
+            "morning routine"
+          ],
+          "patient_response": "I've been feeling really stressed lately, and I'm trying to cut back after meals to feel better.",
+          "triggers": [
+            "stress",
+            "after meals",
+            "morning routine"
+          ]
+        }
+      }
+    },
+    "consensus_agent": {
+      "output": {
+        "consensus": {
+          "dissenting_fields": [
+            "quit_attempt_history"
+          ],
+          "main_concern": "exploration of patient's motivation",
+          "primary_trigger": "stress",
+          "quit_attempt_history": "Patient initiated conversation with a greeting. Counselor introduced themselves and began exploring the patient's motivation for quitting, identifying stress, cravings after meals, and the morning routine as potential triggers.",
+          "recommended_intervention": [
+            "Continue to explore patient's motivations and concerns regarding stress, post-meal cravings, and morning routine.",
+            "Utilize motivational interviewing techniques to build rapport and encourage further reflection on the benefits of quitting.",
+            "Continue motivational interviewing techniques",
+            "Explore the patient's specific stressors related to smoking",
+            "Assess the intensity and frequency of post-meal cravings",
+            "Discuss strategies for managing morning routine smoking triggers",
+            "Explore patient's stress levels in more detail.",
+            "Discuss the impact of stress on smoking behavior.",
+            "Introduce motivational interviewing techniques to help the patient articulate their reasons for quitting."
+          ],
+          "stage_of_change": "precontemplation",
+          "vote_agreement": 0.833
+        }
+      }
+    },
+    "longitudinal_sanity": {
+      "output": {
+        "longitudinal_sanity": {
+          "flags": [],
+          "passed": true,
+          "severity": "none"
+        }
+      }
+    },
+    "profile_update_agent": {
+      "output": {
+        "dataset_row": {
+          "confidence_score": 0.95,
+          "debate_rounds_used": 18,
+          "inconsistencies": [],
+          "longitudinal_flags": [],
+          "longitudinal_sanity_passed": true,
+          "main_concern": "exploration of patient's motivation",
+          "primary_trigger": "stress",
+          "quit_attempt_history": "Patient initiated conversation with a greeting. Counselor introduced themselves and began exploring the patient's motivation for quitting, identifying stress, cravings after meals, and the morning routine as potential triggers.",
+          "reasoning_summary": "The patient is in precontemplation as they've just begun the conversation and the counselor is focused on understanding the patient's motivation. The primary barrier is identified as stress, and the recommended intervention is to delve deeper into the patient's experiences and motivations using motivational interviewing techniques.",
+          "recommended_intervention": [
+            "Continue to explore patient's motivations and concerns regarding stress, post-meal cravings, and morning routine.",
+            "Utilize motivational interviewing techniques to build rapport and encourage further reflection on the benefits of quitting.",
+            "Continue motivational interviewing techniques",
+            "Explore the patient's specific stressors related to smoking",
+            "Assess the intensity and frequency of post-meal cravings",
+            "Discuss strategies for managing morning routine smoking triggers",
+            "Explore patient's stress levels in more detail.",
+            "Discuss the impact of stress on smoking behavior.",
+            "Introduce motivational interviewing techniques to help the patient articulate their reasons for quitting."
+          ],
+          "sanity_passed": true,
+          "session_number": 1,
+          "stage_of_change": "precontemplation",
+          "vote_agreement": 0.833
+        },
+        "longitudinal_output": {
+          "current_annotation": {
+            "confidence_score": 0.95,
+            "debate_rounds_used": 18,
+            "inconsistencies": [],
+            "longitudinal_flags": [],
+            "longitudinal_sanity_passed": true,
+            "main_concern": "exploration of patient's motivation",
+            "primary_trigger": "stress",
+            "quit_attempt_history": "Patient initiated conversation with a greeting. Counselor introduced themselves and began exploring the patient's motivation for quitting, identifying stress, cravings after meals, and the morning routine as potential triggers.",
+            "reasoning_summary": "The patient is in precontemplation as they've just begun the conversation and the counselor is focused on understanding the patient's motivation. The primary barrier is identified as stress, and the recommended intervention is to delve deeper into the patient's experiences and motivations using motivational interviewing techniques.",
+            "recommended_intervention": [
+              "Continue to explore patient's motivations and concerns regarding stress, post-meal cravings, and morning routine.",
+              "Utilize motivational interviewing techniques to build rapport and encourage further reflection on the benefits of quitting.",
+              "Continue motivational interviewing techniques",
+              "Explore the patient's specific stressors related to smoking",
+              "Assess the intensity and frequency of post-meal cravings",
+              "Discuss strategies for managing morning routine smoking triggers",
+              "Explore patient's stress levels in more detail.",
+              "Discuss the impact of stress on smoking behavior.",
+              "Introduce motivational interviewing techniques to help the patient articulate their reasons for quitting."
+            ],
+            "sanity_passed": true,
+            "session_number": 1,
+            "stage_of_change": "precontemplation",
+            "vote_agreement": 0.833
+          },
+          "delta": null,
+          "interventions_tried": [],
+          "longitudinal_flags": [],
+          "overall_progress": "unknown",
+          "patient_id": "563de6b8-e868-4d21-aa2d-76c14966b4a1",
+          "persistent_concerns": [],
+          "persistent_triggers": [],
+          "relapse_detected": false,
+          "session_number": 1,
+          "stage_trajectory": [
+            "precontemplation"
+          ],
+          "stagnation_detected": false
+        },
+        "patient_profile_id": "563de6b8-e868-4d21-aa2d-76c14966b4a1",
+        "session_count": 1
+      }
+    },
+    "reasoning_agent": {
+      "output": {
+        "dataset_row": {
+          "confidence_score": 0.95,
+          "debate_rounds_used": 18,
+          "inconsistencies": [],
+          "main_concern": "exploration of patient's motivation",
+          "primary_trigger": "stress",
+          "quit_attempt_history": "Patient initiated conversation with a greeting. Counselor introduced themselves and began exploring the patient's motivation for quitting, identifying stress, cravings after meals, and the morning routine as potential triggers.",
+          "reasoning_summary": "The patient is in precontemplation as they've just begun the conversation and the counselor is focused on understanding the patient's motivation. The primary barrier is identified as stress, and the recommended intervention is to delve deeper into the patient's experiences and motivations using motivational interviewing techniques.",
+          "recommended_intervention": [
+            "Continue to explore patient's motivations and concerns regarding stress, post-meal cravings, and morning routine.",
+            "Utilize motivational interviewing techniques to build rapport and encourage further reflection on the benefits of quitting.",
+            "Continue motivational interviewing techniques",
+            "Explore the patient's specific stressors related to smoking",
+            "Assess the intensity and frequency of post-meal cravings",
+            "Discuss strategies for managing morning routine smoking triggers",
+            "Explore patient's stress levels in more detail.",
+            "Discuss the impact of stress on smoking behavior.",
+            "Introduce motivational interviewing techniques to help the patient articulate their reasons for quitting."
+          ],
+          "sanity_passed": true,
+          "stage_of_change": "precontemplation",
+          "vote_agreement": 0.833
+        }
+      }
+    },
+    "run_chat": {
+      "final_result": {
+        "dataset_row": {
+          "confidence_score": 0.95,
+          "debate_rounds_used": 18,
+          "inconsistencies": [],
+          "longitudinal_flags": [],
+          "longitudinal_sanity_passed": true,
+          "main_concern": "exploration of patient's motivation",
+          "primary_trigger": "stress",
+          "quit_attempt_history": "Patient initiated conversation with a greeting. Counselor introduced themselves and began exploring the patient's motivation for quitting, identifying stress, cravings after meals, and the morning routine as potential triggers.",
+          "reasoning_summary": "The patient is in precontemplation as they've just begun the conversation and the counselor is focused on understanding the patient's motivation. The primary barrier is identified as stress, and the recommended intervention is to delve deeper into the patient's experiences and motivations using motivational interviewing techniques.",
+          "recommended_intervention": [
+            "Continue to explore patient's motivations and concerns regarding stress, post-meal cravings, and morning routine.",
+            "Utilize motivational interviewing techniques to build rapport and encourage further reflection on the benefits of quitting.",
+            "Continue motivational interviewing techniques",
+            "Explore the patient's specific stressors related to smoking",
+            "Assess the intensity and frequency of post-meal cravings",
+            "Discuss strategies for managing morning routine smoking triggers",
+            "Explore patient's stress levels in more detail.",
+            "Discuss the impact of stress on smoking behavior.",
+            "Introduce motivational interviewing techniques to help the patient articulate their reasons for quitting."
+          ],
+          "sanity_passed": true,
+          "session_number": 1,
+          "stage_of_change": "precontemplation",
+          "vote_agreement": 0.833
+        },
+        "longitudinal_output": {
+          "current_annotation": {
+            "confidence_score": 0.95,
+            "debate_rounds_used": 18,
+            "inconsistencies": [],
+            "longitudinal_flags": [],
+            "longitudinal_sanity_passed": true,
+            "main_concern": "exploration of patient's motivation",
+            "primary_trigger": "stress",
+            "quit_attempt_history": "Patient initiated conversation with a greeting. Counselor introduced themselves and began exploring the patient's motivation for quitting, identifying stress, cravings after meals, and the morning routine as potential triggers.",
+            "reasoning_summary": "The patient is in precontemplation as they've just begun the conversation and the counselor is focused on understanding the patient's motivation. The primary barrier is identified as stress, and the recommended intervention is to delve deeper into the patient's experiences and motivations using motivational interviewing techniques.",
+            "recommended_intervention": [
+              "Continue to explore patient's motivations and concerns regarding stress, post-meal cravings, and morning routine.",
+              "Utilize motivational interviewing techniques to build rapport and encourage further reflection on the benefits of quitting.",
+              "Continue motivational interviewing techniques",
+              "Explore the patient's specific stressors related to smoking",
+              "Assess the intensity and frequency of post-meal cravings",
+              "Discuss strategies for managing morning routine smoking triggers",
+              "Explore patient's stress levels in more detail.",
+              "Discuss the impact of stress on smoking behavior.",
+              "Introduce motivational interviewing techniques to help the patient articulate their reasons for quitting."
+            ],
+            "sanity_passed": true,
+            "session_number": 1,
+            "stage_of_change": "precontemplation",
+            "vote_agreement": 0.833
+          },
+          "delta": null,
+          "interventions_tried": [],
+          "longitudinal_flags": [],
+          "overall_progress": "unknown",
+          "patient_id": "563de6b8-e868-4d21-aa2d-76c14966b4a1",
+          "persistent_concerns": [],
+          "persistent_triggers": [],
+          "relapse_detected": false,
+          "session_number": 1,
+          "stage_trajectory": [
+            "precontemplation"
+          ],
+          "stagnation_detected": false
+        },
+        "patient_id": "563de6b8-e868-4d21-aa2d-76c14966b4a1",
+        "session_number": 1
+      },
+      "transcript": {
+        "session_id": "563de6b8-e868-4d21-aa2d-76c14966b4a1",
+        "transcript": "Patient: hi\nCounselor: Hello! I'm eDOSTHI, your motivational interviewing chatbot. I'm here to support you in quitting smoking. What's your motivation for quitting today?"
+      }
+    }
+  },
+  "meta": {
+    "session_id": "563de6b8-e868-4d21-aa2d-76c14966b4a1",
+    "started_at": "20260413T063055Z"
+  }
+}

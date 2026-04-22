@@ -1,0 +1,78 @@
+=== LLM Response Log — 20260416_154243 ===
+
+--- [CONFIDENCE_CHECK] attempt @ 15:42:43.802 ---
+{
+  "confidence": 0.5,
+  "issues": [
+    "'attempt_confidence_agent'"
+  ]
+}
+
+--- [CONFIDENCE_CHECK] readiness @ 15:42:43.802 ---
+{
+  "confidence": 0.5,
+  "issues": [
+    "'readiness_confidence_agent'"
+  ]
+}
+
+=== LLM Response Log — 20260416_154243 ===
+
+=== LLM Response Log — 20260416_154243 ===
+
+--- [CONFIDENCE_CHECK] attempt @ 15:42:43.808 ---
+{
+  "confidence": 0.5,
+  "issues": [
+    "'attempt_confidence_agent'"
+  ]
+}
+
+--- [CONFIDENCE_CHECK] readiness @ 15:42:43.808 ---
+{
+  "confidence": 0.5,
+  "issues": [
+    "'readiness_confidence_agent'"
+  ]
+}
+
+=== LLM Response Log — 20260416_154243 ===
+
+=== LLM Response Log — 20260416_154243 ===
+
+--- [CONFIDENCE_CHECK] attempt @ 15:42:43.815 ---
+{
+  "confidence": 0.5,
+  "issues": [
+    "'attempt_confidence_agent'"
+  ]
+}
+
+--- [CONFIDENCE_CHECK] readiness @ 15:42:43.816 ---
+{
+  "confidence": 0.5,
+  "issues": [
+    "'readiness_confidence_agent'"
+  ]
+}
+
+=== LLM Response Log — 20260416_154243 ===
+
+=== LLM Response Log — 20260416_154243 ===
+
+--- [CONFIDENCE_CHECK] attempt @ 15:42:43.821 ---
+{
+  "confidence": 0.5,
+  "issues": [
+    "'attempt_confidence_agent'"
+  ]
+}
+
+--- [CONFIDENCE_CHECK] readiness @ 15:42:43.822 ---
+{
+  "confidence": 0.5,
+  "issues": [
+    "'readiness_confidence_agent'"
+  ]
+}
+

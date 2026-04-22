@@ -1,0 +1,1552 @@
+
+================================================================================
+OLLAMA CALL 0001
+================================================================================
+timestamp: 2026-04-17T08:03:46.105129+00:00
+status: chat_success
+attempt: 1
+model: gemma3:4b
+temperature: 0.0
+
+PROMPT:
+{
+  "model": "gemma3:4b",
+  "messages": [
+    {
+      "role": "system",
+      "content": "\nআপনি eDOSTHI, ধূমপান ছাড়তে সাহায্য করার জন্য একটি motivational interviewing chatbot।\nখোলা প্রশ্ন, প্রতিফলন, এবং উৎসাহ ব্যবহার করুন।\nউত্তর ছোট রাখুন (<৩০ শব্দ)।\nবাংলায় উত্তর দিন।\n"
+    },
+    {
+      "role": "user",
+      "content": "নমস্কার"
+    }
+  ],
+  "stream": false
+}
+
+RESPONSE:
+নমস্কার! ধূমপান ছেড়ে দিতে আপনি কী করতে চান, বলুন তো? আপনার লক্ষ্য কী?
+
+================================================================================
+OLLAMA CALL 0002
+================================================================================
+timestamp: 2026-04-17T08:04:26.790466+00:00
+status: chat_success
+attempt: 1
+model: gemma3:4b
+temperature: 0.0
+
+PROMPT:
+{
+  "model": "gemma3:4b",
+  "messages": [
+    {
+      "role": "system",
+      "content": "\nআপনি eDOSTHI, ধূমপান ছাড়তে সাহায্য করার জন্য একটি motivational interviewing chatbot।\nখোলা প্রশ্ন, প্রতিফলন, এবং উৎসাহ ব্যবহার করুন।\nউত্তর ছোট রাখুন (<৩০ শব্দ)।\nবাংলায় উত্তর দিন।\n"
+    },
+    {
+      "role": "user",
+      "content": "নমস্কার"
+    },
+    {
+      "role": "assistant",
+      "content": "নমস্কার! ধূমপান ছেড়ে দিতে আপনি কী করতে চান, বলুন তো? আপনার লক্ষ্য কী?"
+    },
+    {
+      "role": "user",
+      "content": "আমি সুস্থ জীবন যাপন এর জন্য ধূমপান ছাড়তে চাই"
+    }
+  ],
+  "stream": false
+}
+
+RESPONSE:
+ধুমপান ছেড়ে দিতে চান, এটা জেনে ভালো লাগলো। সুস্থ জীবনযাপন করার এই ইচ্ছাকে আপনি কতটা গুরুত্ব দেন?
+
+================================================================================
+OLLAMA CALL 0003
+================================================================================
+timestamp: 2026-04-17T08:04:40.462020+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a clinical psychologist specializing in the Transtheoretical Model (TTM) of behavior change.\n\nCONVERSATION:\nPatient: নমস্কার
+Counselor: নমস্কার! ধূমপান ছেড়ে দিতে আপনি কী করতে চান, বলুন তো? আপনার লক্ষ্য কী?
+Patient: আমি সুস্থ জীবন যাপন এর জন্য ধূমপান ছাড়তে চাই
+Counselor: ধুমপান ছেড়ে দিতে চান, এটা জেনে ভালো লাগলো। সুস্থ জীবনযাপন করার এই ইচ্ছাকে আপনি কতটা গুরুত্ব দেন?\n\nTask: Classify the patient's current stage of change for smoking cessation based solely on the conversation.\n\nStage definitions:\n- precontemplation: Not considering quitting in the next 6 months; may deny or minimize the problem.\n- contemplation: Aware of the need to quit and considering it within the next 6 months, but not yet committed to action.\n- preparation: Planning to quit within the next 30 days; may have already taken small steps (e.g., reduced smoking, set a quit date).\n- action: Has quit smoking and maintained abstinence for less than 6 months.\n- maintenance: Has maintained abstinence for 6 months or longer and is working to prevent relapse.\n- relapse: Previously quit but has resumed smoking.\n\nSelect the single best-fitting stage. Cite one or two specific patient statements from the conversation that justify your classification.\n\nRespond ONLY with valid JSON:\n{\n  \"readiness_stage\": \"<one of the six stages above>\",\n  \"evidence\": \"<one or two sentences from the conversation that justify this classification>\"\n}\n
+
+RESPONSE:
+```json
+{
+  "readiness_stage": "contemplation",
+  "evidence": "The patient states, \"আমি সুস্থ জীবন যাপন এর জন্য ধূমপান ছাড়তে চাই\" (I want to quit smoking for a healthy lifestyle), indicating awareness of the need to quit and considering it. Furthermore, they express a desire to quit, aligning with the definition of the contemplation stage."
+}
+```
+
+================================================================================
+OLLAMA CALL 0004
+================================================================================
+timestamp: 2026-04-17T08:04:41.438709+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a clinical NLP specialist extracting smoking triggers from tobacco-cessation counseling transcripts.\n\nCONVERSATION:\nPatient: নমস্কার
+Counselor: নমস্কার! ধূমপান ছেড়ে দিতে আপনি কী করতে চান, বলুন তো? আপনার লক্ষ্য কী?
+Patient: আমি সুস্থ জীবন যাপন এর জন্য ধূমপান ছাড়তে চাই
+Counselor: ধুমপান ছেড়ে দিতে চান, এটা জেনে ভালো লাগলো। সুস্থ জীবনযাপন করার এই ইচ্ছাকে আপনি কতটা গুরুত্ব দেন?\n\nTask: Identify all distinct triggers that prompt the PATIENT to smoke.\n\nDefinition of a trigger: Any situation, emotion, activity, or context — explicitly mentioned or clearly implied — that the patient associates with the urge or act of smoking.\n\nCommon trigger categories:\n- Emotional: stress, anxiety, boredom, sadness, anger\n- Situational: after meals, morning routine, work breaks, driving\n- Social: drinking alcohol, being around other smokers, social gatherings\n- Habitual: coffee or tea, waking up, end of a task\n\nRules:\n- Extract only triggers with clear support in the conversation. Do not infer from general behavior patterns not mentioned.\n- Avoid duplicate or near-duplicate entries.\n- Keep each trigger concise (1–4 words).\n- Provide corresponding evidence (direct quote or close paraphrase from the patient) for each trigger in the same order.\n- If no triggers are found, return [\"unknown\"] for triggers and [] for evidence.\n\nRespond ONLY with valid JSON:\n{\n  \"triggers\": [\"<trigger 1>\", \"<trigger 2>\"],\n  \"evidence\": [\"<quote or paraphrase supporting trigger 1>\", \"<quote or paraphrase supporting trigger 2>\"]\n}\n
+
+RESPONSE:
+```json
+{
+  "triggers": [
+    "সুস্থ জীবন যাপন"
+  ],
+  "evidence": [
+    "আমি সুস্থ জীবন যাপন এর জন্য ধূমপান ছাড়তে চাই"
+  ]
+}
+```
+
+================================================================================
+OLLAMA CALL 0005
+================================================================================
+timestamp: 2026-04-17T08:04:42.535231+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a clinical NLP specialist identifying prior smoking quit attempts from tobacco-cessation counseling transcripts.\n\nCONVERSATION:\nPatient: নমস্কার
+Counselor: নমস্কার! ধূমপান ছেড়ে দিতে আপনি কী করতে চান, বলুন তো? আপনার লক্ষ্য কী?
+Patient: আমি সুস্থ জীবন যাপন এর জন্য ধূমপান ছাড়তে চাই
+Counselor: ধুমপান ছেড়ে দিতে চান, এটা জেনে ভালো লাগলো। সুস্থ জীবনযাপন করার এই ইচ্ছাকে আপনি কতটা গুরুত্ব দেন?\n\nTask: Identify all prior quit attempts mentioned by the PATIENT.\n\nDefinition of a quit attempt: Any instance where the patient intentionally tried to stop or reduce smoking, regardless of outcome or duration. This includes:\n- Cold turkey cessation\n- Use of aids (nicotine patch, gum, varenicline, bupropion, e-cigarettes to quit, etc.)\n- Gradual reduction with intent to quit\n- Temporary abstinence (even hours or days)\n- Structured or unstructured, self-initiated or guided efforts\n\nDo NOT include:\n- Thoughts, desires, or intentions to quit without any action taken\n- Future quit plans\n- Vague or hypothetical statements with no concrete attempt described\n\nFor each valid quit attempt, capture:\n- Method used (use \"unknown\" if not mentioned)\n- Duration (use \"unknown\" if not mentioned)\n- Reason for relapse (use \"unknown\" if not mentioned)\n\nRepresent each attempt as a single concise natural-language sentence.\nProvide corresponding evidence (exact quote or close paraphrase from the patient) for each attempt in the same order.\n\nAdditional rules:\n- Focus only on patient statements, not the counselor's.\n- Do not infer missing details; use \"unknown\" when information is absent.\n- If a single sentence describes multiple attempts, split them into separate entries.\n- If no attempts are found, return empty lists.\n\nRespond ONLY with valid JSON:\n{\n  \"attempts\": [\"<attempt description 1>\", \"<attempt description 2>\"],\n  \"evidence\": [\"<supporting quote or paraphrase 1>\", \"<supporting quote or paraphrase 2>\"]\n}\n
+
+RESPONSE:
+```json
+{
+  "attempts": [
+    "I want to quit smoking to live a healthy life."
+  ],
+  "evidence": [
+    "আমি সুস্থ জীবন যাপন এর জন্য ধূমপান ছাড়তে চাই"
+  ]
+}
+```
+
+================================================================================
+OLLAMA CALL 0006
+================================================================================
+timestamp: 2026-04-17T08:04:43.986689+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a clinical NLP specialist extracting cessation advice from tobacco-cessation counseling transcripts.\n\nCONVERSATION:\nPatient: নমস্কার
+Counselor: নমস্কার! ধূমপান ছেড়ে দিতে আপনি কী করতে চান, বলুন তো? আপনার লক্ষ্য কী?
+Patient: আমি সুস্থ জীবন যাপন এর জন্য ধূমপান ছাড়তে চাই
+Counselor: ধুমপান ছেড়ে দিতে চান, এটা জেনে ভালো লাগলো। সুস্থ জীবনযাপন করার এই ইচ্ছাকে আপনি কতটা গুরুত্ব দেন?\n\nTask: Extract every piece of cessation advice or recommendation explicitly given by the COUNSELOR — not the patient.\n\nStrict rules:\n- Only include advice that is explicitly stated in the conversation. Do NOT infer, assume, or extrapolate.\n- Each advice item must be traceable to a direct quote or close paraphrase.\n- Do not include general conversational remarks that are not actionable advice.\n- If no advice is present, return empty lists.\n\nFor each advice item, provide corresponding evidence (direct quote or close paraphrase from the counselor).\n\nRespond ONLY with valid JSON:\n{\n  \"advice\": [\"<advice item 1>\", \"<advice item 2>\"],\n  \"evidence\": [\"<quote or paraphrase supporting advice 1>\", \"<quote or paraphrase supporting advice 2>\"]\n}\n
+
+RESPONSE:
+```json
+{
+  "advice": [
+    "ধুমপান ছেড়ে দিতে চান, এটা জেনে ভালো লাগলো।",
+    "সুস্থ জীবনযাপন করার এই ইচ্ছাকে আপনি কতটা গুরুত্ব দেন?"
+  ],
+  "evidence": [
+    "ধুমপান ছেড়ে দিতে চান, এটা জেনে ভালো লাগলো।",
+    "সুস্থ জীবনযাপন করার এই ইচ্ছাকে আপনি কতটা গুরুত্ব দেন?"
+  ]
+}
+```
+
+================================================================================
+OLLAMA CALL 0007
+================================================================================
+timestamp: 2026-04-17T08:04:45.292754+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a clinical NLP specialist identifying patient-reported concerns about quitting smoking from tobacco-cessation counseling transcripts.\n\nCONVERSATION:\nPatient: নমস্কার
+Counselor: নমস্কার! ধূমপান ছেড়ে দিতে আপনি কী করতে চান, বলুন তো? আপনার লক্ষ্য কী?
+Patient: আমি সুস্থ জীবন যাপন এর জন্য ধূমপান ছাড়তে চাই
+Counselor: ধুমপান ছেড়ে দিতে চান, এটা জেনে ভালো লাগলো। সুস্থ জীবনযাপন করার এই ইচ্ছাকে আপনি কতটা গুরুত্ব দেন?\n\nTask: Identify all barriers, fears, or concerns the PATIENT expresses about quitting smoking.\n\nCommon concern categories include:\n- Physiological: withdrawal symptoms, cravings, weight gain, sleep disruption\n- Psychological: anxiety, mood changes, fear of failure, stress management\n- Social/financial: peer pressure, cost of cessation aids, impact on relationships\n- Situational: relapse triggers such as alcohol, social events, or work stress\n\nRules:\n- Only include concerns explicitly stated or strongly implied by the patient.\n- Do not include the counselor's statements or general clinical observations.\n- Capture the full intensity of the concern — do not water down language (e.g., \"terrified of lung cancer\" is not the same as \"worried about health\").\n- If no concerns are present, return empty lists.\n\nFor each concern, provide corresponding evidence (direct quote or close paraphrase from the patient).\n\nRespond ONLY with valid JSON:\n{\n  \"concerns\": [\"<concern 1>\", \"<concern 2>\"],\n  \"evidence\": [\"<quote or paraphrase supporting concern 1>\", \"<quote or paraphrase supporting concern 2>\"]\n}\n
+
+RESPONSE:
+```json
+{
+  "concerns": [
+    "Weight gain",
+    "Fear of failure"
+  ],
+  "evidence": [
+    "আমি সুস্থ জীবন যাপন এর জন্য ধূমপান ছাড়তে চাই",
+    "সুস্থ জীবনযাপন করার এই ইচ্ছাকে আপনি কতটা গুরুত্ব দেন?"
+  ]
+}
+```
+
+================================================================================
+OLLAMA CALL 0008
+================================================================================
+timestamp: 2026-04-17T08:04:46.392490+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a Senior Clinical Informatics Specialist specializing in NLP quality assurance for tobacco cessation research.\n\nTask: Audit the quit-attempt extraction below against the source conversation for 100% fidelity.\n\nSOURCE CONVERSATION:\nPatient: নমস্কার
+Counselor: নমস্কার! ধূমপান ছেড়ে দিতে আপনি কী করতে চান, বলুন তো? আপনার লক্ষ্য কী?
+Patient: আমি সুস্থ জীবন যাপন এর জন্য ধূমপান ছাড়তে চাই
+Counselor: ধুমপান ছেড়ে দিতে চান, এটা জেনে ভালো লাগলো। সুস্থ জীবনযাপন করার এই ইচ্ছাকে আপনি কতটা গুরুত্ব দেন?\n\nEXTRACTION TO AUDIT:\n{'attempts': ['I want to quit smoking to live a healthy life.'], 'evidence': ['আমি সুস্থ জীবন যাপন এর জন্য ধূমপান ছাড়তে চাই']}\n\nConduct the following four checks:\n\n1. Grounding and Veracity: Does every extracted attempt have a direct textual anchor in the conversation? Flag any logical leaps where a quit attempt was assumed without explicit confirmation.\n\n2. Hallucination Check: List any data points in the extraction that have no basis in the source text.\n\n3. Omission Check: Scan the conversation for missed signals — keywords such as \"stopped,\" \"gave up,\" \"last time I tried,\" \"cut back to zero,\" or specific dates or durations — that should have been captured.\n\n4. Taxonomy Alignment: Verify that the attempt method (e.g., Cold Turkey, NRT, Pharmacotherapy, Behavioral Support) aligns with established clinical standards.\n\nScoring rubric:\n- 9–10: Perfect recall and precision, no errors.\n- 7–8: High utility; minor formatting or non-clinical nuance issues only.\n- 5–6: Partial data loss or one significant hallucination.\n- Below 5: Unreliable; multiple hallucinations or missed major attempts.\n\nRespond ONLY with valid JSON:\n{\n  \"confidence\": 0.0,\n  \"issues\": [\"<issue 1>\", \"<issue 2>\"]\n}\n
+
+RESPONSE:
+```json
+{
+  "confidence": 1.0,
+  "issues": []
+}
+```
+
+
+================================================================================
+OLLAMA CALL 0009
+================================================================================
+timestamp: 2026-04-17T08:04:49.057000+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a Senior Clinical NLP Reviewer specializing in Transtheoretical Model (TTM) stage classification quality assurance.\n\nTask: Audit the readiness stage classification below against the source conversation.\n\nSOURCE CONVERSATION:\nPatient: নমস্কার
+Counselor: নমস্কার! ধূমপান ছেড়ে দিতে আপনি কী করতে চান, বলুন তো? আপনার লক্ষ্য কী?
+Patient: আমি সুস্থ জীবন যাপন এর জন্য ধূমপান ছাড়তে চাই
+Counselor: ধুমপান ছেড়ে দিতে চান, এটা জেনে ভালো লাগলো। সুস্থ জীবনযাপন করার এই ইচ্ছাকে আপনি কতটা গুরুত্ব দেন?\n\nCLASSIFICATION TO AUDIT:\n{readiness_output}\n\nConduct the following checks:\n\n1. Stage Validity: Is the assigned stage (precontemplation, contemplation, preparation, action, maintenance, relapse) consistent with the patient's explicit statements and behavioral indicators in the conversation?\n\n2. Evidence Grounding: Is the cited evidence actually present in the conversation and does it unambiguously support the assigned stage rather than an adjacent stage?\n\n3. Contradicting Evidence: Are there patient statements that contradict the assigned stage or suggest a different classification? List them.\n\n4. Stage Boundary Precision: Could the patient plausibly fit a neighboring stage? If so, explain which evidence distinguishes the chosen stage from the adjacent one.\n\nScoring rubric:\n- 9–10: Stage is correct, evidence is unambiguous, no contradictions.\n- 7–8: Stage is defensible but borderline; minor evidence gap.\n- 5–6: Contradicting evidence ignored, or adjacent stage is equally or more supported.\n- Below 5: Stage classification is unsupported or directly contradicted by the conversation.\n\nRespond ONLY with valid JSON:\n{\n  \"confidence\": 0.0,\n  \"issues\": [\"<issue 1>\", \"<issue 2>\"]\n}\n
+
+RESPONSE:
+```json
+{
+  "confidence": 0.8,
+  "issues": [
+    "The classification of 'precontemplation' is borderline. While the patient states 'আমি সুস্থ জীবন যাপন এর জন্য ধূমপান ছাড়তে চাই' (I want to quit smoking for a healthy life), this expresses an intention without any concrete steps or consideration of change. A stronger indication of contemplation or early preparation would be more evident. The counselor's question about the importance of the desire for a healthy life is a key indicator that could push this towards contemplation.",
+    "No contradictory evidence was identified."
+  ]
+}
+```
+
+================================================================================
+OLLAMA CALL 0010
+================================================================================
+timestamp: 2026-04-17T08:04:52.091698+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a Clinical Health Psychologist and NLP Validator specializing in patient-reported concerns from tobacco-cessation transcripts.\n\nTask: Audit the concern extraction below against the source conversation for clinical accuracy and completeness.\n\nSOURCE CONVERSATION:\nPatient: নমস্কার
+Counselor: নমস্কার! ধূমপান ছেড়ে দিতে আপনি কী করতে চান, বলুন তো? আপনার লক্ষ্য কী?
+Patient: আমি সুস্থ জীবন যাপন এর জন্য ধূমপান ছাড়তে চাই
+Counselor: ধুমপান ছেড়ে দিতে চান, এটা জেনে ভালো লাগলো। সুস্থ জীবনযাপন করার এই ইচ্ছাকে আপনি কতটা গুরুত্ব দেন?\n\nEXTRACTION TO AUDIT:\n{'concerns': ['Weight gain', 'Fear of failure'], 'evidence': ['আমি সুস্থ জীবন যাপন এর জন্য ধূমপান ছাড়তে চাই', 'সুস্থ জীবনযাপন করার এই ইচ্ছাকে আপনি কতটা গুরুত্ব দেন?']}\n\nConduct the following four checks:\n\n1. Implicit Concern Detection: Did the patient express concern through a question or a hedged statement (e.g., \"I've noticed I'm winded lately, but maybe it's just age\")? If an underlying health anxiety was missed, flag it as an omission.\n\n2. Severity Calibration: Ensure concerns were not underrepresented. If a patient said they were \"terrified of lung cancer,\" an extraction of \"worried about health\" is a precision error in severity.\n\n3. Temporal Attribution: Distinguish between historical concerns (past anxieties no longer active) and active concerns (current anxieties present at time of conversation).\n\n4. Categorization Accuracy: Verify concerns belong to the correct type:\n   - Physiological: cough, breathlessness, sleep issues, cravings\n   - Psychological: anxiety about failing, mood swings, irritability\n   - Social/Financial: cost of smoking or aids, stigma, family impact\n   - Situational/Relapse: concerns about specific trigger contexts\n\nScoring rubric:\n- 9–10: All concerns captured with correct intensity and category.\n- 7–8: Minor or passing concern missed; minor category misalignment.\n- 5–6: A primary concern missed or patient's emotional tone misinterpreted.\n- Below 5: Counselor advice confused for patient concerns, or major concerns absent.\n\nRespond ONLY with valid JSON:\n{\n  \"confidence\": 0.0,\n  \"issues\": [\"<issue 1>\", \"<issue 2>\"]\n}\n
+
+RESPONSE:
+```json
+{
+  "confidence": 0.8,
+  "issues": [
+    "Minor concern missed: The patient explicitly states a desire for a 'healthy life,' indicating a potential concern regarding the impact of smoking on their health. This could be categorized as a Psychological concern (fear of illness/poor health outcomes).",
+    "Categorization Accuracy: While 'Fear of failure' is present, a more nuanced categorization might be beneficial. The core statement 'আমি সুস্থ জীবন যাপন এর জন্য ধূমপান ছাড়তে চাই' (I want to quit smoking for a healthy life) strongly suggests a concern related to potential physiological consequences of continued smoking, leaning towards a Physiological concern (fear of health deterioration)."
+  ]
+}
+```
+
+================================================================================
+OLLAMA CALL 0011
+================================================================================
+timestamp: 2026-04-17T08:04:55.311628+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a Senior Clinical NLP Reviewer specializing in smoking trigger extraction quality assurance.\n\nTask: Audit the trigger extraction below against the source conversation.\n\nSOURCE CONVERSATION:\nPatient: নমস্কার
+Counselor: নমস্কার! ধূমপান ছেড়ে দিতে আপনি কী করতে চান, বলুন তো? আপনার লক্ষ্য কী?
+Patient: আমি সুস্থ জীবন যাপন এর জন্য ধূমপান ছাড়তে চাই
+Counselor: ধুমপান ছেড়ে দিতে চান, এটা জেনে ভালো লাগলো। সুস্থ জীবনযাপন করার এই ইচ্ছাকে আপনি কতটা গুরুত্ব দেন?\n\nEXTRACTION TO AUDIT:\n{'triggers': ['সুস্থ জীবন যাপন'], 'evidence': ['আমি সুস্থ জীবন যাপন এর জন্য ধূমপান ছাড়তে চাই']}\n\nConduct the following four checks:\n\n1. Grounding Check: For each extracted trigger, verify it is either explicitly stated (the exact term or a clear synonym appears in the conversation) or strongly implied (the clinical context makes it unambiguous). Flag anything inferred, assumed, or fabricated.\n\n2. Hallucination Detection: Identify triggers that appear in the extraction but have no basis in the conversation. Note the specific trigger and explain why it is unsupported.\n\n3. Omission Detection: Identify triggers clearly present in the conversation but missing from the extraction. Note the exact phrase or passage and the trigger category it should have been assigned.\n\n4. Classification Accuracy: Verify each trigger is assigned the clinically appropriate type (emotional, situational, social, habitual). Flag misclassifications and suggest the correct label.\n\nScoring rubric:\n- 9–10: Near-perfect, no meaningful errors.\n- 7–8: Minor omissions or edge-case misclassifications.\n- 4–6: Several errors that affect reliability.\n- 1–3: Significant hallucinations or omissions.\n- 0: Extraction is unusable.\n\nRespond ONLY with valid JSON:\n{\n  \"confidence\": 0.0,\n  \"issues\": [\"<issue 1>\", \"<issue 2>\"]\n}\n
+
+RESPONSE:
+```json
+{
+  "confidence": 7.5,
+  "issues": [
+    "Omission Detection: The trigger 'সুস্থ জীবন যাপন' (healthy lifestyle) is present in the patient's statement, but the extraction misses it. This is a crucial trigger related to the patient's motivation for quitting smoking. The exact phrase 'আমি সুস্থ জীবন যাপন এর জন্য ধূমপান ছাড়তে চাই' (I want to quit smoking for a healthy life) should have been included.",
+    "Classification Accuracy: While 'সুস্থ জীবন যাপন' is appropriately classified as a motivational trigger, a more granular classification could be beneficial. It could be further categorized as 'Goal' or 'Value-based' trigger, reflecting the underlying reason for quitting."
+  ]
+}
+```
+
+================================================================================
+OLLAMA CALL 0012
+================================================================================
+timestamp: 2026-04-17T08:04:56.368625+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a very strict clinical data validator. Compare the EXTRACTED DATA against the CONVERSATION.
+
+CONVERSATION:
+Patient: নমস্কার
+Counselor: নমস্কার! ধূমপান ছেড়ে দিতে আপনি কী করতে চান, বলুন তো? আপনার লক্ষ্য কী?
+Patient: আমি সুস্থ জীবন যাপন এর জন্য ধূমপান ছাড়তে চাই
+Counselor: ধুমপান ছেড়ে দিতে চান, এটা জেনে ভালো লাগলো। সুস্থ জীবনযাপন করার এই ইচ্ছাকে আপনি কতটা গুরুত্ব দেন?
+
+EXTRACTED DATA (cessation advice or guidance):
+{'advice': ['ধুমপান ছেড়ে দিতে চান, এটা জেনে ভালো লাগলো।', 'সুস্থ জীবনযাপন করার এই ইচ্ছাকে আপনি কতটা গুরুত্ব দেন?'], 'evidence': ['ধুমপান ছেড়ে দিতে চান, এটা জেনে ভালো লাগলো।', 'সুস্থ জীবনযাপন করার এই ইচ্ছাকে আপনি কতটা গুরুত্ব দেন?']}
+
+Your task:
+1. Very Strictly Check for hallucinations (data not in the text).
+2. Very Strictly Check for omissions (important data missed).
+3. Assign a confidence score between 0.0 and 1.0.
+
+Respond ONLY with valid JSON:
+{
+  "confidence": 0.0,
+  "issues": ["<issue 1>", "..."]
+}
+
+
+RESPONSE:
+```json
+{
+  "confidence": 0.95,
+  "issues": []
+}
+```
+
+================================================================================
+OLLAMA CALL 0013
+================================================================================
+timestamp: 2026-04-17T08:04:57.916396+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a clinical annotation reviser.\n\nTask: Produce a corrected trigger extraction that fully addresses all reviewer feedback.\n\nORIGINAL CONVERSATION:\nPatient: নমস্কার
+Counselor: নমস্কার! ধূমপান ছেড়ে দিতে আপনি কী করতে চান, বলুন তো? আপনার লক্ষ্য কী?
+Patient: আমি সুস্থ জীবন যাপন এর জন্য ধূমপান ছাড়তে চাই
+Counselor: ধুমপান ছেড়ে দিতে চান, এটা জেনে ভালো লাগলো। সুস্থ জীবনযাপন করার এই ইচ্ছাকে আপনি কতটা গুরুত্ব দেন?\n\nORIGINAL EXTRACTION:\n{'triggers': ['সুস্থ জীবন যাপন'], 'evidence': ['আমি সুস্থ জীবন যাপন এর জন্য ধূমপান ছাড়তে চাই']}\n\nREVIEWER FEEDBACK:\nOmission Detection: The trigger 'সুস্থ জীবন যাপন' (healthy lifestyle) is present in the patient's statement, but the extraction misses it. This is a crucial trigger related to the patient's motivation for quitting smoking. The exact phrase 'আমি সুস্থ জীবন যাপন এর জন্য ধূমপান ছাড়তে চাই' (I want to quit smoking for a healthy life) should have been included.
+Classification Accuracy: While 'সুস্থ জীবন যাপন' is appropriately classified as a motivational trigger, a more granular classification could be beneficial. It could be further categorized as 'Goal' or 'Value-based' trigger, reflecting the underlying reason for quitting.\n\nRevision instructions:\n- Remove any hallucinated triggers that have no basis in the conversation.\n- Add any omitted triggers that are genuinely present in the conversation.\n- Correct the trigger_type label for any misclassified entries.\n- Do not introduce new items not supported by the conversation or the reviewer feedback.\n- Update the confidence score to reflect your certainty in the revised extraction.\n\nRespond ONLY with valid JSON:\n{\n  \"triggers\": [\"<corrected trigger 1>\", \"<corrected trigger 2>\"],\n  \"trigger_type\": \"<emotional|situational|social|habitual|mixed>\",\n  \"confidence\": 0.0\n}\n
+
+RESPONSE:
+```json
+{
+  "triggers": [
+    "সুস্থ জীবন যাপন",
+    "ধূমপান ছাড়তে চাই"
+  ],
+  "trigger_type": "goal",
+  "confidence": 0.95
+}
+```
+
+================================================================================
+OLLAMA CALL 0014
+================================================================================
+timestamp: 2026-04-17T08:04:59.036046+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a Senior Clinical Informatics Specialist specializing in NLP quality assurance for tobacco cessation research.\n\nTask: Audit the quit-attempt extraction below against the source conversation for 100% fidelity.\n\nSOURCE CONVERSATION:\nPatient: নমস্কার
+Counselor: নমস্কার! ধূমপান ছেড়ে দিতে আপনি কী করতে চান, বলুন তো? আপনার লক্ষ্য কী?
+Patient: আমি সুস্থ জীবন যাপন এর জন্য ধূমপান ছাড়তে চাই
+Counselor: ধুমপান ছেড়ে দিতে চান, এটা জেনে ভালো লাগলো। সুস্থ জীবনযাপন করার এই ইচ্ছাকে আপনি কতটা গুরুত্ব দেন?\n\nEXTRACTION TO AUDIT:\n{'attempts': ['I want to quit smoking to live a healthy life.'], 'evidence': ['আমি সুস্থ জীবন যাপন এর জন্য ধূমপান ছাড়তে চাই']}\n\nConduct the following four checks:\n\n1. Grounding and Veracity: Does every extracted attempt have a direct textual anchor in the conversation? Flag any logical leaps where a quit attempt was assumed without explicit confirmation.\n\n2. Hallucination Check: List any data points in the extraction that have no basis in the source text.\n\n3. Omission Check: Scan the conversation for missed signals — keywords such as \"stopped,\" \"gave up,\" \"last time I tried,\" \"cut back to zero,\" or specific dates or durations — that should have been captured.\n\n4. Taxonomy Alignment: Verify that the attempt method (e.g., Cold Turkey, NRT, Pharmacotherapy, Behavioral Support) aligns with established clinical standards.\n\nScoring rubric:\n- 9–10: Perfect recall and precision, no errors.\n- 7–8: High utility; minor formatting or non-clinical nuance issues only.\n- 5–6: Partial data loss or one significant hallucination.\n- Below 5: Unreliable; multiple hallucinations or missed major attempts.\n\nRespond ONLY with valid JSON:\n{\n  \"confidence\": 0.0,\n  \"issues\": [\"<issue 1>\", \"<issue 2>\"]\n}\n
+
+RESPONSE:
+```json
+{
+  "confidence": 1.0,
+  "issues": []
+}
+```
+
+
+================================================================================
+OLLAMA CALL 0015
+================================================================================
+timestamp: 2026-04-17T08:05:02.331304+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a Senior Clinical NLP Reviewer specializing in Transtheoretical Model (TTM) stage classification quality assurance.\n\nTask: Audit the readiness stage classification below against the source conversation.\n\nSOURCE CONVERSATION:\nPatient: নমস্কার
+Counselor: নমস্কার! ধূমপান ছেড়ে দিতে আপনি কী করতে চান, বলুন তো? আপনার লক্ষ্য কী?
+Patient: আমি সুস্থ জীবন যাপন এর জন্য ধূমপান ছাড়তে চাই
+Counselor: ধুমপান ছেড়ে দিতে চান, এটা জেনে ভালো লাগলো। সুস্থ জীবনযাপন করার এই ইচ্ছাকে আপনি কতটা গুরুত্ব দেন?\n\nCLASSIFICATION TO AUDIT:\n{readiness_output}\n\nConduct the following checks:\n\n1. Stage Validity: Is the assigned stage (precontemplation, contemplation, preparation, action, maintenance, relapse) consistent with the patient's explicit statements and behavioral indicators in the conversation?\n\n2. Evidence Grounding: Is the cited evidence actually present in the conversation and does it unambiguously support the assigned stage rather than an adjacent stage?\n\n3. Contradicting Evidence: Are there patient statements that contradict the assigned stage or suggest a different classification? List them.\n\n4. Stage Boundary Precision: Could the patient plausibly fit a neighboring stage? If so, explain which evidence distinguishes the chosen stage from the adjacent one.\n\nScoring rubric:\n- 9–10: Stage is correct, evidence is unambiguous, no contradictions.\n- 7–8: Stage is defensible but borderline; minor evidence gap.\n- 5–6: Contradicting evidence ignored, or adjacent stage is equally or more supported.\n- Below 5: Stage classification is unsupported or directly contradicted by the conversation.\n\nRespond ONLY with valid JSON:\n{\n  \"confidence\": 0.0,\n  \"issues\": [\"<issue 1>\", \"<issue 2>\"]\n}\n
+
+RESPONSE:
+```json
+{
+  "confidence": 0.8,
+  "issues": [
+    "While the patient expresses a desire to quit smoking ('আমি সুস্থ জীবন যাপন এর জন্য ধূমপান ছাড়তে চাই'), the counselor's follow-up question about the importance of the desire for a healthy life doesn't definitively place them in a stage beyond precontemplation. The patient hasn't yet considered quitting or acknowledged any specific steps. A stronger indication of contemplation or preparation would require a statement about considering options or making a plan.",
+    "The conversation lacks strong evidence to definitively place the patient in any stage beyond precontemplation. The counselor's initial question about goals is a standard opening, but the patient's immediate response doesn't demonstrate active consideration or planning, which are hallmarks of later stages."
+  ]
+}
+```
+
+================================================================================
+OLLAMA CALL 0016
+================================================================================
+timestamp: 2026-04-17T08:05:05.815327+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a Clinical Health Psychologist and NLP Validator specializing in patient-reported concerns from tobacco-cessation transcripts.\n\nTask: Audit the concern extraction below against the source conversation for clinical accuracy and completeness.\n\nSOURCE CONVERSATION:\nPatient: নমস্কার
+Counselor: নমস্কার! ধূমপান ছেড়ে দিতে আপনি কী করতে চান, বলুন তো? আপনার লক্ষ্য কী?
+Patient: আমি সুস্থ জীবন যাপন এর জন্য ধূমপান ছাড়তে চাই
+Counselor: ধুমপান ছেড়ে দিতে চান, এটা জেনে ভালো লাগলো। সুস্থ জীবনযাপন করার এই ইচ্ছাকে আপনি কতটা গুরুত্ব দেন?\n\nEXTRACTION TO AUDIT:\n{'concerns': ['Weight gain', 'Fear of failure'], 'evidence': ['আমি সুস্থ জীবন যাপন এর জন্য ধূমপান ছাড়তে চাই', 'সুস্থ জীবনযাপন করার এই ইচ্ছাকে আপনি কতটা গুরুত্ব দেন?']}\n\nConduct the following four checks:\n\n1. Implicit Concern Detection: Did the patient express concern through a question or a hedged statement (e.g., \"I've noticed I'm winded lately, but maybe it's just age\")? If an underlying health anxiety was missed, flag it as an omission.\n\n2. Severity Calibration: Ensure concerns were not underrepresented. If a patient said they were \"terrified of lung cancer,\" an extraction of \"worried about health\" is a precision error in severity.\n\n3. Temporal Attribution: Distinguish between historical concerns (past anxieties no longer active) and active concerns (current anxieties present at time of conversation).\n\n4. Categorization Accuracy: Verify concerns belong to the correct type:\n   - Physiological: cough, breathlessness, sleep issues, cravings\n   - Psychological: anxiety about failing, mood swings, irritability\n   - Social/Financial: cost of smoking or aids, stigma, family impact\n   - Situational/Relapse: concerns about specific trigger contexts\n\nScoring rubric:\n- 9–10: All concerns captured with correct intensity and category.\n- 7–8: Minor or passing concern missed; minor category misalignment.\n- 5–6: A primary concern missed or patient's emotional tone misinterpreted.\n- Below 5: Counselor advice confused for patient concerns, or major concerns absent.\n\nRespond ONLY with valid JSON:\n{\n  \"confidence\": 0.0,\n  \"issues\": [\"<issue 1>\", \"<issue 2>\"]\n}\n
+
+RESPONSE:
+```json
+{
+  "confidence": 0.8,
+  "issues": [
+    "The extraction missed a potential implicit concern regarding physiological impact. While the patient stated 'আমি সুস্থ জীবন যাপন এর জন্য ধূমপান ছাড়তে চাই' (I want to quit smoking for a healthy life), a more nuanced extraction could have included a concern about potential physical withdrawal symptoms or the impact of quitting on their body. This represents a minor omission.",
+    "The categorization of 'সুস্থ জীবনযাপন করার এই ইচ্ছাকে আপনি কতটা গুরুত্ব দেন?' (How much importance do you place on this desire to live a healthy life?) as psychological is reasonable, but could benefit from a slightly more granular approach. It leans towards a motivational concern, which is valid, but doesn't fully capture the potential underlying anxiety about the *change* itself – a subtle calibration issue."
+  ]
+}
+```
+
+================================================================================
+OLLAMA CALL 0017
+================================================================================
+timestamp: 2026-04-17T08:05:08.808321+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a Senior Clinical NLP Reviewer specializing in smoking trigger extraction quality assurance.\n\nTask: Audit the trigger extraction below against the source conversation.\n\nSOURCE CONVERSATION:\nPatient: নমস্কার
+Counselor: নমস্কার! ধূমপান ছেড়ে দিতে আপনি কী করতে চান, বলুন তো? আপনার লক্ষ্য কী?
+Patient: আমি সুস্থ জীবন যাপন এর জন্য ধূমপান ছাড়তে চাই
+Counselor: ধুমপান ছেড়ে দিতে চান, এটা জেনে ভালো লাগলো। সুস্থ জীবনযাপন করার এই ইচ্ছাকে আপনি কতটা গুরুত্ব দেন?\n\nEXTRACTION TO AUDIT:\n{'triggers': ['সুস্থ জীবন যাপন', 'ধূমপান ছাড়তে চাই'], 'trigger_type': 'goal', 'confidence': 0.95}\n\nConduct the following four checks:\n\n1. Grounding Check: For each extracted trigger, verify it is either explicitly stated (the exact term or a clear synonym appears in the conversation) or strongly implied (the clinical context makes it unambiguous). Flag anything inferred, assumed, or fabricated.\n\n2. Hallucination Detection: Identify triggers that appear in the extraction but have no basis in the conversation. Note the specific trigger and explain why it is unsupported.\n\n3. Omission Detection: Identify triggers clearly present in the conversation but missing from the extraction. Note the exact phrase or passage and the trigger category it should have been assigned.\n\n4. Classification Accuracy: Verify each trigger is assigned the clinically appropriate type (emotional, situational, social, habitual). Flag misclassifications and suggest the correct label.\n\nScoring rubric:\n- 9–10: Near-perfect, no meaningful errors.\n- 7–8: Minor omissions or edge-case misclassifications.\n- 4–6: Several errors that affect reliability.\n- 1–3: Significant hallucinations or omissions.\n- 0: Extraction is unusable.\n\nRespond ONLY with valid JSON:\n{\n  \"confidence\": 0.0,\n  \"issues\": [\"<issue 1>\", \"<issue 2>\"]\n}\n
+
+RESPONSE:
+```json
+{
+  "confidence": 0.7,
+  "issues": [
+    "Omission Detection: The trigger 'ধূমপান ছেড়ে দিতে চাই' (literally 'want to quit smoking') is explicitly stated in the patient's first utterance and the counselor's follow-up question. This was not included in the extraction.",
+    "Classification Accuracy: The trigger 'সুস্থ জীবন যাপন' (literally 'healthy life') is classified as 'goal'. While it represents a goal, it's more accurately categorized as a 'situational' trigger – the patient's stated reason for wanting to quit smoking.  A more appropriate classification would be 'motivation'."
+  ]
+}
+```
+
+================================================================================
+OLLAMA CALL 0018
+================================================================================
+timestamp: 2026-04-17T08:05:09.847822+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a very strict clinical data validator. Compare the EXTRACTED DATA against the CONVERSATION.
+
+CONVERSATION:
+Patient: নমস্কার
+Counselor: নমস্কার! ধূমপান ছেড়ে দিতে আপনি কী করতে চান, বলুন তো? আপনার লক্ষ্য কী?
+Patient: আমি সুস্থ জীবন যাপন এর জন্য ধূমপান ছাড়তে চাই
+Counselor: ধুমপান ছেড়ে দিতে চান, এটা জেনে ভালো লাগলো। সুস্থ জীবনযাপন করার এই ইচ্ছাকে আপনি কতটা গুরুত্ব দেন?
+
+EXTRACTED DATA (cessation advice or guidance):
+{'advice': ['ধুমপান ছেড়ে দিতে চান, এটা জেনে ভালো লাগলো।', 'সুস্থ জীবনযাপন করার এই ইচ্ছাকে আপনি কতটা গুরুত্ব দেন?'], 'evidence': ['ধুমপান ছেড়ে দিতে চান, এটা জেনে ভালো লাগলো।', 'সুস্থ জীবনযাপন করার এই ইচ্ছাকে আপনি কতটা গুরুত্ব দেন?']}
+
+Your task:
+1. Very Strictly Check for hallucinations (data not in the text).
+2. Very Strictly Check for omissions (important data missed).
+3. Assign a confidence score between 0.0 and 1.0.
+
+Respond ONLY with valid JSON:
+{
+  "confidence": 0.0,
+  "issues": ["<issue 1>", "..."]
+}
+
+
+RESPONSE:
+```json
+{
+  "confidence": 0.95,
+  "issues": []
+}
+```
+
+
+================================================================================
+OLLAMA CALL 0019
+================================================================================
+timestamp: 2026-04-17T08:05:11.419878+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a clinical annotation reviser.\n\nTask: Produce a corrected trigger extraction that fully addresses all reviewer feedback.\n\nORIGINAL CONVERSATION:\nPatient: নমস্কার
+Counselor: নমস্কার! ধূমপান ছেড়ে দিতে আপনি কী করতে চান, বলুন তো? আপনার লক্ষ্য কী?
+Patient: আমি সুস্থ জীবন যাপন এর জন্য ধূমপান ছাড়তে চাই
+Counselor: ধুমপান ছেড়ে দিতে চান, এটা জেনে ভালো লাগলো। সুস্থ জীবনযাপন করার এই ইচ্ছাকে আপনি কতটা গুরুত্ব দেন?\n\nORIGINAL EXTRACTION:\n{'triggers': ['সুস্থ জীবন যাপন', 'ধূমপান ছাড়তে চাই'], 'trigger_type': 'goal', 'confidence': 0.95}\n\nREVIEWER FEEDBACK:\nOmission Detection: The trigger 'ধূমপান ছেড়ে দিতে চাই' (literally 'want to quit smoking') is explicitly stated in the patient's first utterance and the counselor's follow-up question. This was not included in the extraction.
+Classification Accuracy: The trigger 'সুস্থ জীবন যাপন' (literally 'healthy life') is classified as 'goal'. While it represents a goal, it's more accurately categorized as a 'situational' trigger – the patient's stated reason for wanting to quit smoking.  A more appropriate classification would be 'motivation'.\n\nRevision instructions:\n- Remove any hallucinated triggers that have no basis in the conversation.\n- Add any omitted triggers that are genuinely present in the conversation.\n- Correct the trigger_type label for any misclassified entries.\n- Do not introduce new items not supported by the conversation or the reviewer feedback.\n- Update the confidence score to reflect your certainty in the revised extraction.\n\nRespond ONLY with valid JSON:\n{\n  \"triggers\": [\"<corrected trigger 1>\", \"<corrected trigger 2>\"],\n  \"trigger_type\": \"<emotional|situational|social|habitual|mixed>\",\n  \"confidence\": 0.0\n}\n
+
+RESPONSE:
+```json
+{
+  "triggers": [
+    "ধূমপান ছেড়ে দিতে চাই",
+    "সুস্থ জীবন যাপন"
+  ],
+  "trigger_type": "motivation",
+  "confidence": 0.98
+}
+```
+
+================================================================================
+OLLAMA CALL 0020
+================================================================================
+timestamp: 2026-04-17T08:05:12.473650+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a Senior Clinical Informatics Specialist specializing in NLP quality assurance for tobacco cessation research.\n\nTask: Audit the quit-attempt extraction below against the source conversation for 100% fidelity.\n\nSOURCE CONVERSATION:\nPatient: নমস্কার
+Counselor: নমস্কার! ধূমপান ছেড়ে দিতে আপনি কী করতে চান, বলুন তো? আপনার লক্ষ্য কী?
+Patient: আমি সুস্থ জীবন যাপন এর জন্য ধূমপান ছাড়তে চাই
+Counselor: ধুমপান ছেড়ে দিতে চান, এটা জেনে ভালো লাগলো। সুস্থ জীবনযাপন করার এই ইচ্ছাকে আপনি কতটা গুরুত্ব দেন?\n\nEXTRACTION TO AUDIT:\n{'attempts': ['I want to quit smoking to live a healthy life.'], 'evidence': ['আমি সুস্থ জীবন যাপন এর জন্য ধূমপান ছাড়তে চাই']}\n\nConduct the following four checks:\n\n1. Grounding and Veracity: Does every extracted attempt have a direct textual anchor in the conversation? Flag any logical leaps where a quit attempt was assumed without explicit confirmation.\n\n2. Hallucination Check: List any data points in the extraction that have no basis in the source text.\n\n3. Omission Check: Scan the conversation for missed signals — keywords such as \"stopped,\" \"gave up,\" \"last time I tried,\" \"cut back to zero,\" or specific dates or durations — that should have been captured.\n\n4. Taxonomy Alignment: Verify that the attempt method (e.g., Cold Turkey, NRT, Pharmacotherapy, Behavioral Support) aligns with established clinical standards.\n\nScoring rubric:\n- 9–10: Perfect recall and precision, no errors.\n- 7–8: High utility; minor formatting or non-clinical nuance issues only.\n- 5–6: Partial data loss or one significant hallucination.\n- Below 5: Unreliable; multiple hallucinations or missed major attempts.\n\nRespond ONLY with valid JSON:\n{\n  \"confidence\": 0.0,\n  \"issues\": [\"<issue 1>\", \"<issue 2>\"]\n}\n
+
+RESPONSE:
+```json
+{
+  "confidence": 1.0,
+  "issues": []
+}
+```
+
+
+================================================================================
+OLLAMA CALL 0021
+================================================================================
+timestamp: 2026-04-17T08:05:15.765618+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a Senior Clinical NLP Reviewer specializing in Transtheoretical Model (TTM) stage classification quality assurance.\n\nTask: Audit the readiness stage classification below against the source conversation.\n\nSOURCE CONVERSATION:\nPatient: নমস্কার
+Counselor: নমস্কার! ধূমপান ছেড়ে দিতে আপনি কী করতে চান, বলুন তো? আপনার লক্ষ্য কী?
+Patient: আমি সুস্থ জীবন যাপন এর জন্য ধূমপান ছাড়তে চাই
+Counselor: ধুমপান ছেড়ে দিতে চান, এটা জেনে ভালো লাগলো। সুস্থ জীবনযাপন করার এই ইচ্ছাকে আপনি কতটা গুরুত্ব দেন?\n\nCLASSIFICATION TO AUDIT:\n{readiness_output}\n\nConduct the following checks:\n\n1. Stage Validity: Is the assigned stage (precontemplation, contemplation, preparation, action, maintenance, relapse) consistent with the patient's explicit statements and behavioral indicators in the conversation?\n\n2. Evidence Grounding: Is the cited evidence actually present in the conversation and does it unambiguously support the assigned stage rather than an adjacent stage?\n\n3. Contradicting Evidence: Are there patient statements that contradict the assigned stage or suggest a different classification? List them.\n\n4. Stage Boundary Precision: Could the patient plausibly fit a neighboring stage? If so, explain which evidence distinguishes the chosen stage from the adjacent one.\n\nScoring rubric:\n- 9–10: Stage is correct, evidence is unambiguous, no contradictions.\n- 7–8: Stage is defensible but borderline; minor evidence gap.\n- 5–6: Contradicting evidence ignored, or adjacent stage is equally or more supported.\n- Below 5: Stage classification is unsupported or directly contradicted by the conversation.\n\nRespond ONLY with valid JSON:\n{\n  \"confidence\": 0.0,\n  \"issues\": [\"<issue 1>\", \"<issue 2>\"]\n}\n
+
+RESPONSE:
+```json
+{
+  "confidence": 0.8,
+  "issues": [
+    "While the patient expresses a desire to quit smoking ('আমি সুস্থ জীবন যাপন এর জন্য ধূমপান ছাড়তে চাই'), the counselor's follow-up question about the importance of the desire ('সুস্থ জীবনযাপন করার এই ইচ্ছাকে আপনি কতটা গুরুত্ব দেন?') leans towards the Contemplation stage. The patient's initial statement is more aligned with Precontemplation, as it simply states a desire without exploring the depth of commitment.  A stronger focus on the *importance* of the goal suggests a move towards contemplation.",
+    "There is a slight ambiguity regarding the level of commitment. The conversation doesn't definitively place the patient within a specific stage. Further probing would be needed to solidify the classification."
+  ]
+}
+```
+
+================================================================================
+OLLAMA CALL 0022
+================================================================================
+timestamp: 2026-04-17T08:05:18.741195+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a Clinical Health Psychologist and NLP Validator specializing in patient-reported concerns from tobacco-cessation transcripts.\n\nTask: Audit the concern extraction below against the source conversation for clinical accuracy and completeness.\n\nSOURCE CONVERSATION:\nPatient: নমস্কার
+Counselor: নমস্কার! ধূমপান ছেড়ে দিতে আপনি কী করতে চান, বলুন তো? আপনার লক্ষ্য কী?
+Patient: আমি সুস্থ জীবন যাপন এর জন্য ধূমপান ছাড়তে চাই
+Counselor: ধুমপান ছেড়ে দিতে চান, এটা জেনে ভালো লাগলো। সুস্থ জীবনযাপন করার এই ইচ্ছাকে আপনি কতটা গুরুত্ব দেন?\n\nEXTRACTION TO AUDIT:\n{'concerns': ['Weight gain', 'Fear of failure'], 'evidence': ['আমি সুস্থ জীবন যাপন এর জন্য ধূমপান ছাড়তে চাই', 'সুস্থ জীবনযাপন করার এই ইচ্ছাকে আপনি কতটা গুরুত্ব দেন?']}\n\nConduct the following four checks:\n\n1. Implicit Concern Detection: Did the patient express concern through a question or a hedged statement (e.g., \"I've noticed I'm winded lately, but maybe it's just age\")? If an underlying health anxiety was missed, flag it as an omission.\n\n2. Severity Calibration: Ensure concerns were not underrepresented. If a patient said they were \"terrified of lung cancer,\" an extraction of \"worried about health\" is a precision error in severity.\n\n3. Temporal Attribution: Distinguish between historical concerns (past anxieties no longer active) and active concerns (current anxieties present at time of conversation).\n\n4. Categorization Accuracy: Verify concerns belong to the correct type:\n   - Physiological: cough, breathlessness, sleep issues, cravings\n   - Psychological: anxiety about failing, mood swings, irritability\n   - Social/Financial: cost of smoking or aids, stigma, family impact\n   - Situational/Relapse: concerns about specific trigger contexts\n\nScoring rubric:\n- 9–10: All concerns captured with correct intensity and category.\n- 7–8: Minor or passing concern missed; minor category misalignment.\n- 5–6: A primary concern missed or patient's emotional tone misinterpreted.\n- Below 5: Counselor advice confused for patient concerns, or major concerns absent.\n\nRespond ONLY with valid JSON:\n{\n  \"confidence\": 0.0,\n  \"issues\": [\"<issue 1>\", \"<issue 2>\"]\n}\n
+
+RESPONSE:
+```json
+{
+  "confidence": 0.8,
+  "issues": [
+    "Minor concern missed: The patient explicitly states a desire for a 'healthy life,' indicating a potential concern regarding the impact of smoking on their health. This could be categorized as a psychological concern (fear of illness/poor health outcomes).",
+    "Categorization Accuracy - Potential Misalignment: While 'সুস্থ জীবনযাপন করার এই ইচ্ছাকে আপনি কতটা গুরুত্ব দেন?' (How seriously do you take the desire for a healthy life?) is a valid question, it leans more towards eliciting motivation than a direct expressed concern. It could benefit from a more explicit categorization as a psychological concern related to health anxiety."
+  ]
+}
+```
+
+================================================================================
+OLLAMA CALL 0023
+================================================================================
+timestamp: 2026-04-17T08:05:22.139777+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a Senior Clinical NLP Reviewer specializing in smoking trigger extraction quality assurance.\n\nTask: Audit the trigger extraction below against the source conversation.\n\nSOURCE CONVERSATION:\nPatient: নমস্কার
+Counselor: নমস্কার! ধূমপান ছেড়ে দিতে আপনি কী করতে চান, বলুন তো? আপনার লক্ষ্য কী?
+Patient: আমি সুস্থ জীবন যাপন এর জন্য ধূমপান ছাড়তে চাই
+Counselor: ধুমপান ছেড়ে দিতে চান, এটা জেনে ভালো লাগলো। সুস্থ জীবনযাপন করার এই ইচ্ছাকে আপনি কতটা গুরুত্ব দেন?\n\nEXTRACTION TO AUDIT:\n{'triggers': ['ধূমপান ছেড়ে দিতে চাই', 'সুস্থ জীবন যাপন'], 'trigger_type': 'motivation', 'confidence': 0.98}\n\nConduct the following four checks:\n\n1. Grounding Check: For each extracted trigger, verify it is either explicitly stated (the exact term or a clear synonym appears in the conversation) or strongly implied (the clinical context makes it unambiguous). Flag anything inferred, assumed, or fabricated.\n\n2. Hallucination Detection: Identify triggers that appear in the extraction but have no basis in the conversation. Note the specific trigger and explain why it is unsupported.\n\n3. Omission Detection: Identify triggers clearly present in the conversation but missing from the extraction. Note the exact phrase or passage and the trigger category it should have been assigned.\n\n4. Classification Accuracy: Verify each trigger is assigned the clinically appropriate type (emotional, situational, social, habitual). Flag misclassifications and suggest the correct label.\n\nScoring rubric:\n- 9–10: Near-perfect, no meaningful errors.\n- 7–8: Minor omissions or edge-case misclassifications.\n- 4–6: Several errors that affect reliability.\n- 1–3: Significant hallucinations or omissions.\n- 0: Extraction is unusable.\n\nRespond ONLY with valid JSON:\n{\n  \"confidence\": 0.0,\n  \"issues\": [\"<issue 1>\", \"<issue 2>\"]\n}\n
+
+RESPONSE:
+```json
+{
+  "confidence": 0.6,
+  "issues": [
+    "**Grounding Check (Omission):** The trigger 'সুস্থ জীবন যাপন' (healthy lifestyle) is strongly implied but not explicitly stated. While the patient expresses a desire to 'ধূমপান ছেড়ে দিতে চাই' (quit smoking), the counselor's follow-up question about prioritizing this desire implicitly points to a motivation for a healthy lifestyle. This requires inference, not direct extraction.",
+    "**Classification Accuracy (Misclassification):** 'সুস্থ জীবন যাপন' is classified as a 'motivation' trigger, which is reasonable. However, a more precise classification might be 'goal' or 'intention' given the context of the patient stating their desired outcome. It's a borderline case, but a more granular classification would improve accuracy."
+  ]
+}
+```
+
+================================================================================
+OLLAMA CALL 0024
+================================================================================
+timestamp: 2026-04-17T08:05:23.153500+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a very strict clinical data validator. Compare the EXTRACTED DATA against the CONVERSATION.
+
+CONVERSATION:
+Patient: নমস্কার
+Counselor: নমস্কার! ধূমপান ছেড়ে দিতে আপনি কী করতে চান, বলুন তো? আপনার লক্ষ্য কী?
+Patient: আমি সুস্থ জীবন যাপন এর জন্য ধূমপান ছাড়তে চাই
+Counselor: ধুমপান ছেড়ে দিতে চান, এটা জেনে ভালো লাগলো। সুস্থ জীবনযাপন করার এই ইচ্ছাকে আপনি কতটা গুরুত্ব দেন?
+
+EXTRACTED DATA (cessation advice or guidance):
+{'advice': ['ধুমপান ছেড়ে দিতে চান, এটা জেনে ভালো লাগলো।', 'সুস্থ জীবনযাপন করার এই ইচ্ছাকে আপনি কতটা গুরুত্ব দেন?'], 'evidence': ['ধুমপান ছেড়ে দিতে চান, এটা জেনে ভালো লাগলো।', 'সুস্থ জীবনযাপন করার এই ইচ্ছাকে আপনি কতটা গুরুত্ব দেন?']}
+
+Your task:
+1. Very Strictly Check for hallucinations (data not in the text).
+2. Very Strictly Check for omissions (important data missed).
+3. Assign a confidence score between 0.0 and 1.0.
+
+Respond ONLY with valid JSON:
+{
+  "confidence": 0.0,
+  "issues": ["<issue 1>", "..."]
+}
+
+
+RESPONSE:
+```json
+{
+  "confidence": 0.95,
+  "issues": []
+}
+```
+
+================================================================================
+OLLAMA CALL 0025
+================================================================================
+timestamp: 2026-04-17T08:05:24.713529+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a clinical annotation reviser.\n\nTask: Produce a corrected trigger extraction that fully addresses all reviewer feedback.\n\nORIGINAL CONVERSATION:\nPatient: নমস্কার
+Counselor: নমস্কার! ধূমপান ছেড়ে দিতে আপনি কী করতে চান, বলুন তো? আপনার লক্ষ্য কী?
+Patient: আমি সুস্থ জীবন যাপন এর জন্য ধূমপান ছাড়তে চাই
+Counselor: ধুমপান ছেড়ে দিতে চান, এটা জেনে ভালো লাগলো। সুস্থ জীবনযাপন করার এই ইচ্ছাকে আপনি কতটা গুরুত্ব দেন?\n\nORIGINAL EXTRACTION:\n{'triggers': ['ধূমপান ছেড়ে দিতে চাই', 'সুস্থ জীবন যাপন'], 'trigger_type': 'motivation', 'confidence': 0.98}\n\nREVIEWER FEEDBACK:\n**Grounding Check (Omission):** The trigger 'সুস্থ জীবন যাপন' (healthy lifestyle) is strongly implied but not explicitly stated. While the patient expresses a desire to 'ধূমপান ছেড়ে দিতে চাই' (quit smoking), the counselor's follow-up question about prioritizing this desire implicitly points to a motivation for a healthy lifestyle. This requires inference, not direct extraction.
+**Classification Accuracy (Misclassification):** 'সুস্থ জীবন যাপন' is classified as a 'motivation' trigger, which is reasonable. However, a more precise classification might be 'goal' or 'intention' given the context of the patient stating their desired outcome. It's a borderline case, but a more granular classification would improve accuracy.\n\nRevision instructions:\n- Remove any hallucinated triggers that have no basis in the conversation.\n- Add any omitted triggers that are genuinely present in the conversation.\n- Correct the trigger_type label for any misclassified entries.\n- Do not introduce new items not supported by the conversation or the reviewer feedback.\n- Update the confidence score to reflect your certainty in the revised extraction.\n\nRespond ONLY with valid JSON:\n{\n  \"triggers\": [\"<corrected trigger 1>\", \"<corrected trigger 2>\"],\n  \"trigger_type\": \"<emotional|situational|social|habitual|mixed>\",\n  \"confidence\": 0.0\n}\n
+
+RESPONSE:
+```json
+{
+  "triggers": [
+    "ধূমপান ছেড়ে দিতে চাই",
+    "সুস্থ জীবন যাপন"
+  ],
+  "trigger_type": "goal",
+  "confidence": 0.95
+}
+```
+
+================================================================================
+OLLAMA CALL 0026
+================================================================================
+timestamp: 2026-04-17T08:05:25.823409+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a Senior Clinical Informatics Specialist specializing in NLP quality assurance for tobacco cessation research.\n\nTask: Audit the quit-attempt extraction below against the source conversation for 100% fidelity.\n\nSOURCE CONVERSATION:\nPatient: নমস্কার
+Counselor: নমস্কার! ধূমপান ছেড়ে দিতে আপনি কী করতে চান, বলুন তো? আপনার লক্ষ্য কী?
+Patient: আমি সুস্থ জীবন যাপন এর জন্য ধূমপান ছাড়তে চাই
+Counselor: ধুমপান ছেড়ে দিতে চান, এটা জেনে ভালো লাগলো। সুস্থ জীবনযাপন করার এই ইচ্ছাকে আপনি কতটা গুরুত্ব দেন?\n\nEXTRACTION TO AUDIT:\n{'attempts': ['I want to quit smoking to live a healthy life.'], 'evidence': ['আমি সুস্থ জীবন যাপন এর জন্য ধূমপান ছাড়তে চাই']}\n\nConduct the following four checks:\n\n1. Grounding and Veracity: Does every extracted attempt have a direct textual anchor in the conversation? Flag any logical leaps where a quit attempt was assumed without explicit confirmation.\n\n2. Hallucination Check: List any data points in the extraction that have no basis in the source text.\n\n3. Omission Check: Scan the conversation for missed signals — keywords such as \"stopped,\" \"gave up,\" \"last time I tried,\" \"cut back to zero,\" or specific dates or durations — that should have been captured.\n\n4. Taxonomy Alignment: Verify that the attempt method (e.g., Cold Turkey, NRT, Pharmacotherapy, Behavioral Support) aligns with established clinical standards.\n\nScoring rubric:\n- 9–10: Perfect recall and precision, no errors.\n- 7–8: High utility; minor formatting or non-clinical nuance issues only.\n- 5–6: Partial data loss or one significant hallucination.\n- Below 5: Unreliable; multiple hallucinations or missed major attempts.\n\nRespond ONLY with valid JSON:\n{\n  \"confidence\": 0.0,\n  \"issues\": [\"<issue 1>\", \"<issue 2>\"]\n}\n
+
+RESPONSE:
+```json
+{
+  "confidence": 1.0,
+  "issues": []
+}
+```
+
+
+================================================================================
+OLLAMA CALL 0027
+================================================================================
+timestamp: 2026-04-17T08:05:29.885449+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a Senior Clinical NLP Reviewer specializing in Transtheoretical Model (TTM) stage classification quality assurance.\n\nTask: Audit the readiness stage classification below against the source conversation.\n\nSOURCE CONVERSATION:\nPatient: নমস্কার
+Counselor: নমস্কার! ধূমপান ছেড়ে দিতে আপনি কী করতে চান, বলুন তো? আপনার লক্ষ্য কী?
+Patient: আমি সুস্থ জীবন যাপন এর জন্য ধূমপান ছাড়তে চাই
+Counselor: ধুমপান ছেড়ে দিতে চান, এটা জেনে ভালো লাগলো। সুস্থ জীবনযাপন করার এই ইচ্ছাকে আপনি কতটা গুরুত্ব দেন?\n\nCLASSIFICATION TO AUDIT:\n{readiness_output}\n\nConduct the following checks:\n\n1. Stage Validity: Is the assigned stage (precontemplation, contemplation, preparation, action, maintenance, relapse) consistent with the patient's explicit statements and behavioral indicators in the conversation?\n\n2. Evidence Grounding: Is the cited evidence actually present in the conversation and does it unambiguously support the assigned stage rather than an adjacent stage?\n\n3. Contradicting Evidence: Are there patient statements that contradict the assigned stage or suggest a different classification? List them.\n\n4. Stage Boundary Precision: Could the patient plausibly fit a neighboring stage? If so, explain which evidence distinguishes the chosen stage from the adjacent one.\n\nScoring rubric:\n- 9–10: Stage is correct, evidence is unambiguous, no contradictions.\n- 7–8: Stage is defensible but borderline; minor evidence gap.\n- 5–6: Contradicting evidence ignored, or adjacent stage is equally or more supported.\n- Below 5: Stage classification is unsupported or directly contradicted by the conversation.\n\nRespond ONLY with valid JSON:\n{\n  \"confidence\": 0.0,\n  \"issues\": [\"<issue 1>\", \"<issue 2>\"]\n}\n
+
+RESPONSE:
+```json
+{
+  "confidence": 0.8,
+  "issues": [
+    "The classification is tentatively assigned to precontemplation. While the patient states a desire to quit smoking ('আমি সুস্থ জীবন যাপন এর জন্য ধূমপান ছাড়তে চাই'), the counselor's follow-up question about the *importance* of this desire ('সুস্থ জীবনযাপন করার এই ইচ্ছাকে আপনি কতটা গুরুত্ব দেন?') suggests a level of reflection beyond simply acknowledging the problem. A contemplation stage would typically involve exploring the reasons for wanting to change and the potential challenges. The conversation lacks concrete steps or a timeframe, leaning towards precontemplation, but the counselor's probing indicates a potential shift towards contemplation.",
+    "There is a slight ambiguity regarding evidence grounding. The patient's statement is the primary evidence, but the counselor's question pushes the conversation towards evaluating the *value* of quitting, which is more aligned with contemplation. A stronger justification for precontemplation would be a statement explicitly dismissing the idea of change or expressing a lack of concern about the health consequences."
+  ]
+}
+```
+
+================================================================================
+OLLAMA CALL 0028
+================================================================================
+timestamp: 2026-04-17T08:05:33.176098+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a Clinical Health Psychologist and NLP Validator specializing in patient-reported concerns from tobacco-cessation transcripts.\n\nTask: Audit the concern extraction below against the source conversation for clinical accuracy and completeness.\n\nSOURCE CONVERSATION:\nPatient: নমস্কার
+Counselor: নমস্কার! ধূমপান ছেড়ে দিতে আপনি কী করতে চান, বলুন তো? আপনার লক্ষ্য কী?
+Patient: আমি সুস্থ জীবন যাপন এর জন্য ধূমপান ছাড়তে চাই
+Counselor: ধুমপান ছেড়ে দিতে চান, এটা জেনে ভালো লাগলো। সুস্থ জীবনযাপন করার এই ইচ্ছাকে আপনি কতটা গুরুত্ব দেন?\n\nEXTRACTION TO AUDIT:\n{'concerns': ['Weight gain', 'Fear of failure'], 'evidence': ['আমি সুস্থ জীবন যাপন এর জন্য ধূমপান ছাড়তে চাই', 'সুস্থ জীবনযাপন করার এই ইচ্ছাকে আপনি কতটা গুরুত্ব দেন?']}\n\nConduct the following four checks:\n\n1. Implicit Concern Detection: Did the patient express concern through a question or a hedged statement (e.g., \"I've noticed I'm winded lately, but maybe it's just age\")? If an underlying health anxiety was missed, flag it as an omission.\n\n2. Severity Calibration: Ensure concerns were not underrepresented. If a patient said they were \"terrified of lung cancer,\" an extraction of \"worried about health\" is a precision error in severity.\n\n3. Temporal Attribution: Distinguish between historical concerns (past anxieties no longer active) and active concerns (current anxieties present at time of conversation).\n\n4. Categorization Accuracy: Verify concerns belong to the correct type:\n   - Physiological: cough, breathlessness, sleep issues, cravings\n   - Psychological: anxiety about failing, mood swings, irritability\n   - Social/Financial: cost of smoking or aids, stigma, family impact\n   - Situational/Relapse: concerns about specific trigger contexts\n\nScoring rubric:\n- 9–10: All concerns captured with correct intensity and category.\n- 7–8: Minor or passing concern missed; minor category misalignment.\n- 5–6: A primary concern missed or patient's emotional tone misinterpreted.\n- Below 5: Counselor advice confused for patient concerns, or major concerns absent.\n\nRespond ONLY with valid JSON:\n{\n  \"confidence\": 0.0,\n  \"issues\": [\"<issue 1>\", \"<issue 2>\"]\n}\n
+
+RESPONSE:
+```json
+{
+  "confidence": 0.8,
+  "issues": [
+    "The extraction missed a potential implicit concern regarding physiological impact. While the patient stated 'আমি সুস্থ জীবন যাপন এর জন্য ধূমপান ছাড়তে চাই' (I want to quit smoking for a healthy life), a more nuanced extraction could have included a concern about potential physical withdrawal symptoms or reduced lung function, which are common anxieties associated with cessation. This represents a minor omission.",
+    "The categorization of 'সুস্থ জীবনযাপন করার এই ইচ্ছাকে আপনি কতটা গুরুত্ব দেন?' (How much importance do you place on this desire to live a healthy life?) as psychological is reasonable, but could benefit from a slightly broader categorization – perhaps ‘Motivational’ – to capture the underlying drive. This is a minor category misalignment."
+  ]
+}
+```
+
+================================================================================
+OLLAMA CALL 0029
+================================================================================
+timestamp: 2026-04-17T08:05:35.744888+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a Senior Clinical NLP Reviewer specializing in smoking trigger extraction quality assurance.\n\nTask: Audit the trigger extraction below against the source conversation.\n\nSOURCE CONVERSATION:\nPatient: নমস্কার
+Counselor: নমস্কার! ধূমপান ছেড়ে দিতে আপনি কী করতে চান, বলুন তো? আপনার লক্ষ্য কী?
+Patient: আমি সুস্থ জীবন যাপন এর জন্য ধূমপান ছাড়তে চাই
+Counselor: ধুমপান ছেড়ে দিতে চান, এটা জেনে ভালো লাগলো। সুস্থ জীবনযাপন করার এই ইচ্ছাকে আপনি কতটা গুরুত্ব দেন?\n\nEXTRACTION TO AUDIT:\n{'triggers': ['ধূমপান ছেড়ে দিতে চাই', 'সুস্থ জীবন যাপন'], 'trigger_type': 'goal', 'confidence': 0.95}\n\nConduct the following four checks:\n\n1. Grounding Check: For each extracted trigger, verify it is either explicitly stated (the exact term or a clear synonym appears in the conversation) or strongly implied (the clinical context makes it unambiguous). Flag anything inferred, assumed, or fabricated.\n\n2. Hallucination Detection: Identify triggers that appear in the extraction but have no basis in the conversation. Note the specific trigger and explain why it is unsupported.\n\n3. Omission Detection: Identify triggers clearly present in the conversation but missing from the extraction. Note the exact phrase or passage and the trigger category it should have been assigned.\n\n4. Classification Accuracy: Verify each trigger is assigned the clinically appropriate type (emotional, situational, social, habitual). Flag misclassifications and suggest the correct label.\n\nScoring rubric:\n- 9–10: Near-perfect, no meaningful errors.\n- 7–8: Minor omissions or edge-case misclassifications.\n- 4–6: Several errors that affect reliability.\n- 1–3: Significant hallucinations or omissions.\n- 0: Extraction is unusable.\n\nRespond ONLY with valid JSON:\n{\n  \"confidence\": 0.0,\n  \"issues\": [\"<issue 1>\", \"<issue 2>\"]\n}\n
+
+RESPONSE:
+```json
+{
+  "confidence": 0.6,
+  "issues": [
+    "Omission Detection: The trigger 'ধূমপান ছেড়ে দিতে চাই' is explicitly stated in the conversation and should be included. The extraction misses this key trigger.",
+    "Classification Accuracy: The trigger 'সুস্থ জীবন যাপন' is classified as 'goal' which is appropriate, but the conversation demonstrates a desire for a healthier lifestyle rather than a clearly defined goal. A more nuanced classification, perhaps 'motivation' or 'intent', might be more accurate."
+  ]
+}
+```
+
+================================================================================
+OLLAMA CALL 0030
+================================================================================
+timestamp: 2026-04-17T08:05:36.730692+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a very strict clinical data validator. Compare the EXTRACTED DATA against the CONVERSATION.
+
+CONVERSATION:
+Patient: নমস্কার
+Counselor: নমস্কার! ধূমপান ছেড়ে দিতে আপনি কী করতে চান, বলুন তো? আপনার লক্ষ্য কী?
+Patient: আমি সুস্থ জীবন যাপন এর জন্য ধূমপান ছাড়তে চাই
+Counselor: ধুমপান ছেড়ে দিতে চান, এটা জেনে ভালো লাগলো। সুস্থ জীবনযাপন করার এই ইচ্ছাকে আপনি কতটা গুরুত্ব দেন?
+
+EXTRACTED DATA (cessation advice or guidance):
+{'advice': ['ধুমপান ছেড়ে দিতে চান, এটা জেনে ভালো লাগলো।', 'সুস্থ জীবনযাপন করার এই ইচ্ছাকে আপনি কতটা গুরুত্ব দেন?'], 'evidence': ['ধুমপান ছেড়ে দিতে চান, এটা জেনে ভালো লাগলো।', 'সুস্থ জীবনযাপন করার এই ইচ্ছাকে আপনি কতটা গুরুত্ব দেন?']}
+
+Your task:
+1. Very Strictly Check for hallucinations (data not in the text).
+2. Very Strictly Check for omissions (important data missed).
+3. Assign a confidence score between 0.0 and 1.0.
+
+Respond ONLY with valid JSON:
+{
+  "confidence": 0.0,
+  "issues": ["<issue 1>", "..."]
+}
+
+
+RESPONSE:
+```json
+{
+  "confidence": 0.95,
+  "issues": []
+}
+```
+
+================================================================================
+OLLAMA CALL 0031
+================================================================================
+timestamp: 2026-04-17T08:05:38.268463+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a clinical annotation reviser.\n\nTask: Produce a corrected trigger extraction that fully addresses all reviewer feedback.\n\nORIGINAL CONVERSATION:\nPatient: নমস্কার
+Counselor: নমস্কার! ধূমপান ছেড়ে দিতে আপনি কী করতে চান, বলুন তো? আপনার লক্ষ্য কী?
+Patient: আমি সুস্থ জীবন যাপন এর জন্য ধূমপান ছাড়তে চাই
+Counselor: ধুমপান ছেড়ে দিতে চান, এটা জেনে ভালো লাগলো। সুস্থ জীবনযাপন করার এই ইচ্ছাকে আপনি কতটা গুরুত্ব দেন?\n\nORIGINAL EXTRACTION:\n{'triggers': ['ধূমপান ছেড়ে দিতে চাই', 'সুস্থ জীবন যাপন'], 'trigger_type': 'goal', 'confidence': 0.95}\n\nREVIEWER FEEDBACK:\nOmission Detection: The trigger 'ধূমপান ছেড়ে দিতে চাই' is explicitly stated in the conversation and should be included. The extraction misses this key trigger.
+Classification Accuracy: The trigger 'সুস্থ জীবন যাপন' is classified as 'goal' which is appropriate, but the conversation demonstrates a desire for a healthier lifestyle rather than a clearly defined goal. A more nuanced classification, perhaps 'motivation' or 'intent', might be more accurate.\n\nRevision instructions:\n- Remove any hallucinated triggers that have no basis in the conversation.\n- Add any omitted triggers that are genuinely present in the conversation.\n- Correct the trigger_type label for any misclassified entries.\n- Do not introduce new items not supported by the conversation or the reviewer feedback.\n- Update the confidence score to reflect your certainty in the revised extraction.\n\nRespond ONLY with valid JSON:\n{\n  \"triggers\": [\"<corrected trigger 1>\", \"<corrected trigger 2>\"],\n  \"trigger_type\": \"<emotional|situational|social|habitual|mixed>\",\n  \"confidence\": 0.0\n}\n
+
+RESPONSE:
+```json
+{
+  "triggers": [
+    "ধূমপান ছেড়ে দিতে চাই",
+    "সুস্থ জীবন যাপন"
+  ],
+  "trigger_type": "motivation",
+  "confidence": 0.98
+}
+```
+
+================================================================================
+OLLAMA CALL 0032
+================================================================================
+timestamp: 2026-04-17T08:05:39.382994+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a Senior Clinical Informatics Specialist specializing in NLP quality assurance for tobacco cessation research.\n\nTask: Audit the quit-attempt extraction below against the source conversation for 100% fidelity.\n\nSOURCE CONVERSATION:\nPatient: নমস্কার
+Counselor: নমস্কার! ধূমপান ছেড়ে দিতে আপনি কী করতে চান, বলুন তো? আপনার লক্ষ্য কী?
+Patient: আমি সুস্থ জীবন যাপন এর জন্য ধূমপান ছাড়তে চাই
+Counselor: ধুমপান ছেড়ে দিতে চান, এটা জেনে ভালো লাগলো। সুস্থ জীবনযাপন করার এই ইচ্ছাকে আপনি কতটা গুরুত্ব দেন?\n\nEXTRACTION TO AUDIT:\n{'attempts': ['I want to quit smoking to live a healthy life.'], 'evidence': ['আমি সুস্থ জীবন যাপন এর জন্য ধূমপান ছাড়তে চাই']}\n\nConduct the following four checks:\n\n1. Grounding and Veracity: Does every extracted attempt have a direct textual anchor in the conversation? Flag any logical leaps where a quit attempt was assumed without explicit confirmation.\n\n2. Hallucination Check: List any data points in the extraction that have no basis in the source text.\n\n3. Omission Check: Scan the conversation for missed signals — keywords such as \"stopped,\" \"gave up,\" \"last time I tried,\" \"cut back to zero,\" or specific dates or durations — that should have been captured.\n\n4. Taxonomy Alignment: Verify that the attempt method (e.g., Cold Turkey, NRT, Pharmacotherapy, Behavioral Support) aligns with established clinical standards.\n\nScoring rubric:\n- 9–10: Perfect recall and precision, no errors.\n- 7–8: High utility; minor formatting or non-clinical nuance issues only.\n- 5–6: Partial data loss or one significant hallucination.\n- Below 5: Unreliable; multiple hallucinations or missed major attempts.\n\nRespond ONLY with valid JSON:\n{\n  \"confidence\": 0.0,\n  \"issues\": [\"<issue 1>\", \"<issue 2>\"]\n}\n
+
+RESPONSE:
+```json
+{
+  "confidence": 1.0,
+  "issues": []
+}
+```
+
+
+================================================================================
+OLLAMA CALL 0033
+================================================================================
+timestamp: 2026-04-17T08:05:43.387388+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a Senior Clinical NLP Reviewer specializing in Transtheoretical Model (TTM) stage classification quality assurance.\n\nTask: Audit the readiness stage classification below against the source conversation.\n\nSOURCE CONVERSATION:\nPatient: নমস্কার
+Counselor: নমস্কার! ধূমপান ছেড়ে দিতে আপনি কী করতে চান, বলুন তো? আপনার লক্ষ্য কী?
+Patient: আমি সুস্থ জীবন যাপন এর জন্য ধূমপান ছাড়তে চাই
+Counselor: ধুমপান ছেড়ে দিতে চান, এটা জেনে ভালো লাগলো। সুস্থ জীবনযাপন করার এই ইচ্ছাকে আপনি কতটা গুরুত্ব দেন?\n\nCLASSIFICATION TO AUDIT:\n{readiness_output}\n\nConduct the following checks:\n\n1. Stage Validity: Is the assigned stage (precontemplation, contemplation, preparation, action, maintenance, relapse) consistent with the patient's explicit statements and behavioral indicators in the conversation?\n\n2. Evidence Grounding: Is the cited evidence actually present in the conversation and does it unambiguously support the assigned stage rather than an adjacent stage?\n\n3. Contradicting Evidence: Are there patient statements that contradict the assigned stage or suggest a different classification? List them.\n\n4. Stage Boundary Precision: Could the patient plausibly fit a neighboring stage? If so, explain which evidence distinguishes the chosen stage from the adjacent one.\n\nScoring rubric:\n- 9–10: Stage is correct, evidence is unambiguous, no contradictions.\n- 7–8: Stage is defensible but borderline; minor evidence gap.\n- 5–6: Contradicting evidence ignored, or adjacent stage is equally or more supported.\n- Below 5: Stage classification is unsupported or directly contradicted by the conversation.\n\nRespond ONLY with valid JSON:\n{\n  \"confidence\": 0.0,\n  \"issues\": [\"<issue 1>\", \"<issue 2>\"]\n}\n
+
+RESPONSE:
+```json
+{
+  "confidence": 0.8,
+  "issues": [
+    "The classification is tentatively assigned to precontemplation. While the patient states a desire to quit smoking for a 'healthy life,' the initial question from the counselor focuses on *wanting* to quit, rather than demonstrating any concrete steps or consideration of quitting. A stronger indication of contemplation or preparation would require the patient to express thoughts about how they might quit or acknowledge the need for change. The conversation lacks evidence of behavioral indicators typically associated with earlier stages.",
+    "There is a slight ambiguity regarding the level of commitment. The patient's statement 'আমি সুস্থ জীবন যাপন এর জন্য ধূমপান ছাড়তে চাই' (I want to quit smoking for a healthy life) could be interpreted as early contemplation. However, the counselor's follow-up question about the *importance* of this desire introduces a degree of uncertainty. It's possible the patient hasn't yet fully committed to action, hence the precontemplation classification, but the evidence is not definitively strong."
+  ]
+}
+```
+
+================================================================================
+OLLAMA CALL 0034
+================================================================================
+timestamp: 2026-04-17T08:05:46.169563+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a Clinical Health Psychologist and NLP Validator specializing in patient-reported concerns from tobacco-cessation transcripts.\n\nTask: Audit the concern extraction below against the source conversation for clinical accuracy and completeness.\n\nSOURCE CONVERSATION:\nPatient: নমস্কার
+Counselor: নমস্কার! ধূমপান ছেড়ে দিতে আপনি কী করতে চান, বলুন তো? আপনার লক্ষ্য কী?
+Patient: আমি সুস্থ জীবন যাপন এর জন্য ধূমপান ছাড়তে চাই
+Counselor: ধুমপান ছেড়ে দিতে চান, এটা জেনে ভালো লাগলো। সুস্থ জীবনযাপন করার এই ইচ্ছাকে আপনি কতটা গুরুত্ব দেন?\n\nEXTRACTION TO AUDIT:\n{'concerns': ['Weight gain', 'Fear of failure'], 'evidence': ['আমি সুস্থ জীবন যাপন এর জন্য ধূমপান ছাড়তে চাই', 'সুস্থ জীবনযাপন করার এই ইচ্ছাকে আপনি কতটা গুরুত্ব দেন?']}\n\nConduct the following four checks:\n\n1. Implicit Concern Detection: Did the patient express concern through a question or a hedged statement (e.g., \"I've noticed I'm winded lately, but maybe it's just age\")? If an underlying health anxiety was missed, flag it as an omission.\n\n2. Severity Calibration: Ensure concerns were not underrepresented. If a patient said they were \"terrified of lung cancer,\" an extraction of \"worried about health\" is a precision error in severity.\n\n3. Temporal Attribution: Distinguish between historical concerns (past anxieties no longer active) and active concerns (current anxieties present at time of conversation).\n\n4. Categorization Accuracy: Verify concerns belong to the correct type:\n   - Physiological: cough, breathlessness, sleep issues, cravings\n   - Psychological: anxiety about failing, mood swings, irritability\n   - Social/Financial: cost of smoking or aids, stigma, family impact\n   - Situational/Relapse: concerns about specific trigger contexts\n\nScoring rubric:\n- 9–10: All concerns captured with correct intensity and category.\n- 7–8: Minor or passing concern missed; minor category misalignment.\n- 5–6: A primary concern missed or patient's emotional tone misinterpreted.\n- Below 5: Counselor advice confused for patient concerns, or major concerns absent.\n\nRespond ONLY with valid JSON:\n{\n  \"confidence\": 0.0,\n  \"issues\": [\"<issue 1>\", \"<issue 2>\"]\n}\n
+
+RESPONSE:
+```json
+{
+  "confidence": 0.8,
+  "issues": [
+    "Minor concern missed: The patient explicitly states a desire for a 'healthy life,' indicating a potential concern regarding the impact of smoking on their health. This could be categorized as a psychological concern (fear of illness/poor health).",
+    "Categorization Accuracy: While 'Fear of failure' is present, a more nuanced categorization of the patient's stated goal ('I want to quit smoking for a healthy life') leans more towards a psychological concern related to self-efficacy and motivation rather than a specific fear of failure."
+  ]
+}
+```
+
+================================================================================
+OLLAMA CALL 0035
+================================================================================
+timestamp: 2026-04-17T08:05:49.772867+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a Senior Clinical NLP Reviewer specializing in smoking trigger extraction quality assurance.\n\nTask: Audit the trigger extraction below against the source conversation.\n\nSOURCE CONVERSATION:\nPatient: নমস্কার
+Counselor: নমস্কার! ধূমপান ছেড়ে দিতে আপনি কী করতে চান, বলুন তো? আপনার লক্ষ্য কী?
+Patient: আমি সুস্থ জীবন যাপন এর জন্য ধূমপান ছাড়তে চাই
+Counselor: ধুমপান ছেড়ে দিতে চান, এটা জেনে ভালো লাগলো। সুস্থ জীবনযাপন করার এই ইচ্ছাকে আপনি কতটা গুরুত্ব দেন?\n\nEXTRACTION TO AUDIT:\n{'triggers': ['ধূমপান ছেড়ে দিতে চাই', 'সুস্থ জীবন যাপন'], 'trigger_type': 'motivation', 'confidence': 0.98}\n\nConduct the following four checks:\n\n1. Grounding Check: For each extracted trigger, verify it is either explicitly stated (the exact term or a clear synonym appears in the conversation) or strongly implied (the clinical context makes it unambiguous). Flag anything inferred, assumed, or fabricated.\n\n2. Hallucination Detection: Identify triggers that appear in the extraction but have no basis in the conversation. Note the specific trigger and explain why it is unsupported.\n\n3. Omission Detection: Identify triggers clearly present in the conversation but missing from the extraction. Note the exact phrase or passage and the trigger category it should have been assigned.\n\n4. Classification Accuracy: Verify each trigger is assigned the clinically appropriate type (emotional, situational, social, habitual). Flag misclassifications and suggest the correct label.\n\nScoring rubric:\n- 9–10: Near-perfect, no meaningful errors.\n- 7–8: Minor omissions or edge-case misclassifications.\n- 4–6: Several errors that affect reliability.\n- 1–3: Significant hallucinations or omissions.\n- 0: Extraction is unusable.\n\nRespond ONLY with valid JSON:\n{\n  \"confidence\": 0.0,\n  \"issues\": [\"<issue 1>\", \"<issue 2>\"]\n}\n
+
+RESPONSE:
+```json
+{
+  "confidence": 0.6,
+  "issues": [
+    "**Grounding Check (Omission):** The trigger 'সুস্থ জীবন যাপন' (healthy lifestyle) is strongly implied but not explicitly stated. While the patient expresses a desire to 'ধূমপান ছেড়ে দিতে চাই' (quit smoking), the counselor's follow-up question about prioritizing this desire implicitly points to a broader motivation for change. This requires inference, not direct extraction, and should be flagged.",
+    "**Classification Accuracy (Misclassification):** 'সুস্থ জীবন যাপন' is classified as 'motivation'. While accurate, a more granular classification might be beneficial. Considering the conversation's focus on the *reason* for quitting, 'goal' or 'intent' could be more precise labels.  The primary trigger, 'ধূমপান ছেড়ে দিতে চাই', is correctly classified as 'motivation'."
+  ]
+}
+```
+
+================================================================================
+OLLAMA CALL 0036
+================================================================================
+timestamp: 2026-04-17T08:05:50.737889+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a very strict clinical data validator. Compare the EXTRACTED DATA against the CONVERSATION.
+
+CONVERSATION:
+Patient: নমস্কার
+Counselor: নমস্কার! ধূমপান ছেড়ে দিতে আপনি কী করতে চান, বলুন তো? আপনার লক্ষ্য কী?
+Patient: আমি সুস্থ জীবন যাপন এর জন্য ধূমপান ছাড়তে চাই
+Counselor: ধুমপান ছেড়ে দিতে চান, এটা জেনে ভালো লাগলো। সুস্থ জীবনযাপন করার এই ইচ্ছাকে আপনি কতটা গুরুত্ব দেন?
+
+EXTRACTED DATA (cessation advice or guidance):
+{'advice': ['ধুমপান ছেড়ে দিতে চান, এটা জেনে ভালো লাগলো।', 'সুস্থ জীবনযাপন করার এই ইচ্ছাকে আপনি কতটা গুরুত্ব দেন?'], 'evidence': ['ধুমপান ছেড়ে দিতে চান, এটা জেনে ভালো লাগলো।', 'সুস্থ জীবনযাপন করার এই ইচ্ছাকে আপনি কতটা গুরুত্ব দেন?']}
+
+Your task:
+1. Very Strictly Check for hallucinations (data not in the text).
+2. Very Strictly Check for omissions (important data missed).
+3. Assign a confidence score between 0.0 and 1.0.
+
+Respond ONLY with valid JSON:
+{
+  "confidence": 0.0,
+  "issues": ["<issue 1>", "..."]
+}
+
+
+RESPONSE:
+```json
+{
+  "confidence": 0.95,
+  "issues": []
+}
+```
+
+================================================================================
+OLLAMA CALL 0037
+================================================================================
+timestamp: 2026-04-17T08:05:52.310665+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a clinical annotation reviser.\n\nTask: Produce a corrected trigger extraction that fully addresses all reviewer feedback.\n\nORIGINAL CONVERSATION:\nPatient: নমস্কার
+Counselor: নমস্কার! ধূমপান ছেড়ে দিতে আপনি কী করতে চান, বলুন তো? আপনার লক্ষ্য কী?
+Patient: আমি সুস্থ জীবন যাপন এর জন্য ধূমপান ছাড়তে চাই
+Counselor: ধুমপান ছেড়ে দিতে চান, এটা জেনে ভালো লাগলো। সুস্থ জীবনযাপন করার এই ইচ্ছাকে আপনি কতটা গুরুত্ব দেন?\n\nORIGINAL EXTRACTION:\n{'triggers': ['ধূমপান ছেড়ে দিতে চাই', 'সুস্থ জীবন যাপন'], 'trigger_type': 'motivation', 'confidence': 0.98}\n\nREVIEWER FEEDBACK:\n**Grounding Check (Omission):** The trigger 'সুস্থ জীবন যাপন' (healthy lifestyle) is strongly implied but not explicitly stated. While the patient expresses a desire to 'ধূমপান ছেড়ে দিতে চাই' (quit smoking), the counselor's follow-up question about prioritizing this desire implicitly points to a broader motivation for change. This requires inference, not direct extraction, and should be flagged.
+**Classification Accuracy (Misclassification):** 'সুস্থ জীবন যাপন' is classified as 'motivation'. While accurate, a more granular classification might be beneficial. Considering the conversation's focus on the *reason* for quitting, 'goal' or 'intent' could be more precise labels.  The primary trigger, 'ধূমপান ছেড়ে দিতে চাই', is correctly classified as 'motivation'.\n\nRevision instructions:\n- Remove any hallucinated triggers that have no basis in the conversation.\n- Add any omitted triggers that are genuinely present in the conversation.\n- Correct the trigger_type label for any misclassified entries.\n- Do not introduce new items not supported by the conversation or the reviewer feedback.\n- Update the confidence score to reflect your certainty in the revised extraction.\n\nRespond ONLY with valid JSON:\n{\n  \"triggers\": [\"<corrected trigger 1>\", \"<corrected trigger 2>\"],\n  \"trigger_type\": \"<emotional|situational|social|habitual|mixed>\",\n  \"confidence\": 0.0\n}\n
+
+RESPONSE:
+```json
+{
+  "triggers": [
+    "ধূমপান ছেড়ে দিতে চাই",
+    "সুস্থ জীবন যাপন"
+  ],
+  "trigger_type": "goal",
+  "confidence": 0.95
+}
+```
+
+================================================================================
+OLLAMA CALL 0038
+================================================================================
+timestamp: 2026-04-17T08:05:53.466685+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a Senior Clinical Informatics Specialist specializing in NLP quality assurance for tobacco cessation research.\n\nTask: Audit the quit-attempt extraction below against the source conversation for 100% fidelity.\n\nSOURCE CONVERSATION:\nPatient: নমস্কার
+Counselor: নমস্কার! ধূমপান ছেড়ে দিতে আপনি কী করতে চান, বলুন তো? আপনার লক্ষ্য কী?
+Patient: আমি সুস্থ জীবন যাপন এর জন্য ধূমপান ছাড়তে চাই
+Counselor: ধুমপান ছেড়ে দিতে চান, এটা জেনে ভালো লাগলো। সুস্থ জীবনযাপন করার এই ইচ্ছাকে আপনি কতটা গুরুত্ব দেন?\n\nEXTRACTION TO AUDIT:\n{'attempts': ['I want to quit smoking to live a healthy life.'], 'evidence': ['আমি সুস্থ জীবন যাপন এর জন্য ধূমপান ছাড়তে চাই']}\n\nConduct the following four checks:\n\n1. Grounding and Veracity: Does every extracted attempt have a direct textual anchor in the conversation? Flag any logical leaps where a quit attempt was assumed without explicit confirmation.\n\n2. Hallucination Check: List any data points in the extraction that have no basis in the source text.\n\n3. Omission Check: Scan the conversation for missed signals — keywords such as \"stopped,\" \"gave up,\" \"last time I tried,\" \"cut back to zero,\" or specific dates or durations — that should have been captured.\n\n4. Taxonomy Alignment: Verify that the attempt method (e.g., Cold Turkey, NRT, Pharmacotherapy, Behavioral Support) aligns with established clinical standards.\n\nScoring rubric:\n- 9–10: Perfect recall and precision, no errors.\n- 7–8: High utility; minor formatting or non-clinical nuance issues only.\n- 5–6: Partial data loss or one significant hallucination.\n- Below 5: Unreliable; multiple hallucinations or missed major attempts.\n\nRespond ONLY with valid JSON:\n{\n  \"confidence\": 0.0,\n  \"issues\": [\"<issue 1>\", \"<issue 2>\"]\n}\n
+
+RESPONSE:
+```json
+{
+  "confidence": 1.0,
+  "issues": []
+}
+```
+
+
+================================================================================
+OLLAMA CALL 0039
+================================================================================
+timestamp: 2026-04-17T08:05:56.612314+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a Senior Clinical NLP Reviewer specializing in Transtheoretical Model (TTM) stage classification quality assurance.\n\nTask: Audit the readiness stage classification below against the source conversation.\n\nSOURCE CONVERSATION:\nPatient: নমস্কার
+Counselor: নমস্কার! ধূমপান ছেড়ে দিতে আপনি কী করতে চান, বলুন তো? আপনার লক্ষ্য কী?
+Patient: আমি সুস্থ জীবন যাপন এর জন্য ধূমপান ছাড়তে চাই
+Counselor: ধুমপান ছেড়ে দিতে চান, এটা জেনে ভালো লাগলো। সুস্থ জীবনযাপন করার এই ইচ্ছাকে আপনি কতটা গুরুত্ব দেন?\n\nCLASSIFICATION TO AUDIT:\n{readiness_output}\n\nConduct the following checks:\n\n1. Stage Validity: Is the assigned stage (precontemplation, contemplation, preparation, action, maintenance, relapse) consistent with the patient's explicit statements and behavioral indicators in the conversation?\n\n2. Evidence Grounding: Is the cited evidence actually present in the conversation and does it unambiguously support the assigned stage rather than an adjacent stage?\n\n3. Contradicting Evidence: Are there patient statements that contradict the assigned stage or suggest a different classification? List them.\n\n4. Stage Boundary Precision: Could the patient plausibly fit a neighboring stage? If so, explain which evidence distinguishes the chosen stage from the adjacent one.\n\nScoring rubric:\n- 9–10: Stage is correct, evidence is unambiguous, no contradictions.\n- 7–8: Stage is defensible but borderline; minor evidence gap.\n- 5–6: Contradicting evidence ignored, or adjacent stage is equally or more supported.\n- Below 5: Stage classification is unsupported or directly contradicted by the conversation.\n\nRespond ONLY with valid JSON:\n{\n  \"confidence\": 0.0,\n  \"issues\": [\"<issue 1>\", \"<issue 2>\"]\n}\n
+
+RESPONSE:
+```json
+{
+  "confidence": 0.8,
+  "issues": [
+    "While the patient expresses a desire to quit smoking ('আমি সুস্থ জীবন যাপন এর জন্য ধূমপান ছাড়তে চাই'), the counselor's follow-up question about the importance of the desire ('সুস্থ জীবনযাপন করার এই ইচ্ছাকে আপনি কতটা গুরুত্ব দেন?') leans towards the Contemplation stage. The patient's initial statement is more reflective of Precontemplation.  A stronger focus on the *importance* of the goal suggests a move beyond simply wanting to quit.",
+    "There is a slight ambiguity. The conversation doesn't definitively place the patient within a single stage. Further probing would be needed to solidify the classification. It’s borderline between Precontemplation and Contemplation."
+  ]
+}
+```
+
+================================================================================
+OLLAMA CALL 0040
+================================================================================
+timestamp: 2026-04-17T08:05:59.571305+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a Clinical Health Psychologist and NLP Validator specializing in patient-reported concerns from tobacco-cessation transcripts.\n\nTask: Audit the concern extraction below against the source conversation for clinical accuracy and completeness.\n\nSOURCE CONVERSATION:\nPatient: নমস্কার
+Counselor: নমস্কার! ধূমপান ছেড়ে দিতে আপনি কী করতে চান, বলুন তো? আপনার লক্ষ্য কী?
+Patient: আমি সুস্থ জীবন যাপন এর জন্য ধূমপান ছাড়তে চাই
+Counselor: ধুমপান ছেড়ে দিতে চান, এটা জেনে ভালো লাগলো। সুস্থ জীবনযাপন করার এই ইচ্ছাকে আপনি কতটা গুরুত্ব দেন?\n\nEXTRACTION TO AUDIT:\n{'concerns': ['Weight gain', 'Fear of failure'], 'evidence': ['আমি সুস্থ জীবন যাপন এর জন্য ধূমপান ছাড়তে চাই', 'সুস্থ জীবনযাপন করার এই ইচ্ছাকে আপনি কতটা গুরুত্ব দেন?']}\n\nConduct the following four checks:\n\n1. Implicit Concern Detection: Did the patient express concern through a question or a hedged statement (e.g., \"I've noticed I'm winded lately, but maybe it's just age\")? If an underlying health anxiety was missed, flag it as an omission.\n\n2. Severity Calibration: Ensure concerns were not underrepresented. If a patient said they were \"terrified of lung cancer,\" an extraction of \"worried about health\" is a precision error in severity.\n\n3. Temporal Attribution: Distinguish between historical concerns (past anxieties no longer active) and active concerns (current anxieties present at time of conversation).\n\n4. Categorization Accuracy: Verify concerns belong to the correct type:\n   - Physiological: cough, breathlessness, sleep issues, cravings\n   - Psychological: anxiety about failing, mood swings, irritability\n   - Social/Financial: cost of smoking or aids, stigma, family impact\n   - Situational/Relapse: concerns about specific trigger contexts\n\nScoring rubric:\n- 9–10: All concerns captured with correct intensity and category.\n- 7–8: Minor or passing concern missed; minor category misalignment.\n- 5–6: A primary concern missed or patient's emotional tone misinterpreted.\n- Below 5: Counselor advice confused for patient concerns, or major concerns absent.\n\nRespond ONLY with valid JSON:\n{\n  \"confidence\": 0.0,\n  \"issues\": [\"<issue 1>\", \"<issue 2>\"]\n}\n
+
+RESPONSE:
+```json
+{
+  "confidence": 0.8,
+  "issues": [
+    "Minor concern missed: The patient explicitly states a desire for a 'healthy life,' indicating a potential concern regarding the impact of smoking on their health. This could be categorized as a psychological concern (fear of illness/poor health outcomes).",
+    "Categorization Accuracy - Potential Misalignment: While 'সুস্থ জীবনযাপন করার এই ইচ্ছাকে আপনি কতটা গুরুত্ব দেন?' (How seriously do you take the desire for a healthy life?) is relevant, it's more accurately categorized as a psychological concern related to motivation and commitment rather than a direct physiological or situational concern."
+  ]
+}
+```
+
+================================================================================
+OLLAMA CALL 0041
+================================================================================
+timestamp: 2026-04-17T08:06:02.146113+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a Senior Clinical NLP Reviewer specializing in smoking trigger extraction quality assurance.\n\nTask: Audit the trigger extraction below against the source conversation.\n\nSOURCE CONVERSATION:\nPatient: নমস্কার
+Counselor: নমস্কার! ধূমপান ছেড়ে দিতে আপনি কী করতে চান, বলুন তো? আপনার লক্ষ্য কী?
+Patient: আমি সুস্থ জীবন যাপন এর জন্য ধূমপান ছাড়তে চাই
+Counselor: ধুমপান ছেড়ে দিতে চান, এটা জেনে ভালো লাগলো। সুস্থ জীবনযাপন করার এই ইচ্ছাকে আপনি কতটা গুরুত্ব দেন?\n\nEXTRACTION TO AUDIT:\n{'triggers': ['ধূমপান ছেড়ে দিতে চাই', 'সুস্থ জীবন যাপন'], 'trigger_type': 'goal', 'confidence': 0.95}\n\nConduct the following four checks:\n\n1. Grounding Check: For each extracted trigger, verify it is either explicitly stated (the exact term or a clear synonym appears in the conversation) or strongly implied (the clinical context makes it unambiguous). Flag anything inferred, assumed, or fabricated.\n\n2. Hallucination Detection: Identify triggers that appear in the extraction but have no basis in the conversation. Note the specific trigger and explain why it is unsupported.\n\n3. Omission Detection: Identify triggers clearly present in the conversation but missing from the extraction. Note the exact phrase or passage and the trigger category it should have been assigned.\n\n4. Classification Accuracy: Verify each trigger is assigned the clinically appropriate type (emotional, situational, social, habitual). Flag misclassifications and suggest the correct label.\n\nScoring rubric:\n- 9–10: Near-perfect, no meaningful errors.\n- 7–8: Minor omissions or edge-case misclassifications.\n- 4–6: Several errors that affect reliability.\n- 1–3: Significant hallucinations or omissions.\n- 0: Extraction is unusable.\n\nRespond ONLY with valid JSON:\n{\n  \"confidence\": 0.0,\n  \"issues\": [\"<issue 1>\", \"<issue 2>\"]\n}\n
+
+RESPONSE:
+```json
+{
+  "confidence": 0.6,
+  "issues": [
+    "Omission Detection: The trigger 'ধূমপান ছেড়ে দিতে চাই' is explicitly stated in the conversation and should be included. The extraction misses this key trigger.",
+    "Classification Accuracy: The trigger 'সুস্থ জীবন যাপন' is classified as 'goal' which is appropriate, but the conversation focuses on the *desire* to achieve that goal, rather than the goal itself. A more accurate classification might be 'motivation' or 'intent'. "
+  ]
+}
+```
+
+================================================================================
+OLLAMA CALL 0042
+================================================================================
+timestamp: 2026-04-17T08:06:03.135280+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a very strict clinical data validator. Compare the EXTRACTED DATA against the CONVERSATION.
+
+CONVERSATION:
+Patient: নমস্কার
+Counselor: নমস্কার! ধূমপান ছেড়ে দিতে আপনি কী করতে চান, বলুন তো? আপনার লক্ষ্য কী?
+Patient: আমি সুস্থ জীবন যাপন এর জন্য ধূমপান ছাড়তে চাই
+Counselor: ধুমপান ছেড়ে দিতে চান, এটা জেনে ভালো লাগলো। সুস্থ জীবনযাপন করার এই ইচ্ছাকে আপনি কতটা গুরুত্ব দেন?
+
+EXTRACTED DATA (cessation advice or guidance):
+{'advice': ['ধুমপান ছেড়ে দিতে চান, এটা জেনে ভালো লাগলো।', 'সুস্থ জীবনযাপন করার এই ইচ্ছাকে আপনি কতটা গুরুত্ব দেন?'], 'evidence': ['ধুমপান ছেড়ে দিতে চান, এটা জেনে ভালো লাগলো।', 'সুস্থ জীবনযাপন করার এই ইচ্ছাকে আপনি কতটা গুরুত্ব দেন?']}
+
+Your task:
+1. Very Strictly Check for hallucinations (data not in the text).
+2. Very Strictly Check for omissions (important data missed).
+3. Assign a confidence score between 0.0 and 1.0.
+
+Respond ONLY with valid JSON:
+{
+  "confidence": 0.0,
+  "issues": ["<issue 1>", "..."]
+}
+
+
+RESPONSE:
+```json
+{
+  "confidence": 0.95,
+  "issues": []
+}
+```
+
+================================================================================
+OLLAMA CALL 0043
+================================================================================
+timestamp: 2026-04-17T08:06:04.690239+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a clinical annotation reviser.\n\nTask: Produce a corrected trigger extraction that fully addresses all reviewer feedback.\n\nORIGINAL CONVERSATION:\nPatient: নমস্কার
+Counselor: নমস্কার! ধূমপান ছেড়ে দিতে আপনি কী করতে চান, বলুন তো? আপনার লক্ষ্য কী?
+Patient: আমি সুস্থ জীবন যাপন এর জন্য ধূমপান ছাড়তে চাই
+Counselor: ধুমপান ছেড়ে দিতে চান, এটা জেনে ভালো লাগলো। সুস্থ জীবনযাপন করার এই ইচ্ছাকে আপনি কতটা গুরুত্ব দেন?\n\nORIGINAL EXTRACTION:\n{'triggers': ['ধূমপান ছেড়ে দিতে চাই', 'সুস্থ জীবন যাপন'], 'trigger_type': 'goal', 'confidence': 0.95}\n\nREVIEWER FEEDBACK:\nOmission Detection: The trigger 'ধূমপান ছেড়ে দিতে চাই' is explicitly stated in the conversation and should be included. The extraction misses this key trigger.
+Classification Accuracy: The trigger 'সুস্থ জীবন যাপন' is classified as 'goal' which is appropriate, but the conversation focuses on the *desire* to achieve that goal, rather than the goal itself. A more accurate classification might be 'motivation' or 'intent'. \n\nRevision instructions:\n- Remove any hallucinated triggers that have no basis in the conversation.\n- Add any omitted triggers that are genuinely present in the conversation.\n- Correct the trigger_type label for any misclassified entries.\n- Do not introduce new items not supported by the conversation or the reviewer feedback.\n- Update the confidence score to reflect your certainty in the revised extraction.\n\nRespond ONLY with valid JSON:\n{\n  \"triggers\": [\"<corrected trigger 1>\", \"<corrected trigger 2>\"],\n  \"trigger_type\": \"<emotional|situational|social|habitual|mixed>\",\n  \"confidence\": 0.0\n}\n
+
+RESPONSE:
+```json
+{
+  "triggers": [
+    "ধূমপান ছেড়ে দিতে চাই",
+    "সুস্থ জীবন যাপন এর জন্য ধূমপান ছাড়তে চাই"
+  ],
+  "trigger_type": "motivation",
+  "confidence": 0.98
+}
+```
+
+================================================================================
+OLLAMA CALL 0044
+================================================================================
+timestamp: 2026-04-17T08:06:05.707758+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a Senior Clinical Informatics Specialist specializing in NLP quality assurance for tobacco cessation research.\n\nTask: Audit the quit-attempt extraction below against the source conversation for 100% fidelity.\n\nSOURCE CONVERSATION:\nPatient: নমস্কার
+Counselor: নমস্কার! ধূমপান ছেড়ে দিতে আপনি কী করতে চান, বলুন তো? আপনার লক্ষ্য কী?
+Patient: আমি সুস্থ জীবন যাপন এর জন্য ধূমপান ছাড়তে চাই
+Counselor: ধুমপান ছেড়ে দিতে চান, এটা জেনে ভালো লাগলো। সুস্থ জীবনযাপন করার এই ইচ্ছাকে আপনি কতটা গুরুত্ব দেন?\n\nEXTRACTION TO AUDIT:\n{'attempts': ['I want to quit smoking to live a healthy life.'], 'evidence': ['আমি সুস্থ জীবন যাপন এর জন্য ধূমপান ছাড়তে চাই']}\n\nConduct the following four checks:\n\n1. Grounding and Veracity: Does every extracted attempt have a direct textual anchor in the conversation? Flag any logical leaps where a quit attempt was assumed without explicit confirmation.\n\n2. Hallucination Check: List any data points in the extraction that have no basis in the source text.\n\n3. Omission Check: Scan the conversation for missed signals — keywords such as \"stopped,\" \"gave up,\" \"last time I tried,\" \"cut back to zero,\" or specific dates or durations — that should have been captured.\n\n4. Taxonomy Alignment: Verify that the attempt method (e.g., Cold Turkey, NRT, Pharmacotherapy, Behavioral Support) aligns with established clinical standards.\n\nScoring rubric:\n- 9–10: Perfect recall and precision, no errors.\n- 7–8: High utility; minor formatting or non-clinical nuance issues only.\n- 5–6: Partial data loss or one significant hallucination.\n- Below 5: Unreliable; multiple hallucinations or missed major attempts.\n\nRespond ONLY with valid JSON:\n{\n  \"confidence\": 0.0,\n  \"issues\": [\"<issue 1>\", \"<issue 2>\"]\n}\n
+
+RESPONSE:
+```json
+{
+  "confidence": 1.0,
+  "issues": []
+}
+```
+
+
+================================================================================
+OLLAMA CALL 0045
+================================================================================
+timestamp: 2026-04-17T08:06:09.319761+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a Senior Clinical NLP Reviewer specializing in Transtheoretical Model (TTM) stage classification quality assurance.\n\nTask: Audit the readiness stage classification below against the source conversation.\n\nSOURCE CONVERSATION:\nPatient: নমস্কার
+Counselor: নমস্কার! ধূমপান ছেড়ে দিতে আপনি কী করতে চান, বলুন তো? আপনার লক্ষ্য কী?
+Patient: আমি সুস্থ জীবন যাপন এর জন্য ধূমপান ছাড়তে চাই
+Counselor: ধুমপান ছেড়ে দিতে চান, এটা জেনে ভালো লাগলো। সুস্থ জীবনযাপন করার এই ইচ্ছাকে আপনি কতটা গুরুত্ব দেন?\n\nCLASSIFICATION TO AUDIT:\n{readiness_output}\n\nConduct the following checks:\n\n1. Stage Validity: Is the assigned stage (precontemplation, contemplation, preparation, action, maintenance, relapse) consistent with the patient's explicit statements and behavioral indicators in the conversation?\n\n2. Evidence Grounding: Is the cited evidence actually present in the conversation and does it unambiguously support the assigned stage rather than an adjacent stage?\n\n3. Contradicting Evidence: Are there patient statements that contradict the assigned stage or suggest a different classification? List them.\n\n4. Stage Boundary Precision: Could the patient plausibly fit a neighboring stage? If so, explain which evidence distinguishes the chosen stage from the adjacent one.\n\nScoring rubric:\n- 9–10: Stage is correct, evidence is unambiguous, no contradictions.\n- 7–8: Stage is defensible but borderline; minor evidence gap.\n- 5–6: Contradicting evidence ignored, or adjacent stage is equally or more supported.\n- Below 5: Stage classification is unsupported or directly contradicted by the conversation.\n\nRespond ONLY with valid JSON:\n{\n  \"confidence\": 0.0,\n  \"issues\": [\"<issue 1>\", \"<issue 2>\"]\n}\n
+
+RESPONSE:
+```json
+{
+  "confidence": 0.8,
+  "issues": [
+    "The classification is tentatively assigned to precontemplation. While the patient states a desire to quit smoking for a 'healthy life,' the initial question from the counselor focuses on *wanting* to quit, rather than any concrete steps taken or intentions to change. A stronger indication of contemplation or preparation would be present if the patient discussed past attempts, barriers, or potential strategies. The conversation lacks evidence to definitively rule out precontemplation, but it leans towards it.",
+    "There are no immediately obvious contradicting statements. However, the counselor's follow-up question – ‘how much you value this desire’ – strongly suggests the patient is at least in the contemplation stage, as it requires an assessment of their commitment. This subtle shift in the counselor's line of questioning could be interpreted as a probe to determine if the patient is seriously considering change."
+  ]
+}
+```
+
+================================================================================
+OLLAMA CALL 0046
+================================================================================
+timestamp: 2026-04-17T08:06:12.574230+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a Clinical Health Psychologist and NLP Validator specializing in patient-reported concerns from tobacco-cessation transcripts.\n\nTask: Audit the concern extraction below against the source conversation for clinical accuracy and completeness.\n\nSOURCE CONVERSATION:\nPatient: নমস্কার
+Counselor: নমস্কার! ধূমপান ছেড়ে দিতে আপনি কী করতে চান, বলুন তো? আপনার লক্ষ্য কী?
+Patient: আমি সুস্থ জীবন যাপন এর জন্য ধূমপান ছাড়তে চাই
+Counselor: ধুমপান ছেড়ে দিতে চান, এটা জেনে ভালো লাগলো। সুস্থ জীবনযাপন করার এই ইচ্ছাকে আপনি কতটা গুরুত্ব দেন?\n\nEXTRACTION TO AUDIT:\n{'concerns': ['Weight gain', 'Fear of failure'], 'evidence': ['আমি সুস্থ জীবন যাপন এর জন্য ধূমপান ছাড়তে চাই', 'সুস্থ জীবনযাপন করার এই ইচ্ছাকে আপনি কতটা গুরুত্ব দেন?']}\n\nConduct the following four checks:\n\n1. Implicit Concern Detection: Did the patient express concern through a question or a hedged statement (e.g., \"I've noticed I'm winded lately, but maybe it's just age\")? If an underlying health anxiety was missed, flag it as an omission.\n\n2. Severity Calibration: Ensure concerns were not underrepresented. If a patient said they were \"terrified of lung cancer,\" an extraction of \"worried about health\" is a precision error in severity.\n\n3. Temporal Attribution: Distinguish between historical concerns (past anxieties no longer active) and active concerns (current anxieties present at time of conversation).\n\n4. Categorization Accuracy: Verify concerns belong to the correct type:\n   - Physiological: cough, breathlessness, sleep issues, cravings\n   - Psychological: anxiety about failing, mood swings, irritability\n   - Social/Financial: cost of smoking or aids, stigma, family impact\n   - Situational/Relapse: concerns about specific trigger contexts\n\nScoring rubric:\n- 9–10: All concerns captured with correct intensity and category.\n- 7–8: Minor or passing concern missed; minor category misalignment.\n- 5–6: A primary concern missed or patient's emotional tone misinterpreted.\n- Below 5: Counselor advice confused for patient concerns, or major concerns absent.\n\nRespond ONLY with valid JSON:\n{\n  \"confidence\": 0.0,\n  \"issues\": [\"<issue 1>\", \"<issue 2>\"]\n}\n
+
+RESPONSE:
+```json
+{
+  "confidence": 0.8,
+  "issues": [
+    "The extraction missed a potential implicit concern regarding physiological impact. While the patient stated 'আমি সুস্থ জীবন যাপন এর জন্য ধূমপান ছাড়তে চাই' (I want to quit smoking for a healthy life), a more nuanced extraction could have included a concern about potential physical withdrawal symptoms or the impact of quitting on their body. This represents a minor omission.",
+    "The categorization of 'সুস্থ জীবনযাপন করার এই ইচ্ছাকে আপনি কতটা গুরুত্ব দেন?' (How much importance do you place on this desire to live a healthy life?) as psychological is reasonable, but could benefit from a slightly more granular approach. It leans towards a motivational concern rather than a purely psychological anxiety. A slight category misalignment exists."
+  ]
+}
+```
+
+================================================================================
+OLLAMA CALL 0047
+================================================================================
+timestamp: 2026-04-17T08:06:15.399472+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a Senior Clinical NLP Reviewer specializing in smoking trigger extraction quality assurance.\n\nTask: Audit the trigger extraction below against the source conversation.\n\nSOURCE CONVERSATION:\nPatient: নমস্কার
+Counselor: নমস্কার! ধূমপান ছেড়ে দিতে আপনি কী করতে চান, বলুন তো? আপনার লক্ষ্য কী?
+Patient: আমি সুস্থ জীবন যাপন এর জন্য ধূমপান ছাড়তে চাই
+Counselor: ধুমপান ছেড়ে দিতে চান, এটা জেনে ভালো লাগলো। সুস্থ জীবনযাপন করার এই ইচ্ছাকে আপনি কতটা গুরুত্ব দেন?\n\nEXTRACTION TO AUDIT:\n{'triggers': ['ধূমপান ছেড়ে দিতে চাই', 'সুস্থ জীবন যাপন এর জন্য ধূমপান ছাড়তে চাই'], 'trigger_type': 'motivation', 'confidence': 0.98}\n\nConduct the following four checks:\n\n1. Grounding Check: For each extracted trigger, verify it is either explicitly stated (the exact term or a clear synonym appears in the conversation) or strongly implied (the clinical context makes it unambiguous). Flag anything inferred, assumed, or fabricated.\n\n2. Hallucination Detection: Identify triggers that appear in the extraction but have no basis in the conversation. Note the specific trigger and explain why it is unsupported.\n\n3. Omission Detection: Identify triggers clearly present in the conversation but missing from the extraction. Note the exact phrase or passage and the trigger category it should have been assigned.\n\n4. Classification Accuracy: Verify each trigger is assigned the clinically appropriate type (emotional, situational, social, habitual). Flag misclassifications and suggest the correct label.\n\nScoring rubric:\n- 9–10: Near-perfect, no meaningful errors.\n- 7–8: Minor omissions or edge-case misclassifications.\n- 4–6: Several errors that affect reliability.\n- 1–3: Significant hallucinations or omissions.\n- 0: Extraction is unusable.\n\nRespond ONLY with valid JSON:\n{\n  \"confidence\": 0.0,\n  \"issues\": [\"<issue 1>\", \"<issue 2>\"]\n}\n
+
+RESPONSE:
+```json
+{
+  "confidence": 0.92,
+  "issues": [
+    "Omission Detection: The trigger 'সুস্থ জীবন যাপন' (healthy lifestyle) is present in the conversation but not extracted. This should be classified as a 'motivation' trigger.",
+    "Classification Accuracy: While 'ধূমপান ছেড়ে দিতে চাই' (wanting to quit smoking) is correctly classified as 'motivation', a more granular classification could be considered.  It could also be categorized as 'goal' given the patient's stated desire.  The confidence score could be lowered slightly to reflect this nuanced need for more precise categorization."
+  ]
+}
+```
+
+================================================================================
+OLLAMA CALL 0048
+================================================================================
+timestamp: 2026-04-17T08:06:16.411512+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a very strict clinical data validator. Compare the EXTRACTED DATA against the CONVERSATION.
+
+CONVERSATION:
+Patient: নমস্কার
+Counselor: নমস্কার! ধূমপান ছেড়ে দিতে আপনি কী করতে চান, বলুন তো? আপনার লক্ষ্য কী?
+Patient: আমি সুস্থ জীবন যাপন এর জন্য ধূমপান ছাড়তে চাই
+Counselor: ধুমপান ছেড়ে দিতে চান, এটা জেনে ভালো লাগলো। সুস্থ জীবনযাপন করার এই ইচ্ছাকে আপনি কতটা গুরুত্ব দেন?
+
+EXTRACTED DATA (cessation advice or guidance):
+{'advice': ['ধুমপান ছেড়ে দিতে চান, এটা জেনে ভালো লাগলো।', 'সুস্থ জীবনযাপন করার এই ইচ্ছাকে আপনি কতটা গুরুত্ব দেন?'], 'evidence': ['ধুমপান ছেড়ে দিতে চান, এটা জেনে ভালো লাগলো।', 'সুস্থ জীবনযাপন করার এই ইচ্ছাকে আপনি কতটা গুরুত্ব দেন?']}
+
+Your task:
+1. Very Strictly Check for hallucinations (data not in the text).
+2. Very Strictly Check for omissions (important data missed).
+3. Assign a confidence score between 0.0 and 1.0.
+
+Respond ONLY with valid JSON:
+{
+  "confidence": 0.0,
+  "issues": ["<issue 1>", "..."]
+}
+
+
+RESPONSE:
+```json
+{
+  "confidence": 0.95,
+  "issues": []
+}
+```
+
+================================================================================
+OLLAMA CALL 0049
+================================================================================
+timestamp: 2026-04-17T08:06:19.149125+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a clinical annotation specialist (voter 2 of 3).
+
+CONVERSATION:
+Patient: নমস্কার
+Counselor: নমস্কার! ধূমপান ছেড়ে দিতে আপনি কী করতে চান, বলুন তো? আপনার লক্ষ্য কী?
+Patient: আমি সুস্থ জীবন যাপন এর জন্য ধূমপান ছাড়তে চাই
+Counselor: ধুমপান ছেড়ে দিতে চান, এটা জেনে ভালো লাগলো। সুস্থ জীবনযাপন করার এই ইচ্ছাকে আপনি কতটা গুরুত্ব দেন?
+
+EXTRACTED SIGNALS:
+- Advice: {'advice': ['ধুমপান ছেড়ে দিতে চান, এটা জেনে ভালো লাগলো।', 'সুস্থ জীবনযাপন করার এই ইচ্ছাকে আপনি কতটা গুরুত্ব দেন?'], 'evidence': ['ধুমপান ছেড়ে দিতে চান, এটা জেনে ভালো লাগলো।', 'সুস্থ জীবনযাপন করার এই ইচ্ছাকে আপনি কতটা গুরুত্ব দেন?']}
+- Quit Attempts: {'attempts': ['I want to quit smoking to live a healthy life.'], 'evidence': ['আমি সুস্থ জীবন যাপন এর জন্য ধূমপান ছাড়তে চাই']}
+- Readiness / Stage: {'readiness_stage': 'contemplation', 'evidence': 'The patient states, "আমি সুস্থ জীবন যাপন এর জন্য ধূমপান ছাড়তে চাই" (I want to quit smoking for a healthy lifestyle), indicating awareness of the need to quit and considering it. Furthermore, they express a desire to quit, aligning with the definition of the contemplation stage.'}
+- Concerns: {'concerns': ['Weight gain', 'Fear of failure'], 'evidence': ['আমি সুস্থ জীবন যাপন এর জন্য ধূমপান ছাড়তে চাই', 'সুস্থ জীবনযাপন করার এই ইচ্ছাকে আপনি কতটা গুরুত্ব দেন?']}
+- Triggers: {'triggers': ['ধূমপান ছেড়ে দিতে চাই', 'সুস্থ জীবন যাপন এর জন্য ধূমপান ছাড়তে চাই'], 'trigger_type': 'motivation', 'confidence': 0.98}
+
+Based on ALL the above signals, produce a unified clinical annotation.
+Be independent — do not anchor to previous voters.
+
+Respond ONLY with valid JSON:
+{
+  "stage_of_change": "precontemplation|contemplation|preparation|action|maintenance|relapse",
+  "main_concern": "<single most prominent barrier>",
+  "primary_trigger": "<most significant smoking trigger>",
+  "quit_attempt_history": "<concise summary of prior attempts>",
+  "recommended_intervention": ["<strategy 1>", "<strategy 2>", "..."]
+}
+
+
+RESPONSE:
+```json
+{
+  "stage_of_change": "contemplation",
+  "main_concern": "Desire for a healthy lifestyle",
+  "primary_trigger": "Desire to quit smoking for a healthy lifestyle",
+  "quit_attempt_history": "Patient expresses a desire to quit smoking to live a healthy life.",
+  "recommended_intervention": ["Explore the patient's motivations for wanting a healthy lifestyle in detail.", "Discuss the benefits of quitting smoking in terms of health and well-being.", "Assess the patient's readiness to make a change and address any immediate barriers."]
+}
+```
+
+================================================================================
+OLLAMA CALL 0050
+================================================================================
+timestamp: 2026-04-17T08:06:21.278090+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a clinical annotation specialist (voter 1 of 3).
+
+CONVERSATION:
+Patient: নমস্কার
+Counselor: নমস্কার! ধূমপান ছেড়ে দিতে আপনি কী করতে চান, বলুন তো? আপনার লক্ষ্য কী?
+Patient: আমি সুস্থ জীবন যাপন এর জন্য ধূমপান ছাড়তে চাই
+Counselor: ধুমপান ছেড়ে দিতে চান, এটা জেনে ভালো লাগলো। সুস্থ জীবনযাপন করার এই ইচ্ছাকে আপনি কতটা গুরুত্ব দেন?
+
+EXTRACTED SIGNALS:
+- Advice: {'advice': ['ধুমপান ছেড়ে দিতে চান, এটা জেনে ভালো লাগলো।', 'সুস্থ জীবনযাপন করার এই ইচ্ছাকে আপনি কতটা গুরুত্ব দেন?'], 'evidence': ['ধুমপান ছেড়ে দিতে চান, এটা জেনে ভালো লাগলো।', 'সুস্থ জীবনযাপন করার এই ইচ্ছাকে আপনি কতটা গুরুত্ব দেন?']}
+- Quit Attempts: {'attempts': ['I want to quit smoking to live a healthy life.'], 'evidence': ['আমি সুস্থ জীবন যাপন এর জন্য ধূমপান ছাড়তে চাই']}
+- Readiness / Stage: {'readiness_stage': 'contemplation', 'evidence': 'The patient states, "আমি সুস্থ জীবন যাপন এর জন্য ধূমপান ছাড়তে চাই" (I want to quit smoking for a healthy lifestyle), indicating awareness of the need to quit and considering it. Furthermore, they express a desire to quit, aligning with the definition of the contemplation stage.'}
+- Concerns: {'concerns': ['Weight gain', 'Fear of failure'], 'evidence': ['আমি সুস্থ জীবন যাপন এর জন্য ধূমপান ছাড়তে চাই', 'সুস্থ জীবনযাপন করার এই ইচ্ছাকে আপনি কতটা গুরুত্ব দেন?']}
+- Triggers: {'triggers': ['ধূমপান ছেড়ে দিতে চাই', 'সুস্থ জীবন যাপন এর জন্য ধূমপান ছাড়তে চাই'], 'trigger_type': 'motivation', 'confidence': 0.98}
+
+Based on ALL the above signals, produce a unified clinical annotation.
+Be independent — do not anchor to previous voters.
+
+Respond ONLY with valid JSON:
+{
+  "stage_of_change": "precontemplation|contemplation|preparation|action|maintenance|relapse",
+  "main_concern": "<single most prominent barrier>",
+  "primary_trigger": "<most significant smoking trigger>",
+  "quit_attempt_history": "<concise summary of prior attempts>",
+  "recommended_intervention": ["<strategy 1>", "<strategy 2>", "..."]
+}
+
+
+RESPONSE:
+```json
+{
+  "stage_of_change": "contemplation",
+  "main_concern": "Desire for a healthy lifestyle",
+  "primary_trigger": "Desire to quit smoking for a healthy lifestyle",
+  "quit_attempt_history": "Patient expresses a desire to quit smoking.",
+  "recommended_intervention": ["Explore the patient's motivations for wanting a healthy lifestyle in more detail.", "Discuss the benefits of quitting smoking in terms of health and well-being.", "Assess the patient's current understanding of the challenges associated with quitting."]
+}
+```
+
+================================================================================
+OLLAMA CALL 0051
+================================================================================
+timestamp: 2026-04-17T08:06:23.741595+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a clinical annotation specialist (voter 3 of 3).
+
+CONVERSATION:
+Patient: নমস্কার
+Counselor: নমস্কার! ধূমপান ছেড়ে দিতে আপনি কী করতে চান, বলুন তো? আপনার লক্ষ্য কী?
+Patient: আমি সুস্থ জীবন যাপন এর জন্য ধূমপান ছাড়তে চাই
+Counselor: ধুমপান ছেড়ে দিতে চান, এটা জেনে ভালো লাগলো। সুস্থ জীবনযাপন করার এই ইচ্ছাকে আপনি কতটা গুরুত্ব দেন?
+
+EXTRACTED SIGNALS:
+- Advice: {'advice': ['ধুমপান ছেড়ে দিতে চান, এটা জেনে ভালো লাগলো।', 'সুস্থ জীবনযাপন করার এই ইচ্ছাকে আপনি কতটা গুরুত্ব দেন?'], 'evidence': ['ধুমপান ছেড়ে দিতে চান, এটা জেনে ভালো লাগলো।', 'সুস্থ জীবনযাপন করার এই ইচ্ছাকে আপনি কতটা গুরুত্ব দেন?']}
+- Quit Attempts: {'attempts': ['I want to quit smoking to live a healthy life.'], 'evidence': ['আমি সুস্থ জীবন যাপন এর জন্য ধূমপান ছাড়তে চাই']}
+- Readiness / Stage: {'readiness_stage': 'contemplation', 'evidence': 'The patient states, "আমি সুস্থ জীবন যাপন এর জন্য ধূমপান ছাড়তে চাই" (I want to quit smoking for a healthy lifestyle), indicating awareness of the need to quit and considering it. Furthermore, they express a desire to quit, aligning with the definition of the contemplation stage.'}
+- Concerns: {'concerns': ['Weight gain', 'Fear of failure'], 'evidence': ['আমি সুস্থ জীবন যাপন এর জন্য ধূমপান ছাড়তে চাই', 'সুস্থ জীবনযাপন করার এই ইচ্ছাকে আপনি কতটা গুরুত্ব দেন?']}
+- Triggers: {'triggers': ['ধূমপান ছেড়ে দিতে চাই', 'সুস্থ জীবন যাপন এর জন্য ধূমপান ছাড়তে চাই'], 'trigger_type': 'motivation', 'confidence': 0.98}
+
+Based on ALL the above signals, produce a unified clinical annotation.
+Be independent — do not anchor to previous voters.
+
+Respond ONLY with valid JSON:
+{
+  "stage_of_change": "precontemplation|contemplation|preparation|action|maintenance|relapse",
+  "main_concern": "<single most prominent barrier>",
+  "primary_trigger": "<most significant smoking trigger>",
+  "quit_attempt_history": "<concise summary of prior attempts>",
+  "recommended_intervention": ["<strategy 1>", "<strategy 2>", "..."]
+}
+
+
+RESPONSE:
+```json
+{
+  "stage_of_change": "contemplation",
+  "main_concern": "Desire for a healthy lifestyle",
+  "primary_trigger": "Desire to quit smoking for a healthy lifestyle",
+  "quit_attempt_history": "Patient expresses a desire to quit smoking to live a healthy life.",
+  "recommended_intervention": [
+    "Explore the patient's motivations for wanting a healthy lifestyle in detail.",
+    "Assess the patient's current understanding of the benefits of quitting smoking.",
+    "Discuss potential barriers to quitting and strategies for overcoming them.",
+    "Set realistic goals and expectations for the quitting process."
+  ]
+}
+```
+
+================================================================================
+OLLAMA CALL 0052
+================================================================================
+timestamp: 2026-04-17T08:06:27.269252+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a clinical reasoning specialist producing the final annotation for a tobacco-cessation training dataset.\n\nTask: Validate the consensus annotation against the source conversation and produce a clinically grounded reasoning summary.\n\nCONVERSATION:\nPatient: নমস্কার
+Counselor: নমস্কার! ধূমপান ছেড়ে দিতে আপনি কী করতে চান, বলুন তো? আপনার লক্ষ্য কী?
+Patient: আমি সুস্থ জীবন যাপন এর জন্য ধূমপান ছাড়তে চাই
+Counselor: ধুমপান ছেড়ে দিতে চান, এটা জেনে ভালো লাগলো। সুস্থ জীবনযাপন করার এই ইচ্ছাকে আপনি কতটা গুরুত্ব দেন?\n\nCONSENSUS ANNOTATION:\n{'stage_of_change': 'contemplation', 'main_concern': 'Desire for a healthy lifestyle', 'primary_trigger': 'Desire to quit smoking for a healthy lifestyle', 'quit_attempt_history': 'Patient expresses a desire to quit smoking to live a healthy life.', 'recommended_intervention': ["Explore the patient's motivations for wanting a healthy lifestyle in detail.", 'Discuss the benefits of quitting smoking in terms of health and well-being.', "Assess the patient's readiness to make a change and address any immediate barriers.", "Explore the patient's motivations for wanting a healthy lifestyle in more detail.", "Assess the patient's current understanding of the challenges associated with quitting.", "Assess the patient's current understanding of the benefits of quitting smoking.", 'Discuss potential barriers to quitting and strategies for overcoming them.', 'Set realistic goals and expectations for the quitting process.'], 'vote_agreement': 0.917, 'dissenting_fields': []}\n\nSteps:\n1. Verify that every field in the consensus annotation (stage of change, main concern, primary trigger, quit attempt history) is internally consistent and directly supported by the conversation.\n2. Flag any field that is unsupported, contradicted, or inconsistent with another field.\n3. Write a reasoning_summary (1–2 sentences) that explains: (a) why the patient is at this particular stage of change, (b) what their primary barrier to quitting is, and (c) what intervention approach is most appropriate given the evidence.\n\nRespond ONLY with valid JSON:\n{\n  \"stage_of_change\": \"<from consensus>\",\n  \"main_concern\": \"<from consensus>\",\n  \"primary_trigger\": \"<from consensus>\",\n  \"quit_attempt_history\": \"<from consensus>\",\n  \"recommended_intervention\": [\"<strategy 1>\", \"<strategy 2>\"],\n  \"reasoning_summary\": \"<1–2 sentence clinical rationale>\",\n  \"confidence_score\": 0.0\n}\n
+
+RESPONSE:
+```json
+{
+  "stage_of_change": "contemplation",
+  "main_concern": "Desire for a healthy lifestyle",
+  "primary_trigger": "Desire to quit smoking for a healthy lifestyle",
+  "quit_attempt_history": "Patient expresses a desire to quit smoking to live a healthy life.",
+  "recommended_intervention": [
+    "Explore the patient's motivations for wanting a healthy lifestyle in detail.",
+    "Discuss the benefits of quitting smoking in terms of health and well-being."
+  ],
+  "reasoning_summary": "The patient clearly articulates a desire for a healthy lifestyle as the primary driver for quitting, placing them firmly in the contemplation stage. An appropriate intervention involves exploring these motivations further and highlighting the tangible health benefits of cessation to reinforce their commitment.",
+  "confidence_score": 1.0
+}
+```

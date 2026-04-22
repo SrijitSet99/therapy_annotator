@@ -1,0 +1,377 @@
+{
+  "events": {
+    "agent_manager": {
+      "confidence_result": {
+        "advice": {
+          "confidence": 0.95,
+          "issues": [],
+          "severity": "none"
+        },
+        "attempt": {
+          "confidence": 0.1,
+          "issues": [
+            "Missing motivation for quitting. The conversation explicitly asks 'What's your motivation for quitting today?' and the extracted data contains no information about this.",
+            "Missing attempt data. The conversation indicates a greeting and an initial question, implying an attempt to gather information, which is not represented in the extracted data."
+          ],
+          "severity": "none"
+        },
+        "concern": {
+          "confidence": 0.2,
+          "issues": [
+            "Hallucination: The extracted data includes 'hi' which was not stated by the patient. This is a hallucination.",
+            "Omission: The conversation clearly establishes the goal of the interaction - quitting smoking - and the patient's initial motivation. This information is missing from the extracted data."
+          ],
+          "severity": "none"
+        },
+        "readiness": {
+          "confidence": 0.85,
+          "issues": [
+            "The extracted data correctly identifies the patient's initial response as indicative of precontemplation. However, it could benefit from explicitly stating that the 'evidence' is based solely on the patient's initial greeting and the counselor's subsequent question, rather than implying a deeper level of unengagement.",
+            "There is no omission of key information. The provided text is sufficient to support the assigned readiness stage."
+          ],
+          "severity": "none"
+        },
+        "triggers": {
+          "confidence": 0.2,
+          "issues": [
+            "Hallucination: The extracted data includes 'stress' and 'morning routine' which were not mentioned in the conversation. The conversation only asks about the patient's motivation for quitting smoking.",
+            "Omission: The conversation lacks any information about the patient's current smoking habits, reasons for wanting to quit, or any specific goals."
+          ],
+          "severity": "none"
+        }
+      },
+      "confidence_results": {
+        "advice": {
+          "confidence": 0.95,
+          "issues": [],
+          "severity": "none"
+        },
+        "attempt": {
+          "confidence": 0.1,
+          "issues": [
+            "Missing motivation for quitting. The conversation explicitly asks 'What's your motivation for quitting today?' and the extracted data contains no information about this.",
+            "Missing attempt data. The conversation indicates a greeting and an initial question, implying an attempt to gather information, which is not represented in the extracted data."
+          ],
+          "severity": "none"
+        },
+        "concern": {
+          "confidence": 0.2,
+          "issues": [
+            "Hallucination: The extracted data includes 'hi' which was not stated by the patient. This is a hallucination.",
+            "Omission: The conversation clearly establishes the goal of the interaction - quitting smoking - and the patient's initial motivation. This information is missing from the extracted data."
+          ],
+          "severity": "none"
+        },
+        "readiness": {
+          "confidence": 0.85,
+          "issues": [
+            "The extracted data correctly identifies the patient's initial response as indicative of precontemplation. However, it could benefit from explicitly stating that the 'evidence' is based solely on the patient's initial greeting and the counselor's subsequent question, rather than implying a deeper level of unengagement.",
+            "There is no omission of key information. The provided text is sufficient to support the assigned readiness stage."
+          ],
+          "severity": "none"
+        },
+        "triggers": {
+          "confidence": 0.2,
+          "issues": [
+            "Hallucination: The extracted data includes 'stress' and 'morning routine' which were not mentioned in the conversation. The conversation only asks about the patient's motivation for quitting smoking.",
+            "Omission: The conversation lacks any information about the patient's current smoking habits, reasons for wanting to quit, or any specific goals."
+          ],
+          "severity": "none"
+        }
+      },
+      "extractor_output": {
+        "advice": {
+          "advice": [
+            "I'm here to help you quit smoking.",
+            "What's your motivation for quitting today?"
+          ],
+          "evidence": [
+            "\"I'm here to help you quit smoking\"",
+            "The counselor asks the patient \"What's your motivation for quitting today?\""
+          ]
+        },
+        "attempt": {
+          "attempts": [],
+          "longest_attempt": null,
+          "most_recent_attempt": null
+        },
+        "concern": {
+          "concerns": [
+            "hi"
+          ],
+          "primary_concern": null
+        },
+        "readiness": {
+          "evidence": "The patient simply said \"hi,\" indicating they haven't yet engaged with the topic of quitting smoking or expressed any intention to do so. The counselor's initial question about motivation suggests the patient hasn't yet seriously considered the behavior change.",
+          "readiness_stage": "precontemplation"
+        },
+        "triggers": {
+          "triggers": [
+            "stress",
+            "morning routine"
+          ]
+        }
+      },
+      "final_output": {
+        "advice": {
+          "_debate_converged": true,
+          "_debate_rounds": 0,
+          "advice": [
+            "I'm here to help you quit smoking.",
+            "What's your motivation for quitting today?"
+          ],
+          "evidence": [
+            "\"I'm here to help you quit smoking\"",
+            "The counselor asks the patient \"What's your motivation for quitting today?\""
+          ]
+        },
+        "attempt": {
+          "_debate_converged": true,
+          "_debate_rounds": 2,
+          "attempts": [
+            "attempt_failed"
+          ],
+          "extracted_data": {
+            "counselor_introduction": "Hi! I'm eDOSTHI, your motivational interviewing chatbot. I'm here to help you quit smoking.",
+            "counselor_question": "What’s your motivation for quitting today?",
+            "patient_utterance": "hi"
+          },
+          "longest_attempt": "hi",
+          "most_recent_attempt": "hi"
+        },
+        "concern": {
+          "_debate_converged": true,
+          "_debate_rounds": 1,
+          "concerns": [
+            "hi",
+            "Patient's initial greeting and expressed willingness to discuss quitting"
+          ],
+          "conversation_stage": "initial_engagement",
+          "primary_concern": "Patient's initial greeting and expressed willingness to discuss quitting"
+        },
+        "readiness": {
+          "_debate_converged": true,
+          "_debate_rounds": 0,
+          "evidence": "The patient simply said \"hi,\" indicating they haven't yet engaged with the topic of quitting smoking or expressed any intention to do so. The counselor's initial question about motivation suggests the patient hasn't yet seriously considered the behavior change.",
+          "readiness_stage": "precontemplation"
+        },
+        "triggers": {
+          "_debate_converged": true,
+          "_debate_rounds": 1,
+          "triggers": [
+            "patient's motivation",
+            "chatbot introduction",
+            "counselor's question about motivation"
+          ]
+        }
+      }
+    },
+    "consensus_agent": {
+      "output": {
+        "consensus": {
+          "dissenting_fields": [],
+          "main_concern": "Patient's initial engagement and lack of stated motivation for quitting.",
+          "primary_trigger": "chatbot introduction and counselor's question about motivation",
+          "quit_attempt_history": "No prior quit attempts recorded.",
+          "recommended_intervention": [
+            "Explore patient's values and beliefs related to smoking.",
+            "Assess the patient's readiness to change using motivational interviewing techniques.",
+            "Help the patient identify specific reasons for wanting to quit.",
+            "Explore patient's current smoking habits and reasons for wanting to quit.",
+            "Assess patient's readiness to change using motivational interviewing techniques.",
+            "Start with a simple, open-ended question to build rapport and encourage further discussion.",
+            "Assess the patient's readiness to change through open-ended questions.",
+            "Provide empathetic support and encouragement."
+          ],
+          "stage_of_change": "precontemplation",
+          "vote_agreement": 0.917
+        }
+      }
+    },
+    "longitudinal_sanity": {
+      "output": {
+        "longitudinal_sanity": {
+          "flags": [],
+          "passed": true,
+          "severity": "none"
+        }
+      }
+    },
+    "profile_update_agent": {
+      "output": {
+        "dataset_row": {
+          "confidence_score": 0.95,
+          "debate_rounds_used": 4,
+          "inconsistencies": [],
+          "longitudinal_flags": [],
+          "longitudinal_sanity_passed": true,
+          "main_concern": "Patient's initial engagement and lack of stated motivation for quitting.",
+          "primary_trigger": "chatbot introduction and counselor's question about motivation",
+          "quit_attempt_history": "No prior quit attempts recorded.",
+          "reasoning_summary": "The patient is in precontemplation due to their initial, unmotivated response, primarily a lack of stated desire to quit. The counselor's approach of asking about motivation and initiating rapport-building questions is appropriate for this stage, focusing on exploring the patient's perspective and readiness to consider change.",
+          "recommended_intervention": [
+            "Explore patient's values and beliefs related to smoking.",
+            "Assess the patient's readiness to change using motivational interviewing techniques.",
+            "Help the patient identify specific reasons for wanting to quit.",
+            "Explore patient's current smoking habits and reasons for wanting to quit.",
+            "Assess patient's readiness to change using motivational interviewing techniques.",
+            "Start with a simple, open-ended question to build rapport and encourage further discussion.",
+            "Assess the patient's readiness to change through open-ended questions.",
+            "Provide empathetic support and encouragement."
+          ],
+          "sanity_passed": true,
+          "session_number": 1,
+          "stage_of_change": "precontemplation",
+          "vote_agreement": 0.917
+        },
+        "longitudinal_output": {
+          "current_annotation": {
+            "confidence_score": 0.95,
+            "debate_rounds_used": 4,
+            "inconsistencies": [],
+            "longitudinal_flags": [],
+            "longitudinal_sanity_passed": true,
+            "main_concern": "Patient's initial engagement and lack of stated motivation for quitting.",
+            "primary_trigger": "chatbot introduction and counselor's question about motivation",
+            "quit_attempt_history": "No prior quit attempts recorded.",
+            "reasoning_summary": "The patient is in precontemplation due to their initial, unmotivated response, primarily a lack of stated desire to quit. The counselor's approach of asking about motivation and initiating rapport-building questions is appropriate for this stage, focusing on exploring the patient's perspective and readiness to consider change.",
+            "recommended_intervention": [
+              "Explore patient's values and beliefs related to smoking.",
+              "Assess the patient's readiness to change using motivational interviewing techniques.",
+              "Help the patient identify specific reasons for wanting to quit.",
+              "Explore patient's current smoking habits and reasons for wanting to quit.",
+              "Assess patient's readiness to change using motivational interviewing techniques.",
+              "Start with a simple, open-ended question to build rapport and encourage further discussion.",
+              "Assess the patient's readiness to change through open-ended questions.",
+              "Provide empathetic support and encouragement."
+            ],
+            "sanity_passed": true,
+            "session_number": 1,
+            "stage_of_change": "precontemplation",
+            "vote_agreement": 0.917
+          },
+          "delta": null,
+          "interventions_tried": [],
+          "longitudinal_flags": [],
+          "overall_progress": "unknown",
+          "patient_id": "0b5cbf9e-e197-4702-98fb-414f2657f54f",
+          "persistent_concerns": [],
+          "persistent_triggers": [],
+          "relapse_detected": false,
+          "session_number": 1,
+          "stage_trajectory": [
+            "precontemplation"
+          ],
+          "stagnation_detected": false
+        },
+        "patient_profile_id": "0b5cbf9e-e197-4702-98fb-414f2657f54f",
+        "session_count": 1
+      }
+    },
+    "reasoning_agent": {
+      "output": {
+        "dataset_row": {
+          "confidence_score": 0.95,
+          "debate_rounds_used": 4,
+          "inconsistencies": [],
+          "main_concern": "Patient's initial engagement and lack of stated motivation for quitting.",
+          "primary_trigger": "chatbot introduction and counselor's question about motivation",
+          "quit_attempt_history": "No prior quit attempts recorded.",
+          "reasoning_summary": "The patient is in precontemplation due to their initial, unmotivated response, primarily a lack of stated desire to quit. The counselor's approach of asking about motivation and initiating rapport-building questions is appropriate for this stage, focusing on exploring the patient's perspective and readiness to consider change.",
+          "recommended_intervention": [
+            "Explore patient's values and beliefs related to smoking.",
+            "Assess the patient's readiness to change using motivational interviewing techniques.",
+            "Help the patient identify specific reasons for wanting to quit.",
+            "Explore patient's current smoking habits and reasons for wanting to quit.",
+            "Assess patient's readiness to change using motivational interviewing techniques.",
+            "Start with a simple, open-ended question to build rapport and encourage further discussion.",
+            "Assess the patient's readiness to change through open-ended questions.",
+            "Provide empathetic support and encouragement."
+          ],
+          "sanity_passed": true,
+          "stage_of_change": "precontemplation",
+          "vote_agreement": 0.917
+        }
+      }
+    },
+    "run_chat": {
+      "final_result": {
+        "dataset_row": {
+          "confidence_score": 0.95,
+          "debate_rounds_used": 4,
+          "inconsistencies": [],
+          "longitudinal_flags": [],
+          "longitudinal_sanity_passed": true,
+          "main_concern": "Patient's initial engagement and lack of stated motivation for quitting.",
+          "primary_trigger": "chatbot introduction and counselor's question about motivation",
+          "quit_attempt_history": "No prior quit attempts recorded.",
+          "reasoning_summary": "The patient is in precontemplation due to their initial, unmotivated response, primarily a lack of stated desire to quit. The counselor's approach of asking about motivation and initiating rapport-building questions is appropriate for this stage, focusing on exploring the patient's perspective and readiness to consider change.",
+          "recommended_intervention": [
+            "Explore patient's values and beliefs related to smoking.",
+            "Assess the patient's readiness to change using motivational interviewing techniques.",
+            "Help the patient identify specific reasons for wanting to quit.",
+            "Explore patient's current smoking habits and reasons for wanting to quit.",
+            "Assess patient's readiness to change using motivational interviewing techniques.",
+            "Start with a simple, open-ended question to build rapport and encourage further discussion.",
+            "Assess the patient's readiness to change through open-ended questions.",
+            "Provide empathetic support and encouragement."
+          ],
+          "sanity_passed": true,
+          "session_number": 1,
+          "stage_of_change": "precontemplation",
+          "vote_agreement": 0.917
+        },
+        "longitudinal_output": {
+          "current_annotation": {
+            "confidence_score": 0.95,
+            "debate_rounds_used": 4,
+            "inconsistencies": [],
+            "longitudinal_flags": [],
+            "longitudinal_sanity_passed": true,
+            "main_concern": "Patient's initial engagement and lack of stated motivation for quitting.",
+            "primary_trigger": "chatbot introduction and counselor's question about motivation",
+            "quit_attempt_history": "No prior quit attempts recorded.",
+            "reasoning_summary": "The patient is in precontemplation due to their initial, unmotivated response, primarily a lack of stated desire to quit. The counselor's approach of asking about motivation and initiating rapport-building questions is appropriate for this stage, focusing on exploring the patient's perspective and readiness to consider change.",
+            "recommended_intervention": [
+              "Explore patient's values and beliefs related to smoking.",
+              "Assess the patient's readiness to change using motivational interviewing techniques.",
+              "Help the patient identify specific reasons for wanting to quit.",
+              "Explore patient's current smoking habits and reasons for wanting to quit.",
+              "Assess patient's readiness to change using motivational interviewing techniques.",
+              "Start with a simple, open-ended question to build rapport and encourage further discussion.",
+              "Assess the patient's readiness to change through open-ended questions.",
+              "Provide empathetic support and encouragement."
+            ],
+            "sanity_passed": true,
+            "session_number": 1,
+            "stage_of_change": "precontemplation",
+            "vote_agreement": 0.917
+          },
+          "delta": null,
+          "interventions_tried": [],
+          "longitudinal_flags": [],
+          "overall_progress": "unknown",
+          "patient_id": "0b5cbf9e-e197-4702-98fb-414f2657f54f",
+          "persistent_concerns": [],
+          "persistent_triggers": [],
+          "relapse_detected": false,
+          "session_number": 1,
+          "stage_trajectory": [
+            "precontemplation"
+          ],
+          "stagnation_detected": false
+        },
+        "patient_id": "0b5cbf9e-e197-4702-98fb-414f2657f54f",
+        "session_number": 1
+      },
+      "transcript": {
+        "session_id": "0b5cbf9e-e197-4702-98fb-414f2657f54f",
+        "transcript": "Patient: hi\nCounselor: Hi! I'm eDOSTHI, your motivational interviewing chatbot. I'm here to help you quit smoking. What's your motivation for quitting today?"
+      }
+    }
+  },
+  "meta": {
+    "session_id": "0b5cbf9e-e197-4702-98fb-414f2657f54f",
+    "started_at": "20260413T070153Z"
+  }
+}

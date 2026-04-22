@@ -1,0 +1,107 @@
+=== LLM Response Log — 20260415_152929 ===
+
+--- [EXTRACTOR] attempt @ 15:29:39.945 ---
+{
+  "attempts": [
+    "Patient attempted to quit smoking.",
+    "Patient attempted to gradually reduce smoking with the intention to quit."
+  ],
+  "evidence": [
+    "Patient: I wish to quit smoking",
+    "Patient: I wish to quit smoking"
+  ]
+}
+
+--- [CONFIDENCE] attempt @ 15:29:43.001 ---
+{
+  "confidence": 0.2,
+  "issues": [
+    "Hallucination: The extracted data includes 'Patient attempted to gradually reduce smoking with the intention to quit.' This statement is not present in the conversation. It's an interpretation and therefore a hallucination.",
+    "Omission: The conversation explicitly states the patient 'wishes to quit smoking.' The extracted data includes this verbatim, but doesn't capture the counselor's initial probing question about the *difficulty* of quitting, which is crucial context.",
+    "Inconsistency: The 'evidence' list contains duplicate entries ('Patient: I wish to quit smoking') which is redundant and doesn't add value."
+  ],
+  "severity": "none"
+}
+
+--- [DEBATE] attempt @ 15:29:45.937 ---
+{
+  "attempts": [
+    "Patient explicitly stated their desire to quit smoking."
+  ],
+  "evidence": [
+    "Patient: I wish to quit smoking"
+  ],
+  "_debate_rounds": 1,
+  "_debate_converged": true
+}
+
+--- [EXTRACTOR] readiness @ 15:29:45.938 ---
+{
+  "readiness_stage": "contemplation",
+  "evidence": "The patient stated 'I wish to quit smoking,' indicating they are considering quitting but haven't yet made a firm commitment. The counselor's response, 'What\u2019s been the hardest part for you about quitting so far?' further suggests the patient is in the contemplation stage, actively thinking about the problem but not yet in a stage of action or preparation."
+}
+
+--- [CONFIDENCE] readiness @ 15:29:46.944 ---
+{
+  "confidence": 0.95,
+  "issues": [],
+  "severity": "none"
+}
+
+--- [DEBATE] readiness @ 15:29:46.944 ---
+{
+  "readiness_stage": "contemplation",
+  "evidence": "The patient stated 'I wish to quit smoking,' indicating they are considering quitting but haven't yet made a firm commitment. The counselor's response, 'What\u2019s been the hardest part for you about quitting so far?' further suggests the patient is in the contemplation stage, actively thinking about the problem but not yet in a stage of action or preparation.",
+  "_debate_rounds": 0,
+  "_debate_converged": true
+}
+
+--- [EXTRACTOR] concern @ 15:29:46.950 ---
+{
+  "concerns": [
+    "wanting to quit smoking"
+  ],
+  "evidence": [
+    "Patient: I wish to quit smoking"
+  ]
+}
+
+--- [CONFIDENCE] concern @ 15:29:47.873 ---
+{
+  "confidence": 1.0,
+  "issues": [],
+  "severity": "none"
+}
+
+--- [DEBATE] concern @ 15:29:47.874 ---
+{
+  "concerns": [
+    "wanting to quit smoking"
+  ],
+  "evidence": [
+    "Patient: I wish to quit smoking"
+  ],
+  "_debate_rounds": 0,
+  "_debate_converged": true
+}
+
+--- [EXTRACTOR] triggers @ 15:29:47.876 ---
+{
+  "triggers": [
+    "stress",
+    "after meals",
+    "morning routine"
+  ],
+  "evidence": []
+}
+
+--- [CONFIDENCE] triggers @ 15:29:50.004 ---
+{
+  "confidence": 0.2,
+  "issues": [
+    "Hallucination: The extracted data includes triggers ('stress', 'after meals', 'morning routine') that were not explicitly stated in the conversation. The patient only expressed a desire to quit smoking.",
+    "Omission: The conversation doesn't provide any information about the patient's specific reasons for wanting to quit, potential barriers beyond triggers, or any details about their current smoking habits."
+  ],
+  "severity": "none"
+}
+

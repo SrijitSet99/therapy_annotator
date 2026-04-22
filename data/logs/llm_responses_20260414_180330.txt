@@ -1,0 +1,118 @@
+=== LLM Response Log — 20260414_180330 ===
+
+--- [EXTRACTOR] attempt @ 18:03:39.699 ---
+{
+  "attempts": [
+    "Patient attempted to quit smoking",
+    "Patient attempted to quit smoking"
+  ],
+  "evidence": [
+    "Patient: i want to quit smoking",
+    "Patient: i want to quit smoking"
+  ]
+}
+
+--- [CONFIDENCE] attempt @ 18:03:41.915 ---
+{
+  "confidence": 0.8,
+  "issues": [
+    "Hallucination: The phrase 'previous smoking quit attempt' is not present in the conversation. This is a hallucination.",
+    "Omission: The conversation explicitly states the patient *wants* to quit smoking, but the extracted data doesn't capture the intent or motivation behind this desire. A more detailed extraction would benefit from capturing the patient's stated reason ('i want to quit smoking')."
+  ],
+  "severity": "none"
+}
+
+--- [DEBATE] attempt @ 18:03:41.916 ---
+{
+  "attempts": [
+    "Patient attempted to quit smoking",
+    "Patient attempted to quit smoking"
+  ],
+  "evidence": [
+    "Patient: i want to quit smoking",
+    "Patient: i want to quit smoking"
+  ],
+  "_debate_rounds": 0,
+  "_debate_converged": true
+}
+
+--- [EXTRACTOR] readiness @ 18:03:41.916 ---
+{
+  "readiness_stage": "contemplation",
+  "evidence": "The patient stated, \"I want to quit smoking,\" indicating they are considering quitting but haven't yet made a firm commitment or taken concrete steps towards it, which aligns with the contemplation stage."
+}
+
+--- [CONFIDENCE] readiness @ 18:03:43.518 ---
+{
+  "confidence": 0.8,
+  "issues": [
+    "The extraction correctly identifies the patient's stated desire to quit smoking as indicative of the contemplation stage.",
+    "There is no hallucination present.",
+    "The extraction adequately captures the core information from the conversation."
+  ],
+  "severity": "none"
+}
+
+--- [DEBATE] readiness @ 18:03:43.519 ---
+{
+  "readiness_stage": "contemplation",
+  "evidence": "The patient stated, \"I want to quit smoking,\" indicating they are considering quitting but haven't yet made a firm commitment or taken concrete steps towards it, which aligns with the contemplation stage.",
+  "_debate_rounds": 0,
+  "_debate_converged": true
+}
+
+--- [EXTRACTOR] concern @ 18:03:43.521 ---
+{
+  "concerns": [
+    "weight gain",
+    "withdrawal symptoms"
+  ],
+  "evidence": [
+    "\"i want to quit smoking\"",
+    "Implied concern about withdrawal symptoms due to the patient's stated desire to quit."
+  ]
+}
+
+--- [CONFIDENCE] concern @ 18:03:45.399 ---
+{
+  "confidence": 0.8,
+  "issues": [
+    "Hallucination: The extracted data includes 'weight gain' which is not explicitly stated in the conversation. This is a hallucination.",
+    "Omission: The conversation clearly indicates the patient's primary motivation is quitting smoking. The extracted data does not explicitly capture this core reason."
+  ],
+  "severity": "none"
+}
+
+--- [DEBATE] concern @ 18:03:45.400 ---
+{
+  "concerns": [
+    "weight gain",
+    "withdrawal symptoms"
+  ],
+  "evidence": [
+    "\"i want to quit smoking\"",
+    "Implied concern about withdrawal symptoms due to the patient's stated desire to quit."
+  ],
+  "_debate_rounds": 0,
+  "_debate_converged": true
+}
+
+--- [EXTRACTOR] triggers @ 18:03:45.401 ---
+{
+  "triggers": [
+    "stress",
+    "want to quit"
+  ],
+  "evidence": []
+}
+
+--- [CONFIDENCE] triggers @ 18:03:47.180 ---
+{
+  "confidence": 0.2,
+  "issues": [
+    "Omission: The patient explicitly states 'i want to quit smoking'. This is a key trigger and should be included.",
+    "Hallucination: The inclusion of 'stress' as a trigger is not supported by the conversation. The patient only stated they 'want to quit'."
+  ],
+  "severity": "none"
+}
+

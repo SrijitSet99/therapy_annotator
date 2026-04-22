@@ -1,0 +1,40 @@
+=== LLM Response Log — 20260414_124922 ===
+
+--- [EXTRACTOR] readiness @ 12:49:28.144 ---
+{
+  "readiness_stage": "contemplation",
+  "evidence": "The patient stated 'I want to quit smoking,' indicating they are considering quitting but haven't yet made a firm commitment or taken concrete steps. Furthermore, the counselor's response focused on understanding the motivation behind the desire to quit, a typical characteristic of the contemplation stage."
+}
+
+--- [CONFIDENCE] readiness @ 12:49:30.219 ---
+{
+  "confidence": 0.85,
+  "issues": [
+    "Minor hallucination: The statement 'a typical characteristic of the contemplation stage' is an interpretation and not directly stated in the conversation. While reasonable, it leans towards an assumption beyond the explicit text.",
+    "Omission: The conversation lacks explicit information about the patient's past attempts to quit smoking or any prior support systems. This context is crucial for accurately assessing readiness."
+  ],
+  "severity": "none"
+}
+
+--- [DEBATE] readiness @ 12:49:30.221 ---
+{
+  "readiness_stage": "contemplation",
+  "evidence": "The patient stated 'I want to quit smoking,' indicating they are considering quitting but haven't yet made a firm commitment or taken concrete steps. Furthermore, the counselor's response focused on understanding the motivation behind the desire to quit, a typical characteristic of the contemplation stage.",
+  "_debate_rounds": 0,
+  "_debate_converged": true
+}
+
+--- [EXTRACTOR] concern @ 12:49:30.222 ---
+{
+  "concerns": [
+    "want to quit smoking",
+    "weight gain",
+    "withdrawal symptoms"
+  ],
+  "evidence": [
+    "\"I want to quit smoking\"",
+    "Implied concern about weight gain due to cessation (common withdrawal symptom)",
+    "Implied concern about withdrawal symptoms due to stating desire to quit"
+  ]
+}
+

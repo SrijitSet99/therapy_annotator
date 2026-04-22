@@ -1,0 +1,386 @@
+{
+  "events": {
+    "agent_manager": {
+      "confidence_result": {
+        "advice": {
+          "confidence": 0.95,
+          "issues": [],
+          "severity": "none"
+        },
+        "attempt": {
+          "confidence": 0.85,
+          "issues": [
+            "Omission: The conversation explicitly states the patient's motivation is 'My family'. This is not captured in the extracted data.",
+            "Omission: The counselor's affirmation regarding family as a motivator is missing.",
+            "Minor Hallucination: The phrase 'previous smoking quit attempt' is not explicitly stated in the conversation. While inferred, it's not directly extracted."
+          ],
+          "severity": "none"
+        },
+        "concern": {
+          "confidence": 0.95,
+          "issues": [],
+          "severity": "none"
+        },
+        "readiness": {
+          "confidence": 0.85,
+          "issues": [
+            "The extraction correctly identifies the patient's readiness stage as 'contemplation' based on the provided conversation. However, the phrase 'for good' could be interpreted as a stronger commitment than simply 'considering'. A more nuanced assessment might acknowledge the patient's desire for a permanent change, but not definitively label it as action-oriented.",
+            "The extraction misses the explicit mention of 'family' as a motivating factor. While acknowledged by the counselor, this is a key piece of information driving the patient's decision and should be explicitly included in the 'evidence' section for a more complete representation."
+          ],
+          "severity": "none"
+        },
+        "triggers": {
+          "confidence": 0.6,
+          "issues": [
+            "Omission: The patient explicitly states 'My family' as a motivator. This is not fully captured in the 'triggers' list.",
+            "Omission: The patient mentions 'improve my health' as a motivator. This is not fully captured in the 'triggers' list.",
+            "Potential Hallucination: While 'health' is mentioned, the extraction doesn't capture the *reason* for wanting to improve health (i.e., related to smoking)."
+          ],
+          "severity": "none"
+        }
+      },
+      "confidence_results": {
+        "advice": {
+          "confidence": 0.95,
+          "issues": [],
+          "severity": "none"
+        },
+        "attempt": {
+          "confidence": 0.85,
+          "issues": [
+            "Omission: The conversation explicitly states the patient's motivation is 'My family'. This is not captured in the extracted data.",
+            "Omission: The counselor's affirmation regarding family as a motivator is missing.",
+            "Minor Hallucination: The phrase 'previous smoking quit attempt' is not explicitly stated in the conversation. While inferred, it's not directly extracted."
+          ],
+          "severity": "none"
+        },
+        "concern": {
+          "confidence": 0.95,
+          "issues": [],
+          "severity": "none"
+        },
+        "readiness": {
+          "confidence": 0.85,
+          "issues": [
+            "The extraction correctly identifies the patient's readiness stage as 'contemplation' based on the provided conversation. However, the phrase 'for good' could be interpreted as a stronger commitment than simply 'considering'. A more nuanced assessment might acknowledge the patient's desire for a permanent change, but not definitively label it as action-oriented.",
+            "The extraction misses the explicit mention of 'family' as a motivating factor. While acknowledged by the counselor, this is a key piece of information driving the patient's decision and should be explicitly included in the 'evidence' section for a more complete representation."
+          ],
+          "severity": "none"
+        },
+        "triggers": {
+          "confidence": 0.6,
+          "issues": [
+            "Omission: The patient explicitly states 'My family' as a motivator. This is not fully captured in the 'triggers' list.",
+            "Omission: The patient mentions 'improve my health' as a motivator. This is not fully captured in the 'triggers' list.",
+            "Potential Hallucination: While 'health' is mentioned, the extraction doesn't capture the *reason* for wanting to improve health (i.e., related to smoking)."
+          ],
+          "severity": "none"
+        }
+      },
+      "extractor_output": {
+        "advice": {
+          "advice": [
+            "Your loved ones are a powerful motivator!",
+            "Taking control of your health is a huge step!",
+            "What specific health concerns do you hope to address by quitting smoking, and how do you envision your life improving as a result?"
+          ],
+          "evidence": [
+            "\"Your loved ones are a powerful motivator!\"",
+            "\"Taking control of your health is a huge step!\"",
+            "\"What specific health concerns do you hope to address by quitting smoking, and how do you envision your life improving as a result?\""
+          ]
+        },
+        "attempt": {
+          "attempts": [
+            "Patient stated an intention to quit smoking for good.",
+            "Patient mentioned quitting will improve his health."
+          ],
+          "evidence": [
+            "Patient: I want to quit smoking for good",
+            "Patient: Quitting will improve my health"
+          ]
+        },
+        "concern": {
+          "concerns": [
+            "health concerns",
+            "withdrawal symptoms"
+          ],
+          "evidence": [
+            "\"Quitting will improve my health\"",
+            "Implied concern about withdrawal symptoms due to the counselor's prompting about specific health concerns and envisioning an improved life as a result of quitting."
+          ]
+        },
+        "readiness": {
+          "evidence": "The patient stated, \"I want to quit smoking for good,\" indicating they are considering quitting but haven't yet made a firm commitment, which aligns with the contemplation stage. They also expressed a desire to quit \"for good\" suggesting they've been thinking about it for a while.",
+          "readiness_stage": "contemplation"
+        },
+        "triggers": {
+          "evidence": [],
+          "triggers": [
+            "family",
+            "health",
+            "improve health"
+          ]
+        }
+      },
+      "final_output": {
+        "advice": {
+          "_debate_converged": true,
+          "_debate_rounds": 0,
+          "advice": [
+            "Your loved ones are a powerful motivator!",
+            "Taking control of your health is a huge step!",
+            "What specific health concerns do you hope to address by quitting smoking, and how do you envision your life improving as a result?"
+          ],
+          "evidence": [
+            "\"Your loved ones are a powerful motivator!\"",
+            "\"Taking control of your health is a huge step!\"",
+            "\"What specific health concerns do you hope to address by quitting smoking, and how do you envision your life improving as a result?\""
+          ]
+        },
+        "attempt": {
+          "_debate_converged": true,
+          "_debate_rounds": 0,
+          "attempts": [
+            "Patient stated an intention to quit smoking for good.",
+            "Patient mentioned quitting will improve his health."
+          ],
+          "evidence": [
+            "Patient: I want to quit smoking for good",
+            "Patient: Quitting will improve my health"
+          ]
+        },
+        "concern": {
+          "_debate_converged": true,
+          "_debate_rounds": 0,
+          "concerns": [
+            "health concerns",
+            "withdrawal symptoms"
+          ],
+          "evidence": [
+            "\"Quitting will improve my health\"",
+            "Implied concern about withdrawal symptoms due to the counselor's prompting about specific health concerns and envisioning an improved life as a result of quitting."
+          ]
+        },
+        "readiness": {
+          "_debate_converged": true,
+          "_debate_rounds": 0,
+          "evidence": "The patient stated, \"I want to quit smoking for good,\" indicating they are considering quitting but haven't yet made a firm commitment, which aligns with the contemplation stage. They also expressed a desire to quit \"for good\" suggesting they've been thinking about it for a while.",
+          "readiness_stage": "contemplation"
+        },
+        "triggers": {
+          "_debate_converged": true,
+          "_debate_rounds": 1,
+          "evidence": [
+            "I want to quit smoking for good",
+            "My family",
+            "Quitting will improve my health"
+          ],
+          "triggers": [
+            "family",
+            "health",
+            "improve health",
+            "smoking"
+          ]
+        }
+      }
+    },
+    "consensus_agent": {
+      "output": {
+        "consensus": {
+          "dissenting_fields": [
+            "quit_attempt_history"
+          ],
+          "main_concern": "health concerns",
+          "primary_trigger": "family",
+          "quit_attempt_history": "Patient has expressed a desire to quit smoking for good and acknowledges its negative impact on health.",
+          "recommended_intervention": [
+            "Explore specific health concerns in detail, focusing on potential benefits of quitting.",
+            "Reinforce the importance of family support and values.",
+            "Discuss coping strategies for potential withdrawal symptoms.",
+            "Explore specific health concerns in detail, including potential withdrawal symptoms.",
+            "Reinforce the motivational power of family support.",
+            "Help the patient visualize the positive changes in their life that will result from quitting."
+          ],
+          "stage_of_change": "contemplation",
+          "vote_agreement": 0.833
+        }
+      }
+    },
+    "longitudinal_sanity": {
+      "output": {
+        "longitudinal_sanity": {
+          "flags": [],
+          "passed": true,
+          "severity": "none"
+        }
+      }
+    },
+    "profile_update_agent": {
+      "output": {
+        "dataset_row": {
+          "confidence_score": 0.95,
+          "debate_rounds_used": 1,
+          "inconsistencies": [],
+          "longitudinal_flags": [],
+          "longitudinal_sanity_passed": true,
+          "main_concern": "health concerns",
+          "primary_trigger": "family",
+          "quit_attempt_history": "Patient has expressed a desire to quit smoking for good and acknowledges its negative impact on health.",
+          "reasoning_summary": "The patient is in the contemplation stage, actively considering quitting due to a strong family motivator and concerns about their health. The recommended interventions focus on deepening their understanding of the health benefits and reinforcing the supportive role of their family to facilitate commitment.",
+          "recommended_intervention": [
+            "Explore specific health concerns in detail, focusing on potential benefits of quitting.",
+            "Reinforce the importance of family support and values.",
+            "Discuss coping strategies for potential withdrawal symptoms.",
+            "Explore specific health concerns in detail, including potential withdrawal symptoms.",
+            "Reinforce the motivational power of family support.",
+            "Help the patient visualize the positive changes in their life that will result from quitting."
+          ],
+          "sanity_passed": true,
+          "session_number": 1,
+          "stage_of_change": "contemplation",
+          "vote_agreement": 0.833
+        },
+        "longitudinal_output": {
+          "current_annotation": {
+            "confidence_score": 0.95,
+            "debate_rounds_used": 1,
+            "inconsistencies": [],
+            "longitudinal_flags": [],
+            "longitudinal_sanity_passed": true,
+            "main_concern": "health concerns",
+            "primary_trigger": "family",
+            "quit_attempt_history": "Patient has expressed a desire to quit smoking for good and acknowledges its negative impact on health.",
+            "reasoning_summary": "The patient is in the contemplation stage, actively considering quitting due to a strong family motivator and concerns about their health. The recommended interventions focus on deepening their understanding of the health benefits and reinforcing the supportive role of their family to facilitate commitment.",
+            "recommended_intervention": [
+              "Explore specific health concerns in detail, focusing on potential benefits of quitting.",
+              "Reinforce the importance of family support and values.",
+              "Discuss coping strategies for potential withdrawal symptoms.",
+              "Explore specific health concerns in detail, including potential withdrawal symptoms.",
+              "Reinforce the motivational power of family support.",
+              "Help the patient visualize the positive changes in their life that will result from quitting."
+            ],
+            "sanity_passed": true,
+            "session_number": 1,
+            "stage_of_change": "contemplation",
+            "vote_agreement": 0.833
+          },
+          "delta": null,
+          "interventions_tried": [],
+          "longitudinal_flags": [],
+          "overall_progress": "unknown",
+          "patient_id": "892ec4c8-48e4-4cfc-a69f-791e817112bd",
+          "persistent_concerns": [],
+          "persistent_triggers": [],
+          "relapse_detected": false,
+          "session_number": 1,
+          "stage_trajectory": [
+            "contemplation"
+          ],
+          "stagnation_detected": false
+        },
+        "patient_profile_id": "892ec4c8-48e4-4cfc-a69f-791e817112bd",
+        "session_count": 1
+      }
+    },
+    "reasoning_agent": {
+      "output": {
+        "dataset_row": {
+          "confidence_score": 0.95,
+          "debate_rounds_used": 1,
+          "inconsistencies": [],
+          "main_concern": "health concerns",
+          "primary_trigger": "family",
+          "quit_attempt_history": "Patient has expressed a desire to quit smoking for good and acknowledges its negative impact on health.",
+          "reasoning_summary": "The patient is in the contemplation stage, actively considering quitting due to a strong family motivator and concerns about their health. The recommended interventions focus on deepening their understanding of the health benefits and reinforcing the supportive role of their family to facilitate commitment.",
+          "recommended_intervention": [
+            "Explore specific health concerns in detail, focusing on potential benefits of quitting.",
+            "Reinforce the importance of family support and values.",
+            "Discuss coping strategies for potential withdrawal symptoms.",
+            "Explore specific health concerns in detail, including potential withdrawal symptoms.",
+            "Reinforce the motivational power of family support.",
+            "Help the patient visualize the positive changes in their life that will result from quitting."
+          ],
+          "sanity_passed": true,
+          "stage_of_change": "contemplation",
+          "vote_agreement": 0.833
+        }
+      }
+    },
+    "run_chat": {
+      "final_result": {
+        "dataset_row": {
+          "confidence_score": 0.95,
+          "debate_rounds_used": 1,
+          "inconsistencies": [],
+          "longitudinal_flags": [],
+          "longitudinal_sanity_passed": true,
+          "main_concern": "health concerns",
+          "primary_trigger": "family",
+          "quit_attempt_history": "Patient has expressed a desire to quit smoking for good and acknowledges its negative impact on health.",
+          "reasoning_summary": "The patient is in the contemplation stage, actively considering quitting due to a strong family motivator and concerns about their health. The recommended interventions focus on deepening their understanding of the health benefits and reinforcing the supportive role of their family to facilitate commitment.",
+          "recommended_intervention": [
+            "Explore specific health concerns in detail, focusing on potential benefits of quitting.",
+            "Reinforce the importance of family support and values.",
+            "Discuss coping strategies for potential withdrawal symptoms.",
+            "Explore specific health concerns in detail, including potential withdrawal symptoms.",
+            "Reinforce the motivational power of family support.",
+            "Help the patient visualize the positive changes in their life that will result from quitting."
+          ],
+          "sanity_passed": true,
+          "session_number": 1,
+          "stage_of_change": "contemplation",
+          "vote_agreement": 0.833
+        },
+        "longitudinal_output": {
+          "current_annotation": {
+            "confidence_score": 0.95,
+            "debate_rounds_used": 1,
+            "inconsistencies": [],
+            "longitudinal_flags": [],
+            "longitudinal_sanity_passed": true,
+            "main_concern": "health concerns",
+            "primary_trigger": "family",
+            "quit_attempt_history": "Patient has expressed a desire to quit smoking for good and acknowledges its negative impact on health.",
+            "reasoning_summary": "The patient is in the contemplation stage, actively considering quitting due to a strong family motivator and concerns about their health. The recommended interventions focus on deepening their understanding of the health benefits and reinforcing the supportive role of their family to facilitate commitment.",
+            "recommended_intervention": [
+              "Explore specific health concerns in detail, focusing on potential benefits of quitting.",
+              "Reinforce the importance of family support and values.",
+              "Discuss coping strategies for potential withdrawal symptoms.",
+              "Explore specific health concerns in detail, including potential withdrawal symptoms.",
+              "Reinforce the motivational power of family support.",
+              "Help the patient visualize the positive changes in their life that will result from quitting."
+            ],
+            "sanity_passed": true,
+            "session_number": 1,
+            "stage_of_change": "contemplation",
+            "vote_agreement": 0.833
+          },
+          "delta": null,
+          "interventions_tried": [],
+          "longitudinal_flags": [],
+          "overall_progress": "unknown",
+          "patient_id": "892ec4c8-48e4-4cfc-a69f-791e817112bd",
+          "persistent_concerns": [],
+          "persistent_triggers": [],
+          "relapse_detected": false,
+          "session_number": 1,
+          "stage_trajectory": [
+            "contemplation"
+          ],
+          "stagnation_detected": false
+        },
+        "patient_id": "892ec4c8-48e4-4cfc-a69f-791e817112bd",
+        "session_number": 1
+      },
+      "transcript": {
+        "session_id": "892ec4c8-48e4-4cfc-a69f-791e817112bd",
+        "transcript": "Patient: Hi\nCounselor: Hello! I'm eDOSTHI, your friendly AI companion to help you quit smoking. How's your day going so far?\nPatient: I want to quit smoking for good\nCounselor: That's a great goal! What motivated you to want to quit this time around?\nPatient: My family\nCounselor: Your loved ones are a powerful motivator! Can you tell me more about what your family means to you and why quitting is important to them?\nPatient: Quitting will improve my health\nCounselor: Taking control of your health is a huge step! What specific health concerns do you hope to address by quitting smoking, and how do you envision your life improving as a result?"
+      }
+    }
+  },
+  "meta": {
+    "session_id": "892ec4c8-48e4-4cfc-a69f-791e817112bd",
+    "started_at": "20260414T125842Z"
+  }
+}

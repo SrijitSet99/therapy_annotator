@@ -1,0 +1,429 @@
+{
+  "events": {
+    "agent_manager": {
+      "confidence_result": {
+        "advice": {
+          "confidence": 0.2,
+          "issues": [
+            "The extracted 'advice' includes 'Identify your motivation for quitting today.' which is a direct repetition of a question posed by the counselor. This is a hallucination.",
+            "The extracted 'evidence' includes 'What's one thing you're proud of yourself for in your journey to quit smoking so far?' which is a direct repetition of a question posed by the counselor. This is a hallucination.",
+            "There is an omission of the patient's initial response 'i good', which is a crucial element of the conversation and should be included in a comprehensive extraction."
+          ],
+          "severity": "none"
+        },
+        "attempt": {
+          "confidence": 0.0,
+          "issues": [
+            "Hallucination: The extracted data contains an empty list for 'attempts' and 'evidence', which is incorrect. The patient responded with 'i good', which needs to be processed and recorded.",
+            "Omission: The patient's response 'i good' is a critical piece of information regarding their motivation and should be included in the extracted data.",
+            "Overall Confidence: Very low due to significant omissions and a hallucinated empty data structure."
+          ],
+          "severity": "none"
+        },
+        "concern": {
+          "confidence": 0.85,
+          "issues": [
+            "The extracted data correctly identifies the patient's response as potentially indicative of a lack of motivation and uncertainty. However, a more precise assessment would benefit from acknowledging the patient's response was simply 'i good', which is not a fully formed sentence and requires interpretation. It's a minimal response and doesn't inherently *prove* a lack of motivation, but the validator's interpretation is reasonable given the context.",
+            "There is no hallucination present. All information is derived directly from the conversation."
+          ],
+          "severity": "none"
+        },
+        "readiness": {
+          "confidence": 0.8,
+          "issues": [
+            "Hallucination: The extracted data claims the patient is in 'precontemplation' which is an interpretation, not a direct statement from the conversation. The conversation provides no evidence to support this stage.",
+            "Omission: The conversation lacks any explicit assessment of the patient's willingness to change. While 'i good' is vague, a more targeted question about their current thoughts or feelings regarding quitting would have been beneficial.",
+            "Ambiguity: The extracted 'evidence' relies heavily on interpretation of a single, unclear response."
+          ],
+          "severity": "none"
+        },
+        "triggers": {
+          "confidence": 0.5,
+          "issues": [
+            "Hallucination: The extracted data includes 'stress' and 'boredom' as triggers, which were not mentioned in the conversation.",
+            "Omission: The patient's initial response ('i good') was not captured, which is a crucial piece of information regarding their motivation or current feelings.",
+            "Low Confidence: The confidence score is low due to the presence of a hallucination and a significant omission."
+          ],
+          "severity": "none"
+        }
+      },
+      "confidence_results": {
+        "advice": {
+          "confidence": 0.2,
+          "issues": [
+            "The extracted 'advice' includes 'Identify your motivation for quitting today.' which is a direct repetition of a question posed by the counselor. This is a hallucination.",
+            "The extracted 'evidence' includes 'What's one thing you're proud of yourself for in your journey to quit smoking so far?' which is a direct repetition of a question posed by the counselor. This is a hallucination.",
+            "There is an omission of the patient's initial response 'i good', which is a crucial element of the conversation and should be included in a comprehensive extraction."
+          ],
+          "severity": "none"
+        },
+        "attempt": {
+          "confidence": 0.0,
+          "issues": [
+            "Hallucination: The extracted data contains an empty list for 'attempts' and 'evidence', which is incorrect. The patient responded with 'i good', which needs to be processed and recorded.",
+            "Omission: The patient's response 'i good' is a critical piece of information regarding their motivation and should be included in the extracted data.",
+            "Overall Confidence: Very low due to significant omissions and a hallucinated empty data structure."
+          ],
+          "severity": "none"
+        },
+        "concern": {
+          "confidence": 0.85,
+          "issues": [
+            "The extracted data correctly identifies the patient's response as potentially indicative of a lack of motivation and uncertainty. However, a more precise assessment would benefit from acknowledging the patient's response was simply 'i good', which is not a fully formed sentence and requires interpretation. It's a minimal response and doesn't inherently *prove* a lack of motivation, but the validator's interpretation is reasonable given the context.",
+            "There is no hallucination present. All information is derived directly from the conversation."
+          ],
+          "severity": "none"
+        },
+        "readiness": {
+          "confidence": 0.8,
+          "issues": [
+            "Hallucination: The extracted data claims the patient is in 'precontemplation' which is an interpretation, not a direct statement from the conversation. The conversation provides no evidence to support this stage.",
+            "Omission: The conversation lacks any explicit assessment of the patient's willingness to change. While 'i good' is vague, a more targeted question about their current thoughts or feelings regarding quitting would have been beneficial.",
+            "Ambiguity: The extracted 'evidence' relies heavily on interpretation of a single, unclear response."
+          ],
+          "severity": "none"
+        },
+        "triggers": {
+          "confidence": 0.5,
+          "issues": [
+            "Hallucination: The extracted data includes 'stress' and 'boredom' as triggers, which were not mentioned in the conversation.",
+            "Omission: The patient's initial response ('i good') was not captured, which is a crucial piece of information regarding their motivation or current feelings.",
+            "Low Confidence: The confidence score is low due to the presence of a hallucination and a significant omission."
+          ],
+          "severity": "none"
+        }
+      },
+      "extractor_output": {
+        "advice": {
+          "advice": [
+            "Identify your motivation for quitting today.",
+            "Reflect on something you're proud of yourself for in your journey to quit smoking so far."
+          ],
+          "evidence": [
+            "What's your motivation for quitting today?",
+            "What's one thing you're proud of yourself for in your journey to quit smoking so far?"
+          ]
+        },
+        "attempt": {
+          "attempts": [],
+          "evidence": []
+        },
+        "concern": {
+          "concerns": [
+            "i good"
+          ],
+          "evidence": [
+            "\"i good\" - This suggests a lack of clear motivation or a feeling of being unsure about the process, potentially indicating a fear of failure or difficulty."
+          ]
+        },
+        "readiness": {
+          "evidence": "The patient's response, 'i good,' is unclear and doesn't indicate any consideration or planning related to quitting smoking. This suggests they are not yet actively thinking about the behavior change.",
+          "readiness_stage": "precontemplation"
+        },
+        "triggers": {
+          "evidence": [],
+          "triggers": [
+            "stress",
+            "boredom"
+          ]
+        }
+      },
+      "final_output": {
+        "advice": {
+          "_debate_converged": true,
+          "_debate_rounds": 3,
+          "advice": [
+            "Explore personal motivations for quitting and acknowledge past successes.",
+            "Counselor asked the patient to reflect on past accomplishments related to their quit smoking journey.",
+            "The counselor introduced themselves as eDOSTHI, stating their function as a motivational interviewing chatbot.",
+            "The counselor’s initial greeting and introduction established a friendly and supportive tone, potentially increasing patient engagement."
+          ],
+          "evidence": [
+            "Reason 1: Counselor initiated a conversation by asking about the patient’s motivation, a common element in motivational interviewing.",
+            "Reason 2: Counselor asked the patient to reflect on past accomplishments related to their quit smoking journey.",
+            "Reason 3: Counselor introduced themselves as eDOSTHI, stating their function as a motivational interviewing chatbot.",
+            "Reason 4: The counselor’s initial greeting and introduction established a friendly and supportive tone, potentially increasing patient engagement."
+          ]
+        },
+        "attempt": {
+          "_debate_converged": true,
+          "_debate_rounds": 13,
+          "attempts": [
+            {
+              "confidence": 0.75,
+              "intent": "ambiguous_response",
+              "notes": "Patient's response is unclear and requires further clarification. Potential misinterpretation.",
+              "speaker": "Patient",
+              "utterance": "i good"
+            },
+            {
+              "confidence": 0.85,
+              "contextual_information": "Continuing motivational interviewing session to encourage smoking cessation.",
+              "intent": "reflection",
+              "speaker": "Counselor",
+              "utterance": "You're doing well! What's one thing you're proud of yourself for in your journey to quit smoking so far?"
+            }
+          ],
+          "evidence": [
+            {
+              "confidence": 0.75,
+              "intent": "ambiguous_response",
+              "speaker": "Patient",
+              "utterance": "i good"
+            },
+            {
+              "confidence": 0.85,
+              "intent": "reflection",
+              "speaker": "Counselor",
+              "utterance": "You're doing well! What's one thing you're proud of yourself for in your journey to quit smoking so far?"
+            }
+          ]
+        },
+        "concern": {
+          "_debate_converged": true,
+          "_debate_rounds": 0,
+          "concerns": [
+            "i good"
+          ],
+          "evidence": [
+            "\"i good\" - This suggests a lack of clear motivation or a feeling of being unsure about the process, potentially indicating a fear of failure or difficulty."
+          ]
+        },
+        "readiness": {
+          "_debate_converged": true,
+          "_debate_rounds": 0,
+          "evidence": "The patient's response, 'i good,' is unclear and doesn't indicate any consideration or planning related to quitting smoking. This suggests they are not yet actively thinking about the behavior change.",
+          "readiness_stage": "precontemplation"
+        },
+        "triggers": {
+          "_debate_converged": true,
+          "_debate_rounds": 15,
+          "agreement_reached": "uncertain",
+          "counselor_response": "I hear you. What's one thing you're proud of yourself for in your journey to quit smoking so far?",
+          "evidence": "Patient: i good (requires clarification)",
+          "patient_utterance": "i good",
+          "severity": "medium",
+          "triggers": [
+            "ambiguity",
+            "uncertainty"
+          ]
+        }
+      }
+    },
+    "consensus_agent": {
+      "output": {
+        "consensus": {
+          "dissenting_fields": [
+            "quit_attempt_history"
+          ],
+          "main_concern": "ambiguity/uncertainty",
+          "primary_trigger": "ambiguity",
+          "quit_attempt_history": "No prior quit attempts documented. Initial response is unclear.",
+          "recommended_intervention": [
+            "Clarify patient's response: 'I hear you. Can you tell me more about what you're feeling or what you'd like to discuss regarding quitting smoking?'",
+            "Reframe the question: Instead of focusing on past accomplishments, start with a broader question about current feelings or challenges related to smoking.",
+            "Explore underlying motivations: Gently probe for reasons *why* the patient feels 'good' – is it related to smoking, or is there something else contributing to their well-being?",
+            "Clarify the patient's response: 'Can you tell me a little more about what's going on?'",
+            "Explore underlying motivations: 'What's making it difficult for you to talk about quitting right now?'",
+            "Start with small, achievable goals: 'Perhaps we could start by discussing one small step you could take towards feeling better about your health.'",
+            "Clarify patient's response: 'I hear you. Can you tell me more about what you're feeling or what's going on?'",
+            "Reframe questions to elicit specific motivations: 'Let's talk about why you might want to quit smoking. What are some things you value that smoking interferes with?'",
+            "Start with small, achievable goals: 'Instead of quitting completely right now, let's focus on reducing your smoking by one cigarette a day.'"
+          ],
+          "stage_of_change": "precontemplation",
+          "vote_agreement": 0.833
+        }
+      }
+    },
+    "longitudinal_sanity": {
+      "output": {
+        "longitudinal_sanity": {
+          "flags": [],
+          "passed": true,
+          "severity": "none"
+        }
+      }
+    },
+    "profile_update_agent": {
+      "output": {
+        "dataset_row": {
+          "confidence_score": 0.95,
+          "debate_rounds_used": 31,
+          "inconsistencies": [],
+          "longitudinal_flags": [],
+          "longitudinal_sanity_passed": true,
+          "main_concern": "ambiguity/uncertainty",
+          "primary_trigger": "ambiguity",
+          "quit_attempt_history": "No prior quit attempts documented. Initial response is unclear.",
+          "reasoning_summary": "The patient's unclear response indicates precontemplation, with a primary barrier of ambiguity regarding their intentions. The counselor should employ clarification techniques and explore underlying motivations to establish a foundation for further discussion and intervention.",
+          "recommended_intervention": [
+            "Clarify patient's response: 'I hear you. Can you tell me more about what you're feeling or what you'd like to discuss regarding quitting smoking?'",
+            "Reframe the question: Instead of focusing on past accomplishments, start with a broader question about current feelings or challenges related to smoking.",
+            "Explore underlying motivations: Gently probe for reasons *why* the patient feels 'good' – is it related to smoking, or is there something else contributing to their well-being?",
+            "Clarify the patient's response: 'Can you tell me a little more about what's going on?'",
+            "Explore underlying motivations: 'What's making it difficult for you to talk about quitting right now?'",
+            "Start with small, achievable goals: 'Perhaps we could start by discussing one small step you could take towards feeling better about your health.'",
+            "Clarify patient's response: 'I hear you. Can you tell me more about what you're feeling or what's going on?'",
+            "Reframe questions to elicit specific motivations: 'Let's talk about why you might want to quit smoking. What are some things you value that smoking interferes with?'",
+            "Start with small, achievable goals: 'Instead of quitting completely right now, let's focus on reducing your smoking by one cigarette a day.'"
+          ],
+          "sanity_passed": true,
+          "session_number": 1,
+          "stage_of_change": "precontemplation",
+          "vote_agreement": 0.833
+        },
+        "longitudinal_output": {
+          "current_annotation": {
+            "confidence_score": 0.95,
+            "debate_rounds_used": 31,
+            "inconsistencies": [],
+            "longitudinal_flags": [],
+            "longitudinal_sanity_passed": true,
+            "main_concern": "ambiguity/uncertainty",
+            "primary_trigger": "ambiguity",
+            "quit_attempt_history": "No prior quit attempts documented. Initial response is unclear.",
+            "reasoning_summary": "The patient's unclear response indicates precontemplation, with a primary barrier of ambiguity regarding their intentions. The counselor should employ clarification techniques and explore underlying motivations to establish a foundation for further discussion and intervention.",
+            "recommended_intervention": [
+              "Clarify patient's response: 'I hear you. Can you tell me more about what you're feeling or what you'd like to discuss regarding quitting smoking?'",
+              "Reframe the question: Instead of focusing on past accomplishments, start with a broader question about current feelings or challenges related to smoking.",
+              "Explore underlying motivations: Gently probe for reasons *why* the patient feels 'good' – is it related to smoking, or is there something else contributing to their well-being?",
+              "Clarify the patient's response: 'Can you tell me a little more about what's going on?'",
+              "Explore underlying motivations: 'What's making it difficult for you to talk about quitting right now?'",
+              "Start with small, achievable goals: 'Perhaps we could start by discussing one small step you could take towards feeling better about your health.'",
+              "Clarify patient's response: 'I hear you. Can you tell me more about what you're feeling or what's going on?'",
+              "Reframe questions to elicit specific motivations: 'Let's talk about why you might want to quit smoking. What are some things you value that smoking interferes with?'",
+              "Start with small, achievable goals: 'Instead of quitting completely right now, let's focus on reducing your smoking by one cigarette a day.'"
+            ],
+            "sanity_passed": true,
+            "session_number": 1,
+            "stage_of_change": "precontemplation",
+            "vote_agreement": 0.833
+          },
+          "delta": null,
+          "interventions_tried": [],
+          "longitudinal_flags": [],
+          "overall_progress": "unknown",
+          "patient_id": "e84be982-5115-405c-9657-d525abbd8470",
+          "persistent_concerns": [],
+          "persistent_triggers": [],
+          "relapse_detected": false,
+          "session_number": 1,
+          "stage_trajectory": [
+            "precontemplation"
+          ],
+          "stagnation_detected": false
+        },
+        "patient_profile_id": "e84be982-5115-405c-9657-d525abbd8470",
+        "session_count": 1
+      }
+    },
+    "reasoning_agent": {
+      "output": {
+        "dataset_row": {
+          "confidence_score": 0.95,
+          "debate_rounds_used": 31,
+          "inconsistencies": [],
+          "main_concern": "ambiguity/uncertainty",
+          "primary_trigger": "ambiguity",
+          "quit_attempt_history": "No prior quit attempts documented. Initial response is unclear.",
+          "reasoning_summary": "The patient's unclear response indicates precontemplation, with a primary barrier of ambiguity regarding their intentions. The counselor should employ clarification techniques and explore underlying motivations to establish a foundation for further discussion and intervention.",
+          "recommended_intervention": [
+            "Clarify patient's response: 'I hear you. Can you tell me more about what you're feeling or what you'd like to discuss regarding quitting smoking?'",
+            "Reframe the question: Instead of focusing on past accomplishments, start with a broader question about current feelings or challenges related to smoking.",
+            "Explore underlying motivations: Gently probe for reasons *why* the patient feels 'good' – is it related to smoking, or is there something else contributing to their well-being?",
+            "Clarify the patient's response: 'Can you tell me a little more about what's going on?'",
+            "Explore underlying motivations: 'What's making it difficult for you to talk about quitting right now?'",
+            "Start with small, achievable goals: 'Perhaps we could start by discussing one small step you could take towards feeling better about your health.'",
+            "Clarify patient's response: 'I hear you. Can you tell me more about what you're feeling or what's going on?'",
+            "Reframe questions to elicit specific motivations: 'Let's talk about why you might want to quit smoking. What are some things you value that smoking interferes with?'",
+            "Start with small, achievable goals: 'Instead of quitting completely right now, let's focus on reducing your smoking by one cigarette a day.'"
+          ],
+          "sanity_passed": true,
+          "stage_of_change": "precontemplation",
+          "vote_agreement": 0.833
+        }
+      }
+    },
+    "run_chat": {
+      "final_result": {
+        "dataset_row": {
+          "confidence_score": 0.95,
+          "debate_rounds_used": 31,
+          "inconsistencies": [],
+          "longitudinal_flags": [],
+          "longitudinal_sanity_passed": true,
+          "main_concern": "ambiguity/uncertainty",
+          "primary_trigger": "ambiguity",
+          "quit_attempt_history": "No prior quit attempts documented. Initial response is unclear.",
+          "reasoning_summary": "The patient's unclear response indicates precontemplation, with a primary barrier of ambiguity regarding their intentions. The counselor should employ clarification techniques and explore underlying motivations to establish a foundation for further discussion and intervention.",
+          "recommended_intervention": [
+            "Clarify patient's response: 'I hear you. Can you tell me more about what you're feeling or what you'd like to discuss regarding quitting smoking?'",
+            "Reframe the question: Instead of focusing on past accomplishments, start with a broader question about current feelings or challenges related to smoking.",
+            "Explore underlying motivations: Gently probe for reasons *why* the patient feels 'good' – is it related to smoking, or is there something else contributing to their well-being?",
+            "Clarify the patient's response: 'Can you tell me a little more about what's going on?'",
+            "Explore underlying motivations: 'What's making it difficult for you to talk about quitting right now?'",
+            "Start with small, achievable goals: 'Perhaps we could start by discussing one small step you could take towards feeling better about your health.'",
+            "Clarify patient's response: 'I hear you. Can you tell me more about what you're feeling or what's going on?'",
+            "Reframe questions to elicit specific motivations: 'Let's talk about why you might want to quit smoking. What are some things you value that smoking interferes with?'",
+            "Start with small, achievable goals: 'Instead of quitting completely right now, let's focus on reducing your smoking by one cigarette a day.'"
+          ],
+          "sanity_passed": true,
+          "session_number": 1,
+          "stage_of_change": "precontemplation",
+          "vote_agreement": 0.833
+        },
+        "longitudinal_output": {
+          "current_annotation": {
+            "confidence_score": 0.95,
+            "debate_rounds_used": 31,
+            "inconsistencies": [],
+            "longitudinal_flags": [],
+            "longitudinal_sanity_passed": true,
+            "main_concern": "ambiguity/uncertainty",
+            "primary_trigger": "ambiguity",
+            "quit_attempt_history": "No prior quit attempts documented. Initial response is unclear.",
+            "reasoning_summary": "The patient's unclear response indicates precontemplation, with a primary barrier of ambiguity regarding their intentions. The counselor should employ clarification techniques and explore underlying motivations to establish a foundation for further discussion and intervention.",
+            "recommended_intervention": [
+              "Clarify patient's response: 'I hear you. Can you tell me more about what you're feeling or what you'd like to discuss regarding quitting smoking?'",
+              "Reframe the question: Instead of focusing on past accomplishments, start with a broader question about current feelings or challenges related to smoking.",
+              "Explore underlying motivations: Gently probe for reasons *why* the patient feels 'good' – is it related to smoking, or is there something else contributing to their well-being?",
+              "Clarify the patient's response: 'Can you tell me a little more about what's going on?'",
+              "Explore underlying motivations: 'What's making it difficult for you to talk about quitting right now?'",
+              "Start with small, achievable goals: 'Perhaps we could start by discussing one small step you could take towards feeling better about your health.'",
+              "Clarify patient's response: 'I hear you. Can you tell me more about what you're feeling or what's going on?'",
+              "Reframe questions to elicit specific motivations: 'Let's talk about why you might want to quit smoking. What are some things you value that smoking interferes with?'",
+              "Start with small, achievable goals: 'Instead of quitting completely right now, let's focus on reducing your smoking by one cigarette a day.'"
+            ],
+            "sanity_passed": true,
+            "session_number": 1,
+            "stage_of_change": "precontemplation",
+            "vote_agreement": 0.833
+          },
+          "delta": null,
+          "interventions_tried": [],
+          "longitudinal_flags": [],
+          "overall_progress": "unknown",
+          "patient_id": "e84be982-5115-405c-9657-d525abbd8470",
+          "persistent_concerns": [],
+          "persistent_triggers": [],
+          "relapse_detected": false,
+          "session_number": 1,
+          "stage_trajectory": [
+            "precontemplation"
+          ],
+          "stagnation_detected": false
+        },
+        "patient_id": "e84be982-5115-405c-9657-d525abbd8470",
+        "session_number": 1
+      },
+      "transcript": {
+        "session_id": "e84be982-5115-405c-9657-d525abbd8470",
+        "transcript": "Patient: Hi\nCounselor: Hi! I'm eDOSTHI, your motivational interviewing chatbot. I'm here to support you in quitting smoking. What's your motivation for quitting today?\nPatient: i good\nCounselor: You're doing well! What's one thing you're proud of yourself for in your journey to quit smoking so far?"
+      }
+    }
+  },
+  "meta": {
+    "session_id": "e84be982-5115-405c-9657-d525abbd8470",
+    "started_at": "20260413T125426Z"
+  }
+}

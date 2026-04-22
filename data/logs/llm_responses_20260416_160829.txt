@@ -1,0 +1,78 @@
+=== LLM Response Log — 20260416_160829 ===
+
+--- [CONFIDENCE_CHECK] attempt @ 16:08:29.777 ---
+{
+  "confidence": 0.5,
+  "issues": [
+    "'AgentRegistry' object has no attribute 'run_one'"
+  ]
+}
+
+--- [CONFIDENCE_CHECK] readiness @ 16:08:29.778 ---
+{
+  "confidence": 0.5,
+  "issues": [
+    "'AgentRegistry' object has no attribute 'run_one'"
+  ]
+}
+
+=== LLM Response Log — 20260416_160829 ===
+
+=== LLM Response Log — 20260416_160829 ===
+
+--- [CONFIDENCE_CHECK] attempt @ 16:08:29.783 ---
+{
+  "confidence": 0.5,
+  "issues": [
+    "'AgentRegistry' object has no attribute 'run_one'"
+  ]
+}
+
+--- [CONFIDENCE_CHECK] readiness @ 16:08:29.784 ---
+{
+  "confidence": 0.5,
+  "issues": [
+    "'AgentRegistry' object has no attribute 'run_one'"
+  ]
+}
+
+=== LLM Response Log — 20260416_160829 ===
+
+=== LLM Response Log — 20260416_160829 ===
+
+--- [CONFIDENCE_CHECK] attempt @ 16:08:29.790 ---
+{
+  "confidence": 0.5,
+  "issues": [
+    "'AgentRegistry' object has no attribute 'run_one'"
+  ]
+}
+
+--- [CONFIDENCE_CHECK] readiness @ 16:08:29.790 ---
+{
+  "confidence": 0.5,
+  "issues": [
+    "'AgentRegistry' object has no attribute 'run_one'"
+  ]
+}
+
+=== LLM Response Log — 20260416_160829 ===
+
+=== LLM Response Log — 20260416_160829 ===
+
+--- [CONFIDENCE_CHECK] attempt @ 16:08:29.798 ---
+{
+  "confidence": 0.5,
+  "issues": [
+    "'AgentRegistry' object has no attribute 'run_one'"
+  ]
+}
+
+--- [CONFIDENCE_CHECK] readiness @ 16:08:29.799 ---
+{
+  "confidence": 0.5,
+  "issues": [
+    "'AgentRegistry' object has no attribute 'run_one'"
+  ]
+}
+

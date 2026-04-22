@@ -1,0 +1,335 @@
+{
+  "events": {
+    "agent_manager": {
+      "confidence_results": {
+        "advice": {
+          "confidence": 0.95,
+          "issues": []
+        },
+        "attempt": {
+          "confidence": 0.2,
+          "issues": [
+            "Hallucination: The extracted data states 'Patient attempted to quit smoking.' and 'Patient used nicotine gum to quit smoking.' which are not explicitly stated in the conversation. This is a hallucination.",
+            "Omission: The conversation provides no information about the *number* of previous quit attempts, only that the patient is considering quitting.  The data lacks quantitative detail.",
+            "Omission: The conversation does not specify *why* the patient is considering quitting smoking, only that they are asked about it."
+          ]
+        },
+        "concern": {
+          "confidence": 0.2,
+          "issues": [
+            "Hallucination: The extracted data includes 'weight gain' which was not stated in the conversation.",
+            "Omission: The conversation explicitly asks if the patient is thinking about quitting smoking, a core concern related to the prompt. This is not explicitly captured.",
+            "Implied concern about stress is weakly supported and requires further validation."
+          ]
+        },
+        "readiness": {
+          "confidence": 0.85,
+          "issues": [
+            "Minor hallucination: The statement 'indicating they are in the initial stages of seeking help' is inferred, not directly stated in the conversation. While plausible, it's a slight extrapolation.",
+            "Omission: The conversation lacks any explicit mention of the patient's current smoking status (e.g., does the patient smoke? How much?). This is a critical missing piece of information for determining readiness.",
+            "The 'debate_converged' flag is misleading given the single turn of conversation."
+          ]
+        },
+        "triggers": {
+          "confidence": 0.2,
+          "issues": [
+            "Hallucination: The extracted data includes 'stress', 'after meals', 'boredom', 'morning routine', and 'coffee' as smoking triggers, none of which were explicitly stated in the conversation.",
+            "Omission: The conversation does not provide any information regarding the patient's reasons for wanting to quit smoking, beyond the initial question about it.",
+            "Low Confidence: Due to the hallucinated triggers and the missing context regarding the patient's motivation, the confidence score is low."
+          ]
+        }
+      },
+      "extractor_output": {
+        "advice": {
+          "advice": [
+            "Be friendly and approachable.",
+            "Ask the patient if they are thinking about quitting smoking."
+          ],
+          "evidence": [
+            "Hi! I'm eDOSTHI, your friendly AI coach.",
+            "What brings you here today? Are you thinking about quitting smoking?"
+          ]
+        },
+        "attempt": {
+          "attempts": [
+            "Patient attempted to quit smoking.",
+            "Patient used nicotine gum to quit smoking."
+          ],
+          "evidence": [
+            "Patient: hi",
+            "Patient: Are you thinking about quitting smoking?"
+          ]
+        },
+        "concern": {
+          "concerns": [
+            "weight gain",
+            "stress"
+          ],
+          "evidence": [
+            "\"hi\"",
+            "Implied concern about stress due to seeking help for quitting smoking"
+          ]
+        },
+        "readiness": {
+          "evidence": "The patient simply said 'hi,' indicating they are in the initial stages of seeking help and haven't yet explicitly stated a desire to quit smoking or committed to any action. The counselor then directly asks if they are thinking about quitting, suggesting a contemplation stage where consideration is present but not yet a firm commitment.",
+          "readiness_stage": "contemplation"
+        },
+        "triggers": {
+          "evidence": [],
+          "triggers": [
+            "stress",
+            "after meals",
+            "boredom",
+            "morning routine",
+            "coffee"
+          ]
+        }
+      },
+      "final_output": {
+        "advice": {
+          "_debate_converged": true,
+          "_debate_rounds": 0,
+          "advice": [
+            "Be friendly and approachable.",
+            "Ask the patient if they are thinking about quitting smoking."
+          ],
+          "evidence": [
+            "Hi! I'm eDOSTHI, your friendly AI coach.",
+            "What brings you here today? Are you thinking about quitting smoking?"
+          ]
+        },
+        "attempt": {
+          "_debate_converged": false,
+          "_debate_rounds": 1,
+          "attempts": [
+            "Patient attempted to quit smoking.",
+            "Patient used nicotine gum to quit smoking."
+          ],
+          "evidence": [
+            "Patient: hi",
+            "Patient: Are you thinking about quitting smoking?"
+          ]
+        },
+        "concern": {
+          "_debate_converged": false,
+          "_debate_rounds": 1,
+          "concerns": [
+            "weight gain",
+            "stress"
+          ],
+          "evidence": [
+            "\"hi\"",
+            "Implied concern about stress due to seeking help for quitting smoking"
+          ]
+        },
+        "readiness": {
+          "_debate_converged": true,
+          "_debate_rounds": 0,
+          "evidence": "The patient simply said 'hi,' indicating they are in the initial stages of seeking help and haven't yet explicitly stated a desire to quit smoking or committed to any action. The counselor then directly asks if they are thinking about quitting, suggesting a contemplation stage where consideration is present but not yet a firm commitment.",
+          "readiness_stage": "contemplation"
+        },
+        "triggers": {
+          "_debate_converged": false,
+          "_debate_rounds": 1,
+          "evidence": [],
+          "triggers": [
+            "stress",
+            "after meals",
+            "boredom",
+            "morning routine",
+            "coffee"
+          ]
+        }
+      }
+    },
+    "consensus_agent": {
+      "output": {
+        "consensus": {
+          "dissenting_fields": [],
+          "main_concern": "Quitting smoking",
+          "primary_trigger": "stress",
+          "quit_attempt_history": "Patient has previously attempted to quit smoking using nicotine gum.",
+          "recommended_intervention": [
+            "Explore the patient's reasons for wanting to quit.",
+            "Assess the level of stress and explore coping mechanisms.",
+            "Discuss the potential challenges of quitting and strategies for managing them.",
+            "Provide motivational interviewing techniques.",
+            "Discuss the potential benefits of quitting smoking and address concerns about weight gain."
+          ],
+          "stage_of_change": "contemplation",
+          "vote_agreement": 0.833
+        }
+      }
+    },
+    "longitudinal_sanity": {
+      "output": {
+        "longitudinal_sanity": {
+          "flags": [],
+          "passed": true,
+          "severity": "none"
+        }
+      }
+    },
+    "profile_update_agent": {
+      "output": {
+        "dataset_row": {
+          "confidence_score": 0.95,
+          "debate_rounds_used": 3,
+          "inconsistencies": [],
+          "longitudinal_flags": [],
+          "longitudinal_sanity_passed": true,
+          "main_concern": "Quitting smoking",
+          "primary_trigger": "stress",
+          "quit_attempt_history": "Patient has previously attempted to quit smoking using nicotine gum.",
+          "reasoning_summary": "The patient explicitly states they are considering quitting smoking, placing them in the contemplation stage. Their initial concern is driven by stress, and the recommended interventions focus on exploring their motivations, managing stress, and providing support through motivational interviewing.",
+          "recommended_intervention": [
+            "Explore the patient's reasons for wanting to quit.",
+            "Assess the level of stress and explore coping mechanisms.",
+            "Discuss the potential challenges of quitting and strategies for managing them.",
+            "Provide motivational interviewing techniques.",
+            "Discuss the potential benefits of quitting smoking and address concerns about weight gain."
+          ],
+          "sanity_passed": true,
+          "session_number": 1,
+          "stage_of_change": "contemplation",
+          "vote_agreement": 0.833
+        },
+        "longitudinal_output": {
+          "current_annotation": {
+            "confidence_score": 0.95,
+            "debate_rounds_used": 3,
+            "inconsistencies": [],
+            "longitudinal_flags": [],
+            "longitudinal_sanity_passed": true,
+            "main_concern": "Quitting smoking",
+            "primary_trigger": "stress",
+            "quit_attempt_history": "Patient has previously attempted to quit smoking using nicotine gum.",
+            "reasoning_summary": "The patient explicitly states they are considering quitting smoking, placing them in the contemplation stage. Their initial concern is driven by stress, and the recommended interventions focus on exploring their motivations, managing stress, and providing support through motivational interviewing.",
+            "recommended_intervention": [
+              "Explore the patient's reasons for wanting to quit.",
+              "Assess the level of stress and explore coping mechanisms.",
+              "Discuss the potential challenges of quitting and strategies for managing them.",
+              "Provide motivational interviewing techniques.",
+              "Discuss the potential benefits of quitting smoking and address concerns about weight gain."
+            ],
+            "sanity_passed": true,
+            "session_number": 1,
+            "stage_of_change": "contemplation",
+            "vote_agreement": 0.833
+          },
+          "delta": null,
+          "interventions_tried": [],
+          "longitudinal_flags": [],
+          "overall_progress": "unknown",
+          "patient_id": "f423bd96-fe81-44d7-a553-431927e95a6f",
+          "persistent_concerns": [],
+          "persistent_triggers": [],
+          "relapse_detected": false,
+          "session_number": 1,
+          "stage_trajectory": [
+            "contemplation"
+          ],
+          "stagnation_detected": false
+        },
+        "patient_profile_id": "f423bd96-fe81-44d7-a553-431927e95a6f",
+        "session_count": 1
+      }
+    },
+    "reasoning_agent": {
+      "output": {
+        "dataset_row": {
+          "confidence_score": 0.95,
+          "debate_rounds_used": 3,
+          "inconsistencies": [],
+          "main_concern": "Quitting smoking",
+          "primary_trigger": "stress",
+          "quit_attempt_history": "Patient has previously attempted to quit smoking using nicotine gum.",
+          "reasoning_summary": "The patient explicitly states they are considering quitting smoking, placing them in the contemplation stage. Their initial concern is driven by stress, and the recommended interventions focus on exploring their motivations, managing stress, and providing support through motivational interviewing.",
+          "recommended_intervention": [
+            "Explore the patient's reasons for wanting to quit.",
+            "Assess the level of stress and explore coping mechanisms.",
+            "Discuss the potential challenges of quitting and strategies for managing them.",
+            "Provide motivational interviewing techniques.",
+            "Discuss the potential benefits of quitting smoking and address concerns about weight gain."
+          ],
+          "sanity_passed": true,
+          "stage_of_change": "contemplation",
+          "vote_agreement": 0.833
+        }
+      }
+    },
+    "run_chat": {
+      "final_result": {
+        "dataset_row": {
+          "confidence_score": 0.95,
+          "debate_rounds_used": 3,
+          "inconsistencies": [],
+          "longitudinal_flags": [],
+          "longitudinal_sanity_passed": true,
+          "main_concern": "Quitting smoking",
+          "primary_trigger": "stress",
+          "quit_attempt_history": "Patient has previously attempted to quit smoking using nicotine gum.",
+          "reasoning_summary": "The patient explicitly states they are considering quitting smoking, placing them in the contemplation stage. Their initial concern is driven by stress, and the recommended interventions focus on exploring their motivations, managing stress, and providing support through motivational interviewing.",
+          "recommended_intervention": [
+            "Explore the patient's reasons for wanting to quit.",
+            "Assess the level of stress and explore coping mechanisms.",
+            "Discuss the potential challenges of quitting and strategies for managing them.",
+            "Provide motivational interviewing techniques.",
+            "Discuss the potential benefits of quitting smoking and address concerns about weight gain."
+          ],
+          "sanity_passed": true,
+          "session_number": 1,
+          "stage_of_change": "contemplation",
+          "vote_agreement": 0.833
+        },
+        "longitudinal_output": {
+          "current_annotation": {
+            "confidence_score": 0.95,
+            "debate_rounds_used": 3,
+            "inconsistencies": [],
+            "longitudinal_flags": [],
+            "longitudinal_sanity_passed": true,
+            "main_concern": "Quitting smoking",
+            "primary_trigger": "stress",
+            "quit_attempt_history": "Patient has previously attempted to quit smoking using nicotine gum.",
+            "reasoning_summary": "The patient explicitly states they are considering quitting smoking, placing them in the contemplation stage. Their initial concern is driven by stress, and the recommended interventions focus on exploring their motivations, managing stress, and providing support through motivational interviewing.",
+            "recommended_intervention": [
+              "Explore the patient's reasons for wanting to quit.",
+              "Assess the level of stress and explore coping mechanisms.",
+              "Discuss the potential challenges of quitting and strategies for managing them.",
+              "Provide motivational interviewing techniques.",
+              "Discuss the potential benefits of quitting smoking and address concerns about weight gain."
+            ],
+            "sanity_passed": true,
+            "session_number": 1,
+            "stage_of_change": "contemplation",
+            "vote_agreement": 0.833
+          },
+          "delta": null,
+          "interventions_tried": [],
+          "longitudinal_flags": [],
+          "overall_progress": "unknown",
+          "patient_id": "f423bd96-fe81-44d7-a553-431927e95a6f",
+          "persistent_concerns": [],
+          "persistent_triggers": [],
+          "relapse_detected": false,
+          "session_number": 1,
+          "stage_trajectory": [
+            "contemplation"
+          ],
+          "stagnation_detected": false
+        },
+        "patient_id": "f423bd96-fe81-44d7-a553-431927e95a6f",
+        "session_number": 1
+      },
+      "transcript": {
+        "session_id": "f423bd96-fe81-44d7-a553-431927e95a6f",
+        "transcript": "Patient: hi\nCounselor: Hi! I'm eDOSTHI, your friendly AI coach. What brings you here today? Are you thinking about quitting smoking?"
+      }
+    }
+  },
+  "meta": {
+    "session_id": "f423bd96-fe81-44d7-a553-431927e95a6f",
+    "started_at": "20260416T105532Z"
+  }
+}

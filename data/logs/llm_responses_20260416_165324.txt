@@ -1,0 +1,44 @@
+=== LLM Response Log — 20260416_165324 ===
+
+=== LLM Response Log — 20260416_165324 ===
+
+--- [CONFIDENCE_CHECK] attempt @ 16:53:29.279 ---
+{
+  "confidence": 0.5,
+  "issues": [
+    "Grounding & Veracity: The statement 'The patient has tried to quit smoking twice before.' is extracted, but the source text only states 'Patient has tried to quit smoking twice before.' This is a direct textual anchor, so the grounding check passes. However, the extraction includes 'The patient has tried...' which adds unnecessary phrasing.",
+    "Hallucination Check: No data points are hallucinated; all information is present in the source text.",
+    "Sensitivity (Omission) Check: The source text contains the key phrase 'tried to quit smoking twice before,' fulfilling the sensitivity criteria. No relevant keywords were missed.",
+    "Taxonomy Alignment: While not explicitly stated, the phrase 'tried to quit smoking' implies a quit attempt. Assuming a standard 'Cold Turkey' attempt type would be a reasonable inference, aligning with clinical standards. However, a more granular taxonomy would benefit from specifying the duration or method of the attempts."
+  ]
+}
+
+--- [CONFIDENCE_CHECK] readiness @ 16:53:30.844 ---
+{
+  "confidence": 0.9,
+  "issues": []
+}
+
+--- [CONFIDENCE_CHECK] concern @ 16:53:35.717 ---
+{
+  "confidence": 0.75,
+  "issues": [
+    "{'concern': 'previous failed quit attempts', 'evidence': 'Patient has tried to quit smoking twice before.', 'assessment': \"Correctly identified a relevant concern. Categorized accurately as Psychological.  However, the confidence is slightly reduced as the statement is relatively straightforward and doesn't fully capture the potential emotional distress associated with repeated failures.\", 'flag': 'Minor Category Misalignment'}",
+    "{'concern': 'weight gain', 'evidence': 'I am worried about weight gain.', 'assessment': 'Correctly identified a relevant concern. Categorized accurately as Physiological.  The patient\u2019s explicit statement warrants a higher confidence score here.  Minor potential for oversimplification \u2013 a deeper exploration of the *reason* for the worry could reveal more nuanced psychological factors.', 'flag': 'Minor Category Misalignment'}"
+  ]
+}
+
+--- [CONFIDENCE_CHECK] triggers @ 16:53:38.891 ---
+{
+  "confidence": 0.8,
+  "issues": [
+    "{'category': 'Grounding Check', 'description': \"The trigger 'past failures' is strongly implied, but could benefit from explicit phrasing for increased robustness. While the patient's prior attempts to quit smoking are a relevant failure, the extraction could be strengthened by explicitly stating 'past failures' to ensure consistent interpretation.\", 'recommendation': \"Consider adding 'past failures' as a trigger to explicitly capture this information.\"}"
+  ]
+}
+
+--- [CONFIDENCE_CHECK] advice @ 16:53:40.338 ---
+{
+  "confidence": 0.95,
+  "issues": []
+}
+

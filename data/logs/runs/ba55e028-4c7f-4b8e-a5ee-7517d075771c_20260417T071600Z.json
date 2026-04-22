@@ -1,0 +1,26 @@
+{
+  "events": {
+    "agent_manager": {
+      "extractor_output": {
+        "attempt": {
+          "attempts": [
+            "Patient: hi"
+          ],
+          "evidence": [
+            "Patient: hi"
+          ]
+        }
+      }
+    },
+    "run_chat": {
+      "transcript": {
+        "session_id": "ba55e028-4c7f-4b8e-a5ee-7517d075771c",
+        "transcript": "Patient: hi\nCounselor: Hi! It's great to see you again. How have you been feeling about quitting smoking since our last session?"
+      }
+    }
+  },
+  "meta": {
+    "session_id": "ba55e028-4c7f-4b8e-a5ee-7517d075771c",
+    "started_at": "20260417T071600Z"
+  }
+}

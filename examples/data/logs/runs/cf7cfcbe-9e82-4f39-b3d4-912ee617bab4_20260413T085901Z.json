@@ -1,0 +1,360 @@
+{
+  "events": {
+    "agent_manager": {
+      "confidence_result": {
+        "advice": {
+          "confidence": 0.7,
+          "issues": [
+            "Omission: The conversation explicitly states the patient eats meat. This is relevant contextual information that is not captured in the 'evidence' field. It should be included for a more complete understanding of the patient's current state.",
+            "Hallucination: The advice 'Support the patient in quitting smoking.' is present in the extracted data but was not explicitly stated in the conversation. While eDOSTHI's role implies this, it's a derived statement, not a direct quote or reflection of the patient's input. This requires a lower confidence score."
+          ],
+          "severity": "none"
+        },
+        "attempt": {
+          "confidence": 0.1,
+          "issues": [
+            "Missing Patient Statement: The patient stated 'i eat meat'. This information is crucial context for understanding the patient's current state and potential influences on their smoking cessation journey. This is a significant omission."
+          ],
+          "severity": "none"
+        },
+        "concern": {
+          "confidence": 0.7,
+          "issues": [
+            "Omission: The patient stated 'i eat meat'. While 'weight gain' is a reasonable concern given this statement, the conversation doesn't explicitly link meat consumption to a concern. A more complete extraction would include the patient's statement itself as a potential factor."
+          ],
+          "severity": "none"
+        },
+        "readiness": {
+          "confidence": 0.85,
+          "issues": [
+            "Hallucination: The extracted data claims the patient isn't considering quitting, which is not explicitly stated in the conversation. It's an interpretation.",
+            "Omission: The conversation lacks any explicit indication of the patient's motivation or resistance to quitting. The data could benefit from a brief assessment of the patient's current thoughts regarding cessation.",
+            "Potential for Misinterpretation: While 'I eat meat' is an irrelevant response, labeling it as 'precontemplation' is a strong interpretation and could be debated. A more cautious assessment might be 'no readiness data available' or 'unclear readiness'."
+          ],
+          "severity": "none"
+        },
+        "triggers": {
+          "confidence": 0.8,
+          "issues": [
+            "Omission: The conversation discusses smoking cessation and the patient's feelings about quitting. The extracted data only focuses on the patient's statement about eating meat, neglecting the broader context and the counselor's questions regarding smoking and health."
+          ],
+          "severity": "none"
+        }
+      },
+      "confidence_results": {
+        "advice": {
+          "confidence": 0.7,
+          "issues": [
+            "Omission: The conversation explicitly states the patient eats meat. This is relevant contextual information that is not captured in the 'evidence' field. It should be included for a more complete understanding of the patient's current state.",
+            "Hallucination: The advice 'Support the patient in quitting smoking.' is present in the extracted data but was not explicitly stated in the conversation. While eDOSTHI's role implies this, it's a derived statement, not a direct quote or reflection of the patient's input. This requires a lower confidence score."
+          ],
+          "severity": "none"
+        },
+        "attempt": {
+          "confidence": 0.1,
+          "issues": [
+            "Missing Patient Statement: The patient stated 'i eat meat'. This information is crucial context for understanding the patient's current state and potential influences on their smoking cessation journey. This is a significant omission."
+          ],
+          "severity": "none"
+        },
+        "concern": {
+          "confidence": 0.7,
+          "issues": [
+            "Omission: The patient stated 'i eat meat'. While 'weight gain' is a reasonable concern given this statement, the conversation doesn't explicitly link meat consumption to a concern. A more complete extraction would include the patient's statement itself as a potential factor."
+          ],
+          "severity": "none"
+        },
+        "readiness": {
+          "confidence": 0.85,
+          "issues": [
+            "Hallucination: The extracted data claims the patient isn't considering quitting, which is not explicitly stated in the conversation. It's an interpretation.",
+            "Omission: The conversation lacks any explicit indication of the patient's motivation or resistance to quitting. The data could benefit from a brief assessment of the patient's current thoughts regarding cessation.",
+            "Potential for Misinterpretation: While 'I eat meat' is an irrelevant response, labeling it as 'precontemplation' is a strong interpretation and could be debated. A more cautious assessment might be 'no readiness data available' or 'unclear readiness'."
+          ],
+          "severity": "none"
+        },
+        "triggers": {
+          "confidence": 0.8,
+          "issues": [
+            "Omission: The conversation discusses smoking cessation and the patient's feelings about quitting. The extracted data only focuses on the patient's statement about eating meat, neglecting the broader context and the counselor's questions regarding smoking and health."
+          ],
+          "severity": "none"
+        }
+      },
+      "extractor_output": {
+        "advice": {
+          "advice": [
+            "Explore the connection between smoking and overall health and well-being.",
+            "Support the patient in quitting smoking."
+          ],
+          "evidence": [
+            "How do you think your smoking habit might be affecting your overall health and well-being?",
+            "I'm here to support you in quitting smoking."
+          ]
+        },
+        "attempt": {
+          "attempts": [],
+          "longest_attempt": null,
+          "most_recent_attempt": null
+        },
+        "concern": {
+          "concerns": [
+            "weight gain"
+          ],
+          "primary_concern": "weight gain"
+        },
+        "readiness": {
+          "evidence": "The patient simply stated 'I eat meat,' indicating a focus on a different behavior and not addressing the issue of smoking cessation. The counselor's initial question about the smoking habit was met with a completely unrelated response, suggesting the patient isn't yet considering quitting.",
+          "readiness_stage": "precontemplation"
+        },
+        "triggers": {
+          "triggers": [
+            "eating meat"
+          ]
+        }
+      },
+      "final_output": {
+        "advice": {
+          "_debate_converged": true,
+          "_debate_rounds": 2,
+          "advice": [
+            "Explore the patient’s relationship with meat and its potential role in their routine or cravings.",
+            "Assess the patient’s current cravings and triggers.",
+            "Discuss the potential health benefits of quitting smoking."
+          ],
+          "evidence": [
+            "Given that you enjoy eating meat, how do you think your smoking habit might be impacting your appetite or food choices?",
+            "How do you think your smoking habit might be affecting your overall health and well-being?"
+          ],
+          "intervention_type": "reflective statement with exploration",
+          "patient_statement": "i eat meat"
+        },
+        "attempt": {
+          "_debate_converged": true,
+          "_debate_rounds": 3,
+          "context": "Counselor responded to patient’s statement about eating meat, transitioning to an inquiry about the potential health impacts of smoking, aligning with motivational interviewing principles of exploring ambivalence.",
+          "speaker": "Counselor",
+          "utterance": "So, you enjoy eating meat. How do you think your smoking habit might be affecting your overall health and well-being?"
+        },
+        "concern": {
+          "_debate_converged": true,
+          "_debate_rounds": 1,
+          "concerns": [
+            "potential health impacts related to smoking and dietary habits"
+          ],
+          "notes": "This extraction reflects the feedback that the initial extraction made an unsupported assumption about a connection between the patient's meat consumption and weight gain. It focuses on the counselor's explicit question about the impact of smoking on health and well-being, acknowledging the need to explore potential concerns related to both smoking and dietary habits without assuming a direct causal link.",
+          "primary_concern": "potential health impacts related to smoking and dietary habits"
+        },
+        "readiness": {
+          "_debate_converged": true,
+          "_debate_rounds": 0,
+          "evidence": "The patient simply stated 'I eat meat,' indicating a focus on a different behavior and not addressing the issue of smoking cessation. The counselor's initial question about the smoking habit was met with a completely unrelated response, suggesting the patient isn't yet considering quitting.",
+          "readiness_stage": "precontemplation"
+        },
+        "triggers": {
+          "_debate_converged": true,
+          "_debate_rounds": 0,
+          "triggers": [
+            "eating meat"
+          ]
+        }
+      }
+    },
+    "consensus_agent": {
+      "output": {
+        "consensus": {
+          "dissenting_fields": [],
+          "main_concern": "potential health impacts related to smoking and dietary habits",
+          "primary_trigger": "eating meat",
+          "quit_attempt_history": "No prior quit attempts indicated.",
+          "recommended_intervention": [
+            "Explore the patient’s relationship with meat and its potential role in their routine or cravings.",
+            "Assess the patient’s current cravings and triggers related to smoking.",
+            "Discuss the potential health benefits of quitting smoking and how it might impact dietary choices.",
+            "Explore the patient’s overall feelings about quitting smoking and their willingness to consider changes in their lifestyle.",
+            "Discuss the potential health benefits of quitting smoking.",
+            "Explore the patient’s overall health and well-being, acknowledging the impact of both smoking and dietary choices.",
+            "Explore the patient's overall health and well-being, acknowledging their enjoyment of meat."
+          ],
+          "stage_of_change": "precontemplation",
+          "vote_agreement": 1.0
+        }
+      }
+    },
+    "longitudinal_sanity": {
+      "output": {
+        "longitudinal_sanity": {
+          "flags": [],
+          "passed": true,
+          "severity": "none"
+        }
+      }
+    },
+    "profile_update_agent": {
+      "output": {
+        "dataset_row": {
+          "confidence_score": 0.95,
+          "debate_rounds_used": 6,
+          "inconsistencies": [],
+          "longitudinal_flags": [],
+          "longitudinal_sanity_passed": true,
+          "main_concern": "potential health impacts related to smoking and dietary habits",
+          "primary_trigger": "eating meat",
+          "quit_attempt_history": "No prior quit attempts indicated.",
+          "reasoning_summary": "The patient's initial statement about eating meat suggests they are not yet considering quitting smoking, placing them in the precontemplation stage. The counselor is appropriately starting with a gentle exploration of the patient's current habits and potential concerns related to their health, focusing on the interplay between smoking and diet.",
+          "recommended_intervention": [
+            "Explore the patient’s relationship with meat and its potential role in their routine or cravings.",
+            "Assess the patient’s current cravings and triggers related to smoking.",
+            "Discuss the potential health benefits of quitting smoking and how it might impact dietary choices.",
+            "Explore the patient’s overall feelings about quitting smoking and their willingness to consider changes in their lifestyle.",
+            "Discuss the potential health benefits of quitting smoking.",
+            "Explore the patient’s overall health and well-being, acknowledging the impact of both smoking and dietary choices."
+          ],
+          "sanity_passed": true,
+          "session_number": 1,
+          "stage_of_change": "precontemplation",
+          "vote_agreement": 1.0
+        },
+        "longitudinal_output": {
+          "current_annotation": {
+            "confidence_score": 0.95,
+            "debate_rounds_used": 6,
+            "inconsistencies": [],
+            "longitudinal_flags": [],
+            "longitudinal_sanity_passed": true,
+            "main_concern": "potential health impacts related to smoking and dietary habits",
+            "primary_trigger": "eating meat",
+            "quit_attempt_history": "No prior quit attempts indicated.",
+            "reasoning_summary": "The patient's initial statement about eating meat suggests they are not yet considering quitting smoking, placing them in the precontemplation stage. The counselor is appropriately starting with a gentle exploration of the patient's current habits and potential concerns related to their health, focusing on the interplay between smoking and diet.",
+            "recommended_intervention": [
+              "Explore the patient’s relationship with meat and its potential role in their routine or cravings.",
+              "Assess the patient’s current cravings and triggers related to smoking.",
+              "Discuss the potential health benefits of quitting smoking and how it might impact dietary choices.",
+              "Explore the patient’s overall feelings about quitting smoking and their willingness to consider changes in their lifestyle.",
+              "Discuss the potential health benefits of quitting smoking.",
+              "Explore the patient’s overall health and well-being, acknowledging the impact of both smoking and dietary choices."
+            ],
+            "sanity_passed": true,
+            "session_number": 1,
+            "stage_of_change": "precontemplation",
+            "vote_agreement": 1.0
+          },
+          "delta": null,
+          "interventions_tried": [],
+          "longitudinal_flags": [],
+          "overall_progress": "unknown",
+          "patient_id": "cf7cfcbe-9e82-4f39-b3d4-912ee617bab4",
+          "persistent_concerns": [],
+          "persistent_triggers": [],
+          "relapse_detected": false,
+          "session_number": 1,
+          "stage_trajectory": [
+            "precontemplation"
+          ],
+          "stagnation_detected": false
+        },
+        "patient_profile_id": "cf7cfcbe-9e82-4f39-b3d4-912ee617bab4",
+        "session_count": 1
+      }
+    },
+    "reasoning_agent": {
+      "output": {
+        "dataset_row": {
+          "confidence_score": 0.95,
+          "debate_rounds_used": 6,
+          "inconsistencies": [],
+          "main_concern": "potential health impacts related to smoking and dietary habits",
+          "primary_trigger": "eating meat",
+          "quit_attempt_history": "No prior quit attempts indicated.",
+          "reasoning_summary": "The patient's initial statement about eating meat suggests they are not yet considering quitting smoking, placing them in the precontemplation stage. The counselor is appropriately starting with a gentle exploration of the patient's current habits and potential concerns related to their health, focusing on the interplay between smoking and diet.",
+          "recommended_intervention": [
+            "Explore the patient’s relationship with meat and its potential role in their routine or cravings.",
+            "Assess the patient’s current cravings and triggers related to smoking.",
+            "Discuss the potential health benefits of quitting smoking and how it might impact dietary choices.",
+            "Explore the patient’s overall feelings about quitting smoking and their willingness to consider changes in their lifestyle.",
+            "Discuss the potential health benefits of quitting smoking.",
+            "Explore the patient’s overall health and well-being, acknowledging the impact of both smoking and dietary choices."
+          ],
+          "sanity_passed": true,
+          "stage_of_change": "precontemplation",
+          "vote_agreement": 1.0
+        }
+      }
+    },
+    "run_chat": {
+      "final_result": {
+        "dataset_row": {
+          "confidence_score": 0.95,
+          "debate_rounds_used": 6,
+          "inconsistencies": [],
+          "longitudinal_flags": [],
+          "longitudinal_sanity_passed": true,
+          "main_concern": "potential health impacts related to smoking and dietary habits",
+          "primary_trigger": "eating meat",
+          "quit_attempt_history": "No prior quit attempts indicated.",
+          "reasoning_summary": "The patient's initial statement about eating meat suggests they are not yet considering quitting smoking, placing them in the precontemplation stage. The counselor is appropriately starting with a gentle exploration of the patient's current habits and potential concerns related to their health, focusing on the interplay between smoking and diet.",
+          "recommended_intervention": [
+            "Explore the patient’s relationship with meat and its potential role in their routine or cravings.",
+            "Assess the patient’s current cravings and triggers related to smoking.",
+            "Discuss the potential health benefits of quitting smoking and how it might impact dietary choices.",
+            "Explore the patient’s overall feelings about quitting smoking and their willingness to consider changes in their lifestyle.",
+            "Discuss the potential health benefits of quitting smoking.",
+            "Explore the patient’s overall health and well-being, acknowledging the impact of both smoking and dietary choices."
+          ],
+          "sanity_passed": true,
+          "session_number": 1,
+          "stage_of_change": "precontemplation",
+          "vote_agreement": 1.0
+        },
+        "longitudinal_output": {
+          "current_annotation": {
+            "confidence_score": 0.95,
+            "debate_rounds_used": 6,
+            "inconsistencies": [],
+            "longitudinal_flags": [],
+            "longitudinal_sanity_passed": true,
+            "main_concern": "potential health impacts related to smoking and dietary habits",
+            "primary_trigger": "eating meat",
+            "quit_attempt_history": "No prior quit attempts indicated.",
+            "reasoning_summary": "The patient's initial statement about eating meat suggests they are not yet considering quitting smoking, placing them in the precontemplation stage. The counselor is appropriately starting with a gentle exploration of the patient's current habits and potential concerns related to their health, focusing on the interplay between smoking and diet.",
+            "recommended_intervention": [
+              "Explore the patient’s relationship with meat and its potential role in their routine or cravings.",
+              "Assess the patient’s current cravings and triggers related to smoking.",
+              "Discuss the potential health benefits of quitting smoking and how it might impact dietary choices.",
+              "Explore the patient’s overall feelings about quitting smoking and their willingness to consider changes in their lifestyle.",
+              "Discuss the potential health benefits of quitting smoking.",
+              "Explore the patient’s overall health and well-being, acknowledging the impact of both smoking and dietary choices."
+            ],
+            "sanity_passed": true,
+            "session_number": 1,
+            "stage_of_change": "precontemplation",
+            "vote_agreement": 1.0
+          },
+          "delta": null,
+          "interventions_tried": [],
+          "longitudinal_flags": [],
+          "overall_progress": "unknown",
+          "patient_id": "cf7cfcbe-9e82-4f39-b3d4-912ee617bab4",
+          "persistent_concerns": [],
+          "persistent_triggers": [],
+          "relapse_detected": false,
+          "session_number": 1,
+          "stage_trajectory": [
+            "precontemplation"
+          ],
+          "stagnation_detected": false
+        },
+        "patient_id": "cf7cfcbe-9e82-4f39-b3d4-912ee617bab4",
+        "session_number": 1
+      },
+      "transcript": {
+        "session_id": "cf7cfcbe-9e82-4f39-b3d4-912ee617bab4",
+        "transcript": "Patient: hi\nCounselor: Hello! I'm eDOSTHI, your motivational interviewing chatbot. I'm here to support you in quitting smoking. How are you feeling about quitting today?\nPatient: i eat meat\nCounselor: That's great! So, you enjoy eating meat. How do you think your smoking habit might be affecting your overall health and well-being?"
+      }
+    }
+  },
+  "meta": {
+    "session_id": "cf7cfcbe-9e82-4f39-b3d4-912ee617bab4",
+    "started_at": "20260413T085901Z"
+  }
+}

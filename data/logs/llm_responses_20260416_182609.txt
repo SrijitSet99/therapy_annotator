@@ -1,0 +1,39 @@
+=== LLM Response Log — 20260416_182609 ===
+
+--- [CONFIDENCE_CHECK] attempt @ 18:26:13.894 ---
+{
+  "confidence": 0.5,
+  "issues": [
+    "Grounding & Veracity: The statement 'Patient has tried to quit twice.' is directly supported by the source text. No logical leaps detected.",
+    "Hallucination Check: No data points exist in the source text not present in the extraction.",
+    "Sensitivity (Omission) Check: The source text lacks specific details regarding the *type* of attempts (Cold Turkey, NRT, etc.) and any associated timelines. This represents a significant omission, as a robust extraction would benefit from this information.",
+    "Taxonomy Alignment: The extraction lacks a defined `attempt_type`. While 'tried to quit' implies an attempt, the absence of a specific category prevents accurate clinical categorization and analysis. This is a critical failure."
+  ]
+}
+
+--- [CONFIDENCE_CHECK] readiness @ 18:26:15.505 ---
+{
+  "confidence": 0.9,
+  "issues": []
+}
+
+--- [CONFIDENCE_CHECK] concern @ 18:26:17.425 ---
+{
+  "confidence": 0.5,
+  "issues": []
+}
+
+--- [CONFIDENCE_CHECK] triggers @ 18:26:20.737 ---
+{
+  "confidence": 0.8,
+  "issues": [
+    "{'category': 'Grounding Check', 'description': \"The trigger 'past failures' is strongly implied, but could benefit from explicit confirmation. While the patient stating 'tried to quit twice' strongly suggests prior unsuccessful attempts, explicitly stating 'past failures' might improve clarity and reduce potential ambiguity.\", 'recommendation': \"Consider adding 'past failures' as an explicit trigger or rephrasing to highlight the unsuccessful quit attempts more directly.\"}"
+  ]
+}
+
+--- [CONFIDENCE_CHECK] advice @ 18:26:22.229 ---
+{
+  "confidence": 0.95,
+  "issues": []
+}
+

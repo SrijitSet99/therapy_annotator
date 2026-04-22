@@ -1,0 +1,12 @@
+=== LLM Response Log — 20260417_132457 ===
+
+--- [EXTRACTOR] attempt @ 13:25:06.997 ---
+{
+  "attempts": [
+    "Patient: hi"
+  ],
+  "evidence": [
+    "Patient: hi"
+  ]
+}
+

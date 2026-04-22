@@ -1,0 +1,263 @@
+{
+  "events": {
+    "agent_manager": {
+      "confidence_results": {
+        "advice": {
+          "confidence": 0.0,
+          "issues": [
+            "signal not extracted"
+          ]
+        },
+        "attempt": {
+          "confidence": 0.5,
+          "issues": [
+            "'attempt_confidence_agent'"
+          ]
+        },
+        "concern": {
+          "confidence": 0.0,
+          "issues": [
+            "signal not extracted"
+          ]
+        },
+        "readiness": {
+          "confidence": 0.5,
+          "issues": [
+            "'readiness_confidence_agent'"
+          ]
+        },
+        "triggers": {
+          "confidence": 0.0,
+          "issues": [
+            "signal not extracted"
+          ]
+        }
+      },
+      "extractor_output": {
+        "attempt": {
+          "attempts": [
+            "Patient attempted to reduce smoking gradually.",
+            "Patient attempted to stop abruptly."
+          ],
+          "evidence": [
+            "Patient: What's been your biggest struggle with quitting so far?",
+            "Patient: Hi"
+          ]
+        },
+        "readiness": {
+          "evidence": "The patient states, \"Hi,\" and the counselor immediately asks about their biggest struggle, indicating they are at least considering quitting (\"considering quitting in the next 6 months but not committed\").",
+          "readiness_stage": "contemplation"
+        }
+      },
+      "final_output": {
+        "attempt": {
+          "_debate_converged": false,
+          "_debate_rounds": 1,
+          "attempts": [
+            "Patient attempted to reduce smoking gradually.",
+            "Patient attempted to stop abruptly."
+          ],
+          "evidence": [
+            "Patient: What's been your biggest struggle with quitting so far?",
+            "Patient: Hi"
+          ]
+        },
+        "readiness": {
+          "_debate_converged": false,
+          "_debate_rounds": 1,
+          "evidence": "The patient states, \"Hi,\" and the counselor immediately asks about their biggest struggle, indicating they are at least considering quitting (\"considering quitting in the next 6 months but not committed\").",
+          "readiness_stage": "contemplation"
+        }
+      }
+    },
+    "consensus_agent": {
+      "output": {
+        "consensus": {
+          "dissenting_fields": [],
+          "main_concern": "Identifying biggest struggle with quitting",
+          "primary_trigger": "N/A",
+          "quit_attempt_history": "Patient has attempted both gradual reduction and abrupt cessation.",
+          "recommended_intervention": [
+            "Explore the patient's specific struggles in detail.",
+            "Assess the reasons behind previous attempts (successes and failures).",
+            "Discuss coping strategies for common withdrawal symptoms.",
+            "Set realistic goals and expectations.",
+            "Help the patient define a clear quit goal."
+          ],
+          "stage_of_change": "contemplation",
+          "vote_agreement": 1.0
+        }
+      }
+    },
+    "longitudinal_sanity": {
+      "output": {
+        "longitudinal_sanity": {
+          "flags": [],
+          "passed": true,
+          "severity": "none"
+        }
+      }
+    },
+    "profile_update_agent": {
+      "output": {
+        "dataset_row": {
+          "confidence_score": 1.0,
+          "debate_rounds_used": 2,
+          "inconsistencies": [],
+          "longitudinal_flags": [],
+          "longitudinal_sanity_passed": true,
+          "main_concern": "Identifying biggest struggle with quitting",
+          "primary_trigger": "N/A",
+          "quit_attempt_history": "Patient has attempted both gradual reduction and abrupt cessation.",
+          "reasoning_summary": "The patient is in the contemplation stage, actively identifying their challenges with quitting. The counselor's initial question directly addresses this core concern by prompting the patient to articulate their biggest struggle, setting the stage for a detailed exploration and tailored support.",
+          "recommended_intervention": [
+            "Explore the patient's specific struggles in detail.",
+            "Assess the reasons behind previous attempts (successes and failures).",
+            "Discuss coping strategies for common withdrawal symptoms.",
+            "Set realistic goals and expectations.",
+            "Help the patient define a clear quit goal."
+          ],
+          "sanity_passed": true,
+          "session_number": 1,
+          "stage_of_change": "contemplation",
+          "vote_agreement": 1.0
+        },
+        "longitudinal_output": {
+          "current_annotation": {
+            "confidence_score": 1.0,
+            "debate_rounds_used": 2,
+            "inconsistencies": [],
+            "longitudinal_flags": [],
+            "longitudinal_sanity_passed": true,
+            "main_concern": "Identifying biggest struggle with quitting",
+            "primary_trigger": "N/A",
+            "quit_attempt_history": "Patient has attempted both gradual reduction and abrupt cessation.",
+            "reasoning_summary": "The patient is in the contemplation stage, actively identifying their challenges with quitting. The counselor's initial question directly addresses this core concern by prompting the patient to articulate their biggest struggle, setting the stage for a detailed exploration and tailored support.",
+            "recommended_intervention": [
+              "Explore the patient's specific struggles in detail.",
+              "Assess the reasons behind previous attempts (successes and failures).",
+              "Discuss coping strategies for common withdrawal symptoms.",
+              "Set realistic goals and expectations.",
+              "Help the patient define a clear quit goal."
+            ],
+            "sanity_passed": true,
+            "session_number": 1,
+            "stage_of_change": "contemplation",
+            "vote_agreement": 1.0
+          },
+          "delta": null,
+          "interventions_tried": [],
+          "longitudinal_flags": [],
+          "overall_progress": "unknown",
+          "patient_id": "1910ce17-b679-4f59-88d6-51e6b2144e4e",
+          "persistent_concerns": [],
+          "persistent_triggers": [],
+          "relapse_detected": false,
+          "session_number": 1,
+          "stage_trajectory": [
+            "contemplation"
+          ],
+          "stagnation_detected": false
+        },
+        "patient_profile_id": "1910ce17-b679-4f59-88d6-51e6b2144e4e",
+        "session_count": 1
+      }
+    },
+    "reasoning_agent": {
+      "output": {
+        "dataset_row": {
+          "confidence_score": 1.0,
+          "debate_rounds_used": 2,
+          "inconsistencies": [],
+          "main_concern": "Identifying biggest struggle with quitting",
+          "primary_trigger": "N/A",
+          "quit_attempt_history": "Patient has attempted both gradual reduction and abrupt cessation.",
+          "reasoning_summary": "The patient is in the contemplation stage, actively identifying their challenges with quitting. The counselor's initial question directly addresses this core concern by prompting the patient to articulate their biggest struggle, setting the stage for a detailed exploration and tailored support.",
+          "recommended_intervention": [
+            "Explore the patient's specific struggles in detail.",
+            "Assess the reasons behind previous attempts (successes and failures).",
+            "Discuss coping strategies for common withdrawal symptoms.",
+            "Set realistic goals and expectations.",
+            "Help the patient define a clear quit goal."
+          ],
+          "sanity_passed": true,
+          "stage_of_change": "contemplation",
+          "vote_agreement": 1.0
+        }
+      }
+    },
+    "run_chat": {
+      "final_result": {
+        "dataset_row": {
+          "confidence_score": 1.0,
+          "debate_rounds_used": 2,
+          "inconsistencies": [],
+          "longitudinal_flags": [],
+          "longitudinal_sanity_passed": true,
+          "main_concern": "Identifying biggest struggle with quitting",
+          "primary_trigger": "N/A",
+          "quit_attempt_history": "Patient has attempted both gradual reduction and abrupt cessation.",
+          "reasoning_summary": "The patient is in the contemplation stage, actively identifying their challenges with quitting. The counselor's initial question directly addresses this core concern by prompting the patient to articulate their biggest struggle, setting the stage for a detailed exploration and tailored support.",
+          "recommended_intervention": [
+            "Explore the patient's specific struggles in detail.",
+            "Assess the reasons behind previous attempts (successes and failures).",
+            "Discuss coping strategies for common withdrawal symptoms.",
+            "Set realistic goals and expectations.",
+            "Help the patient define a clear quit goal."
+          ],
+          "sanity_passed": true,
+          "session_number": 1,
+          "stage_of_change": "contemplation",
+          "vote_agreement": 1.0
+        },
+        "longitudinal_output": {
+          "current_annotation": {
+            "confidence_score": 1.0,
+            "debate_rounds_used": 2,
+            "inconsistencies": [],
+            "longitudinal_flags": [],
+            "longitudinal_sanity_passed": true,
+            "main_concern": "Identifying biggest struggle with quitting",
+            "primary_trigger": "N/A",
+            "quit_attempt_history": "Patient has attempted both gradual reduction and abrupt cessation.",
+            "reasoning_summary": "The patient is in the contemplation stage, actively identifying their challenges with quitting. The counselor's initial question directly addresses this core concern by prompting the patient to articulate their biggest struggle, setting the stage for a detailed exploration and tailored support.",
+            "recommended_intervention": [
+              "Explore the patient's specific struggles in detail.",
+              "Assess the reasons behind previous attempts (successes and failures).",
+              "Discuss coping strategies for common withdrawal symptoms.",
+              "Set realistic goals and expectations.",
+              "Help the patient define a clear quit goal."
+            ],
+            "sanity_passed": true,
+            "session_number": 1,
+            "stage_of_change": "contemplation",
+            "vote_agreement": 1.0
+          },
+          "delta": null,
+          "interventions_tried": [],
+          "longitudinal_flags": [],
+          "overall_progress": "unknown",
+          "patient_id": "1910ce17-b679-4f59-88d6-51e6b2144e4e",
+          "persistent_concerns": [],
+          "persistent_triggers": [],
+          "relapse_detected": false,
+          "session_number": 1,
+          "stage_trajectory": [
+            "contemplation"
+          ],
+          "stagnation_detected": false
+        },
+        "patient_id": "1910ce17-b679-4f59-88d6-51e6b2144e4e",
+        "session_number": 1
+      },
+      "transcript": {
+        "session_id": "1910ce17-b679-4f59-88d6-51e6b2144e4e",
+        "transcript": "Patient: Hi\nCounselor: Welcome! I'm eDOSTHI. You've taken the first step towards quitting smoking. What's been your biggest struggle with quitting so far?"
+      }
+    }
+  },
+  "meta": {
+    "session_id": "1910ce17-b679-4f59-88d6-51e6b2144e4e",
+    "started_at": "20260416T101224Z"
+  }
+}

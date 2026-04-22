@@ -1,0 +1,29 @@
+[
+  {
+    "id": "conv_0001",
+    "stage_of_change": "preparation",
+    "main_concern": "stress management during quit attempt",
+    "primary_trigger": "work stress",
+    "quit_attempt_history": "Nicotine patch attempt lasting 6 weeks (relapsed due to work stress); cold turkey attempt lasting 2-3 days",
+    "recommended_intervention": [
+      "varenicline (prescription medication)",
+      "stress management plan (breathing, walking)",
+      "nutritionist referral for weight management"
+    ],
+    "reasoning_summary": "Patient has prior attempts and a doctor-prompted health scare, indicating preparation stage readiness with stress and weight gain as key barriers.",
+    "confidence_score": 0.9
+  },
+  {
+    "id": "conv_0002",
+    "stage_of_change": "precontemplation",
+    "main_concern": "not motivated to quit smoking",
+    "primary_trigger": "stress relief after work",
+    "quit_attempt_history": "No prior quit attempts reported",
+    "recommended_intervention": [
+      "motivational information sharing (non-pressured)",
+      "open door for future engagement"
+    ],
+    "reasoning_summary": "Patient attends only due to spousal pressure, has no personal motivation to quit, and dismisses health concerns — consistent with precontemplation.",
+    "confidence_score": 0.85
+  }
+]

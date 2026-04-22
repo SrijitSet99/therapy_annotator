@@ -1,0 +1,392 @@
+{
+  "events": {
+    "agent_manager": {
+      "confidence_result": {
+        "advice": {
+          "confidence": 0.8,
+          "issues": [
+            "The 'evidence' list contains verbatim repetitions of the 'advice' list. This is redundant and should be consolidated. Specifically, 'I'm here to help you quit smoking.' is repeated.",
+            "While the conversation clearly establishes the chatbot's purpose, the extracted 'advice' could benefit from a slightly more nuanced representation of the interaction. It's not just a statement of purpose, but an invitation for the patient to share their motivation."
+          ],
+          "severity": "none"
+        },
+        "attempt": {
+          "confidence": 0.1,
+          "issues": [
+            "Missing reason for wanting to quit. The conversation explicitly asks 'What's your reason for wanting to quit today?' and the extracted data contains no such information."
+          ],
+          "severity": "none"
+        },
+        "concern": {
+          "confidence": 0.1,
+          "issues": [
+            "The extracted 'concern' includes 'hiu', which is not present in the conversation. This is a hallucination.",
+            "The primary concern is marked as 'null' despite the patient stating their reason for wanting to quit smoking. This is a significant omission."
+          ],
+          "severity": "none"
+        },
+        "readiness": {
+          "confidence": 0.85,
+          "issues": [
+            "Hallucination: The extracted data states 'minimal level of engagement or awareness,' which is an interpretation and not directly stated in the conversation. It's a deduction.",
+            "Omission: The conversation provides no information about the patient's demographic data (age, gender, etc.), smoking history, or any other relevant clinical details.",
+            "The readiness stage is correctly identified as 'precontemplation,' but the justification could be more precise, focusing solely on the patient's response."
+          ],
+          "severity": "none"
+        },
+        "triggers": {
+          "confidence": 0.2,
+          "issues": [
+            "Hallucination: The extracted triggers 'stress' and 'morning routine' are not mentioned in the conversation. The patient only responded with 'hiu'.",
+            "Omission: The conversation lacks any information regarding the patient's reason for wanting to quit smoking, which was the initial prompt question."
+          ],
+          "severity": "none"
+        }
+      },
+      "confidence_results": {
+        "advice": {
+          "confidence": 0.8,
+          "issues": [
+            "The 'evidence' list contains verbatim repetitions of the 'advice' list. This is redundant and should be consolidated. Specifically, 'I'm here to help you quit smoking.' is repeated.",
+            "While the conversation clearly establishes the chatbot's purpose, the extracted 'advice' could benefit from a slightly more nuanced representation of the interaction. It's not just a statement of purpose, but an invitation for the patient to share their motivation."
+          ],
+          "severity": "none"
+        },
+        "attempt": {
+          "confidence": 0.1,
+          "issues": [
+            "Missing reason for wanting to quit. The conversation explicitly asks 'What's your reason for wanting to quit today?' and the extracted data contains no such information."
+          ],
+          "severity": "none"
+        },
+        "concern": {
+          "confidence": 0.1,
+          "issues": [
+            "The extracted 'concern' includes 'hiu', which is not present in the conversation. This is a hallucination.",
+            "The primary concern is marked as 'null' despite the patient stating their reason for wanting to quit smoking. This is a significant omission."
+          ],
+          "severity": "none"
+        },
+        "readiness": {
+          "confidence": 0.85,
+          "issues": [
+            "Hallucination: The extracted data states 'minimal level of engagement or awareness,' which is an interpretation and not directly stated in the conversation. It's a deduction.",
+            "Omission: The conversation provides no information about the patient's demographic data (age, gender, etc.), smoking history, or any other relevant clinical details.",
+            "The readiness stage is correctly identified as 'precontemplation,' but the justification could be more precise, focusing solely on the patient's response."
+          ],
+          "severity": "none"
+        },
+        "triggers": {
+          "confidence": 0.2,
+          "issues": [
+            "Hallucination: The extracted triggers 'stress' and 'morning routine' are not mentioned in the conversation. The patient only responded with 'hiu'.",
+            "Omission: The conversation lacks any information regarding the patient's reason for wanting to quit smoking, which was the initial prompt question."
+          ],
+          "severity": "none"
+        }
+      },
+      "extractor_output": {
+        "advice": {
+          "advice": [
+            "I'm here to help you quit smoking.",
+            "What's your reason for wanting to quit today?"
+          ],
+          "evidence": [
+            "\"I'm here to help you quit smoking\"",
+            "Asking the patient about their reason for wanting to quit."
+          ]
+        },
+        "attempt": {
+          "attempts": [],
+          "longest_attempt": null,
+          "most_recent_attempt": null
+        },
+        "concern": {
+          "concerns": [
+            "hiu"
+          ],
+          "primary_concern": "null"
+        },
+        "readiness": {
+          "evidence": "The patient simply stated 'hiu,' indicating a minimal level of engagement or awareness regarding quitting smoking. There is no expression of consideration, intention, or planning, which are hallmarks of stages beyond precontemplation.",
+          "readiness_stage": "precontemplation"
+        },
+        "triggers": {
+          "triggers": [
+            "stress",
+            "morning routine"
+          ]
+        }
+      },
+      "final_output": {
+        "advice": {
+          "_debate_converged": true,
+          "_debate_rounds": 0,
+          "advice": [
+            "I'm here to help you quit smoking.",
+            "What's your reason for wanting to quit today?"
+          ],
+          "evidence": [
+            "\"I'm here to help you quit smoking\"",
+            "Asking the patient about their reason for wanting to quit."
+          ]
+        },
+        "attempt": {
+          "Chatbot_Identity": "eDOSTHI",
+          "Chatbot_Role": "Motivational Interviewing Chatbot",
+          "Counselor": "Hi there! I'm eDOSTHI, your motivational interviewing chatbot. I'm here to help you quit smoking. What's your reason for wanting to quit today?",
+          "Intent": "Seeking to establish rapport and understand patient's immediate motivation for quitting smoking",
+          "Patient": "Patient: hiu",
+          "Patient_utterance_includes_chatbot_name": false,
+          "Topic": "Initial Patient Utterance",
+          "_debate_converged": true,
+          "_debate_rounds": 7,
+          "attempts": [
+            "hiu"
+          ],
+          "attempts_count": 1,
+          "longest_attempt": "hiu",
+          "most_recent_attempt": "hiu"
+        },
+        "concern": {
+          "_debate_converged": true,
+          "_debate_rounds": 9,
+          "concerns": [],
+          "context": "Counselor: Hi there! I'm eDOSTHI, your motivational interviewing chatbot. I’m here to help you quit smoking. What’s your reason for wanting to quit today? Patient: hiu",
+          "primary_concern": "Unintelligible patient utterance - requires further investigation. Consider potential non-verbal cues or alternative responses.",
+          "response": "hiu",
+          "utterance_type": "Unintelligible"
+        },
+        "readiness": {
+          "_debate_converged": true,
+          "_debate_rounds": 0,
+          "evidence": "The patient simply stated 'hiu,' indicating a minimal level of engagement or awareness regarding quitting smoking. There is no expression of consideration, intention, or planning, which are hallmarks of stages beyond precontemplation.",
+          "readiness_stage": "precontemplation"
+        },
+        "triggers": {
+          "_debate_converged": true,
+          "_debate_rounds": 2,
+          "triggers": [
+            "Patient: \"Hi there!\"",
+            "Counselor: \"Hi there! I'm eDOSTHI, your motivational interviewing chatbot. I'm here to help you quit smoking. What's your reason for wanting to quit today?\""
+          ]
+        }
+      }
+    },
+    "consensus_agent": {
+      "output": {
+        "consensus": {
+          "dissenting_fields": [
+            "quit_attempt_history"
+          ],
+          "main_concern": "Unintelligible patient utterance – requires further investigation and clarification of the patient’s motivation for quitting smoking.",
+          "primary_trigger": "Counselor initiating conversation with a greeting and offering assistance.",
+          "quit_attempt_history": "Patient provided an unintelligible utterance ('hiu').",
+          "recommended_intervention": [
+            "Clarify patient's understanding of the conversation and their motivation for quitting.",
+            "Rephrase the initial question to ensure clarity and engagement.",
+            "Explore potential barriers to quitting smoking through open-ended questions.",
+            "Clarify the patient's understanding of their smoking habit and reasons for wanting to quit.",
+            "Explore potential barriers to quitting through open-ended questions.",
+            "Reiterate the benefits of quitting smoking and offer support.",
+            "Clarify the patient’s initial response and explore their reasons for wanting to quit.",
+            "Reframe the question to elicit a more detailed response, perhaps offering examples of reasons for quitting.",
+            "Assess for potential barriers to quitting and address any immediate concerns."
+          ],
+          "stage_of_change": "precontemplation",
+          "vote_agreement": 0.667
+        }
+      }
+    },
+    "longitudinal_sanity": {
+      "output": {
+        "longitudinal_sanity": {
+          "flags": [],
+          "passed": true,
+          "severity": "none"
+        }
+      }
+    },
+    "profile_update_agent": {
+      "output": {
+        "dataset_row": {
+          "confidence_score": 0.95,
+          "debate_rounds_used": 18,
+          "inconsistencies": [],
+          "longitudinal_flags": [],
+          "longitudinal_sanity_passed": true,
+          "main_concern": "Unintelligible patient utterance – requires further investigation and clarification of the patient’s motivation for quitting smoking.",
+          "primary_trigger": "Counselor initiating conversation with a greeting and offering assistance.",
+          "quit_attempt_history": "Patient provided an unintelligible utterance ('hiu').",
+          "reasoning_summary": "The patient's unintelligible response indicates they are likely in precontemplation, lacking a clear motivation to quit. The counselor should immediately focus on clarifying the patient's understanding and exploring their reasons for wanting to quit through open-ended questions and empathetic engagement.",
+          "recommended_intervention": [
+            "Clarify patient's understanding of the conversation and their motivation for quitting.",
+            "Rephrase the initial question to ensure clarity and engagement.",
+            "Explore potential barriers to quitting smoking through open-ended questions.",
+            "Clarify the patient's understanding of their smoking habit and reasons for wanting to quit.",
+            "Explore potential barriers to quitting through open-ended questions.",
+            "Reiterate the benefits of quitting smoking and offer support.",
+            "Clarify the patient’s initial response and explore their reasons for wanting to quit.",
+            "Reframe the question to elicit a more detailed response, perhaps offering examples of reasons for quitting.",
+            "Assess for potential barriers to quitting and address any immediate concerns."
+          ],
+          "sanity_passed": true,
+          "session_number": 1,
+          "stage_of_change": "precontemplation",
+          "vote_agreement": 0.667
+        },
+        "longitudinal_output": {
+          "current_annotation": {
+            "confidence_score": 0.95,
+            "debate_rounds_used": 18,
+            "inconsistencies": [],
+            "longitudinal_flags": [],
+            "longitudinal_sanity_passed": true,
+            "main_concern": "Unintelligible patient utterance – requires further investigation and clarification of the patient’s motivation for quitting smoking.",
+            "primary_trigger": "Counselor initiating conversation with a greeting and offering assistance.",
+            "quit_attempt_history": "Patient provided an unintelligible utterance ('hiu').",
+            "reasoning_summary": "The patient's unintelligible response indicates they are likely in precontemplation, lacking a clear motivation to quit. The counselor should immediately focus on clarifying the patient's understanding and exploring their reasons for wanting to quit through open-ended questions and empathetic engagement.",
+            "recommended_intervention": [
+              "Clarify patient's understanding of the conversation and their motivation for quitting.",
+              "Rephrase the initial question to ensure clarity and engagement.",
+              "Explore potential barriers to quitting smoking through open-ended questions.",
+              "Clarify the patient's understanding of their smoking habit and reasons for wanting to quit.",
+              "Explore potential barriers to quitting through open-ended questions.",
+              "Reiterate the benefits of quitting smoking and offer support.",
+              "Clarify the patient’s initial response and explore their reasons for wanting to quit.",
+              "Reframe the question to elicit a more detailed response, perhaps offering examples of reasons for quitting.",
+              "Assess for potential barriers to quitting and address any immediate concerns."
+            ],
+            "sanity_passed": true,
+            "session_number": 1,
+            "stage_of_change": "precontemplation",
+            "vote_agreement": 0.667
+          },
+          "delta": null,
+          "interventions_tried": [],
+          "longitudinal_flags": [],
+          "overall_progress": "unknown",
+          "patient_id": "6134af7a-42a1-48eb-8ab3-0d88fe6c25da",
+          "persistent_concerns": [],
+          "persistent_triggers": [],
+          "relapse_detected": false,
+          "session_number": 1,
+          "stage_trajectory": [
+            "precontemplation"
+          ],
+          "stagnation_detected": false
+        },
+        "patient_profile_id": "6134af7a-42a1-48eb-8ab3-0d88fe6c25da",
+        "session_count": 1
+      }
+    },
+    "reasoning_agent": {
+      "output": {
+        "dataset_row": {
+          "confidence_score": 0.95,
+          "debate_rounds_used": 18,
+          "inconsistencies": [],
+          "main_concern": "Unintelligible patient utterance – requires further investigation and clarification of the patient’s motivation for quitting smoking.",
+          "primary_trigger": "Counselor initiating conversation with a greeting and offering assistance.",
+          "quit_attempt_history": "Patient provided an unintelligible utterance ('hiu').",
+          "reasoning_summary": "The patient's unintelligible response indicates they are likely in precontemplation, lacking a clear motivation to quit. The counselor should immediately focus on clarifying the patient's understanding and exploring their reasons for wanting to quit through open-ended questions and empathetic engagement.",
+          "recommended_intervention": [
+            "Clarify patient's understanding of the conversation and their motivation for quitting.",
+            "Rephrase the initial question to ensure clarity and engagement.",
+            "Explore potential barriers to quitting smoking through open-ended questions.",
+            "Clarify the patient's understanding of their smoking habit and reasons for wanting to quit.",
+            "Explore potential barriers to quitting through open-ended questions.",
+            "Reiterate the benefits of quitting smoking and offer support.",
+            "Clarify the patient’s initial response and explore their reasons for wanting to quit.",
+            "Reframe the question to elicit a more detailed response, perhaps offering examples of reasons for quitting.",
+            "Assess for potential barriers to quitting and address any immediate concerns."
+          ],
+          "sanity_passed": true,
+          "stage_of_change": "precontemplation",
+          "vote_agreement": 0.667
+        }
+      }
+    },
+    "run_chat": {
+      "final_result": {
+        "dataset_row": {
+          "confidence_score": 0.95,
+          "debate_rounds_used": 18,
+          "inconsistencies": [],
+          "longitudinal_flags": [],
+          "longitudinal_sanity_passed": true,
+          "main_concern": "Unintelligible patient utterance – requires further investigation and clarification of the patient’s motivation for quitting smoking.",
+          "primary_trigger": "Counselor initiating conversation with a greeting and offering assistance.",
+          "quit_attempt_history": "Patient provided an unintelligible utterance ('hiu').",
+          "reasoning_summary": "The patient's unintelligible response indicates they are likely in precontemplation, lacking a clear motivation to quit. The counselor should immediately focus on clarifying the patient's understanding and exploring their reasons for wanting to quit through open-ended questions and empathetic engagement.",
+          "recommended_intervention": [
+            "Clarify patient's understanding of the conversation and their motivation for quitting.",
+            "Rephrase the initial question to ensure clarity and engagement.",
+            "Explore potential barriers to quitting smoking through open-ended questions.",
+            "Clarify the patient's understanding of their smoking habit and reasons for wanting to quit.",
+            "Explore potential barriers to quitting through open-ended questions.",
+            "Reiterate the benefits of quitting smoking and offer support.",
+            "Clarify the patient’s initial response and explore their reasons for wanting to quit.",
+            "Reframe the question to elicit a more detailed response, perhaps offering examples of reasons for quitting.",
+            "Assess for potential barriers to quitting and address any immediate concerns."
+          ],
+          "sanity_passed": true,
+          "session_number": 1,
+          "stage_of_change": "precontemplation",
+          "vote_agreement": 0.667
+        },
+        "longitudinal_output": {
+          "current_annotation": {
+            "confidence_score": 0.95,
+            "debate_rounds_used": 18,
+            "inconsistencies": [],
+            "longitudinal_flags": [],
+            "longitudinal_sanity_passed": true,
+            "main_concern": "Unintelligible patient utterance – requires further investigation and clarification of the patient’s motivation for quitting smoking.",
+            "primary_trigger": "Counselor initiating conversation with a greeting and offering assistance.",
+            "quit_attempt_history": "Patient provided an unintelligible utterance ('hiu').",
+            "reasoning_summary": "The patient's unintelligible response indicates they are likely in precontemplation, lacking a clear motivation to quit. The counselor should immediately focus on clarifying the patient's understanding and exploring their reasons for wanting to quit through open-ended questions and empathetic engagement.",
+            "recommended_intervention": [
+              "Clarify patient's understanding of the conversation and their motivation for quitting.",
+              "Rephrase the initial question to ensure clarity and engagement.",
+              "Explore potential barriers to quitting smoking through open-ended questions.",
+              "Clarify the patient's understanding of their smoking habit and reasons for wanting to quit.",
+              "Explore potential barriers to quitting through open-ended questions.",
+              "Reiterate the benefits of quitting smoking and offer support.",
+              "Clarify the patient’s initial response and explore their reasons for wanting to quit.",
+              "Reframe the question to elicit a more detailed response, perhaps offering examples of reasons for quitting.",
+              "Assess for potential barriers to quitting and address any immediate concerns."
+            ],
+            "sanity_passed": true,
+            "session_number": 1,
+            "stage_of_change": "precontemplation",
+            "vote_agreement": 0.667
+          },
+          "delta": null,
+          "interventions_tried": [],
+          "longitudinal_flags": [],
+          "overall_progress": "unknown",
+          "patient_id": "6134af7a-42a1-48eb-8ab3-0d88fe6c25da",
+          "persistent_concerns": [],
+          "persistent_triggers": [],
+          "relapse_detected": false,
+          "session_number": 1,
+          "stage_trajectory": [
+            "precontemplation"
+          ],
+          "stagnation_detected": false
+        },
+        "patient_id": "6134af7a-42a1-48eb-8ab3-0d88fe6c25da",
+        "session_number": 1
+      },
+      "transcript": {
+        "session_id": "6134af7a-42a1-48eb-8ab3-0d88fe6c25da",
+        "transcript": "Patient: hiu\nCounselor: Hi there! I'm eDOSTHI, your motivational interviewing chatbot. I'm here to help you quit smoking. What's your reason for wanting to quit today?"
+      }
+    }
+  },
+  "meta": {
+    "session_id": "6134af7a-42a1-48eb-8ab3-0d88fe6c25da",
+    "started_at": "20260410T084534Z"
+  }
+}

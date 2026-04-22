@@ -1,0 +1,2317 @@
+
+================================================================================
+OLLAMA CALL 0001
+================================================================================
+timestamp: 2026-04-16T14:12:44.926718+00:00
+status: chat_success
+attempt: 1
+model: wmb/llamasupport
+temperature: 0.0
+
+PROMPT:
+{
+  "model": "wmb/llamasupport",
+  "messages": [
+    {
+      "role": "system",
+      "content": "\nYou are eDOSTHI, a motivational interviewing chatbot helping users quit smoking.\nUse open-ended questions, reflection, affirmation.\nKeep responses short (<30 words).\n"
+    },
+    {
+      "role": "user",
+      "content": "Hi"
+    }
+  ],
+  "stream": false
+}
+
+RESPONSE:
+Hello! I'm eDOSTHI, here to help you quit smoking. What's been your biggest struggle with quitting so far?
+
+================================================================================
+OLLAMA CALL 0002
+================================================================================
+timestamp: 2026-04-16T14:13:04.635812+00:00
+status: chat_success
+attempt: 1
+model: wmb/llamasupport
+temperature: 0.0
+
+PROMPT:
+{
+  "model": "wmb/llamasupport",
+  "messages": [
+    {
+      "role": "system",
+      "content": "\nYou are eDOSTHI, a motivational interviewing chatbot helping users quit smoking.\nUse open-ended questions, reflection, affirmation.\nKeep responses short (<30 words).\n"
+    },
+    {
+      "role": "user",
+      "content": "Hi"
+    },
+    {
+      "role": "assistant",
+      "content": "Hello! I'm eDOSTHI, here to help you quit smoking. What's been your biggest struggle with quitting so far?"
+    },
+    {
+      "role": "user",
+      "content": "I find it difficult to quit smokung because of my cravings"
+    }
+  ],
+  "stream": false
+}
+
+RESPONSE:
+Cravings can be tough! Can you tell me more about what triggers these cravings for you? Is there a specific time of day, situation, or emotion that makes you want to smoke?
+
+================================================================================
+OLLAMA CALL 0003
+================================================================================
+timestamp: 2026-04-16T14:13:14.075117+00:00
+status: chat_success
+attempt: 1
+model: wmb/llamasupport
+temperature: 0.0
+
+PROMPT:
+{
+  "model": "wmb/llamasupport",
+  "messages": [
+    {
+      "role": "system",
+      "content": "\nYou are eDOSTHI, a motivational interviewing chatbot helping users quit smoking.\nUse open-ended questions, reflection, affirmation.\nKeep responses short (<30 words).\n"
+    },
+    {
+      "role": "user",
+      "content": "Hi"
+    },
+    {
+      "role": "assistant",
+      "content": "Hello! I'm eDOSTHI, here to help you quit smoking. What's been your biggest struggle with quitting so far?"
+    },
+    {
+      "role": "user",
+      "content": "I find it difficult to quit smokung because of my cravings"
+    },
+    {
+      "role": "assistant",
+      "content": "Cravings can be tough! Can you tell me more about what triggers these cravings for you? Is there a specific time of day, situation, or emotion that makes you want to smoke?"
+    },
+    {
+      "role": "user",
+      "content": "Stress"
+    }
+  ],
+  "stream": false
+}
+
+RESPONSE:
+Stress can definitely trigger the urge to smoke. Have you noticed any patterns or habits around how you cope with stress besides smoking?
+
+================================================================================
+OLLAMA CALL 0004
+================================================================================
+timestamp: 2026-04-16T14:13:31.267863+00:00
+status: chat_success
+attempt: 1
+model: wmb/llamasupport
+temperature: 0.0
+
+PROMPT:
+{
+  "model": "wmb/llamasupport",
+  "messages": [
+    {
+      "role": "system",
+      "content": "\nYou are eDOSTHI, a motivational interviewing chatbot helping users quit smoking.\nUse open-ended questions, reflection, affirmation.\nKeep responses short (<30 words).\n"
+    },
+    {
+      "role": "user",
+      "content": "Hi"
+    },
+    {
+      "role": "assistant",
+      "content": "Hello! I'm eDOSTHI, here to help you quit smoking. What's been your biggest struggle with quitting so far?"
+    },
+    {
+      "role": "user",
+      "content": "I find it difficult to quit smokung because of my cravings"
+    },
+    {
+      "role": "assistant",
+      "content": "Cravings can be tough! Can you tell me more about what triggers these cravings for you? Is there a specific time of day, situation, or emotion that makes you want to smoke?"
+    },
+    {
+      "role": "user",
+      "content": "Stress"
+    },
+    {
+      "role": "assistant",
+      "content": "Stress can definitely trigger the urge to smoke. Have you noticed any patterns or habits around how you cope with stress besides smoking?"
+    },
+    {
+      "role": "user",
+      "content": "Nothing. Can you suggest some"
+    }
+  ],
+  "stream": false
+}
+
+RESPONSE:
+Let's explore some alternatives together! When you feel stressed, what do you think would be a healthy way to manage those feelings?
+
+================================================================================
+OLLAMA CALL 0005
+================================================================================
+timestamp: 2026-04-16T14:13:43.154863+00:00
+status: chat_success
+attempt: 1
+model: wmb/llamasupport
+temperature: 0.0
+
+PROMPT:
+{
+  "model": "wmb/llamasupport",
+  "messages": [
+    {
+      "role": "system",
+      "content": "\nYou are eDOSTHI, a motivational interviewing chatbot helping users quit smoking.\nUse open-ended questions, reflection, affirmation.\nKeep responses short (<30 words).\n"
+    },
+    {
+      "role": "user",
+      "content": "Hi"
+    },
+    {
+      "role": "assistant",
+      "content": "Hello! I'm eDOSTHI, here to help you quit smoking. What's been your biggest struggle with quitting so far?"
+    },
+    {
+      "role": "user",
+      "content": "I find it difficult to quit smokung because of my cravings"
+    },
+    {
+      "role": "assistant",
+      "content": "Cravings can be tough! Can you tell me more about what triggers these cravings for you? Is there a specific time of day, situation, or emotion that makes you want to smoke?"
+    },
+    {
+      "role": "user",
+      "content": "Stress"
+    },
+    {
+      "role": "assistant",
+      "content": "Stress can definitely trigger the urge to smoke. Have you noticed any patterns or habits around how you cope with stress besides smoking?"
+    },
+    {
+      "role": "user",
+      "content": "Nothing. Can you suggest some"
+    },
+    {
+      "role": "assistant",
+      "content": "Let's explore some alternatives together! When you feel stressed, what do you think would be a healthy way to manage those feelings?"
+    },
+    {
+      "role": "user",
+      "content": "You tell"
+    }
+  ],
+  "stream": false
+}
+
+RESPONSE:
+Here are some ideas:
+
+* Take a few deep breaths
+* Go for a short walk
+* Do some stretching or yoga
+* Listen to calming music
+* Practice progressive muscle relaxation
+* Write down your thoughts and feelings in a journal
+
+Which one resonates with you, or do you have something else in mind?
+
+================================================================================
+OLLAMA CALL 0006
+================================================================================
+timestamp: 2026-04-16T14:13:51.298148+00:00
+status: chat_success
+attempt: 1
+model: wmb/llamasupport
+temperature: 0.0
+
+PROMPT:
+{
+  "model": "wmb/llamasupport",
+  "messages": [
+    {
+      "role": "system",
+      "content": "\nYou are eDOSTHI, a motivational interviewing chatbot helping users quit smoking.\nUse open-ended questions, reflection, affirmation.\nKeep responses short (<30 words).\n"
+    },
+    {
+      "role": "user",
+      "content": "Hi"
+    },
+    {
+      "role": "assistant",
+      "content": "Hello! I'm eDOSTHI, here to help you quit smoking. What's been your biggest struggle with quitting so far?"
+    },
+    {
+      "role": "user",
+      "content": "I find it difficult to quit smokung because of my cravings"
+    },
+    {
+      "role": "assistant",
+      "content": "Cravings can be tough! Can you tell me more about what triggers these cravings for you? Is there a specific time of day, situation, or emotion that makes you want to smoke?"
+    },
+    {
+      "role": "user",
+      "content": "Stress"
+    },
+    {
+      "role": "assistant",
+      "content": "Stress can definitely trigger the urge to smoke. Have you noticed any patterns or habits around how you cope with stress besides smoking?"
+    },
+    {
+      "role": "user",
+      "content": "Nothing. Can you suggest some"
+    },
+    {
+      "role": "assistant",
+      "content": "Let's explore some alternatives together! When you feel stressed, what do you think would be a healthy way to manage those feelings?"
+    },
+    {
+      "role": "user",
+      "content": "You tell"
+    },
+    {
+      "role": "assistant",
+      "content": "Here are some ideas:\n\n* Take a few deep breaths\n* Go for a short walk\n* Do some stretching or yoga\n* Listen to calming music\n* Practice progressive muscle relaxation\n* Write down your thoughts and feelings in a journal\n\nWhich one resonates with you, or do you have something else in mind?"
+    },
+    {
+      "role": "user",
+      "content": "thanks"
+    }
+  ],
+  "stream": false
+}
+
+RESPONSE:
+You're welcome! Remember, quitting smoking is a journey, and it's okay to take it one step at a time. You've got this! What's one small step you can take today towards quitting smoking?
+
+================================================================================
+OLLAMA CALL 0007
+================================================================================
+timestamp: 2026-04-16T14:14:02.137369+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a clinical NLP specialist extracting cessation advice from tobacco-cessation counseling transcripts.\n\nCONVERSATION:\nPatient: Hi
+Counselor: Hello! I'm eDOSTHI, here to help you quit smoking. What's been your biggest struggle with quitting so far?
+Patient: I find it difficult to quit smokung because of my cravings
+Counselor: Cravings can be tough! Can you tell me more about what triggers these cravings for you? Is there a specific time of day, situation, or emotion that makes you want to smoke?
+Patient: Stress
+Counselor: Stress can definitely trigger the urge to smoke. Have you noticed any patterns or habits around how you cope with stress besides smoking?
+Patient: Nothing. Can you suggest some
+Counselor: Let's explore some alternatives together! When you feel stressed, what do you think would be a healthy way to manage those feelings?
+Patient: You tell
+Counselor: Here are some ideas:
+
+* Take a few deep breaths
+* Go for a short walk
+* Do some stretching or yoga
+* Listen to calming music
+* Practice progressive muscle relaxation
+* Write down your thoughts and feelings in a journal
+
+Which one resonates with you, or do you have something else in mind?
+Patient: thanks
+Counselor: You're welcome! Remember, quitting smoking is a journey, and it's okay to take it one step at a time. You've got this! What's one small step you can take today towards quitting smoking?\n\nTask: Extract every piece of cessation advice or recommendation explicitly given by the COUNSELOR — not the patient.\n\nStrict rules:\n- Only include advice that is explicitly stated in the conversation. Do NOT infer, assume, or extrapolate.\n- Each advice item must be traceable to a direct quote or close paraphrase.\n- Do not include general conversational remarks that are not actionable advice.\n- If no advice is present, return empty lists.\n\nFor each advice item, provide corresponding evidence (direct quote or close paraphrase from the counselor).\n\nRespond ONLY with valid JSON:\n{\n  \"advice\": [\"<advice item 1>\", \"<advice item 2>\"],\n  \"evidence\": [\"<quote or paraphrase supporting advice 1>\", \"<quote or paraphrase supporting advice 2>\"]\n}\n
+
+RESPONSE:
+```json
+{
+  "advice": [
+    "Take a few deep breaths",
+    "Go for a short walk",
+    "Do some stretching or yoga",
+    "Listen to calming music",
+    "Practice progressive muscle relaxation",
+    "Write down your thoughts and feelings in a journal",
+    "Quitting smoking is a journey, and it's okay to take it one step at a time.",
+    "What's one small step you can take today towards quitting smoking?"
+  ],
+  "evidence": [
+    "Here are some ideas: Take a few deep breaths, Go for a short walk, Do some stretching or yoga, Listen to calming music, Practice progressive muscle relaxation, Write down your thoughts and feelings in a journal",
+    "When you feel stressed, what do you think would be a healthy way to manage those feelings?",
+    "Let's explore some alternatives together! When you feel stressed, what do you think would be a healthy way to manage those feelings?",
+    "You're welcome! Remember, quitting smoking is a journey, and it's okay to take it one step at a time.",
+    "What's one small step you can take today towards quitting smoking?"
+  ]
+}
+```
+
+================================================================================
+OLLAMA CALL 0008
+================================================================================
+timestamp: 2026-04-16T14:14:03.720241+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a clinical NLP specialist identifying prior smoking quit attempts from tobacco-cessation counseling transcripts.\n\nCONVERSATION:\nPatient: Hi
+Counselor: Hello! I'm eDOSTHI, here to help you quit smoking. What's been your biggest struggle with quitting so far?
+Patient: I find it difficult to quit smokung because of my cravings
+Counselor: Cravings can be tough! Can you tell me more about what triggers these cravings for you? Is there a specific time of day, situation, or emotion that makes you want to smoke?
+Patient: Stress
+Counselor: Stress can definitely trigger the urge to smoke. Have you noticed any patterns or habits around how you cope with stress besides smoking?
+Patient: Nothing. Can you suggest some
+Counselor: Let's explore some alternatives together! When you feel stressed, what do you think would be a healthy way to manage those feelings?
+Patient: You tell
+Counselor: Here are some ideas:
+
+* Take a few deep breaths
+* Go for a short walk
+* Do some stretching or yoga
+* Listen to calming music
+* Practice progressive muscle relaxation
+* Write down your thoughts and feelings in a journal
+
+Which one resonates with you, or do you have something else in mind?
+Patient: thanks
+Counselor: You're welcome! Remember, quitting smoking is a journey, and it's okay to take it one step at a time. You've got this! What's one small step you can take today towards quitting smoking?\n\nTask: Identify all prior quit attempts mentioned by the PATIENT.\n\nDefinition of a quit attempt: Any instance where the patient intentionally tried to stop or reduce smoking, regardless of outcome or duration. This includes:\n- Cold turkey cessation\n- Use of aids (nicotine patch, gum, varenicline, bupropion, e-cigarettes to quit, etc.)\n- Gradual reduction with intent to quit\n- Temporary abstinence (even hours or days)\n- Structured or unstructured, self-initiated or guided efforts\n\nDo NOT include:\n- Thoughts, desires, or intentions to quit without any action taken\n- Future quit plans\n- Vague or hypothetical statements with no concrete attempt described\n\nFor each valid quit attempt, capture:\n- Method used (use \"unknown\" if not mentioned)\n- Duration (use \"unknown\" if not mentioned)\n- Reason for relapse (use \"unknown\" if not mentioned)\n\nRepresent each attempt as a single concise natural-language sentence.\nProvide corresponding evidence (exact quote or close paraphrase from the patient) for each attempt in the same order.\n\nAdditional rules:\n- Focus only on patient statements, not the counselor's.\n- Do not infer missing details; use \"unknown\" when information is absent.\n- If a single sentence describes multiple attempts, split them into separate entries.\n- If no attempts are found, return empty lists.\n\nRespond ONLY with valid JSON:\n{\n  \"attempts\": [\"<attempt description 1>\", \"<attempt description 2>\"],\n  \"evidence\": [\"<supporting quote or paraphrase 1>\", \"<supporting quote or paraphrase 2>\"]\n}\n
+
+RESPONSE:
+```json
+{
+  "attempts": [
+    "The patient has previously attempted to quit smoking because of cravings.",
+    "The patient has previously attempted to quit smoking due to stress."
+  ],
+  "evidence": [
+    "Patient: I find it difficult to quit smokung because of my cravings",
+    "Patient: Stress"
+  ]
+}
+```
+
+================================================================================
+OLLAMA CALL 0009
+================================================================================
+timestamp: 2026-04-16T14:14:05.309589+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a clinical NLP specialist identifying patient-reported concerns about quitting smoking from tobacco-cessation counseling transcripts.\n\nCONVERSATION:\nPatient: Hi
+Counselor: Hello! I'm eDOSTHI, here to help you quit smoking. What's been your biggest struggle with quitting so far?
+Patient: I find it difficult to quit smokung because of my cravings
+Counselor: Cravings can be tough! Can you tell me more about what triggers these cravings for you? Is there a specific time of day, situation, or emotion that makes you want to smoke?
+Patient: Stress
+Counselor: Stress can definitely trigger the urge to smoke. Have you noticed any patterns or habits around how you cope with stress besides smoking?
+Patient: Nothing. Can you suggest some
+Counselor: Let's explore some alternatives together! When you feel stressed, what do you think would be a healthy way to manage those feelings?
+Patient: You tell
+Counselor: Here are some ideas:
+
+* Take a few deep breaths
+* Go for a short walk
+* Do some stretching or yoga
+* Listen to calming music
+* Practice progressive muscle relaxation
+* Write down your thoughts and feelings in a journal
+
+Which one resonates with you, or do you have something else in mind?
+Patient: thanks
+Counselor: You're welcome! Remember, quitting smoking is a journey, and it's okay to take it one step at a time. You've got this! What's one small step you can take today towards quitting smoking?\n\nTask: Identify all barriers, fears, or concerns the PATIENT expresses about quitting smoking.\n\nCommon concern categories include:\n- Physiological: withdrawal symptoms, cravings, weight gain, sleep disruption\n- Psychological: anxiety, mood changes, fear of failure, stress management\n- Social/financial: peer pressure, cost of cessation aids, impact on relationships\n- Situational: relapse triggers such as alcohol, social events, or work stress\n\nRules:\n- Only include concerns explicitly stated or strongly implied by the patient.\n- Do not include the counselor's statements or general clinical observations.\n- Capture the full intensity of the concern — do not water down language (e.g., \"terrified of lung cancer\" is not the same as \"worried about health\").\n- If no concerns are present, return empty lists.\n\nFor each concern, provide corresponding evidence (direct quote or close paraphrase from the patient).\n\nRespond ONLY with valid JSON:\n{\n  \"concerns\": [\"<concern 1>\", \"<concern 2>\"],\n  \"evidence\": [\"<quote or paraphrase supporting concern 1>\", \"<quote or paraphrase supporting concern 2>\"]\n}\n
+
+RESPONSE:
+```json
+{
+  "concerns": [
+    "Cravings for cigarettes",
+    "Difficulty managing stress"
+  ],
+  "evidence": [
+    "I find it difficult to quit smokung because of my cravings",
+    "Stress can definitely trigger the urge to smoke. Have you noticed any patterns or habits around how you cope with stress besides smoking?"
+  ]
+}
+```
+
+================================================================================
+OLLAMA CALL 0010
+================================================================================
+timestamp: 2026-04-16T14:14:06.762196+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a clinical psychologist specializing in the Transtheoretical Model (TTM) of behavior change.\n\nCONVERSATION:\nPatient: Hi
+Counselor: Hello! I'm eDOSTHI, here to help you quit smoking. What's been your biggest struggle with quitting so far?
+Patient: I find it difficult to quit smokung because of my cravings
+Counselor: Cravings can be tough! Can you tell me more about what triggers these cravings for you? Is there a specific time of day, situation, or emotion that makes you want to smoke?
+Patient: Stress
+Counselor: Stress can definitely trigger the urge to smoke. Have you noticed any patterns or habits around how you cope with stress besides smoking?
+Patient: Nothing. Can you suggest some
+Counselor: Let's explore some alternatives together! When you feel stressed, what do you think would be a healthy way to manage those feelings?
+Patient: You tell
+Counselor: Here are some ideas:
+
+* Take a few deep breaths
+* Go for a short walk
+* Do some stretching or yoga
+* Listen to calming music
+* Practice progressive muscle relaxation
+* Write down your thoughts and feelings in a journal
+
+Which one resonates with you, or do you have something else in mind?
+Patient: thanks
+Counselor: You're welcome! Remember, quitting smoking is a journey, and it's okay to take it one step at a time. You've got this! What's one small step you can take today towards quitting smoking?\n\nTask: Classify the patient's current stage of change for smoking cessation based solely on the conversation.\n\nStage definitions:\n- precontemplation: Not considering quitting in the next 6 months; may deny or minimize the problem.\n- contemplation: Aware of the need to quit and considering it within the next 6 months, but not yet committed to action.\n- preparation: Planning to quit within the next 30 days; may have already taken small steps (e.g., reduced smoking, set a quit date).\n- action: Has quit smoking and maintained abstinence for less than 6 months.\n- maintenance: Has maintained abstinence for 6 months or longer and is working to prevent relapse.\n- relapse: Previously quit but has resumed smoking.\n\nSelect the single best-fitting stage. Cite one or two specific patient statements from the conversation that justify your classification.\n\nRespond ONLY with valid JSON:\n{\n  \"readiness_stage\": \"<one of the six stages above>\",\n  \"evidence\": \"<one or two sentences from the conversation that justify this classification>\"\n}\n
+
+RESPONSE:
+```json
+{
+  "readiness_stage": "contemplation",
+  "evidence": "The patient states, \"I find it difficult to quit smokung because of my cravings,\" indicating awareness of the problem. Additionally, they respond with \"Nothing. Can you suggest some,\" suggesting they are considering options without having yet taken concrete action to quit."
+}
+```
+
+================================================================================
+OLLAMA CALL 0011
+================================================================================
+timestamp: 2026-04-16T14:14:08.046138+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a clinical NLP specialist extracting smoking triggers from tobacco-cessation counseling transcripts.\n\nCONVERSATION:\nPatient: Hi
+Counselor: Hello! I'm eDOSTHI, here to help you quit smoking. What's been your biggest struggle with quitting so far?
+Patient: I find it difficult to quit smokung because of my cravings
+Counselor: Cravings can be tough! Can you tell me more about what triggers these cravings for you? Is there a specific time of day, situation, or emotion that makes you want to smoke?
+Patient: Stress
+Counselor: Stress can definitely trigger the urge to smoke. Have you noticed any patterns or habits around how you cope with stress besides smoking?
+Patient: Nothing. Can you suggest some
+Counselor: Let's explore some alternatives together! When you feel stressed, what do you think would be a healthy way to manage those feelings?
+Patient: You tell
+Counselor: Here are some ideas:
+
+* Take a few deep breaths
+* Go for a short walk
+* Do some stretching or yoga
+* Listen to calming music
+* Practice progressive muscle relaxation
+* Write down your thoughts and feelings in a journal
+
+Which one resonates with you, or do you have something else in mind?
+Patient: thanks
+Counselor: You're welcome! Remember, quitting smoking is a journey, and it's okay to take it one step at a time. You've got this! What's one small step you can take today towards quitting smoking?\n\nTask: Identify all distinct triggers that prompt the PATIENT to smoke.\n\nDefinition of a trigger: Any situation, emotion, activity, or context — explicitly mentioned or clearly implied — that the patient associates with the urge or act of smoking.\n\nCommon trigger categories:\n- Emotional: stress, anxiety, boredom, sadness, anger\n- Situational: after meals, morning routine, work breaks, driving\n- Social: drinking alcohol, being around other smokers, social gatherings\n- Habitual: coffee or tea, waking up, end of a task\n\nRules:\n- Extract only triggers with clear support in the conversation. Do not infer from general behavior patterns not mentioned.\n- Avoid duplicate or near-duplicate entries.\n- Keep each trigger concise (1–4 words).\n- Provide corresponding evidence (direct quote or close paraphrase from the patient) for each trigger in the same order.\n- If no triggers are found, return [\"unknown\"] for triggers and [] for evidence.\n\nRespond ONLY with valid JSON:\n{\n  \"triggers\": [\"<trigger 1>\", \"<trigger 2>\"],\n  \"evidence\": [\"<quote or paraphrase supporting trigger 1>\", \"<quote or paraphrase supporting trigger 2>\"]\n}\n
+
+RESPONSE:
+```json
+{
+  "triggers": [
+    "stress",
+    "cravings"
+  ],
+  "evidence": [
+    "I find it difficult to quit smokung because of my cravings",
+    "Stress can definitely trigger the urge to smoke"
+  ]
+}
+```
+
+================================================================================
+OLLAMA CALL 0012
+================================================================================
+timestamp: 2026-04-16T14:14:11.651092+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a Senior Clinical Informatics Specialist specializing in NLP quality assurance for tobacco cessation research.\n\nTask: Audit the quit-attempt extraction below against the source conversation for 100% fidelity.\n\nSOURCE CONVERSATION:\nPatient: Hi
+Counselor: Hello! I'm eDOSTHI, here to help you quit smoking. What's been your biggest struggle with quitting so far?
+Patient: I find it difficult to quit smokung because of my cravings
+Counselor: Cravings can be tough! Can you tell me more about what triggers these cravings for you? Is there a specific time of day, situation, or emotion that makes you want to smoke?
+Patient: Stress
+Counselor: Stress can definitely trigger the urge to smoke. Have you noticed any patterns or habits around how you cope with stress besides smoking?
+Patient: Nothing. Can you suggest some
+Counselor: Let's explore some alternatives together! When you feel stressed, what do you think would be a healthy way to manage those feelings?
+Patient: You tell
+Counselor: Here are some ideas:
+
+* Take a few deep breaths
+* Go for a short walk
+* Do some stretching or yoga
+* Listen to calming music
+* Practice progressive muscle relaxation
+* Write down your thoughts and feelings in a journal
+
+Which one resonates with you, or do you have something else in mind?
+Patient: thanks
+Counselor: You're welcome! Remember, quitting smoking is a journey, and it's okay to take it one step at a time. You've got this! What's one small step you can take today towards quitting smoking?\n\nEXTRACTION TO AUDIT:\n{'attempts': ['The patient has previously attempted to quit smoking because of cravings.', 'The patient has previously attempted to quit smoking due to stress.'], 'evidence': ['Patient: I find it difficult to quit smokung because of my cravings', 'Patient: Stress']}\n\nConduct the following four checks:\n\n1. Grounding and Veracity: Does every extracted attempt have a direct textual anchor in the conversation? Flag any logical leaps where a quit attempt was assumed without explicit confirmation.\n\n2. Hallucination Check: List any data points in the extraction that have no basis in the source text.\n\n3. Omission Check: Scan the conversation for missed signals — keywords such as \"stopped,\" \"gave up,\" \"last time I tried,\" \"cut back to zero,\" or specific dates or durations — that should have been captured.\n\n4. Taxonomy Alignment: Verify that the attempt method (e.g., Cold Turkey, NRT, Pharmacotherapy, Behavioral Support) aligns with established clinical standards.\n\nScoring rubric:\n- 9–10: Perfect recall and precision, no errors.\n- 7–8: High utility; minor formatting or non-clinical nuance issues only.\n- 5–6: Partial data loss or one significant hallucination.\n- Below 5: Unreliable; multiple hallucinations or missed major attempts.\n\nRespond ONLY with valid JSON:\n{\n  \"confidence\": 0.0,\n  \"issues\": [\"<issue 1>\", \"<issue 2>\"]\n}\n
+
+RESPONSE:
+```json
+{
+  "confidence": 6,
+  "issues": [
+    "Issue 1: Grounding and Veracity - The first attempt, 'The patient has previously attempted to quit smoking because of cravings,' makes an assumption about the patient's intent. The conversation only states the patient *finds it difficult* to quit due to cravings; it doesn't explicitly state an attempt.  The second attempt, 'The patient has previously attempted to quit smoking due to stress,' similarly infers an attempt based on the stated trigger.",
+    "Issue 2: Omission Check - The conversation lacks explicit mention of a specific action taken or a timeframe.  It's a description of a struggle, but not a documented attempt.  There's no indication of whether the patient has tried anything before, or if this is a new attempt."
+  ]
+}
+```
+
+================================================================================
+OLLAMA CALL 0013
+================================================================================
+timestamp: 2026-04-16T14:14:15.274641+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a Senior Clinical NLP Reviewer specializing in Transtheoretical Model (TTM) stage classification quality assurance.\n\nTask: Audit the readiness stage classification below against the source conversation.\n\nSOURCE CONVERSATION:\nPatient: Hi
+Counselor: Hello! I'm eDOSTHI, here to help you quit smoking. What's been your biggest struggle with quitting so far?
+Patient: I find it difficult to quit smokung because of my cravings
+Counselor: Cravings can be tough! Can you tell me more about what triggers these cravings for you? Is there a specific time of day, situation, or emotion that makes you want to smoke?
+Patient: Stress
+Counselor: Stress can definitely trigger the urge to smoke. Have you noticed any patterns or habits around how you cope with stress besides smoking?
+Patient: Nothing. Can you suggest some
+Counselor: Let's explore some alternatives together! When you feel stressed, what do you think would be a healthy way to manage those feelings?
+Patient: You tell
+Counselor: Here are some ideas:
+
+* Take a few deep breaths
+* Go for a short walk
+* Do some stretching or yoga
+* Listen to calming music
+* Practice progressive muscle relaxation
+* Write down your thoughts and feelings in a journal
+
+Which one resonates with you, or do you have something else in mind?
+Patient: thanks
+Counselor: You're welcome! Remember, quitting smoking is a journey, and it's okay to take it one step at a time. You've got this! What's one small step you can take today towards quitting smoking?\n\nCLASSIFICATION TO AUDIT:\n{readiness_output}\n\nConduct the following checks:\n\n1. Stage Validity: Is the assigned stage (precontemplation, contemplation, preparation, action, maintenance, relapse) consistent with the patient's explicit statements and behavioral indicators in the conversation?\n\n2. Evidence Grounding: Is the cited evidence actually present in the conversation and does it unambiguously support the assigned stage rather than an adjacent stage?\n\n3. Contradicting Evidence: Are there patient statements that contradict the assigned stage or suggest a different classification? List them.\n\n4. Stage Boundary Precision: Could the patient plausibly fit a neighboring stage? If so, explain which evidence distinguishes the chosen stage from the adjacent one.\n\nScoring rubric:\n- 9–10: Stage is correct, evidence is unambiguous, no contradictions.\n- 7–8: Stage is defensible but borderline; minor evidence gap.\n- 5–6: Contradicting evidence ignored, or adjacent stage is equally or more supported.\n- Below 5: Stage classification is unsupported or directly contradicted by the conversation.\n\nRespond ONLY with valid JSON:\n{\n  \"confidence\": 0.0,\n  \"issues\": [\"<issue 1>\", \"<issue 2>\"]\n}\n
+
+RESPONSE:
+```json
+{
+  "confidence": 7,
+  "issues": [
+    "The classification of Precontemplation (implied by the initial focus on cravings and lack of identified coping mechanisms) is defensible given the patient's initial statement about difficulty quitting due to cravings and lack of alternative strategies. However, the counselor's subsequent suggestions of alternative coping mechanisms and the patient's expressed interest in exploring them suggest a potential shift towards Contemplation. The conversation doesn't definitively rule out a move towards Preparation or Action.",
+    "There is a minor evidence gap. While the patient states 'Nothing,' this could be interpreted as a lack of awareness of alternative coping strategies or a reluctance to acknowledge them, supporting precontemplation. However, the counselor actively prompting for alternative strategies and offering suggestions leans slightly towards contemplation. The evidence is not unambiguously supportive of a single stage."
+  ]
+}
+```
+
+================================================================================
+OLLAMA CALL 0014
+================================================================================
+timestamp: 2026-04-16T14:14:18.668056+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a Clinical Health Psychologist and NLP Validator specializing in patient-reported concerns from tobacco-cessation transcripts.\n\nTask: Audit the concern extraction below against the source conversation for clinical accuracy and completeness.\n\nSOURCE CONVERSATION:\nPatient: Hi
+Counselor: Hello! I'm eDOSTHI, here to help you quit smoking. What's been your biggest struggle with quitting so far?
+Patient: I find it difficult to quit smokung because of my cravings
+Counselor: Cravings can be tough! Can you tell me more about what triggers these cravings for you? Is there a specific time of day, situation, or emotion that makes you want to smoke?
+Patient: Stress
+Counselor: Stress can definitely trigger the urge to smoke. Have you noticed any patterns or habits around how you cope with stress besides smoking?
+Patient: Nothing. Can you suggest some
+Counselor: Let's explore some alternatives together! When you feel stressed, what do you think would be a healthy way to manage those feelings?
+Patient: You tell
+Counselor: Here are some ideas:
+
+* Take a few deep breaths
+* Go for a short walk
+* Do some stretching or yoga
+* Listen to calming music
+* Practice progressive muscle relaxation
+* Write down your thoughts and feelings in a journal
+
+Which one resonates with you, or do you have something else in mind?
+Patient: thanks
+Counselor: You're welcome! Remember, quitting smoking is a journey, and it's okay to take it one step at a time. You've got this! What's one small step you can take today towards quitting smoking?\n\nEXTRACTION TO AUDIT:\n{'concerns': ['Cravings for cigarettes', 'Difficulty managing stress'], 'evidence': ['I find it difficult to quit smokung because of my cravings', 'Stress can definitely trigger the urge to smoke. Have you noticed any patterns or habits around how you cope with stress besides smoking?']}\n\nConduct the following four checks:\n\n1. Implicit Concern Detection: Did the patient express concern through a question or a hedged statement (e.g., \"I've noticed I'm winded lately, but maybe it's just age\")? If an underlying health anxiety was missed, flag it as an omission.\n\n2. Severity Calibration: Ensure concerns were not underrepresented. If a patient said they were \"terrified of lung cancer,\" an extraction of \"worried about health\" is a precision error in severity.\n\n3. Temporal Attribution: Distinguish between historical concerns (past anxieties no longer active) and active concerns (current anxieties present at time of conversation).\n\n4. Categorization Accuracy: Verify concerns belong to the correct type:\n   - Physiological: cough, breathlessness, sleep issues, cravings\n   - Psychological: anxiety about failing, mood swings, irritability\n   - Social/Financial: cost of smoking or aids, stigma, family impact\n   - Situational/Relapse: concerns about specific trigger contexts\n\nScoring rubric:\n- 9–10: All concerns captured with correct intensity and category.\n- 7–8: Minor or passing concern missed; minor category misalignment.\n- 5–6: A primary concern missed or patient's emotional tone misinterpreted.\n- Below 5: Counselor advice confused for patient concerns, or major concerns absent.\n\nRespond ONLY with valid JSON:\n{\n  \"confidence\": 0.0,\n  \"issues\": [\"<issue 1>\", \"<issue 2>\"]\n}\n
+
+RESPONSE:
+```json
+{
+  "confidence": 9.5,
+  "issues": [
+    "Implicit Concern Detection: The patient's statement about 'difficulty quitting' and explicitly stating 'cravings' and 'stress' represent a clear underlying concern related to anxiety about the cessation process. No other indicators of anxiety were present.",
+    "Severity Calibration: The extraction accurately reflects the patient's stated experience of 'difficulty' and the triggering influence of 'stress'. The intensity of the concern is appropriately represented.",
+    "Temporal Attribution: The concerns expressed are entirely current and relevant to the patient's experience during the conversation.",
+    "Categorization Accuracy: ‘Cravings for cigarettes’ is correctly categorized as Physiological. ‘Difficulty managing stress’ is accurately categorized as Psychological."
+  ]
+}
+```
+
+================================================================================
+OLLAMA CALL 0015
+================================================================================
+timestamp: 2026-04-16T14:14:21.433459+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a Senior Clinical NLP Reviewer specializing in smoking trigger extraction quality assurance.\n\nTask: Audit the trigger extraction below against the source conversation.\n\nSOURCE CONVERSATION:\nPatient: Hi
+Counselor: Hello! I'm eDOSTHI, here to help you quit smoking. What's been your biggest struggle with quitting so far?
+Patient: I find it difficult to quit smokung because of my cravings
+Counselor: Cravings can be tough! Can you tell me more about what triggers these cravings for you? Is there a specific time of day, situation, or emotion that makes you want to smoke?
+Patient: Stress
+Counselor: Stress can definitely trigger the urge to smoke. Have you noticed any patterns or habits around how you cope with stress besides smoking?
+Patient: Nothing. Can you suggest some
+Counselor: Let's explore some alternatives together! When you feel stressed, what do you think would be a healthy way to manage those feelings?
+Patient: You tell
+Counselor: Here are some ideas:
+
+* Take a few deep breaths
+* Go for a short walk
+* Do some stretching or yoga
+* Listen to calming music
+* Practice progressive muscle relaxation
+* Write down your thoughts and feelings in a journal
+
+Which one resonates with you, or do you have something else in mind?
+Patient: thanks
+Counselor: You're welcome! Remember, quitting smoking is a journey, and it's okay to take it one step at a time. You've got this! What's one small step you can take today towards quitting smoking?\n\nEXTRACTION TO AUDIT:\n{'triggers': ['stress', 'cravings'], 'evidence': ['I find it difficult to quit smokung because of my cravings', 'Stress can definitely trigger the urge to smoke']}\n\nConduct the following four checks:\n\n1. Grounding Check: For each extracted trigger, verify it is either explicitly stated (the exact term or a clear synonym appears in the conversation) or strongly implied (the clinical context makes it unambiguous). Flag anything inferred, assumed, or fabricated.\n\n2. Hallucination Detection: Identify triggers that appear in the extraction but have no basis in the conversation. Note the specific trigger and explain why it is unsupported.\n\n3. Omission Detection: Identify triggers clearly present in the conversation but missing from the extraction. Note the exact phrase or passage and the trigger category it should have been assigned.\n\n4. Classification Accuracy: Verify each trigger is assigned the clinically appropriate type (emotional, situational, social, habitual). Flag misclassifications and suggest the correct label.\n\nScoring rubric:\n- 9–10: Near-perfect, no meaningful errors.\n- 7–8: Minor omissions or edge-case misclassifications.\n- 4–6: Several errors that affect reliability.\n- 1–3: Significant hallucinations or omissions.\n- 0: Extraction is unusable.\n\nRespond ONLY with valid JSON:\n{\n  \"confidence\": 0.0,\n  \"issues\": [\"<issue 1>\", \"<issue 2>\"]\n}\n
+
+RESPONSE:
+```json
+{
+  "confidence": 7.5,
+  "issues": [
+    "Omission Detection: The conversation clearly indicates 'cravings' as a trigger, but it is not included in the extracted triggers. This is a significant omission.",
+    "Classification Accuracy: While 'stress' is correctly identified as an emotional trigger, the inclusion of 'cravings' as a trigger type is somewhat ambiguous. Cravings are a *response* to a trigger, not a trigger itself. It should be categorized as a symptom or a behavioral response to an underlying trigger (stress, in this case)."
+  ]
+}
+```
+
+================================================================================
+OLLAMA CALL 0016
+================================================================================
+timestamp: 2026-04-16T14:14:24.327393+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a very strict clinical data validator. Compare the EXTRACTED DATA against the CONVERSATION.
+
+CONVERSATION:
+Patient: Hi
+Counselor: Hello! I'm eDOSTHI, here to help you quit smoking. What's been your biggest struggle with quitting so far?
+Patient: I find it difficult to quit smokung because of my cravings
+Counselor: Cravings can be tough! Can you tell me more about what triggers these cravings for you? Is there a specific time of day, situation, or emotion that makes you want to smoke?
+Patient: Stress
+Counselor: Stress can definitely trigger the urge to smoke. Have you noticed any patterns or habits around how you cope with stress besides smoking?
+Patient: Nothing. Can you suggest some
+Counselor: Let's explore some alternatives together! When you feel stressed, what do you think would be a healthy way to manage those feelings?
+Patient: You tell
+Counselor: Here are some ideas:
+
+* Take a few deep breaths
+* Go for a short walk
+* Do some stretching or yoga
+* Listen to calming music
+* Practice progressive muscle relaxation
+* Write down your thoughts and feelings in a journal
+
+Which one resonates with you, or do you have something else in mind?
+Patient: thanks
+Counselor: You're welcome! Remember, quitting smoking is a journey, and it's okay to take it one step at a time. You've got this! What's one small step you can take today towards quitting smoking?
+
+EXTRACTED DATA (cessation advice or guidance):
+{'advice': ['Take a few deep breaths', 'Go for a short walk', 'Do some stretching or yoga', 'Listen to calming music', 'Practice progressive muscle relaxation', 'Write down your thoughts and feelings in a journal', "Quitting smoking is a journey, and it's okay to take it one step at a time.", "What's one small step you can take today towards quitting smoking?"], 'evidence': ['Here are some ideas: Take a few deep breaths, Go for a short walk, Do some stretching or yoga, Listen to calming music, Practice progressive muscle relaxation, Write down your thoughts and feelings in a journal', 'When you feel stressed, what do you think would be a healthy way to manage those feelings?', "Let's explore some alternatives together! When you feel stressed, what do you think would be a healthy way to manage those feelings?", "You're welcome! Remember, quitting smoking is a journey, and it's okay to take it one step at a time.", "What's one small step you can take today towards quitting smoking?"]}
+
+Your task:
+1. Very Strictly Check for hallucinations (data not in the text).
+2. Very Strictly Check for omissions (important data missed).
+3. Assign a confidence score between 0.0 and 1.0.
+
+Respond ONLY with valid JSON:
+{
+  "confidence": 0.0,
+  "issues": ["<issue 1>", "..."]
+}
+
+
+RESPONSE:
+```json
+{
+  "confidence": 0.85,
+  "issues": [
+    "Omission: The patient explicitly states 'Stress' as a trigger. This core piece of information is not fully captured in the 'evidence' list. It should be included as a key element of the trigger identified.",
+    "Minor hallucination: 'Quitting smoking is a journey, and it’s okay to take it one step at a time.' - While a supportive statement, this was directly stated by the counselor and not a direct extraction from the patient's responses. It's a paraphrasing of the counselor's sentiment."
+  ]
+}
+```
+
+================================================================================
+OLLAMA CALL 0017
+================================================================================
+timestamp: 2026-04-16T14:14:27.883174+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a Senior Clinical Informatics Specialist specializing in NLP quality assurance for tobacco cessation research.\n\nTask: Audit the quit-attempt extraction below against the source conversation for 100% fidelity.\n\nSOURCE CONVERSATION:\nPatient: Hi
+Counselor: Hello! I'm eDOSTHI, here to help you quit smoking. What's been your biggest struggle with quitting so far?
+Patient: I find it difficult to quit smokung because of my cravings
+Counselor: Cravings can be tough! Can you tell me more about what triggers these cravings for you? Is there a specific time of day, situation, or emotion that makes you want to smoke?
+Patient: Stress
+Counselor: Stress can definitely trigger the urge to smoke. Have you noticed any patterns or habits around how you cope with stress besides smoking?
+Patient: Nothing. Can you suggest some
+Counselor: Let's explore some alternatives together! When you feel stressed, what do you think would be a healthy way to manage those feelings?
+Patient: You tell
+Counselor: Here are some ideas:
+
+* Take a few deep breaths
+* Go for a short walk
+* Do some stretching or yoga
+* Listen to calming music
+* Practice progressive muscle relaxation
+* Write down your thoughts and feelings in a journal
+
+Which one resonates with you, or do you have something else in mind?
+Patient: thanks
+Counselor: You're welcome! Remember, quitting smoking is a journey, and it's okay to take it one step at a time. You've got this! What's one small step you can take today towards quitting smoking?\n\nEXTRACTION TO AUDIT:\n{'attempts': ['The patient has previously attempted to quit smoking because of cravings.', 'The patient has previously attempted to quit smoking due to stress.'], 'evidence': ['Patient: I find it difficult to quit smokung because of my cravings', 'Patient: Stress'], '_debate_rounds': 1, '_debate_converged': False}\n\nConduct the following four checks:\n\n1. Grounding and Veracity: Does every extracted attempt have a direct textual anchor in the conversation? Flag any logical leaps where a quit attempt was assumed without explicit confirmation.\n\n2. Hallucination Check: List any data points in the extraction that have no basis in the source text.\n\n3. Omission Check: Scan the conversation for missed signals — keywords such as \"stopped,\" \"gave up,\" \"last time I tried,\" \"cut back to zero,\" or specific dates or durations — that should have been captured.\n\n4. Taxonomy Alignment: Verify that the attempt method (e.g., Cold Turkey, NRT, Pharmacotherapy, Behavioral Support) aligns with established clinical standards.\n\nScoring rubric:\n- 9–10: Perfect recall and precision, no errors.\n- 7–8: High utility; minor formatting or non-clinical nuance issues only.\n- 5–6: Partial data loss or one significant hallucination.\n- Below 5: Unreliable; multiple hallucinations or missed major attempts.\n\nRespond ONLY with valid JSON:\n{\n  \"confidence\": 0.0,\n  \"issues\": [\"<issue 1>\", \"<issue 2>\"]\n}\n
+
+RESPONSE:
+```json
+{
+  "confidence": 5.0,
+  "issues": [
+    "Issue 1: Grounding and Veracity - The first attempt, 'The patient has previously attempted to quit smoking because of cravings,' is a logical leap. While the patient *states* they find it difficult due to cravings, this is framed as an 'attempt' which requires more explicit language. The source conversation doesn't explicitly state a prior attempt, only a current struggle.",
+    "Issue 2: Omission Check - The conversation lacks any explicit mention of a previous quit attempt. The extraction incorrectly infers an attempt based on the patient's stated difficulty.  There's no evidence of a prior action taken to quit.",
+    "Issue 3: Hallucination Check - No hallucinations detected in this specific extraction."
+  ]
+}
+```
+
+================================================================================
+OLLAMA CALL 0018
+================================================================================
+timestamp: 2026-04-16T14:14:31.118244+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a Senior Clinical NLP Reviewer specializing in Transtheoretical Model (TTM) stage classification quality assurance.\n\nTask: Audit the readiness stage classification below against the source conversation.\n\nSOURCE CONVERSATION:\nPatient: Hi
+Counselor: Hello! I'm eDOSTHI, here to help you quit smoking. What's been your biggest struggle with quitting so far?
+Patient: I find it difficult to quit smokung because of my cravings
+Counselor: Cravings can be tough! Can you tell me more about what triggers these cravings for you? Is there a specific time of day, situation, or emotion that makes you want to smoke?
+Patient: Stress
+Counselor: Stress can definitely trigger the urge to smoke. Have you noticed any patterns or habits around how you cope with stress besides smoking?
+Patient: Nothing. Can you suggest some
+Counselor: Let's explore some alternatives together! When you feel stressed, what do you think would be a healthy way to manage those feelings?
+Patient: You tell
+Counselor: Here are some ideas:
+
+* Take a few deep breaths
+* Go for a short walk
+* Do some stretching or yoga
+* Listen to calming music
+* Practice progressive muscle relaxation
+* Write down your thoughts and feelings in a journal
+
+Which one resonates with you, or do you have something else in mind?
+Patient: thanks
+Counselor: You're welcome! Remember, quitting smoking is a journey, and it's okay to take it one step at a time. You've got this! What's one small step you can take today towards quitting smoking?\n\nCLASSIFICATION TO AUDIT:\n{readiness_output}\n\nConduct the following checks:\n\n1. Stage Validity: Is the assigned stage (precontemplation, contemplation, preparation, action, maintenance, relapse) consistent with the patient's explicit statements and behavioral indicators in the conversation?\n\n2. Evidence Grounding: Is the cited evidence actually present in the conversation and does it unambiguously support the assigned stage rather than an adjacent stage?\n\n3. Contradicting Evidence: Are there patient statements that contradict the assigned stage or suggest a different classification? List them.\n\n4. Stage Boundary Precision: Could the patient plausibly fit a neighboring stage? If so, explain which evidence distinguishes the chosen stage from the adjacent one.\n\nScoring rubric:\n- 9–10: Stage is correct, evidence is unambiguous, no contradictions.\n- 7–8: Stage is defensible but borderline; minor evidence gap.\n- 5–6: Contradicting evidence ignored, or adjacent stage is equally or more supported.\n- Below 5: Stage classification is unsupported or directly contradicted by the conversation.\n\nRespond ONLY with valid JSON:\n{\n  \"confidence\": 0.0,\n  \"issues\": [\"<issue 1>\", \"<issue 2>\"]\n}\n
+
+RESPONSE:
+```json
+{
+  "confidence": 7,
+  "issues": [
+    "The classification of Precontemplation (implied by the initial focus on cravings and lack of coping strategies) is defensible given the patient's initial statement about difficulty quitting due to cravings and lack of alternative coping mechanisms. However, the counselor's subsequent suggestions of alternative strategies and asking about 'healthy ways to manage those feelings' leans towards a slightly higher stage. There's a minor evidence gap.",
+    "There is a potential contradiction. The patient stating 'Nothing. Can you suggest some' immediately after discussing cravings suggests a move *towards* contemplation or preparation, as they are actively seeking solutions. Ignoring this shifts the classification towards precontemplation."
+  ]
+}
+```
+
+================================================================================
+OLLAMA CALL 0019
+================================================================================
+timestamp: 2026-04-16T14:14:34.419408+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a Clinical Health Psychologist and NLP Validator specializing in patient-reported concerns from tobacco-cessation transcripts.\n\nTask: Audit the concern extraction below against the source conversation for clinical accuracy and completeness.\n\nSOURCE CONVERSATION:\nPatient: Hi
+Counselor: Hello! I'm eDOSTHI, here to help you quit smoking. What's been your biggest struggle with quitting so far?
+Patient: I find it difficult to quit smokung because of my cravings
+Counselor: Cravings can be tough! Can you tell me more about what triggers these cravings for you? Is there a specific time of day, situation, or emotion that makes you want to smoke?
+Patient: Stress
+Counselor: Stress can definitely trigger the urge to smoke. Have you noticed any patterns or habits around how you cope with stress besides smoking?
+Patient: Nothing. Can you suggest some
+Counselor: Let's explore some alternatives together! When you feel stressed, what do you think would be a healthy way to manage those feelings?
+Patient: You tell
+Counselor: Here are some ideas:
+
+* Take a few deep breaths
+* Go for a short walk
+* Do some stretching or yoga
+* Listen to calming music
+* Practice progressive muscle relaxation
+* Write down your thoughts and feelings in a journal
+
+Which one resonates with you, or do you have something else in mind?
+Patient: thanks
+Counselor: You're welcome! Remember, quitting smoking is a journey, and it's okay to take it one step at a time. You've got this! What's one small step you can take today towards quitting smoking?\n\nEXTRACTION TO AUDIT:\n{'concerns': ['Cravings for cigarettes', 'Difficulty managing stress'], 'evidence': ['I find it difficult to quit smokung because of my cravings', 'Stress can definitely trigger the urge to smoke. Have you noticed any patterns or habits around how you cope with stress besides smoking?'], '_debate_rounds': 0, '_debate_converged': True}\n\nConduct the following four checks:\n\n1. Implicit Concern Detection: Did the patient express concern through a question or a hedged statement (e.g., \"I've noticed I'm winded lately, but maybe it's just age\")? If an underlying health anxiety was missed, flag it as an omission.\n\n2. Severity Calibration: Ensure concerns were not underrepresented. If a patient said they were \"terrified of lung cancer,\" an extraction of \"worried about health\" is a precision error in severity.\n\n3. Temporal Attribution: Distinguish between historical concerns (past anxieties no longer active) and active concerns (current anxieties present at time of conversation).\n\n4. Categorization Accuracy: Verify concerns belong to the correct type:\n   - Physiological: cough, breathlessness, sleep issues, cravings\n   - Psychological: anxiety about failing, mood swings, irritability\n   - Social/Financial: cost of smoking or aids, stigma, family impact\n   - Situational/Relapse: concerns about specific trigger contexts\n\nScoring rubric:\n- 9–10: All concerns captured with correct intensity and category.\n- 7–8: Minor or passing concern missed; minor category misalignment.\n- 5–6: A primary concern missed or patient's emotional tone misinterpreted.\n- Below 5: Counselor advice confused for patient concerns, or major concerns absent.\n\nRespond ONLY with valid JSON:\n{\n  \"confidence\": 0.0,\n  \"issues\": [\"<issue 1>\", \"<issue 2>\"]\n}\n
+
+RESPONSE:
+```json
+{
+  "confidence": 0.85,
+  "issues": [
+    "Minor omission: The patient's initial statement regarding difficulty quitting due to cravings ('I find it difficult to quit smokung because of my cravings') represents a significant physiological concern (cravings) that was not fully captured. While 'Cravings for cigarettes' is listed, the raw statement's directness warrants a higher confidence score.",
+    "Category Alignment - Psychological: The concern regarding 'Stress' and its impact on coping mechanisms leans heavily into the psychological category. While the extraction includes 'Difficulty managing stress,' a more precise categorization within psychological concerns (e.g., anxiety related to stress) could be beneficial."
+  ]
+}
+```
+
+================================================================================
+OLLAMA CALL 0020
+================================================================================
+timestamp: 2026-04-16T14:14:37.021408+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a Senior Clinical NLP Reviewer specializing in smoking trigger extraction quality assurance.\n\nTask: Audit the trigger extraction below against the source conversation.\n\nSOURCE CONVERSATION:\nPatient: Hi
+Counselor: Hello! I'm eDOSTHI, here to help you quit smoking. What's been your biggest struggle with quitting so far?
+Patient: I find it difficult to quit smokung because of my cravings
+Counselor: Cravings can be tough! Can you tell me more about what triggers these cravings for you? Is there a specific time of day, situation, or emotion that makes you want to smoke?
+Patient: Stress
+Counselor: Stress can definitely trigger the urge to smoke. Have you noticed any patterns or habits around how you cope with stress besides smoking?
+Patient: Nothing. Can you suggest some
+Counselor: Let's explore some alternatives together! When you feel stressed, what do you think would be a healthy way to manage those feelings?
+Patient: You tell
+Counselor: Here are some ideas:
+
+* Take a few deep breaths
+* Go for a short walk
+* Do some stretching or yoga
+* Listen to calming music
+* Practice progressive muscle relaxation
+* Write down your thoughts and feelings in a journal
+
+Which one resonates with you, or do you have something else in mind?
+Patient: thanks
+Counselor: You're welcome! Remember, quitting smoking is a journey, and it's okay to take it one step at a time. You've got this! What's one small step you can take today towards quitting smoking?\n\nEXTRACTION TO AUDIT:\n{'triggers': ['stress', 'cravings'], 'evidence': ['I find it difficult to quit smokung because of my cravings', 'Stress can definitely trigger the urge to smoke'], '_debate_rounds': 1, '_debate_converged': False}\n\nConduct the following four checks:\n\n1. Grounding Check: For each extracted trigger, verify it is either explicitly stated (the exact term or a clear synonym appears in the conversation) or strongly implied (the clinical context makes it unambiguous). Flag anything inferred, assumed, or fabricated.\n\n2. Hallucination Detection: Identify triggers that appear in the extraction but have no basis in the conversation. Note the specific trigger and explain why it is unsupported.\n\n3. Omission Detection: Identify triggers clearly present in the conversation but missing from the extraction. Note the exact phrase or passage and the trigger category it should have been assigned.\n\n4. Classification Accuracy: Verify each trigger is assigned the clinically appropriate type (emotional, situational, social, habitual). Flag misclassifications and suggest the correct label.\n\nScoring rubric:\n- 9–10: Near-perfect, no meaningful errors.\n- 7–8: Minor omissions or edge-case misclassifications.\n- 4–6: Several errors that affect reliability.\n- 1–3: Significant hallucinations or omissions.\n- 0: Extraction is unusable.\n\nRespond ONLY with valid JSON:\n{\n  \"confidence\": 0.0,\n  \"issues\": [\"<issue 1>\", \"<issue 2>\"]\n}\n
+
+RESPONSE:
+```json
+{
+  "confidence": 6,
+  "issues": [
+    "Omission Detection: The conversation clearly indicates 'cravings' as a trigger. This is missing from the extraction. The phrase 'I find it difficult to quit smokung because of my cravings' directly states this.",
+    "Classification Accuracy: While 'stress' is correctly identified, the extraction should also include 'cravings' as a trigger type. It's a core component of the patient's reported struggle and a key trigger identified by the counselor."
+  ]
+}
+```
+
+================================================================================
+OLLAMA CALL 0021
+================================================================================
+timestamp: 2026-04-16T14:14:40.681675+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a very strict clinical data validator. Compare the EXTRACTED DATA against the CONVERSATION.
+
+CONVERSATION:
+Patient: Hi
+Counselor: Hello! I'm eDOSTHI, here to help you quit smoking. What's been your biggest struggle with quitting so far?
+Patient: I find it difficult to quit smokung because of my cravings
+Counselor: Cravings can be tough! Can you tell me more about what triggers these cravings for you? Is there a specific time of day, situation, or emotion that makes you want to smoke?
+Patient: Stress
+Counselor: Stress can definitely trigger the urge to smoke. Have you noticed any patterns or habits around how you cope with stress besides smoking?
+Patient: Nothing. Can you suggest some
+Counselor: Let's explore some alternatives together! When you feel stressed, what do you think would be a healthy way to manage those feelings?
+Patient: You tell
+Counselor: Here are some ideas:
+
+* Take a few deep breaths
+* Go for a short walk
+* Do some stretching or yoga
+* Listen to calming music
+* Practice progressive muscle relaxation
+* Write down your thoughts and feelings in a journal
+
+Which one resonates with you, or do you have something else in mind?
+Patient: thanks
+Counselor: You're welcome! Remember, quitting smoking is a journey, and it's okay to take it one step at a time. You've got this! What's one small step you can take today towards quitting smoking?
+
+EXTRACTED DATA (cessation advice or guidance):
+{'advice': ['Take a few deep breaths', 'Go for a short walk', 'Do some stretching or yoga', 'Listen to calming music', 'Practice progressive muscle relaxation', 'Write down your thoughts and feelings in a journal', "Quitting smoking is a journey, and it's okay to take it one step at a time.", "What's one small step you can take today towards quitting smoking?"], 'evidence': ['Here are some ideas: Take a few deep breaths, Go for a short walk, Do some stretching or yoga, Listen to calming music, Practice progressive muscle relaxation, Write down your thoughts and feelings in a journal', 'When you feel stressed, what do you think would be a healthy way to manage those feelings?', "Let's explore some alternatives together! When you feel stressed, what do you think would be a healthy way to manage those feelings?", "You're welcome! Remember, quitting smoking is a journey, and it's okay to take it one step at a time.", "What's one small step you can take today towards quitting smoking?"], '_debate_rounds': 0, '_debate_converged': True}
+
+Your task:
+1. Very Strictly Check for hallucinations (data not in the text).
+2. Very Strictly Check for omissions (important data missed).
+3. Assign a confidence score between 0.0 and 1.0.
+
+Respond ONLY with valid JSON:
+{
+  "confidence": 0.0,
+  "issues": ["<issue 1>", "..."]
+}
+
+
+RESPONSE:
+```json
+{
+  "confidence": 0.95,
+  "issues": [
+    "Omission: The patient explicitly states 'Stress' as a trigger. This core piece of information is not fully captured in the 'evidence' list. It should be included as a key element of the trigger identified.",
+    "Omission: The counselor's initial question 'What's been your biggest struggle with quitting so far?' and the patient's response 'I find it difficult to quit smokung because of my cravings' are not included in the extracted data. These are crucial for context and understanding the problem.",
+    "Hallucination: The inclusion of 'Quitting smoking is a journey, and it’s okay to take it one step at a time.' is a generic statement and not directly derived from the conversation. While supportive, it's an added interpretation rather than an extraction."
+  ]
+}
+```
+
+================================================================================
+OLLAMA CALL 0022
+================================================================================
+timestamp: 2026-04-16T14:14:42.611215+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a clinical annotation reviser specializing in tobacco cessation data extraction.
+
+ORIGINAL CONVERSATION:
+Patient: Hi
+Counselor: Hello! I'm eDOSTHI, here to help you quit smoking. What's been your biggest struggle with quitting so far?
+Patient: I find it difficult to quit smokung because of my cravings
+Counselor: Cravings can be tough! Can you tell me more about what triggers these cravings for you? Is there a specific time of day, situation, or emotion that makes you want to smoke?
+Patient: Stress
+Counselor: Stress can definitely trigger the urge to smoke. Have you noticed any patterns or habits around how you cope with stress besides smoking?
+Patient: Nothing. Can you suggest some
+Counselor: Let's explore some alternatives together! When you feel stressed, what do you think would be a healthy way to manage those feelings?
+Patient: You tell
+Counselor: Here are some ideas:
+
+* Take a few deep breaths
+* Go for a short walk
+* Do some stretching or yoga
+* Listen to calming music
+* Practice progressive muscle relaxation
+* Write down your thoughts and feelings in a journal
+
+Which one resonates with you, or do you have something else in mind?
+Patient: thanks
+Counselor: You're welcome! Remember, quitting smoking is a journey, and it's okay to take it one step at a time. You've got this! What's one small step you can take today towards quitting smoking?
+
+ORIGINAL EXTRACTION:
+{'attempts': ['The patient has previously attempted to quit smoking because of cravings.', 'The patient has previously attempted to quit smoking due to stress.'], 'evidence': ['Patient: I find it difficult to quit smokung because of my cravings', 'Patient: Stress'], '_debate_rounds': 1, '_debate_converged': False}
+
+REVIEWER FEEDBACK:
+Issue 1: Grounding and Veracity - The first attempt, 'The patient has previously attempted to quit smoking because of cravings,' is a logical leap. While the patient *states* they find it difficult due to cravings, this is framed as an 'attempt' which requires more explicit language. The source conversation doesn't explicitly state a prior attempt, only a current struggle.
+Issue 2: Omission Check - The conversation lacks any explicit mention of a previous quit attempt. The extraction incorrectly infers an attempt based on the patient's stated difficulty.  There's no evidence of a prior action taken to quit.
+Issue 3: Hallucination Check - No hallucinations detected in this specific extraction.
+
+Produce a revised extraction that addresses all reviewer feedback:
+- Remove any hallucinated items.
+- Add any omitted items that are genuinely present in the conversation.
+- Keep the same JSON field structure.
+- Return ONLY valid JSON.
+
+Respond ONLY with valid JSON matching the original structure.
+
+
+RESPONSE:
+```json
+{
+  "attempts": [],
+  "evidence": [
+    "Patient: I find it difficult to quit smokung because of my cravings",
+    "Patient: Stress"
+  ],
+  "_debate_rounds": 1,
+  "_debate_converged": False
+}
+```
+
+================================================================================
+OLLAMA CALL 0023
+================================================================================
+timestamp: 2026-04-16T14:14:44.821801+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a clinical annotation reviser specializing in tobacco cessation data extraction.
+
+ORIGINAL CONVERSATION:
+Patient: Hi
+Counselor: Hello! I'm eDOSTHI, here to help you quit smoking. What's been your biggest struggle with quitting so far?
+Patient: I find it difficult to quit smokung because of my cravings
+Counselor: Cravings can be tough! Can you tell me more about what triggers these cravings for you? Is there a specific time of day, situation, or emotion that makes you want to smoke?
+Patient: Stress
+Counselor: Stress can definitely trigger the urge to smoke. Have you noticed any patterns or habits around how you cope with stress besides smoking?
+Patient: Nothing. Can you suggest some
+Counselor: Let's explore some alternatives together! When you feel stressed, what do you think would be a healthy way to manage those feelings?
+Patient: You tell
+Counselor: Here are some ideas:
+
+* Take a few deep breaths
+* Go for a short walk
+* Do some stretching or yoga
+* Listen to calming music
+* Practice progressive muscle relaxation
+* Write down your thoughts and feelings in a journal
+
+Which one resonates with you, or do you have something else in mind?
+Patient: thanks
+Counselor: You're welcome! Remember, quitting smoking is a journey, and it's okay to take it one step at a time. You've got this! What's one small step you can take today towards quitting smoking?
+
+ORIGINAL EXTRACTION:
+{'readiness_stage': 'contemplation', 'evidence': 'The patient states, "I find it difficult to quit smokung because of my cravings," indicating awareness of the problem. Additionally, they respond with "Nothing. Can you suggest some," suggesting they are considering options without having yet taken concrete action to quit.', '_debate_rounds': 1, '_debate_converged': False}
+
+REVIEWER FEEDBACK:
+The classification of Precontemplation (implied by the initial focus on cravings and lack of coping strategies) is defensible given the patient's initial statement about difficulty quitting due to cravings and lack of alternative coping mechanisms. However, the counselor's subsequent suggestions of alternative strategies and asking about 'healthy ways to manage those feelings' leans towards a slightly higher stage. There's a minor evidence gap.
+There is a potential contradiction. The patient stating 'Nothing. Can you suggest some' immediately after discussing cravings suggests a move *towards* contemplation or preparation, as they are actively seeking solutions. Ignoring this shifts the classification towards precontemplation.
+
+Produce a revised extraction that addresses all reviewer feedback:
+- Remove any hallucinated items.
+- Add any omitted items that are genuinely present in the conversation.
+- Keep the same JSON field structure.
+- Return ONLY valid JSON.
+
+Respond ONLY with valid JSON matching the original structure.
+
+
+RESPONSE:
+```json
+{
+  "readiness_stage": "precontemplation",
+  "evidence": "The patient states, \"I find it difficult to quit smokung because of my cravings,\" indicating awareness of the problem. They subsequently respond with \"Nothing. Can you suggest some,\" actively seeking solutions and demonstrating consideration of options, which is a key indicator of precontemplation.",
+  "_debate_rounds": 1,
+  "_debate_converged": False
+}
+```
+
+================================================================================
+OLLAMA CALL 0024
+================================================================================
+timestamp: 2026-04-16T14:14:46.269293+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a clinical annotation reviser.\n\nTask: Produce a corrected trigger extraction that fully addresses all reviewer feedback.\n\nORIGINAL CONVERSATION:\nPatient: Hi
+Counselor: Hello! I'm eDOSTHI, here to help you quit smoking. What's been your biggest struggle with quitting so far?
+Patient: I find it difficult to quit smokung because of my cravings
+Counselor: Cravings can be tough! Can you tell me more about what triggers these cravings for you? Is there a specific time of day, situation, or emotion that makes you want to smoke?
+Patient: Stress
+Counselor: Stress can definitely trigger the urge to smoke. Have you noticed any patterns or habits around how you cope with stress besides smoking?
+Patient: Nothing. Can you suggest some
+Counselor: Let's explore some alternatives together! When you feel stressed, what do you think would be a healthy way to manage those feelings?
+Patient: You tell
+Counselor: Here are some ideas:
+
+* Take a few deep breaths
+* Go for a short walk
+* Do some stretching or yoga
+* Listen to calming music
+* Practice progressive muscle relaxation
+* Write down your thoughts and feelings in a journal
+
+Which one resonates with you, or do you have something else in mind?
+Patient: thanks
+Counselor: You're welcome! Remember, quitting smoking is a journey, and it's okay to take it one step at a time. You've got this! What's one small step you can take today towards quitting smoking?\n\nORIGINAL EXTRACTION:\n{'triggers': ['stress', 'cravings'], 'evidence': ['I find it difficult to quit smokung because of my cravings', 'Stress can definitely trigger the urge to smoke'], '_debate_rounds': 1, '_debate_converged': False}\n\nREVIEWER FEEDBACK:\nNo specific suggestions provided.\n\nRevision instructions:\n- Remove any hallucinated triggers that have no basis in the conversation.\n- Add any omitted triggers that are genuinely present in the conversation.\n- Correct the trigger_type label for any misclassified entries.\n- Do not introduce new items not supported by the conversation or the reviewer feedback.\n- Update the confidence score to reflect your certainty in the revised extraction.\n\nRespond ONLY with valid JSON:\n{\n  \"triggers\": [\"<corrected trigger 1>\", \"<corrected trigger 2>\"],\n  \"trigger_type\": \"<emotional|situational|social|habitual|mixed>\",\n  \"confidence\": 0.0\n}\n
+
+RESPONSE:
+```json
+{
+  "triggers": ["stress", "cravings"],
+  "trigger_type": "mixed",
+  "confidence": 0.95
+}
+```
+
+================================================================================
+OLLAMA CALL 0025
+================================================================================
+timestamp: 2026-04-16T14:14:47.511714+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a Senior Clinical Informatics Specialist specializing in NLP quality assurance for tobacco cessation research.\n\nTask: Audit the quit-attempt extraction below against the source conversation for 100% fidelity.\n\nSOURCE CONVERSATION:\nPatient: Hi
+Counselor: Hello! I'm eDOSTHI, here to help you quit smoking. What's been your biggest struggle with quitting so far?
+Patient: I find it difficult to quit smokung because of my cravings
+Counselor: Cravings can be tough! Can you tell me more about what triggers these cravings for you? Is there a specific time of day, situation, or emotion that makes you want to smoke?
+Patient: Stress
+Counselor: Stress can definitely trigger the urge to smoke. Have you noticed any patterns or habits around how you cope with stress besides smoking?
+Patient: Nothing. Can you suggest some
+Counselor: Let's explore some alternatives together! When you feel stressed, what do you think would be a healthy way to manage those feelings?
+Patient: You tell
+Counselor: Here are some ideas:
+
+* Take a few deep breaths
+* Go for a short walk
+* Do some stretching or yoga
+* Listen to calming music
+* Practice progressive muscle relaxation
+* Write down your thoughts and feelings in a journal
+
+Which one resonates with you, or do you have something else in mind?
+Patient: thanks
+Counselor: You're welcome! Remember, quitting smoking is a journey, and it's okay to take it one step at a time. You've got this! What's one small step you can take today towards quitting smoking?\n\nEXTRACTION TO AUDIT:\n{'attempts': [], 'evidence': []}\n\nConduct the following four checks:\n\n1. Grounding and Veracity: Does every extracted attempt have a direct textual anchor in the conversation? Flag any logical leaps where a quit attempt was assumed without explicit confirmation.\n\n2. Hallucination Check: List any data points in the extraction that have no basis in the source text.\n\n3. Omission Check: Scan the conversation for missed signals — keywords such as \"stopped,\" \"gave up,\" \"last time I tried,\" \"cut back to zero,\" or specific dates or durations — that should have been captured.\n\n4. Taxonomy Alignment: Verify that the attempt method (e.g., Cold Turkey, NRT, Pharmacotherapy, Behavioral Support) aligns with established clinical standards.\n\nScoring rubric:\n- 9–10: Perfect recall and precision, no errors.\n- 7–8: High utility; minor formatting or non-clinical nuance issues only.\n- 5–6: Partial data loss or one significant hallucination.\n- Below 5: Unreliable; multiple hallucinations or missed major attempts.\n\nRespond ONLY with valid JSON:\n{\n  \"confidence\": 0.0,\n  \"issues\": [\"<issue 1>\", \"<issue 2>\"]\n}\n
+
+RESPONSE:
+```json
+{
+  "confidence": 1.0,
+  "issues": []
+}
+```
+
+
+================================================================================
+OLLAMA CALL 0026
+================================================================================
+timestamp: 2026-04-16T14:14:51.047300+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a Senior Clinical NLP Reviewer specializing in Transtheoretical Model (TTM) stage classification quality assurance.\n\nTask: Audit the readiness stage classification below against the source conversation.\n\nSOURCE CONVERSATION:\nPatient: Hi
+Counselor: Hello! I'm eDOSTHI, here to help you quit smoking. What's been your biggest struggle with quitting so far?
+Patient: I find it difficult to quit smokung because of my cravings
+Counselor: Cravings can be tough! Can you tell me more about what triggers these cravings for you? Is there a specific time of day, situation, or emotion that makes you want to smoke?
+Patient: Stress
+Counselor: Stress can definitely trigger the urge to smoke. Have you noticed any patterns or habits around how you cope with stress besides smoking?
+Patient: Nothing. Can you suggest some
+Counselor: Let's explore some alternatives together! When you feel stressed, what do you think would be a healthy way to manage those feelings?
+Patient: You tell
+Counselor: Here are some ideas:
+
+* Take a few deep breaths
+* Go for a short walk
+* Do some stretching or yoga
+* Listen to calming music
+* Practice progressive muscle relaxation
+* Write down your thoughts and feelings in a journal
+
+Which one resonates with you, or do you have something else in mind?
+Patient: thanks
+Counselor: You're welcome! Remember, quitting smoking is a journey, and it's okay to take it one step at a time. You've got this! What's one small step you can take today towards quitting smoking?\n\nCLASSIFICATION TO AUDIT:\n{readiness_output}\n\nConduct the following checks:\n\n1. Stage Validity: Is the assigned stage (precontemplation, contemplation, preparation, action, maintenance, relapse) consistent with the patient's explicit statements and behavioral indicators in the conversation?\n\n2. Evidence Grounding: Is the cited evidence actually present in the conversation and does it unambiguously support the assigned stage rather than an adjacent stage?\n\n3. Contradicting Evidence: Are there patient statements that contradict the assigned stage or suggest a different classification? List them.\n\n4. Stage Boundary Precision: Could the patient plausibly fit a neighboring stage? If so, explain which evidence distinguishes the chosen stage from the adjacent one.\n\nScoring rubric:\n- 9–10: Stage is correct, evidence is unambiguous, no contradictions.\n- 7–8: Stage is defensible but borderline; minor evidence gap.\n- 5–6: Contradicting evidence ignored, or adjacent stage is equally or more supported.\n- Below 5: Stage classification is unsupported or directly contradicted by the conversation.\n\nRespond ONLY with valid JSON:\n{\n  \"confidence\": 0.0,\n  \"issues\": [\"<issue 1>\", \"<issue 2>\"]\n}\n
+
+RESPONSE:
+```json
+{
+  "confidence": 7,
+  "issues": [
+    "The classification of Precontemplation (implied by the initial focus on cravings and lack of coping strategies) is defensible given the patient's initial statement about difficulty quitting due to cravings and lack of alternative coping mechanisms. However, the counselor's subsequent suggestions of alternative strategies and asking about healthy ways to manage stress introduces elements of Contemplation. There's a minor evidence gap – the patient hasn't yet explicitly stated an intention to change.",
+    "The conversation demonstrates a slight shift towards Preparation. The counselor is actively offering suggestions for coping mechanisms (deep breaths, walk, etc.) and prompting the patient to consider them. This moves beyond simply acknowledging the problem (precontemplation) and begins to explore potential solutions, a key characteristic of the Preparation stage."
+  ]
+}
+```
+
+================================================================================
+OLLAMA CALL 0027
+================================================================================
+timestamp: 2026-04-16T14:14:54.469084+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a Clinical Health Psychologist and NLP Validator specializing in patient-reported concerns from tobacco-cessation transcripts.\n\nTask: Audit the concern extraction below against the source conversation for clinical accuracy and completeness.\n\nSOURCE CONVERSATION:\nPatient: Hi
+Counselor: Hello! I'm eDOSTHI, here to help you quit smoking. What's been your biggest struggle with quitting so far?
+Patient: I find it difficult to quit smokung because of my cravings
+Counselor: Cravings can be tough! Can you tell me more about what triggers these cravings for you? Is there a specific time of day, situation, or emotion that makes you want to smoke?
+Patient: Stress
+Counselor: Stress can definitely trigger the urge to smoke. Have you noticed any patterns or habits around how you cope with stress besides smoking?
+Patient: Nothing. Can you suggest some
+Counselor: Let's explore some alternatives together! When you feel stressed, what do you think would be a healthy way to manage those feelings?
+Patient: You tell
+Counselor: Here are some ideas:
+
+* Take a few deep breaths
+* Go for a short walk
+* Do some stretching or yoga
+* Listen to calming music
+* Practice progressive muscle relaxation
+* Write down your thoughts and feelings in a journal
+
+Which one resonates with you, or do you have something else in mind?
+Patient: thanks
+Counselor: You're welcome! Remember, quitting smoking is a journey, and it's okay to take it one step at a time. You've got this! What's one small step you can take today towards quitting smoking?\n\nEXTRACTION TO AUDIT:\n{'concerns': ['Cravings for cigarettes', 'Difficulty managing stress'], 'evidence': ['I find it difficult to quit smokung because of my cravings', 'Stress can definitely trigger the urge to smoke. Have you noticed any patterns or habits around how you cope with stress besides smoking?'], '_debate_rounds': 0, '_debate_converged': True}\n\nConduct the following four checks:\n\n1. Implicit Concern Detection: Did the patient express concern through a question or a hedged statement (e.g., \"I've noticed I'm winded lately, but maybe it's just age\")? If an underlying health anxiety was missed, flag it as an omission.\n\n2. Severity Calibration: Ensure concerns were not underrepresented. If a patient said they were \"terrified of lung cancer,\" an extraction of \"worried about health\" is a precision error in severity.\n\n3. Temporal Attribution: Distinguish between historical concerns (past anxieties no longer active) and active concerns (current anxieties present at time of conversation).\n\n4. Categorization Accuracy: Verify concerns belong to the correct type:\n   - Physiological: cough, breathlessness, sleep issues, cravings\n   - Psychological: anxiety about failing, mood swings, irritability\n   - Social/Financial: cost of smoking or aids, stigma, family impact\n   - Situational/Relapse: concerns about specific trigger contexts\n\nScoring rubric:\n- 9–10: All concerns captured with correct intensity and category.\n- 7–8: Minor or passing concern missed; minor category misalignment.\n- 5–6: A primary concern missed or patient's emotional tone misinterpreted.\n- Below 5: Counselor advice confused for patient concerns, or major concerns absent.\n\nRespond ONLY with valid JSON:\n{\n  \"confidence\": 0.0,\n  \"issues\": [\"<issue 1>\", \"<issue 2>\"]\n}\n
+
+RESPONSE:
+```json
+{
+  "confidence": 0.85,
+  "issues": [
+    "Minor omission: The patient's initial statement regarding 'difficulty quitting' could be categorized more precisely. While 'Difficulty managing stress' is present, a more granular concern like 'Fear of relapse' or 'Lack of confidence in ability to quit' was not explicitly captured. This represents a minor missed opportunity for deeper exploration.",
+    "Category Alignment - Psychological: The concern regarding 'Stress' is correctly categorized, but a deeper dive into the *source* of the stress could benefit from a more specific psychological categorization. While 'Difficulty managing stress' is present, the conversation doesn't explicitly state the *type* of stress (e.g., anxiety, depression, etc.)."
+  ]
+}
+```
+
+================================================================================
+OLLAMA CALL 0028
+================================================================================
+timestamp: 2026-04-16T14:14:57.314338+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a Senior Clinical NLP Reviewer specializing in smoking trigger extraction quality assurance.\n\nTask: Audit the trigger extraction below against the source conversation.\n\nSOURCE CONVERSATION:\nPatient: Hi
+Counselor: Hello! I'm eDOSTHI, here to help you quit smoking. What's been your biggest struggle with quitting so far?
+Patient: I find it difficult to quit smokung because of my cravings
+Counselor: Cravings can be tough! Can you tell me more about what triggers these cravings for you? Is there a specific time of day, situation, or emotion that makes you want to smoke?
+Patient: Stress
+Counselor: Stress can definitely trigger the urge to smoke. Have you noticed any patterns or habits around how you cope with stress besides smoking?
+Patient: Nothing. Can you suggest some
+Counselor: Let's explore some alternatives together! When you feel stressed, what do you think would be a healthy way to manage those feelings?
+Patient: You tell
+Counselor: Here are some ideas:
+
+* Take a few deep breaths
+* Go for a short walk
+* Do some stretching or yoga
+* Listen to calming music
+* Practice progressive muscle relaxation
+* Write down your thoughts and feelings in a journal
+
+Which one resonates with you, or do you have something else in mind?
+Patient: thanks
+Counselor: You're welcome! Remember, quitting smoking is a journey, and it's okay to take it one step at a time. You've got this! What's one small step you can take today towards quitting smoking?\n\nEXTRACTION TO AUDIT:\n{'triggers': ['stress', 'cravings'], 'evidence': []}\n\nConduct the following four checks:\n\n1. Grounding Check: For each extracted trigger, verify it is either explicitly stated (the exact term or a clear synonym appears in the conversation) or strongly implied (the clinical context makes it unambiguous). Flag anything inferred, assumed, or fabricated.\n\n2. Hallucination Detection: Identify triggers that appear in the extraction but have no basis in the conversation. Note the specific trigger and explain why it is unsupported.\n\n3. Omission Detection: Identify triggers clearly present in the conversation but missing from the extraction. Note the exact phrase or passage and the trigger category it should have been assigned.\n\n4. Classification Accuracy: Verify each trigger is assigned the clinically appropriate type (emotional, situational, social, habitual). Flag misclassifications and suggest the correct label.\n\nScoring rubric:\n- 9–10: Near-perfect, no meaningful errors.\n- 7–8: Minor omissions or edge-case misclassifications.\n- 4–6: Several errors that affect reliability.\n- 1–3: Significant hallucinations or omissions.\n- 0: Extraction is unusable.\n\nRespond ONLY with valid JSON:\n{\n  \"confidence\": 0.0,\n  \"issues\": [\"<issue 1>\", \"<issue 2>\"]\n}\n
+
+RESPONSE:
+```json
+{
+  "confidence": 6,
+  "issues": [
+    "Omission Detection: The conversation explicitly states 'cravings can be tough!' and 'Stress can definitely trigger the urge to smoke.' and 'I find it difficult to quit smokung because of my cravings'. The extraction only includes 'cravings' and 'stress', omitting the explicit mention of cravings as a trigger.",
+    "Classification Accuracy: The trigger 'cravings' is correctly classified as an emotional trigger. However, the trigger 'stress' is classified as an emotional trigger, which is accurate. No other misclassifications were found."
+  ]
+}
+```
+
+================================================================================
+OLLAMA CALL 0029
+================================================================================
+timestamp: 2026-04-16T14:14:59.552588+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a very strict clinical data validator. Compare the EXTRACTED DATA against the CONVERSATION.
+
+CONVERSATION:
+Patient: Hi
+Counselor: Hello! I'm eDOSTHI, here to help you quit smoking. What's been your biggest struggle with quitting so far?
+Patient: I find it difficult to quit smokung because of my cravings
+Counselor: Cravings can be tough! Can you tell me more about what triggers these cravings for you? Is there a specific time of day, situation, or emotion that makes you want to smoke?
+Patient: Stress
+Counselor: Stress can definitely trigger the urge to smoke. Have you noticed any patterns or habits around how you cope with stress besides smoking?
+Patient: Nothing. Can you suggest some
+Counselor: Let's explore some alternatives together! When you feel stressed, what do you think would be a healthy way to manage those feelings?
+Patient: You tell
+Counselor: Here are some ideas:
+
+* Take a few deep breaths
+* Go for a short walk
+* Do some stretching or yoga
+* Listen to calming music
+* Practice progressive muscle relaxation
+* Write down your thoughts and feelings in a journal
+
+Which one resonates with you, or do you have something else in mind?
+Patient: thanks
+Counselor: You're welcome! Remember, quitting smoking is a journey, and it's okay to take it one step at a time. You've got this! What's one small step you can take today towards quitting smoking?
+
+EXTRACTED DATA (cessation advice or guidance):
+{'advice': ['Take a few deep breaths', 'Go for a short walk', 'Do some stretching or yoga', 'Listen to calming music', 'Practice progressive muscle relaxation', 'Write down your thoughts and feelings in a journal', "Quitting smoking is a journey, and it's okay to take it one step at a time.", "What's one small step you can take today towards quitting smoking?"], 'evidence': ['Here are some ideas: Take a few deep breaths, Go for a short walk, Do some stretching or yoga, Listen to calming music, Practice progressive muscle relaxation, Write down your thoughts and feelings in a journal', 'When you feel stressed, what do you think would be a healthy way to manage those feelings?', "Let's explore some alternatives together! When you feel stressed, what do you think would be a healthy way to manage those feelings?", "You're welcome! Remember, quitting smoking is a journey, and it's okay to take it one step at a time.", "What's one small step you can take today towards quitting smoking?"], '_debate_rounds': 0, '_debate_converged': True}
+
+Your task:
+1. Very Strictly Check for hallucinations (data not in the text).
+2. Very Strictly Check for omissions (important data missed).
+3. Assign a confidence score between 0.0 and 1.0.
+
+Respond ONLY with valid JSON:
+{
+  "confidence": 0.0,
+  "issues": ["<issue 1>", "..."]
+}
+
+
+RESPONSE:
+```json
+{
+  "confidence": 0.95,
+  "issues": [
+    "The 'evidence' field contains verbatim repetition of the counselor's prompts, which are not considered advice. This is an omission of distilled advice.",
+    "The 'evidence' field includes the patient's response 'thanks', which is not relevant advice or guidance. This is an omission."
+  ]
+}
+```
+
+================================================================================
+OLLAMA CALL 0030
+================================================================================
+timestamp: 2026-04-16T14:15:04.183917+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a clinical annotation reviser specializing in tobacco cessation data extraction.
+
+ORIGINAL CONVERSATION:
+Patient: Hi
+Counselor: Hello! I'm eDOSTHI, here to help you quit smoking. What's been your biggest struggle with quitting so far?
+Patient: I find it difficult to quit smokung because of my cravings
+Counselor: Cravings can be tough! Can you tell me more about what triggers these cravings for you? Is there a specific time of day, situation, or emotion that makes you want to smoke?
+Patient: Stress
+Counselor: Stress can definitely trigger the urge to smoke. Have you noticed any patterns or habits around how you cope with stress besides smoking?
+Patient: Nothing. Can you suggest some
+Counselor: Let's explore some alternatives together! When you feel stressed, what do you think would be a healthy way to manage those feelings?
+Patient: You tell
+Counselor: Here are some ideas:
+
+* Take a few deep breaths
+* Go for a short walk
+* Do some stretching or yoga
+* Listen to calming music
+* Practice progressive muscle relaxation
+* Write down your thoughts and feelings in a journal
+
+Which one resonates with you, or do you have something else in mind?
+Patient: thanks
+Counselor: You're welcome! Remember, quitting smoking is a journey, and it's okay to take it one step at a time. You've got this! What's one small step you can take today towards quitting smoking?
+
+ORIGINAL EXTRACTION:
+{'readiness_stage': 'unknown', 'evidence': None}
+
+REVIEWER FEEDBACK:
+The classification of Precontemplation (implied by the initial focus on cravings and lack of coping strategies) is defensible given the patient's initial statement about difficulty quitting due to cravings and lack of alternative coping mechanisms. However, the counselor's subsequent suggestions of alternative strategies and asking about healthy ways to manage stress introduces elements of Contemplation. There's a minor evidence gap – the patient hasn't yet explicitly stated an intention to change.
+The conversation demonstrates a slight shift towards Preparation. The counselor is actively offering suggestions for coping mechanisms (deep breaths, walk, etc.) and prompting the patient to consider them. This moves beyond simply acknowledging the problem (precontemplation) and begins to explore potential solutions, a key characteristic of the Preparation stage.
+
+Produce a revised extraction that addresses all reviewer feedback:
+- Remove any hallucinated items.
+- Add any omitted items that are genuinely present in the conversation.
+- Keep the same JSON field structure.
+- Return ONLY valid JSON.
+
+Respond ONLY with valid JSON matching the original structure.
+
+
+RESPONSE:
+```json
+{
+  "readiness_stage": "Preparation",
+  "evidence": [
+    "Patient: I find it difficult to quit smokung because of my cravings",
+    "Counselor: Cravings can be tough! Can you tell me more about what triggers these cravings for you?",
+    "Patient: Stress",
+    "Counselor: Stress can definitely trigger the urge to smoke.",
+    "Counselor: Let's explore some alternatives together! When you feel stressed, what do you think would be a healthy way to manage those feelings?",
+    "Counselor: Here are some ideas: \n* Take a few deep breaths\n* Go for a short walk\n* Do some stretching or yoga\n* Listen to calming music\n* Practice progressive muscle relaxation\n* Write down your thoughts and feelings in a journal\nWhich one resonates with you, or do you have something else in mind?",
+    "Patient: thanks",
+    "Counselor: You're welcome! Remember, quitting smoking is a journey, and it's okay to take it one step at a time. You've got this! What's one small step you can take today towards quitting smoking?"
+  ]
+}
+```
+
+================================================================================
+OLLAMA CALL 0031
+================================================================================
+timestamp: 2026-04-16T14:15:05.651862+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a clinical annotation reviser.\n\nTask: Produce a corrected trigger extraction that fully addresses all reviewer feedback.\n\nORIGINAL CONVERSATION:\nPatient: Hi
+Counselor: Hello! I'm eDOSTHI, here to help you quit smoking. What's been your biggest struggle with quitting so far?
+Patient: I find it difficult to quit smokung because of my cravings
+Counselor: Cravings can be tough! Can you tell me more about what triggers these cravings for you? Is there a specific time of day, situation, or emotion that makes you want to smoke?
+Patient: Stress
+Counselor: Stress can definitely trigger the urge to smoke. Have you noticed any patterns or habits around how you cope with stress besides smoking?
+Patient: Nothing. Can you suggest some
+Counselor: Let's explore some alternatives together! When you feel stressed, what do you think would be a healthy way to manage those feelings?
+Patient: You tell
+Counselor: Here are some ideas:
+
+* Take a few deep breaths
+* Go for a short walk
+* Do some stretching or yoga
+* Listen to calming music
+* Practice progressive muscle relaxation
+* Write down your thoughts and feelings in a journal
+
+Which one resonates with you, or do you have something else in mind?
+Patient: thanks
+Counselor: You're welcome! Remember, quitting smoking is a journey, and it's okay to take it one step at a time. You've got this! What's one small step you can take today towards quitting smoking?\n\nORIGINAL EXTRACTION:\n{'triggers': ['stress', 'cravings'], 'evidence': []}\n\nREVIEWER FEEDBACK:\nNo specific suggestions provided.\n\nRevision instructions:\n- Remove any hallucinated triggers that have no basis in the conversation.\n- Add any omitted triggers that are genuinely present in the conversation.\n- Correct the trigger_type label for any misclassified entries.\n- Do not introduce new items not supported by the conversation or the reviewer feedback.\n- Update the confidence score to reflect your certainty in the revised extraction.\n\nRespond ONLY with valid JSON:\n{\n  \"triggers\": [\"<corrected trigger 1>\", \"<corrected trigger 2>\"],\n  \"trigger_type\": \"<emotional|situational|social|habitual|mixed>\",\n  \"confidence\": 0.0\n}\n
+
+RESPONSE:
+```json
+{
+  "triggers": ["stress", "cravings"],
+  "trigger_type": "mixed",
+  "confidence": 0.95
+}
+```
+
+================================================================================
+OLLAMA CALL 0032
+================================================================================
+timestamp: 2026-04-16T14:15:06.914159+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a Senior Clinical Informatics Specialist specializing in NLP quality assurance for tobacco cessation research.\n\nTask: Audit the quit-attempt extraction below against the source conversation for 100% fidelity.\n\nSOURCE CONVERSATION:\nPatient: Hi
+Counselor: Hello! I'm eDOSTHI, here to help you quit smoking. What's been your biggest struggle with quitting so far?
+Patient: I find it difficult to quit smokung because of my cravings
+Counselor: Cravings can be tough! Can you tell me more about what triggers these cravings for you? Is there a specific time of day, situation, or emotion that makes you want to smoke?
+Patient: Stress
+Counselor: Stress can definitely trigger the urge to smoke. Have you noticed any patterns or habits around how you cope with stress besides smoking?
+Patient: Nothing. Can you suggest some
+Counselor: Let's explore some alternatives together! When you feel stressed, what do you think would be a healthy way to manage those feelings?
+Patient: You tell
+Counselor: Here are some ideas:
+
+* Take a few deep breaths
+* Go for a short walk
+* Do some stretching or yoga
+* Listen to calming music
+* Practice progressive muscle relaxation
+* Write down your thoughts and feelings in a journal
+
+Which one resonates with you, or do you have something else in mind?
+Patient: thanks
+Counselor: You're welcome! Remember, quitting smoking is a journey, and it's okay to take it one step at a time. You've got this! What's one small step you can take today towards quitting smoking?\n\nEXTRACTION TO AUDIT:\n{'attempts': [], 'evidence': []}\n\nConduct the following four checks:\n\n1. Grounding and Veracity: Does every extracted attempt have a direct textual anchor in the conversation? Flag any logical leaps where a quit attempt was assumed without explicit confirmation.\n\n2. Hallucination Check: List any data points in the extraction that have no basis in the source text.\n\n3. Omission Check: Scan the conversation for missed signals — keywords such as \"stopped,\" \"gave up,\" \"last time I tried,\" \"cut back to zero,\" or specific dates or durations — that should have been captured.\n\n4. Taxonomy Alignment: Verify that the attempt method (e.g., Cold Turkey, NRT, Pharmacotherapy, Behavioral Support) aligns with established clinical standards.\n\nScoring rubric:\n- 9–10: Perfect recall and precision, no errors.\n- 7–8: High utility; minor formatting or non-clinical nuance issues only.\n- 5–6: Partial data loss or one significant hallucination.\n- Below 5: Unreliable; multiple hallucinations or missed major attempts.\n\nRespond ONLY with valid JSON:\n{\n  \"confidence\": 0.0,\n  \"issues\": [\"<issue 1>\", \"<issue 2>\"]\n}\n
+
+RESPONSE:
+```json
+{
+  "confidence": 1.0,
+  "issues": []
+}
+```
+
+
+================================================================================
+OLLAMA CALL 0033
+================================================================================
+timestamp: 2026-04-16T14:15:10.420217+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a Senior Clinical NLP Reviewer specializing in Transtheoretical Model (TTM) stage classification quality assurance.\n\nTask: Audit the readiness stage classification below against the source conversation.\n\nSOURCE CONVERSATION:\nPatient: Hi
+Counselor: Hello! I'm eDOSTHI, here to help you quit smoking. What's been your biggest struggle with quitting so far?
+Patient: I find it difficult to quit smokung because of my cravings
+Counselor: Cravings can be tough! Can you tell me more about what triggers these cravings for you? Is there a specific time of day, situation, or emotion that makes you want to smoke?
+Patient: Stress
+Counselor: Stress can definitely trigger the urge to smoke. Have you noticed any patterns or habits around how you cope with stress besides smoking?
+Patient: Nothing. Can you suggest some
+Counselor: Let's explore some alternatives together! When you feel stressed, what do you think would be a healthy way to manage those feelings?
+Patient: You tell
+Counselor: Here are some ideas:
+
+* Take a few deep breaths
+* Go for a short walk
+* Do some stretching or yoga
+* Listen to calming music
+* Practice progressive muscle relaxation
+* Write down your thoughts and feelings in a journal
+
+Which one resonates with you, or do you have something else in mind?
+Patient: thanks
+Counselor: You're welcome! Remember, quitting smoking is a journey, and it's okay to take it one step at a time. You've got this! What's one small step you can take today towards quitting smoking?\n\nCLASSIFICATION TO AUDIT:\n{readiness_output}\n\nConduct the following checks:\n\n1. Stage Validity: Is the assigned stage (precontemplation, contemplation, preparation, action, maintenance, relapse) consistent with the patient's explicit statements and behavioral indicators in the conversation?\n\n2. Evidence Grounding: Is the cited evidence actually present in the conversation and does it unambiguously support the assigned stage rather than an adjacent stage?\n\n3. Contradicting Evidence: Are there patient statements that contradict the assigned stage or suggest a different classification? List them.\n\n4. Stage Boundary Precision: Could the patient plausibly fit a neighboring stage? If so, explain which evidence distinguishes the chosen stage from the adjacent one.\n\nScoring rubric:\n- 9–10: Stage is correct, evidence is unambiguous, no contradictions.\n- 7–8: Stage is defensible but borderline; minor evidence gap.\n- 5–6: Contradicting evidence ignored, or adjacent stage is equally or more supported.\n- Below 5: Stage classification is unsupported or directly contradicted by the conversation.\n\nRespond ONLY with valid JSON:\n{\n  \"confidence\": 0.0,\n  \"issues\": [\"<issue 1>\", \"<issue 2>\"]\n}\n
+
+RESPONSE:
+```json
+{
+  "confidence": 7,
+  "issues": [
+    "The classification of Precontemplation (implied by the initial focus on cravings and lack of coping strategies) is defensible given the patient's initial statement about difficulty quitting due to cravings and lack of alternative coping mechanisms. However, the counselor's subsequent suggestions of alternative strategies and questions about healthy responses represent a slight shift towards contemplation or perhaps early preparation. The conversation doesn't definitively rule out a move towards earlier stages.",
+    "There is a minor evidence gap. While the patient expresses a struggle (cravings), the counselor's proactive offering of solutions and exploration of alternative behaviors leans slightly towards the contemplation or preparation stages. The conversation lacks explicit statements indicating a complete lack of consideration for quitting or any intention to change behavior beyond acknowledging the difficulty."
+  ]
+}
+```
+
+================================================================================
+OLLAMA CALL 0034
+================================================================================
+timestamp: 2026-04-16T14:15:13.628640+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a Clinical Health Psychologist and NLP Validator specializing in patient-reported concerns from tobacco-cessation transcripts.\n\nTask: Audit the concern extraction below against the source conversation for clinical accuracy and completeness.\n\nSOURCE CONVERSATION:\nPatient: Hi
+Counselor: Hello! I'm eDOSTHI, here to help you quit smoking. What's been your biggest struggle with quitting so far?
+Patient: I find it difficult to quit smokung because of my cravings
+Counselor: Cravings can be tough! Can you tell me more about what triggers these cravings for you? Is there a specific time of day, situation, or emotion that makes you want to smoke?
+Patient: Stress
+Counselor: Stress can definitely trigger the urge to smoke. Have you noticed any patterns or habits around how you cope with stress besides smoking?
+Patient: Nothing. Can you suggest some
+Counselor: Let's explore some alternatives together! When you feel stressed, what do you think would be a healthy way to manage those feelings?
+Patient: You tell
+Counselor: Here are some ideas:
+
+* Take a few deep breaths
+* Go for a short walk
+* Do some stretching or yoga
+* Listen to calming music
+* Practice progressive muscle relaxation
+* Write down your thoughts and feelings in a journal
+
+Which one resonates with you, or do you have something else in mind?
+Patient: thanks
+Counselor: You're welcome! Remember, quitting smoking is a journey, and it's okay to take it one step at a time. You've got this! What's one small step you can take today towards quitting smoking?\n\nEXTRACTION TO AUDIT:\n{'concerns': ['Cravings for cigarettes', 'Difficulty managing stress'], 'evidence': ['I find it difficult to quit smokung because of my cravings', 'Stress can definitely trigger the urge to smoke. Have you noticed any patterns or habits around how you cope with stress besides smoking?'], '_debate_rounds': 0, '_debate_converged': True}\n\nConduct the following four checks:\n\n1. Implicit Concern Detection: Did the patient express concern through a question or a hedged statement (e.g., \"I've noticed I'm winded lately, but maybe it's just age\")? If an underlying health anxiety was missed, flag it as an omission.\n\n2. Severity Calibration: Ensure concerns were not underrepresented. If a patient said they were \"terrified of lung cancer,\" an extraction of \"worried about health\" is a precision error in severity.\n\n3. Temporal Attribution: Distinguish between historical concerns (past anxieties no longer active) and active concerns (current anxieties present at time of conversation).\n\n4. Categorization Accuracy: Verify concerns belong to the correct type:\n   - Physiological: cough, breathlessness, sleep issues, cravings\n   - Psychological: anxiety about failing, mood swings, irritability\n   - Social/Financial: cost of smoking or aids, stigma, family impact\n   - Situational/Relapse: concerns about specific trigger contexts\n\nScoring rubric:\n- 9–10: All concerns captured with correct intensity and category.\n- 7–8: Minor or passing concern missed; minor category misalignment.\n- 5–6: A primary concern missed or patient's emotional tone misinterpreted.\n- Below 5: Counselor advice confused for patient concerns, or major concerns absent.\n\nRespond ONLY with valid JSON:\n{\n  \"confidence\": 0.0,\n  \"issues\": [\"<issue 1>\", \"<issue 2>\"]\n}\n
+
+RESPONSE:
+```json
+{
+  "confidence": 0.85,
+  "issues": [
+    "Minor omission: The conversation focuses heavily on cravings and stress, but doesn't explicitly address potential anxieties about relapse or the impact of quitting on social situations (Social/Financial). While the patient mentions 'Nothing,' this could represent a lack of articulated concern rather than an absent concern itself.",
+    "Category Alignment - Psychological: While 'Difficulty managing stress' is accurate, a more granular categorization of the patient's stated difficulty ('I find it difficult to quit smokung') leans more strongly into psychological concerns related to self-efficacy and potential feelings of failure. This could benefit from a slightly more precise categorization."
+  ]
+}
+```
+
+================================================================================
+OLLAMA CALL 0035
+================================================================================
+timestamp: 2026-04-16T14:15:16.797307+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a Senior Clinical NLP Reviewer specializing in smoking trigger extraction quality assurance.\n\nTask: Audit the trigger extraction below against the source conversation.\n\nSOURCE CONVERSATION:\nPatient: Hi
+Counselor: Hello! I'm eDOSTHI, here to help you quit smoking. What's been your biggest struggle with quitting so far?
+Patient: I find it difficult to quit smokung because of my cravings
+Counselor: Cravings can be tough! Can you tell me more about what triggers these cravings for you? Is there a specific time of day, situation, or emotion that makes you want to smoke?
+Patient: Stress
+Counselor: Stress can definitely trigger the urge to smoke. Have you noticed any patterns or habits around how you cope with stress besides smoking?
+Patient: Nothing. Can you suggest some
+Counselor: Let's explore some alternatives together! When you feel stressed, what do you think would be a healthy way to manage those feelings?
+Patient: You tell
+Counselor: Here are some ideas:
+
+* Take a few deep breaths
+* Go for a short walk
+* Do some stretching or yoga
+* Listen to calming music
+* Practice progressive muscle relaxation
+* Write down your thoughts and feelings in a journal
+
+Which one resonates with you, or do you have something else in mind?
+Patient: thanks
+Counselor: You're welcome! Remember, quitting smoking is a journey, and it's okay to take it one step at a time. You've got this! What's one small step you can take today towards quitting smoking?\n\nEXTRACTION TO AUDIT:\n{'triggers': ['stress', 'cravings'], 'evidence': []}\n\nConduct the following four checks:\n\n1. Grounding Check: For each extracted trigger, verify it is either explicitly stated (the exact term or a clear synonym appears in the conversation) or strongly implied (the clinical context makes it unambiguous). Flag anything inferred, assumed, or fabricated.\n\n2. Hallucination Detection: Identify triggers that appear in the extraction but have no basis in the conversation. Note the specific trigger and explain why it is unsupported.\n\n3. Omission Detection: Identify triggers clearly present in the conversation but missing from the extraction. Note the exact phrase or passage and the trigger category it should have been assigned.\n\n4. Classification Accuracy: Verify each trigger is assigned the clinically appropriate type (emotional, situational, social, habitual). Flag misclassifications and suggest the correct label.\n\nScoring rubric:\n- 9–10: Near-perfect, no meaningful errors.\n- 7–8: Minor omissions or edge-case misclassifications.\n- 4–6: Several errors that affect reliability.\n- 1–3: Significant hallucinations or omissions.\n- 0: Extraction is unusable.\n\nRespond ONLY with valid JSON:\n{\n  \"confidence\": 0.0,\n  \"issues\": [\"<issue 1>\", \"<issue 2>\"]\n}\n
+
+RESPONSE:
+```json
+{
+  "confidence": 6,
+  "issues": [
+    "Omission Detection: The conversation explicitly states 'cravings can be tough!' and 'Stress can definitely trigger the urge to smoke.' and 'I find it difficult to quit smokung because of my cravings'. The extraction only includes 'cravings' and 'stress', omitting the explicit mention of 'cravings' as a trigger.",
+    "Classification Accuracy: The trigger 'cravings' is correctly classified as an emotional trigger. However, the trigger 'stress' is correctly classified as an emotional trigger, but could benefit from a more granular classification (e.g., 'stress-related cravings' or 'stress as a trigger')."
+  ]
+}
+```
+
+================================================================================
+OLLAMA CALL 0036
+================================================================================
+timestamp: 2026-04-16T14:15:19.674272+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a very strict clinical data validator. Compare the EXTRACTED DATA against the CONVERSATION.
+
+CONVERSATION:
+Patient: Hi
+Counselor: Hello! I'm eDOSTHI, here to help you quit smoking. What's been your biggest struggle with quitting so far?
+Patient: I find it difficult to quit smokung because of my cravings
+Counselor: Cravings can be tough! Can you tell me more about what triggers these cravings for you? Is there a specific time of day, situation, or emotion that makes you want to smoke?
+Patient: Stress
+Counselor: Stress can definitely trigger the urge to smoke. Have you noticed any patterns or habits around how you cope with stress besides smoking?
+Patient: Nothing. Can you suggest some
+Counselor: Let's explore some alternatives together! When you feel stressed, what do you think would be a healthy way to manage those feelings?
+Patient: You tell
+Counselor: Here are some ideas:
+
+* Take a few deep breaths
+* Go for a short walk
+* Do some stretching or yoga
+* Listen to calming music
+* Practice progressive muscle relaxation
+* Write down your thoughts and feelings in a journal
+
+Which one resonates with you, or do you have something else in mind?
+Patient: thanks
+Counselor: You're welcome! Remember, quitting smoking is a journey, and it's okay to take it one step at a time. You've got this! What's one small step you can take today towards quitting smoking?
+
+EXTRACTED DATA (cessation advice or guidance):
+{'advice': ['Take a few deep breaths', 'Go for a short walk', 'Do some stretching or yoga', 'Listen to calming music', 'Practice progressive muscle relaxation', 'Write down your thoughts and feelings in a journal', "Quitting smoking is a journey, and it's okay to take it one step at a time.", "What's one small step you can take today towards quitting smoking?"], 'evidence': ['Here are some ideas: Take a few deep breaths, Go for a short walk, Do some stretching or yoga, Listen to calming music, Practice progressive muscle relaxation, Write down your thoughts and feelings in a journal', 'When you feel stressed, what do you think would be a healthy way to manage those feelings?', "Let's explore some alternatives together! When you feel stressed, what do you think would be a healthy way to manage those feelings?", "You're welcome! Remember, quitting smoking is a journey, and it's okay to take it one step at a time.", "What's one small step you can take today towards quitting smoking?"], '_debate_rounds': 0, '_debate_converged': True}
+
+Your task:
+1. Very Strictly Check for hallucinations (data not in the text).
+2. Very Strictly Check for omissions (important data missed).
+3. Assign a confidence score between 0.0 and 1.0.
+
+Respond ONLY with valid JSON:
+{
+  "confidence": 0.0,
+  "issues": ["<issue 1>", "..."]
+}
+
+
+RESPONSE:
+```json
+{
+  "confidence": 0.95,
+  "issues": [
+    "Omission: The patient explicitly states 'Stress' as a trigger. This core piece of information is not fully captured in the 'evidence' field. It's present in the conversation but not explicitly listed as an 'advice' item.",
+    "Minor Hallucination: The phrase 'Quitting smoking is a journey, and it’s okay to take it one step at a time' is present in the extracted data but was directly stated by the counselor. While related, it's a slight repetition and not a direct extraction."
+  ]
+}
+```
+
+================================================================================
+OLLAMA CALL 0037
+================================================================================
+timestamp: 2026-04-16T14:15:21.403955+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a clinical annotation reviser specializing in tobacco cessation data extraction.
+
+ORIGINAL CONVERSATION:
+Patient: Hi
+Counselor: Hello! I'm eDOSTHI, here to help you quit smoking. What's been your biggest struggle with quitting so far?
+Patient: I find it difficult to quit smokung because of my cravings
+Counselor: Cravings can be tough! Can you tell me more about what triggers these cravings for you? Is there a specific time of day, situation, or emotion that makes you want to smoke?
+Patient: Stress
+Counselor: Stress can definitely trigger the urge to smoke. Have you noticed any patterns or habits around how you cope with stress besides smoking?
+Patient: Nothing. Can you suggest some
+Counselor: Let's explore some alternatives together! When you feel stressed, what do you think would be a healthy way to manage those feelings?
+Patient: You tell
+Counselor: Here are some ideas:
+
+* Take a few deep breaths
+* Go for a short walk
+* Do some stretching or yoga
+* Listen to calming music
+* Practice progressive muscle relaxation
+* Write down your thoughts and feelings in a journal
+
+Which one resonates with you, or do you have something else in mind?
+Patient: thanks
+Counselor: You're welcome! Remember, quitting smoking is a journey, and it's okay to take it one step at a time. You've got this! What's one small step you can take today towards quitting smoking?
+
+ORIGINAL EXTRACTION:
+{'readiness_stage': 'unknown', 'evidence': None}
+
+REVIEWER FEEDBACK:
+The classification of Precontemplation (implied by the initial focus on cravings and lack of coping strategies) is defensible given the patient's initial statement about difficulty quitting due to cravings and lack of alternative coping mechanisms. However, the counselor's subsequent suggestions of alternative strategies and questions about healthy responses represent a slight shift towards contemplation or perhaps early preparation. The conversation doesn't definitively rule out a move towards earlier stages.
+There is a minor evidence gap. While the patient expresses a struggle (cravings), the counselor's proactive offering of solutions and exploration of alternative behaviors leans slightly towards the contemplation or preparation stages. The conversation lacks explicit statements indicating a complete lack of consideration for quitting or any intention to change behavior beyond acknowledging the difficulty.
+
+Produce a revised extraction that addresses all reviewer feedback:
+- Remove any hallucinated items.
+- Add any omitted items that are genuinely present in the conversation.
+- Keep the same JSON field structure.
+- Return ONLY valid JSON.
+
+Respond ONLY with valid JSON matching the original structure.
+
+
+RESPONSE:
+```json
+{
+  "readiness_stage": "Precontemplation",
+  "evidence": "Patient expresses difficulty quitting due to cravings and lack of coping strategies. Counselor explores triggers (stress) and offers suggestions for alternative behaviors (deep breaths, walk, music, relaxation techniques, journaling)."
+}
+```
+
+================================================================================
+OLLAMA CALL 0038
+================================================================================
+timestamp: 2026-04-16T14:15:22.766185+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a clinical annotation reviser.\n\nTask: Produce a corrected trigger extraction that fully addresses all reviewer feedback.\n\nORIGINAL CONVERSATION:\nPatient: Hi
+Counselor: Hello! I'm eDOSTHI, here to help you quit smoking. What's been your biggest struggle with quitting so far?
+Patient: I find it difficult to quit smokung because of my cravings
+Counselor: Cravings can be tough! Can you tell me more about what triggers these cravings for you? Is there a specific time of day, situation, or emotion that makes you want to smoke?
+Patient: Stress
+Counselor: Stress can definitely trigger the urge to smoke. Have you noticed any patterns or habits around how you cope with stress besides smoking?
+Patient: Nothing. Can you suggest some
+Counselor: Let's explore some alternatives together! When you feel stressed, what do you think would be a healthy way to manage those feelings?
+Patient: You tell
+Counselor: Here are some ideas:
+
+* Take a few deep breaths
+* Go for a short walk
+* Do some stretching or yoga
+* Listen to calming music
+* Practice progressive muscle relaxation
+* Write down your thoughts and feelings in a journal
+
+Which one resonates with you, or do you have something else in mind?
+Patient: thanks
+Counselor: You're welcome! Remember, quitting smoking is a journey, and it's okay to take it one step at a time. You've got this! What's one small step you can take today towards quitting smoking?\n\nORIGINAL EXTRACTION:\n{'triggers': ['stress', 'cravings'], 'evidence': []}\n\nREVIEWER FEEDBACK:\nNo specific suggestions provided.\n\nRevision instructions:\n- Remove any hallucinated triggers that have no basis in the conversation.\n- Add any omitted triggers that are genuinely present in the conversation.\n- Correct the trigger_type label for any misclassified entries.\n- Do not introduce new items not supported by the conversation or the reviewer feedback.\n- Update the confidence score to reflect your certainty in the revised extraction.\n\nRespond ONLY with valid JSON:\n{\n  \"triggers\": [\"<corrected trigger 1>\", \"<corrected trigger 2>\"],\n  \"trigger_type\": \"<emotional|situational|social|habitual|mixed>\",\n  \"confidence\": 0.0\n}\n
+
+RESPONSE:
+```json
+{
+  "triggers": ["stress", "cravings"],
+  "trigger_type": "mixed",
+  "confidence": 0.95
+}
+```
+
+================================================================================
+OLLAMA CALL 0039
+================================================================================
+timestamp: 2026-04-16T14:15:24.005959+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a Senior Clinical Informatics Specialist specializing in NLP quality assurance for tobacco cessation research.\n\nTask: Audit the quit-attempt extraction below against the source conversation for 100% fidelity.\n\nSOURCE CONVERSATION:\nPatient: Hi
+Counselor: Hello! I'm eDOSTHI, here to help you quit smoking. What's been your biggest struggle with quitting so far?
+Patient: I find it difficult to quit smokung because of my cravings
+Counselor: Cravings can be tough! Can you tell me more about what triggers these cravings for you? Is there a specific time of day, situation, or emotion that makes you want to smoke?
+Patient: Stress
+Counselor: Stress can definitely trigger the urge to smoke. Have you noticed any patterns or habits around how you cope with stress besides smoking?
+Patient: Nothing. Can you suggest some
+Counselor: Let's explore some alternatives together! When you feel stressed, what do you think would be a healthy way to manage those feelings?
+Patient: You tell
+Counselor: Here are some ideas:
+
+* Take a few deep breaths
+* Go for a short walk
+* Do some stretching or yoga
+* Listen to calming music
+* Practice progressive muscle relaxation
+* Write down your thoughts and feelings in a journal
+
+Which one resonates with you, or do you have something else in mind?
+Patient: thanks
+Counselor: You're welcome! Remember, quitting smoking is a journey, and it's okay to take it one step at a time. You've got this! What's one small step you can take today towards quitting smoking?\n\nEXTRACTION TO AUDIT:\n{'attempts': [], 'evidence': []}\n\nConduct the following four checks:\n\n1. Grounding and Veracity: Does every extracted attempt have a direct textual anchor in the conversation? Flag any logical leaps where a quit attempt was assumed without explicit confirmation.\n\n2. Hallucination Check: List any data points in the extraction that have no basis in the source text.\n\n3. Omission Check: Scan the conversation for missed signals — keywords such as \"stopped,\" \"gave up,\" \"last time I tried,\" \"cut back to zero,\" or specific dates or durations — that should have been captured.\n\n4. Taxonomy Alignment: Verify that the attempt method (e.g., Cold Turkey, NRT, Pharmacotherapy, Behavioral Support) aligns with established clinical standards.\n\nScoring rubric:\n- 9–10: Perfect recall and precision, no errors.\n- 7–8: High utility; minor formatting or non-clinical nuance issues only.\n- 5–6: Partial data loss or one significant hallucination.\n- Below 5: Unreliable; multiple hallucinations or missed major attempts.\n\nRespond ONLY with valid JSON:\n{\n  \"confidence\": 0.0,\n  \"issues\": [\"<issue 1>\", \"<issue 2>\"]\n}\n
+
+RESPONSE:
+```json
+{
+  "confidence": 1.0,
+  "issues": []
+}
+```
+
+
+================================================================================
+OLLAMA CALL 0040
+================================================================================
+timestamp: 2026-04-16T14:15:27.572649+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a Senior Clinical NLP Reviewer specializing in Transtheoretical Model (TTM) stage classification quality assurance.\n\nTask: Audit the readiness stage classification below against the source conversation.\n\nSOURCE CONVERSATION:\nPatient: Hi
+Counselor: Hello! I'm eDOSTHI, here to help you quit smoking. What's been your biggest struggle with quitting so far?
+Patient: I find it difficult to quit smokung because of my cravings
+Counselor: Cravings can be tough! Can you tell me more about what triggers these cravings for you? Is there a specific time of day, situation, or emotion that makes you want to smoke?
+Patient: Stress
+Counselor: Stress can definitely trigger the urge to smoke. Have you noticed any patterns or habits around how you cope with stress besides smoking?
+Patient: Nothing. Can you suggest some
+Counselor: Let's explore some alternatives together! When you feel stressed, what do you think would be a healthy way to manage those feelings?
+Patient: You tell
+Counselor: Here are some ideas:
+
+* Take a few deep breaths
+* Go for a short walk
+* Do some stretching or yoga
+* Listen to calming music
+* Practice progressive muscle relaxation
+* Write down your thoughts and feelings in a journal
+
+Which one resonates with you, or do you have something else in mind?
+Patient: thanks
+Counselor: You're welcome! Remember, quitting smoking is a journey, and it's okay to take it one step at a time. You've got this! What's one small step you can take today towards quitting smoking?\n\nCLASSIFICATION TO AUDIT:\n{readiness_output}\n\nConduct the following checks:\n\n1. Stage Validity: Is the assigned stage (precontemplation, contemplation, preparation, action, maintenance, relapse) consistent with the patient's explicit statements and behavioral indicators in the conversation?\n\n2. Evidence Grounding: Is the cited evidence actually present in the conversation and does it unambiguously support the assigned stage rather than an adjacent stage?\n\n3. Contradicting Evidence: Are there patient statements that contradict the assigned stage or suggest a different classification? List them.\n\n4. Stage Boundary Precision: Could the patient plausibly fit a neighboring stage? If so, explain which evidence distinguishes the chosen stage from the adjacent one.\n\nScoring rubric:\n- 9–10: Stage is correct, evidence is unambiguous, no contradictions.\n- 7–8: Stage is defensible but borderline; minor evidence gap.\n- 5–6: Contradicting evidence ignored, or adjacent stage is equally or more supported.\n- Below 5: Stage classification is unsupported or directly contradicted by the conversation.\n\nRespond ONLY with valid JSON:\n{\n  \"confidence\": 0.0,\n  \"issues\": [\"<issue 1>\", \"<issue 2>\"]\n}\n
+
+RESPONSE:
+```json
+{
+  "confidence": 7,
+  "issues": [
+    "The classification of Precontemplation (implied by the initial focus on cravings and lack of coping strategies) is defensible given the patient's initial statement about difficulty quitting due to cravings and lack of alternative coping mechanisms. However, the counselor's subsequent suggestions of alternative strategies and asking about healthy ways to manage stress introduces elements of Contemplation. There's a minor evidence gap – the patient hasn't yet explicitly stated an intention to change.",
+    "The conversation demonstrates a slight shift towards Preparation. The counselor is actively offering suggestions for coping mechanisms (deep breaths, walks, etc.) and prompting the patient to consider them. This moves beyond simply acknowledging the problem (precontemplation) and begins to explore potential solutions, a key characteristic of the Preparation stage."
+  ]
+}
+```
+
+================================================================================
+OLLAMA CALL 0041
+================================================================================
+timestamp: 2026-04-16T14:15:30.636084+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a Clinical Health Psychologist and NLP Validator specializing in patient-reported concerns from tobacco-cessation transcripts.\n\nTask: Audit the concern extraction below against the source conversation for clinical accuracy and completeness.\n\nSOURCE CONVERSATION:\nPatient: Hi
+Counselor: Hello! I'm eDOSTHI, here to help you quit smoking. What's been your biggest struggle with quitting so far?
+Patient: I find it difficult to quit smokung because of my cravings
+Counselor: Cravings can be tough! Can you tell me more about what triggers these cravings for you? Is there a specific time of day, situation, or emotion that makes you want to smoke?
+Patient: Stress
+Counselor: Stress can definitely trigger the urge to smoke. Have you noticed any patterns or habits around how you cope with stress besides smoking?
+Patient: Nothing. Can you suggest some
+Counselor: Let's explore some alternatives together! When you feel stressed, what do you think would be a healthy way to manage those feelings?
+Patient: You tell
+Counselor: Here are some ideas:
+
+* Take a few deep breaths
+* Go for a short walk
+* Do some stretching or yoga
+* Listen to calming music
+* Practice progressive muscle relaxation
+* Write down your thoughts and feelings in a journal
+
+Which one resonates with you, or do you have something else in mind?
+Patient: thanks
+Counselor: You're welcome! Remember, quitting smoking is a journey, and it's okay to take it one step at a time. You've got this! What's one small step you can take today towards quitting smoking?\n\nEXTRACTION TO AUDIT:\n{'concerns': ['Cravings for cigarettes', 'Difficulty managing stress'], 'evidence': ['I find it difficult to quit smokung because of my cravings', 'Stress can definitely trigger the urge to smoke. Have you noticed any patterns or habits around how you cope with stress besides smoking?'], '_debate_rounds': 0, '_debate_converged': True}\n\nConduct the following four checks:\n\n1. Implicit Concern Detection: Did the patient express concern through a question or a hedged statement (e.g., \"I've noticed I'm winded lately, but maybe it's just age\")? If an underlying health anxiety was missed, flag it as an omission.\n\n2. Severity Calibration: Ensure concerns were not underrepresented. If a patient said they were \"terrified of lung cancer,\" an extraction of \"worried about health\" is a precision error in severity.\n\n3. Temporal Attribution: Distinguish between historical concerns (past anxieties no longer active) and active concerns (current anxieties present at time of conversation).\n\n4. Categorization Accuracy: Verify concerns belong to the correct type:\n   - Physiological: cough, breathlessness, sleep issues, cravings\n   - Psychological: anxiety about failing, mood swings, irritability\n   - Social/Financial: cost of smoking or aids, stigma, family impact\n   - Situational/Relapse: concerns about specific trigger contexts\n\nScoring rubric:\n- 9–10: All concerns captured with correct intensity and category.\n- 7–8: Minor or passing concern missed; minor category misalignment.\n- 5–6: A primary concern missed or patient's emotional tone misinterpreted.\n- Below 5: Counselor advice confused for patient concerns, or major concerns absent.\n\nRespond ONLY with valid JSON:\n{\n  \"confidence\": 0.0,\n  \"issues\": [\"<issue 1>\", \"<issue 2>\"]\n}\n
+
+RESPONSE:
+```json
+{
+  "confidence": 0.85,
+  "issues": [
+    "Minor omission: The patient’s statement ‘Nothing. Can you suggest some’ regarding coping with stress could be interpreted as a subtle expression of anxiety or lack of strategies, warranting a categorization as a psychological concern (specifically, ‘difficulty coping’). This wasn't explicitly captured.",
+    "Category Alignment - Stress: While ‘Stress’ was identified, a more granular categorization within psychological concerns would be beneficial. The conversation heavily focuses on the *impact* of stress, rather than just the stress itself. A more specific category like ‘Anxiety related to stress’ could have been considered.”
+  ]
+}
+```
+
+================================================================================
+OLLAMA CALL 0042
+================================================================================
+timestamp: 2026-04-16T14:15:33.421233+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a Senior Clinical NLP Reviewer specializing in smoking trigger extraction quality assurance.\n\nTask: Audit the trigger extraction below against the source conversation.\n\nSOURCE CONVERSATION:\nPatient: Hi
+Counselor: Hello! I'm eDOSTHI, here to help you quit smoking. What's been your biggest struggle with quitting so far?
+Patient: I find it difficult to quit smokung because of my cravings
+Counselor: Cravings can be tough! Can you tell me more about what triggers these cravings for you? Is there a specific time of day, situation, or emotion that makes you want to smoke?
+Patient: Stress
+Counselor: Stress can definitely trigger the urge to smoke. Have you noticed any patterns or habits around how you cope with stress besides smoking?
+Patient: Nothing. Can you suggest some
+Counselor: Let's explore some alternatives together! When you feel stressed, what do you think would be a healthy way to manage those feelings?
+Patient: You tell
+Counselor: Here are some ideas:
+
+* Take a few deep breaths
+* Go for a short walk
+* Do some stretching or yoga
+* Listen to calming music
+* Practice progressive muscle relaxation
+* Write down your thoughts and feelings in a journal
+
+Which one resonates with you, or do you have something else in mind?
+Patient: thanks
+Counselor: You're welcome! Remember, quitting smoking is a journey, and it's okay to take it one step at a time. You've got this! What's one small step you can take today towards quitting smoking?\n\nEXTRACTION TO AUDIT:\n{'triggers': ['stress', 'cravings'], 'evidence': []}\n\nConduct the following four checks:\n\n1. Grounding Check: For each extracted trigger, verify it is either explicitly stated (the exact term or a clear synonym appears in the conversation) or strongly implied (the clinical context makes it unambiguous). Flag anything inferred, assumed, or fabricated.\n\n2. Hallucination Detection: Identify triggers that appear in the extraction but have no basis in the conversation. Note the specific trigger and explain why it is unsupported.\n\n3. Omission Detection: Identify triggers clearly present in the conversation but missing from the extraction. Note the exact phrase or passage and the trigger category it should have been assigned.\n\n4. Classification Accuracy: Verify each trigger is assigned the clinically appropriate type (emotional, situational, social, habitual). Flag misclassifications and suggest the correct label.\n\nScoring rubric:\n- 9–10: Near-perfect, no meaningful errors.\n- 7–8: Minor omissions or edge-case misclassifications.\n- 4–6: Several errors that affect reliability.\n- 1–3: Significant hallucinations or omissions.\n- 0: Extraction is unusable.\n\nRespond ONLY with valid JSON:\n{\n  \"confidence\": 0.0,\n  \"issues\": [\"<issue 1>\", \"<issue 2>\"]\n}\n
+
+RESPONSE:
+```json
+{
+  "confidence": 6,
+  "issues": [
+    "Omission Detection: The conversation explicitly states 'cravings can be tough!' and the patient responds with 'I find it difficult to quit smokung because of my cravings'. The extraction misses the explicit mention of 'cravings' as a trigger.  Category: Behavioral/Physiological",
+    "Classification Accuracy: While 'stress' is correctly identified, the extraction lacks granularity. Cravings are a *type* of trigger, and the conversation clearly links them to stress.  A more precise categorization would be beneficial."
+  ]
+}
+```
+
+================================================================================
+OLLAMA CALL 0043
+================================================================================
+timestamp: 2026-04-16T14:15:36.204207+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a very strict clinical data validator. Compare the EXTRACTED DATA against the CONVERSATION.
+
+CONVERSATION:
+Patient: Hi
+Counselor: Hello! I'm eDOSTHI, here to help you quit smoking. What's been your biggest struggle with quitting so far?
+Patient: I find it difficult to quit smokung because of my cravings
+Counselor: Cravings can be tough! Can you tell me more about what triggers these cravings for you? Is there a specific time of day, situation, or emotion that makes you want to smoke?
+Patient: Stress
+Counselor: Stress can definitely trigger the urge to smoke. Have you noticed any patterns or habits around how you cope with stress besides smoking?
+Patient: Nothing. Can you suggest some
+Counselor: Let's explore some alternatives together! When you feel stressed, what do you think would be a healthy way to manage those feelings?
+Patient: You tell
+Counselor: Here are some ideas:
+
+* Take a few deep breaths
+* Go for a short walk
+* Do some stretching or yoga
+* Listen to calming music
+* Practice progressive muscle relaxation
+* Write down your thoughts and feelings in a journal
+
+Which one resonates with you, or do you have something else in mind?
+Patient: thanks
+Counselor: You're welcome! Remember, quitting smoking is a journey, and it's okay to take it one step at a time. You've got this! What's one small step you can take today towards quitting smoking?
+
+EXTRACTED DATA (cessation advice or guidance):
+{'advice': ['Take a few deep breaths', 'Go for a short walk', 'Do some stretching or yoga', 'Listen to calming music', 'Practice progressive muscle relaxation', 'Write down your thoughts and feelings in a journal', "Quitting smoking is a journey, and it's okay to take it one step at a time.", "What's one small step you can take today towards quitting smoking?"], 'evidence': ['Here are some ideas: Take a few deep breaths, Go for a short walk, Do some stretching or yoga, Listen to calming music, Practice progressive muscle relaxation, Write down your thoughts and feelings in a journal', 'When you feel stressed, what do you think would be a healthy way to manage those feelings?', "Let's explore some alternatives together! When you feel stressed, what do you think would be a healthy way to manage those feelings?", "You're welcome! Remember, quitting smoking is a journey, and it's okay to take it one step at a time.", "What's one small step you can take today towards quitting smoking?"], '_debate_rounds': 0, '_debate_converged': True}
+
+Your task:
+1. Very Strictly Check for hallucinations (data not in the text).
+2. Very Strictly Check for omissions (important data missed).
+3. Assign a confidence score between 0.0 and 1.0.
+
+Respond ONLY with valid JSON:
+{
+  "confidence": 0.0,
+  "issues": ["<issue 1>", "..."]
+}
+
+
+RESPONSE:
+```json
+{
+  "confidence": 0.95,
+  "issues": [
+    "Omission: The patient explicitly states 'Stress' as a trigger. This core piece of information is not fully captured in the 'evidence' field. It should be included in the 'advice' or a separate field for triggers.",
+    "Omission: The counselor's initial question about the patient's biggest struggle ('What's been your biggest struggle with quitting so far?') is missing from the extracted data. This is a crucial starting point for the conversation."
+  ]
+}
+```
+
+================================================================================
+OLLAMA CALL 0044
+================================================================================
+timestamp: 2026-04-16T14:15:38.776878+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a clinical annotation specialist (voter 3 of 3).
+
+CONVERSATION:
+Patient: Hi
+Counselor: Hello! I'm eDOSTHI, here to help you quit smoking. What's been your biggest struggle with quitting so far?
+Patient: I find it difficult to quit smokung because of my cravings
+Counselor: Cravings can be tough! Can you tell me more about what triggers these cravings for you? Is there a specific time of day, situation, or emotion that makes you want to smoke?
+Patient: Stress
+Counselor: Stress can definitely trigger the urge to smoke. Have you noticed any patterns or habits around how you cope with stress besides smoking?
+Patient: Nothing. Can you suggest some
+Counselor: Let's explore some alternatives together! When you feel stressed, what do you think would be a healthy way to manage those feelings?
+Patient: You tell
+Counselor: Here are some ideas:
+
+* Take a few deep breaths
+* Go for a short walk
+* Do some stretching or yoga
+* Listen to calming music
+* Practice progressive muscle relaxation
+* Write down your thoughts and feelings in a journal
+
+Which one resonates with you, or do you have something else in mind?
+Patient: thanks
+Counselor: You're welcome! Remember, quitting smoking is a journey, and it's okay to take it one step at a time. You've got this! What's one small step you can take today towards quitting smoking?
+
+EXTRACTED SIGNALS:
+- Advice: {'advice': ['Take a few deep breaths', 'Go for a short walk', 'Do some stretching or yoga', 'Listen to calming music', 'Practice progressive muscle relaxation', 'Write down your thoughts and feelings in a journal', "Quitting smoking is a journey, and it's okay to take it one step at a time.", "What's one small step you can take today towards quitting smoking?"], 'evidence': ['Here are some ideas: Take a few deep breaths, Go for a short walk, Do some stretching or yoga, Listen to calming music, Practice progressive muscle relaxation, Write down your thoughts and feelings in a journal', 'When you feel stressed, what do you think would be a healthy way to manage those feelings?', "Let's explore some alternatives together! When you feel stressed, what do you think would be a healthy way to manage those feelings?", "You're welcome! Remember, quitting smoking is a journey, and it's okay to take it one step at a time.", "What's one small step you can take today towards quitting smoking?"], '_debate_rounds': 0, '_debate_converged': True}
+- Quit Attempts: {'attempts': [], 'evidence': []}
+- Readiness / Stage: {'readiness_stage': 'precontemplation', 'evidence': 'Patient expresses difficulty quitting due to cravings and lack of coping strategies. Counselor explores triggers (stress) and offers suggestions for alternative behaviors (deep breaths, walk, music, relaxation techniques, journaling).'}
+- Concerns: {'concerns': ['Cravings for cigarettes', 'Difficulty managing stress'], 'evidence': ['I find it difficult to quit smokung because of my cravings', 'Stress can definitely trigger the urge to smoke. Have you noticed any patterns or habits around how you cope with stress besides smoking?'], '_debate_rounds': 0, '_debate_converged': True}
+- Triggers: {'triggers': ['stress', 'cravings'], 'evidence': []}
+
+Based on ALL the above signals, produce a unified clinical annotation.
+Be independent — do not anchor to previous voters.
+
+Respond ONLY with valid JSON:
+{
+  "stage_of_change": "precontemplation|contemplation|preparation|action|maintenance|relapse",
+  "main_concern": "<single most prominent barrier>",
+  "primary_trigger": "<most significant smoking trigger>",
+  "quit_attempt_history": "<concise summary of prior attempts>",
+  "recommended_intervention": ["<strategy 1>", "<strategy 2>", "..."]
+}
+
+
+RESPONSE:
+```json
+{
+  "stage_of_change": "precontemplation",
+  "main_concern": "Cravings for cigarettes",
+  "primary_trigger": "stress",
+  "quit_attempt_history": "No prior quit attempts documented.",
+  "recommended_intervention": ["Explore and identify stress triggers", "Implement relaxation techniques (deep breaths, walking, music, journaling) to manage stress and cravings", "Encourage small, achievable steps towards quitting"]
+}
+```
+
+================================================================================
+OLLAMA CALL 0045
+================================================================================
+timestamp: 2026-04-16T14:15:40.828081+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a clinical annotation specialist (voter 2 of 3).
+
+CONVERSATION:
+Patient: Hi
+Counselor: Hello! I'm eDOSTHI, here to help you quit smoking. What's been your biggest struggle with quitting so far?
+Patient: I find it difficult to quit smokung because of my cravings
+Counselor: Cravings can be tough! Can you tell me more about what triggers these cravings for you? Is there a specific time of day, situation, or emotion that makes you want to smoke?
+Patient: Stress
+Counselor: Stress can definitely trigger the urge to smoke. Have you noticed any patterns or habits around how you cope with stress besides smoking?
+Patient: Nothing. Can you suggest some
+Counselor: Let's explore some alternatives together! When you feel stressed, what do you think would be a healthy way to manage those feelings?
+Patient: You tell
+Counselor: Here are some ideas:
+
+* Take a few deep breaths
+* Go for a short walk
+* Do some stretching or yoga
+* Listen to calming music
+* Practice progressive muscle relaxation
+* Write down your thoughts and feelings in a journal
+
+Which one resonates with you, or do you have something else in mind?
+Patient: thanks
+Counselor: You're welcome! Remember, quitting smoking is a journey, and it's okay to take it one step at a time. You've got this! What's one small step you can take today towards quitting smoking?
+
+EXTRACTED SIGNALS:
+- Advice: {'advice': ['Take a few deep breaths', 'Go for a short walk', 'Do some stretching or yoga', 'Listen to calming music', 'Practice progressive muscle relaxation', 'Write down your thoughts and feelings in a journal', "Quitting smoking is a journey, and it's okay to take it one step at a time.", "What's one small step you can take today towards quitting smoking?"], 'evidence': ['Here are some ideas: Take a few deep breaths, Go for a short walk, Do some stretching or yoga, Listen to calming music, Practice progressive muscle relaxation, Write down your thoughts and feelings in a journal', 'When you feel stressed, what do you think would be a healthy way to manage those feelings?', "Let's explore some alternatives together! When you feel stressed, what do you think would be a healthy way to manage those feelings?", "You're welcome! Remember, quitting smoking is a journey, and it's okay to take it one step at a time.", "What's one small step you can take today towards quitting smoking?"], '_debate_rounds': 0, '_debate_converged': True}
+- Quit Attempts: {'attempts': [], 'evidence': []}
+- Readiness / Stage: {'readiness_stage': 'precontemplation', 'evidence': 'Patient expresses difficulty quitting due to cravings and lack of coping strategies. Counselor explores triggers (stress) and offers suggestions for alternative behaviors (deep breaths, walk, music, relaxation techniques, journaling).'}
+- Concerns: {'concerns': ['Cravings for cigarettes', 'Difficulty managing stress'], 'evidence': ['I find it difficult to quit smokung because of my cravings', 'Stress can definitely trigger the urge to smoke. Have you noticed any patterns or habits around how you cope with stress besides smoking?'], '_debate_rounds': 0, '_debate_converged': True}
+- Triggers: {'triggers': ['stress', 'cravings'], 'evidence': []}
+
+Based on ALL the above signals, produce a unified clinical annotation.
+Be independent — do not anchor to previous voters.
+
+Respond ONLY with valid JSON:
+{
+  "stage_of_change": "precontemplation|contemplation|preparation|action|maintenance|relapse",
+  "main_concern": "<single most prominent barrier>",
+  "primary_trigger": "<most significant smoking trigger>",
+  "quit_attempt_history": "<concise summary of prior attempts>",
+  "recommended_intervention": ["<strategy 1>", "<strategy 2>", "..."]
+}
+
+
+RESPONSE:
+```json
+{
+  "stage_of_change": "precontemplation",
+  "main_concern": "Cravings for cigarettes",
+  "primary_trigger": "stress",
+  "quit_attempt_history": "No prior quit attempts documented.",
+  "recommended_intervention": ["Explore stress management techniques (deep breathing, walking, yoga, music, journaling, progressive muscle relaxation)", "Identify and address triggers for cravings", "Encourage small, achievable steps towards quitting"]
+}
+```
+
+================================================================================
+OLLAMA CALL 0046
+================================================================================
+timestamp: 2026-04-16T14:15:42.815718+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a clinical annotation specialist (voter 1 of 3).
+
+CONVERSATION:
+Patient: Hi
+Counselor: Hello! I'm eDOSTHI, here to help you quit smoking. What's been your biggest struggle with quitting so far?
+Patient: I find it difficult to quit smokung because of my cravings
+Counselor: Cravings can be tough! Can you tell me more about what triggers these cravings for you? Is there a specific time of day, situation, or emotion that makes you want to smoke?
+Patient: Stress
+Counselor: Stress can definitely trigger the urge to smoke. Have you noticed any patterns or habits around how you cope with stress besides smoking?
+Patient: Nothing. Can you suggest some
+Counselor: Let's explore some alternatives together! When you feel stressed, what do you think would be a healthy way to manage those feelings?
+Patient: You tell
+Counselor: Here are some ideas:
+
+* Take a few deep breaths
+* Go for a short walk
+* Do some stretching or yoga
+* Listen to calming music
+* Practice progressive muscle relaxation
+* Write down your thoughts and feelings in a journal
+
+Which one resonates with you, or do you have something else in mind?
+Patient: thanks
+Counselor: You're welcome! Remember, quitting smoking is a journey, and it's okay to take it one step at a time. You've got this! What's one small step you can take today towards quitting smoking?
+
+EXTRACTED SIGNALS:
+- Advice: {'advice': ['Take a few deep breaths', 'Go for a short walk', 'Do some stretching or yoga', 'Listen to calming music', 'Practice progressive muscle relaxation', 'Write down your thoughts and feelings in a journal', "Quitting smoking is a journey, and it's okay to take it one step at a time.", "What's one small step you can take today towards quitting smoking?"], 'evidence': ['Here are some ideas: Take a few deep breaths, Go for a short walk, Do some stretching or yoga, Listen to calming music, Practice progressive muscle relaxation, Write down your thoughts and feelings in a journal', 'When you feel stressed, what do you think would be a healthy way to manage those feelings?', "Let's explore some alternatives together! When you feel stressed, what do you think would be a healthy way to manage those feelings?", "You're welcome! Remember, quitting smoking is a journey, and it's okay to take it one step at a time.", "What's one small step you can take today towards quitting smoking?"], '_debate_rounds': 0, '_debate_converged': True}
+- Quit Attempts: {'attempts': [], 'evidence': []}
+- Readiness / Stage: {'readiness_stage': 'precontemplation', 'evidence': 'Patient expresses difficulty quitting due to cravings and lack of coping strategies. Counselor explores triggers (stress) and offers suggestions for alternative behaviors (deep breaths, walk, music, relaxation techniques, journaling).'}
+- Concerns: {'concerns': ['Cravings for cigarettes', 'Difficulty managing stress'], 'evidence': ['I find it difficult to quit smokung because of my cravings', 'Stress can definitely trigger the urge to smoke. Have you noticed any patterns or habits around how you cope with stress besides smoking?'], '_debate_rounds': 0, '_debate_converged': True}
+- Triggers: {'triggers': ['stress', 'cravings'], 'evidence': []}
+
+Based on ALL the above signals, produce a unified clinical annotation.
+Be independent — do not anchor to previous voters.
+
+Respond ONLY with valid JSON:
+{
+  "stage_of_change": "precontemplation|contemplation|preparation|action|maintenance|relapse",
+  "main_concern": "<single most prominent barrier>",
+  "primary_trigger": "<most significant smoking trigger>",
+  "quit_attempt_history": "<concise summary of prior attempts>",
+  "recommended_intervention": ["<strategy 1>", "<strategy 2>", "..."]
+}
+
+
+RESPONSE:
+```json
+{
+  "stage_of_change": "precontemplation",
+  "main_concern": "Cravings for cigarettes",
+  "primary_trigger": "stress",
+  "quit_attempt_history": "No prior quit attempts documented.",
+  "recommended_intervention": ["Explore stress management techniques (deep breathing, walking, music, relaxation, journaling)", "Identify and address stress triggers", "Set small, achievable goals related to quitting smoking"]
+}
+```
+
+================================================================================
+OLLAMA CALL 0047
+================================================================================
+timestamp: 2026-04-16T14:15:46.758534+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a clinical reasoning specialist producing the final annotation for a tobacco-cessation training dataset.\n\nTask: Validate the consensus annotation against the source conversation and produce a clinically grounded reasoning summary.\n\nCONVERSATION:\nPatient: Hi
+Counselor: Hello! I'm eDOSTHI, here to help you quit smoking. What's been your biggest struggle with quitting so far?
+Patient: I find it difficult to quit smokung because of my cravings
+Counselor: Cravings can be tough! Can you tell me more about what triggers these cravings for you? Is there a specific time of day, situation, or emotion that makes you want to smoke?
+Patient: Stress
+Counselor: Stress can definitely trigger the urge to smoke. Have you noticed any patterns or habits around how you cope with stress besides smoking?
+Patient: Nothing. Can you suggest some
+Counselor: Let's explore some alternatives together! When you feel stressed, what do you think would be a healthy way to manage those feelings?
+Patient: You tell
+Counselor: Here are some ideas:
+
+* Take a few deep breaths
+* Go for a short walk
+* Do some stretching or yoga
+* Listen to calming music
+* Practice progressive muscle relaxation
+* Write down your thoughts and feelings in a journal
+
+Which one resonates with you, or do you have something else in mind?
+Patient: thanks
+Counselor: You're welcome! Remember, quitting smoking is a journey, and it's okay to take it one step at a time. You've got this! What's one small step you can take today towards quitting smoking?\n\nCONSENSUS ANNOTATION:\n{'stage_of_change': 'precontemplation', 'main_concern': 'Cravings for cigarettes', 'primary_trigger': 'stress', 'quit_attempt_history': 'No prior quit attempts documented.', 'recommended_intervention': ['Explore and identify stress triggers', 'Implement relaxation techniques (deep breaths, walking, music, journaling) to manage stress and cravings', 'Encourage small, achievable steps towards quitting', 'Explore stress management techniques (deep breathing, walking, yoga, music, journaling, progressive muscle relaxation)', 'Identify and address triggers for cravings', 'Explore stress management techniques (deep breathing, walking, music, relaxation, journaling)', 'Identify and address stress triggers', 'Set small, achievable goals related to quitting smoking'], 'vote_agreement': 1.0, 'dissenting_fields': []}\n\nSteps:\n1. Verify that every field in the consensus annotation (stage of change, main concern, primary trigger, quit attempt history) is internally consistent and directly supported by the conversation.\n2. Flag any field that is unsupported, contradicted, or inconsistent with another field.\n3. Write a reasoning_summary (1–2 sentences) that explains: (a) why the patient is at this particular stage of change, (b) what their primary barrier to quitting is, and (c) what intervention approach is most appropriate given the evidence.\n\nRespond ONLY with valid JSON:\n{\n  \"stage_of_change\": \"<from consensus>\",\n  \"main_concern\": \"<from consensus>\",\n  \"primary_trigger\": \"<from consensus>\",\n  \"quit_attempt_history\": \"<from consensus>\",\n  \"recommended_intervention\": [\"<strategy 1>\", \"<strategy 2>\"],\n  \"reasoning_summary\": \"<1–2 sentence clinical rationale>\",\n  \"confidence_score\": 0.0\n}\n
+
+RESPONSE:
+```json
+{
+  "stage_of_change": "precontemplation",
+  "main_concern": "Cravings for cigarettes",
+  "primary_trigger": "stress",
+  "quit_attempt_history": "No prior quit attempts documented.",
+  "recommended_intervention": [
+    "Explore and identify stress triggers",
+    "Implement relaxation techniques (deep breaths, walking, music, journaling) to manage stress and cravings",
+    "Encourage small, achievable steps towards quitting",
+    "Explore stress management techniques (deep breathing, walking, yoga, music, journaling, progressive muscle relaxation)"
+  ],
+  "reasoning_summary": "The patient's primary concern is cravings driven by stress, indicating a precontemplation stage where they haven't yet committed to quitting. Addressing this requires initial exploration of triggers and introducing accessible relaxation techniques to manage cravings and build a foundation for future behavior change.",
+  "confidence_score": 1.0
+}
+```

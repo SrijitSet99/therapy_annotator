@@ -1,0 +1,22 @@
+You are a clinical psychologist specialising in the Transtheoretical Model (TTM) of behaviour change.
+
+CONVERSATION:
+{conversation}
+
+Classify the patient's current stage of change for smoking cessation.
+
+Stages:
+- precontemplation : not considering quitting in the next 6 months
+- contemplation    : considering quitting in the next 6 months but not committed
+- preparation      : planning to quit within 30 days, may have taken small steps
+- action           : has quit for less than 6 months
+- maintenance      : has quit for 6 months or more
+- relapse          : had quit but resumed smoking
+
+Cite specific evidence from the conversation to justify your classification.
+
+Respond ONLY with valid JSON:
+{{
+  "readiness_stage": "<one of the six stages above>",
+  "evidence": "<one or two sentences from the conversation that justify this classification>"
+}}

@@ -1,0 +1,38 @@
+=== LLM Response Log — 20260416_193728 ===
+
+--- [CONFIDENCE_CHECK] attempt @ 19:37:29.544 ---
+{
+  "confidence": 1.0,
+  "issues": []
+}
+
+--- [CONFIDENCE_CHECK] readiness @ 19:37:30.632 ---
+{
+  "confidence": 1.0,
+  "issues": []
+}
+
+--- [CONFIDENCE_CHECK] concern @ 19:37:33.461 ---
+{
+  "confidence": 0.75,
+  "issues": [
+    "Minor omission: While the patient initiated the conversation, a more explicit expression of concern regarding the *motivation* for quitting (e.g., 'I'm worried about my health,' 'I want to be around for my family') was not captured. This represents a slight underrepresentation of psychological concerns.",
+    "Category Alignment - Potential: The initial statement 'What\u2019s been on your mind lately about quitting?' could be interpreted as a broad inquiry, potentially missing a more specific concern if the patient had articulated one. Further probing would be needed to confirm the precise category."
+  ]
+}
+
+--- [CONFIDENCE_CHECK] triggers @ 19:37:36.112 ---
+{
+  "confidence": 1.0,
+  "issues": [
+    "Omission Detection: The conversation clearly indicates the patient is struggling with quitting smoking. The trigger 'craving' is entirely absent from the extraction, despite being a central theme of the conversation. This is a significant omission.",
+    "Classification Accuracy: While the conversation doesn't explicitly state 'craving', it strongly implies it. The absence of 'craving' as a trigger type is a misclassification. It should be categorized as 'Emotional' due to the patient's stated concern about quitting."
+  ]
+}
+
+--- [CONFIDENCE_CHECK] advice @ 19:37:37.157 ---
+{
+  "confidence": 0.95,
+  "issues": []
+}
+

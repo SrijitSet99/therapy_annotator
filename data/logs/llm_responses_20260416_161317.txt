@@ -1,0 +1,10 @@
+=== LLM Response Log — 20260416_161317 ===
+
+=== LLM Response Log — 20260416_161317 ===
+
+--- [CONFIDENCE] prompt @ 16:13:17.898 ---
+"You are a very strict clinical data validator. Compare the EXTRACTED DATA against the CONVERSATION.\n\nCONVERSATION:\nPatient has tried to quit smoking twice before.\n\nEXTRACTED DATA (previous smoking quit attempt):\n{'quit_attempts': 2, 'last_attempt': '6 months ago'}\n\n\nYour task:\n1. Very Strictly Check for hallucinations (data not in the text).\n2. Very Strictly Check for omissions (important data missed).\n3. Assign a confidence score between 0.0 and 1.0.\n\nRespond ONLY with valid JSON:\n{\n  \"confidence\": 0.0,\n  \"issues\": [\"<issue 1>\", \"...\"]\n}\n"
+
+--- [CONFIDENCE] response @ 16:13:20.740 ---
+"```json\n{\n  \"confidence\": 0.7,\n  \"issues\": [\n    \"The extracted data includes 'last_attempt': '6 months ago'. This information is not present in the conversation.  It's an assumption and therefore a hallucination.\",\n    \"The conversation only states the patient has *tried* to quit twice. It doesn't specify the timeframe of those attempts.  The extraction includes a timeframe, which is an omission.\"\n  ]\n}\n```"
+

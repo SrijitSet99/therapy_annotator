@@ -1,0 +1,1563 @@
+{
+  "e50b73d1-1f37-4e5f-97a4-cfeaaa00b7f7": {
+    "session_id": "e50b73d1-1f37-4e5f-97a4-cfeaaa00b7f7",
+    "turn": 1,
+    "last_result": {
+      "dataset_row": {
+        "stage_of_change": "precontemplation",
+        "main_concern": "Hesitation/Lack of Readiness",
+        "primary_trigger": "None identified",
+        "quit_attempt_history": "User has initiated one attempt to engage",
+        "recommended_intervention": [
+          "Continue to offer support and encouragement without pressure.",
+          "Acknowledge and validate the user’s need for time to process.",
+          "Explore the reasons behind the hesitation – gently probe for underlying concerns or barriers.",
+          "Reiterate the counselor’s willingness to help when the user is ready.",
+          "Explore the user’s reasons for wanting to quit in a future conversation when they are more receptive."
+        ],
+        "reasoning_summary": "The user's initial response indicates a lack of readiness to discuss quitting, placing them in the precontemplation stage. The intervention focuses on providing support and gently encouraging the user to revisit the topic when they are more prepared.",
+        "confidence_score": 0.95,
+        "debate_rounds_used": 3,
+        "vote_agreement": 0.833,
+        "sanity_passed": true,
+        "inconsistencies": [],
+        "session_number": 1,
+        "longitudinal_flags": [],
+        "longitudinal_sanity_passed": true
+      },
+      "longitudinal_output": {
+        "patient_id": "e50b73d1-1f37-4e5f-97a4-cfeaaa00b7f7",
+        "session_number": 1,
+        "current_annotation": {
+          "stage_of_change": "precontemplation",
+          "main_concern": "Hesitation/Lack of Readiness",
+          "primary_trigger": "None identified",
+          "quit_attempt_history": "User has initiated one attempt to engage",
+          "recommended_intervention": [
+            "Continue to offer support and encouragement without pressure.",
+            "Acknowledge and validate the user’s need for time to process.",
+            "Explore the reasons behind the hesitation – gently probe for underlying concerns or barriers.",
+            "Reiterate the counselor’s willingness to help when the user is ready.",
+            "Explore the user’s reasons for wanting to quit in a future conversation when they are more receptive."
+          ],
+          "reasoning_summary": "The user's initial response indicates a lack of readiness to discuss quitting, placing them in the precontemplation stage. The intervention focuses on providing support and gently encouraging the user to revisit the topic when they are more prepared.",
+          "confidence_score": 0.95,
+          "debate_rounds_used": 3,
+          "vote_agreement": 0.833,
+          "sanity_passed": true,
+          "inconsistencies": [],
+          "session_number": 1,
+          "longitudinal_flags": [],
+          "longitudinal_sanity_passed": true
+        },
+        "delta": null,
+        "stage_trajectory": [
+          "precontemplation"
+        ],
+        "persistent_triggers": [],
+        "persistent_concerns": [],
+        "interventions_tried": [],
+        "relapse_detected": false,
+        "stagnation_detected": false,
+        "overall_progress": "unknown",
+        "longitudinal_flags": []
+      },
+      "session_number": 1,
+      "patient_id": "e50b73d1-1f37-4e5f-97a4-cfeaaa00b7f7"
+    },
+    "history": [
+      {
+        "turn": 1,
+        "timestamp": "2026-03-27T09:35:27.493036+00:00",
+        "messages": [
+          {
+            "role": "user",
+            "content": "j"
+          },
+          {
+            "role": "assistant",
+            "content": "I'm here to help you quit smoking! Can you tell me what motivated you to want to quit this time?"
+          },
+          {
+            "role": "user",
+            "content": "k"
+          },
+          {
+            "role": "assistant",
+            "content": "It seems like you're not ready to talk yet. That's okay! Sometimes we need a little time to process our thoughts. When you're ready, we can start exploring ways to help you quit smoking."
+          }
+        ],
+        "result": {
+          "dataset_row": {
+            "stage_of_change": "precontemplation",
+            "main_concern": "Hesitation/Lack of Readiness",
+            "primary_trigger": "None identified",
+            "quit_attempt_history": "User has initiated one attempt to engage",
+            "recommended_intervention": [
+              "Continue to offer support and encouragement without pressure.",
+              "Acknowledge and validate the user’s need for time to process.",
+              "Explore the reasons behind the hesitation – gently probe for underlying concerns or barriers.",
+              "Reiterate the counselor’s willingness to help when the user is ready.",
+              "Explore the user’s reasons for wanting to quit in a future conversation when they are more receptive."
+            ],
+            "reasoning_summary": "The user's initial response indicates a lack of readiness to discuss quitting, placing them in the precontemplation stage. The intervention focuses on providing support and gently encouraging the user to revisit the topic when they are more prepared.",
+            "confidence_score": 0.95,
+            "debate_rounds_used": 3,
+            "vote_agreement": 0.833,
+            "sanity_passed": true,
+            "inconsistencies": [],
+            "session_number": 1,
+            "longitudinal_flags": [],
+            "longitudinal_sanity_passed": true
+          },
+          "longitudinal_output": {
+            "patient_id": "e50b73d1-1f37-4e5f-97a4-cfeaaa00b7f7",
+            "session_number": 1,
+            "current_annotation": {
+              "stage_of_change": "precontemplation",
+              "main_concern": "Hesitation/Lack of Readiness",
+              "primary_trigger": "None identified",
+              "quit_attempt_history": "User has initiated one attempt to engage",
+              "recommended_intervention": [
+                "Continue to offer support and encouragement without pressure.",
+                "Acknowledge and validate the user’s need for time to process.",
+                "Explore the reasons behind the hesitation – gently probe for underlying concerns or barriers.",
+                "Reiterate the counselor’s willingness to help when the user is ready.",
+                "Explore the user’s reasons for wanting to quit in a future conversation when they are more receptive."
+              ],
+              "reasoning_summary": "The user's initial response indicates a lack of readiness to discuss quitting, placing them in the precontemplation stage. The intervention focuses on providing support and gently encouraging the user to revisit the topic when they are more prepared.",
+              "confidence_score": 0.95,
+              "debate_rounds_used": 3,
+              "vote_agreement": 0.833,
+              "sanity_passed": true,
+              "inconsistencies": [],
+              "session_number": 1,
+              "longitudinal_flags": [],
+              "longitudinal_sanity_passed": true
+            },
+            "delta": null,
+            "stage_trajectory": [
+              "precontemplation"
+            ],
+            "persistent_triggers": [],
+            "persistent_concerns": [],
+            "interventions_tried": [],
+            "relapse_detected": false,
+            "stagnation_detected": false,
+            "overall_progress": "unknown",
+            "longitudinal_flags": []
+          },
+          "session_number": 1,
+          "patient_id": "e50b73d1-1f37-4e5f-97a4-cfeaaa00b7f7"
+        }
+      }
+    ],
+    "updated_at": "2026-03-27T09:35:27.493052+00:00"
+  },
+  "a7995b9c-cea7-4f14-afc7-45ae409a985c": {
+    "session_id": "a7995b9c-cea7-4f14-afc7-45ae409a985c",
+    "turn": 3,
+    "last_result": {
+      "dataset_row": {
+        "stage_of_change": "precontemplation",
+        "main_concern": "reluctance to engage in conversation",
+        "primary_trigger": "boredom",
+        "quit_attempt_history": "No prior quit attempts recorded.",
+        "recommended_intervention": [
+          "Gentle encouragement to share feelings.",
+          "Explore reasons for reluctance to open up.",
+          "Offer alternative ways to communicate (e.g., journaling, drawing).",
+          "Explore the underlying reason for the vague response ('hoof').",
+          "Offer a low-pressure environment for discussion.",
+          "Gentle encouragement to elaborate on feelings.",
+          "Explore the underlying reasons for the patient's reluctance to open up.",
+          "Offer concrete examples of how discussing feelings can be helpful."
+        ],
+        "reasoning_summary": "The patient's initial response, 'hoof,' indicates a lack of engagement and potentially precontemplative stage, where they are not yet considering quitting. The counselor's response focuses on gently encouraging the patient to open up and exploring the underlying reasons for their reluctance, offering a supportive and non-judgmental environment.",
+        "confidence_score": 0.95,
+        "debate_rounds_used": 0,
+        "vote_agreement": 1.0,
+        "sanity_passed": true,
+        "inconsistencies": [],
+        "session_number": 3,
+        "longitudinal_flags": [],
+        "longitudinal_sanity_passed": true,
+        "stage_direction": "unknown",
+        "new_triggers": [
+          "boredom"
+        ],
+        "resolved_triggers": [
+          "stress",
+          "uncertainty about my career",
+          "workload",
+          "worry"
+        ],
+        "clinical_summary": "Following a shift to the precontemplation stage, the patient’s primary trigger has shifted from work-related stress to boredom, indicating a potential setback in their cessation journey. The focus of interventions has now moved to addressing reluctance to engage in conversation and exploring underlying reasons for vague responses, requiring a revised approach to build rapport and address the root causes of ambivalence."
+      },
+      "longitudinal_output": {
+        "patient_id": "a7995b9c-cea7-4f14-afc7-45ae409a985c",
+        "session_number": 3,
+        "current_annotation": {
+          "stage_of_change": "precontemplation",
+          "main_concern": "reluctance to engage in conversation",
+          "primary_trigger": "boredom",
+          "quit_attempt_history": "No prior quit attempts recorded.",
+          "recommended_intervention": [
+            "Gentle encouragement to share feelings.",
+            "Explore reasons for reluctance to open up.",
+            "Offer alternative ways to communicate (e.g., journaling, drawing).",
+            "Explore the underlying reason for the vague response ('hoof').",
+            "Offer a low-pressure environment for discussion.",
+            "Gentle encouragement to elaborate on feelings.",
+            "Explore the underlying reasons for the patient's reluctance to open up.",
+            "Offer concrete examples of how discussing feelings can be helpful."
+          ],
+          "reasoning_summary": "The patient's initial response, 'hoof,' indicates a lack of engagement and potentially precontemplative stage, where they are not yet considering quitting. The counselor's response focuses on gently encouraging the patient to open up and exploring the underlying reasons for their reluctance, offering a supportive and non-judgmental environment.",
+          "confidence_score": 0.95,
+          "debate_rounds_used": 0,
+          "vote_agreement": 1.0,
+          "sanity_passed": true,
+          "inconsistencies": [],
+          "session_number": 3,
+          "longitudinal_flags": [],
+          "longitudinal_sanity_passed": true,
+          "stage_direction": "unknown",
+          "new_triggers": [
+            "boredom"
+          ],
+          "resolved_triggers": [
+            "stress",
+            "uncertainty about my career",
+            "workload",
+            "worry"
+          ],
+          "clinical_summary": "Following a shift to the precontemplation stage, the patient’s primary trigger has shifted from work-related stress to boredom, indicating a potential setback in their cessation journey. The focus of interventions has now moved to addressing reluctance to engage in conversation and exploring underlying reasons for vague responses, requiring a revised approach to build rapport and address the root causes of ambivalence."
+        },
+        "delta": {
+          "from_session": 2,
+          "to_session": 3,
+          "from_date": "2026-03-27T10:02:42.234339",
+          "to_date": null,
+          "stage_before": "Predetermined Failure",
+          "stage_after": "precontemplation",
+          "stage_changed": true,
+          "stage_direction": "unknown",
+          "new_triggers": [
+            "boredom"
+          ],
+          "resolved_triggers": [
+            "stress",
+            "uncertainty about my career",
+            "workload",
+            "worry"
+          ],
+          "persistent_triggers": [],
+          "new_concerns": [
+            "hoof",
+            "not quite ready to open up"
+          ],
+          "resolved_concerns": [
+            "stress",
+            "uncertainty about my career",
+            "worry"
+          ],
+          "persistent_concerns": [],
+          "new_interventions": [
+            "explore reasons for reluctance to open up.",
+            "explore the underlying reason for the vague response ('hoof').",
+            "explore the underlying reasons for the patient's reluctance to open up.",
+            "gentle encouragement to elaborate on feelings.",
+            "gentle encouragement to share feelings.",
+            "offer a low-pressure environment for discussion.",
+            "offer alternative ways to communicate (e.g., journaling, drawing).",
+            "offer concrete examples of how discussing feelings can be helpful."
+          ],
+          "continuing_interventions": [],
+          "dropped_interventions": [
+            "address the underlying career concerns through goal setting and problem-solving.",
+            "explore coping mechanisms for stress and anxiety.",
+            "motivational interviewing techniques to explore ambivalence about quitting.",
+            "reinforce the connection between smoking and stress."
+          ],
+          "relapse_detected": false,
+          "rapid_progress_detected": false,
+          "stagnation_detected": false,
+          "concern_shift_detected": true,
+          "trigger_resolved": true,
+          "clinical_summary": "Following a shift to the precontemplation stage, the patient’s primary trigger has shifted from work-related stress to boredom, indicating a potential setback in their cessation journey. The focus of interventions has now moved to addressing reluctance to engage in conversation and exploring underlying reasons for vague responses, requiring a revised approach to build rapport and address the root causes of ambivalence.",
+          "delta_confidence": 0.85
+        },
+        "stage_trajectory": [
+          "precontemplation",
+          "Predetermined Failure",
+          "precontemplation"
+        ],
+        "persistent_triggers": [],
+        "persistent_concerns": [],
+        "interventions_tried": [
+          "Explore the patient's reasons for being a non-smoker to reinforce their current status.",
+          "Continue to affirm the patient's progress and positive behaviors.",
+          "Assess readiness to move to a later stage of change if desired.",
+          "Explore reasons for being a non-smoker to reinforce positive behavior.",
+          "Assess readiness to make changes in the future.",
+          "Continue to affirm current status as a non-smoker.",
+          "Explore the reasons behind the patient's current non-smoking status.",
+          "Reinforce positive behaviors related to remaining smoke-free.",
+          "Explore coping mechanisms for stress and anxiety.",
+          "Address the underlying career concerns through goal setting and problem-solving.",
+          "Reinforce the connection between smoking and stress.",
+          "Motivational Interviewing techniques to explore ambivalence about quitting."
+        ],
+        "relapse_detected": false,
+        "stagnation_detected": false,
+        "overall_progress": "mixed",
+        "longitudinal_flags": []
+      },
+      "session_number": 3,
+      "patient_id": "a7995b9c-cea7-4f14-afc7-45ae409a985c"
+    },
+    "history": [
+      {
+        "turn": 1,
+        "timestamp": "2026-03-27T09:59:02.597156+00:00",
+        "messages": [
+          {
+            "role": "user",
+            "content": "hi"
+          },
+          {
+            "role": "assistant",
+            "content": "Hi! I'm eDOSTHI, your motivational interviewing chatbot to help you quit smoking. What's your current motivation to quit smoking?"
+          },
+          {
+            "role": "user",
+            "content": "i donrt smoke"
+          },
+          {
+            "role": "assistant",
+            "content": "Congratulations! You're already a non-smoker! What's the most important thing that's helped you stay smoke-free so far?"
+          }
+        ],
+        "result": {
+          "dataset_row": {
+            "stage_of_change": "precontemplation",
+            "main_concern": "None",
+            "primary_trigger": "None",
+            "quit_attempt_history": "Patient currently reports being a non-smoker, indicating no prior quit attempts.",
+            "recommended_intervention": [
+              "Explore the patient's reasons for being a non-smoker to reinforce their current status.",
+              "Continue to affirm the patient's progress and positive behaviors.",
+              "Assess readiness to move to a later stage of change if desired.",
+              "Explore reasons for being a non-smoker to reinforce positive behavior.",
+              "Assess readiness to make changes in the future.",
+              "Continue to affirm current status as a non-smoker.",
+              "Explore the reasons behind the patient's current non-smoking status.",
+              "Reinforce positive behaviors related to remaining smoke-free."
+            ],
+            "reasoning_summary": "The patient's initial statement indicates they currently identify as a non-smoker, placing them firmly in precontemplation. The counselor's response focuses on affirming this status and exploring the reasons behind it, aligning with a motivational interviewing approach for this stage.",
+            "confidence_score": 0.85,
+            "debate_rounds_used": 0,
+            "vote_agreement": 0.917,
+            "sanity_passed": false,
+            "inconsistencies": [
+              "Critical field 'main_concern' resolved to 'unknown' — extraction may have failed.",
+              "Critical field 'primary_trigger' resolved to 'unknown' — extraction may have failed."
+            ],
+            "session_number": 1,
+            "longitudinal_flags": [],
+            "longitudinal_sanity_passed": true
+          },
+          "longitudinal_output": {
+            "patient_id": "a7995b9c-cea7-4f14-afc7-45ae409a985c",
+            "session_number": 1,
+            "current_annotation": {
+              "stage_of_change": "precontemplation",
+              "main_concern": "None",
+              "primary_trigger": "None",
+              "quit_attempt_history": "Patient currently reports being a non-smoker, indicating no prior quit attempts.",
+              "recommended_intervention": [
+                "Explore the patient's reasons for being a non-smoker to reinforce their current status.",
+                "Continue to affirm the patient's progress and positive behaviors.",
+                "Assess readiness to move to a later stage of change if desired.",
+                "Explore reasons for being a non-smoker to reinforce positive behavior.",
+                "Assess readiness to make changes in the future.",
+                "Continue to affirm current status as a non-smoker.",
+                "Explore the reasons behind the patient's current non-smoking status.",
+                "Reinforce positive behaviors related to remaining smoke-free."
+              ],
+              "reasoning_summary": "The patient's initial statement indicates they currently identify as a non-smoker, placing them firmly in precontemplation. The counselor's response focuses on affirming this status and exploring the reasons behind it, aligning with a motivational interviewing approach for this stage.",
+              "confidence_score": 0.85,
+              "debate_rounds_used": 0,
+              "vote_agreement": 0.917,
+              "sanity_passed": false,
+              "inconsistencies": [
+                "Critical field 'main_concern' resolved to 'unknown' — extraction may have failed.",
+                "Critical field 'primary_trigger' resolved to 'unknown' — extraction may have failed."
+              ],
+              "session_number": 1,
+              "longitudinal_flags": [],
+              "longitudinal_sanity_passed": true
+            },
+            "delta": null,
+            "stage_trajectory": [
+              "precontemplation"
+            ],
+            "persistent_triggers": [],
+            "persistent_concerns": [],
+            "interventions_tried": [],
+            "relapse_detected": false,
+            "stagnation_detected": false,
+            "overall_progress": "unknown",
+            "longitudinal_flags": []
+          },
+          "session_number": 1,
+          "patient_id": "a7995b9c-cea7-4f14-afc7-45ae409a985c"
+        }
+      },
+      {
+        "turn": 2,
+        "timestamp": "2026-03-27T10:02:42.236235+00:00",
+        "messages": [
+          {
+            "role": "user",
+            "content": "hi"
+          },
+          {
+            "role": "assistant",
+            "content": "Hi! It's great to see you again. How have you been feeling since our last session?"
+          },
+          {
+            "role": "user",
+            "content": "I am not feeling very well. I am extremely stressed about my work"
+          },
+          {
+            "role": "assistant",
+            "content": "It sounds like work is really weighing on you. Can you tell me more about what's specifically causing you stress?"
+          },
+          {
+            "role": "user",
+            "content": "Work load"
+          },
+          {
+            "role": "assistant",
+            "content": "It can be overwhelming when the workload piles up. What's one thing you wish you could do to make things easier?"
+          },
+          {
+            "role": "user",
+            "content": "I have also started smoking again"
+          },
+          {
+            "role": "assistant",
+            "content": "Sorry to hear that. It can be tough to quit and then start again. What's been going on that's led you to start smoking again?"
+          },
+          {
+            "role": "user",
+            "content": "the stress the worry the uncertainty about my career"
+          },
+          {
+            "role": "assistant",
+            "content": "It sounds like the stress and uncertainty about your career are really taking a toll on you. What's one thing you'd like to do differently to take control of your career?"
+          }
+        ],
+        "result": {
+          "dataset_row": {
+            "stage_of_change": "Predetermined Failure",
+            "main_concern": "Work-related stress and uncertainty",
+            "primary_trigger": "Increased stress and worry due to career uncertainty",
+            "quit_attempt_history": "Has previously attempted to quit smoking, relapsed.",
+            "recommended_intervention": [
+              "Explore coping mechanisms for stress and anxiety.",
+              "Address the underlying career concerns through goal setting and problem-solving.",
+              "Reinforce the connection between smoking and stress.",
+              "Motivational Interviewing techniques to explore ambivalence about quitting."
+            ],
+            "reasoning_summary": "The patient is experiencing a relapse due to overwhelming stress and uncertainty related to their career, indicating a Predetermined Failure stage.  A focus on stress management and exploring career-related goals, combined with motivational interviewing, is recommended to address the root cause of the relapse.",
+            "confidence_score": 0.85,
+            "debate_rounds_used": 0,
+            "vote_agreement": null,
+            "sanity_passed": false,
+            "inconsistencies": [
+              "Critical field 'stage_of_change' resolved to 'unknown' — extraction may have failed.",
+              "Critical field 'main_concern' resolved to 'unknown' — extraction may have failed.",
+              "Critical field 'primary_trigger' resolved to 'unknown' — extraction may have failed."
+            ],
+            "session_number": 2,
+            "longitudinal_flags": [],
+            "longitudinal_sanity_passed": true,
+            "stage_direction": "unknown",
+            "new_triggers": [
+              "stress",
+              "uncertainty about my career",
+              "workload",
+              "worry"
+            ],
+            "resolved_triggers": [],
+            "clinical_summary": "Between sessions, the patient’s stage of change shifted to Predetermined Failure, primarily driven by increased stress and career uncertainty as new triggers. This shift necessitates a revised approach focusing on coping mechanisms for stress, addressing underlying career concerns through goal setting, and utilizing motivational interviewing to navigate ambivalence about quitting. Consequently, the focus has moved from simply reinforcing smoke-free status to tackling the root causes of relapse vulnerability."
+          },
+          "longitudinal_output": {
+            "patient_id": "a7995b9c-cea7-4f14-afc7-45ae409a985c",
+            "session_number": 2,
+            "current_annotation": {
+              "stage_of_change": "Predetermined Failure",
+              "main_concern": "Work-related stress and uncertainty",
+              "primary_trigger": "Increased stress and worry due to career uncertainty",
+              "quit_attempt_history": "Has previously attempted to quit smoking, relapsed.",
+              "recommended_intervention": [
+                "Explore coping mechanisms for stress and anxiety.",
+                "Address the underlying career concerns through goal setting and problem-solving.",
+                "Reinforce the connection between smoking and stress.",
+                "Motivational Interviewing techniques to explore ambivalence about quitting."
+              ],
+              "reasoning_summary": "The patient is experiencing a relapse due to overwhelming stress and uncertainty related to their career, indicating a Predetermined Failure stage.  A focus on stress management and exploring career-related goals, combined with motivational interviewing, is recommended to address the root cause of the relapse.",
+              "confidence_score": 0.85,
+              "debate_rounds_used": 0,
+              "vote_agreement": null,
+              "sanity_passed": false,
+              "inconsistencies": [
+                "Critical field 'stage_of_change' resolved to 'unknown' — extraction may have failed.",
+                "Critical field 'main_concern' resolved to 'unknown' — extraction may have failed.",
+                "Critical field 'primary_trigger' resolved to 'unknown' — extraction may have failed."
+              ],
+              "session_number": 2,
+              "longitudinal_flags": [],
+              "longitudinal_sanity_passed": true,
+              "stage_direction": "unknown",
+              "new_triggers": [
+                "stress",
+                "uncertainty about my career",
+                "workload",
+                "worry"
+              ],
+              "resolved_triggers": [],
+              "clinical_summary": "Between sessions, the patient’s stage of change shifted to Predetermined Failure, primarily driven by increased stress and career uncertainty as new triggers. This shift necessitates a revised approach focusing on coping mechanisms for stress, addressing underlying career concerns through goal setting, and utilizing motivational interviewing to navigate ambivalence about quitting. Consequently, the focus has moved from simply reinforcing smoke-free status to tackling the root causes of relapse vulnerability."
+            },
+            "delta": {
+              "from_session": 1,
+              "to_session": 2,
+              "from_date": "2026-03-27T09:59:02.595402",
+              "to_date": null,
+              "stage_before": "precontemplation",
+              "stage_after": "Predetermined Failure",
+              "stage_changed": true,
+              "stage_direction": "unknown",
+              "new_triggers": [
+                "stress",
+                "uncertainty about my career",
+                "workload",
+                "worry"
+              ],
+              "resolved_triggers": [],
+              "persistent_triggers": [],
+              "new_concerns": [
+                "stress",
+                "uncertainty about my career",
+                "worry"
+              ],
+              "resolved_concerns": [
+                "none explicitly stated"
+              ],
+              "persistent_concerns": [],
+              "new_interventions": [
+                "address the underlying career concerns through goal setting and problem-solving.",
+                "explore coping mechanisms for stress and anxiety.",
+                "motivational interviewing techniques to explore ambivalence about quitting.",
+                "reinforce the connection between smoking and stress."
+              ],
+              "continuing_interventions": [],
+              "dropped_interventions": [
+                "assess readiness to make changes in the future.",
+                "assess readiness to move to a later stage of change if desired.",
+                "continue to affirm current status as a non-smoker.",
+                "continue to affirm the patient's progress and positive behaviors.",
+                "explore reasons for being a non-smoker to reinforce positive behavior.",
+                "explore the patient's reasons for being a non-smoker to reinforce their current status.",
+                "explore the reasons behind the patient's current non-smoking status.",
+                "reinforce positive behaviors related to remaining smoke-free."
+              ],
+              "relapse_detected": false,
+              "rapid_progress_detected": false,
+              "stagnation_detected": false,
+              "concern_shift_detected": true,
+              "trigger_resolved": false,
+              "clinical_summary": "Between sessions, the patient’s stage of change shifted to Predetermined Failure, primarily driven by increased stress and career uncertainty as new triggers. This shift necessitates a revised approach focusing on coping mechanisms for stress, addressing underlying career concerns through goal setting, and utilizing motivational interviewing to navigate ambivalence about quitting. Consequently, the focus has moved from simply reinforcing smoke-free status to tackling the root causes of relapse vulnerability.",
+              "delta_confidence": 0.8
+            },
+            "stage_trajectory": [
+              "precontemplation",
+              "Predetermined Failure"
+            ],
+            "persistent_triggers": [],
+            "persistent_concerns": [
+              "None explicitly stated"
+            ],
+            "interventions_tried": [
+              "Explore the patient's reasons for being a non-smoker to reinforce their current status.",
+              "Continue to affirm the patient's progress and positive behaviors.",
+              "Assess readiness to move to a later stage of change if desired.",
+              "Explore reasons for being a non-smoker to reinforce positive behavior.",
+              "Assess readiness to make changes in the future.",
+              "Continue to affirm current status as a non-smoker.",
+              "Explore the reasons behind the patient's current non-smoking status.",
+              "Reinforce positive behaviors related to remaining smoke-free."
+            ],
+            "relapse_detected": false,
+            "stagnation_detected": false,
+            "overall_progress": "mixed",
+            "longitudinal_flags": []
+          },
+          "session_number": 2,
+          "patient_id": "a7995b9c-cea7-4f14-afc7-45ae409a985c"
+        }
+      },
+      {
+        "turn": 3,
+        "timestamp": "2026-03-27T10:29:16.875369+00:00",
+        "messages": [
+          {
+            "role": "user",
+            "content": "helloo"
+          },
+          {
+            "role": "assistant",
+            "content": "Hello! It's great to see you again. How have you been feeling since our last session?"
+          },
+          {
+            "role": "user",
+            "content": "hoof"
+          },
+          {
+            "role": "assistant",
+            "content": "It seems like you're not quite ready to open up yet. That's okay! Let's take it one step at a time. Can you tell me what's been on your mind lately?"
+          }
+        ],
+        "result": {
+          "dataset_row": {
+            "stage_of_change": "precontemplation",
+            "main_concern": "reluctance to engage in conversation",
+            "primary_trigger": "boredom",
+            "quit_attempt_history": "No prior quit attempts recorded.",
+            "recommended_intervention": [
+              "Gentle encouragement to share feelings.",
+              "Explore reasons for reluctance to open up.",
+              "Offer alternative ways to communicate (e.g., journaling, drawing).",
+              "Explore the underlying reason for the vague response ('hoof').",
+              "Offer a low-pressure environment for discussion.",
+              "Gentle encouragement to elaborate on feelings.",
+              "Explore the underlying reasons for the patient's reluctance to open up.",
+              "Offer concrete examples of how discussing feelings can be helpful."
+            ],
+            "reasoning_summary": "The patient's initial response, 'hoof,' indicates a lack of engagement and potentially precontemplative stage, where they are not yet considering quitting. The counselor's response focuses on gently encouraging the patient to open up and exploring the underlying reasons for their reluctance, offering a supportive and non-judgmental environment.",
+            "confidence_score": 0.95,
+            "debate_rounds_used": 0,
+            "vote_agreement": 1.0,
+            "sanity_passed": true,
+            "inconsistencies": [],
+            "session_number": 3,
+            "longitudinal_flags": [],
+            "longitudinal_sanity_passed": true,
+            "stage_direction": "unknown",
+            "new_triggers": [
+              "boredom"
+            ],
+            "resolved_triggers": [
+              "stress",
+              "uncertainty about my career",
+              "workload",
+              "worry"
+            ],
+            "clinical_summary": "Following a shift to the precontemplation stage, the patient’s primary trigger has shifted from work-related stress to boredom, indicating a potential setback in their cessation journey. The focus of interventions has now moved to addressing reluctance to engage in conversation and exploring underlying reasons for vague responses, requiring a revised approach to build rapport and address the root causes of ambivalence."
+          },
+          "longitudinal_output": {
+            "patient_id": "a7995b9c-cea7-4f14-afc7-45ae409a985c",
+            "session_number": 3,
+            "current_annotation": {
+              "stage_of_change": "precontemplation",
+              "main_concern": "reluctance to engage in conversation",
+              "primary_trigger": "boredom",
+              "quit_attempt_history": "No prior quit attempts recorded.",
+              "recommended_intervention": [
+                "Gentle encouragement to share feelings.",
+                "Explore reasons for reluctance to open up.",
+                "Offer alternative ways to communicate (e.g., journaling, drawing).",
+                "Explore the underlying reason for the vague response ('hoof').",
+                "Offer a low-pressure environment for discussion.",
+                "Gentle encouragement to elaborate on feelings.",
+                "Explore the underlying reasons for the patient's reluctance to open up.",
+                "Offer concrete examples of how discussing feelings can be helpful."
+              ],
+              "reasoning_summary": "The patient's initial response, 'hoof,' indicates a lack of engagement and potentially precontemplative stage, where they are not yet considering quitting. The counselor's response focuses on gently encouraging the patient to open up and exploring the underlying reasons for their reluctance, offering a supportive and non-judgmental environment.",
+              "confidence_score": 0.95,
+              "debate_rounds_used": 0,
+              "vote_agreement": 1.0,
+              "sanity_passed": true,
+              "inconsistencies": [],
+              "session_number": 3,
+              "longitudinal_flags": [],
+              "longitudinal_sanity_passed": true,
+              "stage_direction": "unknown",
+              "new_triggers": [
+                "boredom"
+              ],
+              "resolved_triggers": [
+                "stress",
+                "uncertainty about my career",
+                "workload",
+                "worry"
+              ],
+              "clinical_summary": "Following a shift to the precontemplation stage, the patient’s primary trigger has shifted from work-related stress to boredom, indicating a potential setback in their cessation journey. The focus of interventions has now moved to addressing reluctance to engage in conversation and exploring underlying reasons for vague responses, requiring a revised approach to build rapport and address the root causes of ambivalence."
+            },
+            "delta": {
+              "from_session": 2,
+              "to_session": 3,
+              "from_date": "2026-03-27T10:02:42.234339",
+              "to_date": null,
+              "stage_before": "Predetermined Failure",
+              "stage_after": "precontemplation",
+              "stage_changed": true,
+              "stage_direction": "unknown",
+              "new_triggers": [
+                "boredom"
+              ],
+              "resolved_triggers": [
+                "stress",
+                "uncertainty about my career",
+                "workload",
+                "worry"
+              ],
+              "persistent_triggers": [],
+              "new_concerns": [
+                "hoof",
+                "not quite ready to open up"
+              ],
+              "resolved_concerns": [
+                "stress",
+                "uncertainty about my career",
+                "worry"
+              ],
+              "persistent_concerns": [],
+              "new_interventions": [
+                "explore reasons for reluctance to open up.",
+                "explore the underlying reason for the vague response ('hoof').",
+                "explore the underlying reasons for the patient's reluctance to open up.",
+                "gentle encouragement to elaborate on feelings.",
+                "gentle encouragement to share feelings.",
+                "offer a low-pressure environment for discussion.",
+                "offer alternative ways to communicate (e.g., journaling, drawing).",
+                "offer concrete examples of how discussing feelings can be helpful."
+              ],
+              "continuing_interventions": [],
+              "dropped_interventions": [
+                "address the underlying career concerns through goal setting and problem-solving.",
+                "explore coping mechanisms for stress and anxiety.",
+                "motivational interviewing techniques to explore ambivalence about quitting.",
+                "reinforce the connection between smoking and stress."
+              ],
+              "relapse_detected": false,
+              "rapid_progress_detected": false,
+              "stagnation_detected": false,
+              "concern_shift_detected": true,
+              "trigger_resolved": true,
+              "clinical_summary": "Following a shift to the precontemplation stage, the patient’s primary trigger has shifted from work-related stress to boredom, indicating a potential setback in their cessation journey. The focus of interventions has now moved to addressing reluctance to engage in conversation and exploring underlying reasons for vague responses, requiring a revised approach to build rapport and address the root causes of ambivalence.",
+              "delta_confidence": 0.85
+            },
+            "stage_trajectory": [
+              "precontemplation",
+              "Predetermined Failure",
+              "precontemplation"
+            ],
+            "persistent_triggers": [],
+            "persistent_concerns": [],
+            "interventions_tried": [
+              "Explore the patient's reasons for being a non-smoker to reinforce their current status.",
+              "Continue to affirm the patient's progress and positive behaviors.",
+              "Assess readiness to move to a later stage of change if desired.",
+              "Explore reasons for being a non-smoker to reinforce positive behavior.",
+              "Assess readiness to make changes in the future.",
+              "Continue to affirm current status as a non-smoker.",
+              "Explore the reasons behind the patient's current non-smoking status.",
+              "Reinforce positive behaviors related to remaining smoke-free.",
+              "Explore coping mechanisms for stress and anxiety.",
+              "Address the underlying career concerns through goal setting and problem-solving.",
+              "Reinforce the connection between smoking and stress.",
+              "Motivational Interviewing techniques to explore ambivalence about quitting."
+            ],
+            "relapse_detected": false,
+            "stagnation_detected": false,
+            "overall_progress": "mixed",
+            "longitudinal_flags": []
+          },
+          "session_number": 3,
+          "patient_id": "a7995b9c-cea7-4f14-afc7-45ae409a985c"
+        }
+      }
+    ],
+    "updated_at": "2026-03-27T10:29:16.875378+00:00"
+  },
+  "419959da-9a2e-4c3d-9291-e4ef392289b8": {
+    "session_id": "419959da-9a2e-4c3d-9291-e4ef392289b8",
+    "turn": 1,
+    "last_result": {
+      "dataset_row": {
+        "stage_of_change": "precontemplation",
+        "main_concern": "not knowing",
+        "primary_trigger": "None",
+        "quit_attempt_history": "No prior quit attempts documented.",
+        "recommended_intervention": [
+          "Explore the patient's feelings and experiences with smoking in more detail.",
+          "Help the patient identify specific reasons for wanting to quit, focusing on potential benefits.",
+          "Use motivational interviewing techniques to build self-efficacy and commitment to change.",
+          "Explore the patient's feelings about smoking in more detail, focusing on specific frustrations.",
+          "Help the patient identify potential benefits of quitting to increase motivation.",
+          "Use motivational interviewing techniques to elicit a specific reason for wanting to quit."
+        ],
+        "reasoning_summary": "The patient is in precontemplation due to their initial lack of clarity regarding their motivation, presenting as 'I don't know.' The recommended intervention focuses on exploring the patient's feelings and identifying specific reasons for quitting through motivational interviewing to build a foundation for change.",
+        "confidence_score": 0.95,
+        "debate_rounds_used": 1,
+        "vote_agreement": 0.833,
+        "sanity_passed": true,
+        "inconsistencies": [],
+        "session_number": 1,
+        "longitudinal_flags": [],
+        "longitudinal_sanity_passed": true
+      },
+      "longitudinal_output": {
+        "patient_id": "419959da-9a2e-4c3d-9291-e4ef392289b8",
+        "session_number": 1,
+        "current_annotation": {
+          "stage_of_change": "precontemplation",
+          "main_concern": "not knowing",
+          "primary_trigger": "None",
+          "quit_attempt_history": "No prior quit attempts documented.",
+          "recommended_intervention": [
+            "Explore the patient's feelings and experiences with smoking in more detail.",
+            "Help the patient identify specific reasons for wanting to quit, focusing on potential benefits.",
+            "Use motivational interviewing techniques to build self-efficacy and commitment to change.",
+            "Explore the patient's feelings about smoking in more detail, focusing on specific frustrations.",
+            "Help the patient identify potential benefits of quitting to increase motivation.",
+            "Use motivational interviewing techniques to elicit a specific reason for wanting to quit."
+          ],
+          "reasoning_summary": "The patient is in precontemplation due to their initial lack of clarity regarding their motivation, presenting as 'I don't know.' The recommended intervention focuses on exploring the patient's feelings and identifying specific reasons for quitting through motivational interviewing to build a foundation for change.",
+          "confidence_score": 0.95,
+          "debate_rounds_used": 1,
+          "vote_agreement": 0.833,
+          "sanity_passed": true,
+          "inconsistencies": [],
+          "session_number": 1,
+          "longitudinal_flags": [],
+          "longitudinal_sanity_passed": true
+        },
+        "delta": null,
+        "stage_trajectory": [
+          "precontemplation"
+        ],
+        "persistent_triggers": [],
+        "persistent_concerns": [],
+        "interventions_tried": [],
+        "relapse_detected": false,
+        "stagnation_detected": false,
+        "overall_progress": "unknown",
+        "longitudinal_flags": []
+      },
+      "session_number": 1,
+      "patient_id": "419959da-9a2e-4c3d-9291-e4ef392289b8"
+    },
+    "history": [
+      {
+        "turn": 1,
+        "timestamp": "2026-04-09T13:49:25.912786+00:00",
+        "messages": [
+          {
+            "role": "user",
+            "content": "Hi"
+          },
+          {
+            "role": "assistant",
+            "content": "Hi! I'm eDOSTHI, your motivational interviewing chatbot. I'm here to support you in quitting smoking. What's your motivation for quitting today?"
+          },
+          {
+            "role": "user",
+            "content": "I want to quit smoking"
+          },
+          {
+            "role": "assistant",
+            "content": "That's a great start! What's one reason why you want to quit smoking right now?"
+          },
+          {
+            "role": "user",
+            "content": "I dont know"
+          },
+          {
+            "role": "assistant",
+            "content": "That's okay! Let's explore this further. What's something that's been bothering you about smoking lately?"
+          },
+          {
+            "role": "user",
+            "content": "exot"
+          },
+          {
+            "role": "assistant",
+            "content": "It sounds like you're feeling frustrated with smoking. Can you tell me more about what's not feeling right about it?"
+          }
+        ],
+        "result": {
+          "dataset_row": {
+            "stage_of_change": "precontemplation",
+            "main_concern": "not knowing",
+            "primary_trigger": "None",
+            "quit_attempt_history": "No prior quit attempts documented.",
+            "recommended_intervention": [
+              "Explore the patient's feelings and experiences with smoking in more detail.",
+              "Help the patient identify specific reasons for wanting to quit, focusing on potential benefits.",
+              "Use motivational interviewing techniques to build self-efficacy and commitment to change.",
+              "Explore the patient's feelings about smoking in more detail, focusing on specific frustrations.",
+              "Help the patient identify potential benefits of quitting to increase motivation.",
+              "Use motivational interviewing techniques to elicit a specific reason for wanting to quit."
+            ],
+            "reasoning_summary": "The patient is in precontemplation due to their initial lack of clarity regarding their motivation, presenting as 'I don't know.' The recommended intervention focuses on exploring the patient's feelings and identifying specific reasons for quitting through motivational interviewing to build a foundation for change.",
+            "confidence_score": 0.95,
+            "debate_rounds_used": 1,
+            "vote_agreement": 0.833,
+            "sanity_passed": true,
+            "inconsistencies": [],
+            "session_number": 1,
+            "longitudinal_flags": [],
+            "longitudinal_sanity_passed": true
+          },
+          "longitudinal_output": {
+            "patient_id": "419959da-9a2e-4c3d-9291-e4ef392289b8",
+            "session_number": 1,
+            "current_annotation": {
+              "stage_of_change": "precontemplation",
+              "main_concern": "not knowing",
+              "primary_trigger": "None",
+              "quit_attempt_history": "No prior quit attempts documented.",
+              "recommended_intervention": [
+                "Explore the patient's feelings and experiences with smoking in more detail.",
+                "Help the patient identify specific reasons for wanting to quit, focusing on potential benefits.",
+                "Use motivational interviewing techniques to build self-efficacy and commitment to change.",
+                "Explore the patient's feelings about smoking in more detail, focusing on specific frustrations.",
+                "Help the patient identify potential benefits of quitting to increase motivation.",
+                "Use motivational interviewing techniques to elicit a specific reason for wanting to quit."
+              ],
+              "reasoning_summary": "The patient is in precontemplation due to their initial lack of clarity regarding their motivation, presenting as 'I don't know.' The recommended intervention focuses on exploring the patient's feelings and identifying specific reasons for quitting through motivational interviewing to build a foundation for change.",
+              "confidence_score": 0.95,
+              "debate_rounds_used": 1,
+              "vote_agreement": 0.833,
+              "sanity_passed": true,
+              "inconsistencies": [],
+              "session_number": 1,
+              "longitudinal_flags": [],
+              "longitudinal_sanity_passed": true
+            },
+            "delta": null,
+            "stage_trajectory": [
+              "precontemplation"
+            ],
+            "persistent_triggers": [],
+            "persistent_concerns": [],
+            "interventions_tried": [],
+            "relapse_detected": false,
+            "stagnation_detected": false,
+            "overall_progress": "unknown",
+            "longitudinal_flags": []
+          },
+          "session_number": 1,
+          "patient_id": "419959da-9a2e-4c3d-9291-e4ef392289b8"
+        }
+      }
+    ],
+    "updated_at": "2026-04-09T13:49:25.912802+00:00"
+  },
+  "d4987c05-3966-4974-b294-0afe37769c07": {
+    "session_id": "d4987c05-3966-4974-b294-0afe37769c07",
+    "turn": 1,
+    "last_result": {
+      "dataset_row": {
+        "stage_of_change": "unknown",
+        "main_concern": "unknown",
+        "primary_trigger": "unknown",
+        "quit_attempt_history": "unknown",
+        "recommended_intervention": [],
+        "reasoning_summary": null,
+        "confidence_score": null,
+        "debate_rounds_used": 4,
+        "vote_agreement": 0.917,
+        "sanity_passed": true,
+        "inconsistencies": [],
+        "session_number": 1,
+        "longitudinal_flags": [],
+        "longitudinal_sanity_passed": true
+      },
+      "longitudinal_output": {
+        "patient_id": "d4987c05-3966-4974-b294-0afe37769c07",
+        "session_number": 1,
+        "current_annotation": {
+          "stage_of_change": "unknown",
+          "main_concern": "unknown",
+          "primary_trigger": "unknown",
+          "quit_attempt_history": "unknown",
+          "recommended_intervention": [],
+          "reasoning_summary": null,
+          "confidence_score": null,
+          "debate_rounds_used": 4,
+          "vote_agreement": 0.917,
+          "sanity_passed": true,
+          "inconsistencies": [],
+          "session_number": 1,
+          "longitudinal_flags": [],
+          "longitudinal_sanity_passed": true
+        },
+        "delta": null,
+        "stage_trajectory": [
+          "unknown"
+        ],
+        "persistent_triggers": [],
+        "persistent_concerns": [],
+        "interventions_tried": [],
+        "relapse_detected": false,
+        "stagnation_detected": false,
+        "overall_progress": "unknown",
+        "longitudinal_flags": []
+      },
+      "session_number": 1,
+      "patient_id": "d4987c05-3966-4974-b294-0afe37769c07"
+    },
+    "history": [
+      {
+        "turn": 1,
+        "timestamp": "2026-04-13T10:54:43.595950+00:00",
+        "messages": [
+          {
+            "role": "user",
+            "content": "hi"
+          },
+          {
+            "role": "assistant",
+            "content": "Hi! I'm eDOSTHI, your motivational interviewing chatbot. I'm here to help you quit smoking. What's your motivation for quitting today?"
+          }
+        ],
+        "result": {
+          "dataset_row": {
+            "stage_of_change": "unknown",
+            "main_concern": "unknown",
+            "primary_trigger": "unknown",
+            "quit_attempt_history": "unknown",
+            "recommended_intervention": [],
+            "reasoning_summary": null,
+            "confidence_score": null,
+            "debate_rounds_used": 4,
+            "vote_agreement": 0.917,
+            "sanity_passed": true,
+            "inconsistencies": [],
+            "session_number": 1,
+            "longitudinal_flags": [],
+            "longitudinal_sanity_passed": true
+          },
+          "longitudinal_output": {
+            "patient_id": "d4987c05-3966-4974-b294-0afe37769c07",
+            "session_number": 1,
+            "current_annotation": {
+              "stage_of_change": "unknown",
+              "main_concern": "unknown",
+              "primary_trigger": "unknown",
+              "quit_attempt_history": "unknown",
+              "recommended_intervention": [],
+              "reasoning_summary": null,
+              "confidence_score": null,
+              "debate_rounds_used": 4,
+              "vote_agreement": 0.917,
+              "sanity_passed": true,
+              "inconsistencies": [],
+              "session_number": 1,
+              "longitudinal_flags": [],
+              "longitudinal_sanity_passed": true
+            },
+            "delta": null,
+            "stage_trajectory": [
+              "unknown"
+            ],
+            "persistent_triggers": [],
+            "persistent_concerns": [],
+            "interventions_tried": [],
+            "relapse_detected": false,
+            "stagnation_detected": false,
+            "overall_progress": "unknown",
+            "longitudinal_flags": []
+          },
+          "session_number": 1,
+          "patient_id": "d4987c05-3966-4974-b294-0afe37769c07"
+        }
+      }
+    ],
+    "updated_at": "2026-04-13T10:54:43.595970+00:00"
+  },
+  "892ec4c8-48e4-4cfc-a69f-791e817112bd": {
+    "session_id": "892ec4c8-48e4-4cfc-a69f-791e817112bd",
+    "turn": 1,
+    "last_result": {
+      "dataset_row": {
+        "stage_of_change": "contemplation",
+        "main_concern": "health concerns",
+        "primary_trigger": "family",
+        "quit_attempt_history": "Patient has expressed a desire to quit smoking for good and acknowledges its negative impact on health.",
+        "recommended_intervention": [
+          "Explore specific health concerns in detail, focusing on potential benefits of quitting.",
+          "Reinforce the importance of family support and values.",
+          "Discuss coping strategies for potential withdrawal symptoms.",
+          "Explore specific health concerns in detail, including potential withdrawal symptoms.",
+          "Reinforce the motivational power of family support.",
+          "Help the patient visualize the positive changes in their life that will result from quitting."
+        ],
+        "reasoning_summary": "The patient is in the contemplation stage, actively considering quitting due to a strong family motivator and concerns about their health. The recommended interventions focus on deepening their understanding of the health benefits and reinforcing the supportive role of their family to facilitate commitment.",
+        "confidence_score": 0.95,
+        "debate_rounds_used": 1,
+        "vote_agreement": 0.833,
+        "sanity_passed": true,
+        "inconsistencies": [],
+        "session_number": 1,
+        "longitudinal_flags": [],
+        "longitudinal_sanity_passed": true
+      },
+      "longitudinal_output": {
+        "patient_id": "892ec4c8-48e4-4cfc-a69f-791e817112bd",
+        "session_number": 1,
+        "current_annotation": {
+          "stage_of_change": "contemplation",
+          "main_concern": "health concerns",
+          "primary_trigger": "family",
+          "quit_attempt_history": "Patient has expressed a desire to quit smoking for good and acknowledges its negative impact on health.",
+          "recommended_intervention": [
+            "Explore specific health concerns in detail, focusing on potential benefits of quitting.",
+            "Reinforce the importance of family support and values.",
+            "Discuss coping strategies for potential withdrawal symptoms.",
+            "Explore specific health concerns in detail, including potential withdrawal symptoms.",
+            "Reinforce the motivational power of family support.",
+            "Help the patient visualize the positive changes in their life that will result from quitting."
+          ],
+          "reasoning_summary": "The patient is in the contemplation stage, actively considering quitting due to a strong family motivator and concerns about their health. The recommended interventions focus on deepening their understanding of the health benefits and reinforcing the supportive role of their family to facilitate commitment.",
+          "confidence_score": 0.95,
+          "debate_rounds_used": 1,
+          "vote_agreement": 0.833,
+          "sanity_passed": true,
+          "inconsistencies": [],
+          "session_number": 1,
+          "longitudinal_flags": [],
+          "longitudinal_sanity_passed": true
+        },
+        "delta": null,
+        "stage_trajectory": [
+          "contemplation"
+        ],
+        "persistent_triggers": [],
+        "persistent_concerns": [],
+        "interventions_tried": [],
+        "relapse_detected": false,
+        "stagnation_detected": false,
+        "overall_progress": "unknown",
+        "longitudinal_flags": []
+      },
+      "session_number": 1,
+      "patient_id": "892ec4c8-48e4-4cfc-a69f-791e817112bd"
+    },
+    "history": [
+      {
+        "turn": 1,
+        "timestamp": "2026-04-14T12:59:57.742461+00:00",
+        "messages": [
+          {
+            "role": "user",
+            "content": "Hi"
+          },
+          {
+            "role": "assistant",
+            "content": "Hello! I'm eDOSTHI, your friendly AI companion to help you quit smoking. How's your day going so far?"
+          },
+          {
+            "role": "user",
+            "content": "I want to quit smoking for good"
+          },
+          {
+            "role": "assistant",
+            "content": "That's a great goal! What motivated you to want to quit this time around?"
+          },
+          {
+            "role": "user",
+            "content": "My family"
+          },
+          {
+            "role": "assistant",
+            "content": "Your loved ones are a powerful motivator! Can you tell me more about what your family means to you and why quitting is important to them?"
+          },
+          {
+            "role": "user",
+            "content": "Quitting will improve my health"
+          },
+          {
+            "role": "assistant",
+            "content": "Taking control of your health is a huge step! What specific health concerns do you hope to address by quitting smoking, and how do you envision your life improving as a result?"
+          }
+        ],
+        "result": {
+          "dataset_row": {
+            "stage_of_change": "contemplation",
+            "main_concern": "health concerns",
+            "primary_trigger": "family",
+            "quit_attempt_history": "Patient has expressed a desire to quit smoking for good and acknowledges its negative impact on health.",
+            "recommended_intervention": [
+              "Explore specific health concerns in detail, focusing on potential benefits of quitting.",
+              "Reinforce the importance of family support and values.",
+              "Discuss coping strategies for potential withdrawal symptoms.",
+              "Explore specific health concerns in detail, including potential withdrawal symptoms.",
+              "Reinforce the motivational power of family support.",
+              "Help the patient visualize the positive changes in their life that will result from quitting."
+            ],
+            "reasoning_summary": "The patient is in the contemplation stage, actively considering quitting due to a strong family motivator and concerns about their health. The recommended interventions focus on deepening their understanding of the health benefits and reinforcing the supportive role of their family to facilitate commitment.",
+            "confidence_score": 0.95,
+            "debate_rounds_used": 1,
+            "vote_agreement": 0.833,
+            "sanity_passed": true,
+            "inconsistencies": [],
+            "session_number": 1,
+            "longitudinal_flags": [],
+            "longitudinal_sanity_passed": true
+          },
+          "longitudinal_output": {
+            "patient_id": "892ec4c8-48e4-4cfc-a69f-791e817112bd",
+            "session_number": 1,
+            "current_annotation": {
+              "stage_of_change": "contemplation",
+              "main_concern": "health concerns",
+              "primary_trigger": "family",
+              "quit_attempt_history": "Patient has expressed a desire to quit smoking for good and acknowledges its negative impact on health.",
+              "recommended_intervention": [
+                "Explore specific health concerns in detail, focusing on potential benefits of quitting.",
+                "Reinforce the importance of family support and values.",
+                "Discuss coping strategies for potential withdrawal symptoms.",
+                "Explore specific health concerns in detail, including potential withdrawal symptoms.",
+                "Reinforce the motivational power of family support.",
+                "Help the patient visualize the positive changes in their life that will result from quitting."
+              ],
+              "reasoning_summary": "The patient is in the contemplation stage, actively considering quitting due to a strong family motivator and concerns about their health. The recommended interventions focus on deepening their understanding of the health benefits and reinforcing the supportive role of their family to facilitate commitment.",
+              "confidence_score": 0.95,
+              "debate_rounds_used": 1,
+              "vote_agreement": 0.833,
+              "sanity_passed": true,
+              "inconsistencies": [],
+              "session_number": 1,
+              "longitudinal_flags": [],
+              "longitudinal_sanity_passed": true
+            },
+            "delta": null,
+            "stage_trajectory": [
+              "contemplation"
+            ],
+            "persistent_triggers": [],
+            "persistent_concerns": [],
+            "interventions_tried": [],
+            "relapse_detected": false,
+            "stagnation_detected": false,
+            "overall_progress": "unknown",
+            "longitudinal_flags": []
+          },
+          "session_number": 1,
+          "patient_id": "892ec4c8-48e4-4cfc-a69f-791e817112bd"
+        }
+      }
+    ],
+    "updated_at": "2026-04-14T12:59:57.742483+00:00"
+  },
+  "e9d76198-5375-4705-a6ba-b4d9207c3eb4": {
+    "session_id": "e9d76198-5375-4705-a6ba-b4d9207c3eb4",
+    "turn": 1,
+    "last_result": {
+      "dataset_row": {
+        "stage_of_change": "precontemplation",
+        "main_concern": "Lack of engagement with the topic of quitting smoking",
+        "primary_trigger": "N/A",
+        "quit_attempt_history": "Patient has previously attempted to quit smoking using nicotine gum and gradual reduction strategies.",
+        "recommended_intervention": [
+          "Explore the patient's current thoughts and feelings regarding smoking.",
+          "Assess the reasons behind previous quit attempts and any challenges encountered.",
+          "Begin with open-ended questions to understand the patient's perspective and motivations.",
+          "Assess the reasons behind previous attempts and any barriers to quitting.",
+          "Start with open-ended questions to understand the patient's perspective and motivations.",
+          "Assess the reasons behind previous quit attempts and any challenges faced."
+        ],
+        "reasoning_summary": "The patient's initial greeting indicates precontemplation, as they haven't yet seriously considered quitting. The counselor's approach focuses on building rapport and understanding the patient's perspective through open-ended questions to identify barriers and motivations before moving forward.",
+        "confidence_score": 0.95,
+        "debate_rounds_used": 0,
+        "vote_agreement": 0.917,
+        "sanity_passed": true,
+        "inconsistencies": [],
+        "session_number": 1,
+        "longitudinal_flags": [],
+        "longitudinal_sanity_passed": true
+      },
+      "longitudinal_output": {
+        "patient_id": "e9d76198-5375-4705-a6ba-b4d9207c3eb4",
+        "session_number": 1,
+        "current_annotation": {
+          "stage_of_change": "precontemplation",
+          "main_concern": "Lack of engagement with the topic of quitting smoking",
+          "primary_trigger": "N/A",
+          "quit_attempt_history": "Patient has previously attempted to quit smoking using nicotine gum and gradual reduction strategies.",
+          "recommended_intervention": [
+            "Explore the patient's current thoughts and feelings regarding smoking.",
+            "Assess the reasons behind previous quit attempts and any challenges encountered.",
+            "Begin with open-ended questions to understand the patient's perspective and motivations.",
+            "Assess the reasons behind previous attempts and any barriers to quitting.",
+            "Start with open-ended questions to understand the patient's perspective and motivations.",
+            "Assess the reasons behind previous quit attempts and any challenges faced."
+          ],
+          "reasoning_summary": "The patient's initial greeting indicates precontemplation, as they haven't yet seriously considered quitting. The counselor's approach focuses on building rapport and understanding the patient's perspective through open-ended questions to identify barriers and motivations before moving forward.",
+          "confidence_score": 0.95,
+          "debate_rounds_used": 0,
+          "vote_agreement": 0.917,
+          "sanity_passed": true,
+          "inconsistencies": [],
+          "session_number": 1,
+          "longitudinal_flags": [],
+          "longitudinal_sanity_passed": true
+        },
+        "delta": null,
+        "stage_trajectory": [
+          "precontemplation"
+        ],
+        "persistent_triggers": [],
+        "persistent_concerns": [],
+        "interventions_tried": [],
+        "relapse_detected": false,
+        "stagnation_detected": false,
+        "overall_progress": "unknown",
+        "longitudinal_flags": []
+      },
+      "session_number": 1,
+      "patient_id": "e9d76198-5375-4705-a6ba-b4d9207c3eb4"
+    },
+    "history": [
+      {
+        "turn": 1,
+        "timestamp": "2026-04-15T09:45:36.151453+00:00",
+        "messages": [
+          {
+            "role": "user",
+            "content": "hi"
+          },
+          {
+            "role": "assistant",
+            "content": "Hi! I'm eDOSTHI, your friendly AI coach. Ready to help you kick the habit and live smoke-free? What's been on your mind lately about quitting smoking?"
+          }
+        ],
+        "result": {
+          "dataset_row": {
+            "stage_of_change": "precontemplation",
+            "main_concern": "Lack of engagement with the topic of quitting smoking",
+            "primary_trigger": "N/A",
+            "quit_attempt_history": "Patient has previously attempted to quit smoking using nicotine gum and gradual reduction strategies.",
+            "recommended_intervention": [
+              "Explore the patient's current thoughts and feelings regarding smoking.",
+              "Assess the reasons behind previous quit attempts and any challenges encountered.",
+              "Begin with open-ended questions to understand the patient's perspective and motivations.",
+              "Assess the reasons behind previous attempts and any barriers to quitting.",
+              "Start with open-ended questions to understand the patient's perspective and motivations.",
+              "Assess the reasons behind previous quit attempts and any challenges faced."
+            ],
+            "reasoning_summary": "The patient's initial greeting indicates precontemplation, as they haven't yet seriously considered quitting. The counselor's approach focuses on building rapport and understanding the patient's perspective through open-ended questions to identify barriers and motivations before moving forward.",
+            "confidence_score": 0.95,
+            "debate_rounds_used": 0,
+            "vote_agreement": 0.917,
+            "sanity_passed": true,
+            "inconsistencies": [],
+            "session_number": 1,
+            "longitudinal_flags": [],
+            "longitudinal_sanity_passed": true
+          },
+          "longitudinal_output": {
+            "patient_id": "e9d76198-5375-4705-a6ba-b4d9207c3eb4",
+            "session_number": 1,
+            "current_annotation": {
+              "stage_of_change": "precontemplation",
+              "main_concern": "Lack of engagement with the topic of quitting smoking",
+              "primary_trigger": "N/A",
+              "quit_attempt_history": "Patient has previously attempted to quit smoking using nicotine gum and gradual reduction strategies.",
+              "recommended_intervention": [
+                "Explore the patient's current thoughts and feelings regarding smoking.",
+                "Assess the reasons behind previous quit attempts and any challenges encountered.",
+                "Begin with open-ended questions to understand the patient's perspective and motivations.",
+                "Assess the reasons behind previous attempts and any barriers to quitting.",
+                "Start with open-ended questions to understand the patient's perspective and motivations.",
+                "Assess the reasons behind previous quit attempts and any challenges faced."
+              ],
+              "reasoning_summary": "The patient's initial greeting indicates precontemplation, as they haven't yet seriously considered quitting. The counselor's approach focuses on building rapport and understanding the patient's perspective through open-ended questions to identify barriers and motivations before moving forward.",
+              "confidence_score": 0.95,
+              "debate_rounds_used": 0,
+              "vote_agreement": 0.917,
+              "sanity_passed": true,
+              "inconsistencies": [],
+              "session_number": 1,
+              "longitudinal_flags": [],
+              "longitudinal_sanity_passed": true
+            },
+            "delta": null,
+            "stage_trajectory": [
+              "precontemplation"
+            ],
+            "persistent_triggers": [],
+            "persistent_concerns": [],
+            "interventions_tried": [],
+            "relapse_detected": false,
+            "stagnation_detected": false,
+            "overall_progress": "unknown",
+            "longitudinal_flags": []
+          },
+          "session_number": 1,
+          "patient_id": "e9d76198-5375-4705-a6ba-b4d9207c3eb4"
+        }
+      }
+    ],
+    "updated_at": "2026-04-15T09:45:36.151463+00:00"
+  },
+  "081015a0-c88c-4d45-8b18-9fb419a261cf": {
+    "session_id": "081015a0-c88c-4d45-8b18-9fb419a261cf",
+    "turn": 1,
+    "last_result": {
+      "dataset_row": {
+        "stage_of_change": "contemplation",
+        "main_concern": "Desire for a healthy lifestyle",
+        "primary_trigger": "Desire to quit smoking for a healthy lifestyle",
+        "quit_attempt_history": "Patient expresses a desire to quit smoking to live a healthy life.",
+        "recommended_intervention": [
+          "Explore the patient's motivations for wanting a healthy lifestyle in detail.",
+          "Discuss the benefits of quitting smoking in terms of health and well-being."
+        ],
+        "reasoning_summary": "The patient clearly articulates a desire for a healthy lifestyle as the primary driver for quitting, placing them firmly in the contemplation stage. An appropriate intervention involves exploring these motivations further and highlighting the tangible health benefits of cessation to reinforce their commitment.",
+        "confidence_score": 1.0,
+        "debate_rounds_used": 0,
+        "vote_agreement": 0.917,
+        "sanity_passed": true,
+        "inconsistencies": [],
+        "session_number": 1,
+        "longitudinal_flags": [],
+        "longitudinal_sanity_passed": true
+      },
+      "longitudinal_output": {
+        "patient_id": "081015a0-c88c-4d45-8b18-9fb419a261cf",
+        "session_number": 1,
+        "current_annotation": {
+          "stage_of_change": "contemplation",
+          "main_concern": "Desire for a healthy lifestyle",
+          "primary_trigger": "Desire to quit smoking for a healthy lifestyle",
+          "quit_attempt_history": "Patient expresses a desire to quit smoking to live a healthy life.",
+          "recommended_intervention": [
+            "Explore the patient's motivations for wanting a healthy lifestyle in detail.",
+            "Discuss the benefits of quitting smoking in terms of health and well-being."
+          ],
+          "reasoning_summary": "The patient clearly articulates a desire for a healthy lifestyle as the primary driver for quitting, placing them firmly in the contemplation stage. An appropriate intervention involves exploring these motivations further and highlighting the tangible health benefits of cessation to reinforce their commitment.",
+          "confidence_score": 1.0,
+          "debate_rounds_used": 0,
+          "vote_agreement": 0.917,
+          "sanity_passed": true,
+          "inconsistencies": [],
+          "session_number": 1,
+          "longitudinal_flags": [],
+          "longitudinal_sanity_passed": true
+        },
+        "delta": null,
+        "stage_trajectory": [
+          "contemplation"
+        ],
+        "persistent_triggers": [],
+        "persistent_concerns": [],
+        "interventions_tried": [],
+        "relapse_detected": false,
+        "stagnation_detected": false,
+        "overall_progress": "unknown",
+        "longitudinal_flags": []
+      },
+      "session_number": 1,
+      "patient_id": "081015a0-c88c-4d45-8b18-9fb419a261cf"
+    },
+    "history": [
+      {
+        "turn": 1,
+        "timestamp": "2026-04-17T08:06:27.283012+00:00",
+        "messages": [
+          {
+            "role": "user",
+            "content": "নমস্কার"
+          },
+          {
+            "role": "assistant",
+            "content": "নমস্কার! ধূমপান ছেড়ে দিতে আপনি কী করতে চান, বলুন তো? আপনার লক্ষ্য কী?"
+          },
+          {
+            "role": "user",
+            "content": "আমি সুস্থ জীবন যাপন এর জন্য ধূমপান ছাড়তে চাই"
+          },
+          {
+            "role": "assistant",
+            "content": "ধুমপান ছেড়ে দিতে চান, এটা জেনে ভালো লাগলো। সুস্থ জীবনযাপন করার এই ইচ্ছাকে আপনি কতটা গুরুত্ব দেন?"
+          }
+        ],
+        "result": {
+          "dataset_row": {
+            "stage_of_change": "contemplation",
+            "main_concern": "Desire for a healthy lifestyle",
+            "primary_trigger": "Desire to quit smoking for a healthy lifestyle",
+            "quit_attempt_history": "Patient expresses a desire to quit smoking to live a healthy life.",
+            "recommended_intervention": [
+              "Explore the patient's motivations for wanting a healthy lifestyle in detail.",
+              "Discuss the benefits of quitting smoking in terms of health and well-being."
+            ],
+            "reasoning_summary": "The patient clearly articulates a desire for a healthy lifestyle as the primary driver for quitting, placing them firmly in the contemplation stage. An appropriate intervention involves exploring these motivations further and highlighting the tangible health benefits of cessation to reinforce their commitment.",
+            "confidence_score": 1.0,
+            "debate_rounds_used": 0,
+            "vote_agreement": 0.917,
+            "sanity_passed": true,
+            "inconsistencies": [],
+            "session_number": 1,
+            "longitudinal_flags": [],
+            "longitudinal_sanity_passed": true
+          },
+          "longitudinal_output": {
+            "patient_id": "081015a0-c88c-4d45-8b18-9fb419a261cf",
+            "session_number": 1,
+            "current_annotation": {
+              "stage_of_change": "contemplation",
+              "main_concern": "Desire for a healthy lifestyle",
+              "primary_trigger": "Desire to quit smoking for a healthy lifestyle",
+              "quit_attempt_history": "Patient expresses a desire to quit smoking to live a healthy life.",
+              "recommended_intervention": [
+                "Explore the patient's motivations for wanting a healthy lifestyle in detail.",
+                "Discuss the benefits of quitting smoking in terms of health and well-being."
+              ],
+              "reasoning_summary": "The patient clearly articulates a desire for a healthy lifestyle as the primary driver for quitting, placing them firmly in the contemplation stage. An appropriate intervention involves exploring these motivations further and highlighting the tangible health benefits of cessation to reinforce their commitment.",
+              "confidence_score": 1.0,
+              "debate_rounds_used": 0,
+              "vote_agreement": 0.917,
+              "sanity_passed": true,
+              "inconsistencies": [],
+              "session_number": 1,
+              "longitudinal_flags": [],
+              "longitudinal_sanity_passed": true
+            },
+            "delta": null,
+            "stage_trajectory": [
+              "contemplation"
+            ],
+            "persistent_triggers": [],
+            "persistent_concerns": [],
+            "interventions_tried": [],
+            "relapse_detected": false,
+            "stagnation_detected": false,
+            "overall_progress": "unknown",
+            "longitudinal_flags": []
+          },
+          "session_number": 1,
+          "patient_id": "081015a0-c88c-4d45-8b18-9fb419a261cf"
+        }
+      }
+    ],
+    "updated_at": "2026-04-17T08:06:27.283033+00:00"
+  }
+}

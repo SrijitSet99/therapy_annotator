@@ -1,0 +1,41 @@
+=== LLM Response Log — 20260417_120442 ===
+
+--- [CONFIDENCE_CHECK] attempt @ 12:04:43.953 ---
+{
+  "confidence": 1.0,
+  "issues": []
+}
+
+--- [CONFIDENCE_CHECK] readiness @ 12:04:47.057 ---
+{
+  "confidence": 0.7,
+  "issues": [
+    "The classification of precontemplation is borderline. While the patient states 'I want to quit smoking,' this is a very initial statement and lacks any indication of behavioral intention or commitment. A stronger statement about considering quitting or having already taken steps would more clearly support precontemplation. However, the counselor's follow-up question about motivation leans slightly towards contemplation.",
+    "There is a minor evidence gap. The conversation lacks concrete evidence of the patient's level of awareness or consideration of quitting. A more detailed exploration of past attempts, perceived barriers, or potential support systems would be needed to solidify a precontemplation classification."
+  ]
+}
+
+--- [CONFIDENCE_CHECK] concern @ 12:04:50.161 ---
+{
+  "confidence": 0.8,
+  "issues": [
+    "Minor omission: The conversation doesn't explicitly state a concern beyond the stated desire to quit. While the counselor probes for motivation, a potential underlying anxiety related to the *process* of quitting (e.g., difficulty managing withdrawal symptoms) wasn't directly identified. This represents a slight underrepresentation of the patient's potential concerns.",
+    "Categorization Accuracy - Physiological: The extraction of 'Cravings' is accurate based on the patient's initial statement. However, a more nuanced categorization might benefit from acknowledging the potential for physiological concerns related to withdrawal symptoms, which are implied but not explicitly stated."
+  ]
+}
+
+--- [CONFIDENCE_CHECK] triggers @ 12:04:52.288 ---
+{
+  "confidence": 0.95,
+  "issues": [
+    "Omission Detection: The conversation clearly indicates a desire to quit smoking. The extraction misses the explicit statement 'I want to quit smoking'. This is a critical omission.",
+    "Classification Accuracy: The trigger 'want to quit smoking' is correctly classified as a desire to quit. No further classification is needed."
+  ]
+}
+
+--- [CONFIDENCE_CHECK] advice @ 12:04:53.355 ---
+{
+  "confidence": 0.95,
+  "issues": []
+}
+

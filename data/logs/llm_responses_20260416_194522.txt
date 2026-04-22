@@ -1,0 +1,41 @@
+=== LLM Response Log — 20260416_194522 ===
+
+--- [CONFIDENCE_CHECK] attempt @ 19:45:24.006 ---
+{
+  "confidence": 1.0,
+  "issues": []
+}
+
+--- [CONFIDENCE_CHECK] readiness @ 19:45:27.573 ---
+{
+  "confidence": 0.7,
+  "issues": [
+    "The classification of Precontemplation (implied by the initial focus on cravings and lack of coping strategies) is defensible given the patient's initial statement about difficulty quitting due to cravings and lack of alternative coping mechanisms. However, the counselor's subsequent suggestions of alternative strategies and asking about healthy ways to manage stress introduces elements of Contemplation. There's a minor evidence gap \u2013 the patient hasn't yet explicitly stated an intention to change.",
+    "The conversation demonstrates a slight shift towards Preparation. The counselor is actively offering suggestions for coping mechanisms (deep breaths, walks, etc.) and prompting the patient to consider them. This moves beyond simply acknowledging the problem (precontemplation) and begins to explore potential solutions, a key characteristic of the Preparation stage."
+  ]
+}
+
+--- [CONFIDENCE_CHECK] concern @ 19:45:30.636 ---
+{
+  "confidence": 0.5,
+  "issues": []
+}
+
+--- [CONFIDENCE_CHECK] triggers @ 19:45:33.421 ---
+{
+  "confidence": 0.6,
+  "issues": [
+    "Omission Detection: The conversation explicitly states 'cravings can be tough!' and the patient responds with 'I find it difficult to quit smokung because of my cravings'. The extraction misses the explicit mention of 'cravings' as a trigger.  Category: Behavioral/Physiological",
+    "Classification Accuracy: While 'stress' is correctly identified, the extraction lacks granularity. Cravings are a *type* of trigger, and the conversation clearly links them to stress.  A more precise categorization would be beneficial."
+  ]
+}
+
+--- [CONFIDENCE_CHECK] advice @ 19:45:36.204 ---
+{
+  "confidence": 0.95,
+  "issues": [
+    "Omission: The patient explicitly states 'Stress' as a trigger. This core piece of information is not fully captured in the 'evidence' field. It should be included in the 'advice' or a separate field for triggers.",
+    "Omission: The counselor's initial question about the patient's biggest struggle ('What's been your biggest struggle with quitting so far?') is missing from the extracted data. This is a crucial starting point for the conversation."
+  ]
+}
+

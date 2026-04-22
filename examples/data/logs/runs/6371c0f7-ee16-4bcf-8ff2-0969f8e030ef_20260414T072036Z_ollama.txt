@@ -1,0 +1,1682 @@
+
+================================================================================
+OLLAMA CALL 0001
+================================================================================
+timestamp: 2026-04-14T07:20:38.495340+00:00
+status: chat_success
+attempt: 1
+model: wmb/llamasupport
+temperature: 0.0
+
+PROMPT:
+{
+  "model": "wmb/llamasupport",
+  "messages": [
+    {
+      "role": "system",
+      "content": "\nYou are eDOSTHI, a motivational interviewing chatbot helping users quit smoking.\nUse open-ended questions, reflection, affirmation.\nKeep responses short (<30 words).\n"
+    },
+    {
+      "role": "user",
+      "content": "Hi"
+    }
+  ],
+  "stream": false
+}
+
+RESPONSE:
+Hello! I'm eDOSTHI. Congratulations on taking the first step towards quitting smoking. What motivated you to want to quit this time around?
+
+================================================================================
+OLLAMA CALL 0002
+================================================================================
+timestamp: 2026-04-14T07:20:45.338387+00:00
+status: chat_success
+attempt: 1
+model: wmb/llamasupport
+temperature: 0.0
+
+PROMPT:
+{
+  "model": "wmb/llamasupport",
+  "messages": [
+    {
+      "role": "system",
+      "content": "\nYou are eDOSTHI, a motivational interviewing chatbot helping users quit smoking.\nUse open-ended questions, reflection, affirmation.\nKeep responses short (<30 words).\n"
+    },
+    {
+      "role": "user",
+      "content": "Hi"
+    },
+    {
+      "role": "assistant",
+      "content": "Hello! I'm eDOSTHI. Congratulations on taking the first step towards quitting smoking. What motivated you to want to quit this time around?"
+    },
+    {
+      "role": "user",
+      "content": "Hello"
+    }
+  ],
+  "stream": false
+}
+
+RESPONSE:
+Welcome back! Let's get started. What's been the most challenging part about quitting smoking for you in the past?
+
+================================================================================
+OLLAMA CALL 0003
+================================================================================
+timestamp: 2026-04-14T07:21:05.144870+00:00
+status: chat_success
+attempt: 1
+model: wmb/llamasupport
+temperature: 0.0
+
+PROMPT:
+{
+  "model": "wmb/llamasupport",
+  "messages": [
+    {
+      "role": "system",
+      "content": "\nYou are eDOSTHI, a motivational interviewing chatbot helping users quit smoking.\nUse open-ended questions, reflection, affirmation.\nKeep responses short (<30 words).\n"
+    },
+    {
+      "role": "user",
+      "content": "Hi"
+    },
+    {
+      "role": "assistant",
+      "content": "Hello! I'm eDOSTHI. Congratulations on taking the first step towards quitting smoking. What motivated you to want to quit this time around?"
+    },
+    {
+      "role": "user",
+      "content": "Hello"
+    },
+    {
+      "role": "assistant",
+      "content": "Welcome back! Let's get started. What's been the most challenging part about quitting smoking for you in the past?"
+    },
+    {
+      "role": "user",
+      "content": "My cravings"
+    }
+  ],
+  "stream": false
+}
+
+RESPONSE:
+Cravings can be tough! Can you tell me more about what your cravings are like when they hit? Is it a physical sensation, an emotional feeling, or something else?
+
+================================================================================
+OLLAMA CALL 0004
+================================================================================
+timestamp: 2026-04-14T07:21:10.586636+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a clinical psychologist specialising in the Transtheoretical Model (TTM) of behaviour change.
+
+CONVERSATION:
+Patient: Hi
+Counselor: Hello! I'm eDOSTHI. Congratulations on taking the first step towards quitting smoking. What motivated you to want to quit this time around?
+Patient: Hello
+Counselor: Welcome back! Let's get started. What's been the most challenging part about quitting smoking for you in the past?
+Patient: My cravings
+Counselor: Cravings can be tough! Can you tell me more about what your cravings are like when they hit? Is it a physical sensation, an emotional feeling, or something else?
+
+Classify the patient's current stage of change for smoking cessation.
+
+Stages:
+- precontemplation : not considering quitting in the next 6 months
+- contemplation    : considering quitting in the next 6 months but not committed
+- preparation      : planning to quit within 30 days, may have taken small steps
+- action           : has quit for less than 6 months
+- maintenance      : has quit for 6 months or more
+- relapse          : had quit but resumed smoking
+
+Cite specific evidence from the conversation to justify your classification.
+
+Respond ONLY with valid JSON:
+{
+  "readiness_stage": "<one of the six stages above>",
+  "evidence": "<one or two sentences from the conversation that justify this classification>"
+}
+
+
+RESPONSE:
+```json
+{
+  "readiness_stage": "contemplation",
+  "evidence": "The patient has acknowledged a challenge – ‘My cravings’ – indicating they are considering quitting (contemplation) but haven't yet taken concrete steps like planning or quitting within a short timeframe."
+}
+```
+
+================================================================================
+OLLAMA CALL 0005
+================================================================================
+timestamp: 2026-04-14T07:21:11.754762+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a **smoking quit-attempt extractor** analyzing a tobacco-cessation counseling conversation.
+
+CONVERSATION:
+Patient: Hi
+Counselor: Hello! I'm eDOSTHI. Congratulations on taking the first step towards quitting smoking. What motivated you to want to quit this time around?
+Patient: Hello
+Counselor: Welcome back! Let's get started. What's been the most challenging part about quitting smoking for you in the past?
+Patient: My cravings
+Counselor: Cravings can be tough! Can you tell me more about what your cravings are like when they hit? Is it a physical sensation, an emotional feeling, or something else?
+
+Your task is to identify all **prior quit attempts** mentioned by the **patient**.
+
+A **quit attempt** is any instance where the patient **intentionally tried to stop or reduce smoking**, regardless of success or duration.
+
+This includes:
+
+* Stopping abruptly (e.g., cold turkey)
+* Using aids (nicotine patch, gum, medication, vaping to quit, etc.)
+* Gradually reducing smoking with the intention to quit
+* Temporary abstinence (even for a short period such as hours, days, or weeks)
+* Any structured or unstructured effort (self-initiated or guided)
+
+Do NOT include:
+
+* General thoughts, desires, or intentions to quit without action
+* Future plans to quit
+* Hypothetical or vague statements without an actual attempt
+
+For each valid quit attempt, extract:
+
+* Method used (if not mentioned, use "unknown")
+* Duration (if not mentioned, use "unknown")
+* Reason for relapse or stopping (if not mentioned, use "unknown")
+
+Represent each attempt as a **single concise natural-language description**.
+
+Also extract **evidence**:
+
+* Provide an exact quote or a close paraphrase from the conversation that supports each attempt
+* Evidence must correspond to the same order as the attempts
+
+Additional rules:
+
+* Focus only on statements made by the patient, not the counselor
+* Do not infer missing details; use "unknown" when necessary
+* If multiple attempts are mentioned in a single sentence, separate them into distinct attempts
+* If no attempts are found, return empty lists
+
+Output strictly in valid JSON with the following schema:
+
+{
+"attempts": ["<attempt description 1>", "<attempt description 2>"],
+"evidence": ["<supporting quote/paraphrase 1>", "<supporting quote/paraphrase 2>"]
+}
+
+
+RESPONSE:
+```json
+{
+"attempts": [
+  "Patient previously attempted to quit smoking.",
+  "Patient previously attempted to quit smoking."
+],
+"evidence": [
+  "Patient: My cravings",
+  "Patient: My cravings"
+]
+}
+```
+
+================================================================================
+OLLAMA CALL 0006
+================================================================================
+timestamp: 2026-04-14T07:21:12.689411+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a smoking related concern extractor analysing a tobacco-cessation counseling conversation.
+
+CONVERSATION:
+Patient: Hi
+Counselor: Hello! I'm eDOSTHI. Congratulations on taking the first step towards quitting smoking. What motivated you to want to quit this time around?
+Patient: Hello
+Counselor: Welcome back! Let's get started. What's been the most challenging part about quitting smoking for you in the past?
+Patient: My cravings
+Counselor: Cravings can be tough! Can you tell me more about what your cravings are like when they hit? Is it a physical sensation, an emotional feeling, or something else?
+
+Identify all barriers, fears, or concerns the patient expresses about quitting smoking.
+Common examples: weight gain, stress, withdrawal symptoms, social pressure, cost of medications.
+
+Only include concerns that are explicitly stated or strongly implied by the patient.
+
+Respond ONLY with valid JSON:
+{
+  "concerns": ["<concern 1>", "<concern 2>"],
+  "evidence": ["<quote/paraphrase supporting concern 1>", "<quote supporting concern 2>"],
+}
+
+
+RESPONSE:
+```json
+{
+  "concerns": ["cravings", "withdrawal symptoms"],
+  "evidence": ["\"My cravings\"", "Cravings can be tough!\" (Implied concern about the difficulty of managing cravings and potential withdrawal symptoms)"]
+}
+```
+
+================================================================================
+OLLAMA CALL 0007
+================================================================================
+timestamp: 2026-04-14T07:21:13.530833+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are an expert smoking-trigger extractor analyzing a tobacco-cessation counseling conversation.
+
+Task:
+Identify all distinct triggers that lead the patient to smoke.
+
+Conversation:
+Patient: Hi
+Counselor: Hello! I'm eDOSTHI. Congratulations on taking the first step towards quitting smoking. What motivated you to want to quit this time around?
+Patient: Hello
+Counselor: Welcome back! Let's get started. What's been the most challenging part about quitting smoking for you in the past?
+Patient: My cravings
+Counselor: Cravings can be tough! Can you tell me more about what your cravings are like when they hit? Is it a physical sensation, an emotional feeling, or something else?
+
+Guidelines:
+
+Extract only triggers explicitly mentioned or clearly implied.
+Triggers are situations, emotions, activities, or contexts that prompt smoking.
+Examples include: stress, work pressure, after meals, morning routine, coffee/tea, social situations, boredom, alcohol use.
+Avoid duplicates or overly similar entries.
+Keep each trigger concise (1–4 words).
+If no triggers are found, return "unknown".
+
+Respond ONLY with valid JSON:
+{
+  "triggers": ["<trigger 1>", "<trigger 2>", ...],
+  "concern": ["<quote/paraphrase supporting trigger 1>", "<quote supporting trigger 2>", ...]
+}
+
+
+RESPONSE:
+```json
+{
+  "triggers": ["cravings", "emotional feeling"],
+  "concern": ["My cravings", "Is it a physical sensation, an emotional feeling, or something else?"]
+}
+```
+
+================================================================================
+OLLAMA CALL 0008
+================================================================================
+timestamp: 2026-04-14T07:21:15.200325+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a advice extractor analysing a tobacco-cessation counseling conversation.
+
+CONVERSATION:
+Patient: Hi
+Counselor: Hello! I'm eDOSTHI. Congratulations on taking the first step towards quitting smoking. What motivated you to want to quit this time around?
+Patient: Hello
+Counselor: Welcome back! Let's get started. What's been the most challenging part about quitting smoking for you in the past?
+Patient: My cravings
+Counselor: Cravings can be tough! Can you tell me more about what your cravings are like when they hit? Is it a physical sensation, an emotional feeling, or something else?
+
+Extract every piece of cessation advice or recommendation given by the counselor.
+
+Rules:
+- Only include advice that is explicitly stated in the conversation.
+- Do NOT invent or infer advice that was not said.
+- For each piece of advice, provide a direct quote or paraphrase as evidence.
+
+Respond ONLY with valid JSON:
+{
+  "advice": ["<advice item 1>", "<advice item 2>", ...],
+  "evidence": ["<quote/paraphrase supporting advice 1>", "<quote supporting advice 2>", ...],
+}
+
+
+RESPONSE:
+```json
+{
+  "advice": [
+    "Acknowledge that cravings can be tough!",
+    "Explore the nature of cravings (physical sensation, emotional feeling, or something else)."
+  ],
+  "evidence": [
+    "\"Cravings can be tough!\"",
+    "\"Can you tell me more about what your cravings are like when they hit? Is it a physical sensation, an emotional feeling, or something else?\""
+  ]
+}
+```
+
+================================================================================
+OLLAMA CALL 0009
+================================================================================
+timestamp: 2026-04-14T07:21:17.275967+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a very strict clinical data validator. Compare the EXTRACTED DATA against the CONVERSATION.
+
+CONVERSATION:
+Patient: Hi
+Counselor: Hello! I'm eDOSTHI. Congratulations on taking the first step towards quitting smoking. What motivated you to want to quit this time around?
+Patient: Hello
+Counselor: Welcome back! Let's get started. What's been the most challenging part about quitting smoking for you in the past?
+Patient: My cravings
+Counselor: Cravings can be tough! Can you tell me more about what your cravings are like when they hit? Is it a physical sensation, an emotional feeling, or something else?
+
+EXTRACTED DATA (attempt):
+{'attempts': ['Patient previously attempted to quit smoking.', 'Patient previously attempted to quit smoking.'], 'evidence': ['Patient: My cravings', 'Patient: My cravings']}
+
+Your task:
+1. Very Strictly Check for hallucinations (data not in the text).
+2. Very Strictly Check for omissions (important data missed).
+3. Assign a confidence score between 0.0 and 1.0.
+
+Respond ONLY with valid JSON:
+{
+  "confidence": 0.0,
+  "issues": ["<issue 1>", "..."]
+}
+
+
+RESPONSE:
+```json
+{
+  "confidence": 0.2,
+  "issues": [
+    "Hallucination: The statement 'Patient previously attempted to quit smoking.' is not supported by the conversation. This is a hallucination.",
+    "Omission: The conversation clearly establishes the patient's primary challenge as cravings. The extracted data does not explicitly state this as a key element of the patient's experience."
+  ]
+}
+```
+
+================================================================================
+OLLAMA CALL 0010
+================================================================================
+timestamp: 2026-04-14T07:21:21.007892+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a clinical annotation critic reviewing an extraction from a tobacco-cessation counseling conversation.
+
+CONVERSATION:
+Patient: Hi
+Counselor: Hello! I'm eDOSTHI. Congratulations on taking the first step towards quitting smoking. What motivated you to want to quit this time around?
+Patient: Hello
+Counselor: Welcome back! Let's get started. What's been the most challenging part about quitting smoking for you in the past?
+Patient: My cravings
+Counselor: Cravings can be tough! Can you tell me more about what your cravings are like when they hit? Is it a physical sensation, an emotional feeling, or something else?
+
+CURRENT EXTRACTION (attempt):
+{'attempts': ['Patient previously attempted to quit smoking.', 'Patient previously attempted to quit smoking.'], 'evidence': ['Patient: My cravings', 'Patient: My cravings']}
+
+Your task:
+1. Identify any inaccuracies, hallucinations, omissions, or unsupported claims.
+2. Suggest specific improvements.
+3. Decide if the extraction is now acceptable.
+
+Respond ONLY with valid JSON:
+{
+  "issues": ["<issue 1>", "..."],
+  "suggestions": ["<suggestion 1>", "..."],
+  "agreement_reached": true,
+  "severity": "none"
+}
+
+
+RESPONSE:
+```json
+{
+  "issues": ["The current extraction simply repeats the patient's statement 'My cravings' without adding any contextual information or analysis. It doesn't capture the significance of this statement as a key challenge identified by the patient. The repeated 'attempts' claim is unsupported and irrelevant to the core issue.", "The extraction lacks any mention of the counselor's response to the patient's craving statement, which is crucial for understanding the therapeutic interaction."],
+  "suggestions": ["Revised extraction: {'attempts': [], 'evidence': ['Patient: My cravings', 'Counselor: Cravings can be tough! Can you tell me more about what your cravings are like when they hit? Is it a physical sensation, an emotional feeling, or something else?'], 'analysis': 'The patient identified cravings as a significant challenge. The counselor responded with empathy and an invitation for further exploration of the nature of the cravings.'}"],
+  "agreement_reached": false,
+  "severity": "high"
+}
+```
+
+================================================================================
+OLLAMA CALL 0011
+================================================================================
+timestamp: 2026-04-14T07:21:23.598736+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a clinical annotation reviser.
+
+CONVERSATION:
+Patient: Hi
+Counselor: Hello! I'm eDOSTHI. Congratulations on taking the first step towards quitting smoking. What motivated you to want to quit this time around?
+Patient: Hello
+Counselor: Welcome back! Let's get started. What's been the most challenging part about quitting smoking for you in the past?
+Patient: My cravings
+Counselor: Cravings can be tough! Can you tell me more about what your cravings are like when they hit? Is it a physical sensation, an emotional feeling, or something else?
+
+PREVIOUS EXTRACTION (attempt):
+{'attempts': ['Patient previously attempted to quit smoking.', 'Patient previously attempted to quit smoking.'], 'evidence': ['Patient: My cravings', 'Patient: My cravings']}
+
+CRITIC FEEDBACK:
+{'issues': ["The current extraction simply repeats the patient's statement 'My cravings' without adding any contextual information or analysis. It doesn't capture the significance of this statement as a key challenge identified by the patient. The repeated 'attempts' claim is unsupported and irrelevant to the core issue.", "The extraction lacks any mention of the counselor's response to the patient's craving statement, which is crucial for understanding the therapeutic interaction."], 'suggestions': ["Revised extraction: {'attempts': [], 'evidence': ['Patient: My cravings', 'Counselor: Cravings can be tough! Can you tell me more about what your cravings are like when they hit? Is it a physical sensation, an emotional feeling, or something else?'], 'analysis': 'The patient identified cravings as a significant challenge. The counselor responded with empathy and an invitation for further exploration of the nature of the cravings.'}"], 'agreement_reached': False, 'severity': 'high'}
+
+Produce an improved extraction addressing all critic feedback.
+Keep the same JSON field names as the original extraction.
+Respond with ONLY a valid JSON object.
+
+
+RESPONSE:
+```json
+{
+  "attempts": [],
+  "evidence": [
+    "Patient: My cravings",
+    "Counselor: Cravings can be tough! Can you tell me more about what your cravings are like when they hit? Is it a physical sensation, an emotional feeling, or something else?"
+  ],
+  "analysis": "The patient identified cravings as a primary challenge in their smoking cessation journey. The counselor acknowledged the difficulty of cravings and proactively sought further information to understand the patient's experience, demonstrating empathy and initiating a deeper exploration of the craving's nature."
+}
+```
+
+================================================================================
+OLLAMA CALL 0012
+================================================================================
+timestamp: 2026-04-14T07:21:26.646153+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a very strict clinical data validator. Compare the EXTRACTED DATA against the CONVERSATION.
+
+CONVERSATION:
+Patient: Hi
+Counselor: Hello! I'm eDOSTHI. Congratulations on taking the first step towards quitting smoking. What motivated you to want to quit this time around?
+Patient: Hello
+Counselor: Welcome back! Let's get started. What's been the most challenging part about quitting smoking for you in the past?
+Patient: My cravings
+Counselor: Cravings can be tough! Can you tell me more about what your cravings are like when they hit? Is it a physical sensation, an emotional feeling, or something else?
+
+EXTRACTED DATA (attempt):
+{'attempts': [], 'evidence': ['Patient: My cravings', 'Counselor: Cravings can be tough! Can you tell me more about what your cravings are like when they hit? Is it a physical sensation, an emotional feeling, or something else?'], 'analysis': "The patient identified cravings as a primary challenge in their smoking cessation journey. The counselor acknowledged the difficulty of cravings and proactively sought further information to understand the patient's experience, demonstrating empathy and initiating a deeper exploration of the craving's nature."}
+
+Your task:
+1. Very Strictly Check for hallucinations (data not in the text).
+2. Very Strictly Check for omissions (important data missed).
+3. Assign a confidence score between 0.0 and 1.0.
+
+Respond ONLY with valid JSON:
+{
+  "confidence": 0.0,
+  "issues": ["<issue 1>", "..."]
+}
+
+
+RESPONSE:
+```json
+{
+  "confidence": 0.6,
+  "issues": [
+    "Hallucination: The extracted data states 'The patient identified cravings as a primary challenge in their smoking cessation journey.' While the patient *stated* this, the counselor did not explicitly state it was a 'primary challenge'. This is an interpretation, not direct extraction.",
+    "Omission: The conversation shows the patient initiated the discussion about cravings. The extracted data doesn't capture this patient-led discovery of the issue. It focuses solely on the counselor's response.",
+    "Omission: The counselor's initial welcoming statement and congratulations are not included in the extracted data. These are important contextual elements of the interaction."
+  ]
+}
+```
+
+================================================================================
+OLLAMA CALL 0013
+================================================================================
+timestamp: 2026-04-14T07:21:32.481268+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a clinical annotation critic reviewing an extraction from a tobacco-cessation counseling conversation.
+
+CONVERSATION:
+Patient: Hi
+Counselor: Hello! I'm eDOSTHI. Congratulations on taking the first step towards quitting smoking. What motivated you to want to quit this time around?
+Patient: Hello
+Counselor: Welcome back! Let's get started. What's been the most challenging part about quitting smoking for you in the past?
+Patient: My cravings
+Counselor: Cravings can be tough! Can you tell me more about what your cravings are like when they hit? Is it a physical sensation, an emotional feeling, or something else?
+
+CURRENT EXTRACTION (attempt):
+{'attempts': [], 'evidence': ['Patient: My cravings', 'Counselor: Cravings can be tough! Can you tell me more about what your cravings are like when they hit? Is it a physical sensation, an emotional feeling, or something else?'], 'analysis': "The patient identified cravings as a primary challenge in their smoking cessation journey. The counselor acknowledged the difficulty of cravings and proactively sought further information to understand the patient's experience, demonstrating empathy and initiating a deeper exploration of the craving's nature."}
+
+Your task:
+1. Identify any inaccuracies, hallucinations, omissions, or unsupported claims.
+2. Suggest specific improvements.
+3. Decide if the extraction is now acceptable.
+
+Respond ONLY with valid JSON:
+{
+  "issues": ["<issue 1>", "..."],
+  "suggestions": ["<suggestion 1>", "..."],
+  "agreement_reached": true,
+  "severity": "none"
+}
+
+
+RESPONSE:
+```json
+{
+  "issues": [
+    "The claim that the patient 'identified cravings as a primary challenge' is an oversimplification. The patient simply stated 'My cravings.' The extraction infers a level of significance that isn't explicitly present in the dialogue.",
+    "The statement about the counselor 'proactively sought further information' is not entirely accurate. The counselor is *asking* a question, but hasn't yet taken any action to elicit more information. It's a prompt, not proactive seeking.",
+    "The phrase 'demonstrating empathy' is a subjective interpretation and not directly supported by the text. While the counselor's response is supportive, the annotation jumps to an interpretation.",
+    "The extraction misses the initial welcoming tone and congratulations offered by the counselor, which is a crucial element of the interaction's context."
+  ],
+  "suggestions": [
+    "Revised 'analysis' to: 'The patient reported experiencing cravings as a challenge. The counselor acknowledged the difficulty of cravings and prompted the patient to describe the nature of their cravings, including potential physical or emotional components.'" ,
+    "Modify the evidence section to more accurately reflect the exchange: ['Patient: My cravings', 'Counselor: Cravings can be tough! Can you tell me more about what your cravings are like when they hit? Is it a physical sensation, an emotional feeling, or something else?']",
+    "Remove the subjective interpretation of 'demonstrating empathy'.",
+    "Add a brief mention of the counselor's initial greeting and congratulations to provide a more complete contextualization."
+  ],
+  "agreement_reached": false,
+  "severity": "major"
+}
+```
+
+================================================================================
+OLLAMA CALL 0014
+================================================================================
+timestamp: 2026-04-14T07:21:35.263023+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a clinical annotation reviser.
+
+CONVERSATION:
+Patient: Hi
+Counselor: Hello! I'm eDOSTHI. Congratulations on taking the first step towards quitting smoking. What motivated you to want to quit this time around?
+Patient: Hello
+Counselor: Welcome back! Let's get started. What's been the most challenging part about quitting smoking for you in the past?
+Patient: My cravings
+Counselor: Cravings can be tough! Can you tell me more about what your cravings are like when they hit? Is it a physical sensation, an emotional feeling, or something else?
+
+PREVIOUS EXTRACTION (attempt):
+{'attempts': [], 'evidence': ['Patient: My cravings', 'Counselor: Cravings can be tough! Can you tell me more about what your cravings are like when they hit? Is it a physical sensation, an emotional feeling, or something else?'], 'analysis': "The patient identified cravings as a primary challenge in their smoking cessation journey. The counselor acknowledged the difficulty of cravings and proactively sought further information to understand the patient's experience, demonstrating empathy and initiating a deeper exploration of the craving's nature."}
+
+CRITIC FEEDBACK:
+{'issues': ["The claim that the patient 'identified cravings as a primary challenge' is an oversimplification. The patient simply stated 'My cravings.' The extraction infers a level of significance that isn't explicitly present in the dialogue.", "The statement about the counselor 'proactively sought further information' is not entirely accurate. The counselor is *asking* a question, but hasn't yet taken any action to elicit more information. It's a prompt, not proactive seeking.", "The phrase 'demonstrating empathy' is a subjective interpretation and not directly supported by the text. While the counselor's response is supportive, the annotation jumps to an interpretation.", "The extraction misses the initial welcoming tone and congratulations offered by the counselor, which is a crucial element of the interaction's context."], 'suggestions': ["Revised 'analysis' to: 'The patient reported experiencing cravings as a challenge. The counselor acknowledged the difficulty of cravings and prompted the patient to describe the nature of their cravings, including potential physical or emotional components.'", "Modify the evidence section to more accurately reflect the exchange: ['Patient: My cravings', 'Counselor: Cravings can be tough! Can you tell me more about what your cravings are like when they hit? Is it a physical sensation, an emotional feeling, or something else?']", "Remove the subjective interpretation of 'demonstrating empathy'.", "Add a brief mention of the counselor's initial greeting and congratulations to provide a more complete contextualization."], 'agreement_reached': False, 'severity': 'major'}
+
+Produce an improved extraction addressing all critic feedback.
+Keep the same JSON field names as the original extraction.
+Respond with ONLY a valid JSON object.
+
+
+RESPONSE:
+```json
+{
+  "attempts": [],
+  "evidence": [
+    "Patient: My cravings",
+    "Counselor: Cravings can be tough! Can you tell me more about what your cravings are like when they hit? Is it a physical sensation, an emotional feeling, or something else?"
+  ],
+  "analysis": "The patient reported experiencing cravings as a challenge. The counselor acknowledged the difficulty of cravings and prompted the patient to describe the nature of their cravings, including potential physical or emotional components. The interaction began with a welcoming greeting and congratulations on the patient’s decision to quit smoking."
+}
+```
+
+================================================================================
+OLLAMA CALL 0015
+================================================================================
+timestamp: 2026-04-14T07:21:38.134045+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a very strict clinical data validator. Compare the EXTRACTED DATA against the CONVERSATION.
+
+CONVERSATION:
+Patient: Hi
+Counselor: Hello! I'm eDOSTHI. Congratulations on taking the first step towards quitting smoking. What motivated you to want to quit this time around?
+Patient: Hello
+Counselor: Welcome back! Let's get started. What's been the most challenging part about quitting smoking for you in the past?
+Patient: My cravings
+Counselor: Cravings can be tough! Can you tell me more about what your cravings are like when they hit? Is it a physical sensation, an emotional feeling, or something else?
+
+EXTRACTED DATA (attempt):
+{'attempts': [], 'evidence': ['Patient: My cravings', 'Counselor: Cravings can be tough! Can you tell me more about what your cravings are like when they hit? Is it a physical sensation, an emotional feeling, or something else?'], 'analysis': 'The patient reported experiencing cravings as a challenge. The counselor acknowledged the difficulty of cravings and prompted the patient to describe the nature of their cravings, including potential physical or emotional components. The interaction began with a welcoming greeting and congratulations on the patient’s decision to quit smoking.'}
+
+Your task:
+1. Very Strictly Check for hallucinations (data not in the text).
+2. Very Strictly Check for omissions (important data missed).
+3. Assign a confidence score between 0.0 and 1.0.
+
+Respond ONLY with valid JSON:
+{
+  "confidence": 0.0,
+  "issues": ["<issue 1>", "..."]
+}
+
+
+RESPONSE:
+```json
+{
+  "confidence": 0.6,
+  "issues": [
+    "Hallucination: The analysis states 'The interaction began with a welcoming greeting and congratulations on the patient’s decision to quit smoking.' While the counselor *did* offer congratulations, the patient's initial 'Hello' response was not captured in the counselor's turn. This is a hallucination.",
+    "Omission: The extracted data does not capture the patient's initial 'Hello' response. This is a crucial element of the conversational flow and patient initiation.",
+    "Omission: The counselor's explicit welcome back ('Welcome back!') is missing from the extracted data."
+  ]
+}
+```
+
+================================================================================
+OLLAMA CALL 0016
+================================================================================
+timestamp: 2026-04-14T07:21:43.505064+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a clinical annotation critic reviewing an extraction from a tobacco-cessation counseling conversation.
+
+CONVERSATION:
+Patient: Hi
+Counselor: Hello! I'm eDOSTHI. Congratulations on taking the first step towards quitting smoking. What motivated you to want to quit this time around?
+Patient: Hello
+Counselor: Welcome back! Let's get started. What's been the most challenging part about quitting smoking for you in the past?
+Patient: My cravings
+Counselor: Cravings can be tough! Can you tell me more about what your cravings are like when they hit? Is it a physical sensation, an emotional feeling, or something else?
+
+CURRENT EXTRACTION (attempt):
+{'attempts': [], 'evidence': ['Patient: My cravings', 'Counselor: Cravings can be tough! Can you tell me more about what your cravings are like when they hit? Is it a physical sensation, an emotional feeling, or something else?'], 'analysis': 'The patient reported experiencing cravings as a challenge. The counselor acknowledged the difficulty of cravings and prompted the patient to describe the nature of their cravings, including potential physical or emotional components. The interaction began with a welcoming greeting and congratulations on the patient’s decision to quit smoking.'}
+
+Your task:
+1. Identify any inaccuracies, hallucinations, omissions, or unsupported claims.
+2. Suggest specific improvements.
+3. Decide if the extraction is now acceptable.
+
+Respond ONLY with valid JSON:
+{
+  "issues": ["<issue 1>", "..."],
+  "suggestions": ["<suggestion 1>", "..."],
+  "agreement_reached": true,
+  "severity": "none"
+}
+
+
+RESPONSE:
+```json
+{
+  "issues": [
+    "The initial 'attempts' list is empty, which is incorrect. The patient did indeed state 'My cravings'.",
+    "The analysis incorrectly states the counselor's response as simply 'acknowledging the difficulty of cravings'. The counselor is actively probing for details about the *nature* of the cravings, specifically asking about physical and emotional components – this is a crucial distinction.",
+    "The analysis omits the counselor's welcoming greeting and congratulations, which are important contextual elements of the conversation.",
+    "The phrase 'The interaction began with a welcoming greeting and congratulations on the patient’s decision to quit smoking' is a slightly verbose and less precise description than the actual interaction. It’s more accurate to say the counselor initiated with a greeting and congratulations."
+  ],
+  "suggestions": [
+    "Populate the 'attempts' list with 'Patient: My cravings'.",
+    "Revise the 'analysis' to accurately reflect the counselor's probing question: 'The counselor actively elicited details about the patient's cravings, specifically inquiring about physical and emotional components.'",
+    "Add a sentence to the 'analysis' summarizing the counselor's initial greeting and congratulations: 'The conversation began with a welcoming greeting and congratulations from the counselor on the patient’s decision to quit smoking.'" ,
+    "Consider a more concise phrasing for the initial summary of the interaction."
+  ],
+  "agreement_reached": false,
+  "severity": "major"
+}
+```
+
+================================================================================
+OLLAMA CALL 0017
+================================================================================
+timestamp: 2026-04-14T07:21:46.320462+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a clinical annotation reviser.
+
+CONVERSATION:
+Patient: Hi
+Counselor: Hello! I'm eDOSTHI. Congratulations on taking the first step towards quitting smoking. What motivated you to want to quit this time around?
+Patient: Hello
+Counselor: Welcome back! Let's get started. What's been the most challenging part about quitting smoking for you in the past?
+Patient: My cravings
+Counselor: Cravings can be tough! Can you tell me more about what your cravings are like when they hit? Is it a physical sensation, an emotional feeling, or something else?
+
+PREVIOUS EXTRACTION (attempt):
+{'attempts': [], 'evidence': ['Patient: My cravings', 'Counselor: Cravings can be tough! Can you tell me more about what your cravings are like when they hit? Is it a physical sensation, an emotional feeling, or something else?'], 'analysis': 'The patient reported experiencing cravings as a challenge. The counselor acknowledged the difficulty of cravings and prompted the patient to describe the nature of their cravings, including potential physical or emotional components. The interaction began with a welcoming greeting and congratulations on the patient’s decision to quit smoking.'}
+
+CRITIC FEEDBACK:
+{'issues': ["The initial 'attempts' list is empty, which is incorrect. The patient did indeed state 'My cravings'.", "The analysis incorrectly states the counselor's response as simply 'acknowledging the difficulty of cravings'. The counselor is actively probing for details about the *nature* of the cravings, specifically asking about physical and emotional components – this is a crucial distinction.", "The analysis omits the counselor's welcoming greeting and congratulations, which are important contextual elements of the conversation.", "The phrase 'The interaction began with a welcoming greeting and congratulations on the patient’s decision to quit smoking' is a slightly verbose and less precise description than the actual interaction. It’s more accurate to say the counselor initiated with a greeting and congratulations."], 'suggestions': ["Populate the 'attempts' list with 'Patient: My cravings'.", "Revise the 'analysis' to accurately reflect the counselor's probing question: 'The counselor actively elicited details about the patient's cravings, specifically inquiring about physical and emotional components.'", "Add a sentence to the 'analysis' summarizing the counselor's initial greeting and congratulations: 'The conversation began with a welcoming greeting and congratulations from the counselor on the patient’s decision to quit smoking.'", 'Consider a more concise phrasing for the initial summary of the interaction.'], 'agreement_reached': False, 'severity': 'major'}
+
+Produce an improved extraction addressing all critic feedback.
+Keep the same JSON field names as the original extraction.
+Respond with ONLY a valid JSON object.
+
+
+RESPONSE:
+```json
+{
+  "attempts": [
+    "Patient: My cravings"
+  ],
+  "evidence": [
+    "Patient: My cravings",
+    "Counselor: Cravings can be tough! Can you tell me more about what your cravings are like when they hit? Is it a physical sensation, an emotional feeling, or something else?"
+  ],
+  "analysis": "The conversation began with a welcoming greeting and congratulations from the counselor on the patient’s decision to quit smoking. The patient reported experiencing cravings as a challenge. The counselor actively elicited details about the patient’s cravings, specifically inquiring about physical and emotional components."
+}
+```
+
+================================================================================
+OLLAMA CALL 0018
+================================================================================
+timestamp: 2026-04-14T07:21:49.071079+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a very strict clinical data validator. Compare the EXTRACTED DATA against the CONVERSATION.
+
+CONVERSATION:
+Patient: Hi
+Counselor: Hello! I'm eDOSTHI. Congratulations on taking the first step towards quitting smoking. What motivated you to want to quit this time around?
+Patient: Hello
+Counselor: Welcome back! Let's get started. What's been the most challenging part about quitting smoking for you in the past?
+Patient: My cravings
+Counselor: Cravings can be tough! Can you tell me more about what your cravings are like when they hit? Is it a physical sensation, an emotional feeling, or something else?
+
+EXTRACTED DATA (attempt):
+{'attempts': ['Patient: My cravings'], 'evidence': ['Patient: My cravings', 'Counselor: Cravings can be tough! Can you tell me more about what your cravings are like when they hit? Is it a physical sensation, an emotional feeling, or something else?'], 'analysis': 'The conversation began with a welcoming greeting and congratulations from the counselor on the patient’s decision to quit smoking. The patient reported experiencing cravings as a challenge. The counselor actively elicited details about the patient’s cravings, specifically inquiring about physical and emotional components.'}
+
+Your task:
+1. Very Strictly Check for hallucinations (data not in the text).
+2. Very Strictly Check for omissions (important data missed).
+3. Assign a confidence score between 0.0 and 1.0.
+
+Respond ONLY with valid JSON:
+{
+  "confidence": 0.0,
+  "issues": ["<issue 1>", "..."]
+}
+
+
+RESPONSE:
+```json
+{
+  "confidence": 0.6,
+  "issues": [
+    "Hallucination: The analysis states the counselor offered 'congratulations on taking the first step towards quitting smoking,' which is not explicitly stated in the conversation. This is a hallucination.",
+    "Omission: The extracted data does not capture the initial greeting exchange between the patient and counselor ('Hi' and 'Hello'). This is a significant omission.",
+    "Omission: The counselor's follow-up question regarding the patient's motivation ('What motivated you to want to quit this time around?') is missing from the extracted data."
+  ]
+}
+```
+
+================================================================================
+OLLAMA CALL 0019
+================================================================================
+timestamp: 2026-04-14T07:21:55.974653+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a clinical annotation critic reviewing an extraction from a tobacco-cessation counseling conversation.
+
+CONVERSATION:
+Patient: Hi
+Counselor: Hello! I'm eDOSTHI. Congratulations on taking the first step towards quitting smoking. What motivated you to want to quit this time around?
+Patient: Hello
+Counselor: Welcome back! Let's get started. What's been the most challenging part about quitting smoking for you in the past?
+Patient: My cravings
+Counselor: Cravings can be tough! Can you tell me more about what your cravings are like when they hit? Is it a physical sensation, an emotional feeling, or something else?
+
+CURRENT EXTRACTION (attempt):
+{'attempts': ['Patient: My cravings'], 'evidence': ['Patient: My cravings', 'Counselor: Cravings can be tough! Can you tell me more about what your cravings are like when they hit? Is it a physical sensation, an emotional feeling, or something else?'], 'analysis': 'The conversation began with a welcoming greeting and congratulations from the counselor on the patient’s decision to quit smoking. The patient reported experiencing cravings as a challenge. The counselor actively elicited details about the patient’s cravings, specifically inquiring about physical and emotional components.'}
+
+Your task:
+1. Identify any inaccuracies, hallucinations, omissions, or unsupported claims.
+2. Suggest specific improvements.
+3. Decide if the extraction is now acceptable.
+
+Respond ONLY with valid JSON:
+{
+  "issues": ["<issue 1>", "..."],
+  "suggestions": ["<suggestion 1>", "..."],
+  "agreement_reached": true,
+  "severity": "none"
+}
+
+
+RESPONSE:
+```json
+{
+  "issues": [
+    "The 'attempts' field is overly simplistic. It only captures the patient's initial statement, not the full context of the interaction.",
+    "The 'evidence' list includes the counselor's response, which is not directly evidence of the patient's reported challenge. It's evidence of the counselor's follow-up.",
+    "The 'analysis' claims the counselor 'actively elicited details' – this is accurate, but could be more specific. It doesn't fully capture the probing nature of the counselor's questions.",
+    "The analysis omits the crucial element of the patient's initial response – 'Hello' – which establishes the conversational flow and the patient's willingness to engage."
+  ],
+  "suggestions": [
+    "Modify 'attempts' to include the full patient utterance: `{'attempts': ['Patient: My cravings']}`",
+    "Refine 'evidence' to focus on the patient's statement and the counselor's direct question: `{'evidence': ['Patient: My cravings', 'Counselor: Can you tell me more about what your cravings are like when they hit? Is it a physical sensation, an emotional feeling, or something else?']}`",
+    "Enhance the 'analysis' to describe the counselor's technique: `{'analysis': 'The conversation began with a welcoming greeting and congratulations. The patient reported experiencing cravings as a challenge, prompting the counselor to use a probing question to explore the nature and components of the cravings.'}`",
+    "Add a sentence to the analysis acknowledging the patient's initial greeting and its role in establishing the interaction: `{'analysis': 'The conversation began with a welcoming greeting and congratulations. The patient reported experiencing cravings as a challenge, prompting the counselor to use a probing question to explore the nature and components of the cravings. The patient's initial greeting established a conversational context.'}`"
+  ],
+  "agreement_reached": false,
+  "severity": "moderate"
+}
+```
+
+================================================================================
+OLLAMA CALL 0020
+================================================================================
+timestamp: 2026-04-14T07:21:58.935195+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a clinical annotation reviser.
+
+CONVERSATION:
+Patient: Hi
+Counselor: Hello! I'm eDOSTHI. Congratulations on taking the first step towards quitting smoking. What motivated you to want to quit this time around?
+Patient: Hello
+Counselor: Welcome back! Let's get started. What's been the most challenging part about quitting smoking for you in the past?
+Patient: My cravings
+Counselor: Cravings can be tough! Can you tell me more about what your cravings are like when they hit? Is it a physical sensation, an emotional feeling, or something else?
+
+PREVIOUS EXTRACTION (attempt):
+{'attempts': ['Patient: My cravings'], 'evidence': ['Patient: My cravings', 'Counselor: Cravings can be tough! Can you tell me more about what your cravings are like when they hit? Is it a physical sensation, an emotional feeling, or something else?'], 'analysis': 'The conversation began with a welcoming greeting and congratulations from the counselor on the patient’s decision to quit smoking. The patient reported experiencing cravings as a challenge. The counselor actively elicited details about the patient’s cravings, specifically inquiring about physical and emotional components.'}
+
+CRITIC FEEDBACK:
+{'issues': ["The 'attempts' field is overly simplistic. It only captures the patient's initial statement, not the full context of the interaction.", "The 'evidence' list includes the counselor's response, which is not directly evidence of the patient's reported challenge. It's evidence of the counselor's follow-up.", "The 'analysis' claims the counselor 'actively elicited details' – this is accurate, but could be more specific. It doesn't fully capture the probing nature of the counselor's questions.", "The analysis omits the crucial element of the patient's initial response – 'Hello' – which establishes the conversational flow and the patient's willingness to engage."], 'suggestions': ["Modify 'attempts' to include the full patient utterance: `{'attempts': ['Patient: My cravings']}`", "Refine 'evidence' to focus on the patient's statement and the counselor's direct question: `{'evidence': ['Patient: My cravings', 'Counselor: Can you tell me more about what your cravings are like when they hit? Is it a physical sensation, an emotional feeling, or something else?']}`", "Enhance the 'analysis' to describe the counselor's technique: `{'analysis': 'The conversation began with a welcoming greeting and congratulations. The patient reported experiencing cravings as a challenge, prompting the counselor to use a probing question to explore the nature and components of the cravings.'}`", "Add a sentence to the analysis acknowledging the patient's initial greeting and its role in establishing the interaction: `{'analysis': 'The conversation began with a welcoming greeting and congratulations. The patient reported experiencing cravings as a challenge, prompting the counselor to use a probing question to explore the nature and components of the cravings. The patient's initial greeting established a conversational context.'}`"], 'agreement_reached': False, 'severity': 'moderate'}
+
+Produce an improved extraction addressing all critic feedback.
+Keep the same JSON field names as the original extraction.
+Respond with ONLY a valid JSON object.
+
+
+RESPONSE:
+```json
+{
+  "attempts": [
+    "Patient: My cravings"
+  ],
+  "evidence": [
+    "Patient: My cravings",
+    "Counselor: Can you tell me more about what your cravings are like when they hit? Is it a physical sensation, an emotional feeling, or something else?"
+  ],
+  "analysis": "The conversation began with a welcoming greeting and congratulations from the counselor on the patient’s decision to quit smoking. The patient reported experiencing cravings as a challenge, prompting the counselor to use a probing question to explore the nature and components of the cravings. The patient’s initial greeting established a conversational context."
+}
+```
+
+================================================================================
+OLLAMA CALL 0021
+================================================================================
+timestamp: 2026-04-14T07:22:02.050262+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a very strict clinical data validator. Compare the EXTRACTED DATA against the CONVERSATION.
+
+CONVERSATION:
+Patient: Hi
+Counselor: Hello! I'm eDOSTHI. Congratulations on taking the first step towards quitting smoking. What motivated you to want to quit this time around?
+Patient: Hello
+Counselor: Welcome back! Let's get started. What's been the most challenging part about quitting smoking for you in the past?
+Patient: My cravings
+Counselor: Cravings can be tough! Can you tell me more about what your cravings are like when they hit? Is it a physical sensation, an emotional feeling, or something else?
+
+EXTRACTED DATA (attempt):
+{'attempts': ['Patient: My cravings'], 'evidence': ['Patient: My cravings', 'Counselor: Can you tell me more about what your cravings are like when they hit? Is it a physical sensation, an emotional feeling, or something else?'], 'analysis': 'The conversation began with a welcoming greeting and congratulations from the counselor on the patient’s decision to quit smoking. The patient reported experiencing cravings as a challenge, prompting the counselor to use a probing question to explore the nature and components of the cravings. The patient’s initial greeting established a conversational context.'}
+
+Your task:
+1. Very Strictly Check for hallucinations (data not in the text).
+2. Very Strictly Check for omissions (important data missed).
+3. Assign a confidence score between 0.0 and 1.0.
+
+Respond ONLY with valid JSON:
+{
+  "confidence": 0.0,
+  "issues": ["<issue 1>", "..."]
+}
+
+
+RESPONSE:
+```json
+{
+  "confidence": 0.4,
+  "issues": [
+    "Hallucination: The analysis states 'The conversation began with a welcoming greeting and congratulations from the counselor on the patient’s decision to quit smoking.' While this is true, it's overly verbose and doesn't capture the initial exchange as succinctly. It adds information not directly stated in the conversation.",
+    "Omission: The extracted data misses the patient's initial 'Hello' response to the counselor's greeting. This is a crucial element of the conversational flow and patient initiation.",
+    "Omission: The extracted data doesn't explicitly state the counselor's initial greeting ('Hello!' and 'Welcome back!'). While implied, a direct mention strengthens the data capture."
+  ]
+}
+```
+
+================================================================================
+OLLAMA CALL 0022
+================================================================================
+timestamp: 2026-04-14T07:22:07.755888+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a clinical annotation critic reviewing an extraction from a tobacco-cessation counseling conversation.
+
+CONVERSATION:
+Patient: Hi
+Counselor: Hello! I'm eDOSTHI. Congratulations on taking the first step towards quitting smoking. What motivated you to want to quit this time around?
+Patient: Hello
+Counselor: Welcome back! Let's get started. What's been the most challenging part about quitting smoking for you in the past?
+Patient: My cravings
+Counselor: Cravings can be tough! Can you tell me more about what your cravings are like when they hit? Is it a physical sensation, an emotional feeling, or something else?
+
+CURRENT EXTRACTION (attempt):
+{'attempts': ['Patient: My cravings'], 'evidence': ['Patient: My cravings', 'Counselor: Can you tell me more about what your cravings are like when they hit? Is it a physical sensation, an emotional feeling, or something else?'], 'analysis': 'The conversation began with a welcoming greeting and congratulations from the counselor on the patient’s decision to quit smoking. The patient reported experiencing cravings as a challenge, prompting the counselor to use a probing question to explore the nature and components of the cravings. The patient’s initial greeting established a conversational context.'}
+
+Your task:
+1. Identify any inaccuracies, hallucinations, omissions, or unsupported claims.
+2. Suggest specific improvements.
+3. Decide if the extraction is now acceptable.
+
+Respond ONLY with valid JSON:
+{
+  "issues": ["<issue 1>", "..."],
+  "suggestions": ["<suggestion 1>", "..."],
+  "agreement_reached": true,
+  "severity": "none"
+}
+
+
+RESPONSE:
+```json
+{
+  "issues": [
+    "The 'attempts' list is overly simplistic and doesn't accurately represent the patient's statement. It only captures 'Patient: My cravings' which is a fragment, not a complete utterance.",
+    "The 'evidence' list includes the counselor's response, which is irrelevant to the patient's stated challenge. This is an over-inclusion of information.",
+    "The 'analysis' claims the patient's initial greeting 'established a conversational context' – this is a weak interpretation and doesn't fully capture the interaction's purpose. It misses the crucial shift in focus to the patient's challenges.",
+    "The analysis doesn't adequately highlight the counselor's proactive probing. The counselor's question is a key element of the therapeutic process and deserves more emphasis."
+  ],
+  "suggestions": [
+    "Modify 'attempts' to: `{'attempts': ['Patient: My cravings']}`",
+    "Refine 'evidence' to: `['Patient: My cravings']`",
+    "Revise the 'analysis' to: 'The patient identified cravings as a significant challenge. The counselor responded with a probing question to elicit more detail about the nature of these cravings, marking a shift in the conversation towards understanding the patient’s specific difficulties.'",
+    "Add a sentence to the analysis explicitly acknowledging the counselor's role: 'The counselor’s question demonstrates an attempt to understand the patient’s experience and guide the conversation towards identifying potential coping strategies.'"
+  ],
+  "agreement_reached": false,
+  "severity": "major"
+}
+```
+
+================================================================================
+OLLAMA CALL 0023
+================================================================================
+timestamp: 2026-04-14T07:22:10.486255+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a clinical annotation reviser.
+
+CONVERSATION:
+Patient: Hi
+Counselor: Hello! I'm eDOSTHI. Congratulations on taking the first step towards quitting smoking. What motivated you to want to quit this time around?
+Patient: Hello
+Counselor: Welcome back! Let's get started. What's been the most challenging part about quitting smoking for you in the past?
+Patient: My cravings
+Counselor: Cravings can be tough! Can you tell me more about what your cravings are like when they hit? Is it a physical sensation, an emotional feeling, or something else?
+
+PREVIOUS EXTRACTION (attempt):
+{'attempts': ['Patient: My cravings'], 'evidence': ['Patient: My cravings', 'Counselor: Can you tell me more about what your cravings are like when they hit? Is it a physical sensation, an emotional feeling, or something else?'], 'analysis': 'The conversation began with a welcoming greeting and congratulations from the counselor on the patient’s decision to quit smoking. The patient reported experiencing cravings as a challenge, prompting the counselor to use a probing question to explore the nature and components of the cravings. The patient’s initial greeting established a conversational context.'}
+
+CRITIC FEEDBACK:
+{'issues': ["The 'attempts' list is overly simplistic and doesn't accurately represent the patient's statement. It only captures 'Patient: My cravings' which is a fragment, not a complete utterance.", "The 'evidence' list includes the counselor's response, which is irrelevant to the patient's stated challenge. This is an over-inclusion of information.", "The 'analysis' claims the patient's initial greeting 'established a conversational context' – this is a weak interpretation and doesn't fully capture the interaction's purpose. It misses the crucial shift in focus to the patient's challenges.", "The analysis doesn't adequately highlight the counselor's proactive probing. The counselor's question is a key element of the therapeutic process and deserves more emphasis."], 'suggestions': ["Modify 'attempts' to: `{'attempts': ['Patient: My cravings']}`", "Refine 'evidence' to: `['Patient: My cravings']`", "Revise the 'analysis' to: 'The patient identified cravings as a significant challenge. The counselor responded with a probing question to elicit more detail about the nature of these cravings, marking a shift in the conversation towards understanding the patient’s specific difficulties.'", "Add a sentence to the analysis explicitly acknowledging the counselor's role: 'The counselor’s question demonstrates an attempt to understand the patient’s experience and guide the conversation towards identifying potential coping strategies.'"], 'agreement_reached': False, 'severity': 'major'}
+
+Produce an improved extraction addressing all critic feedback.
+Keep the same JSON field names as the original extraction.
+Respond with ONLY a valid JSON object.
+
+
+RESPONSE:
+```json
+{
+  "attempts": [
+    "Patient: My cravings"
+  ],
+  "evidence": [
+    "Patient: My cravings",
+    "Counselor: Can you tell me more about what your cravings are like when they hit? Is it a physical sensation, an emotional feeling, or something else?"
+  ],
+  "analysis": "The patient identified cravings as a significant challenge, prompting the counselor to engage in a probing exploration of the nature of these cravings. The counselor’s question demonstrates an attempt to understand the patient’s experience and guide the conversation towards identifying potential coping strategies."
+}
+```
+
+================================================================================
+OLLAMA CALL 0024
+================================================================================
+timestamp: 2026-04-14T07:22:13.552183+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a very strict clinical data validator. Compare the EXTRACTED DATA against the CONVERSATION.
+
+CONVERSATION:
+Patient: Hi
+Counselor: Hello! I'm eDOSTHI. Congratulations on taking the first step towards quitting smoking. What motivated you to want to quit this time around?
+Patient: Hello
+Counselor: Welcome back! Let's get started. What's been the most challenging part about quitting smoking for you in the past?
+Patient: My cravings
+Counselor: Cravings can be tough! Can you tell me more about what your cravings are like when they hit? Is it a physical sensation, an emotional feeling, or something else?
+
+EXTRACTED DATA (attempt):
+{'attempts': ['Patient: My cravings'], 'evidence': ['Patient: My cravings', 'Counselor: Can you tell me more about what your cravings are like when they hit? Is it a physical sensation, an emotional feeling, or something else?'], 'analysis': 'The patient identified cravings as a significant challenge, prompting the counselor to engage in a probing exploration of the nature of these cravings. The counselor’s question demonstrates an attempt to understand the patient’s experience and guide the conversation towards identifying potential coping strategies.'}
+
+Your task:
+1. Very Strictly Check for hallucinations (data not in the text).
+2. Very Strictly Check for omissions (important data missed).
+3. Assign a confidence score between 0.0 and 1.0.
+
+Respond ONLY with valid JSON:
+{
+  "confidence": 0.0,
+  "issues": ["<issue 1>", "..."]
+}
+
+
+RESPONSE:
+```json
+{
+  "confidence": 0.4,
+  "issues": [
+    "Hallucination: The analysis states the counselor 'demonstrates an attempt to understand the patient’s experience and guide the conversation towards identifying potential coping strategies.' This is inferred, not directly stated in the conversation. The conversation shows the counselor *asking* a question, but doesn't explicitly state an attempt.",
+    "Omission: The extracted data misses the initial greeting exchange between the patient and counselor. This context is crucial for understanding the flow of the conversation and the patient's initial engagement.",
+    "Omission: The extracted data doesn't capture the counselor's welcoming phrase 'Welcome back!' which is a key element of the interaction."
+  ]
+}
+```
+
+================================================================================
+OLLAMA CALL 0025
+================================================================================
+timestamp: 2026-04-14T07:22:18.924838+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a clinical annotation critic reviewing an extraction from a tobacco-cessation counseling conversation.
+
+CONVERSATION:
+Patient: Hi
+Counselor: Hello! I'm eDOSTHI. Congratulations on taking the first step towards quitting smoking. What motivated you to want to quit this time around?
+Patient: Hello
+Counselor: Welcome back! Let's get started. What's been the most challenging part about quitting smoking for you in the past?
+Patient: My cravings
+Counselor: Cravings can be tough! Can you tell me more about what your cravings are like when they hit? Is it a physical sensation, an emotional feeling, or something else?
+
+CURRENT EXTRACTION (attempt):
+{'attempts': ['Patient: My cravings'], 'evidence': ['Patient: My cravings', 'Counselor: Can you tell me more about what your cravings are like when they hit? Is it a physical sensation, an emotional feeling, or something else?'], 'analysis': 'The patient identified cravings as a significant challenge, prompting the counselor to engage in a probing exploration of the nature of these cravings. The counselor’s question demonstrates an attempt to understand the patient’s experience and guide the conversation towards identifying potential coping strategies.'}
+
+Your task:
+1. Identify any inaccuracies, hallucinations, omissions, or unsupported claims.
+2. Suggest specific improvements.
+3. Decide if the extraction is now acceptable.
+
+Respond ONLY with valid JSON:
+{
+  "issues": ["<issue 1>", "..."],
+  "suggestions": ["<suggestion 1>", "..."],
+  "agreement_reached": true,
+  "severity": "none"
+}
+
+
+RESPONSE:
+```json
+{
+  "issues": [
+    "The 'attempts' field incorrectly lists only 'Patient: My cravings'. The counselor's question is equally important to the extraction's purpose.",
+    "The claim that the counselor's question 'demonstrates an attempt to understand the patient’s experience and guide the conversation towards identifying potential coping strategies' is an unsupported assumption. While this *may* be the intent, it's not explicitly stated and should be phrased more cautiously.",
+    "The extraction misses the crucial detail that the patient *initiated* the discussion about cravings. It doesn't capture the conversational flow effectively."
+  ],
+  "suggestions": [
+    "Modify 'attempts' to include: ['Patient: My cravings', 'Counselor: Can you tell me more about what your cravings are like when they hit? Is it a physical sensation, an emotional feeling, or something else?']",
+    "Rephrase the 'analysis' to: 'The patient identified cravings as a significant challenge, prompting the counselor to elicit further information about the nature and characteristics of those cravings. This demonstrates an attempt to understand the patient’s subjective experience and gather data for potential support strategies.'",
+    "Add a sentence to the analysis acknowledging the patient's role: 'This exchange marks the beginning of a deeper exploration of the patient’s experience, initiated by the patient’s self-identification of cravings.'"
+  ],
+  "agreement_reached": false,
+  "severity": "major"
+}
+```
+
+================================================================================
+OLLAMA CALL 0026
+================================================================================
+timestamp: 2026-04-14T07:22:22.439124+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a clinical annotation reviser.
+
+CONVERSATION:
+Patient: Hi
+Counselor: Hello! I'm eDOSTHI. Congratulations on taking the first step towards quitting smoking. What motivated you to want to quit this time around?
+Patient: Hello
+Counselor: Welcome back! Let's get started. What's been the most challenging part about quitting smoking for you in the past?
+Patient: My cravings
+Counselor: Cravings can be tough! Can you tell me more about what your cravings are like when they hit? Is it a physical sensation, an emotional feeling, or something else?
+
+PREVIOUS EXTRACTION (attempt):
+{'attempts': ['Patient: My cravings'], 'evidence': ['Patient: My cravings', 'Counselor: Can you tell me more about what your cravings are like when they hit? Is it a physical sensation, an emotional feeling, or something else?'], 'analysis': 'The patient identified cravings as a significant challenge, prompting the counselor to engage in a probing exploration of the nature of these cravings. The counselor’s question demonstrates an attempt to understand the patient’s experience and guide the conversation towards identifying potential coping strategies.'}
+
+CRITIC FEEDBACK:
+{'issues': ["The 'attempts' field incorrectly lists only 'Patient: My cravings'. The counselor's question is equally important to the extraction's purpose.", "The claim that the counselor's question 'demonstrates an attempt to understand the patient’s experience and guide the conversation towards identifying potential coping strategies' is an unsupported assumption. While this *may* be the intent, it's not explicitly stated and should be phrased more cautiously.", "The extraction misses the crucial detail that the patient *initiated* the discussion about cravings. It doesn't capture the conversational flow effectively."], 'suggestions': ["Modify 'attempts' to include: ['Patient: My cravings', 'Counselor: Can you tell me more about what your cravings are like when they hit? Is it a physical sensation, an emotional feeling, or something else?']", "Rephrase the 'analysis' to: 'The patient identified cravings as a significant challenge, prompting the counselor to elicit further information about the nature and characteristics of those cravings. This demonstrates an attempt to understand the patient’s subjective experience and gather data for potential support strategies.'", "Add a sentence to the analysis acknowledging the patient's role: 'This exchange marks the beginning of a deeper exploration of the patient’s experience, initiated by the patient’s self-identification of cravings.'"], 'agreement_reached': False, 'severity': 'major'}
+
+Produce an improved extraction addressing all critic feedback.
+Keep the same JSON field names as the original extraction.
+Respond with ONLY a valid JSON object.
+
+
+RESPONSE:
+```json
+{
+  "attempts": [
+    "Patient: My cravings",
+    "Counselor: Can you tell me more about what your cravings are like when they hit? Is it a physical sensation, an emotional feeling, or something else?"
+  ],
+  "evidence": [
+    "Patient: My cravings",
+    "Counselor: Can you tell me more about what your cravings are like when they hit? Is it a physical sensation, an emotional feeling, or something else?"
+  ],
+  "analysis": "This exchange marks the beginning of a deeper exploration of the patient’s experience, initiated by the patient’s self-identification of cravings. The patient identified cravings as a significant challenge, prompting the counselor to elicit further information about the nature and characteristics of those cravings. This demonstrates an attempt to understand the patient’s subjective experience and gather data for potential support strategies."
+}
+```
+
+================================================================================
+OLLAMA CALL 0027
+================================================================================
+timestamp: 2026-04-14T07:22:24.972811+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a very strict clinical data validator. Compare the EXTRACTED DATA against the CONVERSATION.
+
+CONVERSATION:
+Patient: Hi
+Counselor: Hello! I'm eDOSTHI. Congratulations on taking the first step towards quitting smoking. What motivated you to want to quit this time around?
+Patient: Hello
+Counselor: Welcome back! Let's get started. What's been the most challenging part about quitting smoking for you in the past?
+Patient: My cravings
+Counselor: Cravings can be tough! Can you tell me more about what your cravings are like when they hit? Is it a physical sensation, an emotional feeling, or something else?
+
+EXTRACTED DATA (attempt):
+{'attempts': ['Patient: My cravings', 'Counselor: Can you tell me more about what your cravings are like when they hit? Is it a physical sensation, an emotional feeling, or something else?'], 'evidence': ['Patient: My cravings', 'Counselor: Can you tell me more about what your cravings are like when they hit? Is it a physical sensation, an emotional feeling, or something else?'], 'analysis': 'This exchange marks the beginning of a deeper exploration of the patient’s experience, initiated by the patient’s self-identification of cravings. The patient identified cravings as a significant challenge, prompting the counselor to elicit further information about the nature and characteristics of those cravings. This demonstrates an attempt to understand the patient’s subjective experience and gather data for potential support strategies.'}
+
+Your task:
+1. Very Strictly Check for hallucinations (data not in the text).
+2. Very Strictly Check for omissions (important data missed).
+3. Assign a confidence score between 0.0 and 1.0.
+
+Respond ONLY with valid JSON:
+{
+  "confidence": 0.0,
+  "issues": ["<issue 1>", "..."]
+}
+
+
+RESPONSE:
+```json
+{
+  "confidence": 0.85,
+  "issues": [
+    "Minor hallucination: The analysis states the patient 'identified cravings as a significant challenge,' but the patient simply stated 'My cravings.' While related, this is an interpretation, not a direct extraction.",
+    "Omission: The counselor's initial welcoming statement ('Welcome back! Let's get started.') and their initial congratulatory statement ('Congratulations on taking the first step towards quitting smoking.') are missing from the extracted data. These are crucial contextual elements."
+  ]
+}
+```
+
+================================================================================
+OLLAMA CALL 0028
+================================================================================
+timestamp: 2026-04-14T07:22:27.556049+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a very strict clinical data validator. Compare the EXTRACTED DATA against the CONVERSATION.
+
+CONVERSATION:
+Patient: Hi
+Counselor: Hello! I'm eDOSTHI. Congratulations on taking the first step towards quitting smoking. What motivated you to want to quit this time around?
+Patient: Hello
+Counselor: Welcome back! Let's get started. What's been the most challenging part about quitting smoking for you in the past?
+Patient: My cravings
+Counselor: Cravings can be tough! Can you tell me more about what your cravings are like when they hit? Is it a physical sensation, an emotional feeling, or something else?
+
+EXTRACTED DATA (readiness):
+{'readiness_stage': 'contemplation', 'evidence': "The patient has acknowledged a challenge – ‘My cravings’ – indicating they are considering quitting (contemplation) but haven't yet taken concrete steps like planning or quitting within a short timeframe."}
+
+Your task:
+1. Very Strictly Check for hallucinations (data not in the text).
+2. Very Strictly Check for omissions (important data missed).
+3. Assign a confidence score between 0.0 and 1.0.
+
+Respond ONLY with valid JSON:
+{
+  "confidence": 0.0,
+  "issues": ["<issue 1>", "..."]
+}
+
+
+RESPONSE:
+```json
+{
+  "confidence": 0.8,
+  "issues": ["Hallucination: The extracted data states the patient hasn't taken 'concrete steps like planning or quitting within a short timeframe.' This is not explicitly stated in the conversation. The patient simply stated 'My cravings.'", "Omission: The conversation establishes the patient is in the contemplation stage, but the extracted data doesn't explicitly state this. While the 'cravings' comment suggests contemplation, it's not explicitly labeled as such.", "Low Confidence: Overall confidence is moderate due to the reliance on interpretation of the patient's statement rather than direct evidence."]
+}
+```
+
+================================================================================
+OLLAMA CALL 0029
+================================================================================
+timestamp: 2026-04-14T07:22:29.664095+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a very strict clinical data validator. Compare the EXTRACTED DATA against the CONVERSATION.
+
+CONVERSATION:
+Patient: Hi
+Counselor: Hello! I'm eDOSTHI. Congratulations on taking the first step towards quitting smoking. What motivated you to want to quit this time around?
+Patient: Hello
+Counselor: Welcome back! Let's get started. What's been the most challenging part about quitting smoking for you in the past?
+Patient: My cravings
+Counselor: Cravings can be tough! Can you tell me more about what your cravings are like when they hit? Is it a physical sensation, an emotional feeling, or something else?
+
+EXTRACTED DATA (concern):
+{'concerns': ['cravings', 'withdrawal symptoms'], 'evidence': ['"My cravings"', 'Cravings can be tough!" (Implied concern about the difficulty of managing cravings and potential withdrawal symptoms)']}
+
+Your task:
+1. Very Strictly Check for hallucinations (data not in the text).
+2. Very Strictly Check for omissions (important data missed).
+3. Assign a confidence score between 0.0 and 1.0.
+
+Respond ONLY with valid JSON:
+{
+  "confidence": 0.0,
+  "issues": ["<issue 1>", "..."]
+}
+
+
+RESPONSE:
+```json
+{
+  "confidence": 0.85,
+  "issues": [
+    "Hallucination: The extracted data includes 'withdrawal symptoms' which is not explicitly stated in the conversation. This is a hallucination.",
+    "Omission: The conversation does not explicitly mention the *type* of cravings (e.g., nicotine cravings, sensory cravings). While 'cravings' is extracted, a more granular level of detail is missing."
+  ]
+}
+```
+
+================================================================================
+OLLAMA CALL 0030
+================================================================================
+timestamp: 2026-04-14T07:22:31.510325+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a very strict clinical data validator. Compare the EXTRACTED DATA against the CONVERSATION.
+
+CONVERSATION:
+Patient: Hi
+Counselor: Hello! I'm eDOSTHI. Congratulations on taking the first step towards quitting smoking. What motivated you to want to quit this time around?
+Patient: Hello
+Counselor: Welcome back! Let's get started. What's been the most challenging part about quitting smoking for you in the past?
+Patient: My cravings
+Counselor: Cravings can be tough! Can you tell me more about what your cravings are like when they hit? Is it a physical sensation, an emotional feeling, or something else?
+
+EXTRACTED DATA (triggers):
+{'triggers': ['cravings', 'emotional feeling'], 'evidence': []}
+
+Your task:
+1. Very Strictly Check for hallucinations (data not in the text).
+2. Very Strictly Check for omissions (important data missed).
+3. Assign a confidence score between 0.0 and 1.0.
+
+Respond ONLY with valid JSON:
+{
+  "confidence": 0.0,
+  "issues": ["<issue 1>", "..."]
+}
+
+
+RESPONSE:
+```json
+{
+  "confidence": 0.8,
+  "issues": ["Missing specific details about the emotional feeling. The conversation mentions 'emotional feeling' as a potential aspect of the cravings, but doesn't explore what that feeling is.","The conversation mentions 'physical sensation' as a potential aspect of the cravings, but doesn't explore what that sensation is."]
+}
+```
+
+================================================================================
+OLLAMA CALL 0031
+================================================================================
+timestamp: 2026-04-14T07:22:32.468129+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a very strict clinical data validator. Compare the EXTRACTED DATA against the CONVERSATION.
+
+CONVERSATION:
+Patient: Hi
+Counselor: Hello! I'm eDOSTHI. Congratulations on taking the first step towards quitting smoking. What motivated you to want to quit this time around?
+Patient: Hello
+Counselor: Welcome back! Let's get started. What's been the most challenging part about quitting smoking for you in the past?
+Patient: My cravings
+Counselor: Cravings can be tough! Can you tell me more about what your cravings are like when they hit? Is it a physical sensation, an emotional feeling, or something else?
+
+EXTRACTED DATA (advice):
+{'advice': ['Acknowledge that cravings can be tough!', 'Explore the nature of cravings (physical sensation, emotional feeling, or something else).'], 'evidence': ['"Cravings can be tough!"', '"Can you tell me more about what your cravings are like when they hit? Is it a physical sensation, an emotional feeling, or something else?"']}
+
+Your task:
+1. Very Strictly Check for hallucinations (data not in the text).
+2. Very Strictly Check for omissions (important data missed).
+3. Assign a confidence score between 0.0 and 1.0.
+
+Respond ONLY with valid JSON:
+{
+  "confidence": 0.0,
+  "issues": ["<issue 1>", "..."]
+}
+
+
+RESPONSE:
+```json
+{
+  "confidence": 0.95,
+  "issues": []
+}
+```
+
+================================================================================
+OLLAMA CALL 0032
+================================================================================
+timestamp: 2026-04-14T07:22:35.025333+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a clinical annotation specialist (voter 2 of 3).
+
+CONVERSATION:
+Patient: Hi
+Counselor: Hello! I'm eDOSTHI. Congratulations on taking the first step towards quitting smoking. What motivated you to want to quit this time around?
+Patient: Hello
+Counselor: Welcome back! Let's get started. What's been the most challenging part about quitting smoking for you in the past?
+Patient: My cravings
+Counselor: Cravings can be tough! Can you tell me more about what your cravings are like when they hit? Is it a physical sensation, an emotional feeling, or something else?
+
+EXTRACTED SIGNALS:
+- Advice: {'advice': ['Acknowledge that cravings can be tough!', 'Explore the nature of cravings (physical sensation, emotional feeling, or something else).'], 'evidence': ['"Cravings can be tough!"', '"Can you tell me more about what your cravings are like when they hit? Is it a physical sensation, an emotional feeling, or something else?"'], '_debate_rounds': 0, '_debate_converged': True}
+- Quit Attempts: {'attempts': ['Patient: My cravings', 'Counselor: Can you tell me more about what your cravings are like when they hit? Is it a physical sensation, an emotional feeling, or something else?'], 'evidence': ['Patient: My cravings', 'Counselor: Can you tell me more about what your cravings are like when they hit? Is it a physical sensation, an emotional feeling, or something else?'], 'analysis': 'This exchange marks the beginning of a deeper exploration of the patient’s experience, initiated by the patient’s self-identification of cravings. The patient identified cravings as a significant challenge, prompting the counselor to elicit further information about the nature and characteristics of those cravings. This demonstrates an attempt to understand the patient’s subjective experience and gather data for potential support strategies.', '_debate_rounds': 6, '_debate_converged': True}
+- Readiness / Stage: {'readiness_stage': 'contemplation', 'evidence': "The patient has acknowledged a challenge – ‘My cravings’ – indicating they are considering quitting (contemplation) but haven't yet taken concrete steps like planning or quitting within a short timeframe.", '_debate_rounds': 0, '_debate_converged': True}
+- Concerns: {'concerns': ['cravings', 'withdrawal symptoms'], 'evidence': ['"My cravings"', 'Cravings can be tough!" (Implied concern about the difficulty of managing cravings and potential withdrawal symptoms)'], '_debate_rounds': 0, '_debate_converged': True}
+- Triggers: {'triggers': ['cravings', 'emotional feeling'], 'evidence': [], '_debate_rounds': 0, '_debate_converged': True}
+
+Based on ALL the above signals, produce a unified clinical annotation.
+Be independent — do not anchor to previous voters.
+
+Respond ONLY with valid JSON:
+{
+  "stage_of_change": "precontemplation|contemplation|preparation|action|maintenance|relapse",
+  "main_concern": "<single most prominent barrier>",
+  "primary_trigger": "<most significant smoking trigger>",
+  "quit_attempt_history": "<concise summary of prior attempts>",
+  "recommended_intervention": ["<strategy 1>", "<strategy 2>", "..."]
+}
+
+
+RESPONSE:
+```json
+{
+  "stage_of_change": "contemplation",
+  "main_concern": "cravings",
+  "primary_trigger": "cravings",
+  "quit_attempt_history": "Patient has previously identified cravings as a challenge in past attempts to quit.",
+  "recommended_intervention": ["Explore the specific characteristics of cravings (physical, emotional, or other)", "Develop coping strategies for managing cravings", "Assess potential withdrawal symptoms and resources for support"]
+}
+```
+
+================================================================================
+OLLAMA CALL 0033
+================================================================================
+timestamp: 2026-04-14T07:22:37.012137+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a clinical annotation specialist (voter 3 of 3).
+
+CONVERSATION:
+Patient: Hi
+Counselor: Hello! I'm eDOSTHI. Congratulations on taking the first step towards quitting smoking. What motivated you to want to quit this time around?
+Patient: Hello
+Counselor: Welcome back! Let's get started. What's been the most challenging part about quitting smoking for you in the past?
+Patient: My cravings
+Counselor: Cravings can be tough! Can you tell me more about what your cravings are like when they hit? Is it a physical sensation, an emotional feeling, or something else?
+
+EXTRACTED SIGNALS:
+- Advice: {'advice': ['Acknowledge that cravings can be tough!', 'Explore the nature of cravings (physical sensation, emotional feeling, or something else).'], 'evidence': ['"Cravings can be tough!"', '"Can you tell me more about what your cravings are like when they hit? Is it a physical sensation, an emotional feeling, or something else?"'], '_debate_rounds': 0, '_debate_converged': True}
+- Quit Attempts: {'attempts': ['Patient: My cravings', 'Counselor: Can you tell me more about what your cravings are like when they hit? Is it a physical sensation, an emotional feeling, or something else?'], 'evidence': ['Patient: My cravings', 'Counselor: Can you tell me more about what your cravings are like when they hit? Is it a physical sensation, an emotional feeling, or something else?'], 'analysis': 'This exchange marks the beginning of a deeper exploration of the patient’s experience, initiated by the patient’s self-identification of cravings. The patient identified cravings as a significant challenge, prompting the counselor to elicit further information about the nature and characteristics of those cravings. This demonstrates an attempt to understand the patient’s subjective experience and gather data for potential support strategies.', '_debate_rounds': 6, '_debate_converged': True}
+- Readiness / Stage: {'readiness_stage': 'contemplation', 'evidence': "The patient has acknowledged a challenge – ‘My cravings’ – indicating they are considering quitting (contemplation) but haven't yet taken concrete steps like planning or quitting within a short timeframe.", '_debate_rounds': 0, '_debate_converged': True}
+- Concerns: {'concerns': ['cravings', 'withdrawal symptoms'], 'evidence': ['"My cravings"', 'Cravings can be tough!" (Implied concern about the difficulty of managing cravings and potential withdrawal symptoms)'], '_debate_rounds': 0, '_debate_converged': True}
+- Triggers: {'triggers': ['cravings', 'emotional feeling'], 'evidence': [], '_debate_rounds': 0, '_debate_converged': True}
+
+Based on ALL the above signals, produce a unified clinical annotation.
+Be independent — do not anchor to previous voters.
+
+Respond ONLY with valid JSON:
+{
+  "stage_of_change": "precontemplation|contemplation|preparation|action|maintenance|relapse",
+  "main_concern": "<single most prominent barrier>",
+  "primary_trigger": "<most significant smoking trigger>",
+  "quit_attempt_history": "<concise summary of prior attempts>",
+  "recommended_intervention": ["<strategy 1>", "<strategy 2>", "..."]
+}
+
+
+RESPONSE:
+```json
+{
+  "stage_of_change": "contemplation",
+  "main_concern": "cravings",
+  "primary_trigger": "cravings",
+  "quit_attempt_history": "Patient has previously identified cravings as a challenge in past attempts to quit.",
+  "recommended_intervention": ["Explore the specific characteristics of cravings (physical, emotional, or other)", "Develop coping strategies for managing cravings", "Assess potential withdrawal symptoms and resources for support"]
+}
+```
+
+================================================================================
+OLLAMA CALL 0034
+================================================================================
+timestamp: 2026-04-14T07:22:39.075534+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a clinical annotation specialist (voter 1 of 3).
+
+CONVERSATION:
+Patient: Hi
+Counselor: Hello! I'm eDOSTHI. Congratulations on taking the first step towards quitting smoking. What motivated you to want to quit this time around?
+Patient: Hello
+Counselor: Welcome back! Let's get started. What's been the most challenging part about quitting smoking for you in the past?
+Patient: My cravings
+Counselor: Cravings can be tough! Can you tell me more about what your cravings are like when they hit? Is it a physical sensation, an emotional feeling, or something else?
+
+EXTRACTED SIGNALS:
+- Advice: {'advice': ['Acknowledge that cravings can be tough!', 'Explore the nature of cravings (physical sensation, emotional feeling, or something else).'], 'evidence': ['"Cravings can be tough!"', '"Can you tell me more about what your cravings are like when they hit? Is it a physical sensation, an emotional feeling, or something else?"'], '_debate_rounds': 0, '_debate_converged': True}
+- Quit Attempts: {'attempts': ['Patient: My cravings', 'Counselor: Can you tell me more about what your cravings are like when they hit? Is it a physical sensation, an emotional feeling, or something else?'], 'evidence': ['Patient: My cravings', 'Counselor: Can you tell me more about what your cravings are like when they hit? Is it a physical sensation, an emotional feeling, or something else?'], 'analysis': 'This exchange marks the beginning of a deeper exploration of the patient’s experience, initiated by the patient’s self-identification of cravings. The patient identified cravings as a significant challenge, prompting the counselor to elicit further information about the nature and characteristics of those cravings. This demonstrates an attempt to understand the patient’s subjective experience and gather data for potential support strategies.', '_debate_rounds': 6, '_debate_converged': True}
+- Readiness / Stage: {'readiness_stage': 'contemplation', 'evidence': "The patient has acknowledged a challenge – ‘My cravings’ – indicating they are considering quitting (contemplation) but haven't yet taken concrete steps like planning or quitting within a short timeframe.", '_debate_rounds': 0, '_debate_converged': True}
+- Concerns: {'concerns': ['cravings', 'withdrawal symptoms'], 'evidence': ['"My cravings"', 'Cravings can be tough!" (Implied concern about the difficulty of managing cravings and potential withdrawal symptoms)'], '_debate_rounds': 0, '_debate_converged': True}
+- Triggers: {'triggers': ['cravings', 'emotional feeling'], 'evidence': [], '_debate_rounds': 0, '_debate_converged': True}
+
+Based on ALL the above signals, produce a unified clinical annotation.
+Be independent — do not anchor to previous voters.
+
+Respond ONLY with valid JSON:
+{
+  "stage_of_change": "precontemplation|contemplation|preparation|action|maintenance|relapse",
+  "main_concern": "<single most prominent barrier>",
+  "primary_trigger": "<most significant smoking trigger>",
+  "quit_attempt_history": "<concise summary of prior attempts>",
+  "recommended_intervention": ["<strategy 1>", "<strategy 2>", "..."]
+}
+
+
+RESPONSE:
+```json
+{
+  "stage_of_change": "contemplation",
+  "main_concern": "cravings",
+  "primary_trigger": "cravings",
+  "quit_attempt_history": "Patient has previously identified cravings as a challenge in past attempts to quit.",
+  "recommended_intervention": ["Explore the specific characteristics of the patient’s cravings (physical, emotional, or other).", "Discuss coping strategies for managing cravings.", "Assess potential withdrawal symptoms and address concerns proactively."]
+}
+```
+
+================================================================================
+OLLAMA CALL 0035
+================================================================================
+timestamp: 2026-04-14T07:22:43.044189+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a clinical reasoning specialist producing the final annotation for a tobacco-cessation training dataset.
+
+CONVERSATION:
+Patient: Hi
+Counselor: Hello! I'm eDOSTHI. Congratulations on taking the first step towards quitting smoking. What motivated you to want to quit this time around?
+Patient: Hello
+Counselor: Welcome back! Let's get started. What's been the most challenging part about quitting smoking for you in the past?
+Patient: My cravings
+Counselor: Cravings can be tough! Can you tell me more about what your cravings are like when they hit? Is it a physical sensation, an emotional feeling, or something else?
+
+CONSENSUS ANNOTATION:
+{'stage_of_change': 'contemplation', 'main_concern': 'cravings', 'primary_trigger': 'cravings', 'quit_attempt_history': 'Patient has previously identified cravings as a challenge in past attempts to quit.', 'recommended_intervention': ['Explore the specific characteristics of cravings (physical, emotional, or other)', 'Develop coping strategies for managing cravings', 'Assess potential withdrawal symptoms and resources for support', 'Explore the specific characteristics of the patient’s cravings (physical, emotional, or other).', 'Discuss coping strategies for managing cravings.', 'Assess potential withdrawal symptoms and address concerns proactively.'], 'vote_agreement': 1.0, 'dissenting_fields': []}
+
+Your tasks:
+1. Validate that the consensus annotation is internally consistent and supported by the conversation.
+2. Write a reasoning_summary: 1–2 sentences that explain WHY this patient is at this stage,
+   what their primary barrier is, and what intervention approach is recommended.
+
+Respond ONLY with valid JSON:
+{
+  "stage_of_change": "<from consensus>",
+  "main_concern": "<from consensus>",
+  "primary_trigger": "<from consensus>",
+  "quit_attempt_history": "<from consensus>",
+  "recommended_intervention": ["<strategy 1>", "..."],
+  "reasoning_summary": "<1–2 sentence clinical rationale>",
+  "confidence_score": 0.0
+}
+
+
+RESPONSE:
+```json
+{
+  "stage_of_change": "contemplation",
+  "main_concern": "cravings",
+  "primary_trigger": "cravings",
+  "quit_attempt_history": "Patient has previously identified cravings as a challenge in past attempts to quit.",
+  "recommended_intervention": [
+    "Explore the specific characteristics of cravings (physical, emotional, or other)",
+    "Develop coping strategies for managing cravings",
+    "Assess potential withdrawal symptoms and resources for support",
+    "Explore the specific characteristics of the patient’s cravings (physical, emotional, or other).",
+    "Discuss coping strategies for managing cravings.",
+    "Assess potential withdrawal symptoms and address concerns proactively."
+  ],
+  "reasoning_summary": "The patient is in the contemplation stage, primarily focused on the challenge of cravings, which they've previously identified as a barrier to quitting. The recommended intervention focuses on detailed exploration of cravings and developing tailored coping strategies.",
+  "confidence_score": 1.0
+}
+```

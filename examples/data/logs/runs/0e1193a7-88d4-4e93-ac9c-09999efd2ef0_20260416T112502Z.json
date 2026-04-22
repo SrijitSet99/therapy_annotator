@@ -1,0 +1,364 @@
+{
+  "events": {
+    "agent_manager": {
+      "confidence_results": {
+        "advice": {
+          "confidence": 1.0,
+          "issues": []
+        },
+        "attempt": {
+          "confidence": 0.3,
+          "issues": [
+            "Grounding & Veracity: The statement 'Patient attempted to gradually reduce smoking with the intention to quit.' is an assumption based on the counselor's positive affirmation ('You've taken the first step towards quitting smoking'). There is no explicit statement from the patient indicating a reduction attempt. This represents a logical leap.",
+            "Hallucination Check: The extraction includes 'Patient attempted to temporarily abstain for a short period.' This statement is not present in the source text. It's a hallucination.",
+            "Sensitivity (Omission) Check: The source text contains the key phrase 'want to kick the habit,' which directly relates to a quit attempt. However, the extraction doesn't explicitly capture this phrasing, representing a potential omission.",
+            "Taxonomy Alignment: While the extracted attempts relate to behavioral intention, the extraction lacks specific details about the *type* of attempt (e.g., behavioral support).  The provided data is too general to accurately categorize."
+          ]
+        },
+        "concern": {
+          "confidence": 0.75,
+          "issues": [
+            "Implicit Concern Detection: The patient's initial question, 'What motivated you to want to kick the habit?' represents an implicit concern regarding the potential difficulties and anxieties associated with quitting. While not explicitly stated as a fear, it’s a direct probe into the patient’s worries. This could be strengthened with a more detailed assessment of their anticipated challenges.",
+            "Severity Calibration: The extraction doesn't fully capture the potential intensity of the patient's motivation. The underlying reason for wanting to quit likely involves significant anxiety and apprehension, which isn't fully reflected in the current categorization."
+          ]
+        },
+        "readiness": {
+          "confidence": 0.8,
+          "issues": [
+            "{'category': 'Grounding Check', 'description': \"The extraction claims the patient is in 'contemplation' based on the initial 'hi'. While the patient's response is minimal, labeling it definitively as 'contemplation' is a slight inference. It's more accurately described as initial engagement or a simple greeting.  The counselor's follow-up question strengthens the possibility of contemplation, but doesn't confirm it.\", 'recommendation': \"Rephrase 'contemplation' to 'initial engagement' or 'greeting' for greater grounding.\"}"
+          ]
+        },
+        "triggers": {
+          "confidence": 0.6,
+          "issues": [
+            "{'category': 'Omission Detection', 'description': \"The conversation explicitly states the patient's motivation is 'stress'. The extraction misses 'stress' as a trigger. This is a significant omission.\", 'phrase': \"You've taken the first step towards quitting smoking - that's amazing! What motivated you to want to kick the habit?\", 'trigger_type': 'stress'}",
+            "{'category': 'Grounding Check', 'description': \"The inclusion of 'after meals', 'morning routine', and 'boredom' lacks strong grounding in the conversation. While plausible motivations for quitting smoking, they are not directly mentioned or strongly implied by the counselor's initial statement. These appear to be assumptions.\", 'trigger': 'after meals', 'trigger_type': 'after meals'}",
+            "{'category': 'Grounding Check', 'description': \"Similarly, 'morning routine' and 'boredom' are not directly supported by the conversation and represent an assumption.\", 'trigger': 'morning routine', 'trigger_type': 'morning routine'}",
+            "{'category': 'Grounding Check', 'description': \"The inclusion of 'boredom' is not grounded in the conversation and represents an assumption.\", 'trigger': 'boredom', 'trigger_type': 'boredom'}"
+          ]
+        }
+      },
+      "extractor_output": {
+        "advice": {
+          "advice": [
+            "Congratulate the patient on taking the first step.",
+            "Explore the patient's motivation for quitting.",
+            "Present as a friendly and supportive AI coach."
+          ],
+          "evidence": [
+            "Hi! I'm eDOSTHI, your friendly AI coach. You've taken the first step towards quitting smoking - that's amazing!",
+            "What motivated you to want to kick the habit?",
+            "Hi! I'm eDOSTHI, your friendly AI coach."
+          ]
+        },
+        "attempt": {
+          "attempts": [
+            "Patient attempted to gradually reduce smoking with the intention to quit.",
+            "Patient attempted to temporarily abstain for a short period."
+          ],
+          "evidence": [
+            "Patient: What motivated you to want to kick the habit?",
+            "Patient: hi"
+          ]
+        },
+        "concern": {
+          "concerns": [
+            "weight gain",
+            "withdrawal symptoms",
+            "social pressure"
+          ],
+          "evidence": [
+            "\"What motivated you to want to kick the habit?\"",
+            "Implied concern regarding potential discomfort during cessation, as the patient is initiating a process to quit."
+          ]
+        },
+        "readiness": {
+          "evidence": "The patient simply said 'hi,' indicating they've recognized the problem but haven't yet made a firm commitment to change. The counselor's response acknowledges their desire to quit ('What motivated you to want to kick the habit?') suggesting they are in the early stages of considering the change.",
+          "readiness_stage": "contemplation"
+        },
+        "triggers": {
+          "evidence": [],
+          "triggers": [
+            "stress",
+            "after meals",
+            "morning routine",
+            "boredom"
+          ]
+        }
+      },
+      "final_output": {
+        "advice": {
+          "_debate_converged": true,
+          "_debate_rounds": 0,
+          "advice": [
+            "Congratulate the patient on taking the first step.",
+            "Explore the patient's motivation for quitting.",
+            "Present as a friendly and supportive AI coach."
+          ],
+          "evidence": [
+            "Hi! I'm eDOSTHI, your friendly AI coach. You've taken the first step towards quitting smoking - that's amazing!",
+            "What motivated you to want to kick the habit?",
+            "Hi! I'm eDOSTHI, your friendly AI coach."
+          ]
+        },
+        "attempt": {
+          "_debate_converged": false,
+          "_debate_rounds": 1,
+          "attempts": [
+            "Patient attempted to gradually reduce smoking with the intention to quit.",
+            "Patient attempted to temporarily abstain for a short period."
+          ],
+          "evidence": [
+            "Patient: What motivated you to want to kick the habit?",
+            "Patient: hi"
+          ]
+        },
+        "concern": {
+          "_debate_converged": false,
+          "_debate_rounds": 1,
+          "concerns": [
+            "weight gain",
+            "withdrawal symptoms",
+            "social pressure"
+          ],
+          "evidence": [
+            "\"What motivated you to want to kick the habit?\"",
+            "Implied concern regarding potential discomfort during cessation, as the patient is initiating a process to quit."
+          ]
+        },
+        "readiness": {
+          "_debate_converged": true,
+          "_debate_rounds": 0,
+          "evidence": "The patient simply said 'hi,' indicating they've recognized the problem but haven't yet made a firm commitment to change. The counselor's response acknowledges their desire to quit ('What motivated you to want to kick the habit?') suggesting they are in the early stages of considering the change.",
+          "readiness_stage": "contemplation"
+        },
+        "triggers": {
+          "_debate_converged": false,
+          "_debate_rounds": 1,
+          "evidence": [],
+          "triggers": [
+            "stress",
+            "after meals",
+            "morning routine",
+            "boredom"
+          ]
+        }
+      }
+    },
+    "consensus_agent": {
+      "output": {
+        "consensus": {
+          "dissenting_fields": [
+            "quit_attempt_history"
+          ],
+          "main_concern": "Motivation for quitting",
+          "primary_trigger": "N/A",
+          "quit_attempt_history": "Patient has expressed a desire to quit smoking and has initiated a conversation, indicating a potential prior attempt to reduce or abstain.",
+          "recommended_intervention": [
+            "Explore the patient's specific motivations and reasons for wanting to quit in more detail.",
+            "Assess the patient's readiness to make a commitment to change.",
+            "Discuss potential barriers to quitting, such as cravings, withdrawal symptoms, and social pressure.",
+            "Explore the patient's reasons for wanting to quit in more detail.",
+            "Assess the strength of their motivation and any underlying beliefs about smoking.",
+            "Introduce motivational interviewing techniques to help them articulate their goals and challenges.",
+            "Explore the patient's motivations in detail.",
+            "Assess the reasons behind their desire to quit.",
+            "Begin with motivational interviewing techniques to build confidence and commitment."
+          ],
+          "stage_of_change": "contemplation",
+          "vote_agreement": 0.833
+        }
+      }
+    },
+    "longitudinal_sanity": {
+      "output": {
+        "longitudinal_sanity": {
+          "flags": [],
+          "passed": true,
+          "severity": "none"
+        }
+      }
+    },
+    "profile_update_agent": {
+      "output": {
+        "dataset_row": {
+          "confidence_score": 0.95,
+          "debate_rounds_used": 3,
+          "inconsistencies": [],
+          "longitudinal_flags": [],
+          "longitudinal_sanity_passed": true,
+          "main_concern": "Motivation for quitting",
+          "primary_trigger": "N/A",
+          "quit_attempt_history": "Patient has expressed a desire to quit smoking and has initiated a conversation, indicating a potential prior attempt to reduce or abstain.",
+          "reasoning_summary": "The patient is in the contemplation stage, motivated by a desire to quit, and their primary concern is understanding the reasons behind their intention. The recommended intervention focuses on motivational interviewing to explore their motivations and assess their readiness to change.",
+          "recommended_intervention": [
+            "Explore the patient's specific motivations and reasons for wanting to quit in more detail.",
+            "Assess the patient's readiness to make a commitment to change.",
+            "Discuss potential barriers to quitting, such as cravings, withdrawal symptoms, and social pressure.",
+            "Explore the patient's reasons for wanting to quit in more detail.",
+            "Assess the strength of their motivation and any underlying beliefs about smoking.",
+            "Introduce motivational interviewing techniques to help them articulate their goals and challenges.",
+            "Explore the patient's motivations in detail.",
+            "Assess the reasons behind their desire to quit.",
+            "Begin with motivational interviewing techniques to build confidence and commitment."
+          ],
+          "sanity_passed": true,
+          "session_number": 1,
+          "stage_of_change": "contemplation",
+          "vote_agreement": 0.833
+        },
+        "longitudinal_output": {
+          "current_annotation": {
+            "confidence_score": 0.95,
+            "debate_rounds_used": 3,
+            "inconsistencies": [],
+            "longitudinal_flags": [],
+            "longitudinal_sanity_passed": true,
+            "main_concern": "Motivation for quitting",
+            "primary_trigger": "N/A",
+            "quit_attempt_history": "Patient has expressed a desire to quit smoking and has initiated a conversation, indicating a potential prior attempt to reduce or abstain.",
+            "reasoning_summary": "The patient is in the contemplation stage, motivated by a desire to quit, and their primary concern is understanding the reasons behind their intention. The recommended intervention focuses on motivational interviewing to explore their motivations and assess their readiness to change.",
+            "recommended_intervention": [
+              "Explore the patient's specific motivations and reasons for wanting to quit in more detail.",
+              "Assess the patient's readiness to make a commitment to change.",
+              "Discuss potential barriers to quitting, such as cravings, withdrawal symptoms, and social pressure.",
+              "Explore the patient's reasons for wanting to quit in more detail.",
+              "Assess the strength of their motivation and any underlying beliefs about smoking.",
+              "Introduce motivational interviewing techniques to help them articulate their goals and challenges.",
+              "Explore the patient's motivations in detail.",
+              "Assess the reasons behind their desire to quit.",
+              "Begin with motivational interviewing techniques to build confidence and commitment."
+            ],
+            "sanity_passed": true,
+            "session_number": 1,
+            "stage_of_change": "contemplation",
+            "vote_agreement": 0.833
+          },
+          "delta": null,
+          "interventions_tried": [],
+          "longitudinal_flags": [],
+          "overall_progress": "unknown",
+          "patient_id": "0e1193a7-88d4-4e93-ac9c-09999efd2ef0",
+          "persistent_concerns": [],
+          "persistent_triggers": [],
+          "relapse_detected": false,
+          "session_number": 1,
+          "stage_trajectory": [
+            "contemplation"
+          ],
+          "stagnation_detected": false
+        },
+        "patient_profile_id": "0e1193a7-88d4-4e93-ac9c-09999efd2ef0",
+        "session_count": 1
+      }
+    },
+    "reasoning_agent": {
+      "output": {
+        "dataset_row": {
+          "confidence_score": 0.95,
+          "debate_rounds_used": 3,
+          "inconsistencies": [],
+          "main_concern": "Motivation for quitting",
+          "primary_trigger": "N/A",
+          "quit_attempt_history": "Patient has expressed a desire to quit smoking and has initiated a conversation, indicating a potential prior attempt to reduce or abstain.",
+          "reasoning_summary": "The patient is in the contemplation stage, motivated by a desire to quit, and their primary concern is understanding the reasons behind their intention. The recommended intervention focuses on motivational interviewing to explore their motivations and assess their readiness to change.",
+          "recommended_intervention": [
+            "Explore the patient's specific motivations and reasons for wanting to quit in more detail.",
+            "Assess the patient's readiness to make a commitment to change.",
+            "Discuss potential barriers to quitting, such as cravings, withdrawal symptoms, and social pressure.",
+            "Explore the patient's reasons for wanting to quit in more detail.",
+            "Assess the strength of their motivation and any underlying beliefs about smoking.",
+            "Introduce motivational interviewing techniques to help them articulate their goals and challenges.",
+            "Explore the patient's motivations in detail.",
+            "Assess the reasons behind their desire to quit.",
+            "Begin with motivational interviewing techniques to build confidence and commitment."
+          ],
+          "sanity_passed": true,
+          "stage_of_change": "contemplation",
+          "vote_agreement": 0.833
+        }
+      }
+    },
+    "run_chat": {
+      "final_result": {
+        "dataset_row": {
+          "confidence_score": 0.95,
+          "debate_rounds_used": 3,
+          "inconsistencies": [],
+          "longitudinal_flags": [],
+          "longitudinal_sanity_passed": true,
+          "main_concern": "Motivation for quitting",
+          "primary_trigger": "N/A",
+          "quit_attempt_history": "Patient has expressed a desire to quit smoking and has initiated a conversation, indicating a potential prior attempt to reduce or abstain.",
+          "reasoning_summary": "The patient is in the contemplation stage, motivated by a desire to quit, and their primary concern is understanding the reasons behind their intention. The recommended intervention focuses on motivational interviewing to explore their motivations and assess their readiness to change.",
+          "recommended_intervention": [
+            "Explore the patient's specific motivations and reasons for wanting to quit in more detail.",
+            "Assess the patient's readiness to make a commitment to change.",
+            "Discuss potential barriers to quitting, such as cravings, withdrawal symptoms, and social pressure.",
+            "Explore the patient's reasons for wanting to quit in more detail.",
+            "Assess the strength of their motivation and any underlying beliefs about smoking.",
+            "Introduce motivational interviewing techniques to help them articulate their goals and challenges.",
+            "Explore the patient's motivations in detail.",
+            "Assess the reasons behind their desire to quit.",
+            "Begin with motivational interviewing techniques to build confidence and commitment."
+          ],
+          "sanity_passed": true,
+          "session_number": 1,
+          "stage_of_change": "contemplation",
+          "vote_agreement": 0.833
+        },
+        "longitudinal_output": {
+          "current_annotation": {
+            "confidence_score": 0.95,
+            "debate_rounds_used": 3,
+            "inconsistencies": [],
+            "longitudinal_flags": [],
+            "longitudinal_sanity_passed": true,
+            "main_concern": "Motivation for quitting",
+            "primary_trigger": "N/A",
+            "quit_attempt_history": "Patient has expressed a desire to quit smoking and has initiated a conversation, indicating a potential prior attempt to reduce or abstain.",
+            "reasoning_summary": "The patient is in the contemplation stage, motivated by a desire to quit, and their primary concern is understanding the reasons behind their intention. The recommended intervention focuses on motivational interviewing to explore their motivations and assess their readiness to change.",
+            "recommended_intervention": [
+              "Explore the patient's specific motivations and reasons for wanting to quit in more detail.",
+              "Assess the patient's readiness to make a commitment to change.",
+              "Discuss potential barriers to quitting, such as cravings, withdrawal symptoms, and social pressure.",
+              "Explore the patient's reasons for wanting to quit in more detail.",
+              "Assess the strength of their motivation and any underlying beliefs about smoking.",
+              "Introduce motivational interviewing techniques to help them articulate their goals and challenges.",
+              "Explore the patient's motivations in detail.",
+              "Assess the reasons behind their desire to quit.",
+              "Begin with motivational interviewing techniques to build confidence and commitment."
+            ],
+            "sanity_passed": true,
+            "session_number": 1,
+            "stage_of_change": "contemplation",
+            "vote_agreement": 0.833
+          },
+          "delta": null,
+          "interventions_tried": [],
+          "longitudinal_flags": [],
+          "overall_progress": "unknown",
+          "patient_id": "0e1193a7-88d4-4e93-ac9c-09999efd2ef0",
+          "persistent_concerns": [],
+          "persistent_triggers": [],
+          "relapse_detected": false,
+          "session_number": 1,
+          "stage_trajectory": [
+            "contemplation"
+          ],
+          "stagnation_detected": false
+        },
+        "patient_id": "0e1193a7-88d4-4e93-ac9c-09999efd2ef0",
+        "session_number": 1
+      },
+      "transcript": {
+        "session_id": "0e1193a7-88d4-4e93-ac9c-09999efd2ef0",
+        "transcript": "Patient: hi\nCounselor: Hi! I'm eDOSTHI, your friendly AI coach. You've taken the first step towards quitting smoking - that's amazing! What motivated you to want to kick the habit?"
+      }
+    }
+  },
+  "meta": {
+    "session_id": "0e1193a7-88d4-4e93-ac9c-09999efd2ef0",
+    "started_at": "20260416T112502Z"
+  }
+}

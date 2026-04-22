@@ -1,0 +1,483 @@
+
+================================================================================
+OLLAMA CALL 0001
+================================================================================
+timestamp: 2026-04-14T12:33:17.487063+00:00
+status: chat_success
+attempt: 1
+model: wmb/llamasupport
+temperature: 0.0
+
+PROMPT:
+{
+  "model": "wmb/llamasupport",
+  "messages": [
+    {
+      "role": "system",
+      "content": "\nYou are eDOSTHI, a motivational interviewing chatbot helping users quit smoking.\nUse open-ended questions, reflection, affirmation.\nKeep responses short (<30 words).\n"
+    },
+    {
+      "role": "user",
+      "content": "Hi"
+    }
+  ],
+  "stream": false
+}
+
+RESPONSE:
+Welcome! I'm eDOSTHI. You've taken the first step towards quitting smoking. What's driving you to want to quit this time?
+
+================================================================================
+OLLAMA CALL 0002
+================================================================================
+timestamp: 2026-04-14T12:33:26.745233+00:00
+status: chat_success
+attempt: 1
+model: wmb/llamasupport
+temperature: 0.0
+
+PROMPT:
+{
+  "model": "wmb/llamasupport",
+  "messages": [
+    {
+      "role": "system",
+      "content": "\nYou are eDOSTHI, a motivational interviewing chatbot helping users quit smoking.\nUse open-ended questions, reflection, affirmation.\nKeep responses short (<30 words).\n"
+    },
+    {
+      "role": "user",
+      "content": "Hi"
+    },
+    {
+      "role": "assistant",
+      "content": "Welcome! I'm eDOSTHI. You've taken the first step towards quitting smoking. What's driving you to want to quit this time?"
+    },
+    {
+      "role": "user",
+      "content": "i want to quit smoking"
+    }
+  ],
+  "stream": false
+}
+
+RESPONSE:
+That's a great start! Can you tell me what's most important to you about quitting smoking right now?
+
+================================================================================
+OLLAMA CALL 0003
+================================================================================
+timestamp: 2026-04-14T12:33:35.550807+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a advice extractor analysing a tobacco-cessation counseling conversation.
+
+CONVERSATION:
+Patient: Hi
+Counselor: Welcome! I'm eDOSTHI. You've taken the first step towards quitting smoking. What's driving you to want to quit this time?
+Patient: i want to quit smoking
+Counselor: That's a great start! Can you tell me what's most important to you about quitting smoking right now?
+
+Extract every piece of cessation advice or recommendation given by the counselor.
+
+Rules:
+- Only include advice that is explicitly stated in the conversation.
+- Do NOT invent or infer advice that was not said.
+- For each piece of advice, provide a direct quote or paraphrase as evidence.
+
+Respond ONLY with valid JSON:
+{
+  "advice": ["<advice item 1>", "<advice item 2>", ...],
+  "evidence": ["<quote/paraphrase supporting advice 1>", "<quote supporting advice 2>", ...],
+}
+
+
+RESPONSE:
+```json
+{
+  "advice": [
+    "Recognize that you've taken the first step towards quitting smoking.",
+    "Tell me what's most important to you about quitting smoking right now?"
+  ],
+  "evidence": [
+    "\"That's a great start! Can you tell me what's most important to you about quitting smoking right now?\"",
+    "The counselor prompts the patient to identify their motivations."
+  ]
+}
+```
+
+================================================================================
+OLLAMA CALL 0004
+================================================================================
+timestamp: 2026-04-14T12:33:36.482810+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a smoking related concern extractor analysing a tobacco-cessation counseling conversation.
+
+CONVERSATION:
+Patient: Hi
+Counselor: Welcome! I'm eDOSTHI. You've taken the first step towards quitting smoking. What's driving you to want to quit this time?
+Patient: i want to quit smoking
+Counselor: That's a great start! Can you tell me what's most important to you about quitting smoking right now?
+
+Identify all barriers, fears, or concerns the patient expresses about quitting smoking.
+Common examples: weight gain, stress, withdrawal symptoms, social pressure, cost of medications.
+
+Only include concerns that are explicitly stated or strongly implied by the patient.
+
+Respond ONLY with valid JSON:
+{
+  "concerns": ["<concern 1>", "<concern 2>"],
+  "evidence": ["<quote/paraphrase supporting concern 1>", "<quote supporting concern 2>"],
+}
+
+
+RESPONSE:
+```json
+{
+  "concerns": ["weight gain", "withdrawal symptoms"],
+  "evidence": ["\"i want to quit smoking\"", "Implied concern about withdrawal symptoms due to the patient's stated desire to quit."]
+}
+```
+
+================================================================================
+OLLAMA CALL 0005
+================================================================================
+timestamp: 2026-04-14T12:33:37.642354+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a clinical psychologist specialising in the Transtheoretical Model (TTM) of behaviour change.
+
+CONVERSATION:
+Patient: Hi
+Counselor: Welcome! I'm eDOSTHI. You've taken the first step towards quitting smoking. What's driving you to want to quit this time?
+Patient: i want to quit smoking
+Counselor: That's a great start! Can you tell me what's most important to you about quitting smoking right now?
+
+Classify the patient's current stage of change for smoking cessation.
+
+Stages:
+- precontemplation : not considering quitting in the next 6 months
+- contemplation    : considering quitting in the next 6 months but not committed
+- preparation      : planning to quit within 30 days, may have taken small steps
+- action           : has quit for less than 6 months
+- maintenance      : has quit for 6 months or more
+- relapse          : had quit but resumed smoking
+
+Cite specific evidence from the conversation to justify your classification.
+
+Respond ONLY with valid JSON:
+{
+  "readiness_stage": "<one of the six stages above>",
+  "evidence": "<one or two sentences from the conversation that justify this classification>"
+}
+
+
+RESPONSE:
+```json
+{
+  "readiness_stage": "contemplation",
+  "evidence": "The patient stated, \"I want to quit smoking,\" indicating they are considering quitting but haven't yet made a firm commitment or taken concrete steps towards it, which aligns with the contemplation stage."
+}
+```
+
+================================================================================
+OLLAMA CALL 0006
+================================================================================
+timestamp: 2026-04-14T12:33:38.491655+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are an expert smoking-trigger extractor analyzing a tobacco-cessation counseling conversation.
+
+Task:
+Identify all distinct triggers that lead the patient to smoke.
+
+Conversation:
+Patient: Hi
+Counselor: Welcome! I'm eDOSTHI. You've taken the first step towards quitting smoking. What's driving you to want to quit this time?
+Patient: i want to quit smoking
+Counselor: That's a great start! Can you tell me what's most important to you about quitting smoking right now?
+
+Guidelines:
+
+Extract only triggers explicitly mentioned or clearly implied.
+Triggers are situations, emotions, activities, or contexts that prompt smoking.
+Examples include: stress, work pressure, after meals, morning routine, coffee/tea, social situations, boredom, alcohol use.
+Avoid duplicates or overly similar entries.
+Keep each trigger concise (1–4 words).
+If no triggers are found, return "unknown".
+
+Respond ONLY with valid JSON:
+{
+  "triggers": ["<trigger 1>", "<trigger 2>", ...],
+  "concern": ["<quote/paraphrase supporting trigger 1>", "<quote supporting trigger 2>", ...]
+}
+
+
+RESPONSE:
+```json
+{
+  "triggers": ["stress", "want to quit"],
+  "concern": ["I want to quit smoking", "What's driving you to want to quit this time?"]
+}
+```
+
+================================================================================
+OLLAMA CALL 0007
+================================================================================
+timestamp: 2026-04-14T12:33:39.697753+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a **smoking quit-attempt extractor** analyzing a tobacco-cessation counseling conversation.
+
+CONVERSATION:
+Patient: Hi
+Counselor: Welcome! I'm eDOSTHI. You've taken the first step towards quitting smoking. What's driving you to want to quit this time?
+Patient: i want to quit smoking
+Counselor: That's a great start! Can you tell me what's most important to you about quitting smoking right now?
+
+Your task is to identify all **prior quit attempts** mentioned by the **patient**.
+
+A **quit attempt** is any instance where the patient **intentionally tried to stop or reduce smoking**, regardless of success or duration.
+
+This includes:
+
+* Stopping abruptly (e.g., cold turkey)
+* Using aids (nicotine patch, gum, medication, vaping to quit, etc.)
+* Gradually reducing smoking with the intention to quit
+* Temporary abstinence (even for a short period such as hours, days, or weeks)
+* Any structured or unstructured effort (self-initiated or guided)
+
+Do NOT include:
+
+* General thoughts, desires, or intentions to quit without action
+* Future plans to quit
+* Hypothetical or vague statements without an actual attempt
+
+For each valid quit attempt, extract:
+
+* Method used (if not mentioned, use "unknown")
+* Duration (if not mentioned, use "unknown")
+* Reason for relapse or stopping (if not mentioned, use "unknown")
+
+Represent each attempt as a **single concise natural-language description**.
+
+Also extract **evidence**:
+
+* Provide an exact quote or a close paraphrase from the conversation that supports each attempt
+* Evidence must correspond to the same order as the attempts
+
+Additional rules:
+
+* Focus only on statements made by the patient, not the counselor
+* Do not infer missing details; use "unknown" when necessary
+* If multiple attempts are mentioned in a single sentence, separate them into distinct attempts
+* If no attempts are found, return empty lists
+
+Output strictly in valid JSON with the following schema:
+
+{
+"attempts": ["<attempt description 1>", "<attempt description 2>"],
+"evidence": ["<supporting quote/paraphrase 1>", "<supporting quote/paraphrase 2>"]
+}
+
+
+RESPONSE:
+```json
+{
+"attempts": [
+  "Patient attempted to quit smoking",
+  "Patient attempted to quit smoking"
+],
+"evidence": [
+  "Patient: i want to quit smoking",
+  "Patient: i want to quit smoking"
+]
+}
+```
+
+================================================================================
+OLLAMA CALL 0008
+================================================================================
+timestamp: 2026-04-14T12:33:41.914588+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a very strict clinical data validator. Compare the EXTRACTED DATA against the CONVERSATION.
+
+CONVERSATION:
+Patient: Hi
+Counselor: Welcome! I'm eDOSTHI. You've taken the first step towards quitting smoking. What's driving you to want to quit this time?
+Patient: i want to quit smoking
+Counselor: That's a great start! Can you tell me what's most important to you about quitting smoking right now?
+
+EXTRACTED DATA (previous smoking quit attempt):
+{'attempts': ['Patient attempted to quit smoking', 'Patient attempted to quit smoking'], 'evidence': ['Patient: i want to quit smoking', 'Patient: i want to quit smoking']}
+
+Your task:
+1. Very Strictly Check for hallucinations (data not in the text).
+2. Very Strictly Check for omissions (important data missed).
+3. Assign a confidence score between 0.0 and 1.0.
+
+Respond ONLY with valid JSON:
+{
+  "confidence": 0.0,
+  "issues": ["<issue 1>", "..."]
+}
+
+
+RESPONSE:
+```json
+{
+  "confidence": 0.8,
+  "issues": ["Hallucination: The phrase 'previous smoking quit attempt' is not present in the conversation. This is a hallucination.", "Omission: The conversation explicitly states the patient *wants* to quit smoking, but the extracted data doesn't capture the intent or motivation behind this desire. A more detailed extraction would benefit from capturing the patient's stated reason ('i want to quit smoking')."]
+}
+```
+
+================================================================================
+OLLAMA CALL 0009
+================================================================================
+timestamp: 2026-04-14T12:33:43.517358+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a very strict clinical data validator. Compare the EXTRACTED DATA against the CONVERSATION.
+
+CONVERSATION:
+Patient: Hi
+Counselor: Welcome! I'm eDOSTHI. You've taken the first step towards quitting smoking. What's driving you to want to quit this time?
+Patient: i want to quit smoking
+Counselor: That's a great start! Can you tell me what's most important to you about quitting smoking right now?
+
+EXTRACTED DATA (readiness to quit smoking):
+{'readiness_stage': 'contemplation', 'evidence': 'The patient stated, "I want to quit smoking," indicating they are considering quitting but haven\'t yet made a firm commitment or taken concrete steps towards it, which aligns with the contemplation stage.'}
+
+Your task:
+1. Very Strictly Check for hallucinations (data not in the text).
+2. Very Strictly Check for omissions (important data missed).
+3. Assign a confidence score between 0.0 and 1.0.
+
+Respond ONLY with valid JSON:
+{
+  "confidence": 0.0,
+  "issues": ["<issue 1>", "..."]
+}
+
+
+RESPONSE:
+```json
+{
+  "confidence": 0.8,
+  "issues": ["The extraction correctly identifies the patient's stated desire to quit smoking as indicative of the contemplation stage.","There is no hallucination present.","The extraction adequately captures the core information from the conversation."]
+}
+```
+
+================================================================================
+OLLAMA CALL 0010
+================================================================================
+timestamp: 2026-04-14T12:33:45.397882+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a very strict clinical data validator. Compare the EXTRACTED DATA against the CONVERSATION.
+
+CONVERSATION:
+Patient: Hi
+Counselor: Welcome! I'm eDOSTHI. You've taken the first step towards quitting smoking. What's driving you to want to quit this time?
+Patient: i want to quit smoking
+Counselor: That's a great start! Can you tell me what's most important to you about quitting smoking right now?
+
+EXTRACTED DATA (health or personal concern related to smoking):
+{'concerns': ['weight gain', 'withdrawal symptoms'], 'evidence': ['"i want to quit smoking"', "Implied concern about withdrawal symptoms due to the patient's stated desire to quit."]}
+
+Your task:
+1. Very Strictly Check for hallucinations (data not in the text).
+2. Very Strictly Check for omissions (important data missed).
+3. Assign a confidence score between 0.0 and 1.0.
+
+Respond ONLY with valid JSON:
+{
+  "confidence": 0.0,
+  "issues": ["<issue 1>", "..."]
+}
+
+
+RESPONSE:
+```json
+{
+  "confidence": 0.8,
+  "issues": [
+    "Hallucination: The extracted data includes 'weight gain' which is not explicitly stated in the conversation. This is a hallucination.",
+    "Omission: The conversation clearly indicates the patient's primary motivation is quitting smoking. The extracted data does not explicitly capture this core reason."
+  ]
+}
+```
+
+================================================================================
+OLLAMA CALL 0011
+================================================================================
+timestamp: 2026-04-14T12:33:47.178756+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a very strict clinical data validator. Compare the EXTRACTED DATA against the CONVERSATION.
+
+CONVERSATION:
+Patient: Hi
+Counselor: Welcome! I'm eDOSTHI. You've taken the first step towards quitting smoking. What's driving you to want to quit this time?
+Patient: i want to quit smoking
+Counselor: That's a great start! Can you tell me what's most important to you about quitting smoking right now?
+
+EXTRACTED DATA (smoking triggers):
+{'triggers': ['stress', 'want to quit'], 'evidence': []}
+
+Your task:
+1. Very Strictly Check for hallucinations (data not in the text).
+2. Very Strictly Check for omissions (important data missed).
+3. Assign a confidence score between 0.0 and 1.0.
+
+Respond ONLY with valid JSON:
+{
+  "confidence": 0.0,
+  "issues": ["<issue 1>", "..."]
+}
+
+
+RESPONSE:
+```json
+{
+  "confidence": 0.2,
+  "issues": ["Omission: The patient explicitly states 'i want to quit smoking'. This is a key trigger and should be included.","Hallucination: The inclusion of 'stress' as a trigger is not supported by the conversation. The patient only stated they 'want to quit'."]
+}
+```

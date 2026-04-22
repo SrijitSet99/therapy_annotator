@@ -1,0 +1,46 @@
+=== LLM Response Log — 20260416_193550 ===
+
+--- [CONFIDENCE_CHECK] attempt @ 19:35:54.332 ---
+{
+  "confidence": 0.5,
+  "issues": [
+    "Issue 1: Grounding and Veracity - The phrase 'brutal project and cracked one night' is an interpretation, not a direct quote. The conversation states the patient 'cracked one night' after a brutal project, but doesn't explicitly state it was a quit attempt. This requires a logical leap.",
+    "Issue 2: Omission Check - The conversation clearly states the patient used a nicotine patch for six weeks and attempted cold turkey for two or three days. The extraction misses the explicit mention of the patch attempt and the cold turkey attempt duration. It also misses the patient's explicit statement about wanting to 'actually try this time, not just think about it'."
+  ]
+}
+
+--- [CONFIDENCE_CHECK] readiness @ 19:35:58.295 ---
+{
+  "confidence": 0.75,
+  "issues": [
+    "The classification of {stage} is defensible but borderline. While the patient expresses a desire to 'actually try this time' and sets a goal to 'set a date,' the conversation heavily emphasizes past failures (patch, cold turkey) and triggers (stress, morning habits). This leans towards contemplation, but the stated readiness to 'try this time' suggests a nascent move towards preparation. The counselor's proactive suggestions (varenicline, stress plan) also point towards a stage beyond precontemplation.",
+    "There is a minor evidence gap. The patient\u2019s repeated mention of triggers (stress, mornings) and unsuccessful prior attempts without a concrete plan could support a stronger classification within contemplation. However, the counselor\u2019s immediate offer of intervention and the patient\u2019s willingness to set a date introduce elements of preparation and a potential shift towards action."
+  ]
+}
+
+--- [CONFIDENCE_CHECK] concern @ 19:36:02.966 ---
+{
+  "confidence": 0.95,
+  "issues": [
+    "Implicit Concern Detection: The patient explicitly expresses concern about stress and weight gain, but also mentions feeling 'awake' without a cigarette, indicating a potential physiological craving concern. This could be flagged as a minor omission if a broader concern about nicotine dependence wasn't captured.",
+    "Severity Calibration: The concerns regarding stress and weight gain are accurately represented as significant worries. The patient's use of words like 'scared,' 'freaks me out,' and 'brutal' clearly indicates a high level of concern, not underrepresented.",
+    "Temporal Attribution: All identified concerns are active \u2013 the patient is currently experiencing anxiety about stress triggers and the impact of his wife's weight gain on his own behavior.",
+    "Categorization Accuracy: \u2018Stress\u2019 is correctly categorized as a Situational/Relapse concern (stress as a trigger). \u2018Weight gain\u2019 is correctly categorized as a Social/Financial concern (impact on self-perception and potentially related to his wife's behavior). The absence of a physiological concern (cravings, breathlessness) is a minor passing concern."
+  ]
+}
+
+--- [CONFIDENCE_CHECK] triggers @ 19:36:06.375 ---
+{
+  "confidence": 0.7,
+  "issues": [
+    "Omission Detection: The trigger 'wife's weight gain' is present in the conversation ('Also, my wife quit two years ago and she gained quite a bit of weight. That freaks me out a little.') but not included in the extracted triggers. This should be classified as a 'social' trigger due to its connection to a significant other's behavior.",
+    "Classification Accuracy: The trigger 'morning coffee' is correctly identified as a 'habitual' trigger, but the extraction could benefit from a more granular classification. While habitual, it's also strongly linked to a specific time of day, which could be categorized as 'situational' as well."
+  ]
+}
+
+--- [CONFIDENCE_CHECK] advice @ 19:36:07.704 ---
+{
+  "confidence": 0.95,
+  "issues": []
+}
+

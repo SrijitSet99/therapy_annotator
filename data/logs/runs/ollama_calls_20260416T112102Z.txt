@@ -1,0 +1,116 @@
+
+================================================================================
+OLLAMA CALL 0001
+================================================================================
+timestamp: 2026-04-16T11:21:02.424365+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a Clinical Health Psychologist and NLP Validator. Your specialty is identifying "Patient-Reported Concerns" (PRCs) related to tobacco use, withdrawal, and long-term health risks from clinical transcripts.
+
+Objective: Audit the extraction of smoking-related concerns (`{'concerns': ['weight gain', 'health issues']}`) against the source text (`I am worried about gaining weight if I quit. I am also concerned about my health.`) to ensure every patient worry—whether explicit or subtle—is captured with clinical accuracy.
+
+Phase 1: The "Concern" Rigor Audit
+Evaluate the extraction using these specialized clinical checks:
+
+1.  Implicit Concern Detection: Did the patient express concern through a question or a "hedged" statement? (e.g., *"I've noticed I'm winded lately, but maybe it's just age."*) If the extraction missed the underlying health anxiety, flag it as an omission.
+2.  Severity Calibration: Ensure the concern wasn't "watered down." If a patient says they are *"terrified of lung cancer,"* an extraction of *"worried about health"* is a precision error in severity.
+3.  Temporal Attribution: Distinguish between **historical concerns** (things they used to worry about) and **active concerns** (current anxieties).
+4.  Categorization Accuracy: Verify the `concern_type` using this taxonomy:
+    * Physiological: Cough, breathlessness, sleep issues.
+    * Psychological: Anxiety about failing to quit, mood swings, irritability.
+    * Social/Financial: Cost of smoking, stigma, impact on family.
+    * Relapse Triggers: Situational concerns (e.g., "drinking with friends").
+
+Phase 2: Confidence Scoring
+Assign a Confidence Score (0 - 10):
+* 9–10: Captured all nuances, including subtextual concerns and correct intensity.
+* 7–8: Missed a minor/passing concern; minor category misalignment.
+* 5–6: Failed to capture a primary concern or misinterpreted the patient's emotional tone.
+* < 5: Failed to distinguish between the clinician's advice and the patient's actual concern.
+
+
+Respond ONLY with valid JSON:
+{
+  "confidence": 0.0,
+  "issues": ["<issue 1>", "..."]
+}
+
+RESPONSE:
+Okay, I'm ready to begin the audit. Please provide the clinical transcript. I will analyze it according to the specified criteria and return a JSON response.
+
+
+================================================================================
+OLLAMA CALL 0002
+================================================================================
+timestamp: 2026-04-16T11:21:05.393475+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a senior clinical NLP annotation reviewer specializing in trigger extraction quality assurance.
+
+ORIGINAL CONVERSATION:
+I smoke when I am stressed or after drinking coffee.
+
+TRIGGER EXTRACTION TO REVIEW:
+{'triggers': ['stress', 'coffee']}
+
+---
+
+## Review Instructions
+
+Systematically evaluate the trigger extraction against the source conversation across four dimensions:
+
+### 1. Grounding Check
+For each extracted trigger, verify it is either:
+- **Explicitly stated** — the exact term or a clear synonym appears in the conversation
+- **Strongly implied** — the clinical context makes it unambiguous without being stated directly
+Flag anything that is inferred, assumed, or fabricated.
+
+### 2. Hallucination Detection
+Identify triggers that are claimed in the extraction but have NO basis in the conversation. Note the specific trigger and why it is unsupported.
+
+### 3. Omission Detection
+Identify triggers that are clearly present in the conversation but missing from the extraction. Note the exact phrase or passage and what trigger type it should have been assigned.
+
+### 4. Classification Accuracy
+For each trigger, verify the `trigger_type` label is clinically appropriate. Flag misclassifications and suggest the correct label where applicable.
+
+### 5. Confidence Score
+Assign a score from 0–10 reflecting overall extraction quality:
+- 9–10: Near-perfect, no meaningful errors
+- 7–8: Minor omissions or edge-case misclassifications
+- 4–6: Several errors that affect reliability
+- 1–3: Significant hallucinations or omissions
+- 0: Extraction is unusable
+
+---
+
+## Output Format
+
+If a category has no findings, return an empty array for that field.
+Respond ONLY with valid JSON:
+{
+  "confidence": 0.0,
+  "issues": ["<issue 1>", "..."]
+}
+
+RESPONSE:
+```json
+{
+  "confidence": 8,
+  "issues": [
+    {
+      "category": "Grounding Check",
+      "description": "The trigger 'coffee' is present, but the conversation states 'after drinking coffee'. While strongly implied, it's beneficial to explicitly include 'drinking' to strengthen grounding.",
+      "recommendation": "Consider adding 'drinking' to the trigger list for increased grounding."
+    }
+  ]
+}
+```

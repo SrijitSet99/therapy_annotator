@@ -1,0 +1,337 @@
+{
+  "events": {
+    "agent_manager": {
+      "confidence_result": {
+        "advice": {
+          "confidence": 0.95,
+          "issues": [],
+          "severity": "none"
+        },
+        "concern": {
+          "confidence": 0.95,
+          "issues": [
+            "The extracted data correctly identifies the patient's stated concern: wanting to quit smoking. However, the 'evidence' section contains a slight hallucination. While the initial statement *implies* a concern, it doesn't explicitly state it as a concern. The counselor's follow-up questions directly probe for motivations and gains, which is crucial context missing from the 'evidence' field.  The phrase 'The patient's initial statement indicates a desire to quit, which implies a concern about the current smoking habit and a wish to change it.' is an interpretation, not direct evidence."
+          ],
+          "severity": "none"
+        },
+        "readiness": {
+          "confidence": 0.85,
+          "issues": [
+            "Minor hallucination: The statement 'indicating they are considering quitting but hasn't yet made a firm commitment or taken concrete steps towards it' is slightly over-interpretative. While the patient expresses a desire to quit, the conversation doesn't explicitly state a lack of commitment or concrete steps.",
+            "Omission: The conversation lacks specific details about the patient's smoking history, duration, or previous attempts to quit. This information would strengthen the readiness assessment."
+          ],
+          "severity": "none"
+        },
+        "triggers": {
+          "confidence": 0.2,
+          "issues": [
+            "Omission: The patient explicitly states 'I want to quit smoking'. This core desire should be captured under 'triggers' or a related field.",
+            "Omission: The patient's stated motivation ('What motivates you to quit now...') is missing. This is crucial information for understanding their goals and needs.",
+            "Hallucination: No mention of 'stress' in the conversation, despite being listed as a trigger."
+          ],
+          "severity": "none"
+        }
+      },
+      "confidence_results": {
+        "advice": {
+          "confidence": 0.95,
+          "issues": [],
+          "severity": "none"
+        },
+        "concern": {
+          "confidence": 0.95,
+          "issues": [
+            "The extracted data correctly identifies the patient's stated concern: wanting to quit smoking. However, the 'evidence' section contains a slight hallucination. While the initial statement *implies* a concern, it doesn't explicitly state it as a concern. The counselor's follow-up questions directly probe for motivations and gains, which is crucial context missing from the 'evidence' field.  The phrase 'The patient's initial statement indicates a desire to quit, which implies a concern about the current smoking habit and a wish to change it.' is an interpretation, not direct evidence."
+          ],
+          "severity": "none"
+        },
+        "readiness": {
+          "confidence": 0.85,
+          "issues": [
+            "Minor hallucination: The statement 'indicating they are considering quitting but hasn't yet made a firm commitment or taken concrete steps towards it' is slightly over-interpretative. While the patient expresses a desire to quit, the conversation doesn't explicitly state a lack of commitment or concrete steps.",
+            "Omission: The conversation lacks specific details about the patient's smoking history, duration, or previous attempts to quit. This information would strengthen the readiness assessment."
+          ],
+          "severity": "none"
+        },
+        "triggers": {
+          "confidence": 0.2,
+          "issues": [
+            "Omission: The patient explicitly states 'I want to quit smoking'. This core desire should be captured under 'triggers' or a related field.",
+            "Omission: The patient's stated motivation ('What motivates you to quit now...') is missing. This is crucial information for understanding their goals and needs.",
+            "Hallucination: No mention of 'stress' in the conversation, despite being listed as a trigger."
+          ],
+          "severity": "none"
+        }
+      },
+      "extractor_output": {
+        "advice": {
+          "advice": [
+            "Recognize that wanting to quit is a great decision.",
+            "Identify your motivations for quitting.",
+            "Determine what you hope to gain from being smoke-free."
+          ],
+          "evidence": [
+            "That's a great decision!",
+            "What motivates you to quit now...",
+            "What do you hope to gain from being smoke-free?"
+          ]
+        },
+        "concern": {
+          "concerns": [
+            "I want to quit smoking"
+          ],
+          "evidence": [
+            "\"I want to quit smoking\"",
+            "The patient's initial statement indicates a desire to quit, which implies a concern about the current smoking habit and a wish to change it."
+          ]
+        },
+        "readiness": {
+          "evidence": "The patient stated 'I want to quit smoking,' indicating they are considering quitting but haven't yet made a firm commitment or taken concrete steps towards it. Furthermore, the counselor's follow-up question about motivation and desired outcomes suggests the patient is in the early stages of thinking about the change.",
+          "readiness_stage": "contemplation"
+        },
+        "triggers": {
+          "evidence": [],
+          "triggers": [
+            "stress",
+            "want to quit"
+          ]
+        }
+      },
+      "final_output": {
+        "advice": {
+          "_debate_converged": true,
+          "_debate_rounds": 0,
+          "advice": [
+            "Recognize that wanting to quit is a great decision.",
+            "Identify your motivations for quitting.",
+            "Determine what you hope to gain from being smoke-free."
+          ],
+          "evidence": [
+            "That's a great decision!",
+            "What motivates you to quit now...",
+            "What do you hope to gain from being smoke-free?"
+          ]
+        },
+        "concern": {
+          "_debate_converged": true,
+          "_debate_rounds": 0,
+          "concerns": [
+            "I want to quit smoking"
+          ],
+          "evidence": [
+            "\"I want to quit smoking\"",
+            "The patient's initial statement indicates a desire to quit, which implies a concern about the current smoking habit and a wish to change it."
+          ]
+        },
+        "readiness": {
+          "_debate_converged": true,
+          "_debate_rounds": 0,
+          "evidence": "The patient stated 'I want to quit smoking,' indicating they are considering quitting but haven't yet made a firm commitment or taken concrete steps towards it. Furthermore, the counselor's follow-up question about motivation and desired outcomes suggests the patient is in the early stages of thinking about the change.",
+          "readiness_stage": "contemplation"
+        },
+        "triggers": {
+          "_debate_converged": true,
+          "_debate_rounds": 2,
+          "conversation_context": "The counselor is exploring the patient's motivations for quitting and identifying potential challenges. The counselor prompted the patient to discuss their biggest struggle, which they identified as stress.",
+          "evidence": [
+            "I want to quit smoking",
+            "I’m hoping to feel healthier and have more energy"
+          ],
+          "triggers": [
+            "want to quit",
+            "stress"
+          ]
+        }
+      }
+    },
+    "consensus_agent": {
+      "output": {
+        "consensus": {
+          "dissenting_fields": [],
+          "main_concern": "want to quit smoking",
+          "primary_trigger": "stress",
+          "quit_attempt_history": "No prior quit attempts reported.",
+          "recommended_intervention": [
+            "Explore and articulate specific motivations for quitting, focusing on the desired benefits (e.g., improved health, increased energy).",
+            "Identify potential stressors and develop coping strategies.",
+            "Discuss the immediate and long-term consequences of continued smoking to reinforce the desire for change.",
+            "Explore and articulate specific motivations for quitting.",
+            "Discuss the benefits of being smoke-free in detail, focusing on improved health and energy levels."
+          ],
+          "stage_of_change": "contemplation",
+          "vote_agreement": 0.917
+        }
+      }
+    },
+    "longitudinal_sanity": {
+      "output": {
+        "longitudinal_sanity": {
+          "flags": [],
+          "passed": true,
+          "severity": "none"
+        }
+      }
+    },
+    "profile_update_agent": {
+      "output": {
+        "dataset_row": {
+          "confidence_score": 1.0,
+          "debate_rounds_used": 2,
+          "inconsistencies": [],
+          "longitudinal_flags": [],
+          "longitudinal_sanity_passed": true,
+          "main_concern": "want to quit smoking",
+          "primary_trigger": "stress",
+          "quit_attempt_history": "No prior quit attempts reported.",
+          "reasoning_summary": "The patient is in the contemplation stage, expressing a desire to quit, and indicating that stress is a primary concern. The recommended interventions focus on clarifying motivations and addressing the underlying stress to move the patient towards action.",
+          "recommended_intervention": [
+            "Explore and articulate specific motivations for quitting, focusing on the desired benefits (e.g., improved health, increased energy).",
+            "Identify potential stressors and develop coping strategies.",
+            "Discuss the immediate and long-term consequences of continued smoking to reinforce the desire for change.",
+            "Explore and articulate specific motivations for quitting.",
+            "Discuss the benefits of being smoke-free in detail, focusing on improved health and energy levels."
+          ],
+          "sanity_passed": true,
+          "session_number": 1,
+          "stage_of_change": "contemplation",
+          "vote_agreement": 0.917
+        },
+        "longitudinal_output": {
+          "current_annotation": {
+            "confidence_score": 1.0,
+            "debate_rounds_used": 2,
+            "inconsistencies": [],
+            "longitudinal_flags": [],
+            "longitudinal_sanity_passed": true,
+            "main_concern": "want to quit smoking",
+            "primary_trigger": "stress",
+            "quit_attempt_history": "No prior quit attempts reported.",
+            "reasoning_summary": "The patient is in the contemplation stage, expressing a desire to quit, and indicating that stress is a primary concern. The recommended interventions focus on clarifying motivations and addressing the underlying stress to move the patient towards action.",
+            "recommended_intervention": [
+              "Explore and articulate specific motivations for quitting, focusing on the desired benefits (e.g., improved health, increased energy).",
+              "Identify potential stressors and develop coping strategies.",
+              "Discuss the immediate and long-term consequences of continued smoking to reinforce the desire for change.",
+              "Explore and articulate specific motivations for quitting.",
+              "Discuss the benefits of being smoke-free in detail, focusing on improved health and energy levels."
+            ],
+            "sanity_passed": true,
+            "session_number": 1,
+            "stage_of_change": "contemplation",
+            "vote_agreement": 0.917
+          },
+          "delta": null,
+          "interventions_tried": [],
+          "longitudinal_flags": [],
+          "overall_progress": "unknown",
+          "patient_id": "fb9c55b6-531a-40e1-bf6b-7fd2fed81a22",
+          "persistent_concerns": [],
+          "persistent_triggers": [],
+          "relapse_detected": false,
+          "session_number": 1,
+          "stage_trajectory": [
+            "contemplation"
+          ],
+          "stagnation_detected": false
+        },
+        "patient_profile_id": "fb9c55b6-531a-40e1-bf6b-7fd2fed81a22",
+        "session_count": 1
+      }
+    },
+    "reasoning_agent": {
+      "output": {
+        "dataset_row": {
+          "confidence_score": 1.0,
+          "debate_rounds_used": 2,
+          "inconsistencies": [],
+          "main_concern": "want to quit smoking",
+          "primary_trigger": "stress",
+          "quit_attempt_history": "No prior quit attempts reported.",
+          "reasoning_summary": "The patient is in the contemplation stage, expressing a desire to quit, and indicating that stress is a primary concern. The recommended interventions focus on clarifying motivations and addressing the underlying stress to move the patient towards action.",
+          "recommended_intervention": [
+            "Explore and articulate specific motivations for quitting, focusing on the desired benefits (e.g., improved health, increased energy).",
+            "Identify potential stressors and develop coping strategies.",
+            "Discuss the immediate and long-term consequences of continued smoking to reinforce the desire for change.",
+            "Explore and articulate specific motivations for quitting.",
+            "Discuss the benefits of being smoke-free in detail, focusing on improved health and energy levels."
+          ],
+          "sanity_passed": true,
+          "stage_of_change": "contemplation",
+          "vote_agreement": 0.917
+        }
+      }
+    },
+    "run_chat": {
+      "final_result": {
+        "dataset_row": {
+          "confidence_score": 1.0,
+          "debate_rounds_used": 2,
+          "inconsistencies": [],
+          "longitudinal_flags": [],
+          "longitudinal_sanity_passed": true,
+          "main_concern": "want to quit smoking",
+          "primary_trigger": "stress",
+          "quit_attempt_history": "No prior quit attempts reported.",
+          "reasoning_summary": "The patient is in the contemplation stage, expressing a desire to quit, and indicating that stress is a primary concern. The recommended interventions focus on clarifying motivations and addressing the underlying stress to move the patient towards action.",
+          "recommended_intervention": [
+            "Explore and articulate specific motivations for quitting, focusing on the desired benefits (e.g., improved health, increased energy).",
+            "Identify potential stressors and develop coping strategies.",
+            "Discuss the immediate and long-term consequences of continued smoking to reinforce the desire for change.",
+            "Explore and articulate specific motivations for quitting.",
+            "Discuss the benefits of being smoke-free in detail, focusing on improved health and energy levels."
+          ],
+          "sanity_passed": true,
+          "session_number": 1,
+          "stage_of_change": "contemplation",
+          "vote_agreement": 0.917
+        },
+        "longitudinal_output": {
+          "current_annotation": {
+            "confidence_score": 1.0,
+            "debate_rounds_used": 2,
+            "inconsistencies": [],
+            "longitudinal_flags": [],
+            "longitudinal_sanity_passed": true,
+            "main_concern": "want to quit smoking",
+            "primary_trigger": "stress",
+            "quit_attempt_history": "No prior quit attempts reported.",
+            "reasoning_summary": "The patient is in the contemplation stage, expressing a desire to quit, and indicating that stress is a primary concern. The recommended interventions focus on clarifying motivations and addressing the underlying stress to move the patient towards action.",
+            "recommended_intervention": [
+              "Explore and articulate specific motivations for quitting, focusing on the desired benefits (e.g., improved health, increased energy).",
+              "Identify potential stressors and develop coping strategies.",
+              "Discuss the immediate and long-term consequences of continued smoking to reinforce the desire for change.",
+              "Explore and articulate specific motivations for quitting.",
+              "Discuss the benefits of being smoke-free in detail, focusing on improved health and energy levels."
+            ],
+            "sanity_passed": true,
+            "session_number": 1,
+            "stage_of_change": "contemplation",
+            "vote_agreement": 0.917
+          },
+          "delta": null,
+          "interventions_tried": [],
+          "longitudinal_flags": [],
+          "overall_progress": "unknown",
+          "patient_id": "fb9c55b6-531a-40e1-bf6b-7fd2fed81a22",
+          "persistent_concerns": [],
+          "persistent_triggers": [],
+          "relapse_detected": false,
+          "session_number": 1,
+          "stage_trajectory": [
+            "contemplation"
+          ],
+          "stagnation_detected": false
+        },
+        "patient_id": "fb9c55b6-531a-40e1-bf6b-7fd2fed81a22",
+        "session_number": 1
+      },
+      "transcript": {
+        "session_id": "fb9c55b6-531a-40e1-bf6b-7fd2fed81a22",
+        "transcript": "Patient: Hi\nCounselor: Welcome! I'm eDOSTHI, here to support you in quitting smoking. What's been your biggest struggle with quitting so far?\nPatient: I want to quit smoking\nCounselor: That's a great decision! What motivates you to quit now, and what do you hope to gain from being smoke-free?"
+      }
+    }
+  },
+  "meta": {
+    "session_id": "fb9c55b6-531a-40e1-bf6b-7fd2fed81a22",
+    "started_at": "20260414T071544Z"
+  }
+}

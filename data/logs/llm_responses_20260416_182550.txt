@@ -1,0 +1,44 @@
+=== LLM Response Log — 20260416_182550 ===
+
+--- [CONFIDENCE_CHECK] attempt @ 18:25:54.523 ---
+{
+  "confidence": 0.5,
+  "issues": [
+    "Grounding & Veracity: The statement 'Patient has tried to quit twice.' is directly supported by the source text. No logical leaps detected.",
+    "Hallucination Check: No data points exist in the source text not present in the extraction.",
+    "Sensitivity (Omission) Check: The source text lacks specific details regarding the *type* of attempts (Cold Turkey, NRT, etc.) or durations. This represents a significant omission, as the model missed opportunities to capture crucial behavioral support information.",
+    "Taxonomy Alignment: While the extraction identifies 'attempts to quit,' it lacks the crucial element of classifying the *type* of attempt. This is a critical failure in taxonomy alignment, as it doesn't provide context for intervention planning."
+  ]
+}
+
+--- [CONFIDENCE_CHECK] readiness @ 18:25:56.116 ---
+{
+  "confidence": 0.9,
+  "issues": []
+}
+
+--- [CONFIDENCE_CHECK] concern @ 18:26:00.768 ---
+{
+  "confidence": 0.75,
+  "issues": [
+    "Implicit Concern Detection: The transcript contains both a direct statement ('I am worried about weight gain.') and a hedged statement ('maybe it's just age'). The extraction captures both, demonstrating an understanding of implicit concern. However, a deeper probe might reveal additional anxieties not explicitly stated.",
+    "Severity Calibration: The extraction of 'worried about weight gain' aligns with the patient's stated fear. No severity miscalibration detected.",
+    "Temporal Attribution: The transcript presents current concerns ('I am worried about weight gain'). No historical concerns are present.",
+    "Categorization Accuracy: The concern 'worried about weight gain' is categorized as Physiological (due to its relation to weight and potential health consequences) which is accurate.  The 'previous quitting attempts' are categorized as Psychological (anxiety about failing to quit)."
+  ]
+}
+
+--- [CONFIDENCE_CHECK] triggers @ 18:26:04.135 ---
+{
+  "confidence": 0.8,
+  "issues": [
+    "{'category': 'Grounding Check', 'description': \"The trigger 'past failures' is strongly implied, but could benefit from explicit confirmation. While the patient states 'tried to quit twice,' this clearly represents a history of unsuccessful attempts, justifying the inclusion of 'past failures'.\", 'recommendation': \"Consider adding 'past failures' for stronger grounding, or explicitly stating 'history of attempts' to capture the same meaning.\"}"
+  ]
+}
+
+--- [CONFIDENCE_CHECK] advice @ 18:26:05.597 ---
+{
+  "confidence": 0.95,
+  "issues": []
+}
+

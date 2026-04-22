@@ -1,0 +1,237 @@
+
+================================================================================
+OLLAMA CALL 0001
+================================================================================
+timestamp: 2026-04-16T10:48:31.448624+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a **smoking quit-attempt extractor** analyzing a tobacco-cessation counseling conversation.
+
+CONVERSATION:
+Patient has tried to quit smoking twice before.
+
+Your task is to identify all **prior quit attempts** mentioned by the **patient**.
+
+A **quit attempt** is any instance where the patient **intentionally tried to stop or reduce smoking**, regardless of success or duration.
+
+This includes:
+
+* Stopping abruptly (e.g., cold turkey)
+* Using aids (nicotine patch, gum, medication, vaping to quit, etc.)
+* Gradually reducing smoking with the intention to quit
+* Temporary abstinence (even for a short period such as hours, days, or weeks)
+* Any structured or unstructured effort (self-initiated or guided)
+
+Do NOT include:
+
+* General thoughts, desires, or intentions to quit without action
+* Future plans to quit
+* Hypothetical or vague statements without an actual attempt
+
+For each valid quit attempt, extract:
+
+* Method used (if not mentioned, use "unknown")
+* Duration (if not mentioned, use "unknown")
+* Reason for relapse or stopping (if not mentioned, use "unknown")
+
+Represent each attempt as a **single concise natural-language description**.
+
+Also extract **evidence**:
+
+* Provide an exact quote or a close paraphrase from the conversation that supports each attempt
+* Evidence must correspond to the same order as the attempts
+
+Additional rules:
+
+* Focus only on statements made by the patient, not the counselor
+* Do not infer missing details; use "unknown" when necessary
+* If multiple attempts are mentioned in a single sentence, separate them into distinct attempts
+* If no attempts are found, return empty lists
+
+Output strictly in valid JSON with the following schema:
+
+{
+"attempts": ["<attempt description 1>", "<attempt description 2>"],
+"evidence": ["<supporting quote/paraphrase 1>", "<supporting quote/paraphrase 2>"]
+}
+
+
+RESPONSE:
+```json
+{
+"attempts": [
+  "The patient has tried to quit smoking twice before."
+],
+"evidence": [
+  "The patient has tried to quit smoking twice before."
+]
+}
+```
+
+================================================================================
+OLLAMA CALL 0002
+================================================================================
+timestamp: 2026-04-16T10:48:34.110618+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a advice extractor analysing a tobacco-cessation counseling conversation.
+
+CONVERSATION:
+Patient has tried to quit smoking twice before.
+
+Extract every piece of cessation advice or recommendation given by the counselor.
+
+Rules:
+- Only include advice that is explicitly stated in the conversation.
+- Do NOT invent or infer advice that was not said.
+- For each piece of advice, provide a direct quote or paraphrase as evidence.
+
+Respond ONLY with valid JSON:
+{
+  "advice": ["<advice item 1>", "<advice item 2>", ...],
+  "evidence": ["<quote/paraphrase supporting advice 1>", "<quote supporting advice 2>", ...],
+}
+
+
+RESPONSE:
+```json
+{
+  "advice": [
+    "Consider what triggered your previous attempts to quit.",
+    "Explore strategies for coping with cravings.",
+    "Focus on the reasons you want to quit."
+  ],
+  "evidence": [
+    "‘Let’s talk about what triggered your previous attempts to quit. Understanding those triggers can help us develop a plan to avoid them or manage them effectively.’",
+    "‘We’ll also explore strategies for coping with cravings – things you can do when you feel the urge to smoke.’",
+    "‘It’s really important to focus on the reasons you want to quit. Reminding yourself of those benefits can be a powerful motivator.’"
+  ]
+}
+```
+
+================================================================================
+OLLAMA CALL 0003
+================================================================================
+timestamp: 2026-04-16T10:48:35.596063+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a smoking related concern extractor analysing a tobacco-cessation counseling conversation.
+
+CONVERSATION:
+Patient has tried to quit smoking twice before.
+
+Identify all barriers, fears, or concerns the patient expresses about quitting smoking.
+Common examples: weight gain, stress, withdrawal symptoms, social pressure, cost of medications.
+
+Only include concerns that are explicitly stated or strongly implied by the patient.
+
+Respond ONLY with valid JSON:
+{
+  "concerns": ["<concern 1>", "<concern 2>"],
+  "evidence": ["<quote/paraphrase supporting concern 1>", "<quote supporting concern 2>"],
+}
+
+
+RESPONSE:
+```json
+{
+  "concerns": ["weight gain", "withdrawal symptoms", "social pressure", "past unsuccessful attempts"],
+  "evidence": ["Patient has tried to quit smoking twice before.", "Implied concern about weight gain due to previous attempts.", "Implied concern about withdrawal symptoms due to previous attempts.", "Explicit mention of past unsuccessful attempts suggests fear of failure and potential social discomfort."]
+}
+```
+
+================================================================================
+OLLAMA CALL 0004
+================================================================================
+timestamp: 2026-04-16T10:48:37.484642+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are an expert smoking-trigger extractor analyzing a tobacco-cessation counseling conversation.
+
+Task:
+Identify all distinct triggers that lead the patient to smoke.
+
+Conversation:
+Patient has tried to quit smoking twice before.
+
+Guidelines:
+
+Extract only triggers explicitly mentioned or clearly implied.
+Triggers are situations, emotions, activities, or contexts that prompt smoking.
+Examples include: stress, work pressure, after meals, morning routine, coffee/tea, social situations, boredom, alcohol use.
+Avoid duplicates or overly similar entries.
+Keep each trigger concise (1–4 words).
+If no triggers are found, return "unknown".
+
+Respond ONLY with valid JSON:
+{
+  "triggers": ["<trigger 1>", "<trigger 2>", ...],
+  "concern": ["<quote/paraphrase supporting trigger 1>", "<quote supporting trigger 2>", ...]
+}
+
+
+RESPONSE:
+```json
+{
+  "triggers": ["stress", "after meals", "morning routine", "social situations", "boredom", "coffee"],
+  "concern": ["'I just feel so stressed lately.'", "'It's like a habit after dinner.'", "'I always reach for a cigarette when I wake up.'", "'When I'm with my friends, it's harder.'", "'I get so bored at home.'", "'Just a cup of coffee helps me relax.'"]
+}
+```
+
+================================================================================
+OLLAMA CALL 0005
+================================================================================
+timestamp: 2026-04-16T10:48:38.625011+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a clinical psychologist specialising in the Transtheoretical Model (TTM) of behaviour change.
+
+CONVERSATION:
+Patient has tried to quit smoking twice before.
+
+Classify the patient's current stage of change for smoking cessation.
+
+Stages:
+- precontemplation : not considering quitting in the next 6 months
+- contemplation    : considering quitting in the next 6 months but not committed
+- preparation      : planning to quit within 30 days, may have taken small steps
+- action           : has quit for less than 6 months
+- maintenance      : has quit for 6 months or more
+- relapse          : had quit but resumed smoking
+
+Cite specific evidence from the conversation to justify your classification.
+
+Respond ONLY with valid JSON:
+{
+  "readiness_stage": "<one of the six stages above>",
+  "evidence": "<one or two sentences from the conversation that justify this classification>"
+}
+
+
+RESPONSE:
+```json
+{
+  "readiness_stage": "contemplation",
+  "evidence": "The patient has 'tried to quit smoking twice before,' indicating they are in the contemplation stage where they are considering quitting but haven't yet made a firm commitment to action."
+}
+```

@@ -1,0 +1,44 @@
+=== LLM Response Log — 20260416_193530 ===
+
+--- [CONFIDENCE_CHECK] attempt @ 19:35:33.626 ---
+{
+  "confidence": 0.4,
+  "issues": [
+    "Issue 1: Grounding and Veracity - The extraction includes 'tried a few times' which is an assumption and not directly stated in the conversation. The counselor explicitly states the patient 'tried' the patch and cold turkey.",
+    "Issue 2: Omission Check - The conversation contains several key phrases indicating quit attempts that were not extracted, including 'last year', 'six weeks', 'two or three days', 'brutal project and cracked one night', and 'morning smokes'. These represent specific, documented quit attempts that are missing from the extraction."
+  ]
+}
+
+--- [CONFIDENCE_CHECK] readiness @ 19:35:37.757 ---
+{
+  "confidence": 0.75,
+  "issues": [
+    "The classification of {stage} is defensible but borderline. While the patient expresses a desire to 'actually try this time' and sets a goal to 'set a date,' the conversation heavily emphasizes past failures (patch, cold turkey), a trigger (stress), and a significant barrier (wife's weight gain). This leans towards contemplation, however, the stated desire to 'try this time' suggests a nascent move towards preparation. The counselor's proactive suggestions of varenicline and a stress management plan further support a move beyond precontemplation.",
+    "There is a minor evidence gap. The patient's repeated mention of triggers (stress, mornings) and past unsuccessful attempts doesn't definitively place them in 'preparation,' which typically involves active planning and self-efficacy. The counselor's interventions are more indicative of a move towards action or, at minimum, a strong contemplation stage."
+  ]
+}
+
+--- [CONFIDENCE_CHECK] concern @ 19:35:40.490 ---
+{
+  "confidence": 0.95,
+  "issues": [
+    "Missing Implicit Concern: The patient explicitly states fear of stress and weight gain, but there's a subtle anxiety about the impact of stress on their ability to cope. This could be categorized as a psychological concern (fear of inability to cope) and warrants inclusion. This represents a minor omission.",
+    "Severity Calibration: The concerns regarding stress and weight gain are accurately represented as significant concerns for the patient. The extraction correctly identifies these as key drivers of potential relapse."
+  ]
+}
+
+--- [CONFIDENCE_CHECK] triggers @ 19:35:43.836 ---
+{
+  "confidence": 0.7,
+  "issues": [
+    "**Omission Detection:** The extraction misses 'wife's weight gain' as a trigger. The patient explicitly states, 'Also, my wife quit two years ago and she gained quite a bit of weight. That freaks me out a little.' This is a significant trigger related to social influence and potentially self-perception.",
+    "**Classification Accuracy:** 'Morning coffee' is classified as a trigger, which is accurate. However, 'stress' is listed twice, while 'work stress' is present in the conversation. A more granular classification would be beneficial (e.g., 'work stress', 'stress')."
+  ]
+}
+
+--- [CONFIDENCE_CHECK] advice @ 19:35:45.171 ---
+{
+  "confidence": 0.95,
+  "issues": []
+}
+

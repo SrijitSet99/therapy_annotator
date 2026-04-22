@@ -1,0 +1,41 @@
+=== LLM Response Log — 20260417_133457 ===
+
+--- [CONFIDENCE_CHECK] attempt @ 13:34:59.036 ---
+{
+  "confidence": 1.0,
+  "issues": []
+}
+
+--- [CONFIDENCE_CHECK] readiness @ 13:35:02.332 ---
+{
+  "confidence": 0.8,
+  "issues": [
+    "While the patient expresses a desire to quit smoking ('\u0986\u09ae\u09bf \u09b8\u09c1\u09b8\u09cd\u09a5 \u099c\u09c0\u09ac\u09a8 \u09af\u09be\u09aa\u09a8 \u098f\u09b0 \u099c\u09a8\u09cd\u09af \u09a7\u09c2\u09ae\u09aa\u09be\u09a8 \u099b\u09be\u09dc\u09a4\u09c7 \u099a\u09be\u0987'), the counselor's follow-up question about the importance of the desire for a healthy life doesn't definitively place them in a stage beyond precontemplation. The patient hasn't yet considered quitting or acknowledged any specific steps. A stronger indication of contemplation or preparation would require a statement about considering options or making a plan.",
+    "The conversation lacks strong evidence to definitively place the patient in any stage beyond precontemplation. The counselor's initial question about goals is a standard opening, but the patient's immediate response doesn't demonstrate active consideration or planning, which are hallmarks of later stages."
+  ]
+}
+
+--- [CONFIDENCE_CHECK] concern @ 13:35:05.816 ---
+{
+  "confidence": 0.8,
+  "issues": [
+    "The extraction missed a potential implicit concern regarding physiological impact. While the patient stated '\u0986\u09ae\u09bf \u09b8\u09c1\u09b8\u09cd\u09a5 \u099c\u09c0\u09ac\u09a8 \u09af\u09be\u09aa\u09a8 \u098f\u09b0 \u099c\u09a8\u09cd\u09af \u09a7\u09c2\u09ae\u09aa\u09be\u09a8 \u099b\u09be\u09dc\u09a4\u09c7 \u099a\u09be\u0987' (I want to quit smoking for a healthy life), a more nuanced extraction could have included a concern about potential physical withdrawal symptoms or the impact of quitting on their body. This represents a minor omission.",
+    "The categorization of '\u09b8\u09c1\u09b8\u09cd\u09a5 \u099c\u09c0\u09ac\u09a8\u09af\u09be\u09aa\u09a8 \u0995\u09b0\u09be\u09b0 \u098f\u0987 \u0987\u099a\u09cd\u099b\u09be\u0995\u09c7 \u0986\u09aa\u09a8\u09bf \u0995\u09a4\u099f\u09be \u0997\u09c1\u09b0\u09c1\u09a4\u09cd\u09ac \u09a6\u09c7\u09a8?' (How much importance do you place on this desire to live a healthy life?) as psychological is reasonable, but could benefit from a slightly more granular approach. It leans towards a motivational concern, which is valid, but doesn't fully capture the potential underlying anxiety about the *change* itself \u2013 a subtle calibration issue."
+  ]
+}
+
+--- [CONFIDENCE_CHECK] triggers @ 13:35:08.809 ---
+{
+  "confidence": 0.7,
+  "issues": [
+    "Omission Detection: The trigger '\u09a7\u09c2\u09ae\u09aa\u09be\u09a8 \u099b\u09c7\u09dc\u09c7 \u09a6\u09bf\u09a4\u09c7 \u099a\u09be\u0987' (literally 'want to quit smoking') is explicitly stated in the patient's first utterance and the counselor's follow-up question. This was not included in the extraction.",
+    "Classification Accuracy: The trigger '\u09b8\u09c1\u09b8\u09cd\u09a5 \u099c\u09c0\u09ac\u09a8 \u09af\u09be\u09aa\u09a8' (literally 'healthy life') is classified as 'goal'. While it represents a goal, it's more accurately categorized as a 'situational' trigger \u2013 the patient's stated reason for wanting to quit smoking.  A more appropriate classification would be 'motivation'."
+  ]
+}
+
+--- [CONFIDENCE_CHECK] advice @ 13:35:09.848 ---
+{
+  "confidence": 0.95,
+  "issues": []
+}
+

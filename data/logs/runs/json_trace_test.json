@@ -1,0 +1,25 @@
+{
+  "events": {
+    "agent_manager": {
+      "extractor_output": {
+        "concern": {
+          "concerns": [
+            "stress"
+          ],
+          "primary_concern": "stress"
+        }
+      }
+    },
+    "reasoning_agent": {
+      "output": {
+        "dataset_row": {
+          "stage_of_change": "contemplation"
+        }
+      }
+    }
+  },
+  "meta": {
+    "session_id": "test",
+    "started_at": "now"
+  }
+}

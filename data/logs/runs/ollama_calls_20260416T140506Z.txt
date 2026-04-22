@@ -1,0 +1,1651 @@
+
+================================================================================
+OLLAMA CALL 0001
+================================================================================
+timestamp: 2026-04-16T14:05:06.131032+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a Senior Clinical Informatics Specialist specializing in NLP quality assurance for tobacco cessation research.\n\nTask: Audit the quit-attempt extraction below against the source conversation for 100% fidelity.\n\nSOURCE CONVERSATION:\nCounselor: Hi, thanks for coming in today. How are you feeling about your smoking?
+
+Patient: Honestly, I've been thinking about it a lot lately. My doctor told me last month that my lungs are showing early signs of damage. That scared me.
+
+Counselor: That sounds like it was a real wake-up call. Have you thought about quitting before?
+
+Patient: Oh yeah, I've tried a few times. Last year I used the nicotine patch for about six weeks — that was my longest stretch. Before that I tried just stopping cold turkey but that only lasted maybe two or three days.
+
+Counselor: Six weeks is actually a meaningful attempt. What happened at the end of those six weeks?
+
+Patient: Work stress. It was a brutal project and I just cracked one night. Lit up and then it was back to normal within a week.
+
+Counselor: So stress is a big trigger for you?
+
+Patient: Definitely. And mornings — I have a cigarette with my coffee every single morning. It's the first thing I do. I don't even feel awake without it.
+
+Counselor: Those habitual morning smokes can be really hard to break. What worries you most about quitting this time?
+
+Patient: Honestly? The stress thing. I don't know what I'd do when things get hard at work. Also, my wife quit two years ago and she gained quite a bit of weight. That freaks me out a little.
+
+Counselor: Those are both very common concerns. Let me tell you what we can do. First, I'd really recommend we talk about varenicline — it's a prescription medication that reduces cravings and has been shown to be more effective than the patch alone. Second, we should build you a stress-management plan so you have something to reach for other than a cigarette. That might include breathing techniques, short walks, or even just having a glass of water. Third, the weight concern is real but manageable — a nutritionist referral alongside your quit attempt can help a lot. Does a quit date in the next two to three weeks feel doable?
+
+Patient: Maybe. I'd like to at least set a date. I think I'm ready to actually try this time, not just think about it.
+
+Counselor: That's a great sign. Let's schedule you for varenicline and set that date today.
+\n\nEXTRACTION TO AUDIT:\n{'attempts': ['patch 6 weeks', 'cold turkey 2 days'], 'evidence': []}\n\nConduct the following four checks:\n\n1. Grounding and Veracity: Does every extracted attempt have a direct textual anchor in the conversation? Flag any logical leaps where a quit attempt was assumed without explicit confirmation.\n\n2. Hallucination Check: List any data points in the extraction that have no basis in the source text.\n\n3. Omission Check: Scan the conversation for missed signals — keywords such as \"stopped,\" \"gave up,\" \"last time I tried,\" \"cut back to zero,\" or specific dates or durations — that should have been captured.\n\n4. Taxonomy Alignment: Verify that the attempt method (e.g., Cold Turkey, NRT, Pharmacotherapy, Behavioral Support) aligns with established clinical standards.\n\nScoring rubric:\n- 9–10: Perfect recall and precision, no errors.\n- 7–8: High utility; minor formatting or non-clinical nuance issues only.\n- 5–6: Partial data loss or one significant hallucination.\n- Below 5: Unreliable; multiple hallucinations or missed major attempts.\n\nRespond ONLY with valid JSON:\n{\n  \"confidence\": 0.0,\n  \"issues\": [\"<issue 1>\", \"<issue 2>\"]\n}\n
+
+RESPONSE:
+```json
+{
+  "confidence": 5,
+  "issues": [
+    "Issue 1: Grounding and Veracity - The extraction includes 'patch 6 weeks' and 'cold turkey 2 days' as attempts. While the patient *states* they used a nicotine patch for six weeks and attempted cold turkey for two or three days, the conversation does not explicitly state these were *quit attempts*. The counselor confirms the six weeks was a 'meaningful attempt,' implying a deliberate action. The 'cold turkey 2 days' is a brief mention and lacks context as a formal attempt.",
+    "Issue 2: Omission Check - The conversation contains several key phrases indicating attempts that were not extracted, such as 'I've tried a few times,' 'That was my longest stretch,' and 'it was a brutal project and I just cracked one night.' These represent significant quit attempts that were missed."
+  ]
+}
+```
+
+================================================================================
+OLLAMA CALL 0002
+================================================================================
+timestamp: 2026-04-16T14:05:10.439518+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a Senior Clinical NLP Reviewer specializing in Transtheoretical Model (TTM) stage classification quality assurance.\n\nTask: Audit the readiness stage classification below against the source conversation.\n\nSOURCE CONVERSATION:\nCounselor: Hi, thanks for coming in today. How are you feeling about your smoking?
+
+Patient: Honestly, I've been thinking about it a lot lately. My doctor told me last month that my lungs are showing early signs of damage. That scared me.
+
+Counselor: That sounds like it was a real wake-up call. Have you thought about quitting before?
+
+Patient: Oh yeah, I've tried a few times. Last year I used the nicotine patch for about six weeks — that was my longest stretch. Before that I tried just stopping cold turkey but that only lasted maybe two or three days.
+
+Counselor: Six weeks is actually a meaningful attempt. What happened at the end of those six weeks?
+
+Patient: Work stress. It was a brutal project and I just cracked one night. Lit up and then it was back to normal within a week.
+
+Counselor: So stress is a big trigger for you?
+
+Patient: Definitely. And mornings — I have a cigarette with my coffee every single morning. It's the first thing I do. I don't even feel awake without it.
+
+Counselor: Those habitual morning smokes can be really hard to break. What worries you most about quitting this time?
+
+Patient: Honestly? The stress thing. I don't know what I'd do when things get hard at work. Also, my wife quit two years ago and she gained quite a bit of weight. That freaks me out a little.
+
+Counselor: Those are both very common concerns. Let me tell you what we can do. First, I'd really recommend we talk about varenicline — it's a prescription medication that reduces cravings and has been shown to be more effective than the patch alone. Second, we should build you a stress-management plan so you have something to reach for other than a cigarette. That might include breathing techniques, short walks, or even just having a glass of water. Third, the weight concern is real but manageable — a nutritionist referral alongside your quit attempt can help a lot. Does a quit date in the next two to three weeks feel doable?
+
+Patient: Maybe. I'd like to at least set a date. I think I'm ready to actually try this time, not just think about it.
+
+Counselor: That's a great sign. Let's schedule you for varenicline and set that date today.
+\n\nCLASSIFICATION TO AUDIT:\n{readiness_output}\n\nConduct the following checks:\n\n1. Stage Validity: Is the assigned stage (precontemplation, contemplation, preparation, action, maintenance, relapse) consistent with the patient's explicit statements and behavioral indicators in the conversation?\n\n2. Evidence Grounding: Is the cited evidence actually present in the conversation and does it unambiguously support the assigned stage rather than an adjacent stage?\n\n3. Contradicting Evidence: Are there patient statements that contradict the assigned stage or suggest a different classification? List them.\n\n4. Stage Boundary Precision: Could the patient plausibly fit a neighboring stage? If so, explain which evidence distinguishes the chosen stage from the adjacent one.\n\nScoring rubric:\n- 9–10: Stage is correct, evidence is unambiguous, no contradictions.\n- 7–8: Stage is defensible but borderline; minor evidence gap.\n- 5–6: Contradicting evidence ignored, or adjacent stage is equally or more supported.\n- Below 5: Stage classification is unsupported or directly contradicted by the conversation.\n\nRespond ONLY with valid JSON:\n{\n  \"confidence\": 0.0,\n  \"issues\": [\"<issue 1>\", \"<issue 2>\"]\n}\n
+
+RESPONSE:
+```json
+{
+  "confidence": 7.5,
+  "issues": [
+    "The classification of {stage} is defensible but borderline. While the patient expresses a desire to 'actually try this time' and sets a goal to 'set a date,' the conversation heavily emphasizes past failures (patch, cold turkey), a trigger (stress), and a significant barrier (wife's weight gain). This leans towards contemplation, however, the statement 'I'd like to at least set a date' suggests a nascent move towards preparation. The counselor's proactive suggestions of varenicline and a stress management plan further support a move beyond precontemplation.",
+    "There is a minor evidence gap. The patient's repeated mention of triggers (stress, mornings) and past unsuccessful attempts doesn't definitively place them in the 'preparation' stage, which typically involves active planning and self-efficacy. The counselor's interventions are more aligned with a contemplation or early preparation stage, but the patient's own words are ambiguous."
+  ]
+}
+```
+
+================================================================================
+OLLAMA CALL 0003
+================================================================================
+timestamp: 2026-04-16T14:05:14.689196+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a Clinical Health Psychologist and NLP Validator specializing in patient-reported concerns from tobacco-cessation transcripts.\n\nTask: Audit the concern extraction below against the source conversation for clinical accuracy and completeness.\n\nSOURCE CONVERSATION:\nCounselor: Hi, thanks for coming in today. How are you feeling about your smoking?
+
+Patient: Honestly, I've been thinking about it a lot lately. My doctor told me last month that my lungs are showing early signs of damage. That scared me.
+
+Counselor: That sounds like it was a real wake-up call. Have you thought about quitting before?
+
+Patient: Oh yeah, I've tried a few times. Last year I used the nicotine patch for about six weeks — that was my longest stretch. Before that I tried just stopping cold turkey but that only lasted maybe two or three days.
+
+Counselor: Six weeks is actually a meaningful attempt. What happened at the end of those six weeks?
+
+Patient: Work stress. It was a brutal project and I just cracked one night. Lit up and then it was back to normal within a week.
+
+Counselor: So stress is a big trigger for you?
+
+Patient: Definitely. And mornings — I have a cigarette with my coffee every single morning. It's the first thing I do. I don't even feel awake without it.
+
+Counselor: Those habitual morning smokes can be really hard to break. What worries you most about quitting this time?
+
+Patient: Honestly? The stress thing. I don't know what I'd do when things get hard at work. Also, my wife quit two years ago and she gained quite a bit of weight. That freaks me out a little.
+
+Counselor: Those are both very common concerns. Let me tell you what we can do. First, I'd really recommend we talk about varenicline — it's a prescription medication that reduces cravings and has been shown to be more effective than the patch alone. Second, we should build you a stress-management plan so you have something to reach for other than a cigarette. That might include breathing techniques, short walks, or even just having a glass of water. Third, the weight concern is real but manageable — a nutritionist referral alongside your quit attempt can help a lot. Does a quit date in the next two to three weeks feel doable?
+
+Patient: Maybe. I'd like to at least set a date. I think I'm ready to actually try this time, not just think about it.
+
+Counselor: That's a great sign. Let's schedule you for varenicline and set that date today.
+\n\nEXTRACTION TO AUDIT:\n{'concerns': ['stress', 'weight gain'], 'evidence': []}\n\nConduct the following four checks:\n\n1. Implicit Concern Detection: Did the patient express concern through a question or a hedged statement (e.g., \"I've noticed I'm winded lately, but maybe it's just age\")? If an underlying health anxiety was missed, flag it as an omission.\n\n2. Severity Calibration: Ensure concerns were not underrepresented. If a patient said they were \"terrified of lung cancer,\" an extraction of \"worried about health\" is a precision error in severity.\n\n3. Temporal Attribution: Distinguish between historical concerns (past anxieties no longer active) and active concerns (current anxieties present at time of conversation).\n\n4. Categorization Accuracy: Verify concerns belong to the correct type:\n   - Physiological: cough, breathlessness, sleep issues, cravings\n   - Psychological: anxiety about failing, mood swings, irritability\n   - Social/Financial: cost of smoking or aids, stigma, family impact\n   - Situational/Relapse: concerns about specific trigger contexts\n\nScoring rubric:\n- 9–10: All concerns captured with correct intensity and category.\n- 7–8: Minor or passing concern missed; minor category misalignment.\n- 5–6: A primary concern missed or patient's emotional tone misinterpreted.\n- Below 5: Counselor advice confused for patient concerns, or major concerns absent.\n\nRespond ONLY with valid JSON:\n{\n  \"confidence\": 0.0,\n  \"issues\": [\"<issue 1>\", \"<issue 2>\"]\n}\n
+
+RESPONSE:
+```json
+{
+  "confidence": 0.95,
+  "issues": [
+    "Implicit Concern Detection: The patient explicitly states 'I don't know what I’d do when things get hard at work' and 'That freaks me out a little,' indicating an underlying anxiety about coping with stress and potential relapse. This represents a missed opportunity to capture a deeper health anxiety.",
+    "Severity Calibration: The extraction of 'stress' and 'weight gain' adequately reflects the patient’s stated fears. The intensity of the patient’s concerns regarding work stress and the impact of his wife’s weight gain are accurately represented.",
+    "Temporal Attribution: All identified concerns are active – the patient’s current anxieties regarding work stress, morning smoking, and his wife’s weight gain are all present in the conversation.",
+    "Categorization Accuracy: ‘Stress’ is correctly categorized as Psychological. ‘Weight gain’ is correctly categorized as Social/Financial (due to its impact on the patient’s anxieties related to his wife).’"
+  ]
+}
+```
+
+================================================================================
+OLLAMA CALL 0004
+================================================================================
+timestamp: 2026-04-16T14:05:17.687684+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a Senior Clinical NLP Reviewer specializing in smoking trigger extraction quality assurance.\n\nTask: Audit the trigger extraction below against the source conversation.\n\nSOURCE CONVERSATION:\nCounselor: Hi, thanks for coming in today. How are you feeling about your smoking?
+
+Patient: Honestly, I've been thinking about it a lot lately. My doctor told me last month that my lungs are showing early signs of damage. That scared me.
+
+Counselor: That sounds like it was a real wake-up call. Have you thought about quitting before?
+
+Patient: Oh yeah, I've tried a few times. Last year I used the nicotine patch for about six weeks — that was my longest stretch. Before that I tried just stopping cold turkey but that only lasted maybe two or three days.
+
+Counselor: Six weeks is actually a meaningful attempt. What happened at the end of those six weeks?
+
+Patient: Work stress. It was a brutal project and I just cracked one night. Lit up and then it was back to normal within a week.
+
+Counselor: So stress is a big trigger for you?
+
+Patient: Definitely. And mornings — I have a cigarette with my coffee every single morning. It's the first thing I do. I don't even feel awake without it.
+
+Counselor: Those habitual morning smokes can be really hard to break. What worries you most about quitting this time?
+
+Patient: Honestly? The stress thing. I don't know what I'd do when things get hard at work. Also, my wife quit two years ago and she gained quite a bit of weight. That freaks me out a little.
+
+Counselor: Those are both very common concerns. Let me tell you what we can do. First, I'd really recommend we talk about varenicline — it's a prescription medication that reduces cravings and has been shown to be more effective than the patch alone. Second, we should build you a stress-management plan so you have something to reach for other than a cigarette. That might include breathing techniques, short walks, or even just having a glass of water. Third, the weight concern is real but manageable — a nutritionist referral alongside your quit attempt can help a lot. Does a quit date in the next two to three weeks feel doable?
+
+Patient: Maybe. I'd like to at least set a date. I think I'm ready to actually try this time, not just think about it.
+
+Counselor: That's a great sign. Let's schedule you for varenicline and set that date today.
+\n\nEXTRACTION TO AUDIT:\n{'triggers': ['work stress', 'morning coffee'], 'evidence': []}\n\nConduct the following four checks:\n\n1. Grounding Check: For each extracted trigger, verify it is either explicitly stated (the exact term or a clear synonym appears in the conversation) or strongly implied (the clinical context makes it unambiguous). Flag anything inferred, assumed, or fabricated.\n\n2. Hallucination Detection: Identify triggers that appear in the extraction but have no basis in the conversation. Note the specific trigger and explain why it is unsupported.\n\n3. Omission Detection: Identify triggers clearly present in the conversation but missing from the extraction. Note the exact phrase or passage and the trigger category it should have been assigned.\n\n4. Classification Accuracy: Verify each trigger is assigned the clinically appropriate type (emotional, situational, social, habitual). Flag misclassifications and suggest the correct label.\n\nScoring rubric:\n- 9–10: Near-perfect, no meaningful errors.\n- 7–8: Minor omissions or edge-case misclassifications.\n- 4–6: Several errors that affect reliability.\n- 1–3: Significant hallucinations or omissions.\n- 0: Extraction is unusable.\n\nRespond ONLY with valid JSON:\n{\n  \"confidence\": 0.0,\n  \"issues\": [\"<issue 1>\", \"<issue 2>\"]\n}\n
+
+RESPONSE:
+```json
+{
+  "confidence": 6,
+  "issues": [
+    "Omission Detection: The conversation explicitly states 'work stress' as a trigger multiple times, including 'Work stress. It was a brutal project and I just cracked one night.' and 'Honestly? The stress thing.' This trigger is missing from the extraction.",
+    "Classification Accuracy: The trigger 'morning coffee' is correctly identified as a habitual trigger, but the categorization could be more granular. While 'morning' is present, explicitly labeling it as related to 'morning coffee' would improve clarity and reflect the patient's specific behavior."
+  ]
+}
+```
+
+================================================================================
+OLLAMA CALL 0005
+================================================================================
+timestamp: 2026-04-16T14:05:21.120027+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a very strict clinical data validator. Compare the EXTRACTED DATA against the CONVERSATION.
+
+CONVERSATION:
+Counselor: Hi, thanks for coming in today. How are you feeling about your smoking?
+
+Patient: Honestly, I've been thinking about it a lot lately. My doctor told me last month that my lungs are showing early signs of damage. That scared me.
+
+Counselor: That sounds like it was a real wake-up call. Have you thought about quitting before?
+
+Patient: Oh yeah, I've tried a few times. Last year I used the nicotine patch for about six weeks — that was my longest stretch. Before that I tried just stopping cold turkey but that only lasted maybe two or three days.
+
+Counselor: Six weeks is actually a meaningful attempt. What happened at the end of those six weeks?
+
+Patient: Work stress. It was a brutal project and I just cracked one night. Lit up and then it was back to normal within a week.
+
+Counselor: So stress is a big trigger for you?
+
+Patient: Definitely. And mornings — I have a cigarette with my coffee every single morning. It's the first thing I do. I don't even feel awake without it.
+
+Counselor: Those habitual morning smokes can be really hard to break. What worries you most about quitting this time?
+
+Patient: Honestly? The stress thing. I don't know what I'd do when things get hard at work. Also, my wife quit two years ago and she gained quite a bit of weight. That freaks me out a little.
+
+Counselor: Those are both very common concerns. Let me tell you what we can do. First, I'd really recommend we talk about varenicline — it's a prescription medication that reduces cravings and has been shown to be more effective than the patch alone. Second, we should build you a stress-management plan so you have something to reach for other than a cigarette. That might include breathing techniques, short walks, or even just having a glass of water. Third, the weight concern is real but manageable — a nutritionist referral alongside your quit attempt can help a lot. Does a quit date in the next two to three weeks feel doable?
+
+Patient: Maybe. I'd like to at least set a date. I think I'm ready to actually try this time, not just think about it.
+
+Counselor: That's a great sign. Let's schedule you for varenicline and set that date today.
+
+
+EXTRACTED DATA (cessation advice or guidance):
+{'advice': [], 'evidence': []}
+
+Your task:
+1. Very Strictly Check for hallucinations (data not in the text).
+2. Very Strictly Check for omissions (important data missed).
+3. Assign a confidence score between 0.0 and 1.0.
+
+Respond ONLY with valid JSON:
+{
+  "confidence": 0.0,
+  "issues": ["<issue 1>", "..."]
+}
+
+
+RESPONSE:
+```json
+{
+  "confidence": 0.7,
+  "issues": [
+    "Missing: Specific cessation strategies discussed. The extracted data lacks details about the recommended strategies, such as varenicline, stress management plan components (breathing techniques, walks, water), and the nutritionist referral. This is a significant omission.",
+    "Missing: Patient's stated goals. The conversation reveals the patient's desire to set a quit date and a genuine intention to try quitting this time. This information is absent from the extracted data.",
+    "Missing: Counselor's recommendation of varenicline. The counselor explicitly recommends varenicline, which is not included in the extracted data.",
+    "Missing: Trigger identification - Stress and morning habits were identified as triggers. This is not captured."
+  ]
+}
+```
+
+================================================================================
+OLLAMA CALL 0006
+================================================================================
+timestamp: 2026-04-16T14:05:22.943923+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a clinical annotation reviser specializing in tobacco cessation data extraction.
+
+ORIGINAL CONVERSATION:
+Counselor: Hi, thanks for coming in today. How are you feeling about your smoking?
+
+Patient: Honestly, I've been thinking about it a lot lately. My doctor told me last month that my lungs are showing early signs of damage. That scared me.
+
+Counselor: That sounds like it was a real wake-up call. Have you thought about quitting before?
+
+Patient: Oh yeah, I've tried a few times. Last year I used the nicotine patch for about six weeks — that was my longest stretch. Before that I tried just stopping cold turkey but that only lasted maybe two or three days.
+
+Counselor: Six weeks is actually a meaningful attempt. What happened at the end of those six weeks?
+
+Patient: Work stress. It was a brutal project and I just cracked one night. Lit up and then it was back to normal within a week.
+
+Counselor: So stress is a big trigger for you?
+
+Patient: Definitely. And mornings — I have a cigarette with my coffee every single morning. It's the first thing I do. I don't even feel awake without it.
+
+Counselor: Those habitual morning smokes can be really hard to break. What worries you most about quitting this time?
+
+Patient: Honestly? The stress thing. I don't know what I'd do when things get hard at work. Also, my wife quit two years ago and she gained quite a bit of weight. That freaks me out a little.
+
+Counselor: Those are both very common concerns. Let me tell you what we can do. First, I'd really recommend we talk about varenicline — it's a prescription medication that reduces cravings and has been shown to be more effective than the patch alone. Second, we should build you a stress-management plan so you have something to reach for other than a cigarette. That might include breathing techniques, short walks, or even just having a glass of water. Third, the weight concern is real but manageable — a nutritionist referral alongside your quit attempt can help a lot. Does a quit date in the next two to three weeks feel doable?
+
+Patient: Maybe. I'd like to at least set a date. I think I'm ready to actually try this time, not just think about it.
+
+Counselor: That's a great sign. Let's schedule you for varenicline and set that date today.
+
+
+ORIGINAL EXTRACTION:
+{'attempts': ['patch 6 weeks', 'cold turkey 2 days'], 'evidence': []}
+
+REVIEWER FEEDBACK:
+Issue 1: Grounding and Veracity - The extraction includes 'patch 6 weeks' and 'cold turkey 2 days' as attempts. While the patient *states* they used a nicotine patch for six weeks and attempted cold turkey for two or three days, the conversation does not explicitly state these were *quit attempts*. The counselor confirms the six weeks was a 'meaningful attempt,' implying a deliberate action. The 'cold turkey 2 days' is a brief mention and lacks context as a formal attempt.
+Issue 2: Omission Check - The conversation contains several key phrases indicating attempts that were not extracted, such as 'I've tried a few times,' 'That was my longest stretch,' and 'it was a brutal project and I just cracked one night.' These represent significant quit attempts that were missed.
+
+Produce a revised extraction that addresses all reviewer feedback:
+- Remove any hallucinated items.
+- Add any omitted items that are genuinely present in the conversation.
+- Keep the same JSON field structure.
+- Return ONLY valid JSON.
+
+Respond ONLY with valid JSON matching the original structure.
+
+
+RESPONSE:
+```json
+{
+  "attempts": [
+    "patch 6 weeks",
+    "cold turkey 2 days",
+    "tried a few times",
+    "brutal project and cracked one night"
+  ],
+  "evidence": []
+}
+```
+
+================================================================================
+OLLAMA CALL 0007
+================================================================================
+timestamp: 2026-04-16T14:05:24.473531+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a clinical annotation reviser specializing in tobacco cessation data extraction.
+
+ORIGINAL CONVERSATION:
+Counselor: Hi, thanks for coming in today. How are you feeling about your smoking?
+
+Patient: Honestly, I've been thinking about it a lot lately. My doctor told me last month that my lungs are showing early signs of damage. That scared me.
+
+Counselor: That sounds like it was a real wake-up call. Have you thought about quitting before?
+
+Patient: Oh yeah, I've tried a few times. Last year I used the nicotine patch for about six weeks — that was my longest stretch. Before that I tried just stopping cold turkey but that only lasted maybe two or three days.
+
+Counselor: Six weeks is actually a meaningful attempt. What happened at the end of those six weeks?
+
+Patient: Work stress. It was a brutal project and I just cracked one night. Lit up and then it was back to normal within a week.
+
+Counselor: So stress is a big trigger for you?
+
+Patient: Definitely. And mornings — I have a cigarette with my coffee every single morning. It's the first thing I do. I don't even feel awake without it.
+
+Counselor: Those habitual morning smokes can be really hard to break. What worries you most about quitting this time?
+
+Patient: Honestly? The stress thing. I don't know what I'd do when things get hard at work. Also, my wife quit two years ago and she gained quite a bit of weight. That freaks me out a little.
+
+Counselor: Those are both very common concerns. Let me tell you what we can do. First, I'd really recommend we talk about varenicline — it's a prescription medication that reduces cravings and has been shown to be more effective than the patch alone. Second, we should build you a stress-management plan so you have something to reach for other than a cigarette. That might include breathing techniques, short walks, or even just having a glass of water. Third, the weight concern is real but manageable — a nutritionist referral alongside your quit attempt can help a lot. Does a quit date in the next two to three weeks feel doable?
+
+Patient: Maybe. I'd like to at least set a date. I think I'm ready to actually try this time, not just think about it.
+
+Counselor: That's a great sign. Let's schedule you for varenicline and set that date today.
+
+
+ORIGINAL EXTRACTION:
+{'readiness_stage': 'preparation', 'evidence': 'patient set quit date'}
+
+REVIEWER FEEDBACK:
+The classification of {stage} is defensible but borderline. While the patient expresses a desire to 'actually try this time' and sets a goal to 'set a date,' the conversation heavily emphasizes past failures (patch, cold turkey), a trigger (stress), and a significant barrier (wife's weight gain). This leans towards contemplation, however, the statement 'I'd like to at least set a date' suggests a nascent move towards preparation. The counselor's proactive suggestions of varenicline and a stress management plan further support a move beyond precontemplation.
+There is a minor evidence gap. The patient's repeated mention of triggers (stress, mornings) and past unsuccessful attempts doesn't definitively place them in the 'preparation' stage, which typically involves active planning and self-efficacy. The counselor's interventions are more aligned with a contemplation or early preparation stage, but the patient's own words are ambiguous.
+
+Produce a revised extraction that addresses all reviewer feedback:
+- Remove any hallucinated items.
+- Add any omitted items that are genuinely present in the conversation.
+- Keep the same JSON field structure.
+- Return ONLY valid JSON.
+
+Respond ONLY with valid JSON matching the original structure.
+
+
+RESPONSE:
+```json
+{
+  "readiness_stage": "contemplation",
+  "evidence": "patient expressed desire to set a quit date, identified stress and morning smoking as triggers, and verbalized concerns about past failures and wife's weight gain."
+}
+```
+
+================================================================================
+OLLAMA CALL 0008
+================================================================================
+timestamp: 2026-04-16T14:05:26.626410+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a clinical annotation reviser.\n\nTask: Produce a corrected trigger extraction that fully addresses all reviewer feedback.\n\nORIGINAL CONVERSATION:\nCounselor: Hi, thanks for coming in today. How are you feeling about your smoking?
+
+Patient: Honestly, I've been thinking about it a lot lately. My doctor told me last month that my lungs are showing early signs of damage. That scared me.
+
+Counselor: That sounds like it was a real wake-up call. Have you thought about quitting before?
+
+Patient: Oh yeah, I've tried a few times. Last year I used the nicotine patch for about six weeks — that was my longest stretch. Before that I tried just stopping cold turkey but that only lasted maybe two or three days.
+
+Counselor: Six weeks is actually a meaningful attempt. What happened at the end of those six weeks?
+
+Patient: Work stress. It was a brutal project and I just cracked one night. Lit up and then it was back to normal within a week.
+
+Counselor: So stress is a big trigger for you?
+
+Patient: Definitely. And mornings — I have a cigarette with my coffee every single morning. It's the first thing I do. I don't even feel awake without it.
+
+Counselor: Those habitual morning smokes can be really hard to break. What worries you most about quitting this time?
+
+Patient: Honestly? The stress thing. I don't know what I'd do when things get hard at work. Also, my wife quit two years ago and she gained quite a bit of weight. That freaks me out a little.
+
+Counselor: Those are both very common concerns. Let me tell you what we can do. First, I'd really recommend we talk about varenicline — it's a prescription medication that reduces cravings and has been shown to be more effective than the patch alone. Second, we should build you a stress-management plan so you have something to reach for other than a cigarette. That might include breathing techniques, short walks, or even just having a glass of water. Third, the weight concern is real but manageable — a nutritionist referral alongside your quit attempt can help a lot. Does a quit date in the next two to three weeks feel doable?
+
+Patient: Maybe. I'd like to at least set a date. I think I'm ready to actually try this time, not just think about it.
+
+Counselor: That's a great sign. Let's schedule you for varenicline and set that date today.
+\n\nORIGINAL EXTRACTION:\n{'triggers': ['work stress', 'morning coffee'], 'evidence': []}\n\nREVIEWER FEEDBACK:\nNo specific suggestions provided.\n\nRevision instructions:\n- Remove any hallucinated triggers that have no basis in the conversation.\n- Add any omitted triggers that are genuinely present in the conversation.\n- Correct the trigger_type label for any misclassified entries.\n- Do not introduce new items not supported by the conversation or the reviewer feedback.\n- Update the confidence score to reflect your certainty in the revised extraction.\n\nRespond ONLY with valid JSON:\n{\n  \"triggers\": [\"<corrected trigger 1>\", \"<corrected trigger 2>\"],\n  \"trigger_type\": \"<emotional|situational|social|habitual|mixed>\",\n  \"confidence\": 0.0\n}\n
+
+RESPONSE:
+```json
+{
+  "triggers": [
+    "work stress",
+    "morning coffee",
+    "stress",
+    "wife's weight gain"
+  ],
+  "trigger_type": [
+    "situational",
+    "habitual",
+    "situational",
+    "mixed"
+  ],
+  "confidence": 0.95
+}
+```
+
+================================================================================
+OLLAMA CALL 0009
+================================================================================
+timestamp: 2026-04-16T14:05:30.557598+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a clinical annotation reviser.\n\nTask: Produce a corrected advice extraction that fully addresses all reviewer feedback.\n\nORIGINAL CONVERSATION:\nCounselor: Hi, thanks for coming in today. How are you feeling about your smoking?
+
+Patient: Honestly, I've been thinking about it a lot lately. My doctor told me last month that my lungs are showing early signs of damage. That scared me.
+
+Counselor: That sounds like it was a real wake-up call. Have you thought about quitting before?
+
+Patient: Oh yeah, I've tried a few times. Last year I used the nicotine patch for about six weeks — that was my longest stretch. Before that I tried just stopping cold turkey but that only lasted maybe two or three days.
+
+Counselor: Six weeks is actually a meaningful attempt. What happened at the end of those six weeks?
+
+Patient: Work stress. It was a brutal project and I just cracked one night. Lit up and then it was back to normal within a week.
+
+Counselor: So stress is a big trigger for you?
+
+Patient: Definitely. And mornings — I have a cigarette with my coffee every single morning. It's the first thing I do. I don't even feel awake without it.
+
+Counselor: Those habitual morning smokes can be really hard to break. What worries you most about quitting this time?
+
+Patient: Honestly? The stress thing. I don't know what I'd do when things get hard at work. Also, my wife quit two years ago and she gained quite a bit of weight. That freaks me out a little.
+
+Counselor: Those are both very common concerns. Let me tell you what we can do. First, I'd really recommend we talk about varenicline — it's a prescription medication that reduces cravings and has been shown to be more effective than the patch alone. Second, we should build you a stress-management plan so you have something to reach for other than a cigarette. That might include breathing techniques, short walks, or even just having a glass of water. Third, the weight concern is real but manageable — a nutritionist referral alongside your quit attempt can help a lot. Does a quit date in the next two to three weeks feel doable?
+
+Patient: Maybe. I'd like to at least set a date. I think I'm ready to actually try this time, not just think about it.
+
+Counselor: That's a great sign. Let's schedule you for varenicline and set that date today.
+\n\nORIGINAL EXTRACTION:\n{'advice': [], 'evidence': []}\n\nREVIEWER FEEDBACK:\nMissing: Specific cessation strategies discussed. The extracted data lacks details about the recommended strategies, such as varenicline, stress management plan components (breathing techniques, walks, water), and the nutritionist referral. This is a significant omission.
+Missing: Patient's stated goals. The conversation reveals the patient's desire to set a quit date and a genuine intention to try quitting this time. This information is absent from the extracted data.
+Missing: Counselor's recommendation of varenicline. The counselor explicitly recommends varenicline, which is not included in the extracted data.
+Missing: Trigger identification - Stress and morning habits were identified as triggers. This is not captured.\n\nRevision instructions:\n- Remove any hallucinated advice items that have no basis in the conversation.\n- Add any omitted advice items that are genuinely present in the conversation.\n- Do not introduce new items not supported by the conversation or the reviewer feedback.\n- Preserve the original JSON field structure.\n- Update the confidence score to reflect your certainty in the revised extraction.\n\nRespond ONLY with valid JSON:\n{\n  \"advice\": [\"<corrected advice 1>\", \"<corrected advice 2>\"],\n  \"evidence\": [\"<supporting evidence 1>\", \"<supporting evidence 2>\"],\n  \"confidence\": 0.0\n}\n
+
+RESPONSE:
+```json
+{
+  "advice": [
+    "Discuss varenicline as a prescription medication to reduce cravings.",
+    "Develop a stress-management plan including breathing techniques, short walks, and drinking water.",
+    "Refer the patient to a nutritionist to address weight concerns."
+  ],
+  "evidence": [
+    "Counselor: First, I'd really recommend we talk about varenicline — it's a prescription medication that reduces cravings and has been shown to be more effective than the patch alone.",
+    "Counselor: Second, we should build you a stress-management plan so you have something to reach for other than a cigarette. That might include breathing techniques, short walks, or even just having a glass of water.",
+    "Counselor: Third, the weight concern is real but manageable — a nutritionist referral alongside your quit attempt can help a lot."
+  ],
+  "confidence": 1.0
+}
+```
+
+================================================================================
+OLLAMA CALL 0010
+================================================================================
+timestamp: 2026-04-16T14:05:33.626458+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a Senior Clinical Informatics Specialist specializing in NLP quality assurance for tobacco cessation research.\n\nTask: Audit the quit-attempt extraction below against the source conversation for 100% fidelity.\n\nSOURCE CONVERSATION:\nCounselor: Hi, thanks for coming in today. How are you feeling about your smoking?
+
+Patient: Honestly, I've been thinking about it a lot lately. My doctor told me last month that my lungs are showing early signs of damage. That scared me.
+
+Counselor: That sounds like it was a real wake-up call. Have you thought about quitting before?
+
+Patient: Oh yeah, I've tried a few times. Last year I used the nicotine patch for about six weeks — that was my longest stretch. Before that I tried just stopping cold turkey but that only lasted maybe two or three days.
+
+Counselor: Six weeks is actually a meaningful attempt. What happened at the end of those six weeks?
+
+Patient: Work stress. It was a brutal project and I just cracked one night. Lit up and then it was back to normal within a week.
+
+Counselor: So stress is a big trigger for you?
+
+Patient: Definitely. And mornings — I have a cigarette with my coffee every single morning. It's the first thing I do. I don't even feel awake without it.
+
+Counselor: Those habitual morning smokes can be really hard to break. What worries you most about quitting this time?
+
+Patient: Honestly? The stress thing. I don't know what I'd do when things get hard at work. Also, my wife quit two years ago and she gained quite a bit of weight. That freaks me out a little.
+
+Counselor: Those are both very common concerns. Let me tell you what we can do. First, I'd really recommend we talk about varenicline — it's a prescription medication that reduces cravings and has been shown to be more effective than the patch alone. Second, we should build you a stress-management plan so you have something to reach for other than a cigarette. That might include breathing techniques, short walks, or even just having a glass of water. Third, the weight concern is real but manageable — a nutritionist referral alongside your quit attempt can help a lot. Does a quit date in the next two to three weeks feel doable?
+
+Patient: Maybe. I'd like to at least set a date. I think I'm ready to actually try this time, not just think about it.
+
+Counselor: That's a great sign. Let's schedule you for varenicline and set that date today.
+\n\nEXTRACTION TO AUDIT:\n{'attempts': ['patch 6 weeks', 'cold turkey 2 days', 'tried a few times', 'brutal project and cracked one night'], 'evidence': []}\n\nConduct the following four checks:\n\n1. Grounding and Veracity: Does every extracted attempt have a direct textual anchor in the conversation? Flag any logical leaps where a quit attempt was assumed without explicit confirmation.\n\n2. Hallucination Check: List any data points in the extraction that have no basis in the source text.\n\n3. Omission Check: Scan the conversation for missed signals — keywords such as \"stopped,\" \"gave up,\" \"last time I tried,\" \"cut back to zero,\" or specific dates or durations — that should have been captured.\n\n4. Taxonomy Alignment: Verify that the attempt method (e.g., Cold Turkey, NRT, Pharmacotherapy, Behavioral Support) aligns with established clinical standards.\n\nScoring rubric:\n- 9–10: Perfect recall and precision, no errors.\n- 7–8: High utility; minor formatting or non-clinical nuance issues only.\n- 5–6: Partial data loss or one significant hallucination.\n- Below 5: Unreliable; multiple hallucinations or missed major attempts.\n\nRespond ONLY with valid JSON:\n{\n  \"confidence\": 0.0,\n  \"issues\": [\"<issue 1>\", \"<issue 2>\"]\n}\n
+
+RESPONSE:
+```json
+{
+  "confidence": 4,
+  "issues": [
+    "Issue 1: Grounding and Veracity - The extraction includes 'tried a few times' which is an assumption and not directly stated in the conversation. The counselor explicitly states the patient 'tried' the patch and cold turkey.",
+    "Issue 2: Omission Check - The conversation contains several key phrases indicating quit attempts that were not extracted, including 'last year', 'six weeks', 'two or three days', 'brutal project and cracked one night', and 'morning smokes'. These represent specific, documented quit attempts that are missing from the extraction."
+  ]
+}
+```
+
+================================================================================
+OLLAMA CALL 0011
+================================================================================
+timestamp: 2026-04-16T14:05:37.757538+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a Senior Clinical NLP Reviewer specializing in Transtheoretical Model (TTM) stage classification quality assurance.\n\nTask: Audit the readiness stage classification below against the source conversation.\n\nSOURCE CONVERSATION:\nCounselor: Hi, thanks for coming in today. How are you feeling about your smoking?
+
+Patient: Honestly, I've been thinking about it a lot lately. My doctor told me last month that my lungs are showing early signs of damage. That scared me.
+
+Counselor: That sounds like it was a real wake-up call. Have you thought about quitting before?
+
+Patient: Oh yeah, I've tried a few times. Last year I used the nicotine patch for about six weeks — that was my longest stretch. Before that I tried just stopping cold turkey but that only lasted maybe two or three days.
+
+Counselor: Six weeks is actually a meaningful attempt. What happened at the end of those six weeks?
+
+Patient: Work stress. It was a brutal project and I just cracked one night. Lit up and then it was back to normal within a week.
+
+Counselor: So stress is a big trigger for you?
+
+Patient: Definitely. And mornings — I have a cigarette with my coffee every single morning. It's the first thing I do. I don't even feel awake without it.
+
+Counselor: Those habitual morning smokes can be really hard to break. What worries you most about quitting this time?
+
+Patient: Honestly? The stress thing. I don't know what I'd do when things get hard at work. Also, my wife quit two years ago and she gained quite a bit of weight. That freaks me out a little.
+
+Counselor: Those are both very common concerns. Let me tell you what we can do. First, I'd really recommend we talk about varenicline — it's a prescription medication that reduces cravings and has been shown to be more effective than the patch alone. Second, we should build you a stress-management plan so you have something to reach for other than a cigarette. That might include breathing techniques, short walks, or even just having a glass of water. Third, the weight concern is real but manageable — a nutritionist referral alongside your quit attempt can help a lot. Does a quit date in the next two to three weeks feel doable?
+
+Patient: Maybe. I'd like to at least set a date. I think I'm ready to actually try this time, not just think about it.
+
+Counselor: That's a great sign. Let's schedule you for varenicline and set that date today.
+\n\nCLASSIFICATION TO AUDIT:\n{readiness_output}\n\nConduct the following checks:\n\n1. Stage Validity: Is the assigned stage (precontemplation, contemplation, preparation, action, maintenance, relapse) consistent with the patient's explicit statements and behavioral indicators in the conversation?\n\n2. Evidence Grounding: Is the cited evidence actually present in the conversation and does it unambiguously support the assigned stage rather than an adjacent stage?\n\n3. Contradicting Evidence: Are there patient statements that contradict the assigned stage or suggest a different classification? List them.\n\n4. Stage Boundary Precision: Could the patient plausibly fit a neighboring stage? If so, explain which evidence distinguishes the chosen stage from the adjacent one.\n\nScoring rubric:\n- 9–10: Stage is correct, evidence is unambiguous, no contradictions.\n- 7–8: Stage is defensible but borderline; minor evidence gap.\n- 5–6: Contradicting evidence ignored, or adjacent stage is equally or more supported.\n- Below 5: Stage classification is unsupported or directly contradicted by the conversation.\n\nRespond ONLY with valid JSON:\n{\n  \"confidence\": 0.0,\n  \"issues\": [\"<issue 1>\", \"<issue 2>\"]\n}\n
+
+RESPONSE:
+```json
+{
+  "confidence": 7.5,
+  "issues": [
+    "The classification of {stage} is defensible but borderline. While the patient expresses a desire to 'actually try this time' and sets a goal to 'set a date,' the conversation heavily emphasizes past failures (patch, cold turkey), a trigger (stress), and a significant barrier (wife's weight gain). This leans towards contemplation, however, the stated desire to 'try this time' suggests a nascent move towards preparation. The counselor's proactive suggestions of varenicline and a stress management plan further support a move beyond precontemplation.",
+    "There is a minor evidence gap. The patient's repeated mention of triggers (stress, mornings) and past unsuccessful attempts doesn't definitively place them in 'preparation,' which typically involves active planning and self-efficacy. The counselor's interventions are more indicative of a move towards action or, at minimum, a strong contemplation stage."
+  ]
+}
+```
+
+================================================================================
+OLLAMA CALL 0012
+================================================================================
+timestamp: 2026-04-16T14:05:40.490112+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a Clinical Health Psychologist and NLP Validator specializing in patient-reported concerns from tobacco-cessation transcripts.\n\nTask: Audit the concern extraction below against the source conversation for clinical accuracy and completeness.\n\nSOURCE CONVERSATION:\nCounselor: Hi, thanks for coming in today. How are you feeling about your smoking?
+
+Patient: Honestly, I've been thinking about it a lot lately. My doctor told me last month that my lungs are showing early signs of damage. That scared me.
+
+Counselor: That sounds like it was a real wake-up call. Have you thought about quitting before?
+
+Patient: Oh yeah, I've tried a few times. Last year I used the nicotine patch for about six weeks — that was my longest stretch. Before that I tried just stopping cold turkey but that only lasted maybe two or three days.
+
+Counselor: Six weeks is actually a meaningful attempt. What happened at the end of those six weeks?
+
+Patient: Work stress. It was a brutal project and I just cracked one night. Lit up and then it was back to normal within a week.
+
+Counselor: So stress is a big trigger for you?
+
+Patient: Definitely. And mornings — I have a cigarette with my coffee every single morning. It's the first thing I do. I don't even feel awake without it.
+
+Counselor: Those habitual morning smokes can be really hard to break. What worries you most about quitting this time?
+
+Patient: Honestly? The stress thing. I don't know what I'd do when things get hard at work. Also, my wife quit two years ago and she gained quite a bit of weight. That freaks me out a little.
+
+Counselor: Those are both very common concerns. Let me tell you what we can do. First, I'd really recommend we talk about varenicline — it's a prescription medication that reduces cravings and has been shown to be more effective than the patch alone. Second, we should build you a stress-management plan so you have something to reach for other than a cigarette. That might include breathing techniques, short walks, or even just having a glass of water. Third, the weight concern is real but manageable — a nutritionist referral alongside your quit attempt can help a lot. Does a quit date in the next two to three weeks feel doable?
+
+Patient: Maybe. I'd like to at least set a date. I think I'm ready to actually try this time, not just think about it.
+
+Counselor: That's a great sign. Let's schedule you for varenicline and set that date today.
+\n\nEXTRACTION TO AUDIT:\n{'concerns': ['stress', 'weight gain'], 'evidence': []}\n\nConduct the following four checks:\n\n1. Implicit Concern Detection: Did the patient express concern through a question or a hedged statement (e.g., \"I've noticed I'm winded lately, but maybe it's just age\")? If an underlying health anxiety was missed, flag it as an omission.\n\n2. Severity Calibration: Ensure concerns were not underrepresented. If a patient said they were \"terrified of lung cancer,\" an extraction of \"worried about health\" is a precision error in severity.\n\n3. Temporal Attribution: Distinguish between historical concerns (past anxieties no longer active) and active concerns (current anxieties present at time of conversation).\n\n4. Categorization Accuracy: Verify concerns belong to the correct type:\n   - Physiological: cough, breathlessness, sleep issues, cravings\n   - Psychological: anxiety about failing, mood swings, irritability\n   - Social/Financial: cost of smoking or aids, stigma, family impact\n   - Situational/Relapse: concerns about specific trigger contexts\n\nScoring rubric:\n- 9–10: All concerns captured with correct intensity and category.\n- 7–8: Minor or passing concern missed; minor category misalignment.\n- 5–6: A primary concern missed or patient's emotional tone misinterpreted.\n- Below 5: Counselor advice confused for patient concerns, or major concerns absent.\n\nRespond ONLY with valid JSON:\n{\n  \"confidence\": 0.0,\n  \"issues\": [\"<issue 1>\", \"<issue 2>\"]\n}\n
+
+RESPONSE:
+```json
+{
+  "confidence": 0.95,
+  "issues": [
+    "Missing Implicit Concern: The patient explicitly states fear of stress and weight gain, but there's a subtle anxiety about the impact of stress on their ability to cope. This could be categorized as a psychological concern (fear of inability to cope) and warrants inclusion. This represents a minor omission.",
+    "Severity Calibration: The concerns regarding stress and weight gain are accurately represented as significant concerns for the patient. The extraction correctly identifies these as key drivers of potential relapse."
+  ]
+}
+```
+
+================================================================================
+OLLAMA CALL 0013
+================================================================================
+timestamp: 2026-04-16T14:05:43.835958+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a Senior Clinical NLP Reviewer specializing in smoking trigger extraction quality assurance.\n\nTask: Audit the trigger extraction below against the source conversation.\n\nSOURCE CONVERSATION:\nCounselor: Hi, thanks for coming in today. How are you feeling about your smoking?
+
+Patient: Honestly, I've been thinking about it a lot lately. My doctor told me last month that my lungs are showing early signs of damage. That scared me.
+
+Counselor: That sounds like it was a real wake-up call. Have you thought about quitting before?
+
+Patient: Oh yeah, I've tried a few times. Last year I used the nicotine patch for about six weeks — that was my longest stretch. Before that I tried just stopping cold turkey but that only lasted maybe two or three days.
+
+Counselor: Six weeks is actually a meaningful attempt. What happened at the end of those six weeks?
+
+Patient: Work stress. It was a brutal project and I just cracked one night. Lit up and then it was back to normal within a week.
+
+Counselor: So stress is a big trigger for you?
+
+Patient: Definitely. And mornings — I have a cigarette with my coffee every single morning. It's the first thing I do. I don't even feel awake without it.
+
+Counselor: Those habitual morning smokes can be really hard to break. What worries you most about quitting this time?
+
+Patient: Honestly? The stress thing. I don't know what I'd do when things get hard at work. Also, my wife quit two years ago and she gained quite a bit of weight. That freaks me out a little.
+
+Counselor: Those are both very common concerns. Let me tell you what we can do. First, I'd really recommend we talk about varenicline — it's a prescription medication that reduces cravings and has been shown to be more effective than the patch alone. Second, we should build you a stress-management plan so you have something to reach for other than a cigarette. That might include breathing techniques, short walks, or even just having a glass of water. Third, the weight concern is real but manageable — a nutritionist referral alongside your quit attempt can help a lot. Does a quit date in the next two to three weeks feel doable?
+
+Patient: Maybe. I'd like to at least set a date. I think I'm ready to actually try this time, not just think about it.
+
+Counselor: That's a great sign. Let's schedule you for varenicline and set that date today.
+\n\nEXTRACTION TO AUDIT:\n{'triggers': ['work stress', 'morning coffee', 'stress', "wife's weight gain"], 'evidence': []}\n\nConduct the following four checks:\n\n1. Grounding Check: For each extracted trigger, verify it is either explicitly stated (the exact term or a clear synonym appears in the conversation) or strongly implied (the clinical context makes it unambiguous). Flag anything inferred, assumed, or fabricated.\n\n2. Hallucination Detection: Identify triggers that appear in the extraction but have no basis in the conversation. Note the specific trigger and explain why it is unsupported.\n\n3. Omission Detection: Identify triggers clearly present in the conversation but missing from the extraction. Note the exact phrase or passage and the trigger category it should have been assigned.\n\n4. Classification Accuracy: Verify each trigger is assigned the clinically appropriate type (emotional, situational, social, habitual). Flag misclassifications and suggest the correct label.\n\nScoring rubric:\n- 9–10: Near-perfect, no meaningful errors.\n- 7–8: Minor omissions or edge-case misclassifications.\n- 4–6: Several errors that affect reliability.\n- 1–3: Significant hallucinations or omissions.\n- 0: Extraction is unusable.\n\nRespond ONLY with valid JSON:\n{\n  \"confidence\": 0.0,\n  \"issues\": [\"<issue 1>\", \"<issue 2>\"]\n}\n
+
+RESPONSE:
+```json
+{
+  "confidence": 0.7,
+  "issues": [
+    "**Omission Detection:** The extraction misses 'wife's weight gain' as a trigger. The patient explicitly states, 'Also, my wife quit two years ago and she gained quite a bit of weight. That freaks me out a little.' This is a significant trigger related to social influence and potentially self-perception.",
+    "**Classification Accuracy:** 'Morning coffee' is classified as a trigger, which is accurate. However, 'stress' is listed twice, while 'work stress' is present in the conversation. A more granular classification would be beneficial (e.g., 'work stress', 'stress')."
+  ]
+}
+```
+
+================================================================================
+OLLAMA CALL 0014
+================================================================================
+timestamp: 2026-04-16T14:05:45.170901+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a very strict clinical data validator. Compare the EXTRACTED DATA against the CONVERSATION.
+
+CONVERSATION:
+Counselor: Hi, thanks for coming in today. How are you feeling about your smoking?
+
+Patient: Honestly, I've been thinking about it a lot lately. My doctor told me last month that my lungs are showing early signs of damage. That scared me.
+
+Counselor: That sounds like it was a real wake-up call. Have you thought about quitting before?
+
+Patient: Oh yeah, I've tried a few times. Last year I used the nicotine patch for about six weeks — that was my longest stretch. Before that I tried just stopping cold turkey but that only lasted maybe two or three days.
+
+Counselor: Six weeks is actually a meaningful attempt. What happened at the end of those six weeks?
+
+Patient: Work stress. It was a brutal project and I just cracked one night. Lit up and then it was back to normal within a week.
+
+Counselor: So stress is a big trigger for you?
+
+Patient: Definitely. And mornings — I have a cigarette with my coffee every single morning. It's the first thing I do. I don't even feel awake without it.
+
+Counselor: Those habitual morning smokes can be really hard to break. What worries you most about quitting this time?
+
+Patient: Honestly? The stress thing. I don't know what I'd do when things get hard at work. Also, my wife quit two years ago and she gained quite a bit of weight. That freaks me out a little.
+
+Counselor: Those are both very common concerns. Let me tell you what we can do. First, I'd really recommend we talk about varenicline — it's a prescription medication that reduces cravings and has been shown to be more effective than the patch alone. Second, we should build you a stress-management plan so you have something to reach for other than a cigarette. That might include breathing techniques, short walks, or even just having a glass of water. Third, the weight concern is real but manageable — a nutritionist referral alongside your quit attempt can help a lot. Does a quit date in the next two to three weeks feel doable?
+
+Patient: Maybe. I'd like to at least set a date. I think I'm ready to actually try this time, not just think about it.
+
+Counselor: That's a great sign. Let's schedule you for varenicline and set that date today.
+
+
+EXTRACTED DATA (cessation advice or guidance):
+{'advice': ['Discuss varenicline as a prescription medication to reduce cravings.', 'Develop a stress-management plan including breathing techniques, short walks, and drinking water.', 'Refer the patient to a nutritionist to address weight concerns.'], 'evidence': ["Counselor: First, I'd really recommend we talk about varenicline — it's a prescription medication that reduces cravings and has been shown to be more effective than the patch alone.", 'Counselor: Second, we should build you a stress-management plan so you have something to reach for other than a cigarette. That might include breathing techniques, short walks, or even just having a glass of water.', 'Counselor: Third, the weight concern is real but manageable — a nutritionist referral alongside your quit attempt can help a lot.']}
+
+Your task:
+1. Very Strictly Check for hallucinations (data not in the text).
+2. Very Strictly Check for omissions (important data missed).
+3. Assign a confidence score between 0.0 and 1.0.
+
+Respond ONLY with valid JSON:
+{
+  "confidence": 0.0,
+  "issues": ["<issue 1>", "..."]
+}
+
+
+RESPONSE:
+```json
+{
+  "confidence": 0.95,
+  "issues": []
+}
+```
+
+================================================================================
+OLLAMA CALL 0015
+================================================================================
+timestamp: 2026-04-16T14:05:46.985267+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a clinical annotation reviser specializing in tobacco cessation data extraction.
+
+ORIGINAL CONVERSATION:
+Counselor: Hi, thanks for coming in today. How are you feeling about your smoking?
+
+Patient: Honestly, I've been thinking about it a lot lately. My doctor told me last month that my lungs are showing early signs of damage. That scared me.
+
+Counselor: That sounds like it was a real wake-up call. Have you thought about quitting before?
+
+Patient: Oh yeah, I've tried a few times. Last year I used the nicotine patch for about six weeks — that was my longest stretch. Before that I tried just stopping cold turkey but that only lasted maybe two or three days.
+
+Counselor: Six weeks is actually a meaningful attempt. What happened at the end of those six weeks?
+
+Patient: Work stress. It was a brutal project and I just cracked one night. Lit up and then it was back to normal within a week.
+
+Counselor: So stress is a big trigger for you?
+
+Patient: Definitely. And mornings — I have a cigarette with my coffee every single morning. It's the first thing I do. I don't even feel awake without it.
+
+Counselor: Those habitual morning smokes can be really hard to break. What worries you most about quitting this time?
+
+Patient: Honestly? The stress thing. I don't know what I'd do when things get hard at work. Also, my wife quit two years ago and she gained quite a bit of weight. That freaks me out a little.
+
+Counselor: Those are both very common concerns. Let me tell you what we can do. First, I'd really recommend we talk about varenicline — it's a prescription medication that reduces cravings and has been shown to be more effective than the patch alone. Second, we should build you a stress-management plan so you have something to reach for other than a cigarette. That might include breathing techniques, short walks, or even just having a glass of water. Third, the weight concern is real but manageable — a nutritionist referral alongside your quit attempt can help a lot. Does a quit date in the next two to three weeks feel doable?
+
+Patient: Maybe. I'd like to at least set a date. I think I'm ready to actually try this time, not just think about it.
+
+Counselor: That's a great sign. Let's schedule you for varenicline and set that date today.
+
+
+ORIGINAL EXTRACTION:
+{'attempts': ['patch 6 weeks', 'cold turkey 2 days', 'tried a few times', 'brutal project and cracked one night'], 'evidence': []}
+
+REVIEWER FEEDBACK:
+Issue 1: Grounding and Veracity - The extraction includes 'tried a few times' which is an assumption and not directly stated in the conversation. The counselor explicitly states the patient 'tried' the patch and cold turkey.
+Issue 2: Omission Check - The conversation contains several key phrases indicating quit attempts that were not extracted, including 'last year', 'six weeks', 'two or three days', 'brutal project and cracked one night', and 'morning smokes'. These represent specific, documented quit attempts that are missing from the extraction.
+
+Produce a revised extraction that addresses all reviewer feedback:
+- Remove any hallucinated items.
+- Add any omitted items that are genuinely present in the conversation.
+- Keep the same JSON field structure.
+- Return ONLY valid JSON.
+
+Respond ONLY with valid JSON matching the original structure.
+
+
+RESPONSE:
+```json
+{
+  "attempts": [
+    "patch 6 weeks",
+    "cold turkey 2 or 3 days",
+    "brutal project and cracked one night",
+    "morning smokes every single morning"
+  ],
+  "evidence": []
+}
+```
+
+================================================================================
+OLLAMA CALL 0016
+================================================================================
+timestamp: 2026-04-16T14:05:48.678169+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a clinical annotation reviser specializing in tobacco cessation data extraction.
+
+ORIGINAL CONVERSATION:
+Counselor: Hi, thanks for coming in today. How are you feeling about your smoking?
+
+Patient: Honestly, I've been thinking about it a lot lately. My doctor told me last month that my lungs are showing early signs of damage. That scared me.
+
+Counselor: That sounds like it was a real wake-up call. Have you thought about quitting before?
+
+Patient: Oh yeah, I've tried a few times. Last year I used the nicotine patch for about six weeks — that was my longest stretch. Before that I tried just stopping cold turkey but that only lasted maybe two or three days.
+
+Counselor: Six weeks is actually a meaningful attempt. What happened at the end of those six weeks?
+
+Patient: Work stress. It was a brutal project and I just cracked one night. Lit up and then it was back to normal within a week.
+
+Counselor: So stress is a big trigger for you?
+
+Patient: Definitely. And mornings — I have a cigarette with my coffee every single morning. It's the first thing I do. I don't even feel awake without it.
+
+Counselor: Those habitual morning smokes can be really hard to break. What worries you most about quitting this time?
+
+Patient: Honestly? The stress thing. I don't know what I'd do when things get hard at work. Also, my wife quit two years ago and she gained quite a bit of weight. That freaks me out a little.
+
+Counselor: Those are both very common concerns. Let me tell you what we can do. First, I'd really recommend we talk about varenicline — it's a prescription medication that reduces cravings and has been shown to be more effective than the patch alone. Second, we should build you a stress-management plan so you have something to reach for other than a cigarette. That might include breathing techniques, short walks, or even just having a glass of water. Third, the weight concern is real but manageable — a nutritionist referral alongside your quit attempt can help a lot. Does a quit date in the next two to three weeks feel doable?
+
+Patient: Maybe. I'd like to at least set a date. I think I'm ready to actually try this time, not just think about it.
+
+Counselor: That's a great sign. Let's schedule you for varenicline and set that date today.
+
+
+ORIGINAL EXTRACTION:
+{'readiness_stage': 'contemplation', 'evidence': "patient expressed desire to set a quit date, identified stress and morning smoking as triggers, and verbalized concerns about past failures and wife's weight gain."}
+
+REVIEWER FEEDBACK:
+The classification of {stage} is defensible but borderline. While the patient expresses a desire to 'actually try this time' and sets a goal to 'set a date,' the conversation heavily emphasizes past failures (patch, cold turkey), a trigger (stress), and a significant barrier (wife's weight gain). This leans towards contemplation, however, the stated desire to 'try this time' suggests a nascent move towards preparation. The counselor's proactive suggestions of varenicline and a stress management plan further support a move beyond precontemplation.
+There is a minor evidence gap. The patient's repeated mention of triggers (stress, mornings) and past unsuccessful attempts doesn't definitively place them in 'preparation,' which typically involves active planning and self-efficacy. The counselor's interventions are more indicative of a move towards action or, at minimum, a strong contemplation stage.
+
+Produce a revised extraction that addresses all reviewer feedback:
+- Remove any hallucinated items.
+- Add any omitted items that are genuinely present in the conversation.
+- Keep the same JSON field structure.
+- Return ONLY valid JSON.
+
+Respond ONLY with valid JSON matching the original structure.
+
+
+RESPONSE:
+```json
+{
+  "readiness_stage": "contemplation",
+  "evidence": "patient expressed desire to set a quit date, identified stress and morning smoking as triggers, verbalized concerns about past failures (patch, cold turkey), and expressed concerns about wife’s weight gain."
+}
+```
+
+================================================================================
+OLLAMA CALL 0017
+================================================================================
+timestamp: 2026-04-16T14:05:50.860328+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a clinical annotation reviser.\n\nTask: Produce a corrected trigger extraction that fully addresses all reviewer feedback.\n\nORIGINAL CONVERSATION:\nCounselor: Hi, thanks for coming in today. How are you feeling about your smoking?
+
+Patient: Honestly, I've been thinking about it a lot lately. My doctor told me last month that my lungs are showing early signs of damage. That scared me.
+
+Counselor: That sounds like it was a real wake-up call. Have you thought about quitting before?
+
+Patient: Oh yeah, I've tried a few times. Last year I used the nicotine patch for about six weeks — that was my longest stretch. Before that I tried just stopping cold turkey but that only lasted maybe two or three days.
+
+Counselor: Six weeks is actually a meaningful attempt. What happened at the end of those six weeks?
+
+Patient: Work stress. It was a brutal project and I just cracked one night. Lit up and then it was back to normal within a week.
+
+Counselor: So stress is a big trigger for you?
+
+Patient: Definitely. And mornings — I have a cigarette with my coffee every single morning. It's the first thing I do. I don't even feel awake without it.
+
+Counselor: Those habitual morning smokes can be really hard to break. What worries you most about quitting this time?
+
+Patient: Honestly? The stress thing. I don't know what I'd do when things get hard at work. Also, my wife quit two years ago and she gained quite a bit of weight. That freaks me out a little.
+
+Counselor: Those are both very common concerns. Let me tell you what we can do. First, I'd really recommend we talk about varenicline — it's a prescription medication that reduces cravings and has been shown to be more effective than the patch alone. Second, we should build you a stress-management plan so you have something to reach for other than a cigarette. That might include breathing techniques, short walks, or even just having a glass of water. Third, the weight concern is real but manageable — a nutritionist referral alongside your quit attempt can help a lot. Does a quit date in the next two to three weeks feel doable?
+
+Patient: Maybe. I'd like to at least set a date. I think I'm ready to actually try this time, not just think about it.
+
+Counselor: That's a great sign. Let's schedule you for varenicline and set that date today.
+\n\nORIGINAL EXTRACTION:\n{'triggers': ['work stress', 'morning coffee', 'stress', "wife's weight gain"], 'evidence': []}\n\nREVIEWER FEEDBACK:\nNo specific suggestions provided.\n\nRevision instructions:\n- Remove any hallucinated triggers that have no basis in the conversation.\n- Add any omitted triggers that are genuinely present in the conversation.\n- Correct the trigger_type label for any misclassified entries.\n- Do not introduce new items not supported by the conversation or the reviewer feedback.\n- Update the confidence score to reflect your certainty in the revised extraction.\n\nRespond ONLY with valid JSON:\n{\n  \"triggers\": [\"<corrected trigger 1>\", \"<corrected trigger 2>\"],\n  \"trigger_type\": \"<emotional|situational|social|habitual|mixed>\",\n  \"confidence\": 0.0\n}\n
+
+RESPONSE:
+```json
+{
+  "triggers": [
+    "work stress",
+    "morning coffee",
+    "wife's weight gain",
+    "stress"
+  ],
+  "trigger_type": [
+    "situational",
+    "habitual",
+    "situational",
+    "emotional"
+  ],
+  "confidence": 1.0
+}
+```
+
+================================================================================
+OLLAMA CALL 0018
+================================================================================
+timestamp: 2026-04-16T14:05:54.331716+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a Senior Clinical Informatics Specialist specializing in NLP quality assurance for tobacco cessation research.\n\nTask: Audit the quit-attempt extraction below against the source conversation for 100% fidelity.\n\nSOURCE CONVERSATION:\nCounselor: Hi, thanks for coming in today. How are you feeling about your smoking?
+
+Patient: Honestly, I've been thinking about it a lot lately. My doctor told me last month that my lungs are showing early signs of damage. That scared me.
+
+Counselor: That sounds like it was a real wake-up call. Have you thought about quitting before?
+
+Patient: Oh yeah, I've tried a few times. Last year I used the nicotine patch for about six weeks — that was my longest stretch. Before that I tried just stopping cold turkey but that only lasted maybe two or three days.
+
+Counselor: Six weeks is actually a meaningful attempt. What happened at the end of those six weeks?
+
+Patient: Work stress. It was a brutal project and I just cracked one night. Lit up and then it was back to normal within a week.
+
+Counselor: So stress is a big trigger for you?
+
+Patient: Definitely. And mornings — I have a cigarette with my coffee every single morning. It's the first thing I do. I don't even feel awake without it.
+
+Counselor: Those habitual morning smokes can be really hard to break. What worries you most about quitting this time?
+
+Patient: Honestly? The stress thing. I don't know what I'd do when things get hard at work. Also, my wife quit two years ago and she gained quite a bit of weight. That freaks me out a little.
+
+Counselor: Those are both very common concerns. Let me tell you what we can do. First, I'd really recommend we talk about varenicline — it's a prescription medication that reduces cravings and has been shown to be more effective than the patch alone. Second, we should build you a stress-management plan so you have something to reach for other than a cigarette. That might include breathing techniques, short walks, or even just having a glass of water. Third, the weight concern is real but manageable — a nutritionist referral alongside your quit attempt can help a lot. Does a quit date in the next two to three weeks feel doable?
+
+Patient: Maybe. I'd like to at least set a date. I think I'm ready to actually try this time, not just think about it.
+
+Counselor: That's a great sign. Let's schedule you for varenicline and set that date today.
+\n\nEXTRACTION TO AUDIT:\n{'attempts': ['patch 6 weeks', 'cold turkey 2 or 3 days', 'brutal project and cracked one night', 'morning smokes every single morning'], 'evidence': []}\n\nConduct the following four checks:\n\n1. Grounding and Veracity: Does every extracted attempt have a direct textual anchor in the conversation? Flag any logical leaps where a quit attempt was assumed without explicit confirmation.\n\n2. Hallucination Check: List any data points in the extraction that have no basis in the source text.\n\n3. Omission Check: Scan the conversation for missed signals — keywords such as \"stopped,\" \"gave up,\" \"last time I tried,\" \"cut back to zero,\" or specific dates or durations — that should have been captured.\n\n4. Taxonomy Alignment: Verify that the attempt method (e.g., Cold Turkey, NRT, Pharmacotherapy, Behavioral Support) aligns with established clinical standards.\n\nScoring rubric:\n- 9–10: Perfect recall and precision, no errors.\n- 7–8: High utility; minor formatting or non-clinical nuance issues only.\n- 5–6: Partial data loss or one significant hallucination.\n- Below 5: Unreliable; multiple hallucinations or missed major attempts.\n\nRespond ONLY with valid JSON:\n{\n  \"confidence\": 0.0,\n  \"issues\": [\"<issue 1>\", \"<issue 2>\"]\n}\n
+
+RESPONSE:
+```json
+{
+  "confidence": 5.0,
+  "issues": [
+    "Issue 1: Grounding and Veracity - The phrase 'brutal project and cracked one night' is an interpretation, not a direct quote. The conversation states the patient 'cracked one night' after a brutal project, but doesn't explicitly state it was a quit attempt. This requires a logical leap.",
+    "Issue 2: Omission Check - The conversation clearly states the patient used a nicotine patch for six weeks and attempted cold turkey for two or three days. The extraction misses the explicit mention of the patch attempt and the cold turkey attempt duration. It also misses the patient's explicit statement about wanting to 'actually try this time, not just think about it'."
+  ]
+}
+```
+
+================================================================================
+OLLAMA CALL 0019
+================================================================================
+timestamp: 2026-04-16T14:05:58.295503+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a Senior Clinical NLP Reviewer specializing in Transtheoretical Model (TTM) stage classification quality assurance.\n\nTask: Audit the readiness stage classification below against the source conversation.\n\nSOURCE CONVERSATION:\nCounselor: Hi, thanks for coming in today. How are you feeling about your smoking?
+
+Patient: Honestly, I've been thinking about it a lot lately. My doctor told me last month that my lungs are showing early signs of damage. That scared me.
+
+Counselor: That sounds like it was a real wake-up call. Have you thought about quitting before?
+
+Patient: Oh yeah, I've tried a few times. Last year I used the nicotine patch for about six weeks — that was my longest stretch. Before that I tried just stopping cold turkey but that only lasted maybe two or three days.
+
+Counselor: Six weeks is actually a meaningful attempt. What happened at the end of those six weeks?
+
+Patient: Work stress. It was a brutal project and I just cracked one night. Lit up and then it was back to normal within a week.
+
+Counselor: So stress is a big trigger for you?
+
+Patient: Definitely. And mornings — I have a cigarette with my coffee every single morning. It's the first thing I do. I don't even feel awake without it.
+
+Counselor: Those habitual morning smokes can be really hard to break. What worries you most about quitting this time?
+
+Patient: Honestly? The stress thing. I don't know what I'd do when things get hard at work. Also, my wife quit two years ago and she gained quite a bit of weight. That freaks me out a little.
+
+Counselor: Those are both very common concerns. Let me tell you what we can do. First, I'd really recommend we talk about varenicline — it's a prescription medication that reduces cravings and has been shown to be more effective than the patch alone. Second, we should build you a stress-management plan so you have something to reach for other than a cigarette. That might include breathing techniques, short walks, or even just having a glass of water. Third, the weight concern is real but manageable — a nutritionist referral alongside your quit attempt can help a lot. Does a quit date in the next two to three weeks feel doable?
+
+Patient: Maybe. I'd like to at least set a date. I think I'm ready to actually try this time, not just think about it.
+
+Counselor: That's a great sign. Let's schedule you for varenicline and set that date today.
+\n\nCLASSIFICATION TO AUDIT:\n{readiness_output}\n\nConduct the following checks:\n\n1. Stage Validity: Is the assigned stage (precontemplation, contemplation, preparation, action, maintenance, relapse) consistent with the patient's explicit statements and behavioral indicators in the conversation?\n\n2. Evidence Grounding: Is the cited evidence actually present in the conversation and does it unambiguously support the assigned stage rather than an adjacent stage?\n\n3. Contradicting Evidence: Are there patient statements that contradict the assigned stage or suggest a different classification? List them.\n\n4. Stage Boundary Precision: Could the patient plausibly fit a neighboring stage? If so, explain which evidence distinguishes the chosen stage from the adjacent one.\n\nScoring rubric:\n- 9–10: Stage is correct, evidence is unambiguous, no contradictions.\n- 7–8: Stage is defensible but borderline; minor evidence gap.\n- 5–6: Contradicting evidence ignored, or adjacent stage is equally or more supported.\n- Below 5: Stage classification is unsupported or directly contradicted by the conversation.\n\nRespond ONLY with valid JSON:\n{\n  \"confidence\": 0.0,\n  \"issues\": [\"<issue 1>\", \"<issue 2>\"]\n}\n
+
+RESPONSE:
+```json
+{
+  "confidence": 7.5,
+  "issues": [
+    "The classification of {stage} is defensible but borderline. While the patient expresses a desire to 'actually try this time' and sets a goal to 'set a date,' the conversation heavily emphasizes past failures (patch, cold turkey) and triggers (stress, morning habits). This leans towards contemplation, but the stated readiness to 'try this time' suggests a nascent move towards preparation. The counselor's proactive suggestions (varenicline, stress plan) also point towards a stage beyond precontemplation.",
+    "There is a minor evidence gap. The patient’s repeated mention of triggers (stress, mornings) and unsuccessful prior attempts without a concrete plan could support a stronger classification within contemplation. However, the counselor’s immediate offer of intervention and the patient’s willingness to set a date introduce elements of preparation and a potential shift towards action."
+  ]
+}
+```
+
+================================================================================
+OLLAMA CALL 0020
+================================================================================
+timestamp: 2026-04-16T14:06:02.966443+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a Clinical Health Psychologist and NLP Validator specializing in patient-reported concerns from tobacco-cessation transcripts.\n\nTask: Audit the concern extraction below against the source conversation for clinical accuracy and completeness.\n\nSOURCE CONVERSATION:\nCounselor: Hi, thanks for coming in today. How are you feeling about your smoking?
+
+Patient: Honestly, I've been thinking about it a lot lately. My doctor told me last month that my lungs are showing early signs of damage. That scared me.
+
+Counselor: That sounds like it was a real wake-up call. Have you thought about quitting before?
+
+Patient: Oh yeah, I've tried a few times. Last year I used the nicotine patch for about six weeks — that was my longest stretch. Before that I tried just stopping cold turkey but that only lasted maybe two or three days.
+
+Counselor: Six weeks is actually a meaningful attempt. What happened at the end of those six weeks?
+
+Patient: Work stress. It was a brutal project and I just cracked one night. Lit up and then it was back to normal within a week.
+
+Counselor: So stress is a big trigger for you?
+
+Patient: Definitely. And mornings — I have a cigarette with my coffee every single morning. It's the first thing I do. I don't even feel awake without it.
+
+Counselor: Those habitual morning smokes can be really hard to break. What worries you most about quitting this time?
+
+Patient: Honestly? The stress thing. I don't know what I'd do when things get hard at work. Also, my wife quit two years ago and she gained quite a bit of weight. That freaks me out a little.
+
+Counselor: Those are both very common concerns. Let me tell you what we can do. First, I'd really recommend we talk about varenicline — it's a prescription medication that reduces cravings and has been shown to be more effective than the patch alone. Second, we should build you a stress-management plan so you have something to reach for other than a cigarette. That might include breathing techniques, short walks, or even just having a glass of water. Third, the weight concern is real but manageable — a nutritionist referral alongside your quit attempt can help a lot. Does a quit date in the next two to three weeks feel doable?
+
+Patient: Maybe. I'd like to at least set a date. I think I'm ready to actually try this time, not just think about it.
+
+Counselor: That's a great sign. Let's schedule you for varenicline and set that date today.
+\n\nEXTRACTION TO AUDIT:\n{'concerns': ['stress', 'weight gain'], 'evidence': []}\n\nConduct the following four checks:\n\n1. Implicit Concern Detection: Did the patient express concern through a question or a hedged statement (e.g., \"I've noticed I'm winded lately, but maybe it's just age\")? If an underlying health anxiety was missed, flag it as an omission.\n\n2. Severity Calibration: Ensure concerns were not underrepresented. If a patient said they were \"terrified of lung cancer,\" an extraction of \"worried about health\" is a precision error in severity.\n\n3. Temporal Attribution: Distinguish between historical concerns (past anxieties no longer active) and active concerns (current anxieties present at time of conversation).\n\n4. Categorization Accuracy: Verify concerns belong to the correct type:\n   - Physiological: cough, breathlessness, sleep issues, cravings\n   - Psychological: anxiety about failing, mood swings, irritability\n   - Social/Financial: cost of smoking or aids, stigma, family impact\n   - Situational/Relapse: concerns about specific trigger contexts\n\nScoring rubric:\n- 9–10: All concerns captured with correct intensity and category.\n- 7–8: Minor or passing concern missed; minor category misalignment.\n- 5–6: A primary concern missed or patient's emotional tone misinterpreted.\n- Below 5: Counselor advice confused for patient concerns, or major concerns absent.\n\nRespond ONLY with valid JSON:\n{\n  \"confidence\": 0.0,\n  \"issues\": [\"<issue 1>\", \"<issue 2>\"]\n}\n
+
+RESPONSE:
+```json
+{
+  "confidence": 9.5,
+  "issues": [
+    "Implicit Concern Detection: The patient explicitly expresses concern about stress and weight gain, but also mentions feeling 'awake' without a cigarette, indicating a potential physiological craving concern. This could be flagged as a minor omission if a broader concern about nicotine dependence wasn't captured.",
+    "Severity Calibration: The concerns regarding stress and weight gain are accurately represented as significant worries. The patient's use of words like 'scared,' 'freaks me out,' and 'brutal' clearly indicates a high level of concern, not underrepresented.",
+    "Temporal Attribution: All identified concerns are active – the patient is currently experiencing anxiety about stress triggers and the impact of his wife's weight gain on his own behavior.",
+    "Categorization Accuracy: ‘Stress’ is correctly categorized as a Situational/Relapse concern (stress as a trigger). ‘Weight gain’ is correctly categorized as a Social/Financial concern (impact on self-perception and potentially related to his wife's behavior). The absence of a physiological concern (cravings, breathlessness) is a minor passing concern."
+  ]
+}
+```
+
+================================================================================
+OLLAMA CALL 0021
+================================================================================
+timestamp: 2026-04-16T14:06:06.375040+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a Senior Clinical NLP Reviewer specializing in smoking trigger extraction quality assurance.\n\nTask: Audit the trigger extraction below against the source conversation.\n\nSOURCE CONVERSATION:\nCounselor: Hi, thanks for coming in today. How are you feeling about your smoking?
+
+Patient: Honestly, I've been thinking about it a lot lately. My doctor told me last month that my lungs are showing early signs of damage. That scared me.
+
+Counselor: That sounds like it was a real wake-up call. Have you thought about quitting before?
+
+Patient: Oh yeah, I've tried a few times. Last year I used the nicotine patch for about six weeks — that was my longest stretch. Before that I tried just stopping cold turkey but that only lasted maybe two or three days.
+
+Counselor: Six weeks is actually a meaningful attempt. What happened at the end of those six weeks?
+
+Patient: Work stress. It was a brutal project and I just cracked one night. Lit up and then it was back to normal within a week.
+
+Counselor: So stress is a big trigger for you?
+
+Patient: Definitely. And mornings — I have a cigarette with my coffee every single morning. It's the first thing I do. I don't even feel awake without it.
+
+Counselor: Those habitual morning smokes can be really hard to break. What worries you most about quitting this time?
+
+Patient: Honestly? The stress thing. I don't know what I'd do when things get hard at work. Also, my wife quit two years ago and she gained quite a bit of weight. That freaks me out a little.
+
+Counselor: Those are both very common concerns. Let me tell you what we can do. First, I'd really recommend we talk about varenicline — it's a prescription medication that reduces cravings and has been shown to be more effective than the patch alone. Second, we should build you a stress-management plan so you have something to reach for other than a cigarette. That might include breathing techniques, short walks, or even just having a glass of water. Third, the weight concern is real but manageable — a nutritionist referral alongside your quit attempt can help a lot. Does a quit date in the next two to three weeks feel doable?
+
+Patient: Maybe. I'd like to at least set a date. I think I'm ready to actually try this time, not just think about it.
+
+Counselor: That's a great sign. Let's schedule you for varenicline and set that date today.
+\n\nEXTRACTION TO AUDIT:\n{'triggers': ['work stress', 'morning coffee', "wife's weight gain", 'stress'], 'evidence': []}\n\nConduct the following four checks:\n\n1. Grounding Check: For each extracted trigger, verify it is either explicitly stated (the exact term or a clear synonym appears in the conversation) or strongly implied (the clinical context makes it unambiguous). Flag anything inferred, assumed, or fabricated.\n\n2. Hallucination Detection: Identify triggers that appear in the extraction but have no basis in the conversation. Note the specific trigger and explain why it is unsupported.\n\n3. Omission Detection: Identify triggers clearly present in the conversation but missing from the extraction. Note the exact phrase or passage and the trigger category it should have been assigned.\n\n4. Classification Accuracy: Verify each trigger is assigned the clinically appropriate type (emotional, situational, social, habitual). Flag misclassifications and suggest the correct label.\n\nScoring rubric:\n- 9–10: Near-perfect, no meaningful errors.\n- 7–8: Minor omissions or edge-case misclassifications.\n- 4–6: Several errors that affect reliability.\n- 1–3: Significant hallucinations or omissions.\n- 0: Extraction is unusable.\n\nRespond ONLY with valid JSON:\n{\n  \"confidence\": 0.0,\n  \"issues\": [\"<issue 1>\", \"<issue 2>\"]\n}\n
+
+RESPONSE:
+```json
+{
+  "confidence": 0.7,
+  "issues": [
+    "Omission Detection: The trigger 'wife's weight gain' is present in the conversation ('Also, my wife quit two years ago and she gained quite a bit of weight. That freaks me out a little.') but not included in the extracted triggers. This should be classified as a 'social' trigger due to its connection to a significant other's behavior.",
+    "Classification Accuracy: The trigger 'morning coffee' is correctly identified as a 'habitual' trigger, but the extraction could benefit from a more granular classification. While habitual, it's also strongly linked to a specific time of day, which could be categorized as 'situational' as well."
+  ]
+}
+```
+
+================================================================================
+OLLAMA CALL 0022
+================================================================================
+timestamp: 2026-04-16T14:06:07.703420+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a very strict clinical data validator. Compare the EXTRACTED DATA against the CONVERSATION.
+
+CONVERSATION:
+Counselor: Hi, thanks for coming in today. How are you feeling about your smoking?
+
+Patient: Honestly, I've been thinking about it a lot lately. My doctor told me last month that my lungs are showing early signs of damage. That scared me.
+
+Counselor: That sounds like it was a real wake-up call. Have you thought about quitting before?
+
+Patient: Oh yeah, I've tried a few times. Last year I used the nicotine patch for about six weeks — that was my longest stretch. Before that I tried just stopping cold turkey but that only lasted maybe two or three days.
+
+Counselor: Six weeks is actually a meaningful attempt. What happened at the end of those six weeks?
+
+Patient: Work stress. It was a brutal project and I just cracked one night. Lit up and then it was back to normal within a week.
+
+Counselor: So stress is a big trigger for you?
+
+Patient: Definitely. And mornings — I have a cigarette with my coffee every single morning. It's the first thing I do. I don't even feel awake without it.
+
+Counselor: Those habitual morning smokes can be really hard to break. What worries you most about quitting this time?
+
+Patient: Honestly? The stress thing. I don't know what I'd do when things get hard at work. Also, my wife quit two years ago and she gained quite a bit of weight. That freaks me out a little.
+
+Counselor: Those are both very common concerns. Let me tell you what we can do. First, I'd really recommend we talk about varenicline — it's a prescription medication that reduces cravings and has been shown to be more effective than the patch alone. Second, we should build you a stress-management plan so you have something to reach for other than a cigarette. That might include breathing techniques, short walks, or even just having a glass of water. Third, the weight concern is real but manageable — a nutritionist referral alongside your quit attempt can help a lot. Does a quit date in the next two to three weeks feel doable?
+
+Patient: Maybe. I'd like to at least set a date. I think I'm ready to actually try this time, not just think about it.
+
+Counselor: That's a great sign. Let's schedule you for varenicline and set that date today.
+
+
+EXTRACTED DATA (cessation advice or guidance):
+{'advice': ['Discuss varenicline as a prescription medication to reduce cravings.', 'Develop a stress-management plan including breathing techniques, short walks, and drinking water.', 'Refer the patient to a nutritionist to address weight concerns.'], 'evidence': ["Counselor: First, I'd really recommend we talk about varenicline — it's a prescription medication that reduces cravings and has been shown to be more effective than the patch alone.", 'Counselor: Second, we should build you a stress-management plan so you have something to reach for other than a cigarette. That might include breathing techniques, short walks, or even just having a glass of water.', 'Counselor: Third, the weight concern is real but manageable — a nutritionist referral alongside your quit attempt can help a lot.']}
+
+Your task:
+1. Very Strictly Check for hallucinations (data not in the text).
+2. Very Strictly Check for omissions (important data missed).
+3. Assign a confidence score between 0.0 and 1.0.
+
+Respond ONLY with valid JSON:
+{
+  "confidence": 0.0,
+  "issues": ["<issue 1>", "..."]
+}
+
+
+RESPONSE:
+```json
+{
+  "confidence": 0.95,
+  "issues": []
+}
+```
+
+================================================================================
+OLLAMA CALL 0023
+================================================================================
+timestamp: 2026-04-16T14:06:09.828967+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a clinical annotation reviser specializing in tobacco cessation data extraction.
+
+ORIGINAL CONVERSATION:
+Counselor: Hi, thanks for coming in today. How are you feeling about your smoking?
+
+Patient: Honestly, I've been thinking about it a lot lately. My doctor told me last month that my lungs are showing early signs of damage. That scared me.
+
+Counselor: That sounds like it was a real wake-up call. Have you thought about quitting before?
+
+Patient: Oh yeah, I've tried a few times. Last year I used the nicotine patch for about six weeks — that was my longest stretch. Before that I tried just stopping cold turkey but that only lasted maybe two or three days.
+
+Counselor: Six weeks is actually a meaningful attempt. What happened at the end of those six weeks?
+
+Patient: Work stress. It was a brutal project and I just cracked one night. Lit up and then it was back to normal within a week.
+
+Counselor: So stress is a big trigger for you?
+
+Patient: Definitely. And mornings — I have a cigarette with my coffee every single morning. It's the first thing I do. I don't even feel awake without it.
+
+Counselor: Those habitual morning smokes can be really hard to break. What worries you most about quitting this time?
+
+Patient: Honestly? The stress thing. I don't know what I'd do when things get hard at work. Also, my wife quit two years ago and she gained quite a bit of weight. That freaks me out a little.
+
+Counselor: Those are both very common concerns. Let me tell you what we can do. First, I'd really recommend we talk about varenicline — it's a prescription medication that reduces cravings and has been shown to be more effective than the patch alone. Second, we should build you a stress-management plan so you have something to reach for other than a cigarette. That might include breathing techniques, short walks, or even just having a glass of water. Third, the weight concern is real but manageable — a nutritionist referral alongside your quit attempt can help a lot. Does a quit date in the next two to three weeks feel doable?
+
+Patient: Maybe. I'd like to at least set a date. I think I'm ready to actually try this time, not just think about it.
+
+Counselor: That's a great sign. Let's schedule you for varenicline and set that date today.
+
+
+ORIGINAL EXTRACTION:
+{'attempts': ['patch 6 weeks', 'cold turkey 2 or 3 days', 'brutal project and cracked one night', 'morning smokes every single morning'], 'evidence': []}
+
+REVIEWER FEEDBACK:
+Issue 1: Grounding and Veracity - The phrase 'brutal project and cracked one night' is an interpretation, not a direct quote. The conversation states the patient 'cracked one night' after a brutal project, but doesn't explicitly state it was a quit attempt. This requires a logical leap.
+Issue 2: Omission Check - The conversation clearly states the patient used a nicotine patch for six weeks and attempted cold turkey for two or three days. The extraction misses the explicit mention of the patch attempt and the cold turkey attempt duration. It also misses the patient's explicit statement about wanting to 'actually try this time, not just think about it'.
+
+Produce a revised extraction that addresses all reviewer feedback:
+- Remove any hallucinated items.
+- Add any omitted items that are genuinely present in the conversation.
+- Keep the same JSON field structure.
+- Return ONLY valid JSON.
+
+Respond ONLY with valid JSON matching the original structure.
+
+
+RESPONSE:
+```json
+{
+  "attempts": [
+    "nicotine patch 6 weeks",
+    "cold turkey 2 or 3 days",
+    "morning smokes every single morning"
+  ],
+  "evidence": [
+    "patient stated 'I’m ready to actually try this time, not just think about it.'"
+  ]
+}
+```
+
+================================================================================
+OLLAMA CALL 0024
+================================================================================
+timestamp: 2026-04-16T14:06:11.594930+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a clinical annotation reviser specializing in tobacco cessation data extraction.
+
+ORIGINAL CONVERSATION:
+Counselor: Hi, thanks for coming in today. How are you feeling about your smoking?
+
+Patient: Honestly, I've been thinking about it a lot lately. My doctor told me last month that my lungs are showing early signs of damage. That scared me.
+
+Counselor: That sounds like it was a real wake-up call. Have you thought about quitting before?
+
+Patient: Oh yeah, I've tried a few times. Last year I used the nicotine patch for about six weeks — that was my longest stretch. Before that I tried just stopping cold turkey but that only lasted maybe two or three days.
+
+Counselor: Six weeks is actually a meaningful attempt. What happened at the end of those six weeks?
+
+Patient: Work stress. It was a brutal project and I just cracked one night. Lit up and then it was back to normal within a week.
+
+Counselor: So stress is a big trigger for you?
+
+Patient: Definitely. And mornings — I have a cigarette with my coffee every single morning. It's the first thing I do. I don't even feel awake without it.
+
+Counselor: Those habitual morning smokes can be really hard to break. What worries you most about quitting this time?
+
+Patient: Honestly? The stress thing. I don't know what I'd do when things get hard at work. Also, my wife quit two years ago and she gained quite a bit of weight. That freaks me out a little.
+
+Counselor: Those are both very common concerns. Let me tell you what we can do. First, I'd really recommend we talk about varenicline — it's a prescription medication that reduces cravings and has been shown to be more effective than the patch alone. Second, we should build you a stress-management plan so you have something to reach for other than a cigarette. That might include breathing techniques, short walks, or even just having a glass of water. Third, the weight concern is real but manageable — a nutritionist referral alongside your quit attempt can help a lot. Does a quit date in the next two to three weeks feel doable?
+
+Patient: Maybe. I'd like to at least set a date. I think I'm ready to actually try this time, not just think about it.
+
+Counselor: That's a great sign. Let's schedule you for varenicline and set that date today.
+
+
+ORIGINAL EXTRACTION:
+{'readiness_stage': 'contemplation', 'evidence': 'patient expressed desire to set a quit date, identified stress and morning smoking as triggers, verbalized concerns about past failures (patch, cold turkey), and expressed concerns about wife’s weight gain.'}
+
+REVIEWER FEEDBACK:
+The classification of {stage} is defensible but borderline. While the patient expresses a desire to 'actually try this time' and sets a goal to 'set a date,' the conversation heavily emphasizes past failures (patch, cold turkey) and triggers (stress, morning habits). This leans towards contemplation, but the stated readiness to 'try this time' suggests a nascent move towards preparation. The counselor's proactive suggestions (varenicline, stress plan) also point towards a stage beyond precontemplation.
+There is a minor evidence gap. The patient’s repeated mention of triggers (stress, mornings) and unsuccessful prior attempts without a concrete plan could support a stronger classification within contemplation. However, the counselor’s immediate offer of intervention and the patient’s willingness to set a date introduce elements of preparation and a potential shift towards action.
+
+Produce a revised extraction that addresses all reviewer feedback:
+- Remove any hallucinated items.
+- Add any omitted items that are genuinely present in the conversation.
+- Keep the same JSON field structure.
+- Return ONLY valid JSON.
+
+Respond ONLY with valid JSON matching the original structure.
+
+
+RESPONSE:
+```json
+{
+  "readiness_stage": "contemplation",
+  "evidence": "patient expressed desire to set a quit date, identified stress and morning smoking as triggers, verbalized concerns about past failures (nicotine patch and cold turkey attempts), and expressed concerns about stress and wife’s weight gain."
+}
+```
+
+================================================================================
+OLLAMA CALL 0025
+================================================================================
+timestamp: 2026-04-16T14:06:13.426141+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a clinical annotation reviser.\n\nTask: Produce a corrected trigger extraction that fully addresses all reviewer feedback.\n\nORIGINAL CONVERSATION:\nCounselor: Hi, thanks for coming in today. How are you feeling about your smoking?
+
+Patient: Honestly, I've been thinking about it a lot lately. My doctor told me last month that my lungs are showing early signs of damage. That scared me.
+
+Counselor: That sounds like it was a real wake-up call. Have you thought about quitting before?
+
+Patient: Oh yeah, I've tried a few times. Last year I used the nicotine patch for about six weeks — that was my longest stretch. Before that I tried just stopping cold turkey but that only lasted maybe two or three days.
+
+Counselor: Six weeks is actually a meaningful attempt. What happened at the end of those six weeks?
+
+Patient: Work stress. It was a brutal project and I just cracked one night. Lit up and then it was back to normal within a week.
+
+Counselor: So stress is a big trigger for you?
+
+Patient: Definitely. And mornings — I have a cigarette with my coffee every single morning. It's the first thing I do. I don't even feel awake without it.
+
+Counselor: Those habitual morning smokes can be really hard to break. What worries you most about quitting this time?
+
+Patient: Honestly? The stress thing. I don't know what I'd do when things get hard at work. Also, my wife quit two years ago and she gained quite a bit of weight. That freaks me out a little.
+
+Counselor: Those are both very common concerns. Let me tell you what we can do. First, I'd really recommend we talk about varenicline — it's a prescription medication that reduces cravings and has been shown to be more effective than the patch alone. Second, we should build you a stress-management plan so you have something to reach for other than a cigarette. That might include breathing techniques, short walks, or even just having a glass of water. Third, the weight concern is real but manageable — a nutritionist referral alongside your quit attempt can help a lot. Does a quit date in the next two to three weeks feel doable?
+
+Patient: Maybe. I'd like to at least set a date. I think I'm ready to actually try this time, not just think about it.
+
+Counselor: That's a great sign. Let's schedule you for varenicline and set that date today.
+\n\nORIGINAL EXTRACTION:\n{'triggers': ['work stress', 'morning coffee', "wife's weight gain", 'stress'], 'evidence': []}\n\nREVIEWER FEEDBACK:\nNo specific suggestions provided.\n\nRevision instructions:\n- Remove any hallucinated triggers that have no basis in the conversation.\n- Add any omitted triggers that are genuinely present in the conversation.\n- Correct the trigger_type label for any misclassified entries.\n- Do not introduce new items not supported by the conversation or the reviewer feedback.\n- Update the confidence score to reflect your certainty in the revised extraction.\n\nRespond ONLY with valid JSON:\n{\n  \"triggers\": [\"<corrected trigger 1>\", \"<corrected trigger 2>\"],\n  \"trigger_type\": \"<emotional|situational|social|habitual|mixed>\",\n  \"confidence\": 0.0\n}\n
+
+RESPONSE:
+```json
+{
+  "triggers": [
+    "work stress",
+    "morning coffee",
+    "wife's weight gain",
+    "stress"
+  ],
+  "trigger_type": "mixed",
+  "confidence": 1.0
+}
+```
+
+================================================================================
+OLLAMA CALL 0026
+================================================================================
+timestamp: 2026-04-16T14:06:17.376456+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a Senior Clinical Informatics Specialist specializing in NLP quality assurance for tobacco cessation research.\n\nTask: Audit the quit-attempt extraction below against the source conversation for 100% fidelity.\n\nSOURCE CONVERSATION:\nCounselor: Hi, thanks for coming in today. How are you feeling about your smoking?
+
+Patient: Honestly, I've been thinking about it a lot lately. My doctor told me last month that my lungs are showing early signs of damage. That scared me.
+
+Counselor: That sounds like it was a real wake-up call. Have you thought about quitting before?
+
+Patient: Oh yeah, I've tried a few times. Last year I used the nicotine patch for about six weeks — that was my longest stretch. Before that I tried just stopping cold turkey but that only lasted maybe two or three days.
+
+Counselor: Six weeks is actually a meaningful attempt. What happened at the end of those six weeks?
+
+Patient: Work stress. It was a brutal project and I just cracked one night. Lit up and then it was back to normal within a week.
+
+Counselor: So stress is a big trigger for you?
+
+Patient: Definitely. And mornings — I have a cigarette with my coffee every single morning. It's the first thing I do. I don't even feel awake without it.
+
+Counselor: Those habitual morning smokes can be really hard to break. What worries you most about quitting this time?
+
+Patient: Honestly? The stress thing. I don't know what I'd do when things get hard at work. Also, my wife quit two years ago and she gained quite a bit of weight. That freaks me out a little.
+
+Counselor: Those are both very common concerns. Let me tell you what we can do. First, I'd really recommend we talk about varenicline — it's a prescription medication that reduces cravings and has been shown to be more effective than the patch alone. Second, we should build you a stress-management plan so you have something to reach for other than a cigarette. That might include breathing techniques, short walks, or even just having a glass of water. Third, the weight concern is real but manageable — a nutritionist referral alongside your quit attempt can help a lot. Does a quit date in the next two to three weeks feel doable?
+
+Patient: Maybe. I'd like to at least set a date. I think I'm ready to actually try this time, not just think about it.
+
+Counselor: That's a great sign. Let's schedule you for varenicline and set that date today.
+\n\nEXTRACTION TO AUDIT:\n{'attempts': ['nicotine patch 6 weeks', 'cold turkey 2 or 3 days', 'morning smokes every single morning'], 'evidence': ["patient stated 'I’m ready to actually try this time, not just think about it.'"]}\n\nConduct the following four checks:\n\n1. Grounding and Veracity: Does every extracted attempt have a direct textual anchor in the conversation? Flag any logical leaps where a quit attempt was assumed without explicit confirmation.\n\n2. Hallucination Check: List any data points in the extraction that have no basis in the source text.\n\n3. Omission Check: Scan the conversation for missed signals — keywords such as \"stopped,\" \"gave up,\" \"last time I tried,\" \"cut back to zero,\" or specific dates or durations — that should have been captured.\n\n4. Taxonomy Alignment: Verify that the attempt method (e.g., Cold Turkey, NRT, Pharmacotherapy, Behavioral Support) aligns with established clinical standards.\n\nScoring rubric:\n- 9–10: Perfect recall and precision, no errors.\n- 7–8: High utility; minor formatting or non-clinical nuance issues only.\n- 5–6: Partial data loss or one significant hallucination.\n- Below 5: Unreliable; multiple hallucinations or missed major attempts.\n\nRespond ONLY with valid JSON:\n{\n  \"confidence\": 0.0,\n  \"issues\": [\"<issue 1>\", \"<issue 2>\"]\n}\n
+
+RESPONSE:
+```json
+{
+  "confidence": 6,
+  "issues": [
+    "Issue 1: Grounding and Veracity - The extraction includes 'morning smokes every single morning' as an attempt. While the patient describes this behavior, it's presented as an 'attempt' without explicit confirmation of a quit attempt. The conversation focuses on the *trigger* of this behavior, not the attempt itself. The anchor is the patient's statement 'I’m ready to actually try this time, not just think about it.' which is a reflection of the behavior, not the behavior itself.",
+    "Issue 2: Omission Check - The conversation details multiple failed attempts with varying durations (6 weeks patch, 2-3 days cold turkey). The extraction only captures 'morning smokes every single morning'.  A more complete extraction would include the duration and method of these previous attempts to provide a fuller picture of the patient's history."
+  ]
+}
+```
+
+================================================================================
+OLLAMA CALL 0027
+================================================================================
+timestamp: 2026-04-16T14:06:21.226975+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a Senior Clinical NLP Reviewer specializing in Transtheoretical Model (TTM) stage classification quality assurance.\n\nTask: Audit the readiness stage classification below against the source conversation.\n\nSOURCE CONVERSATION:\nCounselor: Hi, thanks for coming in today. How are you feeling about your smoking?
+
+Patient: Honestly, I've been thinking about it a lot lately. My doctor told me last month that my lungs are showing early signs of damage. That scared me.
+
+Counselor: That sounds like it was a real wake-up call. Have you thought about quitting before?
+
+Patient: Oh yeah, I've tried a few times. Last year I used the nicotine patch for about six weeks — that was my longest stretch. Before that I tried just stopping cold turkey but that only lasted maybe two or three days.
+
+Counselor: Six weeks is actually a meaningful attempt. What happened at the end of those six weeks?
+
+Patient: Work stress. It was a brutal project and I just cracked one night. Lit up and then it was back to normal within a week.
+
+Counselor: So stress is a big trigger for you?
+
+Patient: Definitely. And mornings — I have a cigarette with my coffee every single morning. It's the first thing I do. I don't even feel awake without it.
+
+Counselor: Those habitual morning smokes can be really hard to break. What worries you most about quitting this time?
+
+Patient: Honestly? The stress thing. I don't know what I'd do when things get hard at work. Also, my wife quit two years ago and she gained quite a bit of weight. That freaks me out a little.
+
+Counselor: Those are both very common concerns. Let me tell you what we can do. First, I'd really recommend we talk about varenicline — it's a prescription medication that reduces cravings and has been shown to be more effective than the patch alone. Second, we should build you a stress-management plan so you have something to reach for other than a cigarette. That might include breathing techniques, short walks, or even just having a glass of water. Third, the weight concern is real but manageable — a nutritionist referral alongside your quit attempt can help a lot. Does a quit date in the next two to three weeks feel doable?
+
+Patient: Maybe. I'd like to at least set a date. I think I'm ready to actually try this time, not just think about it.
+
+Counselor: That's a great sign. Let's schedule you for varenicline and set that date today.
+\n\nCLASSIFICATION TO AUDIT:\n{readiness_output}\n\nConduct the following checks:\n\n1. Stage Validity: Is the assigned stage (precontemplation, contemplation, preparation, action, maintenance, relapse) consistent with the patient's explicit statements and behavioral indicators in the conversation?\n\n2. Evidence Grounding: Is the cited evidence actually present in the conversation and does it unambiguously support the assigned stage rather than an adjacent stage?\n\n3. Contradicting Evidence: Are there patient statements that contradict the assigned stage or suggest a different classification? List them.\n\n4. Stage Boundary Precision: Could the patient plausibly fit a neighboring stage? If so, explain which evidence distinguishes the chosen stage from the adjacent one.\n\nScoring rubric:\n- 9–10: Stage is correct, evidence is unambiguous, no contradictions.\n- 7–8: Stage is defensible but borderline; minor evidence gap.\n- 5–6: Contradicting evidence ignored, or adjacent stage is equally or more supported.\n- Below 5: Stage classification is unsupported or directly contradicted by the conversation.\n\nRespond ONLY with valid JSON:\n{\n  \"confidence\": 0.0,\n  \"issues\": [\"<issue 1>\", \"<issue 2>\"]\n}\n
+
+RESPONSE:
+```json
+{
+  "confidence": 7.5,
+  "issues": [
+    "The classification of {stage} is defensible but borderline. While the patient expresses a desire to 'actually try this time' and sets a goal to 'set a date,' the conversation heavily emphasizes past failures (patch, cold turkey), a trigger (stress), and a significant barrier (wife's weight gain). These elements lean towards precontemplation, particularly given the repeated unsuccessful attempts. However, the statement 'I’d like to at least set a date' introduces a nascent element of contemplation.",
+    "There is a minor evidence gap. The counselor’s proactive suggestions regarding varenicline and a stress management plan, while helpful, don't definitively push the patient into preparation or action. The patient’s response is hesitant and focused on managing potential obstacles, which is more aligned with precontemplation than a stage demonstrating active planning."
+  ]
+}
+```
+
+================================================================================
+OLLAMA CALL 0028
+================================================================================
+timestamp: 2026-04-16T14:06:25.525062+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a Clinical Health Psychologist and NLP Validator specializing in patient-reported concerns from tobacco-cessation transcripts.\n\nTask: Audit the concern extraction below against the source conversation for clinical accuracy and completeness.\n\nSOURCE CONVERSATION:\nCounselor: Hi, thanks for coming in today. How are you feeling about your smoking?
+
+Patient: Honestly, I've been thinking about it a lot lately. My doctor told me last month that my lungs are showing early signs of damage. That scared me.
+
+Counselor: That sounds like it was a real wake-up call. Have you thought about quitting before?
+
+Patient: Oh yeah, I've tried a few times. Last year I used the nicotine patch for about six weeks — that was my longest stretch. Before that I tried just stopping cold turkey but that only lasted maybe two or three days.
+
+Counselor: Six weeks is actually a meaningful attempt. What happened at the end of those six weeks?
+
+Patient: Work stress. It was a brutal project and I just cracked one night. Lit up and then it was back to normal within a week.
+
+Counselor: So stress is a big trigger for you?
+
+Patient: Definitely. And mornings — I have a cigarette with my coffee every single morning. It's the first thing I do. I don't even feel awake without it.
+
+Counselor: Those habitual morning smokes can be really hard to break. What worries you most about quitting this time?
+
+Patient: Honestly? The stress thing. I don't know what I'd do when things get hard at work. Also, my wife quit two years ago and she gained quite a bit of weight. That freaks me out a little.
+
+Counselor: Those are both very common concerns. Let me tell you what we can do. First, I'd really recommend we talk about varenicline — it's a prescription medication that reduces cravings and has been shown to be more effective than the patch alone. Second, we should build you a stress-management plan so you have something to reach for other than a cigarette. That might include breathing techniques, short walks, or even just having a glass of water. Third, the weight concern is real but manageable — a nutritionist referral alongside your quit attempt can help a lot. Does a quit date in the next two to three weeks feel doable?
+
+Patient: Maybe. I'd like to at least set a date. I think I'm ready to actually try this time, not just think about it.
+
+Counselor: That's a great sign. Let's schedule you for varenicline and set that date today.
+\n\nEXTRACTION TO AUDIT:\n{'concerns': ['stress', 'weight gain'], 'evidence': []}\n\nConduct the following four checks:\n\n1. Implicit Concern Detection: Did the patient express concern through a question or a hedged statement (e.g., \"I've noticed I'm winded lately, but maybe it's just age\")? If an underlying health anxiety was missed, flag it as an omission.\n\n2. Severity Calibration: Ensure concerns were not underrepresented. If a patient said they were \"terrified of lung cancer,\" an extraction of \"worried about health\" is a precision error in severity.\n\n3. Temporal Attribution: Distinguish between historical concerns (past anxieties no longer active) and active concerns (current anxieties present at time of conversation).\n\n4. Categorization Accuracy: Verify concerns belong to the correct type:\n   - Physiological: cough, breathlessness, sleep issues, cravings\n   - Psychological: anxiety about failing, mood swings, irritability\n   - Social/Financial: cost of smoking or aids, stigma, family impact\n   - Situational/Relapse: concerns about specific trigger contexts\n\nScoring rubric:\n- 9–10: All concerns captured with correct intensity and category.\n- 7–8: Minor or passing concern missed; minor category misalignment.\n- 5–6: A primary concern missed or patient's emotional tone misinterpreted.\n- Below 5: Counselor advice confused for patient concerns, or major concerns absent.\n\nRespond ONLY with valid JSON:\n{\n  \"confidence\": 0.0,\n  \"issues\": [\"<issue 1>\", \"<issue 2>\"]\n}\n
+
+RESPONSE:
+```json
+{
+  "confidence": 9.5,
+  "issues": [
+    "Implicit Concern Detection: The patient explicitly states 'I don't know what I’d do when things get hard at work' and 'That freaks me out a little,' indicating an underlying anxiety about coping with stress and potential relapse. This was missed.",
+    "Severity Calibration: The concerns regarding stress and weight gain are accurately represented as significant concerns. The patient’s use of words like ‘brutal’ and ‘terrified’ regarding the lung damage and subsequent stress, warrants a high severity assessment.",
+    "Temporal Attribution: All concerns are accurately attributed to the current timeframe – the patient’s anxieties are actively present during the conversation.",
+    "Categorization Accuracy: ‘Stress’ is correctly categorized as a Situational/Relapse concern (trigger contexts), ‘Weight gain’ is categorized as a Social/Financial concern (impact on spouse), and the overarching anxiety about the lung damage is categorized as Psychological (fear of failure/health)."
+  ]
+}
+```
+
+================================================================================
+OLLAMA CALL 0029
+================================================================================
+timestamp: 2026-04-16T14:06:28.849540+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a Senior Clinical NLP Reviewer specializing in smoking trigger extraction quality assurance.\n\nTask: Audit the trigger extraction below against the source conversation.\n\nSOURCE CONVERSATION:\nCounselor: Hi, thanks for coming in today. How are you feeling about your smoking?
+
+Patient: Honestly, I've been thinking about it a lot lately. My doctor told me last month that my lungs are showing early signs of damage. That scared me.
+
+Counselor: That sounds like it was a real wake-up call. Have you thought about quitting before?
+
+Patient: Oh yeah, I've tried a few times. Last year I used the nicotine patch for about six weeks — that was my longest stretch. Before that I tried just stopping cold turkey but that only lasted maybe two or three days.
+
+Counselor: Six weeks is actually a meaningful attempt. What happened at the end of those six weeks?
+
+Patient: Work stress. It was a brutal project and I just cracked one night. Lit up and then it was back to normal within a week.
+
+Counselor: So stress is a big trigger for you?
+
+Patient: Definitely. And mornings — I have a cigarette with my coffee every single morning. It's the first thing I do. I don't even feel awake without it.
+
+Counselor: Those habitual morning smokes can be really hard to break. What worries you most about quitting this time?
+
+Patient: Honestly? The stress thing. I don't know what I'd do when things get hard at work. Also, my wife quit two years ago and she gained quite a bit of weight. That freaks me out a little.
+
+Counselor: Those are both very common concerns. Let me tell you what we can do. First, I'd really recommend we talk about varenicline — it's a prescription medication that reduces cravings and has been shown to be more effective than the patch alone. Second, we should build you a stress-management plan so you have something to reach for other than a cigarette. That might include breathing techniques, short walks, or even just having a glass of water. Third, the weight concern is real but manageable — a nutritionist referral alongside your quit attempt can help a lot. Does a quit date in the next two to three weeks feel doable?
+
+Patient: Maybe. I'd like to at least set a date. I think I'm ready to actually try this time, not just think about it.
+
+Counselor: That's a great sign. Let's schedule you for varenicline and set that date today.
+\n\nEXTRACTION TO AUDIT:\n{'triggers': ['work stress', 'morning coffee', "wife's weight gain", 'stress'], 'evidence': []}\n\nConduct the following four checks:\n\n1. Grounding Check: For each extracted trigger, verify it is either explicitly stated (the exact term or a clear synonym appears in the conversation) or strongly implied (the clinical context makes it unambiguous). Flag anything inferred, assumed, or fabricated.\n\n2. Hallucination Detection: Identify triggers that appear in the extraction but have no basis in the conversation. Note the specific trigger and explain why it is unsupported.\n\n3. Omission Detection: Identify triggers clearly present in the conversation but missing from the extraction. Note the exact phrase or passage and the trigger category it should have been assigned.\n\n4. Classification Accuracy: Verify each trigger is assigned the clinically appropriate type (emotional, situational, social, habitual). Flag misclassifications and suggest the correct label.\n\nScoring rubric:\n- 9–10: Near-perfect, no meaningful errors.\n- 7–8: Minor omissions or edge-case misclassifications.\n- 4–6: Several errors that affect reliability.\n- 1–3: Significant hallucinations or omissions.\n- 0: Extraction is unusable.\n\nRespond ONLY with valid JSON:\n{\n  \"confidence\": 0.0,\n  \"issues\": [\"<issue 1>\", \"<issue 2>\"]\n}\n
+
+RESPONSE:
+```json
+{
+  "confidence": 0.7,
+  "issues": [
+    "Omission Detection: The trigger 'wife's weight gain' is present in the conversation ('Also, my wife quit two years ago and she gained quite a bit of weight. That freaks me out a little.') but not included in the extraction. This should be categorized as a 'social' trigger due to its connection to a significant other's behavior.",
+    "Classification Accuracy: The trigger 'morning coffee' is listed as 'stress'. While morning coffee consumption can be linked to stress, the conversation explicitly states the patient has a habit of smoking *with* their morning coffee. This should be categorized as a 'habitual' trigger."
+  ]
+}
+```
+
+================================================================================
+OLLAMA CALL 0030
+================================================================================
+timestamp: 2026-04-16T14:06:30.333513+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a very strict clinical data validator. Compare the EXTRACTED DATA against the CONVERSATION.
+
+CONVERSATION:
+Counselor: Hi, thanks for coming in today. How are you feeling about your smoking?
+
+Patient: Honestly, I've been thinking about it a lot lately. My doctor told me last month that my lungs are showing early signs of damage. That scared me.
+
+Counselor: That sounds like it was a real wake-up call. Have you thought about quitting before?
+
+Patient: Oh yeah, I've tried a few times. Last year I used the nicotine patch for about six weeks — that was my longest stretch. Before that I tried just stopping cold turkey but that only lasted maybe two or three days.
+
+Counselor: Six weeks is actually a meaningful attempt. What happened at the end of those six weeks?
+
+Patient: Work stress. It was a brutal project and I just cracked one night. Lit up and then it was back to normal within a week.
+
+Counselor: So stress is a big trigger for you?
+
+Patient: Definitely. And mornings — I have a cigarette with my coffee every single morning. It's the first thing I do. I don't even feel awake without it.
+
+Counselor: Those habitual morning smokes can be really hard to break. What worries you most about quitting this time?
+
+Patient: Honestly? The stress thing. I don't know what I'd do when things get hard at work. Also, my wife quit two years ago and she gained quite a bit of weight. That freaks me out a little.
+
+Counselor: Those are both very common concerns. Let me tell you what we can do. First, I'd really recommend we talk about varenicline — it's a prescription medication that reduces cravings and has been shown to be more effective than the patch alone. Second, we should build you a stress-management plan so you have something to reach for other than a cigarette. That might include breathing techniques, short walks, or even just having a glass of water. Third, the weight concern is real but manageable — a nutritionist referral alongside your quit attempt can help a lot. Does a quit date in the next two to three weeks feel doable?
+
+Patient: Maybe. I'd like to at least set a date. I think I'm ready to actually try this time, not just think about it.
+
+Counselor: That's a great sign. Let's schedule you for varenicline and set that date today.
+
+
+EXTRACTED DATA (cessation advice or guidance):
+{'advice': ['Discuss varenicline as a prescription medication to reduce cravings.', 'Develop a stress-management plan including breathing techniques, short walks, and drinking water.', 'Refer the patient to a nutritionist to address weight concerns.'], 'evidence': ["Counselor: First, I'd really recommend we talk about varenicline — it's a prescription medication that reduces cravings and has been shown to be more effective than the patch alone.", 'Counselor: Second, we should build you a stress-management plan so you have something to reach for other than a cigarette. That might include breathing techniques, short walks, or even just having a glass of water.', 'Counselor: Third, the weight concern is real but manageable — a nutritionist referral alongside your quit attempt can help a lot.']}
+
+Your task:
+1. Very Strictly Check for hallucinations (data not in the text).
+2. Very Strictly Check for omissions (important data missed).
+3. Assign a confidence score between 0.0 and 1.0.
+
+Respond ONLY with valid JSON:
+{
+  "confidence": 0.0,
+  "issues": ["<issue 1>", "..."]
+}
+
+
+RESPONSE:
+```json
+{
+  "confidence": 0.95,
+  "issues": []
+}
+```

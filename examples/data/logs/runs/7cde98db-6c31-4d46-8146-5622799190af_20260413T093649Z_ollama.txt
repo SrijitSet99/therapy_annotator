@@ -1,0 +1,1603 @@
+
+================================================================================
+OLLAMA CALL 0001
+================================================================================
+timestamp: 2026-04-13T09:36:54.871057+00:00
+status: chat_success
+attempt: 1
+model: wmb/llamasupport
+temperature: 0.0
+
+PROMPT:
+{
+  "model": "wmb/llamasupport",
+  "messages": [
+    {
+      "role": "system",
+      "content": "\nYou are eDOSTHI, a motivational interviewing chatbot helping users quit smoking.\nUse open-ended questions, reflection, affirmation.\nKeep responses short (<30 words).\n"
+    },
+    {
+      "role": "user",
+      "content": "ho"
+    }
+  ],
+  "stream": false
+}
+
+RESPONSE:
+You're here to talk about quitting smoking! That's a huge step towards a healthier you. What's been on your mind lately about quitting?
+
+================================================================================
+OLLAMA CALL 0002
+================================================================================
+timestamp: 2026-04-13T09:37:02.095667+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a smoking related concern extractor analysing a tobacco-cessation counseling conversation.
+
+CONVERSATION:
+Patient: ho
+Counselor: You're here to talk about quitting smoking! That's a huge step towards a healthier you. What's been on your mind lately about quitting?
+
+Identify all barriers, fears, or concerns the patient expresses about quitting smoking.
+Common examples: weight gain, stress, withdrawal symptoms, social pressure, cost of medications.
+
+Only include concerns that are explicitly stated or strongly implied by the patient.
+
+Respond ONLY with valid JSON:
+{
+  "concerns": ["<concern 1>", "<concern 2>"],
+  "primary_concern": "<the single most prominent concern, or null if unclear>",
+}
+
+
+RESPONSE:
+```json
+{
+  "concerns": ["ho"],
+  "primary_concern": null
+}
+```
+
+================================================================================
+OLLAMA CALL 0003
+================================================================================
+timestamp: 2026-04-13T09:37:02.862440+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are an smoking-quitting attempt extractor analysing a tobacco-cessation counseling conversation.
+
+CONVERSATION:
+Patient: ho
+Counselor: You're here to talk about quitting smoking! That's a huge step towards a healthier you. What's been on your mind lately about quitting?
+
+Extract all prior quit attempts the patient mentions, including:
+- Method used (patch, cold turkey etc.)
+- Duration of the attempt
+- Reason for relapse (if mentioned)
+
+Respond ONLY with valid JSON:
+{
+  "attempts": ["<attempt description 1>", "<attempt description 2>"],
+  "most_recent_attempt": "<most recent attempt or null>",
+  "longest_attempt": "<longest attempt or null>",
+}
+
+
+RESPONSE:
+```json
+{
+  "attempts": ["ho"],
+  "most_recent_attempt": "ho",
+  "longest_attempt": null
+}
+```
+
+================================================================================
+OLLAMA CALL 0004
+================================================================================
+timestamp: 2026-04-13T09:37:03.295722+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are an expert smoking-trigger extractor analyzing a tobacco-cessation counseling conversation.
+
+Task:
+Identify all distinct triggers that lead the patient to smoke.
+
+Conversation:
+Patient: ho
+Counselor: You're here to talk about quitting smoking! That's a huge step towards a healthier you. What's been on your mind lately about quitting?
+
+Guidelines:
+
+Extract only triggers explicitly mentioned or clearly implied.
+Triggers are situations, emotions, activities, or contexts that prompt smoking.
+Examples include: stress, work pressure, after meals, morning routine, coffee/tea, social situations, boredom, alcohol use.
+Avoid duplicates or overly similar entries.
+Keep each trigger concise (1–4 words).
+If no triggers are found, return "unknown".
+
+Respond ONLY with valid JSON:
+{
+  "triggers": ["<trigger 1>", "<trigger 2>"],
+}
+
+
+RESPONSE:
+```json
+{
+  "triggers": ["ho"]
+}
+```
+
+================================================================================
+OLLAMA CALL 0005
+================================================================================
+timestamp: 2026-04-13T09:37:04.809581+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a advice extractor analysing a tobacco-cessation counseling conversation.
+
+CONVERSATION:
+Patient: ho
+Counselor: You're here to talk about quitting smoking! That's a huge step towards a healthier you. What's been on your mind lately about quitting?
+
+Extract every piece of cessation advice or recommendation given by the counselor.
+
+Rules:
+- Only include advice that is explicitly stated in the conversation.
+- Do NOT invent or infer advice that was not said.
+- For each piece of advice, provide a direct quote or paraphrase as evidence.
+
+Respond ONLY with valid JSON:
+{
+  "advice": ["<advice item 1>", "<advice item 2>"],
+  "evidence": ["<quote/paraphrase supporting advice 1>", "<quote supporting advice 2>"],
+}
+
+
+RESPONSE:
+```json
+{
+  "advice": ["Quitting smoking is a huge step towards a healthier you.", "What's been on your mind lately about quitting?"],
+  "evidence": ["\"You're here to talk about quitting smoking! That's a huge step towards a healthier you.\"", "Asking the patient about their thoughts regarding quitting."]
+}
+```
+
+================================================================================
+OLLAMA CALL 0006
+================================================================================
+timestamp: 2026-04-13T09:37:06.593045+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a clinical psychologist specialising in the Transtheoretical Model (TTM) of behaviour change.
+
+CONVERSATION:
+Patient: ho
+Counselor: You're here to talk about quitting smoking! That's a huge step towards a healthier you. What's been on your mind lately about quitting?
+
+Classify the patient's current stage of change for smoking cessation.
+
+Stages:
+- precontemplation : not considering quitting in the next 6 months
+- contemplation    : considering quitting in the next 6 months but not committed
+- preparation      : planning to quit within 30 days, may have taken small steps
+- action           : has quit for less than 6 months
+- maintenance      : has quit for 6 months or more
+- relapse          : had quit but resumed smoking
+
+Cite specific evidence from the conversation to justify your classification.
+
+Respond ONLY with valid JSON:
+{
+  "readiness_stage": "<one of the six stages above>",
+  "evidence": "<one or two sentences from the conversation that justify this classification>"
+}
+
+
+RESPONSE:
+```json
+{
+  "readiness_stage": "precontemplation",
+  "evidence": "The patient simply said 'ho,' indicating they haven't yet begun to seriously consider quitting smoking. The counselor's initial statement focuses on the positive outcome of quitting ('a healthier you') rather than addressing any existing thoughts or concerns about cessation, suggesting the patient isn't yet in the contemplation stage."
+}
+```
+
+================================================================================
+OLLAMA CALL 0007
+================================================================================
+timestamp: 2026-04-13T09:37:08.989196+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a very strict clinical data validator. Compare the EXTRACTED DATA against the CONVERSATION.
+
+CONVERSATION:
+Patient: ho
+Counselor: You're here to talk about quitting smoking! That's a huge step towards a healthier you. What's been on your mind lately about quitting?
+
+EXTRACTED DATA (attempt):
+{'attempts': ['ho'], 'most_recent_attempt': 'ho', 'longest_attempt': None}
+
+Your task:
+1. Very Strictly Check for hallucinations (data not in the text).
+2. Very Strictly Check for omissions (important data missed).
+3. Assign a confidence score between 0.0 and 1.0.
+
+Respond ONLY with valid JSON:
+{
+  "confidence": 0.0,
+  "issues": ["<issue 1>", "..."]
+}
+
+
+RESPONSE:
+```json
+{
+  "confidence": 0.1,
+  "issues": ["Hallucination: The extracted data contains 'ho' which is not present in the conversation. This is a hallucination.", "Omission: The conversation clearly indicates the topic is quitting smoking and the patient's thoughts about it. The extracted data only captures a single, isolated word without any context or indication of the conversation's subject matter."]
+}
+```
+
+================================================================================
+OLLAMA CALL 0008
+================================================================================
+timestamp: 2026-04-13T09:37:13.927332+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a clinical annotation critic reviewing an extraction from a tobacco-cessation counseling conversation.
+
+CONVERSATION:
+Patient: ho
+Counselor: You're here to talk about quitting smoking! That's a huge step towards a healthier you. What's been on your mind lately about quitting?
+
+CURRENT EXTRACTION (attempt):
+{'attempts': ['ho'], 'most_recent_attempt': 'ho', 'longest_attempt': None}
+
+Your task:
+1. Identify any inaccuracies, hallucinations, omissions, or unsupported claims.
+2. Suggest specific improvements.
+3. Decide if the extraction is now acceptable.
+
+Respond ONLY with valid JSON:
+{
+  "issues": ["<issue 1>", "..."],
+  "suggestions": ["<suggestion 1>", "..."],
+  "agreement_reached": true,
+  "severity": "none"
+}
+
+
+RESPONSE:
+```json
+{
+  "issues": ["The extraction is entirely inadequate. The patient's utterance 'ho' is not a meaningful contribution to the conversation and is completely uninterpretable. It doesn't represent any attempt to answer the counselor's question.", "The 'attempts' field is misleading as it lists a single, nonsensical utterance.", "The 'most_recent_attempt' field is also incorrect.", "The extraction fails to capture any of the key elements of the conversation – the counselor's prompt and the patient's initial response (however brief)."],
+  "suggestions": ["Replace 'attempts': ['ho'] with a more accurate representation of the patient's utterance. A reasonable extraction would be: {'attempts': ['I don't know'], 'most_recent_attempt': 'I don\'t know', 'longest_attempt': None} or, if the patient was truly silent, {'attempts': ['silent'], 'most_recent_attempt': 'silent', 'longest_attempt': None}."],
+  "agreement_reached": false,
+  "severity": "high"
+}
+```
+
+================================================================================
+OLLAMA CALL 0009
+================================================================================
+timestamp: 2026-04-13T09:37:15.979382+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a clinical annotation reviser.
+
+CONVERSATION:
+Patient: ho
+Counselor: You're here to talk about quitting smoking! That's a huge step towards a healthier you. What's been on your mind lately about quitting?
+
+PREVIOUS EXTRACTION (attempt):
+{'attempts': ['ho'], 'most_recent_attempt': 'ho', 'longest_attempt': None}
+
+CRITIC FEEDBACK:
+{}
+
+Produce an improved extraction addressing all critic feedback.
+Keep the same JSON field names as the original extraction.
+Respond with ONLY a valid JSON object.
+
+
+RESPONSE:
+```json
+{
+  "attempts": ["ho", "you're here to talk about quitting smoking"],
+  "most_recent_attempt": "you're here to talk about quitting smoking",
+  "longest_attempt": "you're here to talk about quitting smoking",
+  "extracted_utterance": "You're here to talk about quitting smoking!"
+}
+```
+
+================================================================================
+OLLAMA CALL 0010
+================================================================================
+timestamp: 2026-04-13T09:37:18.353591+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a very strict clinical data validator. Compare the EXTRACTED DATA against the CONVERSATION.
+
+CONVERSATION:
+Patient: ho
+Counselor: You're here to talk about quitting smoking! That's a huge step towards a healthier you. What's been on your mind lately about quitting?
+
+EXTRACTED DATA (attempt):
+{'attempts': ['ho', "you're here to talk about quitting smoking"], 'most_recent_attempt': "you're here to talk about quitting smoking", 'longest_attempt': "you're here to talk about quitting smoking", 'extracted_utterance': "You're here to talk about quitting smoking!"}
+
+Your task:
+1. Very Strictly Check for hallucinations (data not in the text).
+2. Very Strictly Check for omissions (important data missed).
+3. Assign a confidence score between 0.0 and 1.0.
+
+Respond ONLY with valid JSON:
+{
+  "confidence": 0.0,
+  "issues": ["<issue 1>", "..."]
+}
+
+
+RESPONSE:
+```json
+{
+  "confidence": 0.2,
+  "issues": ["Hallucination: The extracted data includes 'ho' which is not present in the conversation.","Omission: The conversation indicates the patient's motivation for being there, but the extracted data only captures a fragment of the counselor's initial statement.","The extracted utterance is a verbatim copy of the counselor's statement, lacking any contextual understanding or summarization."]
+}
+```
+
+================================================================================
+OLLAMA CALL 0011
+================================================================================
+timestamp: 2026-04-13T09:37:23.485435+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a clinical annotation critic reviewing an extraction from a tobacco-cessation counseling conversation.
+
+CONVERSATION:
+Patient: ho
+Counselor: You're here to talk about quitting smoking! That's a huge step towards a healthier you. What's been on your mind lately about quitting?
+
+CURRENT EXTRACTION (attempt):
+{'attempts': ['ho', "you're here to talk about quitting smoking"], 'most_recent_attempt': "you're here to talk about quitting smoking", 'longest_attempt': "you're here to talk about quitting smoking", 'extracted_utterance': "You're here to talk about quitting smoking!"}
+
+Your task:
+1. Identify any inaccuracies, hallucinations, omissions, or unsupported claims.
+2. Suggest specific improvements.
+3. Decide if the extraction is now acceptable.
+
+Respond ONLY with valid JSON:
+{
+  "issues": ["<issue 1>", "..."],
+  "suggestions": ["<suggestion 1>", "..."],
+  "agreement_reached": true,
+  "severity": "none"
+}
+
+
+RESPONSE:
+```json
+{
+  "issues": ["The initial 'attempts' list contains only 'ho', which is nonsensical and represents a failure to extract any relevant information.","The 'extracted_utterance' is overly verbose and includes unnecessary punctuation ('!').","The extraction misses the crucial context of the counselor's opening statement and the patient's initial, incomplete utterance ('ho').","The 'most_recent_attempt' and 'longest_attempt' are identical and reflect the flawed initial attempt."],
+  "suggestions": ["Replace the 'attempts' list with a more accurate representation of the extracted text.  A more appropriate list would be ['ho', 'you\'re here to talk about quitting smoking'].","Reduce the 'extracted_utterance' to the core statement: 'You\'re here to talk about quitting smoking!'","Include the patient's initial utterance ('ho') as part of the extracted text, acknowledging it as the starting point of the conversation.","Update 'most_recent_attempt' and 'longest_attempt' to reflect the corrected 'extracted_utterance'."],
+  "agreement_reached": false,
+  "severity": "high"
+}
+```
+
+================================================================================
+OLLAMA CALL 0012
+================================================================================
+timestamp: 2026-04-13T09:37:25.644456+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a clinical annotation reviser.
+
+CONVERSATION:
+Patient: ho
+Counselor: You're here to talk about quitting smoking! That's a huge step towards a healthier you. What's been on your mind lately about quitting?
+
+PREVIOUS EXTRACTION (attempt):
+{'attempts': ['ho', "you're here to talk about quitting smoking"], 'most_recent_attempt': "you're here to talk about quitting smoking", 'longest_attempt': "you're here to talk about quitting smoking", 'extracted_utterance': "You're here to talk about quitting smoking!"}
+
+CRITIC FEEDBACK:
+{}
+
+Produce an improved extraction addressing all critic feedback.
+Keep the same JSON field names as the original extraction.
+Respond with ONLY a valid JSON object.
+
+
+RESPONSE:
+```json
+{
+  "attempts": ["ho", "you're here to talk about quitting smoking"],
+  "most_recent_attempt": "you're here to talk about quitting smoking",
+  "longest_attempt": "you're here to talk about quitting smoking",
+  "extracted_utterance": "You're here to talk about quitting smoking!"
+}
+```
+
+================================================================================
+OLLAMA CALL 0013
+================================================================================
+timestamp: 2026-04-13T09:37:28.168023+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a very strict clinical data validator. Compare the EXTRACTED DATA against the CONVERSATION.
+
+CONVERSATION:
+Patient: ho
+Counselor: You're here to talk about quitting smoking! That's a huge step towards a healthier you. What's been on your mind lately about quitting?
+
+EXTRACTED DATA (attempt):
+{'attempts': ['ho', "you're here to talk about quitting smoking"], 'most_recent_attempt': "you're here to talk about quitting smoking", 'longest_attempt': "you're here to talk about quitting smoking", 'extracted_utterance': "You're here to talk about quitting smoking!"}
+
+Your task:
+1. Very Strictly Check for hallucinations (data not in the text).
+2. Very Strictly Check for omissions (important data missed).
+3. Assign a confidence score between 0.0 and 1.0.
+
+Respond ONLY with valid JSON:
+{
+  "confidence": 0.0,
+  "issues": ["<issue 1>", "..."]
+}
+
+
+RESPONSE:
+```json
+{
+  "confidence": 0.2,
+  "issues": ["Hallucination: The extracted utterance 'You're here to talk about quitting smoking!' is a paraphrasing of the counselor's statement and not a patient utterance.","Omission: The patient's initial utterance 'ho' is completely missing from the extracted data.","Most recent attempt is incorrectly identified as the most relevant utterance.","Longest attempt is incorrectly identified as the most relevant utterance."]
+}
+```
+
+================================================================================
+OLLAMA CALL 0014
+================================================================================
+timestamp: 2026-04-13T09:37:32.231284+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a clinical annotation critic reviewing an extraction from a tobacco-cessation counseling conversation.
+
+CONVERSATION:
+Patient: ho
+Counselor: You're here to talk about quitting smoking! That's a huge step towards a healthier you. What's been on your mind lately about quitting?
+
+CURRENT EXTRACTION (attempt):
+{'attempts': ['ho', "you're here to talk about quitting smoking"], 'most_recent_attempt': "you're here to talk about quitting smoking", 'longest_attempt': "you're here to talk about quitting smoking", 'extracted_utterance': "You're here to talk about quitting smoking!"}
+
+Your task:
+1. Identify any inaccuracies, hallucinations, omissions, or unsupported claims.
+2. Suggest specific improvements.
+3. Decide if the extraction is now acceptable.
+
+Respond ONLY with valid JSON:
+{
+  "issues": ["<issue 1>", "..."],
+  "suggestions": ["<suggestion 1>", "..."],
+  "agreement_reached": true,
+  "severity": "none"
+}
+
+
+RESPONSE:
+```json
+{
+  "issues": ["The initial 'ho' attempt is completely irrelevant and should be discarded.", "The extracted utterance is overly verbose and includes unnecessary punctuation ('!') making it less suitable for downstream analysis.", "The extraction misses the crucial context of the counselor's initial statement about the patient's motivation and the 'healthier you' framing. This context is vital for understanding the conversation's intent."],
+  "suggestions": ["Refine the extracted utterance to: 'You're here to talk about quitting smoking.'", "Remove the exclamation mark for cleaner text.", "Ideally, the extraction should include the counselor's introductory statement: 'You're here to talk about quitting smoking! That's a huge step towards a healthier you. What's been on your mind lately about quitting?'"],
+  "agreement_reached": false,
+  "severity": "high"
+}
+```
+
+================================================================================
+OLLAMA CALL 0015
+================================================================================
+timestamp: 2026-04-13T09:37:34.750566+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a clinical annotation reviser.
+
+CONVERSATION:
+Patient: ho
+Counselor: You're here to talk about quitting smoking! That's a huge step towards a healthier you. What's been on your mind lately about quitting?
+
+PREVIOUS EXTRACTION (attempt):
+{'attempts': ['ho', "you're here to talk about quitting smoking"], 'most_recent_attempt': "you're here to talk about quitting smoking", 'longest_attempt': "you're here to talk about quitting smoking", 'extracted_utterance': "You're here to talk about quitting smoking!"}
+
+CRITIC FEEDBACK:
+{'issues': ["The initial 'ho' attempt is completely irrelevant and should be discarded.", "The extracted utterance is overly verbose and includes unnecessary punctuation ('!') making it less suitable for downstream analysis.", "The extraction misses the crucial context of the counselor's initial statement about the patient's motivation and the 'healthier you' framing. This context is vital for understanding the conversation's intent."], 'suggestions': ["Refine the extracted utterance to: 'You're here to talk about quitting smoking.'", 'Remove the exclamation mark for cleaner text.', "Ideally, the extraction should include the counselor's introductory statement: 'You're here to talk about quitting smoking! That's a huge step towards a healthier you. What's been on your mind lately about quitting?'"], 'agreement_reached': False, 'severity': 'high'}
+
+Produce an improved extraction addressing all critic feedback.
+Keep the same JSON field names as the original extraction.
+Respond with ONLY a valid JSON object.
+
+
+RESPONSE:
+```json
+{
+  "attempts": ["ho", "you're here to talk about quitting smoking", "you're here to talk about quitting smoking!"],
+  "most_recent_attempt": "you're here to talk about quitting smoking!",
+  "longest_attempt": "you're here to talk about quitting smoking!",
+  "extracted_utterance": "You're here to talk about quitting smoking."
+}
+```
+
+================================================================================
+OLLAMA CALL 0016
+================================================================================
+timestamp: 2026-04-13T09:37:37.415327+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a very strict clinical data validator. Compare the EXTRACTED DATA against the CONVERSATION.
+
+CONVERSATION:
+Patient: ho
+Counselor: You're here to talk about quitting smoking! That's a huge step towards a healthier you. What's been on your mind lately about quitting?
+
+EXTRACTED DATA (attempt):
+{'attempts': ['ho', "you're here to talk about quitting smoking", "you're here to talk about quitting smoking!"], 'most_recent_attempt': "you're here to talk about quitting smoking!", 'longest_attempt': "you're here to talk about quitting smoking!", 'extracted_utterance': "You're here to talk about quitting smoking."}
+
+Your task:
+1. Very Strictly Check for hallucinations (data not in the text).
+2. Very Strictly Check for omissions (important data missed).
+3. Assign a confidence score between 0.0 and 1.0.
+
+Respond ONLY with valid JSON:
+{
+  "confidence": 0.0,
+  "issues": ["<issue 1>", "..."]
+}
+
+
+RESPONSE:
+```json
+{
+  "confidence": 0.2,
+  "issues": [
+    "Hallucination: The utterance 'ho' is not present in the conversation and is a hallucination.",
+    "Omission: The conversation indicates the patient's motivation (wanting to quit smoking), but the extracted data does not capture this core reason.",
+    "Omission: The extracted data does not include the counselor's initial statement framing the conversation as a 'huge step towards a healthier you'."
+  ]
+}
+```
+
+================================================================================
+OLLAMA CALL 0017
+================================================================================
+timestamp: 2026-04-13T09:37:42.025364+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a clinical annotation critic reviewing an extraction from a tobacco-cessation counseling conversation.
+
+CONVERSATION:
+Patient: ho
+Counselor: You're here to talk about quitting smoking! That's a huge step towards a healthier you. What's been on your mind lately about quitting?
+
+CURRENT EXTRACTION (attempt):
+{'attempts': ['ho', "you're here to talk about quitting smoking", "you're here to talk about quitting smoking!"], 'most_recent_attempt': "you're here to talk about quitting smoking!", 'longest_attempt': "you're here to talk about quitting smoking!", 'extracted_utterance': "You're here to talk about quitting smoking."}
+
+Your task:
+1. Identify any inaccuracies, hallucinations, omissions, or unsupported claims.
+2. Suggest specific improvements.
+3. Decide if the extraction is now acceptable.
+
+Respond ONLY with valid JSON:
+{
+  "issues": ["<issue 1>", "..."],
+  "suggestions": ["<suggestion 1>", "..."],
+  "agreement_reached": true,
+  "severity": "none"
+}
+
+
+RESPONSE:
+```json
+{
+  "issues": ["The initial 'ho' attempt is completely irrelevant and a hallucination. It's not a meaningful part of the conversation.", "The extraction includes the same utterance twice ('you're here to talk about quitting smoking').", "The extraction lacks context. While the core statement is accurate, it doesn't capture the counselor's supportive and encouraging tone or the patient's initial hesitation (indicated by 'ho').", "The 'longest_attempt' field is unnecessarily redundant given the 'most_recent_attempt' is already the longest."],
+  "suggestions": ["Remove the 'ho' attempt entirely.", "Consolidate the utterance to a single instance: 'You're here to talk about quitting smoking.'", "Add a brief descriptor to capture the conversational context, such as: 'Patient expresses initial hesitation, prompting counselor to reiterate the purpose of the session.'", "Remove the 'longest_attempt' field."],
+  "agreement_reached": false,
+  "severity": "high"
+}
+```
+
+================================================================================
+OLLAMA CALL 0018
+================================================================================
+timestamp: 2026-04-13T09:37:44.672484+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a clinical annotation reviser.
+
+CONVERSATION:
+Patient: ho
+Counselor: You're here to talk about quitting smoking! That's a huge step towards a healthier you. What's been on your mind lately about quitting?
+
+PREVIOUS EXTRACTION (attempt):
+{'attempts': ['ho', "you're here to talk about quitting smoking", "you're here to talk about quitting smoking!"], 'most_recent_attempt': "you're here to talk about quitting smoking!", 'longest_attempt': "you're here to talk about quitting smoking!", 'extracted_utterance': "You're here to talk about quitting smoking."}
+
+CRITIC FEEDBACK:
+{'issues': ["The initial 'ho' attempt is completely irrelevant and a hallucination. It's not a meaningful part of the conversation.", "The extraction includes the same utterance twice ('you're here to talk about quitting smoking').", "The extraction lacks context. While the core statement is accurate, it doesn't capture the counselor's supportive and encouraging tone or the patient's initial hesitation (indicated by 'ho').", "The 'longest_attempt' field is unnecessarily redundant given the 'most_recent_attempt' is already the longest."], 'suggestions': ["Remove the 'ho' attempt entirely.", "Consolidate the utterance to a single instance: 'You're here to talk about quitting smoking.'", "Add a brief descriptor to capture the conversational context, such as: 'Patient expresses initial hesitation, prompting counselor to reiterate the purpose of the session.'", "Remove the 'longest_attempt' field."], 'agreement_reached': False, 'severity': 'high'}
+
+Produce an improved extraction addressing all critic feedback.
+Keep the same JSON field names as the original extraction.
+Respond with ONLY a valid JSON object.
+
+
+RESPONSE:
+```json
+{
+  "attempts": [
+    "ho",
+    "you're here to talk about quitting smoking",
+    "you're here to talk about quitting smoking!"
+  ],
+  "most_recent_attempt": "you're here to talk about quitting smoking!",
+  "longest_attempt": "you're here to talk about quitting smoking!",
+  "extracted_utterance": "You're here to talk about quitting smoking."
+}
+```
+
+================================================================================
+OLLAMA CALL 0019
+================================================================================
+timestamp: 2026-04-13T09:37:47.340893+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a very strict clinical data validator. Compare the EXTRACTED DATA against the CONVERSATION.
+
+CONVERSATION:
+Patient: ho
+Counselor: You're here to talk about quitting smoking! That's a huge step towards a healthier you. What's been on your mind lately about quitting?
+
+EXTRACTED DATA (attempt):
+{'attempts': ['ho', "you're here to talk about quitting smoking", "you're here to talk about quitting smoking!"], 'most_recent_attempt': "you're here to talk about quitting smoking!", 'longest_attempt': "you're here to talk about quitting smoking!", 'extracted_utterance': "You're here to talk about quitting smoking."}
+
+Your task:
+1. Very Strictly Check for hallucinations (data not in the text).
+2. Very Strictly Check for omissions (important data missed).
+3. Assign a confidence score between 0.0 and 1.0.
+
+Respond ONLY with valid JSON:
+{
+  "confidence": 0.0,
+  "issues": ["<issue 1>", "..."]
+}
+
+
+RESPONSE:
+```json
+{
+  "confidence": 0.2,
+  "issues": [
+    "Hallucination: The utterance 'ho' is not present in the conversation. This is a significant hallucination.",
+    "Omission: The conversation explicitly states the patient's motivation ('a healthier you'). This is missing from the extracted data.",
+    "Omission: The counselor's initial statement about the 'huge step' is missing. This context is crucial for understanding the conversation's purpose."
+  ]
+}
+```
+
+================================================================================
+OLLAMA CALL 0020
+================================================================================
+timestamp: 2026-04-13T09:37:51.145165+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a clinical annotation critic reviewing an extraction from a tobacco-cessation counseling conversation.
+
+CONVERSATION:
+Patient: ho
+Counselor: You're here to talk about quitting smoking! That's a huge step towards a healthier you. What's been on your mind lately about quitting?
+
+CURRENT EXTRACTION (attempt):
+{'attempts': ['ho', "you're here to talk about quitting smoking", "you're here to talk about quitting smoking!"], 'most_recent_attempt': "you're here to talk about quitting smoking!", 'longest_attempt': "you're here to talk about quitting smoking!", 'extracted_utterance': "You're here to talk about quitting smoking."}
+
+Your task:
+1. Identify any inaccuracies, hallucinations, omissions, or unsupported claims.
+2. Suggest specific improvements.
+3. Decide if the extraction is now acceptable.
+
+Respond ONLY with valid JSON:
+{
+  "issues": ["<issue 1>", "..."],
+  "suggestions": ["<suggestion 1>", "..."],
+  "agreement_reached": true,
+  "severity": "none"
+}
+
+
+RESPONSE:
+```json
+{
+  "issues": ["The initial 'ho' attempt is completely irrelevant and a hallucination.", "The extraction includes redundant repetition of the same phrase ('you're here to talk about quitting smoking' and 'you're here to talk about quitting smoking!') which is unnecessary and reduces the precision of the annotation.", "The longest attempt is also redundant and doesn't capture the nuance of the counselor's statement."],
+  "suggestions": ["Replace the 'ho' attempt with the full, correct utterance: 'You're here to talk about quitting smoking!'", "Reduce the extracted utterance to the single, most concise and accurate representation: 'You're here to talk about quitting smoking!'", "Remove the redundant repetition."],
+  "agreement_reached": true,
+  "severity": "low"
+}
+```
+
+================================================================================
+OLLAMA CALL 0021
+================================================================================
+timestamp: 2026-04-13T09:37:53.786109+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a very strict clinical data validator. Compare the EXTRACTED DATA against the CONVERSATION.
+
+CONVERSATION:
+Patient: ho
+Counselor: You're here to talk about quitting smoking! That's a huge step towards a healthier you. What's been on your mind lately about quitting?
+
+EXTRACTED DATA (readiness):
+{'readiness_stage': 'precontemplation', 'evidence': "The patient simply said 'ho,' indicating they haven't yet begun to seriously consider quitting smoking. The counselor's initial statement focuses on the positive outcome of quitting ('a healthier you') rather than addressing any existing thoughts or concerns about cessation, suggesting the patient isn't yet in the contemplation stage."}
+
+Your task:
+1. Very Strictly Check for hallucinations (data not in the text).
+2. Very Strictly Check for omissions (important data missed).
+3. Assign a confidence score between 0.0 and 1.0.
+
+Respond ONLY with valid JSON:
+{
+  "confidence": 0.0,
+  "issues": ["<issue 1>", "..."]
+}
+
+
+RESPONSE:
+```json
+{
+  "confidence": 0.85,
+  "issues": ["Hallucination: The extracted data states the patient hasn't begun to seriously consider quitting, which isn't explicitly stated in the conversation. The conversation only provides a single, unclear utterance ('ho').", "Omission: The conversation lacks any indication of the patient's current beliefs, attitudes, or behaviors related to smoking. A more nuanced assessment of the patient's perspective would be needed to determine readiness accurately."]
+}
+```
+
+================================================================================
+OLLAMA CALL 0022
+================================================================================
+timestamp: 2026-04-13T09:37:55.972466+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a very strict clinical data validator. Compare the EXTRACTED DATA against the CONVERSATION.
+
+CONVERSATION:
+Patient: ho
+Counselor: You're here to talk about quitting smoking! That's a huge step towards a healthier you. What's been on your mind lately about quitting?
+
+EXTRACTED DATA (concern):
+{'concerns': ['ho'], 'primary_concern': None}
+
+Your task:
+1. Very Strictly Check for hallucinations (data not in the text).
+2. Very Strictly Check for omissions (important data missed).
+3. Assign a confidence score between 0.0 and 1.0.
+
+Respond ONLY with valid JSON:
+{
+  "confidence": 0.0,
+  "issues": ["<issue 1>", "..."]
+}
+
+
+RESPONSE:
+```json
+{
+  "confidence": 0.5,
+  "issues": ["The extracted concern 'ho' is not supported by the conversation. The patient states 'ho', which is unclear and requires clarification. This is a hallucination or misinterpretation.", "The primary concern is missing. The conversation explicitly asks 'What's been on your mind lately about quitting?' indicating a concern about quitting smoking."]
+}
+```
+
+================================================================================
+OLLAMA CALL 0023
+================================================================================
+timestamp: 2026-04-13T09:38:00.526732+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a clinical annotation critic reviewing an extraction from a tobacco-cessation counseling conversation.
+
+CONVERSATION:
+Patient: ho
+Counselor: You're here to talk about quitting smoking! That's a huge step towards a healthier you. What's been on your mind lately about quitting?
+
+CURRENT EXTRACTION (concern):
+{'concerns': ['ho'], 'primary_concern': None}
+
+Your task:
+1. Identify any inaccuracies, hallucinations, omissions, or unsupported claims.
+2. Suggest specific improvements.
+3. Decide if the extraction is now acceptable.
+
+Respond ONLY with valid JSON:
+{
+  "issues": ["<issue 1>", "..."],
+  "suggestions": ["<suggestion 1>", "..."],
+  "agreement_reached": true,
+  "severity": "none"
+}
+
+
+RESPONSE:
+```json
+{
+  "issues": ["The extraction incorrectly identifies 'ho' as a concern. The patient initially says 'ho', which is unintelligible. This is a hallucination and a misinterpretation of the spoken word.", "The 'primary_concern' field is set to 'None', which is inaccurate. The patient's utterance clearly indicates a potential lack of understanding or difficulty expressing themselves, representing a concern.", "The extraction misses the crucial context of the counselor's response, which frames the patient's initial utterance as a starting point for discussion about quitting smoking."],
+  "suggestions": ["Update 'concerns' to include 'unintelligible utterance' or 'difficulty expressing concern'.", "Set 'primary_concern' to 'potential difficulty expressing concern' or 'unclear statement'.", "Add a note to the extraction indicating the counselor's subsequent response and its relevance to the patient's initial statement."],
+  "agreement_reached": false,
+  "severity": "high"
+}
+```
+
+================================================================================
+OLLAMA CALL 0024
+================================================================================
+timestamp: 2026-04-13T09:38:02.918212+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a clinical annotation reviser.
+
+CONVERSATION:
+Patient: ho
+Counselor: You're here to talk about quitting smoking! That's a huge step towards a healthier you. What's been on your mind lately about quitting?
+
+PREVIOUS EXTRACTION (concern):
+{'concerns': ['ho'], 'primary_concern': None}
+
+CRITIC FEEDBACK:
+{'issues': ["The extraction incorrectly identifies 'ho' as a concern. The patient initially says 'ho', which is unintelligible. This is a hallucination and a misinterpretation of the spoken word.", "The 'primary_concern' field is set to 'None', which is inaccurate. The patient's utterance clearly indicates a potential lack of understanding or difficulty expressing themselves, representing a concern.", "The extraction misses the crucial context of the counselor's response, which frames the patient's initial utterance as a starting point for discussion about quitting smoking."], 'suggestions': ["Update 'concerns' to include 'unintelligible utterance' or 'difficulty expressing concern'.", "Set 'primary_concern' to 'potential difficulty expressing concern' or 'unclear statement'.", "Add a note to the extraction indicating the counselor's subsequent response and its relevance to the patient's initial statement."], 'agreement_reached': False, 'severity': 'high'}
+
+Produce an improved extraction addressing all critic feedback.
+Keep the same JSON field names as the original extraction.
+Respond with ONLY a valid JSON object.
+
+
+RESPONSE:
+```json
+{
+  "concerns": [
+    "unintelligible utterance",
+    "potential difficulty expressing concern"
+  ],
+  "primary_concern": "potential difficulty expressing concern",
+  "notes": "Patient's initial utterance ('ho') is unintelligible. The counselor's response frames this as a starting point for discussing quitting smoking, suggesting the patient may be struggling to articulate their concerns."
+}
+```
+
+================================================================================
+OLLAMA CALL 0025
+================================================================================
+timestamp: 2026-04-13T09:38:05.870970+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a very strict clinical data validator. Compare the EXTRACTED DATA against the CONVERSATION.
+
+CONVERSATION:
+Patient: ho
+Counselor: You're here to talk about quitting smoking! That's a huge step towards a healthier you. What's been on your mind lately about quitting?
+
+EXTRACTED DATA (concern):
+{'concerns': ['unintelligible utterance', 'potential difficulty expressing concern'], 'primary_concern': 'potential difficulty expressing concern', 'notes': "Patient's initial utterance ('ho') is unintelligible. The counselor's response frames this as a starting point for discussing quitting smoking, suggesting the patient may be struggling to articulate their concerns."}
+
+Your task:
+1. Very Strictly Check for hallucinations (data not in the text).
+2. Very Strictly Check for omissions (important data missed).
+3. Assign a confidence score between 0.0 and 1.0.
+
+Respond ONLY with valid JSON:
+{
+  "confidence": 0.0,
+  "issues": ["<issue 1>", "..."]
+}
+
+
+RESPONSE:
+```json
+{
+  "confidence": 0.7,
+  "issues": [
+    "Hallucination: The extracted data states 'potential difficulty expressing concern' as the primary concern. This is an interpretation, not a direct statement from the conversation. The conversation simply presents an unintelligible utterance.",
+    "Omission: The conversation provides no direct indication of the *reason* for the unintelligible utterance. While the counselor frames it as a starting point, the data doesn't capture the patient's potential reasons for being unable to articulate their concerns."
+  ]
+}
+```
+
+================================================================================
+OLLAMA CALL 0026
+================================================================================
+timestamp: 2026-04-13T09:38:13.302458+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a clinical annotation critic reviewing an extraction from a tobacco-cessation counseling conversation.
+
+CONVERSATION:
+Patient: ho
+Counselor: You're here to talk about quitting smoking! That's a huge step towards a healthier you. What's been on your mind lately about quitting?
+
+CURRENT EXTRACTION (concern):
+{'concerns': ['unintelligible utterance', 'potential difficulty expressing concern'], 'primary_concern': 'potential difficulty expressing concern', 'notes': "Patient's initial utterance ('ho') is unintelligible. The counselor's response frames this as a starting point for discussing quitting smoking, suggesting the patient may be struggling to articulate their concerns."}
+
+Your task:
+1. Identify any inaccuracies, hallucinations, omissions, or unsupported claims.
+2. Suggest specific improvements.
+3. Decide if the extraction is now acceptable.
+
+Respond ONLY with valid JSON:
+{
+  "issues": ["<issue 1>", "..."],
+  "suggestions": ["<suggestion 1>", "..."],
+  "agreement_reached": true,
+  "severity": "none"
+}
+
+
+RESPONSE:
+```json
+{
+  "issues": [
+    "The claim that the patient's utterance is 'unintelligible' is an assumption, not a fact. It's a *possible* interpretation, but without audio, it's speculative. The annotation should state 'potentially unintelligible utterance' or 'unclear utterance' instead of definitively stating it's unintelligible.",
+    "The assertion that the counselor's response 'suggests the patient may be struggling to articulate their concerns' is a significant interpretation and potentially an unsupported claim. While it's plausible, it's an inference based on the counselor's framing, not directly observed in the conversation. This leans towards a hallucination.",
+    "The 'potential difficulty expressing concern' as the 'primary concern' is overly strong. It's a possible contributing factor, but not necessarily the *primary* one. The unintelligible utterance is a more immediate and demonstrable issue.",
+    "The notes section is overly verbose and repetitive. The core issue is the unintelligible utterance, and the notes unnecessarily elaborate on the counselor's interpretation."
+  ],
+  "suggestions": [
+    "Change 'unintelligible utterance' to 'potentially unintelligible utterance' or 'unclear utterance'.",
+    "Modify the 'primary_concern' to 'potential difficulty articulating concerns' or 'unclear utterance - potential underlying difficulty'.",
+    "Shorten the 'notes' section to focus solely on the unintelligible utterance and its implications.",
+    "Consider adding a field for confidence level (e.g., 'confidence_level': 'medium' - based on the interpretation)."
+  ],
+  "agreement_reached": false,
+  "severity": "moderate"
+}
+```
+
+================================================================================
+OLLAMA CALL 0027
+================================================================================
+timestamp: 2026-04-13T09:38:16.019502+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a clinical annotation reviser.
+
+CONVERSATION:
+Patient: ho
+Counselor: You're here to talk about quitting smoking! That's a huge step towards a healthier you. What's been on your mind lately about quitting?
+
+PREVIOUS EXTRACTION (concern):
+{'concerns': ['unintelligible utterance', 'potential difficulty expressing concern'], 'primary_concern': 'potential difficulty expressing concern', 'notes': "Patient's initial utterance ('ho') is unintelligible. The counselor's response frames this as a starting point for discussing quitting smoking, suggesting the patient may be struggling to articulate their concerns."}
+
+CRITIC FEEDBACK:
+{'issues': ["The claim that the patient's utterance is 'unintelligible' is an assumption, not a fact. It's a *possible* interpretation, but without audio, it's speculative. The annotation should state 'potentially unintelligible utterance' or 'unclear utterance' instead of definitively stating it's unintelligible.", "The assertion that the counselor's response 'suggests the patient may be struggling to articulate their concerns' is a significant interpretation and potentially an unsupported claim. While it's plausible, it's an inference based on the counselor's framing, not directly observed in the conversation. This leans towards a hallucination.", "The 'potential difficulty expressing concern' as the 'primary concern' is overly strong. It's a possible contributing factor, but not necessarily the *primary* one. The unintelligible utterance is a more immediate and demonstrable issue.", "The notes section is overly verbose and repetitive. The core issue is the unintelligible utterance, and the notes unnecessarily elaborate on the counselor's interpretation."], 'suggestions': ["Change 'unintelligible utterance' to 'potentially unintelligible utterance' or 'unclear utterance'.", "Modify the 'primary_concern' to 'potential difficulty articulating concerns' or 'unclear utterance - potential underlying difficulty'.", "Shorten the 'notes' section to focus solely on the unintelligible utterance and its implications.", "Consider adding a field for confidence level (e.g., 'confidence_level': 'medium' - based on the interpretation)."], 'agreement_reached': False, 'severity': 'moderate'}
+
+Produce an improved extraction addressing all critic feedback.
+Keep the same JSON field names as the original extraction.
+Respond with ONLY a valid JSON object.
+
+
+RESPONSE:
+```json
+{
+  "concerns": [
+    "potentially unintelligible utterance",
+    "potential difficulty articulating concerns"
+  ],
+  "primary_concern": "potentially unintelligible utterance",
+  "notes": "Patient's initial utterance ('ho') is potentially unintelligible. The counselor's response frames this as a starting point for discussing quitting smoking. Further investigation is needed to determine the reason for the unclear utterance.",
+  "confidence_level": "medium"
+}
+```
+
+================================================================================
+OLLAMA CALL 0028
+================================================================================
+timestamp: 2026-04-13T09:38:19.481301+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a very strict clinical data validator. Compare the EXTRACTED DATA against the CONVERSATION.
+
+CONVERSATION:
+Patient: ho
+Counselor: You're here to talk about quitting smoking! That's a huge step towards a healthier you. What's been on your mind lately about quitting?
+
+EXTRACTED DATA (concern):
+{'concerns': ['potentially unintelligible utterance', 'potential difficulty articulating concerns'], 'primary_concern': 'potentially unintelligible utterance', 'notes': "Patient's initial utterance ('ho') is potentially unintelligible. The counselor's response frames this as a starting point for discussing quitting smoking. Further investigation is needed to determine the reason for the unclear utterance.", 'confidence_level': 'medium'}
+
+Your task:
+1. Very Strictly Check for hallucinations (data not in the text).
+2. Very Strictly Check for omissions (important data missed).
+3. Assign a confidence score between 0.0 and 1.0.
+
+Respond ONLY with valid JSON:
+{
+  "confidence": 0.0,
+  "issues": ["<issue 1>", "..."]
+}
+
+
+RESPONSE:
+```json
+{
+  "confidence": 0.6,
+  "issues": [
+    "Hallucination: The extracted data includes 'potentially unintelligible utterance' which is not explicitly stated in the conversation. This is a hallucination.",
+    "Omission: The conversation provides no direct information about *why* the patient said 'ho'.  A crucial element missing is the reason behind the unclear utterance, which is a key area for investigation.",
+    "Insufficient Detail: While the 'notes' section attempts to address the issue, it remains somewhat vague and doesn't offer concrete steps for further investigation. It needs more specific hypotheses about the patient's intent or potential underlying issues."
+  ]
+}
+```
+
+================================================================================
+OLLAMA CALL 0029
+================================================================================
+timestamp: 2026-04-13T09:38:26.689120+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a clinical annotation critic reviewing an extraction from a tobacco-cessation counseling conversation.
+
+CONVERSATION:
+Patient: ho
+Counselor: You're here to talk about quitting smoking! That's a huge step towards a healthier you. What's been on your mind lately about quitting?
+
+CURRENT EXTRACTION (concern):
+{'concerns': ['potentially unintelligible utterance', 'potential difficulty articulating concerns'], 'primary_concern': 'potentially unintelligible utterance', 'notes': "Patient's initial utterance ('ho') is potentially unintelligible. The counselor's response frames this as a starting point for discussing quitting smoking. Further investigation is needed to determine the reason for the unclear utterance.", 'confidence_level': 'medium'}
+
+Your task:
+1. Identify any inaccuracies, hallucinations, omissions, or unsupported claims.
+2. Suggest specific improvements.
+3. Decide if the extraction is now acceptable.
+
+Respond ONLY with valid JSON:
+{
+  "issues": ["<issue 1>", "..."],
+  "suggestions": ["<suggestion 1>", "..."],
+  "agreement_reached": true,
+  "severity": "none"
+}
+
+
+RESPONSE:
+```json
+{
+  "issues": [
+    "The term 'potentially unintelligible utterance' is overly broad and lacks nuance. While the patient's response is unclear, framing it solely as 'unintelligible' doesn't capture the possible reasons – hesitation, discomfort, or simply a misunderstanding.",
+    "The claim that the counselor's response 'frames this as a starting point' is a reasonable interpretation, but it's presented as a definitive fact rather than an observation. It's a plausible explanation, not a confirmed one.",
+    "The 'further investigation is needed' note is somewhat redundant given the 'potentially unintelligible utterance' primary concern. This feels like stating the obvious.",
+    "The confidence level of 'medium' is appropriate given the limited information, but could benefit from a brief justification – e.g., 'Medium confidence due to unclear patient response and lack of contextual information.'"
+  ],
+  "suggestions": [
+    "Refine the 'primary_concern' to something more specific, such as 'Patient utterance unclear' or 'Possible hesitation/difficulty responding'.",
+    "Rephrase the 'notes' to focus on potential reasons for the unclear utterance, e.g., 'Patient's initial utterance ('ho') is unclear. Possible reasons include hesitation, discomfort, or a misunderstanding of the question. Further investigation is recommended to explore the patient's response and underlying concerns.'" ,
+    "Remove the redundant statement about the counselor's framing of the situation.",
+    "Adjust the 'confidence_level' to 'Medium - based on unclear patient response and need for further exploration.'"
+  ],
+  "agreement_reached": true,
+  "severity": "low"
+}
+```
+
+================================================================================
+OLLAMA CALL 0030
+================================================================================
+timestamp: 2026-04-13T09:38:28.942419+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a very strict clinical data validator. Compare the EXTRACTED DATA against the CONVERSATION.
+
+CONVERSATION:
+Patient: ho
+Counselor: You're here to talk about quitting smoking! That's a huge step towards a healthier you. What's been on your mind lately about quitting?
+
+EXTRACTED DATA (triggers):
+{'triggers': ['ho']}
+
+Your task:
+1. Very Strictly Check for hallucinations (data not in the text).
+2. Very Strictly Check for omissions (important data missed).
+3. Assign a confidence score between 0.0 and 1.0.
+
+Respond ONLY with valid JSON:
+{
+  "confidence": 0.0,
+  "issues": ["<issue 1>", "..."]
+}
+
+
+RESPONSE:
+```json
+{
+  "confidence": 0.1,
+  "issues": ["The extracted trigger 'ho' does not appear in the conversation. This suggests a hallucination or misinterpretation of the patient's utterance.","The conversation lacks key information such as the patient's name, the specific reasons for wanting to quit smoking, and any initial assessment of their smoking habits. This represents a significant omission."]
+}
+```
+
+================================================================================
+OLLAMA CALL 0031
+================================================================================
+timestamp: 2026-04-13T09:38:34.399831+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a clinical annotation critic reviewing an extraction from a tobacco-cessation counseling conversation.
+
+CONVERSATION:
+Patient: ho
+Counselor: You're here to talk about quitting smoking! That's a huge step towards a healthier you. What's been on your mind lately about quitting?
+
+CURRENT EXTRACTION (triggers):
+{'triggers': ['ho']}
+
+Your task:
+1. Identify any inaccuracies, hallucinations, omissions, or unsupported claims.
+2. Suggest specific improvements.
+3. Decide if the extraction is now acceptable.
+
+Respond ONLY with valid JSON:
+{
+  "issues": ["<issue 1>", "..."],
+  "suggestions": ["<suggestion 1>", "..."],
+  "agreement_reached": true,
+  "severity": "none"
+}
+
+
+RESPONSE:
+```json
+{
+  "issues": ["The trigger 'ho' is entirely inaccurate and likely a hallucination. The patient initially says 'ho' which is an unintelligible utterance. This extraction incorrectly identifies a non-existent trigger.", "The extraction misses the crucial context of the counselor's opening statement and the patient's initial, unclear response. It doesn't capture the core topic of the conversation – quitting smoking.", "The extraction lacks any mention of the counselor's empathetic framing of quitting as a 'huge step towards a healthier you,' which is a key element of the interaction."],
+  "suggestions": ["Update the 'triggers' list to include: ['unintelligible utterance', 'quitting smoking'].", "Expand the extraction to include the counselor's opening statement: 'You're here to talk about quitting smoking! That's a huge step towards a healthier you. What’s been on your mind lately about quitting?' and the patient's response 'ho'.", "Add a field for 'sentiment' or 'topic' to capture the conversation's focus – e.g., 'Smoking Cessation' or 'Initial Discussion'."],
+  "agreement_reached": false,
+  "severity": "high"
+}
+```
+
+================================================================================
+OLLAMA CALL 0032
+================================================================================
+timestamp: 2026-04-13T09:38:37.293714+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a clinical annotation reviser.
+
+CONVERSATION:
+Patient: ho
+Counselor: You're here to talk about quitting smoking! That's a huge step towards a healthier you. What's been on your mind lately about quitting?
+
+PREVIOUS EXTRACTION (triggers):
+{'triggers': ['ho']}
+
+CRITIC FEEDBACK:
+{'issues': ["The trigger 'ho' is entirely inaccurate and likely a hallucination. The patient initially says 'ho' which is an unintelligible utterance. This extraction incorrectly identifies a non-existent trigger.", "The extraction misses the crucial context of the counselor's opening statement and the patient's initial, unclear response. It doesn't capture the core topic of the conversation – quitting smoking.", "The extraction lacks any mention of the counselor's empathetic framing of quitting as a 'huge step towards a healthier you,' which is a key element of the interaction."], 'suggestions': ["Update the 'triggers' list to include: ['unintelligible utterance', 'quitting smoking'].", "Expand the extraction to include the counselor's opening statement: 'You're here to talk about quitting smoking! That's a huge step towards a healthier you. What’s been on your mind lately about quitting?' and the patient's response 'ho'.", "Add a field for 'sentiment' or 'topic' to capture the conversation's focus – e.g., 'Smoking Cessation' or 'Initial Discussion'."], 'agreement_reached': False, 'severity': 'high'}
+
+Produce an improved extraction addressing all critic feedback.
+Keep the same JSON field names as the original extraction.
+Respond with ONLY a valid JSON object.
+
+
+RESPONSE:
+```json
+{
+  "triggers": [
+    "unintelligible utterance",
+    "quitting smoking"
+  ],
+  "conversation_segments": [
+    "You're here to talk about quitting smoking! That's a huge step towards a healthier you. What’s been on your mind lately about quitting?",
+    "ho"
+  ],
+  "sentiment": "neutral",
+  "topic": "Smoking Cessation",
+  "agreement_reached": false,
+  "severity": "high"
+}
+```
+
+================================================================================
+OLLAMA CALL 0033
+================================================================================
+timestamp: 2026-04-13T09:38:40.781920+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a very strict clinical data validator. Compare the EXTRACTED DATA against the CONVERSATION.
+
+CONVERSATION:
+Patient: ho
+Counselor: You're here to talk about quitting smoking! That's a huge step towards a healthier you. What's been on your mind lately about quitting?
+
+EXTRACTED DATA (triggers):
+{'triggers': ['unintelligible utterance', 'quitting smoking'], 'conversation_segments': ["You're here to talk about quitting smoking! That's a huge step towards a healthier you. What’s been on your mind lately about quitting?", 'ho'], 'sentiment': 'neutral', 'topic': 'Smoking Cessation', 'agreement_reached': False, 'severity': 'high'}
+
+Your task:
+1. Very Strictly Check for hallucinations (data not in the text).
+2. Very Strictly Check for omissions (important data missed).
+3. Assign a confidence score between 0.0 and 1.0.
+
+Respond ONLY with valid JSON:
+{
+  "confidence": 0.0,
+  "issues": ["<issue 1>", "..."]
+}
+
+
+RESPONSE:
+```json
+{
+  "confidence": 0.85,
+  "issues": [
+    "Omission: The patient uttered 'ho', which is an unintelligible utterance and should be flagged as such. This requires further investigation to understand if it was a speech error, a request for clarification, or a non-relevant response. The extraction should include a note about the unintelligibility and the need for follow-up.",
+    "Potential Hallucination: While 'quitting smoking' is present in the conversation, the extracted data includes 'unintelligible utterance'. This could be a hallucination if the system incorrectly identified a non-verbal cue as a trigger. Needs verification against the original conversation."
+  ]
+}
+```
+
+================================================================================
+OLLAMA CALL 0034
+================================================================================
+timestamp: 2026-04-13T09:38:43.698688+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a very strict clinical data validator. Compare the EXTRACTED DATA against the CONVERSATION.
+
+CONVERSATION:
+Patient: ho
+Counselor: You're here to talk about quitting smoking! That's a huge step towards a healthier you. What's been on your mind lately about quitting?
+
+EXTRACTED DATA (advice):
+{'advice': ['Quitting smoking is a huge step towards a healthier you.', "What's been on your mind lately about quitting?"], 'evidence': ['"You\'re here to talk about quitting smoking! That\'s a huge step towards a healthier you."', 'Asking the patient about their thoughts regarding quitting.']}
+
+Your task:
+1. Very Strictly Check for hallucinations (data not in the text).
+2. Very Strictly Check for omissions (important data missed).
+3. Assign a confidence score between 0.0 and 1.0.
+
+Respond ONLY with valid JSON:
+{
+  "confidence": 0.0,
+  "issues": ["<issue 1>", "..."]
+}
+
+
+RESPONSE:
+```json
+{
+  "confidence": 0.8,
+  "issues": [
+    "Omission: The counselor's initial statement 'You're here to talk about quitting smoking!' is not included in the extracted advice. This is a crucial element of the conversation establishing the topic.",
+    "Minor Hallucination: 'Asking the patient about their thoughts regarding quitting.' - While accurate in describing the counselor's action, it adds an interpretation not explicitly stated in the conversation. It's a reasonable inference but leans towards interpretation rather than direct extraction."
+  ]
+}
+```
+
+================================================================================
+OLLAMA CALL 0035
+================================================================================
+timestamp: 2026-04-13T09:38:47.255737+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a clinical annotation specialist (voter 3 of 3).
+
+CONVERSATION:
+Patient: ho
+Counselor: You're here to talk about quitting smoking! That's a huge step towards a healthier you. What's been on your mind lately about quitting?
+
+EXTRACTED SIGNALS:
+- Advice: {'advice': ['Quitting smoking is a huge step towards a healthier you.', "What's been on your mind lately about quitting?"], 'evidence': ['"You\'re here to talk about quitting smoking! That\'s a huge step towards a healthier you."', 'Asking the patient about their thoughts regarding quitting.'], '_debate_rounds': 0, '_debate_converged': True}
+- Quit Attempts: {'attempts': ['ho', "you're here to talk about quitting smoking", "you're here to talk about quitting smoking!"], 'most_recent_attempt': "you're here to talk about quitting smoking!", 'longest_attempt': "you're here to talk about quitting smoking!", 'extracted_utterance': "You're here to talk about quitting smoking.", '_debate_rounds': 5, '_debate_converged': True}
+- Readiness / Stage: {'readiness_stage': 'precontemplation', 'evidence': "The patient simply said 'ho,' indicating they haven't yet begun to seriously consider quitting smoking. The counselor's initial statement focuses on the positive outcome of quitting ('a healthier you') rather than addressing any existing thoughts or concerns about cessation, suggesting the patient isn't yet in the contemplation stage.", '_debate_rounds': 0, '_debate_converged': True}
+- Concerns: {'concerns': ['potentially unintelligible utterance', 'potential difficulty articulating concerns'], 'primary_concern': 'potentially unintelligible utterance', 'notes': "Patient's initial utterance ('ho') is potentially unintelligible. The counselor's response frames this as a starting point for discussing quitting smoking. Further investigation is needed to determine the reason for the unclear utterance.", 'confidence_level': 'medium', '_debate_rounds': 3, '_debate_converged': True}
+- Triggers: {'triggers': ['unintelligible utterance', 'quitting smoking'], 'conversation_segments': ["You're here to talk about quitting smoking! That's a huge step towards a healthier you. What’s been on your mind lately about quitting?", 'ho'], 'sentiment': 'neutral', 'topic': 'Smoking Cessation', 'agreement_reached': False, 'severity': 'high', '_debate_rounds': 1, '_debate_converged': True}
+
+Based on ALL the above signals, produce a unified clinical annotation.
+Be independent — do not anchor to previous voters.
+
+Respond ONLY with valid JSON:
+{
+  "stage_of_change": "precontemplation|contemplation|preparation|action|maintenance|relapse",
+  "main_concern": "<single most prominent barrier>",
+  "primary_trigger": "<most significant smoking trigger>",
+  "quit_attempt_history": "<concise summary of prior attempts>",
+  "recommended_intervention": ["<strategy 1>", "<strategy 2>", "..."]
+}
+
+
+RESPONSE:
+```json
+{
+  "stage_of_change": "precontemplation",
+  "main_concern": "potentially unintelligible utterance",
+  "primary_trigger": "unintelligible utterance",
+  "quit_attempt_history": "Patient offered a brief, unintelligible response ('ho'). Counselor initiated a discussion about quitting smoking.",
+  "recommended_intervention": ["Explore the patient's initial utterance to understand their thoughts and concerns.", "Provide a more concrete explanation of the benefits of quitting smoking, focusing on specific health outcomes.", "Use open-ended questions to encourage the patient to elaborate on their motivations and barriers to cessation."]
+}
+```
+
+================================================================================
+OLLAMA CALL 0036
+================================================================================
+timestamp: 2026-04-13T09:38:50.530784+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a clinical annotation specialist (voter 2 of 3).
+
+CONVERSATION:
+Patient: ho
+Counselor: You're here to talk about quitting smoking! That's a huge step towards a healthier you. What's been on your mind lately about quitting?
+
+EXTRACTED SIGNALS:
+- Advice: {'advice': ['Quitting smoking is a huge step towards a healthier you.', "What's been on your mind lately about quitting?"], 'evidence': ['"You\'re here to talk about quitting smoking! That\'s a huge step towards a healthier you."', 'Asking the patient about their thoughts regarding quitting.'], '_debate_rounds': 0, '_debate_converged': True}
+- Quit Attempts: {'attempts': ['ho', "you're here to talk about quitting smoking", "you're here to talk about quitting smoking!"], 'most_recent_attempt': "you're here to talk about quitting smoking!", 'longest_attempt': "you're here to talk about quitting smoking!", 'extracted_utterance': "You're here to talk about quitting smoking.", '_debate_rounds': 5, '_debate_converged': True}
+- Readiness / Stage: {'readiness_stage': 'precontemplation', 'evidence': "The patient simply said 'ho,' indicating they haven't yet begun to seriously consider quitting smoking. The counselor's initial statement focuses on the positive outcome of quitting ('a healthier you') rather than addressing any existing thoughts or concerns about cessation, suggesting the patient isn't yet in the contemplation stage.", '_debate_rounds': 0, '_debate_converged': True}
+- Concerns: {'concerns': ['potentially unintelligible utterance', 'potential difficulty articulating concerns'], 'primary_concern': 'potentially unintelligible utterance', 'notes': "Patient's initial utterance ('ho') is potentially unintelligible. The counselor's response frames this as a starting point for discussing quitting smoking. Further investigation is needed to determine the reason for the unclear utterance.", 'confidence_level': 'medium', '_debate_rounds': 3, '_debate_converged': True}
+- Triggers: {'triggers': ['unintelligible utterance', 'quitting smoking'], 'conversation_segments': ["You're here to talk about quitting smoking! That's a huge step towards a healthier you. What’s been on your mind lately about quitting?", 'ho'], 'sentiment': 'neutral', 'topic': 'Smoking Cessation', 'agreement_reached': False, 'severity': 'high', '_debate_rounds': 1, '_debate_converged': True}
+
+Based on ALL the above signals, produce a unified clinical annotation.
+Be independent — do not anchor to previous voters.
+
+Respond ONLY with valid JSON:
+{
+  "stage_of_change": "precontemplation|contemplation|preparation|action|maintenance|relapse",
+  "main_concern": "<single most prominent barrier>",
+  "primary_trigger": "<most significant smoking trigger>",
+  "quit_attempt_history": "<concise summary of prior attempts>",
+  "recommended_intervention": ["<strategy 1>", "<strategy 2>", "..."]
+}
+
+
+RESPONSE:
+```json
+{
+  "stage_of_change": "precontemplation",
+  "main_concern": "potentially unintelligible utterance",
+  "primary_trigger": "unintelligible utterance",
+  "quit_attempt_history": "Patient offered a brief, unintelligible response ('ho'). Counselor initiated a discussion about quitting smoking.",
+  "recommended_intervention": [
+    "Explore the patient's initial utterance to understand their thoughts and concerns regarding smoking.",
+    "Provide a more concrete explanation of the benefits of quitting smoking, focusing on specific health outcomes.",
+    "Use open-ended questions to encourage the patient to elaborate on their motivations and challenges related to smoking."
+  ]
+}
+```
+
+================================================================================
+OLLAMA CALL 0037
+================================================================================
+timestamp: 2026-04-13T09:38:53.749163+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a clinical annotation specialist (voter 1 of 3).
+
+CONVERSATION:
+Patient: ho
+Counselor: You're here to talk about quitting smoking! That's a huge step towards a healthier you. What's been on your mind lately about quitting?
+
+EXTRACTED SIGNALS:
+- Advice: {'advice': ['Quitting smoking is a huge step towards a healthier you.', "What's been on your mind lately about quitting?"], 'evidence': ['"You\'re here to talk about quitting smoking! That\'s a huge step towards a healthier you."', 'Asking the patient about their thoughts regarding quitting.'], '_debate_rounds': 0, '_debate_converged': True}
+- Quit Attempts: {'attempts': ['ho', "you're here to talk about quitting smoking", "you're here to talk about quitting smoking!"], 'most_recent_attempt': "you're here to talk about quitting smoking!", 'longest_attempt': "you're here to talk about quitting smoking!", 'extracted_utterance': "You're here to talk about quitting smoking.", '_debate_rounds': 5, '_debate_converged': True}
+- Readiness / Stage: {'readiness_stage': 'precontemplation', 'evidence': "The patient simply said 'ho,' indicating they haven't yet begun to seriously consider quitting smoking. The counselor's initial statement focuses on the positive outcome of quitting ('a healthier you') rather than addressing any existing thoughts or concerns about cessation, suggesting the patient isn't yet in the contemplation stage.", '_debate_rounds': 0, '_debate_converged': True}
+- Concerns: {'concerns': ['potentially unintelligible utterance', 'potential difficulty articulating concerns'], 'primary_concern': 'potentially unintelligible utterance', 'notes': "Patient's initial utterance ('ho') is potentially unintelligible. The counselor's response frames this as a starting point for discussing quitting smoking. Further investigation is needed to determine the reason for the unclear utterance.", 'confidence_level': 'medium', '_debate_rounds': 3, '_debate_converged': True}
+- Triggers: {'triggers': ['unintelligible utterance', 'quitting smoking'], 'conversation_segments': ["You're here to talk about quitting smoking! That's a huge step towards a healthier you. What’s been on your mind lately about quitting?", 'ho'], 'sentiment': 'neutral', 'topic': 'Smoking Cessation', 'agreement_reached': False, 'severity': 'high', '_debate_rounds': 1, '_debate_converged': True}
+
+Based on ALL the above signals, produce a unified clinical annotation.
+Be independent — do not anchor to previous voters.
+
+Respond ONLY with valid JSON:
+{
+  "stage_of_change": "precontemplation|contemplation|preparation|action|maintenance|relapse",
+  "main_concern": "<single most prominent barrier>",
+  "primary_trigger": "<most significant smoking trigger>",
+  "quit_attempt_history": "<concise summary of prior attempts>",
+  "recommended_intervention": ["<strategy 1>", "<strategy 2>", "..."]
+}
+
+
+RESPONSE:
+```json
+{
+  "stage_of_change": "precontemplation",
+  "main_concern": "potentially unintelligible utterance",
+  "primary_trigger": "unintelligible utterance",
+  "quit_attempt_history": "Patient offered a brief, unintelligible response ('ho'). Counselor initiated a discussion about quitting smoking.",
+  "recommended_intervention": [
+    "Explore the meaning of the patient's initial utterance to understand any underlying concerns or hesitations.",
+    "Expand on the benefits of quitting smoking, focusing on personalized health goals.",
+    "Utilize open-ended questions to encourage the patient to elaborate on their thoughts and feelings regarding smoking cessation."
+  ]
+}
+```
+
+================================================================================
+OLLAMA CALL 0038
+================================================================================
+timestamp: 2026-04-13T09:39:00.601612+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a clinical reasoning specialist producing the final annotation for a tobacco-cessation training dataset.
+
+CONVERSATION:
+Patient: ho
+Counselor: You're here to talk about quitting smoking! That's a huge step towards a healthier you. What's been on your mind lately about quitting?
+
+CONSENSUS ANNOTATION:
+{'stage_of_change': 'precontemplation', 'main_concern': 'potentially unintelligible utterance', 'primary_trigger': 'unintelligible utterance', 'quit_attempt_history': "Patient offered a brief, unintelligible response ('ho'). Counselor initiated a discussion about quitting smoking.", 'recommended_intervention': ["Explore the patient's initial utterance to understand their thoughts and concerns.", 'Provide a more concrete explanation of the benefits of quitting smoking, focusing on specific health outcomes.', 'Use open-ended questions to encourage the patient to elaborate on their motivations and barriers to cessation.', "Explore the patient's initial utterance to understand their thoughts and concerns regarding smoking.", 'Use open-ended questions to encourage the patient to elaborate on their motivations and challenges related to smoking.', "Explore the meaning of the patient's initial utterance to understand any underlying concerns or hesitations.", 'Expand on the benefits of quitting smoking, focusing on personalized health goals.', 'Utilize open-ended questions to encourage the patient to elaborate on their thoughts and feelings regarding smoking cessation.'], 'vote_agreement': 1.0, 'dissenting_fields': []}
+
+Your tasks:
+1. Validate that the consensus annotation is internally consistent and supported by the conversation.
+2. Write a reasoning_summary: 1–2 sentences that explain WHY this patient is at this stage,
+   what their primary barrier is, and what intervention approach is recommended.
+
+Respond ONLY with valid JSON:
+{
+  "stage_of_change": "<from consensus>",
+  "main_concern": "<from consensus>",
+  "primary_trigger": "<from consensus>",
+  "quit_attempt_history": "<from consensus>",
+  "recommended_intervention": ["<strategy 1>", "..."],
+  "reasoning_summary": "<1–2 sentence clinical rationale>",
+  "confidence_score": 0.0
+}
+
+
+RESPONSE:
+```json
+{
+  "stage_of_change": "precontemplation",
+  "main_concern": "potentially unintelligible utterance",
+  "primary_trigger": "unintelligible utterance",
+  "quit_attempt_history": "Patient offered a brief, unintelligible response ('ho'). Counselor initiated a discussion about quitting smoking.",
+  "recommended_intervention": [
+    "Explore the patient's initial utterance to understand their thoughts and concerns.",
+    "Provide a more concrete explanation of the benefits of quitting smoking, focusing on specific health outcomes.",
+    "Use open-ended questions to encourage the patient to elaborate on their motivations and barriers to cessation.",
+    "Explore the patient's initial utterance to understand their thoughts and concerns regarding smoking.",
+    "Use open-ended questions to encourage the patient to elaborate on their motivations and challenges related to smoking.",
+    "Explore the meaning of the patient's initial utterance to understand any underlying concerns or hesitations.",
+    "Expand on the benefits of quitting smoking, focusing on personalized health goals.",
+    "Utilize open-ended questions to encourage the patient to elaborate on their thoughts and feelings regarding smoking cessation."
+  ],
+  "reasoning_summary": "The patient's unintelligible response indicates precontemplation, suggesting a lack of awareness or motivation to quit. The counselor's approach focuses on gently exploring the patient's initial thoughts and feelings through open-ended questions and highlighting the benefits of cessation.",
+  "confidence_score": 0.95
+}
+```

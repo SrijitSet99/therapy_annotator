@@ -1,0 +1,42 @@
+=== LLM Response Log — 20260416_165309 ===
+
+--- [CONFIDENCE_CHECK] attempt @ 16:53:14.308 ---
+{
+  "confidence": 0.5,
+  "issues": [
+    "Grounding & Veracity: The statement 'The patient has tried to quit smoking twice before.' is extracted, but the source text only states 'Patient has tried to quit smoking twice before.' This is a direct textual anchor, so this check passes. However, the extraction includes 'The patient' which is an unnecessary and potentially misleading addition.",
+    "Hallucination Check: No data points are hallucinated. All information is present in the source text.",
+    "Sensitivity (Omission) Check: The source text contains the key phrase 'tried to quit smoking twice before,' fulfilling the sensitivity check. No relevant keywords were missed.",
+    "Taxonomy Alignment: While not explicitly stated, the phrase 'tried to quit smoking' strongly implies a 'Cold Turkey' attempt, which is a reasonable assumption given the context. A more granular taxonomy would require further information, but the current extraction is acceptable."
+  ]
+}
+
+--- [CONFIDENCE_CHECK] readiness @ 16:53:15.843 ---
+{
+  "confidence": 0.9,
+  "issues": []
+}
+
+--- [CONFIDENCE_CHECK] concern @ 16:53:19.911 ---
+{
+  "confidence": 0.75,
+  "issues": [
+    "Potential Omission: The transcript contains two distinct concerns \u2013 'previous failed quit attempts' (Psychological) and 'weight gain' (Physiological). The extraction appears to have captured both, but a deeper review of the transcript might reveal additional, subtly expressed anxieties related to the psychological impact of past failures. Confidence slightly reduced due to this potential oversight.",
+    "Severity Calibration - Weight Gain: While 'weight gain' is accurately identified, the intensity of the patient's worry isn't explicitly stated. A more robust extraction might have included a phrase indicating the *degree* of concern regarding weight gain (e.g., 'I'm very worried about weight gain')."
+  ]
+}
+
+--- [CONFIDENCE_CHECK] triggers @ 16:53:23.058 ---
+{
+  "confidence": 0.8,
+  "issues": [
+    "{'category': 'Grounding Check', 'description': \"The trigger 'past failures' is strongly implied, but could benefit from explicit phrasing for greater robustness. While the patient's prior attempts to quit smoking are a failure, the annotation could be strengthened by explicitly stating this.\", 'recommendation': \"Consider adding 'past failures' or a similar phrase to explicitly capture this aspect of the patient's history.\"}"
+  ]
+}
+
+--- [CONFIDENCE_CHECK] advice @ 16:53:24.512 ---
+{
+  "confidence": 0.95,
+  "issues": []
+}
+

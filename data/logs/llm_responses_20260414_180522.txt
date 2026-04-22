@@ -1,0 +1,25 @@
+=== LLM Response Log — 20260414_180522 ===
+
+--- [EXTRACTOR] attempt @ 18:05:30.033 ---
+{
+  "attempts": [
+    "Patient intentionally tried to quit smoking.",
+    "Patient intentionally tried to quit smoking."
+  ],
+  "evidence": [
+    "Patient: bye",
+    "Patient: bye"
+  ]
+}
+
+--- [CONFIDENCE] attempt @ 18:05:33.143 ---
+{
+  "confidence": 0.1,
+  "issues": [
+    "Hallucination: The extracted data states 'previous smoking quit attempt' which is not supported by the conversation. The conversation only indicates a brief, abrupt exit.",
+    "Omission: The conversation provides no information about the patient's past quit attempts, motivation, or any details about their smoking history. The extracted data incorrectly assumes a previous attempt based solely on the patient's initial response.",
+    "Inaccurate Interpretation: The evidence listed ('Patient: bye', 'Patient: bye') is a simple utterance and doesn't provide sufficient context to support the claim of a 'previous smoking quit attempt'. It's a misinterpretation of the patient's response."
+  ],
+  "severity": "none"
+}
+

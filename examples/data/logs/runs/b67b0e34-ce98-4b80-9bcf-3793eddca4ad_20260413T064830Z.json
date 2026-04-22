@@ -1,0 +1,381 @@
+{
+  "events": {
+    "agent_manager": {
+      "confidence_result": {
+        "advice": {
+          "confidence": 0.8,
+          "issues": [
+            "Omission: The conversation includes the patient's initial greeting ('Hi'). This is a crucial piece of context and is missing from the 'advice' field."
+          ],
+          "severity": "none"
+        },
+        "attempt": {
+          "confidence": 0.4,
+          "issues": [
+            "Hallucination: The extracted data states the patient 'tried cold turkey before,' but this is not mentioned in the conversation. This is a hallucination.",
+            "Omission: The conversation provides no information about the patient's motivation for quitting, the duration of previous attempts, or any specific challenges they are facing. This is a significant omission."
+          ],
+          "severity": "none"
+        },
+        "concern": {
+          "confidence": 0.7,
+          "issues": [
+            "The conversation mentions the patient's current situation with smoking, but does not explicitly state the patient's concerns. The extracted data includes 'weight gain', 'withdrawal symptoms', and 'stress' as concerns, which are not directly stated in the conversation. While 'withdrawal symptoms' is correctly identified as the primary concern, the other concerns were inferred.",
+            "The conversation focuses on the patient's smoking situation, not their overall health or other potential concerns.  A more complete extraction would benefit from probing for specific symptoms or related issues."
+          ],
+          "severity": "none"
+        },
+        "readiness": {
+          "confidence": 0.85,
+          "issues": [
+            "Hallucination: The extracted data states 'There is no indication of any consideration or planning related to quitting.' This is an interpretation and not directly stated in the conversation. It's a reasonable inference, but requires careful validation.",
+            "Omission: The conversation lacks any quantifiable data regarding the patient's smoking habits (e.g., frequency, duration, type of tobacco). This is a significant omission for a clinical data validation."
+          ],
+          "severity": "none"
+        },
+        "triggers": {
+          "confidence": 0.8,
+          "issues": [
+            "Missing specific smoking behaviors: The extracted triggers only list categories. The conversation asks for the patient's 'current situation with smoking,' implying details about *how* they smoke (e.g., frequency, amount, specific triggers) are missing. This is a significant omission."
+          ],
+          "severity": "none"
+        }
+      },
+      "confidence_results": {
+        "advice": {
+          "confidence": 0.8,
+          "issues": [
+            "Omission: The conversation includes the patient's initial greeting ('Hi'). This is a crucial piece of context and is missing from the 'advice' field."
+          ],
+          "severity": "none"
+        },
+        "attempt": {
+          "confidence": 0.4,
+          "issues": [
+            "Hallucination: The extracted data states the patient 'tried cold turkey before,' but this is not mentioned in the conversation. This is a hallucination.",
+            "Omission: The conversation provides no information about the patient's motivation for quitting, the duration of previous attempts, or any specific challenges they are facing. This is a significant omission."
+          ],
+          "severity": "none"
+        },
+        "concern": {
+          "confidence": 0.7,
+          "issues": [
+            "The conversation mentions the patient's current situation with smoking, but does not explicitly state the patient's concerns. The extracted data includes 'weight gain', 'withdrawal symptoms', and 'stress' as concerns, which are not directly stated in the conversation. While 'withdrawal symptoms' is correctly identified as the primary concern, the other concerns were inferred.",
+            "The conversation focuses on the patient's smoking situation, not their overall health or other potential concerns.  A more complete extraction would benefit from probing for specific symptoms or related issues."
+          ],
+          "severity": "none"
+        },
+        "readiness": {
+          "confidence": 0.85,
+          "issues": [
+            "Hallucination: The extracted data states 'There is no indication of any consideration or planning related to quitting.' This is an interpretation and not directly stated in the conversation. It's a reasonable inference, but requires careful validation.",
+            "Omission: The conversation lacks any quantifiable data regarding the patient's smoking habits (e.g., frequency, duration, type of tobacco). This is a significant omission for a clinical data validation."
+          ],
+          "severity": "none"
+        },
+        "triggers": {
+          "confidence": 0.8,
+          "issues": [
+            "Missing specific smoking behaviors: The extracted triggers only list categories. The conversation asks for the patient's 'current situation with smoking,' implying details about *how* they smoke (e.g., frequency, amount, specific triggers) are missing. This is a significant omission."
+          ],
+          "severity": "none"
+        }
+      },
+      "extractor_output": {
+        "advice": {
+          "advice": [
+            "I'm here to help you quit smoking.",
+            "I'm here to help you quit smoking."
+          ],
+          "evidence": [
+            "\"I'm eDOSTHI, your motivational interviewing chatbot. I'm here to help you quit smoking.\"",
+            "\"I'm eDOSTHI, your motivational interviewing chatbot. I'm here to help you quit smoking.\""
+          ]
+        },
+        "attempt": {
+          "attempts": [
+            "Patient mentions they tried cold turkey before, but didn't specify a duration or reason for relapse."
+          ],
+          "longest_attempt": "null",
+          "most_recent_attempt": "null"
+        },
+        "concern": {
+          "concerns": [
+            "weight gain",
+            "withdrawal symptoms",
+            "stress"
+          ],
+          "primary_concern": "withdrawal symptoms"
+        },
+        "readiness": {
+          "evidence": "The patient simply said 'Hi' and the counselor initiated the conversation by asking about their current situation with smoking. There is no indication of any consideration or planning related to quitting.",
+          "readiness_stage": "precontemplation"
+        },
+        "triggers": {
+          "triggers": [
+            "stress",
+            "after meals",
+            "morning routine",
+            "coffee/tea",
+            "social situations",
+            "boredom"
+          ]
+        }
+      },
+      "final_output": {
+        "advice": {
+          "_debate_converged": true,
+          "_debate_rounds": 0,
+          "advice": [
+            "I'm here to help you quit smoking.",
+            "I'm here to help you quit smoking."
+          ],
+          "evidence": [
+            "\"I'm eDOSTHI, your motivational interviewing chatbot. I'm here to help you quit smoking.\"",
+            "\"I'm eDOSTHI, your motivational interviewing chatbot. I'm here to help you quit smoking.\""
+          ]
+        },
+        "attempt": {
+          "_debate_converged": true,
+          "_debate_rounds": 4,
+          "attempts": [
+            "Patient stated a previous attempt at cold turkey, but did not specify the duration or reasons for relapse."
+          ],
+          "longest_attempt": "Patient stated a previous attempt at cold turkey, but did not specify the duration or reasons for relapse.",
+          "most_detailed_attempt": "Patient stated a previous attempt at cold turkey, but did not specify the duration or reasons for relapse.",
+          "null": null
+        },
+        "concern": {
+          "_debate_converged": true,
+          "_debate_rounds": 1,
+          "concerns": [
+            "weight gain",
+            "withdrawal symptoms",
+            "stress"
+          ],
+          "context": "Patient initiated conversation; counselor introduced themselves and asked about current smoking situation.",
+          "primary_concern": "withdrawal symptoms (patient’s stated concern)"
+        },
+        "readiness": {
+          "_debate_converged": true,
+          "_debate_rounds": 0,
+          "evidence": "The patient simply said 'Hi' and the counselor initiated the conversation by asking about their current situation with smoking. There is no indication of any consideration or planning related to quitting.",
+          "readiness_stage": "precontemplation"
+        },
+        "triggers": {
+          "_debate_converged": true,
+          "_debate_rounds": 0,
+          "triggers": [
+            "stress",
+            "after meals",
+            "morning routine",
+            "coffee/tea",
+            "social situations",
+            "boredom"
+          ]
+        }
+      }
+    },
+    "consensus_agent": {
+      "output": {
+        "consensus": {
+          "dissenting_fields": [],
+          "main_concern": "withdrawal symptoms",
+          "primary_trigger": "stress",
+          "quit_attempt_history": "Patient has made a previous attempt at cold turkey, but details are lacking.",
+          "recommended_intervention": [
+            "Explore the patient's reasons for previous attempts and relapse.",
+            "Assess the patient's understanding of withdrawal symptoms and coping strategies.",
+            "Introduce motivational interviewing techniques to explore ambivalence about quitting.",
+            "Explore the patient's previous attempt and reasons for relapse.",
+            "Introduce motivational interviewing techniques to explore readiness to change.",
+            "Assess the severity of withdrawal symptoms.",
+            "Educate on coping strategies for stress and potential triggers."
+          ],
+          "stage_of_change": "precontemplation",
+          "vote_agreement": 0.917
+        }
+      }
+    },
+    "longitudinal_sanity": {
+      "output": {
+        "longitudinal_sanity": {
+          "flags": [],
+          "passed": true,
+          "severity": "none"
+        }
+      }
+    },
+    "profile_update_agent": {
+      "output": {
+        "dataset_row": {
+          "confidence_score": 0.95,
+          "debate_rounds_used": 5,
+          "inconsistencies": [],
+          "longitudinal_flags": [],
+          "longitudinal_sanity_passed": true,
+          "main_concern": "withdrawal symptoms",
+          "primary_trigger": "stress",
+          "quit_attempt_history": "Patient has made a previous attempt at cold turkey, but details are lacking.",
+          "reasoning_summary": "The patient's initial greeting and the chatbot's focus on their smoking situation suggest they are in precontemplation, likely due to a lack of awareness or motivation to change. The primary barrier appears to be stress and potential withdrawal symptoms, necessitating an intervention focused on understanding the patient's perspective and building motivation through motivational interviewing.",
+          "recommended_intervention": [
+            "Explore the patient's reasons for previous attempts and relapse.",
+            "Assess the patient's understanding of withdrawal symptoms and coping strategies.",
+            "Introduce motivational interviewing techniques to explore ambivalence about quitting.",
+            "Explore the patient's previous attempt and reasons for relapse.",
+            "Introduce motivational interviewing techniques to explore readiness to change.",
+            "Assess the severity of withdrawal symptoms.",
+            "Educate on coping strategies for stress and potential triggers."
+          ],
+          "sanity_passed": true,
+          "session_number": 1,
+          "stage_of_change": "precontemplation",
+          "vote_agreement": 0.917
+        },
+        "longitudinal_output": {
+          "current_annotation": {
+            "confidence_score": 0.95,
+            "debate_rounds_used": 5,
+            "inconsistencies": [],
+            "longitudinal_flags": [],
+            "longitudinal_sanity_passed": true,
+            "main_concern": "withdrawal symptoms",
+            "primary_trigger": "stress",
+            "quit_attempt_history": "Patient has made a previous attempt at cold turkey, but details are lacking.",
+            "reasoning_summary": "The patient's initial greeting and the chatbot's focus on their smoking situation suggest they are in precontemplation, likely due to a lack of awareness or motivation to change. The primary barrier appears to be stress and potential withdrawal symptoms, necessitating an intervention focused on understanding the patient's perspective and building motivation through motivational interviewing.",
+            "recommended_intervention": [
+              "Explore the patient's reasons for previous attempts and relapse.",
+              "Assess the patient's understanding of withdrawal symptoms and coping strategies.",
+              "Introduce motivational interviewing techniques to explore ambivalence about quitting.",
+              "Explore the patient's previous attempt and reasons for relapse.",
+              "Introduce motivational interviewing techniques to explore readiness to change.",
+              "Assess the severity of withdrawal symptoms.",
+              "Educate on coping strategies for stress and potential triggers."
+            ],
+            "sanity_passed": true,
+            "session_number": 1,
+            "stage_of_change": "precontemplation",
+            "vote_agreement": 0.917
+          },
+          "delta": null,
+          "interventions_tried": [],
+          "longitudinal_flags": [],
+          "overall_progress": "unknown",
+          "patient_id": "b67b0e34-ce98-4b80-9bcf-3793eddca4ad",
+          "persistent_concerns": [],
+          "persistent_triggers": [],
+          "relapse_detected": false,
+          "session_number": 1,
+          "stage_trajectory": [
+            "precontemplation"
+          ],
+          "stagnation_detected": false
+        },
+        "patient_profile_id": "b67b0e34-ce98-4b80-9bcf-3793eddca4ad",
+        "session_count": 1
+      }
+    },
+    "reasoning_agent": {
+      "output": {
+        "dataset_row": {
+          "confidence_score": 0.95,
+          "debate_rounds_used": 5,
+          "inconsistencies": [],
+          "main_concern": "withdrawal symptoms",
+          "primary_trigger": "stress",
+          "quit_attempt_history": "Patient has made a previous attempt at cold turkey, but details are lacking.",
+          "reasoning_summary": "The patient's initial greeting and the chatbot's focus on their smoking situation suggest they are in precontemplation, likely due to a lack of awareness or motivation to change. The primary barrier appears to be stress and potential withdrawal symptoms, necessitating an intervention focused on understanding the patient's perspective and building motivation through motivational interviewing.",
+          "recommended_intervention": [
+            "Explore the patient's reasons for previous attempts and relapse.",
+            "Assess the patient's understanding of withdrawal symptoms and coping strategies.",
+            "Introduce motivational interviewing techniques to explore ambivalence about quitting.",
+            "Explore the patient's previous attempt and reasons for relapse.",
+            "Introduce motivational interviewing techniques to explore readiness to change.",
+            "Assess the severity of withdrawal symptoms.",
+            "Educate on coping strategies for stress and potential triggers."
+          ],
+          "sanity_passed": true,
+          "stage_of_change": "precontemplation",
+          "vote_agreement": 0.917
+        }
+      }
+    },
+    "run_chat": {
+      "final_result": {
+        "dataset_row": {
+          "confidence_score": 0.95,
+          "debate_rounds_used": 5,
+          "inconsistencies": [],
+          "longitudinal_flags": [],
+          "longitudinal_sanity_passed": true,
+          "main_concern": "withdrawal symptoms",
+          "primary_trigger": "stress",
+          "quit_attempt_history": "Patient has made a previous attempt at cold turkey, but details are lacking.",
+          "reasoning_summary": "The patient's initial greeting and the chatbot's focus on their smoking situation suggest they are in precontemplation, likely due to a lack of awareness or motivation to change. The primary barrier appears to be stress and potential withdrawal symptoms, necessitating an intervention focused on understanding the patient's perspective and building motivation through motivational interviewing.",
+          "recommended_intervention": [
+            "Explore the patient's reasons for previous attempts and relapse.",
+            "Assess the patient's understanding of withdrawal symptoms and coping strategies.",
+            "Introduce motivational interviewing techniques to explore ambivalence about quitting.",
+            "Explore the patient's previous attempt and reasons for relapse.",
+            "Introduce motivational interviewing techniques to explore readiness to change.",
+            "Assess the severity of withdrawal symptoms.",
+            "Educate on coping strategies for stress and potential triggers."
+          ],
+          "sanity_passed": true,
+          "session_number": 1,
+          "stage_of_change": "precontemplation",
+          "vote_agreement": 0.917
+        },
+        "longitudinal_output": {
+          "current_annotation": {
+            "confidence_score": 0.95,
+            "debate_rounds_used": 5,
+            "inconsistencies": [],
+            "longitudinal_flags": [],
+            "longitudinal_sanity_passed": true,
+            "main_concern": "withdrawal symptoms",
+            "primary_trigger": "stress",
+            "quit_attempt_history": "Patient has made a previous attempt at cold turkey, but details are lacking.",
+            "reasoning_summary": "The patient's initial greeting and the chatbot's focus on their smoking situation suggest they are in precontemplation, likely due to a lack of awareness or motivation to change. The primary barrier appears to be stress and potential withdrawal symptoms, necessitating an intervention focused on understanding the patient's perspective and building motivation through motivational interviewing.",
+            "recommended_intervention": [
+              "Explore the patient's reasons for previous attempts and relapse.",
+              "Assess the patient's understanding of withdrawal symptoms and coping strategies.",
+              "Introduce motivational interviewing techniques to explore ambivalence about quitting.",
+              "Explore the patient's previous attempt and reasons for relapse.",
+              "Introduce motivational interviewing techniques to explore readiness to change.",
+              "Assess the severity of withdrawal symptoms.",
+              "Educate on coping strategies for stress and potential triggers."
+            ],
+            "sanity_passed": true,
+            "session_number": 1,
+            "stage_of_change": "precontemplation",
+            "vote_agreement": 0.917
+          },
+          "delta": null,
+          "interventions_tried": [],
+          "longitudinal_flags": [],
+          "overall_progress": "unknown",
+          "patient_id": "b67b0e34-ce98-4b80-9bcf-3793eddca4ad",
+          "persistent_concerns": [],
+          "persistent_triggers": [],
+          "relapse_detected": false,
+          "session_number": 1,
+          "stage_trajectory": [
+            "precontemplation"
+          ],
+          "stagnation_detected": false
+        },
+        "patient_id": "b67b0e34-ce98-4b80-9bcf-3793eddca4ad",
+        "session_number": 1
+      },
+      "transcript": {
+        "session_id": "b67b0e34-ce98-4b80-9bcf-3793eddca4ad",
+        "transcript": "Patient: Hi\nCounselor: Hi! I'm eDOSTHI, your motivational interviewing chatbot. I'm here to help you quit smoking. What's your current situation with smoking?"
+      }
+    }
+  },
+  "meta": {
+    "session_id": "b67b0e34-ce98-4b80-9bcf-3793eddca4ad",
+    "started_at": "20260413T064830Z"
+  }
+}

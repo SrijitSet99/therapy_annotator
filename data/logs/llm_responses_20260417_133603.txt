@@ -1,0 +1,12 @@
+=== LLM Response Log — 20260417_133603 ===
+
+--- [REVISION] triggers @ 13:36:04.690 ---
+{
+  "triggers": [
+    "\u09a7\u09c2\u09ae\u09aa\u09be\u09a8 \u099b\u09c7\u09dc\u09c7 \u09a6\u09bf\u09a4\u09c7 \u099a\u09be\u0987",
+    "\u09b8\u09c1\u09b8\u09cd\u09a5 \u099c\u09c0\u09ac\u09a8 \u09af\u09be\u09aa\u09a8 \u098f\u09b0 \u099c\u09a8\u09cd\u09af \u09a7\u09c2\u09ae\u09aa\u09be\u09a8 \u099b\u09be\u09dc\u09a4\u09c7 \u099a\u09be\u0987"
+  ],
+  "trigger_type": "motivation",
+  "confidence": 0.98
+}
+

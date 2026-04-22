@@ -1,0 +1,52 @@
+{
+  "events": {
+    "agent_manager": {
+      "confidence_result": {
+        "readiness": {
+          "confidence": 0.85,
+          "issues": [
+            "Minor hallucination: The statement 'a typical characteristic of the contemplation stage' is an interpretation and not directly stated in the conversation. While reasonable, it leans towards an assumption beyond the explicit text.",
+            "Omission: The conversation lacks explicit information about the patient's past attempts to quit smoking or any prior support systems. This context is crucial for accurately assessing readiness."
+          ],
+          "severity": "none"
+        }
+      },
+      "extractor_output": {
+        "concern": {
+          "concerns": [
+            "want to quit smoking",
+            "weight gain",
+            "withdrawal symptoms"
+          ],
+          "evidence": [
+            "\"I want to quit smoking\"",
+            "Implied concern about weight gain due to cessation (common withdrawal symptom)",
+            "Implied concern about withdrawal symptoms due to stating desire to quit"
+          ]
+        },
+        "readiness": {
+          "evidence": "The patient stated 'I want to quit smoking,' indicating they are considering quitting but haven't yet made a firm commitment or taken concrete steps. Furthermore, the counselor's response focused on understanding the motivation behind the desire to quit, a typical characteristic of the contemplation stage.",
+          "readiness_stage": "contemplation"
+        }
+      },
+      "final_output": {
+        "readiness": {
+          "_debate_converged": true,
+          "_debate_rounds": 0,
+          "evidence": "The patient stated 'I want to quit smoking,' indicating they are considering quitting but haven't yet made a firm commitment or taken concrete steps. Furthermore, the counselor's response focused on understanding the motivation behind the desire to quit, a typical characteristic of the contemplation stage.",
+          "readiness_stage": "contemplation"
+        }
+      }
+    },
+    "run_chat": {
+      "transcript": {
+        "session_id": "670e9fa1-fa8b-4169-b970-e50bb59a3fef",
+        "transcript": "Patient: Hi\nCounselor: Hello! I'm eDOSTHI. Congratulations on taking the first step towards quitting smoking. What's been your biggest struggle with quitting so far?\nPatient: I want to quit smoking\nCounselor: That's a great goal! Can you tell me what motivated you to want to quit this time around?"
+      }
+    }
+  },
+  "meta": {
+    "session_id": "670e9fa1-fa8b-4169-b970-e50bb59a3fef",
+    "started_at": "20260414T071905Z"
+  }
+}

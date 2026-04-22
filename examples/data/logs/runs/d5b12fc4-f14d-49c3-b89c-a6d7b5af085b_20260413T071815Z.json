@@ -1,0 +1,381 @@
+{
+  "events": {
+    "agent_manager": {
+      "confidence_result": {
+        "advice": {
+          "confidence": 0.8,
+          "issues": [
+            "Omission: The conversation contains no explicit patient response to the counselor's initial greeting or questions. The extracted 'advice' includes a statement from the counselor, but not the patient's motivation, which is the core purpose of the interaction. This is a significant omission.",
+            "Potential Hallucination: The 'evidence' list includes 'Asking the patient about their motivation for quitting.' While the counselor *asks* this question, the extracted data doesn't represent the patient's actual response to that question. It's a description of the counselor's action, not the data itself. This leans towards a minor hallucination."
+          ],
+          "severity": "none"
+        },
+        "attempt": {
+          "confidence": 0.1,
+          "issues": [
+            "Missing motivation. The conversation explicitly asks 'What's your motivation for quitting today?' and this is not captured."
+          ],
+          "severity": "none"
+        },
+        "concern": {
+          "confidence": 0.7,
+          "issues": [
+            "The conversation mentions 'weight gain' and 'stress' as concerns, but these were not extracted.",
+            "While 'withdrawal symptoms' is correctly identified as the primary concern, the conversation doesn't explicitly state it as such. It simply asks for motivation."
+          ],
+          "severity": "none"
+        },
+        "readiness": {
+          "confidence": 0.8,
+          "issues": [
+            "The extracted data correctly identifies the readiness stage as 'contemplation' based on the conversation. However, the evidence statement could be more precise. Simply stating the patient said 'Hi' and the counselor asked about motivation isn't sufficient evidence for a strong determination of contemplation. A more detailed description of the counselor's follow-up would strengthen the justification.",
+            "There is a minor omission. The conversation doesn't explicitly state the patient's *reason* for saying 'Hi'. While the counselor's question implies a potential motivation, this is inferred, not directly stated. Including this nuance would improve the accuracy."
+          ],
+          "severity": "none"
+        },
+        "triggers": {
+          "confidence": 0.7,
+          "issues": [
+            "The conversation mentions 'stress', 'after meals', 'morning routine', and 'boredom' as triggers, but does not explicitly state *why* the patient is using these triggers. This is a potential omission of information needed for a complete understanding of the patient's smoking cessation journey."
+          ],
+          "severity": "none"
+        }
+      },
+      "confidence_results": {
+        "advice": {
+          "confidence": 0.8,
+          "issues": [
+            "Omission: The conversation contains no explicit patient response to the counselor's initial greeting or questions. The extracted 'advice' includes a statement from the counselor, but not the patient's motivation, which is the core purpose of the interaction. This is a significant omission.",
+            "Potential Hallucination: The 'evidence' list includes 'Asking the patient about their motivation for quitting.' While the counselor *asks* this question, the extracted data doesn't represent the patient's actual response to that question. It's a description of the counselor's action, not the data itself. This leans towards a minor hallucination."
+          ],
+          "severity": "none"
+        },
+        "attempt": {
+          "confidence": 0.1,
+          "issues": [
+            "Missing motivation. The conversation explicitly asks 'What's your motivation for quitting today?' and this is not captured."
+          ],
+          "severity": "none"
+        },
+        "concern": {
+          "confidence": 0.7,
+          "issues": [
+            "The conversation mentions 'weight gain' and 'stress' as concerns, but these were not extracted.",
+            "While 'withdrawal symptoms' is correctly identified as the primary concern, the conversation doesn't explicitly state it as such. It simply asks for motivation."
+          ],
+          "severity": "none"
+        },
+        "readiness": {
+          "confidence": 0.8,
+          "issues": [
+            "The extracted data correctly identifies the readiness stage as 'contemplation' based on the conversation. However, the evidence statement could be more precise. Simply stating the patient said 'Hi' and the counselor asked about motivation isn't sufficient evidence for a strong determination of contemplation. A more detailed description of the counselor's follow-up would strengthen the justification.",
+            "There is a minor omission. The conversation doesn't explicitly state the patient's *reason* for saying 'Hi'. While the counselor's question implies a potential motivation, this is inferred, not directly stated. Including this nuance would improve the accuracy."
+          ],
+          "severity": "none"
+        },
+        "triggers": {
+          "confidence": 0.7,
+          "issues": [
+            "The conversation mentions 'stress', 'after meals', 'morning routine', and 'boredom' as triggers, but does not explicitly state *why* the patient is using these triggers. This is a potential omission of information needed for a complete understanding of the patient's smoking cessation journey."
+          ],
+          "severity": "none"
+        }
+      },
+      "extractor_output": {
+        "advice": {
+          "advice": [
+            "I'm here to support you in quitting smoking.",
+            "What's your motivation for quitting today?"
+          ],
+          "evidence": [
+            "\"I'm here to support you in quitting smoking.\"",
+            "Asking the patient about their motivation for quitting."
+          ]
+        },
+        "attempt": {
+          "attempts": [],
+          "longest_attempt": null,
+          "most_recent_attempt": null
+        },
+        "concern": {
+          "concerns": [
+            "weight gain",
+            "withdrawal symptoms",
+            "stress"
+          ],
+          "primary_concern": "withdrawal symptoms"
+        },
+        "readiness": {
+          "evidence": "The patient simply stated 'Hi' and the counselor immediately asked 'What's your motivation for quitting today?' This indicates they are considering quitting (contemplation) but haven't yet made a firm commitment or taken concrete steps.",
+          "readiness_stage": "contemplation"
+        },
+        "triggers": {
+          "triggers": [
+            "stress",
+            "after meals",
+            "morning routine",
+            "boredom"
+          ]
+        }
+      },
+      "final_output": {
+        "advice": {
+          "_debate_converged": true,
+          "_debate_rounds": 0,
+          "advice": [
+            "I'm here to support you in quitting smoking.",
+            "What's your motivation for quitting today?"
+          ],
+          "evidence": [
+            "\"I'm here to support you in quitting smoking.\"",
+            "Asking the patient about their motivation for quitting."
+          ]
+        },
+        "attempt": {
+          "_debate_converged": true,
+          "_debate_rounds": 9,
+          "agreement_reached": false,
+          "attempts": 1,
+          "counselor_statement": "Counselor introduces themselves (eDOSTHI) and offers support, proactively inquiring about the patient’s motivation for quitting.",
+          "longest_attempt": "Hi",
+          "most_recent_attempt": "Hi",
+          "patient_motivation": "Greeting",
+          "severity": "high"
+        },
+        "concern": {
+          "_debate_converged": true,
+          "_debate_rounds": 1,
+          "concerns": [
+            "withdrawal symptoms"
+          ],
+          "primary_concern": "withdrawal symptoms",
+          "supporting_evidence": "Counselor initiated the conversation by asking the patient about their motivation for quitting, suggesting an underlying concern about withdrawal symptoms."
+        },
+        "readiness": {
+          "_debate_converged": true,
+          "_debate_rounds": 0,
+          "evidence": "The patient simply stated 'Hi' and the counselor immediately asked 'What's your motivation for quitting today?' This indicates they are considering quitting (contemplation) but haven't yet made a firm commitment or taken concrete steps.",
+          "readiness_stage": "contemplation"
+        },
+        "triggers": {
+          "_debate_converged": true,
+          "_debate_rounds": 3,
+          "anticipated_next_step": "What’s your motivation for quitting today?",
+          "key_phrases": [],
+          "patient_stated_motivation": null,
+          "trigger_relevance": "Contextual",
+          "triggers": [
+            "Patient greeting: \"Hi\""
+          ]
+        }
+      }
+    },
+    "consensus_agent": {
+      "output": {
+        "consensus": {
+          "dissenting_fields": [],
+          "main_concern": "withdrawal symptoms",
+          "primary_trigger": "Patient greeting: \"Hi\"",
+          "quit_attempt_history": "1 prior attempt (greeting).",
+          "recommended_intervention": [
+            "Explore patient’s specific concerns regarding withdrawal symptoms.",
+            "Assess the patient’s motivation for quitting using motivational interviewing techniques.",
+            "Provide information about available cessation resources and support.",
+            "Explore patient's motivation for quitting in detail, addressing potential withdrawal symptoms.",
+            "Assess the intensity of the patient's desire to quit.",
+            "Introduce motivational interviewing techniques to build confidence and commitment.",
+            "Assess the intensity of the patient’s desire to quit.",
+            "Provide information about coping strategies for withdrawal symptoms."
+          ],
+          "stage_of_change": "contemplation",
+          "vote_agreement": 0.917
+        }
+      }
+    },
+    "longitudinal_sanity": {
+      "output": {
+        "longitudinal_sanity": {
+          "flags": [],
+          "passed": true,
+          "severity": "none"
+        }
+      }
+    },
+    "profile_update_agent": {
+      "output": {
+        "dataset_row": {
+          "confidence_score": 0.95,
+          "debate_rounds_used": 13,
+          "inconsistencies": [],
+          "longitudinal_flags": [],
+          "longitudinal_sanity_passed": true,
+          "main_concern": "withdrawal symptoms",
+          "primary_trigger": "Patient greeting: \"Hi\"",
+          "quit_attempt_history": "1 prior attempt (greeting).",
+          "reasoning_summary": "The patient is in the contemplation stage, indicated by their initial greeting and the focus on withdrawal symptoms as a primary concern.  A motivational interviewing approach is recommended to explore their readiness to change and address their immediate discomfort with cessation.",
+          "recommended_intervention": [
+            "Explore patient’s specific concerns regarding withdrawal symptoms.",
+            "Assess the patient’s motivation for quitting using motivational interviewing techniques.",
+            "Provide information about available cessation resources and support.",
+            "Explore patient's motivation for quitting in detail, addressing potential withdrawal symptoms.",
+            "Assess the intensity of the patient’s desire to quit.",
+            "Introduce motivational interviewing techniques to build confidence and commitment.",
+            "Assess the intensity of the patient’s desire to quit.",
+            "Provide information about coping strategies for withdrawal symptoms."
+          ],
+          "sanity_passed": true,
+          "session_number": 1,
+          "stage_of_change": "contemplation",
+          "vote_agreement": 0.917
+        },
+        "longitudinal_output": {
+          "current_annotation": {
+            "confidence_score": 0.95,
+            "debate_rounds_used": 13,
+            "inconsistencies": [],
+            "longitudinal_flags": [],
+            "longitudinal_sanity_passed": true,
+            "main_concern": "withdrawal symptoms",
+            "primary_trigger": "Patient greeting: \"Hi\"",
+            "quit_attempt_history": "1 prior attempt (greeting).",
+            "reasoning_summary": "The patient is in the contemplation stage, indicated by their initial greeting and the focus on withdrawal symptoms as a primary concern.  A motivational interviewing approach is recommended to explore their readiness to change and address their immediate discomfort with cessation.",
+            "recommended_intervention": [
+              "Explore patient’s specific concerns regarding withdrawal symptoms.",
+              "Assess the patient’s motivation for quitting using motivational interviewing techniques.",
+              "Provide information about available cessation resources and support.",
+              "Explore patient's motivation for quitting in detail, addressing potential withdrawal symptoms.",
+              "Assess the intensity of the patient’s desire to quit.",
+              "Introduce motivational interviewing techniques to build confidence and commitment.",
+              "Assess the intensity of the patient’s desire to quit.",
+              "Provide information about coping strategies for withdrawal symptoms."
+            ],
+            "sanity_passed": true,
+            "session_number": 1,
+            "stage_of_change": "contemplation",
+            "vote_agreement": 0.917
+          },
+          "delta": null,
+          "interventions_tried": [],
+          "longitudinal_flags": [],
+          "overall_progress": "unknown",
+          "patient_id": "d5b12fc4-f14d-49c3-b89c-a6d7b5af085b",
+          "persistent_concerns": [],
+          "persistent_triggers": [],
+          "relapse_detected": false,
+          "session_number": 1,
+          "stage_trajectory": [
+            "contemplation"
+          ],
+          "stagnation_detected": false
+        },
+        "patient_profile_id": "d5b12fc4-f14d-49c3-b89c-a6d7b5af085b",
+        "session_count": 1
+      }
+    },
+    "reasoning_agent": {
+      "output": {
+        "dataset_row": {
+          "confidence_score": 0.95,
+          "debate_rounds_used": 13,
+          "inconsistencies": [],
+          "main_concern": "withdrawal symptoms",
+          "primary_trigger": "Patient greeting: \"Hi\"",
+          "quit_attempt_history": "1 prior attempt (greeting).",
+          "reasoning_summary": "The patient is in the contemplation stage, indicated by their initial greeting and the focus on withdrawal symptoms as a primary concern.  A motivational interviewing approach is recommended to explore their readiness to change and address their immediate discomfort with cessation.",
+          "recommended_intervention": [
+            "Explore patient’s specific concerns regarding withdrawal symptoms.",
+            "Assess the patient’s motivation for quitting using motivational interviewing techniques.",
+            "Provide information about available cessation resources and support.",
+            "Explore patient's motivation for quitting in detail, addressing potential withdrawal symptoms.",
+            "Assess the intensity of the patient’s desire to quit.",
+            "Introduce motivational interviewing techniques to build confidence and commitment.",
+            "Assess the intensity of the patient’s desire to quit.",
+            "Provide information about coping strategies for withdrawal symptoms."
+          ],
+          "sanity_passed": true,
+          "stage_of_change": "contemplation",
+          "vote_agreement": 0.917
+        }
+      }
+    },
+    "run_chat": {
+      "final_result": {
+        "dataset_row": {
+          "confidence_score": 0.95,
+          "debate_rounds_used": 13,
+          "inconsistencies": [],
+          "longitudinal_flags": [],
+          "longitudinal_sanity_passed": true,
+          "main_concern": "withdrawal symptoms",
+          "primary_trigger": "Patient greeting: \"Hi\"",
+          "quit_attempt_history": "1 prior attempt (greeting).",
+          "reasoning_summary": "The patient is in the contemplation stage, indicated by their initial greeting and the focus on withdrawal symptoms as a primary concern.  A motivational interviewing approach is recommended to explore their readiness to change and address their immediate discomfort with cessation.",
+          "recommended_intervention": [
+            "Explore patient’s specific concerns regarding withdrawal symptoms.",
+            "Assess the patient’s motivation for quitting using motivational interviewing techniques.",
+            "Provide information about available cessation resources and support.",
+            "Explore patient's motivation for quitting in detail, addressing potential withdrawal symptoms.",
+            "Assess the intensity of the patient’s desire to quit.",
+            "Introduce motivational interviewing techniques to build confidence and commitment.",
+            "Assess the intensity of the patient’s desire to quit.",
+            "Provide information about coping strategies for withdrawal symptoms."
+          ],
+          "sanity_passed": true,
+          "session_number": 1,
+          "stage_of_change": "contemplation",
+          "vote_agreement": 0.917
+        },
+        "longitudinal_output": {
+          "current_annotation": {
+            "confidence_score": 0.95,
+            "debate_rounds_used": 13,
+            "inconsistencies": [],
+            "longitudinal_flags": [],
+            "longitudinal_sanity_passed": true,
+            "main_concern": "withdrawal symptoms",
+            "primary_trigger": "Patient greeting: \"Hi\"",
+            "quit_attempt_history": "1 prior attempt (greeting).",
+            "reasoning_summary": "The patient is in the contemplation stage, indicated by their initial greeting and the focus on withdrawal symptoms as a primary concern.  A motivational interviewing approach is recommended to explore their readiness to change and address their immediate discomfort with cessation.",
+            "recommended_intervention": [
+              "Explore patient’s specific concerns regarding withdrawal symptoms.",
+              "Assess the patient’s motivation for quitting using motivational interviewing techniques.",
+              "Provide information about available cessation resources and support.",
+              "Explore patient's motivation for quitting in detail, addressing potential withdrawal symptoms.",
+              "Assess the intensity of the patient’s desire to quit.",
+              "Introduce motivational interviewing techniques to build confidence and commitment.",
+              "Assess the intensity of the patient’s desire to quit.",
+              "Provide information about coping strategies for withdrawal symptoms."
+            ],
+            "sanity_passed": true,
+            "session_number": 1,
+            "stage_of_change": "contemplation",
+            "vote_agreement": 0.917
+          },
+          "delta": null,
+          "interventions_tried": [],
+          "longitudinal_flags": [],
+          "overall_progress": "unknown",
+          "patient_id": "d5b12fc4-f14d-49c3-b89c-a6d7b5af085b",
+          "persistent_concerns": [],
+          "persistent_triggers": [],
+          "relapse_detected": false,
+          "session_number": 1,
+          "stage_trajectory": [
+            "contemplation"
+          ],
+          "stagnation_detected": false
+        },
+        "patient_id": "d5b12fc4-f14d-49c3-b89c-a6d7b5af085b",
+        "session_number": 1
+      },
+      "transcript": {
+        "session_id": "d5b12fc4-f14d-49c3-b89c-a6d7b5af085b",
+        "transcript": "Patient: Hi\nCounselor: Hi! I'm eDOSTHI, your friendly chatbot companion. I'm here to support you in quitting smoking. What's your motivation for quitting today?"
+      }
+    }
+  },
+  "meta": {
+    "session_id": "d5b12fc4-f14d-49c3-b89c-a6d7b5af085b",
+    "started_at": "20260413T071815Z"
+  }
+}

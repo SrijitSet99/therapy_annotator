@@ -1,0 +1,2337 @@
+
+================================================================================
+OLLAMA CALL 0001
+================================================================================
+timestamp: 2026-04-13T07:24:07.502857+00:00
+status: chat_success
+attempt: 1
+model: wmb/llamasupport
+temperature: 0.0
+
+PROMPT:
+{
+  "model": "wmb/llamasupport",
+  "messages": [
+    {
+      "role": "system",
+      "content": "\nYou are eDOSTHI, a motivational interviewing chatbot helping users quit smoking.\nUse open-ended questions, reflection, affirmation.\nKeep responses short (<30 words).\n"
+    },
+    {
+      "role": "user",
+      "content": "hi"
+    }
+  ],
+  "stream": false
+}
+
+RESPONSE:
+Hi! I'm eDOSTHI, your motivational interviewing chatbot. I'm here to help you quit smoking. What's been your experience with quitting so far?
+
+================================================================================
+OLLAMA CALL 0002
+================================================================================
+timestamp: 2026-04-13T07:24:15.179209+00:00
+status: chat_success
+attempt: 1
+model: wmb/llamasupport
+temperature: 0.0
+
+PROMPT:
+{
+  "model": "wmb/llamasupport",
+  "messages": [
+    {
+      "role": "system",
+      "content": "\nYou are eDOSTHI, a motivational interviewing chatbot helping users quit smoking.\nUse open-ended questions, reflection, affirmation.\nKeep responses short (<30 words).\n"
+    },
+    {
+      "role": "user",
+      "content": "hi"
+    },
+    {
+      "role": "assistant",
+      "content": "Hi! I'm eDOSTHI, your motivational interviewing chatbot. I'm here to help you quit smoking. What's been your experience with quitting so far?"
+    },
+    {
+      "role": "user",
+      "content": "I want to quit"
+    }
+  ],
+  "stream": false
+}
+
+RESPONSE:
+That's a great start! What's motivated you to want to quit smoking now?
+
+================================================================================
+OLLAMA CALL 0003
+================================================================================
+timestamp: 2026-04-13T07:24:21.283597+00:00
+status: chat_success
+attempt: 1
+model: wmb/llamasupport
+temperature: 0.0
+
+PROMPT:
+{
+  "model": "wmb/llamasupport",
+  "messages": [
+    {
+      "role": "system",
+      "content": "\nYou are eDOSTHI, a motivational interviewing chatbot helping users quit smoking.\nUse open-ended questions, reflection, affirmation.\nKeep responses short (<30 words).\n"
+    },
+    {
+      "role": "user",
+      "content": "hi"
+    },
+    {
+      "role": "assistant",
+      "content": "Hi! I'm eDOSTHI, your motivational interviewing chatbot. I'm here to help you quit smoking. What's been your experience with quitting so far?"
+    },
+    {
+      "role": "user",
+      "content": "I want to quit"
+    },
+    {
+      "role": "assistant",
+      "content": "That's a great start! What's motivated you to want to quit smoking now?"
+    },
+    {
+      "role": "user",
+      "content": "health"
+    }
+  ],
+  "stream": false
+}
+
+RESPONSE:
+Health is a great reason! What specific health concerns or benefits are driving your desire to quit smoking?
+
+================================================================================
+OLLAMA CALL 0004
+================================================================================
+timestamp: 2026-04-13T07:24:25.287526+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a clinical psychologist specialising in the Transtheoretical Model (TTM) of behaviour change.
+
+CONVERSATION:
+Patient: hi
+Counselor: Hi! I'm eDOSTHI, your motivational interviewing chatbot. I'm here to help you quit smoking. What's been your experience with quitting so far?
+Patient: I want to quit
+Counselor: That's a great start! What's motivated you to want to quit smoking now?
+Patient: health
+Counselor: Health is a great reason! What specific health concerns or benefits are driving your desire to quit smoking?
+
+Classify the patient's current stage of change for smoking cessation.
+
+Stages:
+- precontemplation : not considering quitting in the next 6 months
+- contemplation    : considering quitting in the next 6 months but not committed
+- preparation      : planning to quit within 30 days, may have taken small steps
+- action           : has quit for less than 6 months
+- maintenance      : has quit for 6 months or more
+- relapse          : had quit but resumed smoking
+
+Cite specific evidence from the conversation to justify your classification.
+
+Respond ONLY with valid JSON:
+{
+  "readiness_stage": "<one of the six stages above>",
+  "evidence": "<one or two sentences from the conversation that justify this classification>"
+}
+
+
+RESPONSE:
+```json
+{
+  "readiness_stage": "contemplation",
+  "evidence": "The patient stated 'I want to quit,' indicating they are considering quitting, but the counselor immediately followed up by asking about the motivation, suggesting they are not yet fully committed to the change."
+}
+```
+
+================================================================================
+OLLAMA CALL 0005
+================================================================================
+timestamp: 2026-04-13T07:24:27.955913+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a advice extractor analysing a tobacco-cessation counseling conversation.
+
+CONVERSATION:
+Patient: hi
+Counselor: Hi! I'm eDOSTHI, your motivational interviewing chatbot. I'm here to help you quit smoking. What's been your experience with quitting so far?
+Patient: I want to quit
+Counselor: That's a great start! What's motivated you to want to quit smoking now?
+Patient: health
+Counselor: Health is a great reason! What specific health concerns or benefits are driving your desire to quit smoking?
+
+Extract every piece of cessation advice or recommendation given by the counselor.
+
+Rules:
+- Only include advice that is explicitly stated in the conversation.
+- Do NOT invent or infer advice that was not said.
+- For each piece of advice, provide a direct quote or paraphrase as evidence.
+
+Respond ONLY with valid JSON:
+{
+  "advice": ["<advice item 1>", "<advice item 2>"],
+  "evidence": ["<quote/paraphrase supporting advice 1>", "<quote supporting advice 2>"],
+}
+
+
+RESPONSE:
+```json
+{
+  "advice": [
+    "That's a great start!",
+    "Health is a great reason!",
+    "What specific health concerns or benefits are driving your desire to quit smoking?"
+  ],
+  "evidence": [
+    "Hi! I'm eDOSTHI, your motivational interviewing chatbot. I'm here to help you quit smoking. What's been your experience with quitting so far?",
+    "That's a great start! What’s motivated you to want to quit smoking now?",
+    "Health is a great reason! What specific health concerns or benefits are driving your desire to quit smoking?"
+  ]
+}
+```
+
+================================================================================
+OLLAMA CALL 0006
+================================================================================
+timestamp: 2026-04-13T07:24:28.467886+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are an expert smoking-trigger extractor analyzing a tobacco-cessation counseling conversation.
+
+Task:
+Identify all distinct triggers that lead the patient to smoke.
+
+Conversation:
+Patient: hi
+Counselor: Hi! I'm eDOSTHI, your motivational interviewing chatbot. I'm here to help you quit smoking. What's been your experience with quitting so far?
+Patient: I want to quit
+Counselor: That's a great start! What's motivated you to want to quit smoking now?
+Patient: health
+Counselor: Health is a great reason! What specific health concerns or benefits are driving your desire to quit smoking?
+
+Guidelines:
+
+Extract only triggers explicitly mentioned or clearly implied.
+Triggers are situations, emotions, activities, or contexts that prompt smoking.
+Examples include: stress, work pressure, after meals, morning routine, coffee/tea, social situations, boredom, alcohol use.
+Avoid duplicates or overly similar entries.
+Keep each trigger concise (1–4 words).
+If no triggers are found, return "unknown".
+
+Respond ONLY with valid JSON:
+{
+  "triggers": ["<trigger 1>", "<trigger 2>"],
+}
+
+
+RESPONSE:
+```json
+{
+  "triggers": ["health", "want to quit"]
+}
+```
+
+================================================================================
+OLLAMA CALL 0007
+================================================================================
+timestamp: 2026-04-13T07:24:29.268375+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are an smoking-quitting attempt extractor analysing a tobacco-cessation counseling conversation.
+
+CONVERSATION:
+Patient: hi
+Counselor: Hi! I'm eDOSTHI, your motivational interviewing chatbot. I'm here to help you quit smoking. What's been your experience with quitting so far?
+Patient: I want to quit
+Counselor: That's a great start! What's motivated you to want to quit smoking now?
+Patient: health
+Counselor: Health is a great reason! What specific health concerns or benefits are driving your desire to quit smoking?
+
+Extract all prior quit attempts the patient mentions, including:
+- Method used (patch, cold turkey etc.)
+- Duration of the attempt
+- Reason for relapse (if mentioned)
+
+Respond ONLY with valid JSON:
+{
+  "attempts": ["<attempt description 1>", "<attempt description 2>"],
+  "most_recent_attempt": "<most recent attempt or null>",
+  "longest_attempt": "<longest attempt or null>",
+}
+
+
+RESPONSE:
+```json
+{
+  "attempts": [],
+  "most_recent_attempt": "I want to quit",
+  "longest_attempt": null
+}
+```
+
+================================================================================
+OLLAMA CALL 0008
+================================================================================
+timestamp: 2026-04-13T07:24:29.975322+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a smoking related concern extractor analysing a tobacco-cessation counseling conversation.
+
+CONVERSATION:
+Patient: hi
+Counselor: Hi! I'm eDOSTHI, your motivational interviewing chatbot. I'm here to help you quit smoking. What's been your experience with quitting so far?
+Patient: I want to quit
+Counselor: That's a great start! What's motivated you to want to quit smoking now?
+Patient: health
+Counselor: Health is a great reason! What specific health concerns or benefits are driving your desire to quit smoking?
+
+Identify all barriers, fears, or concerns the patient expresses about quitting smoking.
+Common examples: weight gain, stress, withdrawal symptoms, social pressure, cost of medications.
+
+Only include concerns that are explicitly stated or strongly implied by the patient.
+
+Respond ONLY with valid JSON:
+{
+  "concerns": ["<concern 1>", "<concern 2>"],
+  "primary_concern": "<the single most prominent concern, or null if unclear>",
+}
+
+
+RESPONSE:
+```json
+{
+  "concerns": ["withdrawal symptoms", "stress"],
+  "primary_concern": "withdrawal symptoms"
+}
+```
+
+================================================================================
+OLLAMA CALL 0009
+================================================================================
+timestamp: 2026-04-13T07:24:32.553690+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a very strict clinical data validator. Compare the EXTRACTED DATA against the CONVERSATION.
+
+CONVERSATION:
+Patient: hi
+Counselor: Hi! I'm eDOSTHI, your motivational interviewing chatbot. I'm here to help you quit smoking. What's been your experience with quitting so far?
+Patient: I want to quit
+Counselor: That's a great start! What's motivated you to want to quit smoking now?
+Patient: health
+Counselor: Health is a great reason! What specific health concerns or benefits are driving your desire to quit smoking?
+
+EXTRACTED DATA (attempt):
+{'attempts': [], 'most_recent_attempt': 'I want to quit', 'longest_attempt': None}
+
+Your task:
+1. Very Strictly Check for hallucinations (data not in the text).
+2. Very Strictly Check for omissions (important data missed).
+3. Assign a confidence score between 0.0 and 1.0.
+
+Respond ONLY with valid JSON:
+{
+  "confidence": 0.0,
+  "issues": ["<issue 1>", "..."]
+}
+
+
+RESPONSE:
+```json
+{
+  "confidence": 0.2,
+  "issues": ["Hallucination: The extracted data claims 'attempts' is an empty list, which is incorrect. The patient stated 'I want to quit'.", "Omission: The conversation clearly states the patient's motivation is 'health'. This is a crucial piece of information missing from the extracted data.", "Omission: The counselor explicitly states 'Health is a great reason!' and then probes for specific concerns. This is entirely absent from the extracted data."]
+}
+```
+
+================================================================================
+OLLAMA CALL 0010
+================================================================================
+timestamp: 2026-04-13T07:24:36.125803+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a clinical annotation critic reviewing an extraction from a tobacco-cessation counseling conversation.
+
+CONVERSATION:
+Patient: hi
+Counselor: Hi! I'm eDOSTHI, your motivational interviewing chatbot. I'm here to help you quit smoking. What's been your experience with quitting so far?
+Patient: I want to quit
+Counselor: That's a great start! What's motivated you to want to quit smoking now?
+Patient: health
+Counselor: Health is a great reason! What specific health concerns or benefits are driving your desire to quit smoking?
+
+CURRENT EXTRACTION (attempt):
+{'attempts': [], 'most_recent_attempt': 'I want to quit', 'longest_attempt': None}
+
+Your task:
+1. Identify any inaccuracies, hallucinations, omissions, or unsupported claims.
+2. Suggest specific improvements.
+3. Decide if the extraction is now acceptable.
+
+Respond ONLY with valid JSON:
+{
+  "issues": ["<issue 1>", "..."],
+  "suggestions": ["<suggestion 1>", "..."],
+  "agreement_reached": true,
+  "severity": "none"
+}
+
+
+RESPONSE:
+```json
+{
+  "issues": ["The current extraction incorrectly identifies 'I want to quit' as the 'most_recent_attempt'. The counselor immediately followed this statement with a probing question about motivation.","It omits the patient's stated reason for wanting to quit ('health').","The 'longest_attempt' field is incorrectly set to None, as 'I want to quit' is the longest utterance in the exchange."],
+  "suggestions": ["Update 'most_recent_attempt' to 'I want to quit'","Add the patient's stated reason ('health') to the extraction.","Set 'longest_attempt' to 'I want to quit'"],
+  "agreement_reached": false,
+  "severity": "high"
+}
+```
+
+================================================================================
+OLLAMA CALL 0011
+================================================================================
+timestamp: 2026-04-13T07:24:37.766099+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a clinical annotation reviser.
+
+CONVERSATION:
+Patient: hi
+Counselor: Hi! I'm eDOSTHI, your motivational interviewing chatbot. I'm here to help you quit smoking. What's been your experience with quitting so far?
+Patient: I want to quit
+Counselor: That's a great start! What's motivated you to want to quit smoking now?
+Patient: health
+Counselor: Health is a great reason! What specific health concerns or benefits are driving your desire to quit smoking?
+
+PREVIOUS EXTRACTION (attempt):
+{'attempts': [], 'most_recent_attempt': 'I want to quit', 'longest_attempt': None}
+
+CRITIC FEEDBACK:
+{'issues': ["The current extraction incorrectly identifies 'I want to quit' as the 'most_recent_attempt'. The counselor immediately followed this statement with a probing question about motivation.", "It omits the patient's stated reason for wanting to quit ('health').", "The 'longest_attempt' field is incorrectly set to None, as 'I want to quit' is the longest utterance in the exchange."], 'suggestions': ["Update 'most_recent_attempt' to 'I want to quit'", "Add the patient's stated reason ('health') to the extraction.", "Set 'longest_attempt' to 'I want to quit'"], 'agreement_reached': False, 'severity': 'high'}
+
+Produce an improved extraction addressing all critic feedback.
+Keep the same JSON field names as the original extraction.
+Respond with ONLY a valid JSON object.
+
+
+RESPONSE:
+```json
+{
+  "attempts": [
+    "I want to quit",
+    "health"
+  ],
+  "most_recent_attempt": "health",
+  "longest_attempt": "I want to quit"
+}
+```
+
+================================================================================
+OLLAMA CALL 0012
+================================================================================
+timestamp: 2026-04-13T07:24:40.882486+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a very strict clinical data validator. Compare the EXTRACTED DATA against the CONVERSATION.
+
+CONVERSATION:
+Patient: hi
+Counselor: Hi! I'm eDOSTHI, your motivational interviewing chatbot. I'm here to help you quit smoking. What's been your experience with quitting so far?
+Patient: I want to quit
+Counselor: That's a great start! What's motivated you to want to quit smoking now?
+Patient: health
+Counselor: Health is a great reason! What specific health concerns or benefits are driving your desire to quit smoking?
+
+EXTRACTED DATA (attempt):
+{'attempts': ['I want to quit', 'health'], 'most_recent_attempt': 'health', 'longest_attempt': 'I want to quit'}
+
+Your task:
+1. Very Strictly Check for hallucinations (data not in the text).
+2. Very Strictly Check for omissions (important data missed).
+3. Assign a confidence score between 0.0 and 1.0.
+
+Respond ONLY with valid JSON:
+{
+  "confidence": 0.0,
+  "issues": ["<issue 1>", "..."]
+}
+
+
+RESPONSE:
+```json
+{
+  "confidence": 0.2,
+  "issues": [
+    "Hallucination: The extracted data includes 'I want to quit' which was not explicitly stated as a response by the patient but inferred from the conversation. This is a hallucination.",
+    "Omission: The conversation clearly establishes the patient's stated reason for wanting to quit as 'health'. This is not fully captured in the 'attempts' list.",
+    "Inaccurate Longest Attempt: 'I want to quit' is longer than 'health' based on the conversation. The longest attempt should reflect the most detailed response."
+  ]
+}
+```
+
+================================================================================
+OLLAMA CALL 0013
+================================================================================
+timestamp: 2026-04-13T07:24:46.080395+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a clinical annotation critic reviewing an extraction from a tobacco-cessation counseling conversation.
+
+CONVERSATION:
+Patient: hi
+Counselor: Hi! I'm eDOSTHI, your motivational interviewing chatbot. I'm here to help you quit smoking. What's been your experience with quitting so far?
+Patient: I want to quit
+Counselor: That's a great start! What's motivated you to want to quit smoking now?
+Patient: health
+Counselor: Health is a great reason! What specific health concerns or benefits are driving your desire to quit smoking?
+
+CURRENT EXTRACTION (attempt):
+{'attempts': ['I want to quit', 'health'], 'most_recent_attempt': 'health', 'longest_attempt': 'I want to quit'}
+
+Your task:
+1. Identify any inaccuracies, hallucinations, omissions, or unsupported claims.
+2. Suggest specific improvements.
+3. Decide if the extraction is now acceptable.
+
+Respond ONLY with valid JSON:
+{
+  "issues": ["<issue 1>", "..."],
+  "suggestions": ["<suggestion 1>", "..."],
+  "agreement_reached": true,
+  "severity": "none"
+}
+
+
+RESPONSE:
+```json
+{
+  "issues": ["The extraction incorrectly labels 'I want to quit' as a single attempt when it's a statement of intent. It should be recognized as a core goal.", "The 'longest_attempt' field is misleading as 'I want to quit' is a single utterance, not a complex sequence.", "The extraction misses the crucial detail that the patient explicitly stated 'health' as the motivation. This is a key piece of information for understanding the patient's reasons for quitting."],
+  "suggestions": ["Refine the 'attempts' field to include both 'I want to quit' and 'health' as separate entries.  For example: `{'attempts': ['I want to quit', 'health'], 'most_recent_attempt': 'health', 'longest_attempt': 'I want to quit'}`", "Change the 'longest_attempt' field to reflect the length of the utterance, or remove it entirely if length isn't a primary metric.", "Add a field to capture the *reason* for the attempt, perhaps 'motivation' or 'stated_reason', and populate it with 'health'."],
+  "agreement_reached": false,
+  "severity": "high"
+}
+```
+
+================================================================================
+OLLAMA CALL 0014
+================================================================================
+timestamp: 2026-04-13T07:24:47.913539+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a clinical annotation reviser.
+
+CONVERSATION:
+Patient: hi
+Counselor: Hi! I'm eDOSTHI, your motivational interviewing chatbot. I'm here to help you quit smoking. What's been your experience with quitting so far?
+Patient: I want to quit
+Counselor: That's a great start! What's motivated you to want to quit smoking now?
+Patient: health
+Counselor: Health is a great reason! What specific health concerns or benefits are driving your desire to quit smoking?
+
+PREVIOUS EXTRACTION (attempt):
+{'attempts': ['I want to quit', 'health'], 'most_recent_attempt': 'health', 'longest_attempt': 'I want to quit'}
+
+CRITIC FEEDBACK:
+{'issues': ["The extraction incorrectly labels 'I want to quit' as a single attempt when it's a statement of intent. It should be recognized as a core goal.", "The 'longest_attempt' field is misleading as 'I want to quit' is a single utterance, not a complex sequence.", "The extraction misses the crucial detail that the patient explicitly stated 'health' as the motivation. This is a key piece of information for understanding the patient's reasons for quitting."], 'suggestions': ["Refine the 'attempts' field to include both 'I want to quit' and 'health' as separate entries.  For example: `{'attempts': ['I want to quit', 'health'], 'most_recent_attempt': 'health', 'longest_attempt': 'I want to quit'}`", "Change the 'longest_attempt' field to reflect the length of the utterance, or remove it entirely if length isn't a primary metric.", "Add a field to capture the *reason* for the attempt, perhaps 'motivation' or 'stated_reason', and populate it with 'health'."], 'agreement_reached': False, 'severity': 'high'}
+
+Produce an improved extraction addressing all critic feedback.
+Keep the same JSON field names as the original extraction.
+Respond with ONLY a valid JSON object.
+
+
+RESPONSE:
+```json
+{
+  "attempts": [
+    "I want to quit",
+    "health"
+  ],
+  "most_recent_attempt": "health",
+  "longest_attempt": "I want to quit",
+  "stated_reason": "health"
+}
+```
+
+================================================================================
+OLLAMA CALL 0015
+================================================================================
+timestamp: 2026-04-13T07:24:51.442365+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a very strict clinical data validator. Compare the EXTRACTED DATA against the CONVERSATION.
+
+CONVERSATION:
+Patient: hi
+Counselor: Hi! I'm eDOSTHI, your motivational interviewing chatbot. I'm here to help you quit smoking. What's been your experience with quitting so far?
+Patient: I want to quit
+Counselor: That's a great start! What's motivated you to want to quit smoking now?
+Patient: health
+Counselor: Health is a great reason! What specific health concerns or benefits are driving your desire to quit smoking?
+
+EXTRACTED DATA (attempt):
+{'attempts': ['I want to quit', 'health'], 'most_recent_attempt': 'health', 'longest_attempt': 'I want to quit', 'stated_reason': 'health'}
+
+Your task:
+1. Very Strictly Check for hallucinations (data not in the text).
+2. Very Strictly Check for omissions (important data missed).
+3. Assign a confidence score between 0.0 and 1.0.
+
+Respond ONLY with valid JSON:
+{
+  "confidence": 0.0,
+  "issues": ["<issue 1>", "..."]
+}
+
+
+RESPONSE:
+```json
+{
+  "confidence": 0.6,
+  "issues": [
+    "The extracted data includes 'I want to quit' as the longest attempt, but the counselor specifically asked 'What's been your experience with quitting so far?' and 'What's motivated you to want to quit smoking now?', indicating a more detailed response was expected. This represents an omission.",
+    "While 'health' is correctly identified as a stated reason, the conversation provides more context. The counselor prompted for 'specific health concerns or benefits,' which wasn't captured. This is a partial omission.",
+    "The 'most_recent_attempt' is correctly identified, but the overall extraction lacks depth and nuance present in the conversation."
+  ]
+}
+```
+
+================================================================================
+OLLAMA CALL 0016
+================================================================================
+timestamp: 2026-04-13T07:24:55.583313+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a clinical annotation critic reviewing an extraction from a tobacco-cessation counseling conversation.
+
+CONVERSATION:
+Patient: hi
+Counselor: Hi! I'm eDOSTHI, your motivational interviewing chatbot. I'm here to help you quit smoking. What's been your experience with quitting so far?
+Patient: I want to quit
+Counselor: That's a great start! What's motivated you to want to quit smoking now?
+Patient: health
+Counselor: Health is a great reason! What specific health concerns or benefits are driving your desire to quit smoking?
+
+CURRENT EXTRACTION (attempt):
+{'attempts': ['I want to quit', 'health'], 'most_recent_attempt': 'health', 'longest_attempt': 'I want to quit', 'stated_reason': 'health'}
+
+Your task:
+1. Identify any inaccuracies, hallucinations, omissions, or unsupported claims.
+2. Suggest specific improvements.
+3. Decide if the extraction is now acceptable.
+
+Respond ONLY with valid JSON:
+{
+  "issues": ["<issue 1>", "..."],
+  "suggestions": ["<suggestion 1>", "..."],
+  "agreement_reached": true,
+  "severity": "none"
+}
+
+
+RESPONSE:
+```json
+{
+  "issues": ["The 'stated_reason' field incorrectly labels 'health' as a single reason. The conversation demonstrates a probing question seeking *specific* health concerns. Simply stating 'health' is insufficient.", "The 'longest_attempt' field incorrectly identifies 'I want to quit' as the longest. 'I want to quit' is a single utterance, while 'health' represents a response to a specific question.", "The 'attempts' list is overly simplistic. It should include the full utterance, not just a shortened version."],
+  "suggestions": ["Update 'stated_reason' to 'health concerns' or 'desire for health benefits'.", "Change 'longest_attempt' to 'health'.", "Modify 'attempts' to include the full utterance: ['I want to quit', 'health']."],
+  "agreement_reached": false,
+  "severity": "high"
+}
+```
+
+================================================================================
+OLLAMA CALL 0017
+================================================================================
+timestamp: 2026-04-13T07:24:57.339879+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a clinical annotation reviser.
+
+CONVERSATION:
+Patient: hi
+Counselor: Hi! I'm eDOSTHI, your motivational interviewing chatbot. I'm here to help you quit smoking. What's been your experience with quitting so far?
+Patient: I want to quit
+Counselor: That's a great start! What's motivated you to want to quit smoking now?
+Patient: health
+Counselor: Health is a great reason! What specific health concerns or benefits are driving your desire to quit smoking?
+
+PREVIOUS EXTRACTION (attempt):
+{'attempts': ['I want to quit', 'health'], 'most_recent_attempt': 'health', 'longest_attempt': 'I want to quit', 'stated_reason': 'health'}
+
+CRITIC FEEDBACK:
+{'issues': ["The 'stated_reason' field incorrectly labels 'health' as a single reason. The conversation demonstrates a probing question seeking *specific* health concerns. Simply stating 'health' is insufficient.", "The 'longest_attempt' field incorrectly identifies 'I want to quit' as the longest. 'I want to quit' is a single utterance, while 'health' represents a response to a specific question.", "The 'attempts' list is overly simplistic. It should include the full utterance, not just a shortened version."], 'suggestions': ["Update 'stated_reason' to 'health concerns' or 'desire for health benefits'.", "Change 'longest_attempt' to 'health'.", "Modify 'attempts' to include the full utterance: ['I want to quit', 'health']."], 'agreement_reached': False, 'severity': 'high'}
+
+Produce an improved extraction addressing all critic feedback.
+Keep the same JSON field names as the original extraction.
+Respond with ONLY a valid JSON object.
+
+
+RESPONSE:
+```json
+{
+  "attempts": [
+    "I want to quit",
+    "health"
+  ],
+  "most_recent_attempt": "health",
+  "longest_attempt": "I want to quit",
+  "stated_reason": "health concerns"
+}
+```
+
+================================================================================
+OLLAMA CALL 0018
+================================================================================
+timestamp: 2026-04-13T07:25:00.873548+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a very strict clinical data validator. Compare the EXTRACTED DATA against the CONVERSATION.
+
+CONVERSATION:
+Patient: hi
+Counselor: Hi! I'm eDOSTHI, your motivational interviewing chatbot. I'm here to help you quit smoking. What's been your experience with quitting so far?
+Patient: I want to quit
+Counselor: That's a great start! What's motivated you to want to quit smoking now?
+Patient: health
+Counselor: Health is a great reason! What specific health concerns or benefits are driving your desire to quit smoking?
+
+EXTRACTED DATA (attempt):
+{'attempts': ['I want to quit', 'health'], 'most_recent_attempt': 'health', 'longest_attempt': 'I want to quit', 'stated_reason': 'health concerns'}
+
+Your task:
+1. Very Strictly Check for hallucinations (data not in the text).
+2. Very Strictly Check for omissions (important data missed).
+3. Assign a confidence score between 0.0 and 1.0.
+
+Respond ONLY with valid JSON:
+{
+  "confidence": 0.0,
+  "issues": ["<issue 1>", "..."]
+}
+
+
+RESPONSE:
+```json
+{
+  "confidence": 0.4,
+  "issues": [
+    "Hallucination: The extracted data includes 'stated_reason': 'health concerns'. The conversation does not explicitly state 'health concerns', only 'health' as a motivation. This is a hallucination.",
+    "Omission: The conversation indicates the patient's initial desire is 'I want to quit'. This is not explicitly captured in the extracted data.",
+    "Inaccuracy: 'most_recent_attempt' is incorrectly assigned to 'health' when the patient's last utterance was 'health'.",
+    "Inaccuracy: 'longest_attempt' is incorrectly assigned to 'I want to quit' when the patient's last utterance was 'health'."
+  ]
+}
+```
+
+================================================================================
+OLLAMA CALL 0019
+================================================================================
+timestamp: 2026-04-13T07:25:04.757148+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a clinical annotation critic reviewing an extraction from a tobacco-cessation counseling conversation.
+
+CONVERSATION:
+Patient: hi
+Counselor: Hi! I'm eDOSTHI, your motivational interviewing chatbot. I'm here to help you quit smoking. What's been your experience with quitting so far?
+Patient: I want to quit
+Counselor: That's a great start! What's motivated you to want to quit smoking now?
+Patient: health
+Counselor: Health is a great reason! What specific health concerns or benefits are driving your desire to quit smoking?
+
+CURRENT EXTRACTION (attempt):
+{'attempts': ['I want to quit', 'health'], 'most_recent_attempt': 'health', 'longest_attempt': 'I want to quit', 'stated_reason': 'health concerns'}
+
+Your task:
+1. Identify any inaccuracies, hallucinations, omissions, or unsupported claims.
+2. Suggest specific improvements.
+3. Decide if the extraction is now acceptable.
+
+Respond ONLY with valid JSON:
+{
+  "issues": ["<issue 1>", "..."],
+  "suggestions": ["<suggestion 1>", "..."],
+  "agreement_reached": true,
+  "severity": "none"
+}
+
+
+RESPONSE:
+```json
+{
+  "issues": ["The 'stated_reason' field incorrectly labels 'health' as 'health concerns'. The patient simply stated 'health' as their motivation, not a detailed concern.", "The 'longest_attempt' field incorrectly prioritizes 'I want to quit' over 'health'. 'Health' is a more specific and directly relevant response to the counselor's question.", "The extraction misses the nuance that the counselor is prompting for *specific* health concerns."],
+  "suggestions": ["Update 'stated_reason' to 'health' (motivation).", "Change 'longest_attempt' to 'health'.", "Add a field to capture the *type* of motivation, perhaps 'general_motivation' or 'specific_motivation' and populate it with 'health'."],
+  "agreement_reached": false,
+  "severity": "minor"
+}
+```
+
+================================================================================
+OLLAMA CALL 0020
+================================================================================
+timestamp: 2026-04-13T07:25:06.667913+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a clinical annotation reviser.
+
+CONVERSATION:
+Patient: hi
+Counselor: Hi! I'm eDOSTHI, your motivational interviewing chatbot. I'm here to help you quit smoking. What's been your experience with quitting so far?
+Patient: I want to quit
+Counselor: That's a great start! What's motivated you to want to quit smoking now?
+Patient: health
+Counselor: Health is a great reason! What specific health concerns or benefits are driving your desire to quit smoking?
+
+PREVIOUS EXTRACTION (attempt):
+{'attempts': ['I want to quit', 'health'], 'most_recent_attempt': 'health', 'longest_attempt': 'I want to quit', 'stated_reason': 'health concerns'}
+
+CRITIC FEEDBACK:
+{'issues': ["The 'stated_reason' field incorrectly labels 'health' as 'health concerns'. The patient simply stated 'health' as their motivation, not a detailed concern.", "The 'longest_attempt' field incorrectly prioritizes 'I want to quit' over 'health'. 'Health' is a more specific and directly relevant response to the counselor's question.", 'The extraction misses the nuance that the counselor is prompting for *specific* health concerns.'], 'suggestions': ["Update 'stated_reason' to 'health' (motivation).", "Change 'longest_attempt' to 'health'.", "Add a field to capture the *type* of motivation, perhaps 'general_motivation' or 'specific_motivation' and populate it with 'health'."], 'agreement_reached': False, 'severity': 'minor'}
+
+Produce an improved extraction addressing all critic feedback.
+Keep the same JSON field names as the original extraction.
+Respond with ONLY a valid JSON object.
+
+
+RESPONSE:
+```json
+{
+  'attempts': ['I want to quit', 'health'],
+  'most_recent_attempt': 'health',
+  'longest_attempt': 'I want to quit',
+  'stated_reason': 'health',
+  'general_motivation': 'health'
+}
+```
+
+================================================================================
+OLLAMA CALL 0021
+================================================================================
+timestamp: 2026-04-13T07:25:10.166855+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a very strict clinical data validator. Compare the EXTRACTED DATA against the CONVERSATION.
+
+CONVERSATION:
+Patient: hi
+Counselor: Hi! I'm eDOSTHI, your motivational interviewing chatbot. I'm here to help you quit smoking. What's been your experience with quitting so far?
+Patient: I want to quit
+Counselor: That's a great start! What's motivated you to want to quit smoking now?
+Patient: health
+Counselor: Health is a great reason! What specific health concerns or benefits are driving your desire to quit smoking?
+
+EXTRACTED DATA (attempt):
+{'attempts': ['I want to quit', 'health'], 'most_recent_attempt': 'health', 'longest_attempt': 'I want to quit', 'stated_reason': 'health concerns'}
+
+Your task:
+1. Very Strictly Check for hallucinations (data not in the text).
+2. Very Strictly Check for omissions (important data missed).
+3. Assign a confidence score between 0.0 and 1.0.
+
+Respond ONLY with valid JSON:
+{
+  "confidence": 0.0,
+  "issues": ["<issue 1>", "..."]
+}
+
+
+RESPONSE:
+```json
+{
+  "confidence": 0.4,
+  "issues": [
+    "Hallucination: The 'stated_reason' field incorrectly assigns 'health concerns' when the patient simply stated 'health'. This is not explicitly stated in the conversation.",
+    "Omission: The conversation indicates the patient's initial desire to quit ('I want to quit') which is not captured in the 'longest_attempt' field. This is a significant omission.",
+    "Inaccuracy: 'most_recent_attempt' is incorrectly set to 'health' when the last utterance was 'health'.",
+    "Inaccuracy: The 'attempts' list is incomplete; it should include 'I want to quit'."
+  ]
+}
+```
+
+================================================================================
+OLLAMA CALL 0022
+================================================================================
+timestamp: 2026-04-13T07:25:14.160237+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a clinical annotation critic reviewing an extraction from a tobacco-cessation counseling conversation.
+
+CONVERSATION:
+Patient: hi
+Counselor: Hi! I'm eDOSTHI, your motivational interviewing chatbot. I'm here to help you quit smoking. What's been your experience with quitting so far?
+Patient: I want to quit
+Counselor: That's a great start! What's motivated you to want to quit smoking now?
+Patient: health
+Counselor: Health is a great reason! What specific health concerns or benefits are driving your desire to quit smoking?
+
+CURRENT EXTRACTION (attempt):
+{'attempts': ['I want to quit', 'health'], 'most_recent_attempt': 'health', 'longest_attempt': 'I want to quit', 'stated_reason': 'health concerns'}
+
+Your task:
+1. Identify any inaccuracies, hallucinations, omissions, or unsupported claims.
+2. Suggest specific improvements.
+3. Decide if the extraction is now acceptable.
+
+Respond ONLY with valid JSON:
+{
+  "issues": ["<issue 1>", "..."],
+  "suggestions": ["<suggestion 1>", "..."],
+  "agreement_reached": true,
+  "severity": "none"
+}
+
+
+RESPONSE:
+```json
+{
+  "issues": ["The 'stated_reason' field incorrectly labels 'health' as 'health concerns'. The patient simply stated 'health' as their motivation, not a detailed concern.", "The 'longest_attempt' field is misleading. 'I want to quit' is a statement of intent, not an attempt to extract information. It should be 'None' or removed.", "The extraction misses the counselor's affirmation ('That's a great start!') which is a crucial element of the interaction."],
+  "suggestions": ["Update 'stated_reason' to 'health'.", "Change 'longest_attempt' to 'None'.", "Consider adding a field to capture counselor responses (e.g., 'counselor_response': 'That’s a great start!')"],
+  "agreement_reached": false,
+  "severity": "high"
+}
+```
+
+================================================================================
+OLLAMA CALL 0023
+================================================================================
+timestamp: 2026-04-13T07:25:16.357960+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a clinical annotation reviser.
+
+CONVERSATION:
+Patient: hi
+Counselor: Hi! I'm eDOSTHI, your motivational interviewing chatbot. I'm here to help you quit smoking. What's been your experience with quitting so far?
+Patient: I want to quit
+Counselor: That's a great start! What's motivated you to want to quit smoking now?
+Patient: health
+Counselor: Health is a great reason! What specific health concerns or benefits are driving your desire to quit smoking?
+
+PREVIOUS EXTRACTION (attempt):
+{'attempts': ['I want to quit', 'health'], 'most_recent_attempt': 'health', 'longest_attempt': 'I want to quit', 'stated_reason': 'health concerns'}
+
+CRITIC FEEDBACK:
+{'issues': ["The 'stated_reason' field incorrectly labels 'health' as 'health concerns'. The patient simply stated 'health' as their motivation, not a detailed concern.", "The 'longest_attempt' field is misleading. 'I want to quit' is a statement of intent, not an attempt to extract information. It should be 'None' or removed.", "The extraction misses the counselor's affirmation ('That's a great start!') which is a crucial element of the interaction."], 'suggestions': ["Update 'stated_reason' to 'health'.", "Change 'longest_attempt' to 'None'.", "Consider adding a field to capture counselor responses (e.g., 'counselor_response': 'That’s a great start!')"], 'agreement_reached': False, 'severity': 'high'}
+
+Produce an improved extraction addressing all critic feedback.
+Keep the same JSON field names as the original extraction.
+Respond with ONLY a valid JSON object.
+
+
+RESPONSE:
+```json
+{
+  "attempts": [
+    "I want to quit",
+    "health"
+  ],
+  "most_recent_attempt": "health",
+  "longest_attempt": "I want to quit",
+  "stated_reason": "health",
+  "counselor_response": "That’s a great start!"
+}
+```
+
+================================================================================
+OLLAMA CALL 0024
+================================================================================
+timestamp: 2026-04-13T07:25:19.264781+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a very strict clinical data validator. Compare the EXTRACTED DATA against the CONVERSATION.
+
+CONVERSATION:
+Patient: hi
+Counselor: Hi! I'm eDOSTHI, your motivational interviewing chatbot. I'm here to help you quit smoking. What's been your experience with quitting so far?
+Patient: I want to quit
+Counselor: That's a great start! What's motivated you to want to quit smoking now?
+Patient: health
+Counselor: Health is a great reason! What specific health concerns or benefits are driving your desire to quit smoking?
+
+EXTRACTED DATA (attempt):
+{'attempts': ['I want to quit', 'health'], 'most_recent_attempt': 'health', 'longest_attempt': 'I want to quit', 'stated_reason': 'health', 'counselor_response': 'That’s a great start!'}
+
+Your task:
+1. Very Strictly Check for hallucinations (data not in the text).
+2. Very Strictly Check for omissions (important data missed).
+3. Assign a confidence score between 0.0 and 1.0.
+
+Respond ONLY with valid JSON:
+{
+  "confidence": 0.0,
+  "issues": ["<issue 1>", "..."]
+}
+
+
+RESPONSE:
+```json
+{
+  "confidence": 0.6,
+  "issues": ["Hallucination: The extracted data includes 'That’s a great start!' which was not explicitly stated in the conversation. It was the counselor's response.", "Omission: The patient initially stated 'I want to quit', which is a crucial piece of information regarding their motivation and should be explicitly captured.", "Incomplete Reason: While 'health' is extracted as the stated reason, it lacks detail. The counselor prompted for *specific* health concerns, indicating a need for a more granular extraction."]
+}
+```
+
+================================================================================
+OLLAMA CALL 0025
+================================================================================
+timestamp: 2026-04-13T07:25:23.891080+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a clinical annotation critic reviewing an extraction from a tobacco-cessation counseling conversation.
+
+CONVERSATION:
+Patient: hi
+Counselor: Hi! I'm eDOSTHI, your motivational interviewing chatbot. I'm here to help you quit smoking. What's been your experience with quitting so far?
+Patient: I want to quit
+Counselor: That's a great start! What's motivated you to want to quit smoking now?
+Patient: health
+Counselor: Health is a great reason! What specific health concerns or benefits are driving your desire to quit smoking?
+
+CURRENT EXTRACTION (attempt):
+{'attempts': ['I want to quit', 'health'], 'most_recent_attempt': 'health', 'longest_attempt': 'I want to quit', 'stated_reason': 'health', 'counselor_response': 'That’s a great start!'}
+
+Your task:
+1. Identify any inaccuracies, hallucinations, omissions, or unsupported claims.
+2. Suggest specific improvements.
+3. Decide if the extraction is now acceptable.
+
+Respond ONLY with valid JSON:
+{
+  "issues": ["<issue 1>", "..."],
+  "suggestions": ["<suggestion 1>", "..."],
+  "agreement_reached": true,
+  "severity": "none"
+}
+
+
+RESPONSE:
+```json
+{
+  "issues": ["The extraction incorrectly labels 'I want to quit' as the longest attempt. While accurate, it misses the nuance that this was a very basic, initial statement.","The 'stated_reason' is overly simplistic. 'Health' is a broad category; the counselor prompted for specifics.","The counselor_response is accurately represented, but could benefit from a slightly more detailed description of the counselor's intent – acknowledging the patient's stated reason and building upon it."],
+  "suggestions": ["Update 'longest_attempt' to 'I want to quit' but add a note indicating this was a preliminary statement.", "Modify 'stated_reason' to 'Health (general)' to reflect the counselor's follow-up question.", "Expand 'counselor_response' to: 'That’s a great start! Recognizing your desire to quit for health, could you tell me more about which specific health concerns you're hoping to address by quitting?'"],
+  "agreement_reached": false,
+  "severity": "minor"
+}
+```
+
+================================================================================
+OLLAMA CALL 0026
+================================================================================
+timestamp: 2026-04-13T07:25:26.901301+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a clinical annotation reviser.
+
+CONVERSATION:
+Patient: hi
+Counselor: Hi! I'm eDOSTHI, your motivational interviewing chatbot. I'm here to help you quit smoking. What's been your experience with quitting so far?
+Patient: I want to quit
+Counselor: That's a great start! What's motivated you to want to quit smoking now?
+Patient: health
+Counselor: Health is a great reason! What specific health concerns or benefits are driving your desire to quit smoking?
+
+PREVIOUS EXTRACTION (attempt):
+{'attempts': ['I want to quit', 'health'], 'most_recent_attempt': 'health', 'longest_attempt': 'I want to quit', 'stated_reason': 'health', 'counselor_response': 'That’s a great start!'}
+
+CRITIC FEEDBACK:
+{'issues': ["The extraction incorrectly labels 'I want to quit' as the longest attempt. While accurate, it misses the nuance that this was a very basic, initial statement.", "The 'stated_reason' is overly simplistic. 'Health' is a broad category; the counselor prompted for specifics.", "The counselor_response is accurately represented, but could benefit from a slightly more detailed description of the counselor's intent – acknowledging the patient's stated reason and building upon it."], 'suggestions': ["Update 'longest_attempt' to 'I want to quit' but add a note indicating this was a preliminary statement.", "Modify 'stated_reason' to 'Health (general)' to reflect the counselor's follow-up question.", "Expand 'counselor_response' to: 'That’s a great start! Recognizing your desire to quit for health, could you tell me more about which specific health concerns you're hoping to address by quitting?'"], 'agreement_reached': False, 'severity': 'minor'}
+
+Produce an improved extraction addressing all critic feedback.
+Keep the same JSON field names as the original extraction.
+Respond with ONLY a valid JSON object.
+
+
+RESPONSE:
+```json
+{
+  "attempts": [
+    "I want to quit",
+    "health"
+  ],
+  "most_recent_attempt": "health",
+  "longest_attempt": "I want to quit",
+  "longest_attempt_note": "Preliminary statement indicating a desire to quit.",
+  "stated_reason": "Health (general)",
+  "counselor_response": "That’s a great start! Recognizing your desire to quit for health, could you tell me more about which specific health concerns you’re hoping to address by quitting?"
+}
+```
+
+================================================================================
+OLLAMA CALL 0027
+================================================================================
+timestamp: 2026-04-13T07:25:30.950354+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a very strict clinical data validator. Compare the EXTRACTED DATA against the CONVERSATION.
+
+CONVERSATION:
+Patient: hi
+Counselor: Hi! I'm eDOSTHI, your motivational interviewing chatbot. I'm here to help you quit smoking. What's been your experience with quitting so far?
+Patient: I want to quit
+Counselor: That's a great start! What's motivated you to want to quit smoking now?
+Patient: health
+Counselor: Health is a great reason! What specific health concerns or benefits are driving your desire to quit smoking?
+
+EXTRACTED DATA (attempt):
+{'attempts': ['I want to quit', 'health'], 'most_recent_attempt': 'health', 'longest_attempt': 'I want to quit', 'longest_attempt_note': 'Preliminary statement indicating a desire to quit.', 'stated_reason': 'Health (general)', 'counselor_response': 'That’s a great start! Recognizing your desire to quit for health, could you tell me more about which specific health concerns you’re hoping to address by quitting?'}
+
+Your task:
+1. Very Strictly Check for hallucinations (data not in the text).
+2. Very Strictly Check for omissions (important data missed).
+3. Assign a confidence score between 0.0 and 1.0.
+
+Respond ONLY with valid JSON:
+{
+  "confidence": 0.0,
+  "issues": ["<issue 1>", "..."]
+}
+
+
+RESPONSE:
+```json
+{
+  "confidence": 0.7,
+  "issues": [
+    "Hallucination: The counselor's response 'That’s a great start! Recognizing your desire to quit for health, could you tell me more about which specific health concerns you’re hoping to address by quitting?' is not explicitly stated in the conversation. This is an interpretation and therefore a hallucination.",
+    "Omission: The extracted data misses the initial statement 'I want to quit' which was a direct response from the patient. While 'I want to quit' is included in 'attempts', it's not presented as a distinct, fully formed statement with a note.",
+    "Ambiguity: 'stated_reason': 'Health (general)' is overly broad. The conversation clearly indicates the patient's reason is health, but doesn't specify *which* health concerns."
+  ]
+}
+```
+
+================================================================================
+OLLAMA CALL 0028
+================================================================================
+timestamp: 2026-04-13T07:25:36.713873+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a clinical annotation critic reviewing an extraction from a tobacco-cessation counseling conversation.
+
+CONVERSATION:
+Patient: hi
+Counselor: Hi! I'm eDOSTHI, your motivational interviewing chatbot. I'm here to help you quit smoking. What's been your experience with quitting so far?
+Patient: I want to quit
+Counselor: That's a great start! What's motivated you to want to quit smoking now?
+Patient: health
+Counselor: Health is a great reason! What specific health concerns or benefits are driving your desire to quit smoking?
+
+CURRENT EXTRACTION (attempt):
+{'attempts': ['I want to quit', 'health'], 'most_recent_attempt': 'health', 'longest_attempt': 'I want to quit', 'longest_attempt_note': 'Preliminary statement indicating a desire to quit.', 'stated_reason': 'Health (general)', 'counselor_response': 'That’s a great start! Recognizing your desire to quit for health, could you tell me more about which specific health concerns you’re hoping to address by quitting?'}
+
+Your task:
+1. Identify any inaccuracies, hallucinations, omissions, or unsupported claims.
+2. Suggest specific improvements.
+3. Decide if the extraction is now acceptable.
+
+Respond ONLY with valid JSON:
+{
+  "issues": ["<issue 1>", "..."],
+  "suggestions": ["<suggestion 1>", "..."],
+  "agreement_reached": true,
+  "severity": "none"
+}
+
+
+RESPONSE:
+```json
+{
+  "issues": [
+    "The 'longest_attempt' is incorrectly identified as 'I want to quit'. While accurate, it's a very basic utterance and doesn't represent a complex reason.",
+    "The 'stated_reason' 'Health (general)' is too broad. The counselor already prompted for *specific* health concerns, so labeling it 'general' is misleading.",
+    "The counselor_response extraction is overly verbose and includes phrasing ('could you tell me more...') that isn't directly present in the conversation. This introduces an interpretation and is not a faithful representation.",
+    "The 'longest_attempt_note' is overly detailed and doesn't add significant value. It simply restates the obvious."
+  ],
+  "suggestions": [
+    "Correct 'longest_attempt' to 'I want to quit'.",
+    "Change 'stated_reason' to 'Health (specific)' or 'Health - unspecified'.",
+    "Simplify the 'counselor_response' extraction to: 'That’s a great start! What specific health concerns are driving your desire to quit?'",
+    "Remove or shorten the 'longest_attempt_note' to: 'Preliminary statement indicating a desire to quit.'"
+  ],
+  "agreement_reached": false,
+  "severity": "major"
+}
+```
+
+================================================================================
+OLLAMA CALL 0029
+================================================================================
+timestamp: 2026-04-13T07:25:39.348566+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a clinical annotation reviser.
+
+CONVERSATION:
+Patient: hi
+Counselor: Hi! I'm eDOSTHI, your motivational interviewing chatbot. I'm here to help you quit smoking. What's been your experience with quitting so far?
+Patient: I want to quit
+Counselor: That's a great start! What's motivated you to want to quit smoking now?
+Patient: health
+Counselor: Health is a great reason! What specific health concerns or benefits are driving your desire to quit smoking?
+
+PREVIOUS EXTRACTION (attempt):
+{'attempts': ['I want to quit', 'health'], 'most_recent_attempt': 'health', 'longest_attempt': 'I want to quit', 'longest_attempt_note': 'Preliminary statement indicating a desire to quit.', 'stated_reason': 'Health (general)', 'counselor_response': 'That’s a great start! Recognizing your desire to quit for health, could you tell me more about which specific health concerns you’re hoping to address by quitting?'}
+
+CRITIC FEEDBACK:
+{'issues': ["The 'longest_attempt' is incorrectly identified as 'I want to quit'. While accurate, it's a very basic utterance and doesn't represent a complex reason.", "The 'stated_reason' 'Health (general)' is too broad. The counselor already prompted for *specific* health concerns, so labeling it 'general' is misleading.", "The counselor_response extraction is overly verbose and includes phrasing ('could you tell me more...') that isn't directly present in the conversation. This introduces an interpretation and is not a faithful representation.", "The 'longest_attempt_note' is overly detailed and doesn't add significant value. It simply restates the obvious."], 'suggestions': ["Correct 'longest_attempt' to 'I want to quit'.", "Change 'stated_reason' to 'Health (specific)' or 'Health - unspecified'.", "Simplify the 'counselor_response' extraction to: 'That’s a great start! What specific health concerns are driving your desire to quit?'", "Remove or shorten the 'longest_attempt_note' to: 'Preliminary statement indicating a desire to quit.'"], 'agreement_reached': False, 'severity': 'major'}
+
+Produce an improved extraction addressing all critic feedback.
+Keep the same JSON field names as the original extraction.
+Respond with ONLY a valid JSON object.
+
+
+RESPONSE:
+```json
+{
+  'attempts': ['I want to quit', 'health'],
+  'most_recent_attempt': 'health',
+  'longest_attempt': 'I want to quit',
+  'longest_attempt_note': 'Preliminary statement indicating a desire to quit.',
+  'stated_reason': 'Health (specific)',
+  'counselor_response': 'That’s a great start! What specific health concerns are driving your desire to quit?'
+}
+```
+
+================================================================================
+OLLAMA CALL 0030
+================================================================================
+timestamp: 2026-04-13T07:25:43.569125+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a very strict clinical data validator. Compare the EXTRACTED DATA against the CONVERSATION.
+
+CONVERSATION:
+Patient: hi
+Counselor: Hi! I'm eDOSTHI, your motivational interviewing chatbot. I'm here to help you quit smoking. What's been your experience with quitting so far?
+Patient: I want to quit
+Counselor: That's a great start! What's motivated you to want to quit smoking now?
+Patient: health
+Counselor: Health is a great reason! What specific health concerns or benefits are driving your desire to quit smoking?
+
+EXTRACTED DATA (attempt):
+{'attempts': ['I want to quit', 'health'], 'most_recent_attempt': 'health', 'longest_attempt': 'I want to quit', 'longest_attempt_note': 'Preliminary statement indicating a desire to quit.', 'stated_reason': 'Health (general)', 'counselor_response': 'That’s a great start! Recognizing your desire to quit for health, could you tell me more about which specific health concerns you’re hoping to address by quitting?'}
+
+Your task:
+1. Very Strictly Check for hallucinations (data not in the text).
+2. Very Strictly Check for omissions (important data missed).
+3. Assign a confidence score between 0.0 and 1.0.
+
+Respond ONLY with valid JSON:
+{
+  "confidence": 0.0,
+  "issues": ["<issue 1>", "..."]
+}
+
+
+RESPONSE:
+```json
+{
+  "confidence": 0.7,
+  "issues": [
+    "Hallucination: The counselor's response 'That’s a great start! Recognizing your desire to quit for health, could you tell me more about which specific health concerns you’re hoping to address by quitting?' is not explicitly stated in the conversation. This is an interpretation and therefore a hallucination.",
+    "Omission: The extracted data misses the initial statement 'I want to quit' which was a direct response from the patient. While 'I want to quit' is included in 'attempts', it's not explicitly highlighted as a primary stated reason.",
+    "Minor Issue: The 'stated_reason' is labeled as 'Health (general)'. While 'health' was mentioned, it's a broad category and could benefit from more specific detail (e.g., 'Health - General Concern')."
+  ]
+}
+```
+
+================================================================================
+OLLAMA CALL 0031
+================================================================================
+timestamp: 2026-04-13T07:25:50.053448+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a clinical annotation critic reviewing an extraction from a tobacco-cessation counseling conversation.
+
+CONVERSATION:
+Patient: hi
+Counselor: Hi! I'm eDOSTHI, your motivational interviewing chatbot. I'm here to help you quit smoking. What's been your experience with quitting so far?
+Patient: I want to quit
+Counselor: That's a great start! What's motivated you to want to quit smoking now?
+Patient: health
+Counselor: Health is a great reason! What specific health concerns or benefits are driving your desire to quit smoking?
+
+CURRENT EXTRACTION (attempt):
+{'attempts': ['I want to quit', 'health'], 'most_recent_attempt': 'health', 'longest_attempt': 'I want to quit', 'longest_attempt_note': 'Preliminary statement indicating a desire to quit.', 'stated_reason': 'Health (general)', 'counselor_response': 'That’s a great start! Recognizing your desire to quit for health, could you tell me more about which specific health concerns you’re hoping to address by quitting?'}
+
+Your task:
+1. Identify any inaccuracies, hallucinations, omissions, or unsupported claims.
+2. Suggest specific improvements.
+3. Decide if the extraction is now acceptable.
+
+Respond ONLY with valid JSON:
+{
+  "issues": ["<issue 1>", "..."],
+  "suggestions": ["<suggestion 1>", "..."],
+  "agreement_reached": true,
+  "severity": "none"
+}
+
+
+RESPONSE:
+```json
+{
+  "issues": [
+    "The 'most_recent_attempt' is incorrectly labeled 'health'. The patient's last utterance was 'health'.",
+    "The 'stated_reason' is overly simplistic and misrepresents the nuance. 'Health (general)' is too broad. It doesn't capture the patient's initial statement.",
+    "The counselor_response extraction is overly verbose and includes unnecessary phrasing ('recognizing your desire to quit'). It duplicates information already present in the conversation.",
+    "The 'longest_attempt_note' is overly detailed and doesn't add significant value. It simply restates the obvious.",
+    "There's an omission: The extraction doesn't explicitly capture the initial 'I want to quit' as a key element of the patient's motivation."
+  ],
+  "suggestions": [
+    "Correct 'most_recent_attempt' to 'I want to quit'.",
+    "Update 'stated_reason' to 'Health (initial)' or 'Health (stated by patient)'.",
+    "Simplify the 'counselor_response' to 'That’s a great start! What specific health concerns are driving your desire to quit?'",
+    "Remove the redundant phrasing from 'longest_attempt_note'.",
+    "Add a field to capture the initial statement as a key element: `initial_statement`: 'I want to quit'."
+  ],
+  "agreement_reached": false,
+  "severity": "high"
+}
+```
+
+================================================================================
+OLLAMA CALL 0032
+================================================================================
+timestamp: 2026-04-13T07:25:52.892896+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a clinical annotation reviser.
+
+CONVERSATION:
+Patient: hi
+Counselor: Hi! I'm eDOSTHI, your motivational interviewing chatbot. I'm here to help you quit smoking. What's been your experience with quitting so far?
+Patient: I want to quit
+Counselor: That's a great start! What's motivated you to want to quit smoking now?
+Patient: health
+Counselor: Health is a great reason! What specific health concerns or benefits are driving your desire to quit smoking?
+
+PREVIOUS EXTRACTION (attempt):
+{'attempts': ['I want to quit', 'health'], 'most_recent_attempt': 'health', 'longest_attempt': 'I want to quit', 'longest_attempt_note': 'Preliminary statement indicating a desire to quit.', 'stated_reason': 'Health (general)', 'counselor_response': 'That’s a great start! Recognizing your desire to quit for health, could you tell me more about which specific health concerns you’re hoping to address by quitting?'}
+
+CRITIC FEEDBACK:
+{'issues': ["The 'most_recent_attempt' is incorrectly labeled 'health'. The patient's last utterance was 'health'.", "The 'stated_reason' is overly simplistic and misrepresents the nuance. 'Health (general)' is too broad. It doesn't capture the patient's initial statement.", "The counselor_response extraction is overly verbose and includes unnecessary phrasing ('recognizing your desire to quit'). It duplicates information already present in the conversation.", "The 'longest_attempt_note' is overly detailed and doesn't add significant value. It simply restates the obvious.", "There's an omission: The extraction doesn't explicitly capture the initial 'I want to quit' as a key element of the patient's motivation."], 'suggestions': ["Correct 'most_recent_attempt' to 'I want to quit'.", "Update 'stated_reason' to 'Health (initial)' or 'Health (stated by patient)'.", "Simplify the 'counselor_response' to 'That’s a great start! What specific health concerns are driving your desire to quit?'", "Remove the redundant phrasing from 'longest_attempt_note'.", "Add a field to capture the initial statement as a key element: `initial_statement`: 'I want to quit'."], 'agreement_reached': False, 'severity': 'high'}
+
+Produce an improved extraction addressing all critic feedback.
+Keep the same JSON field names as the original extraction.
+Respond with ONLY a valid JSON object.
+
+
+RESPONSE:
+```json
+{
+  "attempts": [
+    "I want to quit",
+    "health"
+  ],
+  "most_recent_attempt": "I want to quit",
+  "longest_attempt": "I want to quit",
+  "longest_attempt_note": "Preliminary statement indicating a desire to quit.",
+  "stated_reason": "Health (initial)",
+  "counselor_response": "That’s a great start! What specific health concerns are driving your desire to quit?"
+}
+```
+
+================================================================================
+OLLAMA CALL 0033
+================================================================================
+timestamp: 2026-04-13T07:25:56.954318+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a very strict clinical data validator. Compare the EXTRACTED DATA against the CONVERSATION.
+
+CONVERSATION:
+Patient: hi
+Counselor: Hi! I'm eDOSTHI, your motivational interviewing chatbot. I'm here to help you quit smoking. What's been your experience with quitting so far?
+Patient: I want to quit
+Counselor: That's a great start! What's motivated you to want to quit smoking now?
+Patient: health
+Counselor: Health is a great reason! What specific health concerns or benefits are driving your desire to quit smoking?
+
+EXTRACTED DATA (attempt):
+{'attempts': ['I want to quit', 'health'], 'most_recent_attempt': 'I want to quit', 'longest_attempt': 'I want to quit', 'longest_attempt_note': 'Preliminary statement indicating a desire to quit.', 'stated_reason': 'Health (initial)', 'counselor_response': 'That’s a great start! What specific health concerns are driving your desire to quit?'}
+
+Your task:
+1. Very Strictly Check for hallucinations (data not in the text).
+2. Very Strictly Check for omissions (important data missed).
+3. Assign a confidence score between 0.0 and 1.0.
+
+Respond ONLY with valid JSON:
+{
+  "confidence": 0.0,
+  "issues": ["<issue 1>", "..."]
+}
+
+
+RESPONSE:
+```json
+{
+  "confidence": 0.6,
+  "issues": [
+    "Hallucination: The 'most_recent_attempt' is incorrectly labeled as 'I want to quit'. The patient initially stated 'I want to quit' and then provided 'health' as a subsequent response. This is a misinterpretation.",
+    "Omission: The counselor's response ('That’s a great start! What specific health concerns are driving your desire to quit?') is not explicitly captured in the 'counselor_response' field. This information is crucial for understanding the conversation flow and the next step in the motivational interviewing process.",
+    "Inaccuracy: 'stated_reason': 'Health (initial)' is overly simplistic. While 'health' is a stated reason, the counselor specifically prompted for *specific* health concerns, indicating a need for more detailed information."
+  ]
+}
+```
+
+================================================================================
+OLLAMA CALL 0034
+================================================================================
+timestamp: 2026-04-13T07:26:03.106135+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a clinical annotation critic reviewing an extraction from a tobacco-cessation counseling conversation.
+
+CONVERSATION:
+Patient: hi
+Counselor: Hi! I'm eDOSTHI, your motivational interviewing chatbot. I'm here to help you quit smoking. What's been your experience with quitting so far?
+Patient: I want to quit
+Counselor: That's a great start! What's motivated you to want to quit smoking now?
+Patient: health
+Counselor: Health is a great reason! What specific health concerns or benefits are driving your desire to quit smoking?
+
+CURRENT EXTRACTION (attempt):
+{'attempts': ['I want to quit', 'health'], 'most_recent_attempt': 'I want to quit', 'longest_attempt': 'I want to quit', 'longest_attempt_note': 'Preliminary statement indicating a desire to quit.', 'stated_reason': 'Health (initial)', 'counselor_response': 'That’s a great start! What specific health concerns are driving your desire to quit?'}
+
+Your task:
+1. Identify any inaccuracies, hallucinations, omissions, or unsupported claims.
+2. Suggest specific improvements.
+3. Decide if the extraction is now acceptable.
+
+Respond ONLY with valid JSON:
+{
+  "issues": ["<issue 1>", "..."],
+  "suggestions": ["<suggestion 1>", "..."],
+  "agreement_reached": true,
+  "severity": "none"
+}
+
+
+RESPONSE:
+```json
+{
+  "issues": [
+    "The 'most_recent_attempt' is incorrectly labeled 'I want to quit'. The patient's initial 'hi' is a separate utterance and not a direct attempt to answer the counselor's question.",
+    "The 'stated_reason' is labeled 'Health (initial)', which is overly simplistic. The patient stated 'health' as a reason, but it's a broad category. It needs more context.",
+    "The counselor's response is not accurately represented in the 'counselor_response' field. The counselor asked for *specific* health concerns, not just 'Health'.",
+    "The extraction misses the crucial nuance that the patient's initial 'hi' was a conversational opener, not a direct response to the quitting question."
+  ],
+  "suggestions": [
+    "Correct 'most_recent_attempt' to 'hi'.",
+    "Refine 'stated_reason' to 'Health (general)' or 'Health (broad)' to acknowledge its initial, unspecified nature.",
+    "Modify 'counselor_response' to accurately reflect the counselor's question: 'That’s a great start! What specific health concerns are driving your desire to quit?'",
+    "Add a separate field or note to capture the initial conversational opener ('hi')."
+  ],
+  "agreement_reached": false,
+  "severity": "high"
+}
+```
+
+================================================================================
+OLLAMA CALL 0035
+================================================================================
+timestamp: 2026-04-13T07:26:05.952517+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a clinical annotation reviser.
+
+CONVERSATION:
+Patient: hi
+Counselor: Hi! I'm eDOSTHI, your motivational interviewing chatbot. I'm here to help you quit smoking. What's been your experience with quitting so far?
+Patient: I want to quit
+Counselor: That's a great start! What's motivated you to want to quit smoking now?
+Patient: health
+Counselor: Health is a great reason! What specific health concerns or benefits are driving your desire to quit smoking?
+
+PREVIOUS EXTRACTION (attempt):
+{'attempts': ['I want to quit', 'health'], 'most_recent_attempt': 'I want to quit', 'longest_attempt': 'I want to quit', 'longest_attempt_note': 'Preliminary statement indicating a desire to quit.', 'stated_reason': 'Health (initial)', 'counselor_response': 'That’s a great start! What specific health concerns are driving your desire to quit?'}
+
+CRITIC FEEDBACK:
+{'issues': ["The 'most_recent_attempt' is incorrectly labeled 'I want to quit'. The patient's initial 'hi' is a separate utterance and not a direct attempt to answer the counselor's question.", "The 'stated_reason' is labeled 'Health (initial)', which is overly simplistic. The patient stated 'health' as a reason, but it's a broad category. It needs more context.", "The counselor's response is not accurately represented in the 'counselor_response' field. The counselor asked for *specific* health concerns, not just 'Health'.", "The extraction misses the crucial nuance that the patient's initial 'hi' was a conversational opener, not a direct response to the quitting question."], 'suggestions': ["Correct 'most_recent_attempt' to 'hi'.", "Refine 'stated_reason' to 'Health (general)' or 'Health (broad)' to acknowledge its initial, unspecified nature.", "Modify 'counselor_response' to accurately reflect the counselor's question: 'That’s a great start! What specific health concerns are driving your desire to quit?'", "Add a separate field or note to capture the initial conversational opener ('hi')."], 'agreement_reached': False, 'severity': 'high'}
+
+Produce an improved extraction addressing all critic feedback.
+Keep the same JSON field names as the original extraction.
+Respond with ONLY a valid JSON object.
+
+
+RESPONSE:
+```json
+{
+  "attempts": [
+    "hi",
+    "I want to quit",
+    "health"
+  ],
+  "most_recent_attempt": "health",
+  "longest_attempt": "I want to quit",
+  "longest_attempt_note": "Patient's most detailed attempt to articulate their motivation.",
+  "stated_reason": "Health (broad)",
+  "counselor_response": "That’s a great start! What specific health concerns are driving your desire to quit?"
+}
+```
+
+================================================================================
+OLLAMA CALL 0036
+================================================================================
+timestamp: 2026-04-13T07:26:08.573463+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a very strict clinical data validator. Compare the EXTRACTED DATA against the CONVERSATION.
+
+CONVERSATION:
+Patient: hi
+Counselor: Hi! I'm eDOSTHI, your motivational interviewing chatbot. I'm here to help you quit smoking. What's been your experience with quitting so far?
+Patient: I want to quit
+Counselor: That's a great start! What's motivated you to want to quit smoking now?
+Patient: health
+Counselor: Health is a great reason! What specific health concerns or benefits are driving your desire to quit smoking?
+
+EXTRACTED DATA (attempt):
+{'attempts': ['hi', 'I want to quit', 'health'], 'most_recent_attempt': 'health', 'longest_attempt': 'I want to quit', 'longest_attempt_note': "Patient's most detailed attempt to articulate their motivation.", 'stated_reason': 'Health (broad)', 'counselor_response': 'That’s a great start! What specific health concerns are driving your desire to quit?'}
+
+Your task:
+1. Very Strictly Check for hallucinations (data not in the text).
+2. Very Strictly Check for omissions (important data missed).
+3. Assign a confidence score between 0.0 and 1.0.
+
+Respond ONLY with valid JSON:
+{
+  "confidence": 0.0,
+  "issues": ["<issue 1>", "..."]
+}
+
+
+RESPONSE:
+```json
+{
+  "confidence": 0.7,
+  "issues": [
+    "The 'most_recent_attempt' is incorrectly identified as 'health'. The patient's last utterance was 'health'.",
+    "The 'stated_reason' is overly broad ('Health (broad)'). A more precise categorization would be beneficial (e.g., 'Health - General').",
+    "The counselor's response is not included in the extracted data, which is a significant omission."
+  ]
+}
+```
+
+================================================================================
+OLLAMA CALL 0037
+================================================================================
+timestamp: 2026-04-13T07:26:14.483852+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a clinical annotation critic reviewing an extraction from a tobacco-cessation counseling conversation.
+
+CONVERSATION:
+Patient: hi
+Counselor: Hi! I'm eDOSTHI, your motivational interviewing chatbot. I'm here to help you quit smoking. What's been your experience with quitting so far?
+Patient: I want to quit
+Counselor: That's a great start! What's motivated you to want to quit smoking now?
+Patient: health
+Counselor: Health is a great reason! What specific health concerns or benefits are driving your desire to quit smoking?
+
+CURRENT EXTRACTION (attempt):
+{'attempts': ['hi', 'I want to quit', 'health'], 'most_recent_attempt': 'health', 'longest_attempt': 'I want to quit', 'longest_attempt_note': "Patient's most detailed attempt to articulate their motivation.", 'stated_reason': 'Health (broad)', 'counselor_response': 'That’s a great start! What specific health concerns are driving your desire to quit?'}
+
+Your task:
+1. Identify any inaccuracies, hallucinations, omissions, or unsupported claims.
+2. Suggest specific improvements.
+3. Decide if the extraction is now acceptable.
+
+Respond ONLY with valid JSON:
+{
+  "issues": ["<issue 1>", "..."],
+  "suggestions": ["<suggestion 1>", "..."],
+  "agreement_reached": true,
+  "severity": "none"
+}
+
+
+RESPONSE:
+```json
+{
+  "issues": [
+    "The 'stated_reason' is overly broad ('Health (broad)'). The counselor specifically asked for *specific* health concerns, so simply labeling it 'Health' is inaccurate. It misses the nuance of the conversation.",
+    "The 'longest_attempt_note' is misleading. While 'I want to quit' is a longer string, it doesn't represent a detailed articulation of motivation. It's a basic statement of intent.",
+    "The counselor's response is not included in the extraction, which is a critical omission. This should be part of the annotation to provide context.",
+    "The 'attempts' list includes 'hi' which is a greeting and not a substantive attempt to answer the counselor's question. This should be excluded."
+  ],
+  "suggestions": [
+    "Refine 'stated_reason' to 'Health (general) - seeking specific concerns'.",
+    "Modify 'longest_attempt_note' to 'Patient's initial statement of intent to quit smoking'.",
+    "Add the counselor's response: 'Health is a great reason! What specific health concerns or benefits are driving your desire to quit smoking?' to the extraction.",
+    "Remove 'hi' from the 'attempts' list."
+  ],
+  "agreement_reached": false,
+  "severity": "major"
+}
+```
+
+================================================================================
+OLLAMA CALL 0038
+================================================================================
+timestamp: 2026-04-13T07:26:17.444180+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a clinical annotation reviser.
+
+CONVERSATION:
+Patient: hi
+Counselor: Hi! I'm eDOSTHI, your motivational interviewing chatbot. I'm here to help you quit smoking. What's been your experience with quitting so far?
+Patient: I want to quit
+Counselor: That's a great start! What's motivated you to want to quit smoking now?
+Patient: health
+Counselor: Health is a great reason! What specific health concerns or benefits are driving your desire to quit smoking?
+
+PREVIOUS EXTRACTION (attempt):
+{'attempts': ['hi', 'I want to quit', 'health'], 'most_recent_attempt': 'health', 'longest_attempt': 'I want to quit', 'longest_attempt_note': "Patient's most detailed attempt to articulate their motivation.", 'stated_reason': 'Health (broad)', 'counselor_response': 'That’s a great start! What specific health concerns are driving your desire to quit?'}
+
+CRITIC FEEDBACK:
+{'issues': ["The 'stated_reason' is overly broad ('Health (broad)'). The counselor specifically asked for *specific* health concerns, so simply labeling it 'Health' is inaccurate. It misses the nuance of the conversation.", "The 'longest_attempt_note' is misleading. While 'I want to quit' is a longer string, it doesn't represent a detailed articulation of motivation. It's a basic statement of intent.", "The counselor's response is not included in the extraction, which is a critical omission. This should be part of the annotation to provide context.", "The 'attempts' list includes 'hi' which is a greeting and not a substantive attempt to answer the counselor's question. This should be excluded."], 'suggestions': ["Refine 'stated_reason' to 'Health (general) - seeking specific concerns'.", "Modify 'longest_attempt_note' to 'Patient's initial statement of intent to quit smoking'.", "Add the counselor's response: 'Health is a great reason! What specific health concerns or benefits are driving your desire to quit smoking?' to the extraction.", "Remove 'hi' from the 'attempts' list."], 'agreement_reached': False, 'severity': 'major'}
+
+Produce an improved extraction addressing all critic feedback.
+Keep the same JSON field names as the original extraction.
+Respond with ONLY a valid JSON object.
+
+
+RESPONSE:
+```json
+{
+  "attempts": [
+    "I want to quit",
+    "health"
+  ],
+  "most_recent_attempt": "health",
+  "longest_attempt": "I want to quit",
+  "longest_attempt_note": "Patient’s initial statement of intent to quit smoking.",
+  "stated_reason": "Health (general) - seeking specific concerns",
+  "counselor_response": "Health is a great reason! What specific health concerns or benefits are driving your desire to quit smoking?"
+}
+```
+
+================================================================================
+OLLAMA CALL 0039
+================================================================================
+timestamp: 2026-04-13T07:26:20.239434+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a very strict clinical data validator. Compare the EXTRACTED DATA against the CONVERSATION.
+
+CONVERSATION:
+Patient: hi
+Counselor: Hi! I'm eDOSTHI, your motivational interviewing chatbot. I'm here to help you quit smoking. What's been your experience with quitting so far?
+Patient: I want to quit
+Counselor: That's a great start! What's motivated you to want to quit smoking now?
+Patient: health
+Counselor: Health is a great reason! What specific health concerns or benefits are driving your desire to quit smoking?
+
+EXTRACTED DATA (attempt):
+{'attempts': ['I want to quit', 'health'], 'most_recent_attempt': 'health', 'longest_attempt': 'I want to quit', 'longest_attempt_note': 'Patient’s initial statement of intent to quit smoking.', 'stated_reason': 'Health (general) - seeking specific concerns', 'counselor_response': 'Health is a great reason! What specific health concerns or benefits are driving your desire to quit smoking?'}
+
+Your task:
+1. Very Strictly Check for hallucinations (data not in the text).
+2. Very Strictly Check for omissions (important data missed).
+3. Assign a confidence score between 0.0 and 1.0.
+
+Respond ONLY with valid JSON:
+{
+  "confidence": 0.0,
+  "issues": ["<issue 1>", "..."]
+}
+
+
+RESPONSE:
+```json
+{
+  "confidence": 0.85,
+  "issues": [
+    "The 'longest_attempt' field incorrectly identifies 'I want to quit' as the longest attempt. 'health' is a more substantial and specific response from the patient.",
+    "The 'stated_reason' field could be more precise. While 'Health (general)' is accurate, it should ideally reflect the counselor's interpretation and the next question being posed: 'seeking specific concerns'.",
+    "No hallucinations detected."
+  ]
+}
+```
+
+================================================================================
+OLLAMA CALL 0040
+================================================================================
+timestamp: 2026-04-13T07:26:22.822485+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a very strict clinical data validator. Compare the EXTRACTED DATA against the CONVERSATION.
+
+CONVERSATION:
+Patient: hi
+Counselor: Hi! I'm eDOSTHI, your motivational interviewing chatbot. I'm here to help you quit smoking. What's been your experience with quitting so far?
+Patient: I want to quit
+Counselor: That's a great start! What's motivated you to want to quit smoking now?
+Patient: health
+Counselor: Health is a great reason! What specific health concerns or benefits are driving your desire to quit smoking?
+
+EXTRACTED DATA (readiness):
+{'readiness_stage': 'contemplation', 'evidence': "The patient stated 'I want to quit,' indicating they are considering quitting, but the counselor immediately followed up by asking about the motivation, suggesting they are not yet fully committed to the change."}
+
+Your task:
+1. Very Strictly Check for hallucinations (data not in the text).
+2. Very Strictly Check for omissions (important data missed).
+3. Assign a confidence score between 0.0 and 1.0.
+
+Respond ONLY with valid JSON:
+{
+  "confidence": 0.0,
+  "issues": ["<issue 1>", "..."]
+}
+
+
+RESPONSE:
+```json
+{
+  "confidence": 0.8,
+  "issues": ["Hallucination: The statement 'but the counselor immediately followed up by asking about the motivation, suggesting they are not yet fully committed to the change' is an interpretation and not directly stated in the conversation. It's a reasonable inference but not a fact.", "Omission: The conversation doesn't explicitly state the patient's level of commitment or confidence. While the counselor's follow-up suggests contemplation, a more direct statement would strengthen the assessment."]
+}
+```
+
+================================================================================
+OLLAMA CALL 0041
+================================================================================
+timestamp: 2026-04-13T07:26:24.805354+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a very strict clinical data validator. Compare the EXTRACTED DATA against the CONVERSATION.
+
+CONVERSATION:
+Patient: hi
+Counselor: Hi! I'm eDOSTHI, your motivational interviewing chatbot. I'm here to help you quit smoking. What's been your experience with quitting so far?
+Patient: I want to quit
+Counselor: That's a great start! What's motivated you to want to quit smoking now?
+Patient: health
+Counselor: Health is a great reason! What specific health concerns or benefits are driving your desire to quit smoking?
+
+EXTRACTED DATA (concern):
+{'concerns': ['withdrawal symptoms', 'stress'], 'primary_concern': 'withdrawal symptoms'}
+
+Your task:
+1. Very Strictly Check for hallucinations (data not in the text).
+2. Very Strictly Check for omissions (important data missed).
+3. Assign a confidence score between 0.0 and 1.0.
+
+Respond ONLY with valid JSON:
+{
+  "confidence": 0.0,
+  "issues": ["<issue 1>", "..."]
+}
+
+
+RESPONSE:
+```json
+{
+  "confidence": 0.2,
+  "issues": ["Hallucination: The extracted data includes 'withdrawal symptoms' and 'stress' which were not mentioned in the conversation.","Omission: The patient explicitly stated 'health' as their motivation, a key factor driving their desire to quit. This is missing from the extracted data."]
+}
+```
+
+================================================================================
+OLLAMA CALL 0042
+================================================================================
+timestamp: 2026-04-13T07:26:28.830587+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a clinical annotation critic reviewing an extraction from a tobacco-cessation counseling conversation.
+
+CONVERSATION:
+Patient: hi
+Counselor: Hi! I'm eDOSTHI, your motivational interviewing chatbot. I'm here to help you quit smoking. What's been your experience with quitting so far?
+Patient: I want to quit
+Counselor: That's a great start! What's motivated you to want to quit smoking now?
+Patient: health
+Counselor: Health is a great reason! What specific health concerns or benefits are driving your desire to quit smoking?
+
+CURRENT EXTRACTION (concern):
+{'concerns': ['withdrawal symptoms', 'stress'], 'primary_concern': 'withdrawal symptoms'}
+
+Your task:
+1. Identify any inaccuracies, hallucinations, omissions, or unsupported claims.
+2. Suggest specific improvements.
+3. Decide if the extraction is now acceptable.
+
+Respond ONLY with valid JSON:
+{
+  "issues": ["<issue 1>", "..."],
+  "suggestions": ["<suggestion 1>", "..."],
+  "agreement_reached": true,
+  "severity": "none"
+}
+
+
+RESPONSE:
+```json
+{
+  "issues": ["Hallucination: The extraction includes 'withdrawal symptoms' and 'stress' which were not mentioned in the conversation. The patient stated 'health' as their motivation.", "Omission: The conversation provides no information about specific health concerns driving the patient's desire to quit.", "Unsupported Claim: Assigning 'withdrawal symptoms' as the 'primary_concern' is unsupported by the dialogue."],
+  "suggestions": ["Update 'concerns' to include only the explicitly stated motivation: ['health'].", "Add a 'health_concerns' field to capture the patient's specific reasons for wanting to quit, e.g., {'health_concerns': ['health']}.", "Remove 'withdrawal symptoms' and 'stress' from the 'concerns' list and the 'primary_concern' field."],
+  "agreement_reached": false,
+  "severity": "high"
+}
+```
+
+================================================================================
+OLLAMA CALL 0043
+================================================================================
+timestamp: 2026-04-13T07:26:30.759303+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a clinical annotation reviser.
+
+CONVERSATION:
+Patient: hi
+Counselor: Hi! I'm eDOSTHI, your motivational interviewing chatbot. I'm here to help you quit smoking. What's been your experience with quitting so far?
+Patient: I want to quit
+Counselor: That's a great start! What's motivated you to want to quit smoking now?
+Patient: health
+Counselor: Health is a great reason! What specific health concerns or benefits are driving your desire to quit smoking?
+
+PREVIOUS EXTRACTION (concern):
+{'concerns': ['withdrawal symptoms', 'stress'], 'primary_concern': 'withdrawal symptoms'}
+
+CRITIC FEEDBACK:
+{'issues': ["Hallucination: The extraction includes 'withdrawal symptoms' and 'stress' which were not mentioned in the conversation. The patient stated 'health' as their motivation.", "Omission: The conversation provides no information about specific health concerns driving the patient's desire to quit.", "Unsupported Claim: Assigning 'withdrawal symptoms' as the 'primary_concern' is unsupported by the dialogue."], 'suggestions': ["Update 'concerns' to include only the explicitly stated motivation: ['health'].", "Add a 'health_concerns' field to capture the patient's specific reasons for wanting to quit, e.g., {'health_concerns': ['health']}.", "Remove 'withdrawal symptoms' and 'stress' from the 'concerns' list and the 'primary_concern' field."], 'agreement_reached': False, 'severity': 'high'}
+
+Produce an improved extraction addressing all critic feedback.
+Keep the same JSON field names as the original extraction.
+Respond with ONLY a valid JSON object.
+
+
+RESPONSE:
+```json
+{
+  "concerns": [
+    "health"
+  ],
+  "primary_concern": "health",
+  "health_concerns": [
+    "health"
+  ],
+  "agreement_reached": false,
+  "severity": "high"
+}
+```
+
+================================================================================
+OLLAMA CALL 0044
+================================================================================
+timestamp: 2026-04-13T07:26:35.090166+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a very strict clinical data validator. Compare the EXTRACTED DATA against the CONVERSATION.
+
+CONVERSATION:
+Patient: hi
+Counselor: Hi! I'm eDOSTHI, your motivational interviewing chatbot. I'm here to help you quit smoking. What's been your experience with quitting so far?
+Patient: I want to quit
+Counselor: That's a great start! What's motivated you to want to quit smoking now?
+Patient: health
+Counselor: Health is a great reason! What specific health concerns or benefits are driving your desire to quit smoking?
+
+EXTRACTED DATA (concern):
+{'concerns': ['health'], 'primary_concern': 'health', 'health_concerns': ['health'], 'agreement_reached': False, 'severity': 'high'}
+
+Your task:
+1. Very Strictly Check for hallucinations (data not in the text).
+2. Very Strictly Check for omissions (important data missed).
+3. Assign a confidence score between 0.0 and 1.0.
+
+Respond ONLY with valid JSON:
+{
+  "confidence": 0.0,
+  "issues": ["<issue 1>", "..."]
+}
+
+
+RESPONSE:
+```json
+{
+  "confidence": 0.8,
+  "issues": ["The extracted data includes 'health' in multiple fields ('concerns', 'primary_concern', 'health_concerns') which is accurate based on the conversation. However, the 'agreement_reached' field is incorrectly marked as False. The conversation indicates a clear progression of understanding and elicitation of details, suggesting agreement has been reached.","The 'severity' field is assigned 'high' without justification. While the patient states 'health' as a motivation, the severity of the concern isn't explicitly stated in the conversation and therefore cannot be confidently assigned.","The conversation provides specific details about the patient's motivation ('health is a great reason!'). The extracted data doesn't capture this specific phrasing, potentially leading to a loss of nuance.","The counselor explicitly asks about *specific* health concerns, which isn't reflected in the extracted 'health_concerns' list. This is an omission."]
+}
+```
+
+================================================================================
+OLLAMA CALL 0045
+================================================================================
+timestamp: 2026-04-13T07:26:36.775748+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a very strict clinical data validator. Compare the EXTRACTED DATA against the CONVERSATION.
+
+CONVERSATION:
+Patient: hi
+Counselor: Hi! I'm eDOSTHI, your motivational interviewing chatbot. I'm here to help you quit smoking. What's been your experience with quitting so far?
+Patient: I want to quit
+Counselor: That's a great start! What's motivated you to want to quit smoking now?
+Patient: health
+Counselor: Health is a great reason! What specific health concerns or benefits are driving your desire to quit smoking?
+
+EXTRACTED DATA (triggers):
+{'triggers': ['health', 'want to quit']}
+
+Your task:
+1. Very Strictly Check for hallucinations (data not in the text).
+2. Very Strictly Check for omissions (important data missed).
+3. Assign a confidence score between 0.0 and 1.0.
+
+Respond ONLY with valid JSON:
+{
+  "confidence": 0.0,
+  "issues": ["<issue 1>", "..."]
+}
+
+
+RESPONSE:
+```json
+{
+  "confidence": 0.8,
+  "issues": ["Missing specific health concerns. The conversation establishes 'health' as a motivator but doesn't elicit details about *which* health concerns are driving the desire to quit. This is a significant omission."]
+}
+```
+
+================================================================================
+OLLAMA CALL 0046
+================================================================================
+timestamp: 2026-04-13T07:26:38.256460+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a very strict clinical data validator. Compare the EXTRACTED DATA against the CONVERSATION.
+
+CONVERSATION:
+Patient: hi
+Counselor: Hi! I'm eDOSTHI, your motivational interviewing chatbot. I'm here to help you quit smoking. What's been your experience with quitting so far?
+Patient: I want to quit
+Counselor: That's a great start! What's motivated you to want to quit smoking now?
+Patient: health
+Counselor: Health is a great reason! What specific health concerns or benefits are driving your desire to quit smoking?
+
+EXTRACTED DATA (advice):
+{'advice': ["That's a great start!", 'Health is a great reason!', 'What specific health concerns or benefits are driving your desire to quit smoking?'], 'evidence': ["Hi! I'm eDOSTHI, your motivational interviewing chatbot. I'm here to help you quit smoking. What's been your experience with quitting so far?", "That's a great start! What’s motivated you to want to quit smoking now?", 'Health is a great reason! What specific health concerns or benefits are driving your desire to quit smoking?']}
+
+Your task:
+1. Very Strictly Check for hallucinations (data not in the text).
+2. Very Strictly Check for omissions (important data missed).
+3. Assign a confidence score between 0.0 and 1.0.
+
+Respond ONLY with valid JSON:
+{
+  "confidence": 0.0,
+  "issues": ["<issue 1>", "..."]
+}
+
+
+RESPONSE:
+```json
+{
+  "confidence": 0.85,
+  "issues": ["Omission: The patient stated 'I want to quit'. This core statement should be included in the 'advice' field."]
+}
+```
+
+================================================================================
+OLLAMA CALL 0047
+================================================================================
+timestamp: 2026-04-13T07:26:42.289235+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a clinical annotation specialist (voter 3 of 3).
+
+CONVERSATION:
+Patient: hi
+Counselor: Hi! I'm eDOSTHI, your motivational interviewing chatbot. I'm here to help you quit smoking. What's been your experience with quitting so far?
+Patient: I want to quit
+Counselor: That's a great start! What's motivated you to want to quit smoking now?
+Patient: health
+Counselor: Health is a great reason! What specific health concerns or benefits are driving your desire to quit smoking?
+
+EXTRACTED SIGNALS:
+- Advice: {'advice': ["That's a great start!", 'Health is a great reason!', 'What specific health concerns or benefits are driving your desire to quit smoking?'], 'evidence': ["Hi! I'm eDOSTHI, your motivational interviewing chatbot. I'm here to help you quit smoking. What's been your experience with quitting so far?", "That's a great start! What’s motivated you to want to quit smoking now?", 'Health is a great reason! What specific health concerns or benefits are driving your desire to quit smoking?'], '_debate_rounds': 0, '_debate_converged': True}
+- Quit Attempts: {'attempts': ['I want to quit', 'health'], 'most_recent_attempt': 'health', 'longest_attempt': 'I want to quit', 'longest_attempt_note': 'Patient’s initial statement of intent to quit smoking.', 'stated_reason': 'Health (general) - seeking specific concerns', 'counselor_response': 'Health is a great reason! What specific health concerns or benefits are driving your desire to quit smoking?', '_debate_rounds': 10, '_debate_converged': True}
+- Readiness / Stage: {'readiness_stage': 'contemplation', 'evidence': "The patient stated 'I want to quit,' indicating they are considering quitting, but the counselor immediately followed up by asking about the motivation, suggesting they are not yet fully committed to the change.", '_debate_rounds': 0, '_debate_converged': True}
+- Concerns: {'concerns': ['health'], 'primary_concern': 'health', 'health_concerns': ['health'], 'agreement_reached': False, 'severity': 'high', '_debate_rounds': 1, '_debate_converged': True}
+- Triggers: {'triggers': ['health', 'want to quit'], '_debate_rounds': 0, '_debate_converged': True}
+
+Based on ALL the above signals, produce a unified clinical annotation.
+Be independent — do not anchor to previous voters.
+
+Respond ONLY with valid JSON:
+{
+  "stage_of_change": "precontemplation|contemplation|preparation|action|maintenance|relapse",
+  "main_concern": "<single most prominent barrier>",
+  "primary_trigger": "<most significant smoking trigger>",
+  "quit_attempt_history": "<concise summary of prior attempts>",
+  "recommended_intervention": ["<strategy 1>", "<strategy 2>", "..."]
+}
+
+
+RESPONSE:
+```json
+{
+  "stage_of_change": "contemplation",
+  "main_concern": "health",
+  "primary_trigger": "want to quit",
+  "quit_attempt_history": "Patient initially stated 'I want to quit'. Subsequent conversation focused on exploring the motivation behind this desire, specifically related to health concerns.",
+  "recommended_intervention": [
+    "Explore specific health concerns driving the desire to quit (e.g., lung cancer, heart disease).",
+    "Assess the patient’s understanding of the risks associated with smoking.",
+    "Discuss potential benefits of quitting, beyond general health (e.g., improved taste, smell, energy).",
+    "Utilize motivational interviewing techniques to strengthen the patient’s commitment to change."
+  ]
+}
+```
+
+================================================================================
+OLLAMA CALL 0048
+================================================================================
+timestamp: 2026-04-13T07:26:45.714557+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a clinical annotation specialist (voter 2 of 3).
+
+CONVERSATION:
+Patient: hi
+Counselor: Hi! I'm eDOSTHI, your motivational interviewing chatbot. I'm here to help you quit smoking. What's been your experience with quitting so far?
+Patient: I want to quit
+Counselor: That's a great start! What's motivated you to want to quit smoking now?
+Patient: health
+Counselor: Health is a great reason! What specific health concerns or benefits are driving your desire to quit smoking?
+
+EXTRACTED SIGNALS:
+- Advice: {'advice': ["That's a great start!", 'Health is a great reason!', 'What specific health concerns or benefits are driving your desire to quit smoking?'], 'evidence': ["Hi! I'm eDOSTHI, your motivational interviewing chatbot. I'm here to help you quit smoking. What's been your experience with quitting so far?", "That's a great start! What’s motivated you to want to quit smoking now?", 'Health is a great reason! What specific health concerns or benefits are driving your desire to quit smoking?'], '_debate_rounds': 0, '_debate_converged': True}
+- Quit Attempts: {'attempts': ['I want to quit', 'health'], 'most_recent_attempt': 'health', 'longest_attempt': 'I want to quit', 'longest_attempt_note': 'Patient’s initial statement of intent to quit smoking.', 'stated_reason': 'Health (general) - seeking specific concerns', 'counselor_response': 'Health is a great reason! What specific health concerns or benefits are driving your desire to quit smoking?', '_debate_rounds': 10, '_debate_converged': True}
+- Readiness / Stage: {'readiness_stage': 'contemplation', 'evidence': "The patient stated 'I want to quit,' indicating they are considering quitting, but the counselor immediately followed up by asking about the motivation, suggesting they are not yet fully committed to the change.", '_debate_rounds': 0, '_debate_converged': True}
+- Concerns: {'concerns': ['health'], 'primary_concern': 'health', 'health_concerns': ['health'], 'agreement_reached': False, 'severity': 'high', '_debate_rounds': 1, '_debate_converged': True}
+- Triggers: {'triggers': ['health', 'want to quit'], '_debate_rounds': 0, '_debate_converged': True}
+
+Based on ALL the above signals, produce a unified clinical annotation.
+Be independent — do not anchor to previous voters.
+
+Respond ONLY with valid JSON:
+{
+  "stage_of_change": "precontemplation|contemplation|preparation|action|maintenance|relapse",
+  "main_concern": "<single most prominent barrier>",
+  "primary_trigger": "<most significant smoking trigger>",
+  "quit_attempt_history": "<concise summary of prior attempts>",
+  "recommended_intervention": ["<strategy 1>", "<strategy 2>", "..."]
+}
+
+
+RESPONSE:
+```json
+{
+  "stage_of_change": "contemplation",
+  "main_concern": "health",
+  "primary_trigger": "want to quit",
+  "quit_attempt_history": "Patient initially stated 'I want to quit'. Subsequent conversation focused on exploring the motivation behind this desire, specifically related to health concerns.",
+  "recommended_intervention": [
+    "Explore specific health concerns driving the desire to quit (e.g., lung cancer, heart disease).",
+    "Assess the patient's understanding of the risks associated with smoking.",
+    "Discuss potential benefits of quitting (e.g., improved breathing, increased energy).",
+    "Utilize motivational interviewing techniques to strengthen the patient’s commitment to change."
+  ]
+}
+```
+
+================================================================================
+OLLAMA CALL 0049
+================================================================================
+timestamp: 2026-04-13T07:26:48.866075+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a clinical annotation specialist (voter 1 of 3).
+
+CONVERSATION:
+Patient: hi
+Counselor: Hi! I'm eDOSTHI, your motivational interviewing chatbot. I'm here to help you quit smoking. What's been your experience with quitting so far?
+Patient: I want to quit
+Counselor: That's a great start! What's motivated you to want to quit smoking now?
+Patient: health
+Counselor: Health is a great reason! What specific health concerns or benefits are driving your desire to quit smoking?
+
+EXTRACTED SIGNALS:
+- Advice: {'advice': ["That's a great start!", 'Health is a great reason!', 'What specific health concerns or benefits are driving your desire to quit smoking?'], 'evidence': ["Hi! I'm eDOSTHI, your motivational interviewing chatbot. I'm here to help you quit smoking. What's been your experience with quitting so far?", "That's a great start! What’s motivated you to want to quit smoking now?", 'Health is a great reason! What specific health concerns or benefits are driving your desire to quit smoking?'], '_debate_rounds': 0, '_debate_converged': True}
+- Quit Attempts: {'attempts': ['I want to quit', 'health'], 'most_recent_attempt': 'health', 'longest_attempt': 'I want to quit', 'longest_attempt_note': 'Patient’s initial statement of intent to quit smoking.', 'stated_reason': 'Health (general) - seeking specific concerns', 'counselor_response': 'Health is a great reason! What specific health concerns or benefits are driving your desire to quit smoking?', '_debate_rounds': 10, '_debate_converged': True}
+- Readiness / Stage: {'readiness_stage': 'contemplation', 'evidence': "The patient stated 'I want to quit,' indicating they are considering quitting, but the counselor immediately followed up by asking about the motivation, suggesting they are not yet fully committed to the change.", '_debate_rounds': 0, '_debate_converged': True}
+- Concerns: {'concerns': ['health'], 'primary_concern': 'health', 'health_concerns': ['health'], 'agreement_reached': False, 'severity': 'high', '_debate_rounds': 1, '_debate_converged': True}
+- Triggers: {'triggers': ['health', 'want to quit'], '_debate_rounds': 0, '_debate_converged': True}
+
+Based on ALL the above signals, produce a unified clinical annotation.
+Be independent — do not anchor to previous voters.
+
+Respond ONLY with valid JSON:
+{
+  "stage_of_change": "precontemplation|contemplation|preparation|action|maintenance|relapse",
+  "main_concern": "<single most prominent barrier>",
+  "primary_trigger": "<most significant smoking trigger>",
+  "quit_attempt_history": "<concise summary of prior attempts>",
+  "recommended_intervention": ["<strategy 1>", "<strategy 2>", "..."]
+}
+
+
+RESPONSE:
+```json
+{
+  "stage_of_change": "contemplation",
+  "main_concern": "health",
+  "primary_trigger": "want to quit",
+  "quit_attempt_history": "Patient initially stated 'I want to quit'. Subsequent conversation focused on exploring the motivation behind this desire, specifically related to health concerns.",
+  "recommended_intervention": [
+    "Explore specific health concerns driving the desire to quit (e.g., lung cancer, heart disease).",
+    "Assess the patient’s understanding of the risks associated with smoking.",
+    "Utilize open-ended questions to further elicit the patient’s thoughts and feelings about quitting."
+  ]
+}
+```
+
+================================================================================
+OLLAMA CALL 0050
+================================================================================
+timestamp: 2026-04-13T07:26:54.956464+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a clinical reasoning specialist producing the final annotation for a tobacco-cessation training dataset.
+
+CONVERSATION:
+Patient: hi
+Counselor: Hi! I'm eDOSTHI, your motivational interviewing chatbot. I'm here to help you quit smoking. What's been your experience with quitting so far?
+Patient: I want to quit
+Counselor: That's a great start! What's motivated you to want to quit smoking now?
+Patient: health
+Counselor: Health is a great reason! What specific health concerns or benefits are driving your desire to quit smoking?
+
+CONSENSUS ANNOTATION:
+{'stage_of_change': 'contemplation', 'main_concern': 'health', 'primary_trigger': 'want to quit', 'quit_attempt_history': "Patient initially stated 'I want to quit'. Subsequent conversation focused on exploring the motivation behind this desire, specifically related to health concerns.", 'recommended_intervention': ['Explore specific health concerns driving the desire to quit (e.g., lung cancer, heart disease).', 'Assess the patient’s understanding of the risks associated with smoking.', 'Discuss potential benefits of quitting, beyond general health (e.g., improved taste, smell, energy).', 'Utilize motivational interviewing techniques to strengthen the patient’s commitment to change.', "Assess the patient's understanding of the risks associated with smoking.", 'Discuss potential benefits of quitting (e.g., improved breathing, increased energy).', 'Utilize open-ended questions to further elicit the patient’s thoughts and feelings about quitting.'], 'vote_agreement': 1.0, 'dissenting_fields': []}
+
+Your tasks:
+1. Validate that the consensus annotation is internally consistent and supported by the conversation.
+2. Write a reasoning_summary: 1–2 sentences that explain WHY this patient is at this stage,
+   what their primary barrier is, and what intervention approach is recommended.
+
+Respond ONLY with valid JSON:
+{
+  "stage_of_change": "<from consensus>",
+  "main_concern": "<from consensus>",
+  "primary_trigger": "<from consensus>",
+  "quit_attempt_history": "<from consensus>",
+  "recommended_intervention": ["<strategy 1>", "..."],
+  "reasoning_summary": "<1–2 sentence clinical rationale>",
+  "confidence_score": 0.0
+}
+
+
+RESPONSE:
+```json
+{
+  "stage_of_change": "contemplation",
+  "main_concern": "health",
+  "primary_trigger": "want to quit",
+  "quit_attempt_history": "The patient expressed a desire to quit smoking, prompting the counselor to explore the underlying motivations, specifically focusing on health concerns.",
+  "recommended_intervention": [
+    "Explore specific health concerns driving the desire to quit (e.g., lung cancer, heart disease).",
+    "Assess the patient’s understanding of the risks associated with smoking.",
+    "Discuss potential benefits of quitting, beyond general health (e.g., improved taste, smell, energy).",
+    "Utilize motivational interviewing techniques to strengthen the patient’s commitment to change.",
+    "Assess the patient's understanding of the risks associated with smoking.",
+    "Discuss potential benefits of quitting (e.g., improved breathing, increased energy).",
+    "Utilize open-ended questions to further elicit the patient’s thoughts and feelings about quitting."
+  ],
+  "reasoning_summary": "The patient is in the contemplation stage, having articulated a desire to quit, and their primary motivation is health concerns. The counselor is appropriately recommending a motivational interviewing approach to delve deeper into these concerns and build commitment to change.",
+  "confidence_score": 1.0
+}
+```

@@ -1,0 +1,49 @@
+=== LLM Response Log — 20260416_194424 ===
+
+--- [CONFIDENCE_CHECK] attempt @ 19:44:27.883 ---
+{
+  "confidence": 0.5,
+  "issues": [
+    "Issue 1: Grounding and Veracity - The first attempt, 'The patient has previously attempted to quit smoking because of cravings,' is a logical leap. While the patient *states* they find it difficult due to cravings, this is framed as an 'attempt' which requires more explicit language. The source conversation doesn't explicitly state a prior attempt, only a current struggle.",
+    "Issue 2: Omission Check - The conversation lacks any explicit mention of a previous quit attempt. The extraction incorrectly infers an attempt based on the patient's stated difficulty.  There's no evidence of a prior action taken to quit.",
+    "Issue 3: Hallucination Check - No hallucinations detected in this specific extraction."
+  ]
+}
+
+--- [CONFIDENCE_CHECK] readiness @ 19:44:31.118 ---
+{
+  "confidence": 0.7,
+  "issues": [
+    "The classification of Precontemplation (implied by the initial focus on cravings and lack of coping strategies) is defensible given the patient's initial statement about difficulty quitting due to cravings and lack of alternative coping mechanisms. However, the counselor's subsequent suggestions of alternative strategies and asking about 'healthy ways to manage those feelings' leans towards a slightly higher stage. There's a minor evidence gap.",
+    "There is a potential contradiction. The patient stating 'Nothing. Can you suggest some' immediately after discussing cravings suggests a move *towards* contemplation or preparation, as they are actively seeking solutions. Ignoring this shifts the classification towards precontemplation."
+  ]
+}
+
+--- [CONFIDENCE_CHECK] concern @ 19:44:34.419 ---
+{
+  "confidence": 0.85,
+  "issues": [
+    "Minor omission: The patient's initial statement regarding difficulty quitting due to cravings ('I find it difficult to quit smokung because of my cravings') represents a significant physiological concern (cravings) that was not fully captured. While 'Cravings for cigarettes' is listed, the raw statement's directness warrants a higher confidence score.",
+    "Category Alignment - Psychological: The concern regarding 'Stress' and its impact on coping mechanisms leans heavily into the psychological category. While the extraction includes 'Difficulty managing stress,' a more precise categorization within psychological concerns (e.g., anxiety related to stress) could be beneficial."
+  ]
+}
+
+--- [CONFIDENCE_CHECK] triggers @ 19:44:37.022 ---
+{
+  "confidence": 0.6,
+  "issues": [
+    "Omission Detection: The conversation clearly indicates 'cravings' as a trigger. This is missing from the extraction. The phrase 'I find it difficult to quit smokung because of my cravings' directly states this.",
+    "Classification Accuracy: While 'stress' is correctly identified, the extraction should also include 'cravings' as a trigger type. It's a core component of the patient's reported struggle and a key trigger identified by the counselor."
+  ]
+}
+
+--- [CONFIDENCE_CHECK] advice @ 19:44:40.682 ---
+{
+  "confidence": 0.95,
+  "issues": [
+    "Omission: The patient explicitly states 'Stress' as a trigger. This core piece of information is not fully captured in the 'evidence' list. It should be included as a key element of the trigger identified.",
+    "Omission: The counselor's initial question 'What's been your biggest struggle with quitting so far?' and the patient's response 'I find it difficult to quit smokung because of my cravings' are not included in the extracted data. These are crucial for context and understanding the problem.",
+    "Hallucination: The inclusion of 'Quitting smoking is a journey, and it\u2019s okay to take it one step at a time.' is a generic statement and not directly derived from the conversation. While supportive, it's an added interpretation rather than an extraction."
+  ]
+}
+

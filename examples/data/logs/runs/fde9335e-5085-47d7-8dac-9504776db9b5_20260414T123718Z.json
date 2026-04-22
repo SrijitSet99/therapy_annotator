@@ -1,0 +1,371 @@
+{
+  "events": {
+    "agent_manager": {
+      "confidence_result": {
+        "advice": {
+          "confidence": 0.8,
+          "issues": [
+            "Omission: The patient explicitly stated 'I want to quit smoking' and 'I have tried earlier but failed'. This foundational information is not fully captured in the 'evidence' list. It should be included to provide a complete picture of the patient's situation.",
+            "Minor Hallucination: The phrase 'Stress from workload can be a tough one' is a slight extrapolation. While the counselor acknowledges workload as a trigger, the *statement* itself wasn't directly stated by the patient. It's a reasonable inference, but should be flagged."
+          ],
+          "severity": "none"
+        },
+        "attempt": {
+          "confidence": 0.85,
+          "issues": [
+            "Minor omission: The extracted data includes 'The patient previously attempted to quit smoking, but failed.' which is a slightly redundant restatement of the original data. While technically accurate, it adds unnecessary phrasing.",
+            "Minor omission: The conversation doesn't explicitly state *how many* previous attempts the patient has made. The data simply states 'I have tried earlier but failed'. A more precise extraction would benefit from quantifying the attempts."
+          ],
+          "severity": "none"
+        },
+        "concern": {
+          "confidence": 0.95,
+          "issues": [],
+          "severity": "none"
+        },
+        "readiness": {
+          "confidence": 0.85,
+          "issues": [
+            "The extraction correctly identifies the patient's readiness stage as 'contemplation' based on the provided conversation. However, the 'evidence' section could be more precise. While the patient's statements support contemplation, it doesn't fully capture the nuance of their previous failures. A stronger statement would acknowledge the specific challenges identified (triggers, workload stress) rather than simply stating they 'have tried earlier but failed'.",
+            "The extraction misses the specific triggers identified by the patient – namely, 'workload'. This is a crucial piece of information regarding the patient's situation and should be included in the 'evidence' section for a more complete assessment."
+          ],
+          "severity": "none"
+        },
+        "triggers": {
+          "confidence": 0.8,
+          "issues": [
+            "Omission: The patient explicitly states 'workload' as a trigger. While 'stress' is correctly identified, the extraction misses the direct mention of 'workload' as a trigger. This represents a significant omission."
+          ],
+          "severity": "none"
+        }
+      },
+      "confidence_results": {
+        "advice": {
+          "confidence": 0.8,
+          "issues": [
+            "Omission: The patient explicitly stated 'I want to quit smoking' and 'I have tried earlier but failed'. This foundational information is not fully captured in the 'evidence' list. It should be included to provide a complete picture of the patient's situation.",
+            "Minor Hallucination: The phrase 'Stress from workload can be a tough one' is a slight extrapolation. While the counselor acknowledges workload as a trigger, the *statement* itself wasn't directly stated by the patient. It's a reasonable inference, but should be flagged."
+          ],
+          "severity": "none"
+        },
+        "attempt": {
+          "confidence": 0.85,
+          "issues": [
+            "Minor omission: The extracted data includes 'The patient previously attempted to quit smoking, but failed.' which is a slightly redundant restatement of the original data. While technically accurate, it adds unnecessary phrasing.",
+            "Minor omission: The conversation doesn't explicitly state *how many* previous attempts the patient has made. The data simply states 'I have tried earlier but failed'. A more precise extraction would benefit from quantifying the attempts."
+          ],
+          "severity": "none"
+        },
+        "concern": {
+          "confidence": 0.95,
+          "issues": [],
+          "severity": "none"
+        },
+        "readiness": {
+          "confidence": 0.85,
+          "issues": [
+            "The extraction correctly identifies the patient's readiness stage as 'contemplation' based on the provided conversation. However, the 'evidence' section could be more precise. While the patient's statements support contemplation, it doesn't fully capture the nuance of their previous failures. A stronger statement would acknowledge the specific challenges identified (triggers, workload stress) rather than simply stating they 'have tried earlier but failed'.",
+            "The extraction misses the specific triggers identified by the patient – namely, 'workload'. This is a crucial piece of information regarding the patient's situation and should be included in the 'evidence' section for a more complete assessment."
+          ],
+          "severity": "none"
+        },
+        "triggers": {
+          "confidence": 0.8,
+          "issues": [
+            "Omission: The patient explicitly states 'workload' as a trigger. While 'stress' is correctly identified, the extraction misses the direct mention of 'workload' as a trigger. This represents a significant omission."
+          ],
+          "severity": "none"
+        }
+      },
+      "extractor_output": {
+        "advice": {
+          "advice": [
+            "It can be tough to quit the first time around.",
+            "Triggers can be powerful!",
+            "How do you usually cope with stress at work, and how do you think quitting smoking might change your approach to managing stress?"
+          ],
+          "evidence": [
+            "It can be tough to quit the first time around. Can you tell me more about what didn't work for you in your previous attempts? Was there a particular challenge or setback that led to relapse?",
+            "Triggers can be powerful! What are some common situations, emotions, or people that tend to make you want to smoke when you're trying to quit?",
+            "Stress from workload can be a tough one. How do you usually cope with stress at work, and how do you think quitting smoking might change your approach to managing stress?"
+          ]
+        },
+        "attempt": {
+          "attempts": [
+            "The patient previously attempted to quit smoking, but failed.",
+            "The patient has tried earlier but failed"
+          ],
+          "evidence": [
+            "Patient: I have tried earlier but failed",
+            "Patient: I want to quit smoking"
+          ]
+        },
+        "concern": {
+          "concerns": [
+            "triggers",
+            "stress"
+          ],
+          "evidence": [
+            "\"It is mainly my triggers\"",
+            "\"Stress from workload can be a tough one.\""
+          ]
+        },
+        "readiness": {
+          "evidence": "The patient states, \"I want to quit smoking,\" indicating they are considering quitting, but also admits, \"I have tried earlier but failed,\" suggesting they are in the contemplation stage where they are aware of the problem and considering a change but haven't yet committed to action.",
+          "readiness_stage": "contemplation"
+        },
+        "triggers": {
+          "evidence": [],
+          "triggers": [
+            "workload",
+            "stress"
+          ]
+        }
+      },
+      "final_output": {
+        "advice": {
+          "_debate_converged": true,
+          "_debate_rounds": 0,
+          "advice": [
+            "It can be tough to quit the first time around.",
+            "Triggers can be powerful!",
+            "How do you usually cope with stress at work, and how do you think quitting smoking might change your approach to managing stress?"
+          ],
+          "evidence": [
+            "It can be tough to quit the first time around. Can you tell me more about what didn't work for you in your previous attempts? Was there a particular challenge or setback that led to relapse?",
+            "Triggers can be powerful! What are some common situations, emotions, or people that tend to make you want to smoke when you're trying to quit?",
+            "Stress from workload can be a tough one. How do you usually cope with stress at work, and how do you think quitting smoking might change your approach to managing stress?"
+          ]
+        },
+        "attempt": {
+          "_debate_converged": true,
+          "_debate_rounds": 0,
+          "attempts": [
+            "The patient previously attempted to quit smoking, but failed.",
+            "The patient has tried earlier but failed"
+          ],
+          "evidence": [
+            "Patient: I have tried earlier but failed",
+            "Patient: I want to quit smoking"
+          ]
+        },
+        "concern": {
+          "_debate_converged": true,
+          "_debate_rounds": 0,
+          "concerns": [
+            "triggers",
+            "stress"
+          ],
+          "evidence": [
+            "\"It is mainly my triggers\"",
+            "\"Stress from workload can be a tough one.\""
+          ]
+        },
+        "readiness": {
+          "_debate_converged": true,
+          "_debate_rounds": 0,
+          "evidence": "The patient states, \"I want to quit smoking,\" indicating they are considering quitting, but also admits, \"I have tried earlier but failed,\" suggesting they are in the contemplation stage where they are aware of the problem and considering a change but haven't yet committed to action.",
+          "readiness_stage": "contemplation"
+        },
+        "triggers": {
+          "_debate_converged": true,
+          "_debate_rounds": 0,
+          "evidence": [],
+          "triggers": [
+            "workload",
+            "stress"
+          ]
+        }
+      }
+    },
+    "consensus_agent": {
+      "output": {
+        "consensus": {
+          "dissenting_fields": [],
+          "main_concern": "triggers",
+          "primary_trigger": "workload",
+          "quit_attempt_history": "The patient has previously attempted to quit smoking but failed.",
+          "recommended_intervention": [
+            "Explore specific triggers related to workload in detail.",
+            "Develop coping mechanisms for stress related to workload.",
+            "Address previous relapse patterns and identify contributing factors.",
+            "Implement strategies to manage cravings associated with stressful situations.",
+            "Identify potential support systems to manage stress and cravings."
+          ],
+          "stage_of_change": "contemplation",
+          "vote_agreement": 0.917
+        }
+      }
+    },
+    "longitudinal_sanity": {
+      "output": {
+        "longitudinal_sanity": {
+          "flags": [],
+          "passed": true,
+          "severity": "none"
+        }
+      }
+    },
+    "profile_update_agent": {
+      "output": {
+        "dataset_row": {
+          "confidence_score": 0.95,
+          "debate_rounds_used": 0,
+          "inconsistencies": [],
+          "longitudinal_flags": [],
+          "longitudinal_sanity_passed": true,
+          "main_concern": "triggers",
+          "primary_trigger": "workload",
+          "quit_attempt_history": "The patient has previously attempted to quit smoking but failed.",
+          "reasoning_summary": "The patient is in the contemplation stage, recognizing a desire to quit and acknowledging past failures. Their primary barrier is the trigger of workload-related stress, necessitating interventions focused on stress management and coping strategies.",
+          "recommended_intervention": [
+            "Explore specific triggers related to workload in detail.",
+            "Develop coping mechanisms for stress related to workload.",
+            "Address previous relapse patterns and identify contributing factors.",
+            "Implement strategies to manage cravings associated with stressful situations.",
+            "Identify potential support systems to manage stress and cravings."
+          ],
+          "sanity_passed": true,
+          "session_number": 1,
+          "stage_of_change": "contemplation",
+          "vote_agreement": 0.917
+        },
+        "longitudinal_output": {
+          "current_annotation": {
+            "confidence_score": 0.95,
+            "debate_rounds_used": 0,
+            "inconsistencies": [],
+            "longitudinal_flags": [],
+            "longitudinal_sanity_passed": true,
+            "main_concern": "triggers",
+            "primary_trigger": "workload",
+            "quit_attempt_history": "The patient has previously attempted to quit smoking but failed.",
+            "reasoning_summary": "The patient is in the contemplation stage, recognizing a desire to quit and acknowledging past failures. Their primary barrier is the trigger of workload-related stress, necessitating interventions focused on stress management and coping strategies.",
+            "recommended_intervention": [
+              "Explore specific triggers related to workload in detail.",
+              "Develop coping mechanisms for stress related to workload.",
+              "Address previous relapse patterns and identify contributing factors.",
+              "Implement strategies to manage cravings associated with stressful situations.",
+              "Identify potential support systems to manage stress and cravings."
+            ],
+            "sanity_passed": true,
+            "session_number": 1,
+            "stage_of_change": "contemplation",
+            "vote_agreement": 0.917
+          },
+          "delta": null,
+          "interventions_tried": [],
+          "longitudinal_flags": [],
+          "overall_progress": "unknown",
+          "patient_id": "fde9335e-5085-47d7-8dac-9504776db9b5",
+          "persistent_concerns": [],
+          "persistent_triggers": [],
+          "relapse_detected": false,
+          "session_number": 1,
+          "stage_trajectory": [
+            "contemplation"
+          ],
+          "stagnation_detected": false
+        },
+        "patient_profile_id": "fde9335e-5085-47d7-8dac-9504776db9b5",
+        "session_count": 1
+      }
+    },
+    "reasoning_agent": {
+      "output": {
+        "dataset_row": {
+          "confidence_score": 0.95,
+          "debate_rounds_used": 0,
+          "inconsistencies": [],
+          "main_concern": "triggers",
+          "primary_trigger": "workload",
+          "quit_attempt_history": "The patient has previously attempted to quit smoking but failed.",
+          "reasoning_summary": "The patient is in the contemplation stage, recognizing a desire to quit and acknowledging past failures. Their primary barrier is the trigger of workload-related stress, necessitating interventions focused on stress management and coping strategies.",
+          "recommended_intervention": [
+            "Explore specific triggers related to workload in detail.",
+            "Develop coping mechanisms for stress related to workload.",
+            "Address previous relapse patterns and identify contributing factors.",
+            "Implement strategies to manage cravings associated with stressful situations.",
+            "Identify potential support systems to manage stress and cravings."
+          ],
+          "sanity_passed": true,
+          "stage_of_change": "contemplation",
+          "vote_agreement": 0.917
+        }
+      }
+    },
+    "run_chat": {
+      "final_result": {
+        "dataset_row": {
+          "confidence_score": 0.95,
+          "debate_rounds_used": 0,
+          "inconsistencies": [],
+          "longitudinal_flags": [],
+          "longitudinal_sanity_passed": true,
+          "main_concern": "triggers",
+          "primary_trigger": "workload",
+          "quit_attempt_history": "The patient has previously attempted to quit smoking but failed.",
+          "reasoning_summary": "The patient is in the contemplation stage, recognizing a desire to quit and acknowledging past failures. Their primary barrier is the trigger of workload-related stress, necessitating interventions focused on stress management and coping strategies.",
+          "recommended_intervention": [
+            "Explore specific triggers related to workload in detail.",
+            "Develop coping mechanisms for stress related to workload.",
+            "Address previous relapse patterns and identify contributing factors.",
+            "Implement strategies to manage cravings associated with stressful situations.",
+            "Identify potential support systems to manage stress and cravings."
+          ],
+          "sanity_passed": true,
+          "session_number": 1,
+          "stage_of_change": "contemplation",
+          "vote_agreement": 0.917
+        },
+        "longitudinal_output": {
+          "current_annotation": {
+            "confidence_score": 0.95,
+            "debate_rounds_used": 0,
+            "inconsistencies": [],
+            "longitudinal_flags": [],
+            "longitudinal_sanity_passed": true,
+            "main_concern": "triggers",
+            "primary_trigger": "workload",
+            "quit_attempt_history": "The patient has previously attempted to quit smoking but failed.",
+            "reasoning_summary": "The patient is in the contemplation stage, recognizing a desire to quit and acknowledging past failures. Their primary barrier is the trigger of workload-related stress, necessitating interventions focused on stress management and coping strategies.",
+            "recommended_intervention": [
+              "Explore specific triggers related to workload in detail.",
+              "Develop coping mechanisms for stress related to workload.",
+              "Address previous relapse patterns and identify contributing factors.",
+              "Implement strategies to manage cravings associated with stressful situations.",
+              "Identify potential support systems to manage stress and cravings."
+            ],
+            "sanity_passed": true,
+            "session_number": 1,
+            "stage_of_change": "contemplation",
+            "vote_agreement": 0.917
+          },
+          "delta": null,
+          "interventions_tried": [],
+          "longitudinal_flags": [],
+          "overall_progress": "unknown",
+          "patient_id": "fde9335e-5085-47d7-8dac-9504776db9b5",
+          "persistent_concerns": [],
+          "persistent_triggers": [],
+          "relapse_detected": false,
+          "session_number": 1,
+          "stage_trajectory": [
+            "contemplation"
+          ],
+          "stagnation_detected": false
+        },
+        "patient_id": "fde9335e-5085-47d7-8dac-9504776db9b5",
+        "session_number": 1
+      },
+      "transcript": {
+        "session_id": "fde9335e-5085-47d7-8dac-9504776db9b5",
+        "transcript": "Patient: Hi\nCounselor: Hello! I'm eDOSTHI. You've taken the first step towards quitting smoking by talking to me. What's been your biggest struggle with quitting so far?\nPatient: I want to quit smoking\nCounselor: That's a great decision! What specifically motivates you to quit smoking now, and what do you hope to gain from being smoke-free?\nPatient: I have tried earlier but failed\nCounselor: It can be tough to quit the first time around. Can you tell me more about what didn't work for you in your previous attempts? Was there a particular challenge or setback that led to relapse?\nPatient: It is mainly my triggers\nCounselor: Triggers can be powerful! What are some common situations, emotions, or people that tend to make you want to smoke when you're trying to quit?\nPatient: Work load\nCounselor: Stress from workload can be a tough one. How do you usually cope with stress at work, and how do you think quitting smoking might change your approach to managing stress?"
+      }
+    }
+  },
+  "meta": {
+    "session_id": "fde9335e-5085-47d7-8dac-9504776db9b5",
+    "started_at": "20260414T123718Z"
+  }
+}

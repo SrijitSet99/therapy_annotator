@@ -1,0 +1,124 @@
+=== LLM Response Log — 20260416_165517 ===
+
+--- [EXTRACTOR] attempt @ 16:55:26.812 ---
+{
+  "attempts": [
+    "Patient attempted to gradually reduce smoking with the intention to quit.",
+    "Patient attempted to temporarily abstain for a short period."
+  ],
+  "evidence": [
+    "Patient: What motivated you to want to kick the habit?",
+    "Patient: hi"
+  ]
+}
+
+--- [DEBATE] attempt @ 16:55:31.641 ---
+{
+  "attempts": [
+    "Patient attempted to gradually reduce smoking with the intention to quit.",
+    "Patient attempted to temporarily abstain for a short period."
+  ],
+  "evidence": [
+    "Patient: What motivated you to want to kick the habit?",
+    "Patient: hi"
+  ],
+  "_debate_rounds": 1,
+  "_debate_converged": false
+}
+
+--- [EXTRACTOR] readiness @ 16:55:31.644 ---
+{
+  "readiness_stage": "contemplation",
+  "evidence": "The patient simply said 'hi,' indicating they've recognized the problem but haven't yet made a firm commitment to change. The counselor's response acknowledges their desire to quit ('What motivated you to want to kick the habit?') suggesting they are in the early stages of considering the change."
+}
+
+--- [DEBATE] readiness @ 16:55:37.897 ---
+{
+  "readiness_stage": "contemplation",
+  "evidence": "The patient simply said 'hi,' indicating they've recognized the problem but haven't yet made a firm commitment to change. The counselor's response acknowledges their desire to quit ('What motivated you to want to kick the habit?') suggesting they are in the early stages of considering the change.",
+  "_debate_rounds": 0,
+  "_debate_converged": true
+}
+
+--- [EXTRACTOR] concern @ 16:55:37.899 ---
+{
+  "concerns": [
+    "weight gain",
+    "withdrawal symptoms",
+    "social pressure"
+  ],
+  "evidence": [
+    "\"What motivated you to want to kick the habit?\"",
+    "Implied concern regarding potential discomfort during cessation, as the patient is initiating a process to quit."
+  ]
+}
+
+--- [DEBATE] concern @ 16:55:41.588 ---
+{
+  "concerns": [
+    "weight gain",
+    "withdrawal symptoms",
+    "social pressure"
+  ],
+  "evidence": [
+    "\"What motivated you to want to kick the habit?\"",
+    "Implied concern regarding potential discomfort during cessation, as the patient is initiating a process to quit."
+  ],
+  "_debate_rounds": 1,
+  "_debate_converged": false
+}
+
+--- [EXTRACTOR] triggers @ 16:55:41.590 ---
+{
+  "triggers": [
+    "stress",
+    "after meals",
+    "morning routine",
+    "boredom"
+  ],
+  "evidence": []
+}
+
+--- [DEBATE] triggers @ 16:55:46.776 ---
+{
+  "triggers": [
+    "stress",
+    "after meals",
+    "morning routine",
+    "boredom"
+  ],
+  "evidence": [],
+  "_debate_rounds": 1,
+  "_debate_converged": false
+}
+
+--- [EXTRACTOR] advice @ 16:55:46.778 ---
+{
+  "advice": [
+    "Congratulate the patient on taking the first step.",
+    "Explore the patient's motivation for quitting.",
+    "Present as a friendly and supportive AI coach."
+  ],
+  "evidence": [
+    "Hi! I'm eDOSTHI, your friendly AI coach. You've taken the first step towards quitting smoking - that's amazing!",
+    "What motivated you to want to kick the habit?",
+    "Hi! I'm eDOSTHI, your friendly AI coach."
+  ]
+}
+
+--- [DEBATE] advice @ 16:55:48.237 ---
+{
+  "advice": [
+    "Congratulate the patient on taking the first step.",
+    "Explore the patient's motivation for quitting.",
+    "Present as a friendly and supportive AI coach."
+  ],
+  "evidence": [
+    "Hi! I'm eDOSTHI, your friendly AI coach. You've taken the first step towards quitting smoking - that's amazing!",
+    "What motivated you to want to kick the habit?",
+    "Hi! I'm eDOSTHI, your friendly AI coach."
+  ],
+  "_debate_rounds": 0,
+  "_debate_converged": true
+}
+

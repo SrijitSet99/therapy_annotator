@@ -1,0 +1,288 @@
+{
+  "events": {
+    "agent_manager": {
+      "confidence_results": {},
+      "extractor_output": {
+        "advice": {
+          "advice": [
+            "Ready to help you kick the habit and live smoke-free?",
+            "What's been on your mind lately about quitting smoking?"
+          ],
+          "evidence": [
+            "\"Ready to help you kick the habit and live smoke-free?\"",
+            "\"What's been on your mind lately about quitting smoking?\""
+          ]
+        },
+        "attempt": {
+          "attempts": [
+            "Patient attempted to use nicotine gum to quit smoking.",
+            "Patient attempted to gradually reduce smoking with the intention to quit."
+          ],
+          "evidence": [
+            "Patient: hi",
+            "Patient: What's been on your mind lately about quitting smoking?"
+          ]
+        },
+        "concern": {
+          "concerns": [
+            "What's been on your mind lately about quitting smoking?"
+          ],
+          "evidence": [
+            "Patient: \"What's been on your mind lately about quitting smoking?\""
+          ]
+        },
+        "readiness": {
+          "evidence": "The patient simply said \"hi,\" indicating they haven't yet engaged with the topic of quitting smoking or expressed any thoughts about it, fitting the definition of precontemplation – not considering quitting in the next 6 months.",
+          "readiness_stage": "precontemplation"
+        },
+        "triggers": {
+          "evidence": [],
+          "triggers": [
+            "stress",
+            "after meals",
+            "morning routine",
+            "boredom"
+          ]
+        }
+      },
+      "final_output": {
+        "advice": {
+          "advice": [
+            "Ready to help you kick the habit and live smoke-free?",
+            "What's been on your mind lately about quitting smoking?"
+          ],
+          "evidence": [
+            "\"Ready to help you kick the habit and live smoke-free?\"",
+            "\"What's been on your mind lately about quitting smoking?\""
+          ]
+        },
+        "attempt": {
+          "attempts": [
+            "Patient attempted to use nicotine gum to quit smoking.",
+            "Patient attempted to gradually reduce smoking with the intention to quit."
+          ],
+          "evidence": [
+            "Patient: hi",
+            "Patient: What's been on your mind lately about quitting smoking?"
+          ]
+        },
+        "concern": {
+          "concerns": [
+            "What's been on your mind lately about quitting smoking?"
+          ],
+          "evidence": [
+            "Patient: \"What's been on your mind lately about quitting smoking?\""
+          ]
+        },
+        "readiness": {
+          "evidence": "The patient simply said \"hi,\" indicating they haven't yet engaged with the topic of quitting smoking or expressed any thoughts about it, fitting the definition of precontemplation – not considering quitting in the next 6 months.",
+          "readiness_stage": "precontemplation"
+        },
+        "triggers": {
+          "evidence": [],
+          "triggers": [
+            "stress",
+            "after meals",
+            "morning routine",
+            "boredom"
+          ]
+        }
+      }
+    },
+    "consensus_agent": {
+      "output": {
+        "consensus": {
+          "dissenting_fields": [],
+          "main_concern": "Lack of engagement with the topic of quitting smoking",
+          "primary_trigger": "N/A",
+          "quit_attempt_history": "Patient has previously attempted to quit smoking using nicotine gum and gradual reduction strategies.",
+          "recommended_intervention": [
+            "Explore the patient's current thoughts and feelings regarding smoking.",
+            "Assess the reasons behind previous quit attempts and any challenges encountered.",
+            "Begin with open-ended questions to understand the patient's perspective and motivations.",
+            "Assess the reasons behind previous attempts and any barriers to quitting.",
+            "Start with open-ended questions to understand the patient's perspective and motivations.",
+            "Assess the reasons behind previous quit attempts and any challenges faced."
+          ],
+          "stage_of_change": "precontemplation",
+          "vote_agreement": 0.917
+        }
+      }
+    },
+    "longitudinal_sanity": {
+      "output": {
+        "longitudinal_sanity": {
+          "flags": [],
+          "passed": true,
+          "severity": "none"
+        }
+      }
+    },
+    "profile_update_agent": {
+      "output": {
+        "dataset_row": {
+          "confidence_score": 0.95,
+          "debate_rounds_used": 0,
+          "inconsistencies": [],
+          "longitudinal_flags": [],
+          "longitudinal_sanity_passed": true,
+          "main_concern": "Lack of engagement with the topic of quitting smoking",
+          "primary_trigger": "N/A",
+          "quit_attempt_history": "Patient has previously attempted to quit smoking using nicotine gum and gradual reduction strategies.",
+          "reasoning_summary": "The patient's initial greeting indicates precontemplation, as they haven't yet seriously considered quitting. The counselor's approach focuses on building rapport and understanding the patient's perspective through open-ended questions to identify barriers and motivations before moving forward.",
+          "recommended_intervention": [
+            "Explore the patient's current thoughts and feelings regarding smoking.",
+            "Assess the reasons behind previous quit attempts and any challenges encountered.",
+            "Begin with open-ended questions to understand the patient's perspective and motivations.",
+            "Assess the reasons behind previous attempts and any barriers to quitting.",
+            "Start with open-ended questions to understand the patient's perspective and motivations.",
+            "Assess the reasons behind previous quit attempts and any challenges faced."
+          ],
+          "sanity_passed": true,
+          "session_number": 1,
+          "stage_of_change": "precontemplation",
+          "vote_agreement": 0.917
+        },
+        "longitudinal_output": {
+          "current_annotation": {
+            "confidence_score": 0.95,
+            "debate_rounds_used": 0,
+            "inconsistencies": [],
+            "longitudinal_flags": [],
+            "longitudinal_sanity_passed": true,
+            "main_concern": "Lack of engagement with the topic of quitting smoking",
+            "primary_trigger": "N/A",
+            "quit_attempt_history": "Patient has previously attempted to quit smoking using nicotine gum and gradual reduction strategies.",
+            "reasoning_summary": "The patient's initial greeting indicates precontemplation, as they haven't yet seriously considered quitting. The counselor's approach focuses on building rapport and understanding the patient's perspective through open-ended questions to identify barriers and motivations before moving forward.",
+            "recommended_intervention": [
+              "Explore the patient's current thoughts and feelings regarding smoking.",
+              "Assess the reasons behind previous quit attempts and any challenges encountered.",
+              "Begin with open-ended questions to understand the patient's perspective and motivations.",
+              "Assess the reasons behind previous attempts and any barriers to quitting.",
+              "Start with open-ended questions to understand the patient's perspective and motivations.",
+              "Assess the reasons behind previous quit attempts and any challenges faced."
+            ],
+            "sanity_passed": true,
+            "session_number": 1,
+            "stage_of_change": "precontemplation",
+            "vote_agreement": 0.917
+          },
+          "delta": null,
+          "interventions_tried": [],
+          "longitudinal_flags": [],
+          "overall_progress": "unknown",
+          "patient_id": "e9d76198-5375-4705-a6ba-b4d9207c3eb4",
+          "persistent_concerns": [],
+          "persistent_triggers": [],
+          "relapse_detected": false,
+          "session_number": 1,
+          "stage_trajectory": [
+            "precontemplation"
+          ],
+          "stagnation_detected": false
+        },
+        "patient_profile_id": "e9d76198-5375-4705-a6ba-b4d9207c3eb4",
+        "session_count": 1
+      }
+    },
+    "reasoning_agent": {
+      "output": {
+        "dataset_row": {
+          "confidence_score": 0.95,
+          "debate_rounds_used": 0,
+          "inconsistencies": [],
+          "main_concern": "Lack of engagement with the topic of quitting smoking",
+          "primary_trigger": "N/A",
+          "quit_attempt_history": "Patient has previously attempted to quit smoking using nicotine gum and gradual reduction strategies.",
+          "reasoning_summary": "The patient's initial greeting indicates precontemplation, as they haven't yet seriously considered quitting. The counselor's approach focuses on building rapport and understanding the patient's perspective through open-ended questions to identify barriers and motivations before moving forward.",
+          "recommended_intervention": [
+            "Explore the patient's current thoughts and feelings regarding smoking.",
+            "Assess the reasons behind previous quit attempts and any challenges encountered.",
+            "Begin with open-ended questions to understand the patient's perspective and motivations.",
+            "Assess the reasons behind previous attempts and any barriers to quitting.",
+            "Start with open-ended questions to understand the patient's perspective and motivations.",
+            "Assess the reasons behind previous quit attempts and any challenges faced."
+          ],
+          "sanity_passed": true,
+          "stage_of_change": "precontemplation",
+          "vote_agreement": 0.917
+        }
+      }
+    },
+    "run_chat": {
+      "final_result": {
+        "dataset_row": {
+          "confidence_score": 0.95,
+          "debate_rounds_used": 0,
+          "inconsistencies": [],
+          "longitudinal_flags": [],
+          "longitudinal_sanity_passed": true,
+          "main_concern": "Lack of engagement with the topic of quitting smoking",
+          "primary_trigger": "N/A",
+          "quit_attempt_history": "Patient has previously attempted to quit smoking using nicotine gum and gradual reduction strategies.",
+          "reasoning_summary": "The patient's initial greeting indicates precontemplation, as they haven't yet seriously considered quitting. The counselor's approach focuses on building rapport and understanding the patient's perspective through open-ended questions to identify barriers and motivations before moving forward.",
+          "recommended_intervention": [
+            "Explore the patient's current thoughts and feelings regarding smoking.",
+            "Assess the reasons behind previous quit attempts and any challenges encountered.",
+            "Begin with open-ended questions to understand the patient's perspective and motivations.",
+            "Assess the reasons behind previous attempts and any barriers to quitting.",
+            "Start with open-ended questions to understand the patient's perspective and motivations.",
+            "Assess the reasons behind previous quit attempts and any challenges faced."
+          ],
+          "sanity_passed": true,
+          "session_number": 1,
+          "stage_of_change": "precontemplation",
+          "vote_agreement": 0.917
+        },
+        "longitudinal_output": {
+          "current_annotation": {
+            "confidence_score": 0.95,
+            "debate_rounds_used": 0,
+            "inconsistencies": [],
+            "longitudinal_flags": [],
+            "longitudinal_sanity_passed": true,
+            "main_concern": "Lack of engagement with the topic of quitting smoking",
+            "primary_trigger": "N/A",
+            "quit_attempt_history": "Patient has previously attempted to quit smoking using nicotine gum and gradual reduction strategies.",
+            "reasoning_summary": "The patient's initial greeting indicates precontemplation, as they haven't yet seriously considered quitting. The counselor's approach focuses on building rapport and understanding the patient's perspective through open-ended questions to identify barriers and motivations before moving forward.",
+            "recommended_intervention": [
+              "Explore the patient's current thoughts and feelings regarding smoking.",
+              "Assess the reasons behind previous quit attempts and any challenges encountered.",
+              "Begin with open-ended questions to understand the patient's perspective and motivations.",
+              "Assess the reasons behind previous attempts and any barriers to quitting.",
+              "Start with open-ended questions to understand the patient's perspective and motivations.",
+              "Assess the reasons behind previous quit attempts and any challenges faced."
+            ],
+            "sanity_passed": true,
+            "session_number": 1,
+            "stage_of_change": "precontemplation",
+            "vote_agreement": 0.917
+          },
+          "delta": null,
+          "interventions_tried": [],
+          "longitudinal_flags": [],
+          "overall_progress": "unknown",
+          "patient_id": "e9d76198-5375-4705-a6ba-b4d9207c3eb4",
+          "persistent_concerns": [],
+          "persistent_triggers": [],
+          "relapse_detected": false,
+          "session_number": 1,
+          "stage_trajectory": [
+            "precontemplation"
+          ],
+          "stagnation_detected": false
+        },
+        "patient_id": "e9d76198-5375-4705-a6ba-b4d9207c3eb4",
+        "session_number": 1
+      },
+      "transcript": {
+        "session_id": "e9d76198-5375-4705-a6ba-b4d9207c3eb4",
+        "transcript": "Patient: hi\nCounselor: Hi! I'm eDOSTHI, your friendly AI coach. Ready to help you kick the habit and live smoke-free? What's been on your mind lately about quitting smoking?"
+      }
+    }
+  },
+  "meta": {
+    "session_id": "e9d76198-5375-4705-a6ba-b4d9207c3eb4",
+    "started_at": "20260415T094506Z"
+  }
+}

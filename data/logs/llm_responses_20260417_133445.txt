@@ -1,0 +1,41 @@
+=== LLM Response Log — 20260417_133445 ===
+
+--- [CONFIDENCE_CHECK] attempt @ 13:34:46.392 ---
+{
+  "confidence": 1.0,
+  "issues": []
+}
+
+--- [CONFIDENCE_CHECK] readiness @ 13:34:49.057 ---
+{
+  "confidence": 0.8,
+  "issues": [
+    "The classification of 'precontemplation' is borderline. While the patient states '\u0986\u09ae\u09bf \u09b8\u09c1\u09b8\u09cd\u09a5 \u099c\u09c0\u09ac\u09a8 \u09af\u09be\u09aa\u09a8 \u098f\u09b0 \u099c\u09a8\u09cd\u09af \u09a7\u09c2\u09ae\u09aa\u09be\u09a8 \u099b\u09be\u09dc\u09a4\u09c7 \u099a\u09be\u0987' (I want to quit smoking for a healthy life), this expresses an intention without any concrete steps or consideration of change. A stronger indication of contemplation or early preparation would be more evident. The counselor's question about the importance of the desire for a healthy life is a key indicator that could push this towards contemplation.",
+    "No contradictory evidence was identified."
+  ]
+}
+
+--- [CONFIDENCE_CHECK] concern @ 13:34:52.092 ---
+{
+  "confidence": 0.8,
+  "issues": [
+    "Minor concern missed: The patient explicitly states a desire for a 'healthy life,' indicating a potential concern regarding the impact of smoking on their health. This could be categorized as a Psychological concern (fear of illness/poor health outcomes).",
+    "Categorization Accuracy: While 'Fear of failure' is present, a more nuanced categorization might be beneficial. The core statement '\u0986\u09ae\u09bf \u09b8\u09c1\u09b8\u09cd\u09a5 \u099c\u09c0\u09ac\u09a8 \u09af\u09be\u09aa\u09a8 \u098f\u09b0 \u099c\u09a8\u09cd\u09af \u09a7\u09c2\u09ae\u09aa\u09be\u09a8 \u099b\u09be\u09dc\u09a4\u09c7 \u099a\u09be\u0987' (I want to quit smoking for a healthy life) strongly suggests a concern related to potential physiological consequences of continued smoking, leaning towards a Physiological concern (fear of health deterioration)."
+  ]
+}
+
+--- [CONFIDENCE_CHECK] triggers @ 13:34:55.312 ---
+{
+  "confidence": 0.75,
+  "issues": [
+    "Omission Detection: The trigger '\u09b8\u09c1\u09b8\u09cd\u09a5 \u099c\u09c0\u09ac\u09a8 \u09af\u09be\u09aa\u09a8' (healthy lifestyle) is present in the patient's statement, but the extraction misses it. This is a crucial trigger related to the patient's motivation for quitting smoking. The exact phrase '\u0986\u09ae\u09bf \u09b8\u09c1\u09b8\u09cd\u09a5 \u099c\u09c0\u09ac\u09a8 \u09af\u09be\u09aa\u09a8 \u098f\u09b0 \u099c\u09a8\u09cd\u09af \u09a7\u09c2\u09ae\u09aa\u09be\u09a8 \u099b\u09be\u09dc\u09a4\u09c7 \u099a\u09be\u0987' (I want to quit smoking for a healthy life) should have been included.",
+    "Classification Accuracy: While '\u09b8\u09c1\u09b8\u09cd\u09a5 \u099c\u09c0\u09ac\u09a8 \u09af\u09be\u09aa\u09a8' is appropriately classified as a motivational trigger, a more granular classification could be beneficial. It could be further categorized as 'Goal' or 'Value-based' trigger, reflecting the underlying reason for quitting."
+  ]
+}
+
+--- [CONFIDENCE_CHECK] advice @ 13:34:56.369 ---
+{
+  "confidence": 0.95,
+  "issues": []
+}
+

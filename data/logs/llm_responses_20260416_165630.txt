@@ -1,0 +1,50 @@
+=== LLM Response Log — 20260416_165630 ===
+
+=== LLM Response Log — 20260416_165630 ===
+
+--- [CONFIDENCE_CHECK] attempt @ 16:56:35.661 ---
+{
+  "confidence": 0.3,
+  "issues": [
+    "Grounding & Veracity: The statement 'Patient attempted to gradually reduce smoking with the intention to quit.' is a logical leap. The source text only contains 'What motivated you to want to kick the habit?' and 'hi'. There's no explicit mention of a reduction attempt.",
+    "Hallucination Check: The extraction includes 'Patient attempted to gradually reduce smoking with the intention to quit.' which is not present in the source text.",
+    "Sensitivity (Omission) Check: The source text contains the key phrase 'want to kick the habit,' indicating a desire to quit, but doesn't provide details about the type or duration of the attempt.",
+    "Taxonomy Alignment: While the intent to 'kick the habit' suggests a quit attempt, the extraction lacks specific details to categorize the attempt type accurately.  It's currently a broad, unclassified attempt."
+  ]
+}
+
+--- [CONFIDENCE_CHECK] readiness @ 16:56:39.281 ---
+{
+  "confidence": 0.8,
+  "issues": [
+    "{'category': 'Grounding Check', 'description': \"The extraction claims 'contemplation' stage based on the patient's 'hi'. While acknowledging the problem, this is an inference, not explicitly stated. It's a reasonable interpretation given the counselor's follow-up question, but should be flagged as strongly implied rather than explicitly stated.\", 'recommendation': \"Change 'contemplation' to 'pre-contemplation' or 'initial recognition' to better reflect the level of certainty.\"}"
+  ]
+}
+
+--- [CONFIDENCE_CHECK] concern @ 16:56:44.159 ---
+{
+  "confidence": 0.75,
+  "issues": [
+    "Implicit Concern Detection: The patient's initial question, 'What motivated you to want to kick the habit?' represents an implicit concern regarding the potential difficulties and anxieties associated with quitting. While present, a more granular extraction focusing on the *fear* of relapse or the *emotional* challenges might have been beneficial. This is a minor misalignment.",
+    "Severity Calibration: The patient's motivation to quit implies a level of concern beyond simply 'wanting to change.' The underlying anxiety regarding potential negative consequences isn't fully captured by the provided extraction. A more precise categorization would benefit from acknowledging the intensity of the patient's desire to avoid the negative impacts of smoking.",
+    "Temporal Attribution: The question itself represents an *active* concern \u2013 the patient is currently grappling with the decision and its potential ramifications. This is accurately captured, but further probing could explore historical anxieties related to health or previous attempts to quit."
+  ]
+}
+
+--- [CONFIDENCE_CHECK] triggers @ 16:56:51.152 ---
+{
+  "confidence": 0.6,
+  "issues": [
+    "{'category': 'Omission Detection', 'description': \"The conversation explicitly states the patient's motivation is 'stress'. The extraction misses 'stress' as a trigger. This is a significant omission.\", 'phrase': 'What motivated you to want to kick the habit?', 'trigger_type': 'stress'}",
+    "{'category': 'Grounding Check', 'description': \"The inclusion of 'after meals', 'morning routine', and 'boredom' feels somewhat speculative given the initial question about motivation. While these *could* be related to smoking cessation, they aren't directly addressed in the patient's response or the counselor's follow-up. This leans towards inference rather than grounding.\", 'trigger': 'after meals', 'trigger_type': 'after meals'}",
+    "{'category': 'Grounding Check', 'description': \"Similarly, 'morning routine' and 'boredom' are weakly grounded. The conversation doesn't provide information to support these as triggers.\", 'trigger': 'morning routine', 'trigger_type': 'morning routine'}",
+    "{'category': 'Grounding Check', 'description': \"The same critique applies to 'boredom'. The conversation lacks any direct evidence to support this as a trigger.\", 'trigger': 'boredom', 'trigger_type': 'boredom'}"
+  ]
+}
+
+--- [CONFIDENCE_CHECK] advice @ 16:56:52.619 ---
+{
+  "confidence": 1.0,
+  "issues": []
+}
+

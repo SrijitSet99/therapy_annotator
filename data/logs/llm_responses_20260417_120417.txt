@@ -1,0 +1,41 @@
+=== LLM Response Log — 20260417_120417 ===
+
+--- [CONFIDENCE_CHECK] attempt @ 12:04:18.360 ---
+{
+  "confidence": 1.0,
+  "issues": []
+}
+
+--- [CONFIDENCE_CHECK] readiness @ 12:04:21.502 ---
+{
+  "confidence": 0.7,
+  "issues": [
+    "The classification of precontemplation is borderline. While the patient states 'I want to quit smoking,' this is a very initial statement and lacks any indication of behavioral intention or commitment. A stronger statement of motivation or a recognition of the need for change would more strongly support contemplation or preparation. The evidence is weak.",
+    "There is a potential contradiction. The counselor immediately asks 'What specifically motivated you to want to quit this time around?' This suggests the patient hasn't yet fully considered the reasons for quitting, which leans towards precontemplation. However, the patient's simple statement could also be interpreted as a nascent contemplation stage, requiring further probing."
+  ]
+}
+
+--- [CONFIDENCE_CHECK] concern @ 12:04:25.352 ---
+{
+  "confidence": 0.8,
+  "issues": [
+    "Minor omission: While the patient explicitly stated 'I want to quit smoking,' a deeper exploration of the *reasoning* behind that desire could have revealed underlying anxieties. A more detailed probe regarding potential negative consequences (e.g., 'What are you most worried about if you try to quit?') could have uncovered a concern related to psychological distress. This represents a slight underrepresentation of the patient's potential anxieties.",
+    "Category Alignment: The categorization of 'Cravings' and 'Fear of failure' is accurate. However, the conversation lacks explicit evidence for a 'Physiological' concern (e.g., cough, breathlessness). While not directly stated, the act of wanting to quit smoking strongly suggests a physiological concern related to the effects of nicotine withdrawal. This warrants a minor adjustment to ensure comprehensive coverage."
+  ]
+}
+
+--- [CONFIDENCE_CHECK] triggers @ 12:04:27.380 ---
+{
+  "confidence": 0.95,
+  "issues": [
+    "Omission Detection: The conversation clearly indicates a desire to quit smoking. The extraction misses the explicit statement 'I want to quit smoking'. This is a critical omission.",
+    "Classification Accuracy: The trigger 'want to quit smoking' is correctly classified as a desire to quit."
+  ]
+}
+
+--- [CONFIDENCE_CHECK] advice @ 12:04:28.360 ---
+{
+  "confidence": 0.95,
+  "issues": []
+}
+

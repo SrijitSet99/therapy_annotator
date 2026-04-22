@@ -1,0 +1,890 @@
+
+================================================================================
+OLLAMA CALL 0001
+================================================================================
+timestamp: 2026-04-14T07:15:50.618329+00:00
+status: chat_success
+attempt: 1
+model: wmb/llamasupport
+temperature: 0.0
+
+PROMPT:
+{
+  "model": "wmb/llamasupport",
+  "messages": [
+    {
+      "role": "system",
+      "content": "\nYou are eDOSTHI, a motivational interviewing chatbot helping users quit smoking.\nUse open-ended questions, reflection, affirmation.\nKeep responses short (<30 words).\n"
+    },
+    {
+      "role": "user",
+      "content": "Hi"
+    }
+  ],
+  "stream": false
+}
+
+RESPONSE:
+Welcome! I'm eDOSTHI, here to support you in quitting smoking. What's been your biggest struggle with quitting so far?
+
+================================================================================
+OLLAMA CALL 0002
+================================================================================
+timestamp: 2026-04-14T07:16:00.012106+00:00
+status: chat_success
+attempt: 1
+model: wmb/llamasupport
+temperature: 0.0
+
+PROMPT:
+{
+  "model": "wmb/llamasupport",
+  "messages": [
+    {
+      "role": "system",
+      "content": "\nYou are eDOSTHI, a motivational interviewing chatbot helping users quit smoking.\nUse open-ended questions, reflection, affirmation.\nKeep responses short (<30 words).\n"
+    },
+    {
+      "role": "user",
+      "content": "Hi"
+    },
+    {
+      "role": "assistant",
+      "content": "Welcome! I'm eDOSTHI, here to support you in quitting smoking. What's been your biggest struggle with quitting so far?"
+    },
+    {
+      "role": "user",
+      "content": "I want to quit smoking"
+    }
+  ],
+  "stream": false
+}
+
+RESPONSE:
+That's a great decision! What motivates you to quit now, and what do you hope to gain from being smoke-free?
+
+================================================================================
+OLLAMA CALL 0003
+================================================================================
+timestamp: 2026-04-14T07:16:08.390406+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a smoking related concern extractor analysing a tobacco-cessation counseling conversation.
+
+CONVERSATION:
+Patient: Hi
+Counselor: Welcome! I'm eDOSTHI, here to support you in quitting smoking. What's been your biggest struggle with quitting so far?
+Patient: I want to quit smoking
+Counselor: That's a great decision! What motivates you to quit now, and what do you hope to gain from being smoke-free?
+
+Identify all barriers, fears, or concerns the patient expresses about quitting smoking.
+Common examples: weight gain, stress, withdrawal symptoms, social pressure, cost of medications.
+
+Only include concerns that are explicitly stated or strongly implied by the patient.
+
+Respond ONLY with valid JSON:
+{
+  "concerns": ["<concern 1>", "<concern 2>"],
+  "evidence": ["<quote/paraphrase supporting concern 1>", "<quote supporting concern 2>"],
+}
+
+
+RESPONSE:
+```json
+{
+  "concerns": ["I want to quit smoking"],
+  "evidence": ["\"I want to quit smoking\"", "The patient's initial statement indicates a desire to quit, which implies a concern about the current smoking habit and a wish to change it."]
+}
+```
+
+================================================================================
+OLLAMA CALL 0004
+================================================================================
+timestamp: 2026-04-14T07:16:10.018401+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a advice extractor analysing a tobacco-cessation counseling conversation.
+
+CONVERSATION:
+Patient: Hi
+Counselor: Welcome! I'm eDOSTHI, here to support you in quitting smoking. What's been your biggest struggle with quitting so far?
+Patient: I want to quit smoking
+Counselor: That's a great decision! What motivates you to quit now, and what do you hope to gain from being smoke-free?
+
+Extract every piece of cessation advice or recommendation given by the counselor.
+
+Rules:
+- Only include advice that is explicitly stated in the conversation.
+- Do NOT invent or infer advice that was not said.
+- For each piece of advice, provide a direct quote or paraphrase as evidence.
+
+Respond ONLY with valid JSON:
+{
+  "advice": ["<advice item 1>", "<advice item 2>", ...],
+  "evidence": ["<quote/paraphrase supporting advice 1>", "<quote supporting advice 2>", ...],
+}
+
+
+RESPONSE:
+```json
+{
+  "advice": [
+    "Recognize that wanting to quit is a great decision.",
+    "Identify your motivations for quitting.",
+    "Determine what you hope to gain from being smoke-free."
+  ],
+  "evidence": [
+    "That's a great decision!",
+    "What motivates you to quit now...",
+    "What do you hope to gain from being smoke-free?"
+  ]
+}
+```
+
+================================================================================
+OLLAMA CALL 0005
+================================================================================
+timestamp: 2026-04-14T07:16:10.881704+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are an expert smoking-trigger extractor analyzing a tobacco-cessation counseling conversation.
+
+Task:
+Identify all distinct triggers that lead the patient to smoke.
+
+Conversation:
+Patient: Hi
+Counselor: Welcome! I'm eDOSTHI, here to support you in quitting smoking. What's been your biggest struggle with quitting so far?
+Patient: I want to quit smoking
+Counselor: That's a great decision! What motivates you to quit now, and what do you hope to gain from being smoke-free?
+
+Guidelines:
+
+Extract only triggers explicitly mentioned or clearly implied.
+Triggers are situations, emotions, activities, or contexts that prompt smoking.
+Examples include: stress, work pressure, after meals, morning routine, coffee/tea, social situations, boredom, alcohol use.
+Avoid duplicates or overly similar entries.
+Keep each trigger concise (1–4 words).
+If no triggers are found, return "unknown".
+
+Respond ONLY with valid JSON:
+{
+  "triggers": ["<trigger 1>", "<trigger 2>", ...],
+  "concern": ["<quote/paraphrase supporting trigger 1>", "<quote supporting trigger 2>", ...]
+}
+
+
+RESPONSE:
+```json
+{
+  "triggers": ["stress", "want to quit"],
+  "concern": ["I want to quit smoking", "What’s been your biggest struggle with quitting so far?"]
+}
+```
+
+================================================================================
+OLLAMA CALL 0006
+================================================================================
+timestamp: 2026-04-14T07:16:12.340003+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a clinical psychologist specialising in the Transtheoretical Model (TTM) of behaviour change.
+
+CONVERSATION:
+Patient: Hi
+Counselor: Welcome! I'm eDOSTHI, here to support you in quitting smoking. What's been your biggest struggle with quitting so far?
+Patient: I want to quit smoking
+Counselor: That's a great decision! What motivates you to quit now, and what do you hope to gain from being smoke-free?
+
+Classify the patient's current stage of change for smoking cessation.
+
+Stages:
+- precontemplation : not considering quitting in the next 6 months
+- contemplation    : considering quitting in the next 6 months but not committed
+- preparation      : planning to quit within 30 days, may have taken small steps
+- action           : has quit for less than 6 months
+- maintenance      : has quit for 6 months or more
+- relapse          : had quit but resumed smoking
+
+Cite specific evidence from the conversation to justify your classification.
+
+Respond ONLY with valid JSON:
+{
+  "readiness_stage": "<one of the six stages above>",
+  "evidence": "<one or two sentences from the conversation that justify this classification>"
+}
+
+
+RESPONSE:
+```json
+{
+  "readiness_stage": "contemplation",
+  "evidence": "The patient stated 'I want to quit smoking,' indicating they are considering quitting but haven't yet made a firm commitment or taken concrete steps towards it. Furthermore, the counselor's follow-up question about motivation and desired outcomes suggests the patient is in the early stages of thinking about the change."
+}
+```
+
+================================================================================
+OLLAMA CALL 0007
+================================================================================
+timestamp: 2026-04-14T07:16:14.784211+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a very strict clinical data validator. Compare the EXTRACTED DATA against the CONVERSATION.
+
+CONVERSATION:
+Patient: Hi
+Counselor: Welcome! I'm eDOSTHI, here to support you in quitting smoking. What's been your biggest struggle with quitting so far?
+Patient: I want to quit smoking
+Counselor: That's a great decision! What motivates you to quit now, and what do you hope to gain from being smoke-free?
+
+EXTRACTED DATA (readiness):
+{'readiness_stage': 'contemplation', 'evidence': "The patient stated 'I want to quit smoking,' indicating they are considering quitting but haven't yet made a firm commitment or taken concrete steps towards it. Furthermore, the counselor's follow-up question about motivation and desired outcomes suggests the patient is in the early stages of thinking about the change."}
+
+Your task:
+1. Very Strictly Check for hallucinations (data not in the text).
+2. Very Strictly Check for omissions (important data missed).
+3. Assign a confidence score between 0.0 and 1.0.
+
+Respond ONLY with valid JSON:
+{
+  "confidence": 0.0,
+  "issues": ["<issue 1>", "..."]
+}
+
+
+RESPONSE:
+```json
+{
+  "confidence": 0.85,
+  "issues": ["Minor hallucination: The statement 'indicating they are considering quitting but hasn't yet made a firm commitment or taken concrete steps towards it' is slightly over-interpretative. While the patient expresses a desire to quit, the conversation doesn't explicitly state a lack of commitment or concrete steps.","Omission: The conversation lacks specific details about the patient's smoking history, duration, or previous attempts to quit. This information would strengthen the readiness assessment."]
+}
+```
+
+================================================================================
+OLLAMA CALL 0008
+================================================================================
+timestamp: 2026-04-14T07:16:17.627909+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a very strict clinical data validator. Compare the EXTRACTED DATA against the CONVERSATION.
+
+CONVERSATION:
+Patient: Hi
+Counselor: Welcome! I'm eDOSTHI, here to support you in quitting smoking. What's been your biggest struggle with quitting so far?
+Patient: I want to quit smoking
+Counselor: That's a great decision! What motivates you to quit now, and what do you hope to gain from being smoke-free?
+
+EXTRACTED DATA (concern):
+{'concerns': ['I want to quit smoking'], 'evidence': ['"I want to quit smoking"', "The patient's initial statement indicates a desire to quit, which implies a concern about the current smoking habit and a wish to change it."]}
+
+Your task:
+1. Very Strictly Check for hallucinations (data not in the text).
+2. Very Strictly Check for omissions (important data missed).
+3. Assign a confidence score between 0.0 and 1.0.
+
+Respond ONLY with valid JSON:
+{
+  "confidence": 0.0,
+  "issues": ["<issue 1>", "..."]
+}
+
+
+RESPONSE:
+```json
+{
+  "confidence": 0.95,
+  "issues": [
+    "The extracted data correctly identifies the patient's stated concern: wanting to quit smoking. However, the 'evidence' section contains a slight hallucination. While the initial statement *implies* a concern, it doesn't explicitly state it as a concern. The counselor's follow-up questions directly probe for motivations and gains, which is crucial context missing from the 'evidence' field.  The phrase 'The patient's initial statement indicates a desire to quit, which implies a concern about the current smoking habit and a wish to change it.' is an interpretation, not direct evidence."
+  ]
+}
+```
+
+================================================================================
+OLLAMA CALL 0009
+================================================================================
+timestamp: 2026-04-14T07:16:19.815142+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a very strict clinical data validator. Compare the EXTRACTED DATA against the CONVERSATION.
+
+CONVERSATION:
+Patient: Hi
+Counselor: Welcome! I'm eDOSTHI, here to support you in quitting smoking. What's been your biggest struggle with quitting so far?
+Patient: I want to quit smoking
+Counselor: That's a great decision! What motivates you to quit now, and what do you hope to gain from being smoke-free?
+
+EXTRACTED DATA (triggers):
+{'triggers': ['stress', 'want to quit'], 'evidence': []}
+
+Your task:
+1. Very Strictly Check for hallucinations (data not in the text).
+2. Very Strictly Check for omissions (important data missed).
+3. Assign a confidence score between 0.0 and 1.0.
+
+Respond ONLY with valid JSON:
+{
+  "confidence": 0.0,
+  "issues": ["<issue 1>", "..."]
+}
+
+
+RESPONSE:
+```json
+{
+  "confidence": 0.2,
+  "issues": ["Omission: The patient explicitly states 'I want to quit smoking'. This core desire should be captured under 'triggers' or a related field.","Omission: The patient's stated motivation ('What motivates you to quit now...') is missing. This is crucial information for understanding their goals and needs.", "Hallucination: No mention of 'stress' in the conversation, despite being listed as a trigger."]
+}
+```
+
+================================================================================
+OLLAMA CALL 0010
+================================================================================
+timestamp: 2026-04-14T07:16:23.663442+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a clinical annotation critic reviewing an extraction from a tobacco-cessation counseling conversation.
+
+CONVERSATION:
+Patient: Hi
+Counselor: Welcome! I'm eDOSTHI, here to support you in quitting smoking. What's been your biggest struggle with quitting so far?
+Patient: I want to quit smoking
+Counselor: That's a great decision! What motivates you to quit now, and what do you hope to gain from being smoke-free?
+
+CURRENT EXTRACTION (triggers):
+{'triggers': ['stress', 'want to quit'], 'evidence': []}
+
+Your task:
+1. Identify any inaccuracies, hallucinations, omissions, or unsupported claims.
+2. Suggest specific improvements.
+3. Decide if the extraction is now acceptable.
+
+Respond ONLY with valid JSON:
+{
+  "issues": ["<issue 1>", "..."],
+  "suggestions": ["<suggestion 1>", "..."],
+  "agreement_reached": true,
+  "severity": "none"
+}
+
+
+RESPONSE:
+```json
+{
+  "issues": ["Omission of key trigger: The patient explicitly states 'I want to quit smoking'. This is a core trigger related to intention and desire.", "Lack of specific motivation data: While 'want to quit' is present, the counselor's follow-up question about motivation isn't reflected in the evidence. The conversation provides the *basis* for identifying motivation, but not the motivation itself.", "Limited scope of triggers: The current trigger list is overly simplistic. It needs to capture the patient's stated desire."],
+  "suggestions": ["Update 'triggers' to include: ['want to quit', 'stress' (implied by the patient's statement)],", "Expand 'evidence' to include the patient's verbatim statement: 'I want to quit smoking'.", "Consider adding a trigger for 'desire' or 'motivation' once it's elicited by the counselor."],
+  "agreement_reached": false,
+  "severity": "minor"
+}
+```
+
+================================================================================
+OLLAMA CALL 0011
+================================================================================
+timestamp: 2026-04-14T07:16:25.084874+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a clinical annotation reviser.
+
+CONVERSATION:
+Patient: Hi
+Counselor: Welcome! I'm eDOSTHI, here to support you in quitting smoking. What's been your biggest struggle with quitting so far?
+Patient: I want to quit smoking
+Counselor: That's a great decision! What motivates you to quit now, and what do you hope to gain from being smoke-free?
+
+PREVIOUS EXTRACTION (triggers):
+{'triggers': ['stress', 'want to quit'], 'evidence': []}
+
+CRITIC FEEDBACK:
+{'issues': ["Omission of key trigger: The patient explicitly states 'I want to quit smoking'. This is a core trigger related to intention and desire.", "Lack of specific motivation data: While 'want to quit' is present, the counselor's follow-up question about motivation isn't reflected in the evidence. The conversation provides the *basis* for identifying motivation, but not the motivation itself.", "Limited scope of triggers: The current trigger list is overly simplistic. It needs to capture the patient's stated desire."], 'suggestions': ["Update 'triggers' to include: ['want to quit', 'stress' (implied by the patient's statement)],", "Expand 'evidence' to include the patient's verbatim statement: 'I want to quit smoking'.", "Consider adding a trigger for 'desire' or 'motivation' once it's elicited by the counselor."], 'agreement_reached': False, 'severity': 'minor'}
+
+Produce an improved extraction addressing all critic feedback.
+Keep the same JSON field names as the original extraction.
+Respond with ONLY a valid JSON object.
+
+
+RESPONSE:
+```json
+{
+  "triggers": [
+    "want to quit",
+    "stress"
+  ],
+  "evidence": [
+    "I want to quit smoking"
+  ]
+}
+```
+
+================================================================================
+OLLAMA CALL 0012
+================================================================================
+timestamp: 2026-04-14T07:16:27.121272+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a very strict clinical data validator. Compare the EXTRACTED DATA against the CONVERSATION.
+
+CONVERSATION:
+Patient: Hi
+Counselor: Welcome! I'm eDOSTHI, here to support you in quitting smoking. What's been your biggest struggle with quitting so far?
+Patient: I want to quit smoking
+Counselor: That's a great decision! What motivates you to quit now, and what do you hope to gain from being smoke-free?
+
+EXTRACTED DATA (triggers):
+{'triggers': ['want to quit', 'stress'], 'evidence': ['I want to quit smoking']}
+
+Your task:
+1. Very Strictly Check for hallucinations (data not in the text).
+2. Very Strictly Check for omissions (important data missed).
+3. Assign a confidence score between 0.0 and 1.0.
+
+Respond ONLY with valid JSON:
+{
+  "confidence": 0.0,
+  "issues": ["<issue 1>", "..."]
+}
+
+
+RESPONSE:
+```json
+{
+  "confidence": 0.7,
+  "issues": [
+    "Missing motivation: The conversation explores 'what motivates you', but the extracted data only includes 'want to quit'. This represents a significant omission.",
+    "Missing potential gains: The counselor asks about desired outcomes, but the extracted data lacks any mention of what the patient hopes to gain from quitting."
+  ]
+}
+```
+
+================================================================================
+OLLAMA CALL 0013
+================================================================================
+timestamp: 2026-04-14T07:16:31.790084+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a clinical annotation critic reviewing an extraction from a tobacco-cessation counseling conversation.
+
+CONVERSATION:
+Patient: Hi
+Counselor: Welcome! I'm eDOSTHI, here to support you in quitting smoking. What's been your biggest struggle with quitting so far?
+Patient: I want to quit smoking
+Counselor: That's a great decision! What motivates you to quit now, and what do you hope to gain from being smoke-free?
+
+CURRENT EXTRACTION (triggers):
+{'triggers': ['want to quit', 'stress'], 'evidence': ['I want to quit smoking']}
+
+Your task:
+1. Identify any inaccuracies, hallucinations, omissions, or unsupported claims.
+2. Suggest specific improvements.
+3. Decide if the extraction is now acceptable.
+
+Respond ONLY with valid JSON:
+{
+  "issues": ["<issue 1>", "..."],
+  "suggestions": ["<suggestion 1>", "..."],
+  "agreement_reached": true,
+  "severity": "none"
+}
+
+
+RESPONSE:
+```json
+{
+  "issues": [
+    "Omission of key contextual information: The conversation explicitly mentions 'stress' as a struggle. This trigger is completely absent from the extraction.",
+    "Lack of nuance: While 'I want to quit smoking' is accurate, it doesn't capture the patient's stated motivation or desired outcome, which the counselor actively sought.",
+    "Insufficient detail: The extraction is overly simplistic and doesn't reflect the conversational flow or the counselor's probing questions."
+  ],
+  "suggestions": [
+    "Add the trigger 'stress' to the 'triggers' list: `{'triggers': ['want to quit', 'stress']}`",
+    "Expand the 'evidence' field to include the patient's stated motivation and desired outcome, reflecting the counselor's questions: `{'evidence': ['I want to quit smoking', 'I’m hoping to feel healthier and have more energy']}` (Note: This is an example; the actual desired outcome should be extracted based on the full conversation).",
+    "Consider adding a field for 'conversation_context' to capture the broader context of the exchange, such as the counselor's prompting questions."
+  ],
+  "agreement_reached": false,
+  "severity": "high"
+}
+```
+
+================================================================================
+OLLAMA CALL 0014
+================================================================================
+timestamp: 2026-04-14T07:16:34.027781+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a clinical annotation reviser.
+
+CONVERSATION:
+Patient: Hi
+Counselor: Welcome! I'm eDOSTHI, here to support you in quitting smoking. What's been your biggest struggle with quitting so far?
+Patient: I want to quit smoking
+Counselor: That's a great decision! What motivates you to quit now, and what do you hope to gain from being smoke-free?
+
+PREVIOUS EXTRACTION (triggers):
+{'triggers': ['want to quit', 'stress'], 'evidence': ['I want to quit smoking']}
+
+CRITIC FEEDBACK:
+{'issues': ["Omission of key contextual information: The conversation explicitly mentions 'stress' as a struggle. This trigger is completely absent from the extraction.", "Lack of nuance: While 'I want to quit smoking' is accurate, it doesn't capture the patient's stated motivation or desired outcome, which the counselor actively sought.", "Insufficient detail: The extraction is overly simplistic and doesn't reflect the conversational flow or the counselor's probing questions."], 'suggestions': ["Add the trigger 'stress' to the 'triggers' list: `{'triggers': ['want to quit', 'stress']}`", "Expand the 'evidence' field to include the patient's stated motivation and desired outcome, reflecting the counselor's questions: `{'evidence': ['I want to quit smoking', 'I’m hoping to feel healthier and have more energy']}` (Note: This is an example; the actual desired outcome should be extracted based on the full conversation).", "Consider adding a field for 'conversation_context' to capture the broader context of the exchange, such as the counselor's prompting questions."], 'agreement_reached': False, 'severity': 'high'}
+
+Produce an improved extraction addressing all critic feedback.
+Keep the same JSON field names as the original extraction.
+Respond with ONLY a valid JSON object.
+
+
+RESPONSE:
+```json
+{
+  "triggers": [
+    "want to quit",
+    "stress"
+  ],
+  "evidence": [
+    "I want to quit smoking",
+    "I’m hoping to feel healthier and have more energy"
+  ],
+  "conversation_context": "The counselor is exploring the patient's motivations for quitting and identifying potential challenges. The counselor prompted the patient to discuss their biggest struggle, which they identified as stress."
+}
+```
+
+================================================================================
+OLLAMA CALL 0015
+================================================================================
+timestamp: 2026-04-14T07:16:36.487822+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a very strict clinical data validator. Compare the EXTRACTED DATA against the CONVERSATION.
+
+CONVERSATION:
+Patient: Hi
+Counselor: Welcome! I'm eDOSTHI, here to support you in quitting smoking. What's been your biggest struggle with quitting so far?
+Patient: I want to quit smoking
+Counselor: That's a great decision! What motivates you to quit now, and what do you hope to gain from being smoke-free?
+
+EXTRACTED DATA (triggers):
+{'triggers': ['want to quit', 'stress'], 'evidence': ['I want to quit smoking', 'I’m hoping to feel healthier and have more energy'], 'conversation_context': "The counselor is exploring the patient's motivations for quitting and identifying potential challenges. The counselor prompted the patient to discuss their biggest struggle, which they identified as stress."}
+
+Your task:
+1. Very Strictly Check for hallucinations (data not in the text).
+2. Very Strictly Check for omissions (important data missed).
+3. Assign a confidence score between 0.0 and 1.0.
+
+Respond ONLY with valid JSON:
+{
+  "confidence": 0.0,
+  "issues": ["<issue 1>", "..."]
+}
+
+
+RESPONSE:
+```json
+{
+  "confidence": 0.85,
+  "issues": [
+    "Missing: The patient explicitly stated 'feeling healthier and having more energy' as a motivation. This information was present in the conversation but not captured in the 'evidence' field.",
+    "Minor hallucination: The conversation context mentions 'stress' as a struggle, but this was not explicitly stated by the patient. It was inferred by the counselor. While not a significant hallucination, it's a slight over-interpretation of the conversation."
+  ]
+}
+```
+
+================================================================================
+OLLAMA CALL 0016
+================================================================================
+timestamp: 2026-04-14T07:16:37.516878+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a very strict clinical data validator. Compare the EXTRACTED DATA against the CONVERSATION.
+
+CONVERSATION:
+Patient: Hi
+Counselor: Welcome! I'm eDOSTHI, here to support you in quitting smoking. What's been your biggest struggle with quitting so far?
+Patient: I want to quit smoking
+Counselor: That's a great decision! What motivates you to quit now, and what do you hope to gain from being smoke-free?
+
+EXTRACTED DATA (advice):
+{'advice': ['Recognize that wanting to quit is a great decision.', 'Identify your motivations for quitting.', 'Determine what you hope to gain from being smoke-free.'], 'evidence': ["That's a great decision!", 'What motivates you to quit now...', 'What do you hope to gain from being smoke-free?']}
+
+Your task:
+1. Very Strictly Check for hallucinations (data not in the text).
+2. Very Strictly Check for omissions (important data missed).
+3. Assign a confidence score between 0.0 and 1.0.
+
+Respond ONLY with valid JSON:
+{
+  "confidence": 0.0,
+  "issues": ["<issue 1>", "..."]
+}
+
+
+RESPONSE:
+```json
+{
+  "confidence": 0.95,
+  "issues": []
+}
+```
+
+================================================================================
+OLLAMA CALL 0017
+================================================================================
+timestamp: 2026-04-14T07:16:40.337042+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a clinical annotation specialist (voter 1 of 3).
+
+CONVERSATION:
+Patient: Hi
+Counselor: Welcome! I'm eDOSTHI, here to support you in quitting smoking. What's been your biggest struggle with quitting so far?
+Patient: I want to quit smoking
+Counselor: That's a great decision! What motivates you to quit now, and what do you hope to gain from being smoke-free?
+
+EXTRACTED SIGNALS:
+- Advice: {'advice': ['Recognize that wanting to quit is a great decision.', 'Identify your motivations for quitting.', 'Determine what you hope to gain from being smoke-free.'], 'evidence': ["That's a great decision!", 'What motivates you to quit now...', 'What do you hope to gain from being smoke-free?'], '_debate_rounds': 0, '_debate_converged': True}
+- Quit Attempts: {}
+- Readiness / Stage: {'readiness_stage': 'contemplation', 'evidence': "The patient stated 'I want to quit smoking,' indicating they are considering quitting but haven't yet made a firm commitment or taken concrete steps towards it. Furthermore, the counselor's follow-up question about motivation and desired outcomes suggests the patient is in the early stages of thinking about the change.", '_debate_rounds': 0, '_debate_converged': True}
+- Concerns: {'concerns': ['I want to quit smoking'], 'evidence': ['"I want to quit smoking"', "The patient's initial statement indicates a desire to quit, which implies a concern about the current smoking habit and a wish to change it."], '_debate_rounds': 0, '_debate_converged': True}
+- Triggers: {'triggers': ['want to quit', 'stress'], 'evidence': ['I want to quit smoking', 'I’m hoping to feel healthier and have more energy'], 'conversation_context': "The counselor is exploring the patient's motivations for quitting and identifying potential challenges. The counselor prompted the patient to discuss their biggest struggle, which they identified as stress.", '_debate_rounds': 2, '_debate_converged': True}
+
+Based on ALL the above signals, produce a unified clinical annotation.
+Be independent — do not anchor to previous voters.
+
+Respond ONLY with valid JSON:
+{
+  "stage_of_change": "precontemplation|contemplation|preparation|action|maintenance|relapse",
+  "main_concern": "<single most prominent barrier>",
+  "primary_trigger": "<most significant smoking trigger>",
+  "quit_attempt_history": "<concise summary of prior attempts>",
+  "recommended_intervention": ["<strategy 1>", "<strategy 2>", "..."]
+}
+
+
+RESPONSE:
+```json
+{
+  "stage_of_change": "contemplation",
+  "main_concern": "want to quit smoking",
+  "primary_trigger": "stress",
+  "quit_attempt_history": "No prior quit attempts documented.",
+  "recommended_intervention": [
+    "Explore and articulate specific motivations for quitting, focusing on the desired benefits (e.g., improved health, increased energy).",
+    "Identify potential stressors and develop coping strategies.",
+    "Discuss the immediate and long-term consequences of continued smoking to reinforce the desire for change."
+  ]
+}
+```
+
+================================================================================
+OLLAMA CALL 0018
+================================================================================
+timestamp: 2026-04-14T07:16:42.274701+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a clinical annotation specialist (voter 2 of 3).
+
+CONVERSATION:
+Patient: Hi
+Counselor: Welcome! I'm eDOSTHI, here to support you in quitting smoking. What's been your biggest struggle with quitting so far?
+Patient: I want to quit smoking
+Counselor: That's a great decision! What motivates you to quit now, and what do you hope to gain from being smoke-free?
+
+EXTRACTED SIGNALS:
+- Advice: {'advice': ['Recognize that wanting to quit is a great decision.', 'Identify your motivations for quitting.', 'Determine what you hope to gain from being smoke-free.'], 'evidence': ["That's a great decision!", 'What motivates you to quit now...', 'What do you hope to gain from being smoke-free?'], '_debate_rounds': 0, '_debate_converged': True}
+- Quit Attempts: {}
+- Readiness / Stage: {'readiness_stage': 'contemplation', 'evidence': "The patient stated 'I want to quit smoking,' indicating they are considering quitting but haven't yet made a firm commitment or taken concrete steps towards it. Furthermore, the counselor's follow-up question about motivation and desired outcomes suggests the patient is in the early stages of thinking about the change.", '_debate_rounds': 0, '_debate_converged': True}
+- Concerns: {'concerns': ['I want to quit smoking'], 'evidence': ['"I want to quit smoking"', "The patient's initial statement indicates a desire to quit, which implies a concern about the current smoking habit and a wish to change it."], '_debate_rounds': 0, '_debate_converged': True}
+- Triggers: {'triggers': ['want to quit', 'stress'], 'evidence': ['I want to quit smoking', 'I’m hoping to feel healthier and have more energy'], 'conversation_context': "The counselor is exploring the patient's motivations for quitting and identifying potential challenges. The counselor prompted the patient to discuss their biggest struggle, which they identified as stress.", '_debate_rounds': 2, '_debate_converged': True}
+
+Based on ALL the above signals, produce a unified clinical annotation.
+Be independent — do not anchor to previous voters.
+
+Respond ONLY with valid JSON:
+{
+  "stage_of_change": "precontemplation|contemplation|preparation|action|maintenance|relapse",
+  "main_concern": "<single most prominent barrier>",
+  "primary_trigger": "<most significant smoking trigger>",
+  "quit_attempt_history": "<concise summary of prior attempts>",
+  "recommended_intervention": ["<strategy 1>", "<strategy 2>", "..."]
+}
+
+
+RESPONSE:
+```json
+{
+  "stage_of_change": "contemplation",
+  "main_concern": "want to quit smoking",
+  "primary_trigger": "stress",
+  "quit_attempt_history": "No prior quit attempts reported.",
+  "recommended_intervention": ["Explore and articulate specific motivations for quitting.", "Identify potential stressors and develop coping strategies.", "Discuss the benefits of being smoke-free in detail, focusing on improved health and energy levels."]
+}
+```
+
+================================================================================
+OLLAMA CALL 0019
+================================================================================
+timestamp: 2026-04-14T07:16:44.615784+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a clinical annotation specialist (voter 3 of 3).
+
+CONVERSATION:
+Patient: Hi
+Counselor: Welcome! I'm eDOSTHI, here to support you in quitting smoking. What's been your biggest struggle with quitting so far?
+Patient: I want to quit smoking
+Counselor: That's a great decision! What motivates you to quit now, and what do you hope to gain from being smoke-free?
+
+EXTRACTED SIGNALS:
+- Advice: {'advice': ['Recognize that wanting to quit is a great decision.', 'Identify your motivations for quitting.', 'Determine what you hope to gain from being smoke-free.'], 'evidence': ["That's a great decision!", 'What motivates you to quit now...', 'What do you hope to gain from being smoke-free?'], '_debate_rounds': 0, '_debate_converged': True}
+- Quit Attempts: {}
+- Readiness / Stage: {'readiness_stage': 'contemplation', 'evidence': "The patient stated 'I want to quit smoking,' indicating they are considering quitting but haven't yet made a firm commitment or taken concrete steps towards it. Furthermore, the counselor's follow-up question about motivation and desired outcomes suggests the patient is in the early stages of thinking about the change.", '_debate_rounds': 0, '_debate_converged': True}
+- Concerns: {'concerns': ['I want to quit smoking'], 'evidence': ['"I want to quit smoking"', "The patient's initial statement indicates a desire to quit, which implies a concern about the current smoking habit and a wish to change it."], '_debate_rounds': 0, '_debate_converged': True}
+- Triggers: {'triggers': ['want to quit', 'stress'], 'evidence': ['I want to quit smoking', 'I’m hoping to feel healthier and have more energy'], 'conversation_context': "The counselor is exploring the patient's motivations for quitting and identifying potential challenges. The counselor prompted the patient to discuss their biggest struggle, which they identified as stress.", '_debate_rounds': 2, '_debate_converged': True}
+
+Based on ALL the above signals, produce a unified clinical annotation.
+Be independent — do not anchor to previous voters.
+
+Respond ONLY with valid JSON:
+{
+  "stage_of_change": "precontemplation|contemplation|preparation|action|maintenance|relapse",
+  "main_concern": "<single most prominent barrier>",
+  "primary_trigger": "<most significant smoking trigger>",
+  "quit_attempt_history": "<concise summary of prior attempts>",
+  "recommended_intervention": ["<strategy 1>", "<strategy 2>", "..."]
+}
+
+
+RESPONSE:
+```json
+{
+  "stage_of_change": "contemplation",
+  "main_concern": "want to quit smoking",
+  "primary_trigger": "stress",
+  "quit_attempt_history": "No prior quit attempts reported.",
+  "recommended_intervention": [
+    "Explore and articulate specific motivations for quitting, focusing on the desired benefits (e.g., improved health, increased energy).",
+    "Identify potential stressors and develop coping strategies.",
+    "Discuss the immediate and long-term consequences of continued smoking to reinforce the desire for change."
+  ]
+}
+```
+
+================================================================================
+OLLAMA CALL 0020
+================================================================================
+timestamp: 2026-04-14T07:16:48.759835+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a clinical reasoning specialist producing the final annotation for a tobacco-cessation training dataset.
+
+CONVERSATION:
+Patient: Hi
+Counselor: Welcome! I'm eDOSTHI, here to support you in quitting smoking. What's been your biggest struggle with quitting so far?
+Patient: I want to quit smoking
+Counselor: That's a great decision! What motivates you to quit now, and what do you hope to gain from being smoke-free?
+
+CONSENSUS ANNOTATION:
+{'stage_of_change': 'contemplation', 'main_concern': 'want to quit smoking', 'primary_trigger': 'stress', 'quit_attempt_history': 'No prior quit attempts reported.', 'recommended_intervention': ['Explore and articulate specific motivations for quitting, focusing on the desired benefits (e.g., improved health, increased energy).', 'Identify potential stressors and develop coping strategies.', 'Discuss the immediate and long-term consequences of continued smoking to reinforce the desire for change.', 'Explore and articulate specific motivations for quitting.', 'Discuss the benefits of being smoke-free in detail, focusing on improved health and energy levels.'], 'vote_agreement': 0.917, 'dissenting_fields': []}
+
+Your tasks:
+1. Validate that the consensus annotation is internally consistent and supported by the conversation.
+2. Write a reasoning_summary: 1–2 sentences that explain WHY this patient is at this stage,
+   what their primary barrier is, and what intervention approach is recommended.
+
+Respond ONLY with valid JSON:
+{
+  "stage_of_change": "<from consensus>",
+  "main_concern": "<from consensus>",
+  "primary_trigger": "<from consensus>",
+  "quit_attempt_history": "<from consensus>",
+  "recommended_intervention": ["<strategy 1>", "..."],
+  "reasoning_summary": "<1–2 sentence clinical rationale>",
+  "confidence_score": 0.0
+}
+
+
+RESPONSE:
+```json
+{
+  "stage_of_change": "contemplation",
+  "main_concern": "want to quit smoking",
+  "primary_trigger": "stress",
+  "quit_attempt_history": "No prior quit attempts reported.",
+  "recommended_intervention": [
+    "Explore and articulate specific motivations for quitting, focusing on the desired benefits (e.g., improved health, increased energy).",
+    "Identify potential stressors and develop coping strategies.",
+    "Discuss the immediate and long-term consequences of continued smoking to reinforce the desire for change.",
+    "Explore and articulate specific motivations for quitting.",
+    "Discuss the benefits of being smoke-free in detail, focusing on improved health and energy levels."
+  ],
+  "reasoning_summary": "The patient is in the contemplation stage, expressing a desire to quit, and indicating that stress is a primary concern. The recommended interventions focus on clarifying motivations and addressing the underlying stress to move the patient towards action.",
+  "confidence_score": 1.0
+}
+```

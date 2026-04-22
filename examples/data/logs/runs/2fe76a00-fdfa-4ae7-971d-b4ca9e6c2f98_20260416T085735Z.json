@@ -1,0 +1,277 @@
+{
+  "events": {
+    "agent_manager": {
+      "confidence_results": {
+        "advice": {
+          "confidence": 0.0,
+          "issues": [
+            "signal not extracted"
+          ]
+        },
+        "attempt": {
+          "confidence": 0.5,
+          "issues": [
+            "'attempt_confidence_agent'"
+          ]
+        },
+        "concern": {
+          "confidence": 0.0,
+          "issues": [
+            "signal not extracted"
+          ]
+        },
+        "readiness": {
+          "confidence": 0.5,
+          "issues": [
+            "'readiness_confidence_agent'"
+          ]
+        },
+        "triggers": {
+          "confidence": 0.0,
+          "issues": [
+            "signal not extracted"
+          ]
+        }
+      },
+      "extractor_output": {
+        "attempt": {
+          "attempts": [
+            "Patient attempted to gradually reduce smoking with the intention to quit.",
+            "Patient attempted temporary abstinence (unknown duration)."
+          ],
+          "evidence": [
+            "Patient: hi",
+            "Patient: hi"
+          ]
+        },
+        "readiness": {
+          "evidence": "The patient simply said 'hi' and hasn't expressed any thoughts about quitting smoking or seeking support, indicating they are not yet considering the behavior change.",
+          "readiness_stage": "precontemplation"
+        }
+      },
+      "final_output": {
+        "attempt": {
+          "_debate_converged": false,
+          "_debate_rounds": 1,
+          "attempts": [
+            "Patient attempted to gradually reduce smoking with the intention to quit.",
+            "Patient attempted temporary abstinence (unknown duration)."
+          ],
+          "evidence": [
+            "Patient: hi",
+            "Patient: hi"
+          ]
+        },
+        "readiness": {
+          "_debate_converged": false,
+          "_debate_rounds": 1,
+          "evidence": "The patient simply said 'hi' and hasn't expressed any thoughts about quitting smoking or seeking support, indicating they are not yet considering the behavior change.",
+          "readiness_stage": "precontemplation"
+        }
+      }
+    },
+    "consensus_agent": {
+      "output": {
+        "consensus": {
+          "dissenting_fields": [
+            "quit_attempt_history"
+          ],
+          "main_concern": "Lack of engagement",
+          "primary_trigger": "N/A",
+          "quit_attempt_history": "Patient has made brief, unspecified attempts at gradual reduction and temporary abstinence.",
+          "recommended_intervention": [
+            "Explore patient's current thoughts and feelings regarding smoking.",
+            "Assess reasons for not considering quitting or seeking support.",
+            "Start with open-ended questions to understand the patient's perspective.",
+            "Assess reasons for not wanting to quit or seek support.",
+            "Start with motivational interviewing techniques to build rapport and explore ambivalence.",
+            "Assess the reasons behind the initial contact and identify any underlying motivations for change.",
+            "Introduce motivational interviewing techniques to encourage exploration of the potential benefits of quitting."
+          ],
+          "stage_of_change": "precontemplation",
+          "vote_agreement": 0.75
+        }
+      }
+    },
+    "longitudinal_sanity": {
+      "output": {
+        "longitudinal_sanity": {
+          "flags": [],
+          "passed": true,
+          "severity": "none"
+        }
+      }
+    },
+    "profile_update_agent": {
+      "output": {
+        "dataset_row": {
+          "confidence_score": 0.95,
+          "debate_rounds_used": 2,
+          "inconsistencies": [],
+          "longitudinal_flags": [],
+          "longitudinal_sanity_passed": true,
+          "main_concern": "Lack of engagement",
+          "primary_trigger": "N/A",
+          "quit_attempt_history": "Patient has made brief, unspecified attempts at gradual reduction and temporary abstinence.",
+          "reasoning_summary": "The patient's initial greeting indicates they are simply exploring options, suggesting precontemplation. Their primary barrier is a lack of engagement, necessitating an intervention focused on building rapport and understanding their motivations through motivational interviewing techniques.",
+          "recommended_intervention": [
+            "Explore patient's current thoughts and feelings regarding smoking.",
+            "Assess reasons for not considering quitting or seeking support.",
+            "Start with open-ended questions to understand the patient's perspective.",
+            "Assess reasons for not wanting to quit or seek support.",
+            "Start with motivational interviewing techniques to build rapport and explore ambivalence.",
+            "Assess the reasons behind the initial contact and identify any underlying motivations for change.",
+            "Introduce motivational interviewing techniques to encourage exploration of the potential benefits of quitting."
+          ],
+          "sanity_passed": true,
+          "session_number": 1,
+          "stage_of_change": "precontemplation",
+          "vote_agreement": 0.75
+        },
+        "longitudinal_output": {
+          "current_annotation": {
+            "confidence_score": 0.95,
+            "debate_rounds_used": 2,
+            "inconsistencies": [],
+            "longitudinal_flags": [],
+            "longitudinal_sanity_passed": true,
+            "main_concern": "Lack of engagement",
+            "primary_trigger": "N/A",
+            "quit_attempt_history": "Patient has made brief, unspecified attempts at gradual reduction and temporary abstinence.",
+            "reasoning_summary": "The patient's initial greeting indicates they are simply exploring options, suggesting precontemplation. Their primary barrier is a lack of engagement, necessitating an intervention focused on building rapport and understanding their motivations through motivational interviewing techniques.",
+            "recommended_intervention": [
+              "Explore patient's current thoughts and feelings regarding smoking.",
+              "Assess reasons for not considering quitting or seeking support.",
+              "Start with open-ended questions to understand the patient's perspective.",
+              "Assess reasons for not wanting to quit or seek support.",
+              "Start with motivational interviewing techniques to build rapport and explore ambivalence.",
+              "Assess the reasons behind the initial contact and identify any underlying motivations for change.",
+              "Introduce motivational interviewing techniques to encourage exploration of the potential benefits of quitting."
+            ],
+            "sanity_passed": true,
+            "session_number": 1,
+            "stage_of_change": "precontemplation",
+            "vote_agreement": 0.75
+          },
+          "delta": null,
+          "interventions_tried": [],
+          "longitudinal_flags": [],
+          "overall_progress": "unknown",
+          "patient_id": "2fe76a00-fdfa-4ae7-971d-b4ca9e6c2f98",
+          "persistent_concerns": [],
+          "persistent_triggers": [],
+          "relapse_detected": false,
+          "session_number": 1,
+          "stage_trajectory": [
+            "precontemplation"
+          ],
+          "stagnation_detected": false
+        },
+        "patient_profile_id": "2fe76a00-fdfa-4ae7-971d-b4ca9e6c2f98",
+        "session_count": 1
+      }
+    },
+    "reasoning_agent": {
+      "output": {
+        "dataset_row": {
+          "confidence_score": 0.95,
+          "debate_rounds_used": 2,
+          "inconsistencies": [],
+          "main_concern": "Lack of engagement",
+          "primary_trigger": "N/A",
+          "quit_attempt_history": "Patient has made brief, unspecified attempts at gradual reduction and temporary abstinence.",
+          "reasoning_summary": "The patient's initial greeting indicates they are simply exploring options, suggesting precontemplation. Their primary barrier is a lack of engagement, necessitating an intervention focused on building rapport and understanding their motivations through motivational interviewing techniques.",
+          "recommended_intervention": [
+            "Explore patient's current thoughts and feelings regarding smoking.",
+            "Assess reasons for not considering quitting or seeking support.",
+            "Start with open-ended questions to understand the patient's perspective.",
+            "Assess reasons for not wanting to quit or seek support.",
+            "Start with motivational interviewing techniques to build rapport and explore ambivalence.",
+            "Assess the reasons behind the initial contact and identify any underlying motivations for change.",
+            "Introduce motivational interviewing techniques to encourage exploration of the potential benefits of quitting."
+          ],
+          "sanity_passed": true,
+          "stage_of_change": "precontemplation",
+          "vote_agreement": 0.75
+        }
+      }
+    },
+    "run_chat": {
+      "final_result": {
+        "dataset_row": {
+          "confidence_score": 0.95,
+          "debate_rounds_used": 2,
+          "inconsistencies": [],
+          "longitudinal_flags": [],
+          "longitudinal_sanity_passed": true,
+          "main_concern": "Lack of engagement",
+          "primary_trigger": "N/A",
+          "quit_attempt_history": "Patient has made brief, unspecified attempts at gradual reduction and temporary abstinence.",
+          "reasoning_summary": "The patient's initial greeting indicates they are simply exploring options, suggesting precontemplation. Their primary barrier is a lack of engagement, necessitating an intervention focused on building rapport and understanding their motivations through motivational interviewing techniques.",
+          "recommended_intervention": [
+            "Explore patient's current thoughts and feelings regarding smoking.",
+            "Assess reasons for not considering quitting or seeking support.",
+            "Start with open-ended questions to understand the patient's perspective.",
+            "Assess reasons for not wanting to quit or seek support.",
+            "Start with motivational interviewing techniques to build rapport and explore ambivalence.",
+            "Assess the reasons behind the initial contact and identify any underlying motivations for change.",
+            "Introduce motivational interviewing techniques to encourage exploration of the potential benefits of quitting."
+          ],
+          "sanity_passed": true,
+          "session_number": 1,
+          "stage_of_change": "precontemplation",
+          "vote_agreement": 0.75
+        },
+        "longitudinal_output": {
+          "current_annotation": {
+            "confidence_score": 0.95,
+            "debate_rounds_used": 2,
+            "inconsistencies": [],
+            "longitudinal_flags": [],
+            "longitudinal_sanity_passed": true,
+            "main_concern": "Lack of engagement",
+            "primary_trigger": "N/A",
+            "quit_attempt_history": "Patient has made brief, unspecified attempts at gradual reduction and temporary abstinence.",
+            "reasoning_summary": "The patient's initial greeting indicates they are simply exploring options, suggesting precontemplation. Their primary barrier is a lack of engagement, necessitating an intervention focused on building rapport and understanding their motivations through motivational interviewing techniques.",
+            "recommended_intervention": [
+              "Explore patient's current thoughts and feelings regarding smoking.",
+              "Assess reasons for not considering quitting or seeking support.",
+              "Start with open-ended questions to understand the patient's perspective.",
+              "Assess reasons for not wanting to quit or seek support.",
+              "Start with motivational interviewing techniques to build rapport and explore ambivalence.",
+              "Assess the reasons behind the initial contact and identify any underlying motivations for change.",
+              "Introduce motivational interviewing techniques to encourage exploration of the potential benefits of quitting."
+            ],
+            "sanity_passed": true,
+            "session_number": 1,
+            "stage_of_change": "precontemplation",
+            "vote_agreement": 0.75
+          },
+          "delta": null,
+          "interventions_tried": [],
+          "longitudinal_flags": [],
+          "overall_progress": "unknown",
+          "patient_id": "2fe76a00-fdfa-4ae7-971d-b4ca9e6c2f98",
+          "persistent_concerns": [],
+          "persistent_triggers": [],
+          "relapse_detected": false,
+          "session_number": 1,
+          "stage_trajectory": [
+            "precontemplation"
+          ],
+          "stagnation_detected": false
+        },
+        "patient_id": "2fe76a00-fdfa-4ae7-971d-b4ca9e6c2f98",
+        "session_number": 1
+      },
+      "transcript": {
+        "session_id": "2fe76a00-fdfa-4ae7-971d-b4ca9e6c2f98",
+        "transcript": "Patient: hi\nCounselor: Hi! I'm eDOSTHI, your friendly AI coach. What brings you to this conversation today? Are you thinking about quitting smoking or looking for support in your journey so far?"
+      }
+    }
+  },
+  "meta": {
+    "session_id": "2fe76a00-fdfa-4ae7-971d-b4ca9e6c2f98",
+    "started_at": "20260416T085735Z"
+  }
+}

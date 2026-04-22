@@ -1,0 +1,46 @@
+=== LLM Response Log — 20260416_170154 ===
+
+--- [CONFIDENCE_CHECK] attempt @ 17:01:58.775 ---
+{
+  "confidence": 0.3,
+  "issues": [
+    "Grounding & Veracity: The extraction includes 'The patient has tried to quit twice before.' which is a direct quote from the source text. This meets the grounding requirement.",
+    "Hallucination Check: No hallucinated data points exist. The extraction accurately reflects the source.",
+    "Sensitivity (Omission) Check: The source text explicitly states 'Patient has tried to quit twice before.' This covers the core information. No relevant keywords or dates were missed.",
+    "Taxonomy Alignment: While not explicitly stated, the phrase 'tried to quit' implies a quit attempt.  Without further context, assigning a specific attempt type is speculative and introduces potential inaccuracy.  A more nuanced approach would be needed to determine the *type* of attempt, but the current extraction is overly broad."
+  ]
+}
+
+--- [CONFIDENCE_CHECK] readiness @ 17:02:00.341 ---
+{
+  "confidence": 0.9,
+  "issues": []
+}
+
+--- [CONFIDENCE_CHECK] concern @ 17:02:04.162 ---
+{
+  "confidence": 0.75,
+  "issues": [
+    "Implicit Concern Detection: The transcript contains both 'worried about weight' and 'has tried to quit twice before,' indicating a psychological concern related to relapse attempts. While not explicitly stated as 'anxiety about failing to quit,' the history of previous attempts strongly suggests an underlying psychological concern. This could be improved with a more nuanced extraction.",
+    "Severity Calibration: 'Worried about weight' is a reasonable representation of the patient's concern, but a more precise categorization might benefit from assessing the *degree* of worry. The transcript doesn't provide enough information to definitively calibrate the severity, hence the slightly lower score."
+  ]
+}
+
+--- [CONFIDENCE_CHECK] triggers @ 17:02:08.054 ---
+{
+  "confidence": 0.7,
+  "issues": [
+    "{'category': 'Grounding Check', 'trigger': 'substance use', 'rationale': 'The conversation mentions attempts to quit twice, indicating a history of substance use, but does not explicitly state it. This is an implication, not an explicit statement.'}",
+    "{'category': 'Omission Detection', 'phrase': 'Patient has tried to quit twice before', 'trigger': 'relapse', 'rationale': \"The phrase 'tried to quit twice before' strongly implies a history of relapse, which should be captured as a 'relapse' trigger.\"}"
+  ]
+}
+
+--- [CONFIDENCE_CHECK] advice @ 17:02:10.839 ---
+{
+  "confidence": 0.85,
+  "issues": [
+    "Omission: The conversation mentions prior cessation attempts, but the extracted data doesn't explicitly state the *number* of attempts. This is a significant omission.",
+    "Potential Hallucination: 'Recognize the patient has attempted cessation previously.' - While implied, this feels slightly like an interpretation beyond the explicit statement. A more cautious phrasing might be warranted."
+  ]
+}
+

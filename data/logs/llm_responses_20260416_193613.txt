@@ -1,0 +1,46 @@
+=== LLM Response Log — 20260416_193613 ===
+
+--- [CONFIDENCE_CHECK] attempt @ 19:36:17.377 ---
+{
+  "confidence": 0.6,
+  "issues": [
+    "Issue 1: Grounding and Veracity - The extraction includes 'morning smokes every single morning' as an attempt. While the patient describes this behavior, it's presented as an 'attempt' without explicit confirmation of a quit attempt. The conversation focuses on the *trigger* of this behavior, not the attempt itself. The anchor is the patient's statement 'I\u2019m ready to actually try this time, not just think about it.' which is a reflection of the behavior, not the behavior itself.",
+    "Issue 2: Omission Check - The conversation details multiple failed attempts with varying durations (6 weeks patch, 2-3 days cold turkey). The extraction only captures 'morning smokes every single morning'.  A more complete extraction would include the duration and method of these previous attempts to provide a fuller picture of the patient's history."
+  ]
+}
+
+--- [CONFIDENCE_CHECK] readiness @ 19:36:21.227 ---
+{
+  "confidence": 0.75,
+  "issues": [
+    "The classification of {stage} is defensible but borderline. While the patient expresses a desire to 'actually try this time' and sets a goal to 'set a date,' the conversation heavily emphasizes past failures (patch, cold turkey), a trigger (stress), and a significant barrier (wife's weight gain). These elements lean towards precontemplation, particularly given the repeated unsuccessful attempts. However, the statement 'I\u2019d like to at least set a date' introduces a nascent element of contemplation.",
+    "There is a minor evidence gap. The counselor\u2019s proactive suggestions regarding varenicline and a stress management plan, while helpful, don't definitively push the patient into preparation or action. The patient\u2019s response is hesitant and focused on managing potential obstacles, which is more aligned with precontemplation than a stage demonstrating active planning."
+  ]
+}
+
+--- [CONFIDENCE_CHECK] concern @ 19:36:25.525 ---
+{
+  "confidence": 0.95,
+  "issues": [
+    "Implicit Concern Detection: The patient explicitly states 'I don't know what I\u2019d do when things get hard at work' and 'That freaks me out a little,' indicating an underlying anxiety about coping with stress and potential relapse. This was missed.",
+    "Severity Calibration: The concerns regarding stress and weight gain are accurately represented as significant concerns. The patient\u2019s use of words like \u2018brutal\u2019 and \u2018terrified\u2019 regarding the lung damage and subsequent stress, warrants a high severity assessment.",
+    "Temporal Attribution: All concerns are accurately attributed to the current timeframe \u2013 the patient\u2019s anxieties are actively present during the conversation.",
+    "Categorization Accuracy: \u2018Stress\u2019 is correctly categorized as a Situational/Relapse concern (trigger contexts), \u2018Weight gain\u2019 is categorized as a Social/Financial concern (impact on spouse), and the overarching anxiety about the lung damage is categorized as Psychological (fear of failure/health)."
+  ]
+}
+
+--- [CONFIDENCE_CHECK] triggers @ 19:36:28.849 ---
+{
+  "confidence": 0.7,
+  "issues": [
+    "Omission Detection: The trigger 'wife's weight gain' is present in the conversation ('Also, my wife quit two years ago and she gained quite a bit of weight. That freaks me out a little.') but not included in the extraction. This should be categorized as a 'social' trigger due to its connection to a significant other's behavior.",
+    "Classification Accuracy: The trigger 'morning coffee' is listed as 'stress'. While morning coffee consumption can be linked to stress, the conversation explicitly states the patient has a habit of smoking *with* their morning coffee. This should be categorized as a 'habitual' trigger."
+  ]
+}
+
+--- [CONFIDENCE_CHECK] advice @ 19:36:30.333 ---
+{
+  "confidence": 0.95,
+  "issues": []
+}
+

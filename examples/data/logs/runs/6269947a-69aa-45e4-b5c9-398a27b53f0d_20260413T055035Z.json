@@ -1,0 +1,329 @@
+{
+  "events": {
+    "agent_manager": {
+      "confidence_result": {
+        "advice": {
+          "confidence": 0.95,
+          "issues": [],
+          "severity": "none"
+        },
+        "attempt": {
+          "confidence": 0.1,
+          "issues": [
+            "Missing information regarding patient's experience with quitting smoking. The conversation explicitly asks 'What's been your experience with quitting so far?' and the extracted data contains an empty list for 'attempts' and null values for other relevant fields."
+          ],
+          "severity": "none"
+        },
+        "concern": {
+          "confidence": 0.2,
+          "issues": [
+            "The extracted data includes 'hi' as a concern, which is simply the patient's initial greeting and not a stated concern regarding quitting smoking. This is an omission of relevant information.",
+            "The 'primary_concern' field is set to None, which is incorrect given the conversation's focus on the patient's experience with quitting."
+          ],
+          "severity": "none"
+        },
+        "readiness": {
+          "confidence": 0.85,
+          "issues": [
+            "The assessment of 'precontemplation' is reasonable given the patient's initial greeting, however, a more nuanced approach might consider this as a very early stage of engagement. The justification for 'precontemplation' relies heavily on interpretation and could benefit from more explicit evidence of a lack of awareness or intention to quit.",
+            "The extraction misses the crucial detail that the counselor initiated the conversation by asking about the patient's experience. This context is vital for understanding the patient's current state and should be reflected in the data."
+          ],
+          "severity": "none"
+        },
+        "triggers": {
+          "confidence": 0.2,
+          "issues": [
+            "Hallucination: The extracted data includes 'stress' and 'morning routine' which were not mentioned in the conversation. The conversation only asks about the patient's quitting experience so far.",
+            "Omission: The conversation lacks any information about the patient's smoking history, current smoking status, or specific challenges they are facing."
+          ],
+          "severity": "none"
+        }
+      },
+      "confidence_results": {
+        "advice": {
+          "confidence": 0.95,
+          "issues": [],
+          "severity": "none"
+        },
+        "attempt": {
+          "confidence": 0.1,
+          "issues": [
+            "Missing information regarding patient's experience with quitting smoking. The conversation explicitly asks 'What's been your experience with quitting so far?' and the extracted data contains an empty list for 'attempts' and null values for other relevant fields."
+          ],
+          "severity": "none"
+        },
+        "concern": {
+          "confidence": 0.2,
+          "issues": [
+            "The extracted data includes 'hi' as a concern, which is simply the patient's initial greeting and not a stated concern regarding quitting smoking. This is an omission of relevant information.",
+            "The 'primary_concern' field is set to None, which is incorrect given the conversation's focus on the patient's experience with quitting."
+          ],
+          "severity": "none"
+        },
+        "readiness": {
+          "confidence": 0.85,
+          "issues": [
+            "The assessment of 'precontemplation' is reasonable given the patient's initial greeting, however, a more nuanced approach might consider this as a very early stage of engagement. The justification for 'precontemplation' relies heavily on interpretation and could benefit from more explicit evidence of a lack of awareness or intention to quit.",
+            "The extraction misses the crucial detail that the counselor initiated the conversation by asking about the patient's experience. This context is vital for understanding the patient's current state and should be reflected in the data."
+          ],
+          "severity": "none"
+        },
+        "triggers": {
+          "confidence": 0.2,
+          "issues": [
+            "Hallucination: The extracted data includes 'stress' and 'morning routine' which were not mentioned in the conversation. The conversation only asks about the patient's quitting experience so far.",
+            "Omission: The conversation lacks any information about the patient's smoking history, current smoking status, or specific challenges they are facing."
+          ],
+          "severity": "none"
+        }
+      },
+      "extractor_output": {
+        "advice": {
+          "advice": [
+            "Be friendly and approachable",
+            "Offer support as a chatbot"
+          ],
+          "evidence": [
+            "Hi! I'm eDOSTHI, your friendly chatbot to help you quit smoking.",
+            "What's been your experience with quitting so far?"
+          ]
+        },
+        "attempt": {
+          "attempts": [],
+          "longest_attempt": null,
+          "most_recent_attempt": null
+        },
+        "concern": {
+          "concerns": [
+            "hi"
+          ],
+          "primary_concern": null
+        },
+        "readiness": {
+          "evidence": "The patient simply said \"hi,\" indicating they haven't yet engaged with the topic of quitting smoking or shared any thoughts or feelings about their smoking habits, fitting the definition of precontemplation.",
+          "readiness_stage": "precontemplation"
+        },
+        "triggers": {
+          "triggers": [
+            "stress",
+            "morning routine"
+          ]
+        }
+      },
+      "final_output": {
+        "advice": {
+          "_debate_converged": true,
+          "_debate_rounds": 0,
+          "advice": [
+            "Be friendly and approachable",
+            "Offer support as a chatbot"
+          ],
+          "evidence": [
+            "Hi! I'm eDOSTHI, your friendly chatbot to help you quit smoking.",
+            "What's been your experience with quitting so far?"
+          ]
+        },
+        "attempt": {
+          "_debate_converged": true,
+          "_debate_rounds": 2,
+          "attempts": [
+            "patient_greeting",
+            "counselor_greeting"
+          ],
+          "counselor_greeting": "Hi! I'm eDOSTHI, your friendly chatbot to help you quit smoking. What's been your experience with quitting so far?",
+          "longest_attempt": "counselor_greeting",
+          "most_recent_attempt": "patient_greeting",
+          "patient_greeting": "hi"
+        },
+        "concern": {
+          "_debate_converged": true,
+          "_debate_rounds": 1,
+          "concerns": [],
+          "primary_concern": "initial engagement",
+          "utterance_type": "greeting"
+        },
+        "readiness": {
+          "_debate_converged": true,
+          "_debate_rounds": 0,
+          "evidence": "The patient simply said \"hi,\" indicating they haven't yet engaged with the topic of quitting smoking or shared any thoughts or feelings about their smoking habits, fitting the definition of precontemplation.",
+          "readiness_stage": "precontemplation"
+        },
+        "triggers": {
+          "_debate_converged": true,
+          "_debate_rounds": 4,
+          "contextual_summary": "Patient: I've been having really intense cravings in the mornings and feeling stressed about it. The patient indicated a potential connection between these experiences and their morning routine, suggesting a need for further exploration.",
+          "extraction_notes": "This extraction identifies cravings and stress as reported triggers by the patient. The patient also indicated a potential connection between these experiences and their morning routine, suggesting a need for further exploration.",
+          "triggers": [
+            "cravings",
+            "withdrawal symptoms",
+            "stress",
+            "potential connection to morning routine"
+          ]
+        }
+      }
+    },
+    "consensus_agent": {
+      "output": {
+        "consensus": {
+          "dissenting_fields": [],
+          "main_concern": "initial engagement",
+          "primary_trigger": "cravings and stress",
+          "quit_attempt_history": "Patient initiated conversation with a simple greeting.",
+          "recommended_intervention": [
+            "Explore patient's cravings in detail, including timing, intensity, and potential triggers.",
+            "Build rapport and establish a supportive relationship.",
+            "Assess patient's readiness to discuss quitting smoking more deeply.",
+            "Explore the patient's cravings and stress levels in more detail.",
+            "Validate the patient's experience and offer empathetic support.",
+            "Introduce the chatbot's capabilities and its role in helping the patient quit smoking.",
+            "Begin to establish rapport and build trust.",
+            "Explore patient's cravings and stress levels in more detail.",
+            "Assess the patient's current understanding of smoking cessation."
+          ],
+          "stage_of_change": "precontemplation",
+          "vote_agreement": 0.917
+        }
+      }
+    },
+    "longitudinal_sanity": {
+      "output": {
+        "longitudinal_sanity": {
+          "flags": [],
+          "passed": true,
+          "severity": "none"
+        }
+      }
+    },
+    "profile_update_agent": {
+      "output": {
+        "dataset_row": {
+          "confidence_score": null,
+          "debate_rounds_used": 7,
+          "inconsistencies": [],
+          "longitudinal_flags": [],
+          "longitudinal_sanity_passed": true,
+          "main_concern": "unknown",
+          "primary_trigger": "unknown",
+          "quit_attempt_history": "unknown",
+          "reasoning_summary": null,
+          "recommended_intervention": [],
+          "sanity_passed": true,
+          "session_number": 1,
+          "stage_of_change": "unknown",
+          "vote_agreement": 0.917
+        },
+        "longitudinal_output": {
+          "current_annotation": {
+            "confidence_score": null,
+            "debate_rounds_used": 7,
+            "inconsistencies": [],
+            "longitudinal_flags": [],
+            "longitudinal_sanity_passed": true,
+            "main_concern": "unknown",
+            "primary_trigger": "unknown",
+            "quit_attempt_history": "unknown",
+            "reasoning_summary": null,
+            "recommended_intervention": [],
+            "sanity_passed": true,
+            "session_number": 1,
+            "stage_of_change": "unknown",
+            "vote_agreement": 0.917
+          },
+          "delta": null,
+          "interventions_tried": [],
+          "longitudinal_flags": [],
+          "overall_progress": "unknown",
+          "patient_id": "6269947a-69aa-45e4-b5c9-398a27b53f0d",
+          "persistent_concerns": [],
+          "persistent_triggers": [],
+          "relapse_detected": false,
+          "session_number": 1,
+          "stage_trajectory": [
+            "unknown"
+          ],
+          "stagnation_detected": false
+        },
+        "patient_profile_id": "6269947a-69aa-45e4-b5c9-398a27b53f0d",
+        "session_count": 1
+      }
+    },
+    "reasoning_agent": {
+      "output": {
+        "dataset_row": {
+          "confidence_score": null,
+          "debate_rounds_used": 7,
+          "inconsistencies": [],
+          "main_concern": "unknown",
+          "primary_trigger": "unknown",
+          "quit_attempt_history": "unknown",
+          "reasoning_summary": null,
+          "recommended_intervention": [],
+          "sanity_passed": true,
+          "stage_of_change": "unknown",
+          "vote_agreement": 0.917
+        }
+      }
+    },
+    "run_chat": {
+      "final_result": {
+        "dataset_row": {
+          "confidence_score": null,
+          "debate_rounds_used": 7,
+          "inconsistencies": [],
+          "longitudinal_flags": [],
+          "longitudinal_sanity_passed": true,
+          "main_concern": "unknown",
+          "primary_trigger": "unknown",
+          "quit_attempt_history": "unknown",
+          "reasoning_summary": null,
+          "recommended_intervention": [],
+          "sanity_passed": true,
+          "session_number": 1,
+          "stage_of_change": "unknown",
+          "vote_agreement": 0.917
+        },
+        "longitudinal_output": {
+          "current_annotation": {
+            "confidence_score": null,
+            "debate_rounds_used": 7,
+            "inconsistencies": [],
+            "longitudinal_flags": [],
+            "longitudinal_sanity_passed": true,
+            "main_concern": "unknown",
+            "primary_trigger": "unknown",
+            "quit_attempt_history": "unknown",
+            "reasoning_summary": null,
+            "recommended_intervention": [],
+            "sanity_passed": true,
+            "session_number": 1,
+            "stage_of_change": "unknown",
+            "vote_agreement": 0.917
+          },
+          "delta": null,
+          "interventions_tried": [],
+          "longitudinal_flags": [],
+          "overall_progress": "unknown",
+          "patient_id": "6269947a-69aa-45e4-b5c9-398a27b53f0d",
+          "persistent_concerns": [],
+          "persistent_triggers": [],
+          "relapse_detected": false,
+          "session_number": 1,
+          "stage_trajectory": [
+            "unknown"
+          ],
+          "stagnation_detected": false
+        },
+        "patient_id": "6269947a-69aa-45e4-b5c9-398a27b53f0d",
+        "session_number": 1
+      },
+      "transcript": {
+        "session_id": "6269947a-69aa-45e4-b5c9-398a27b53f0d",
+        "transcript": "Patient: hi\nCounselor: Hi! I'm eDOSTHI, your friendly chatbot to help you quit smoking. What's been your experience with quitting so far?"
+      }
+    }
+  },
+  "meta": {
+    "session_id": "6269947a-69aa-45e4-b5c9-398a27b53f0d",
+    "started_at": "20260413T055035Z"
+  }
+}

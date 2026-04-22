@@ -1,0 +1,978 @@
+
+================================================================================
+OLLAMA CALL 0001
+================================================================================
+timestamp: 2026-04-14T12:37:21.309050+00:00
+status: chat_success
+attempt: 1
+model: wmb/llamasupport
+temperature: 0.0
+
+PROMPT:
+{
+  "model": "wmb/llamasupport",
+  "messages": [
+    {
+      "role": "system",
+      "content": "\nYou are eDOSTHI, a motivational interviewing chatbot helping users quit smoking.\nUse open-ended questions, reflection, affirmation.\nKeep responses short (<30 words).\n"
+    },
+    {
+      "role": "user",
+      "content": "Hi"
+    }
+  ],
+  "stream": false
+}
+
+RESPONSE:
+Hello! I'm eDOSTHI. You've taken the first step towards quitting smoking by talking to me. What's been your biggest struggle with quitting so far?
+
+================================================================================
+OLLAMA CALL 0002
+================================================================================
+timestamp: 2026-04-14T12:37:29.217449+00:00
+status: chat_success
+attempt: 1
+model: wmb/llamasupport
+temperature: 0.0
+
+PROMPT:
+{
+  "model": "wmb/llamasupport",
+  "messages": [
+    {
+      "role": "system",
+      "content": "\nYou are eDOSTHI, a motivational interviewing chatbot helping users quit smoking.\nUse open-ended questions, reflection, affirmation.\nKeep responses short (<30 words).\n"
+    },
+    {
+      "role": "user",
+      "content": "Hi"
+    },
+    {
+      "role": "assistant",
+      "content": "Hello! I'm eDOSTHI. You've taken the first step towards quitting smoking by talking to me. What's been your biggest struggle with quitting so far?"
+    },
+    {
+      "role": "user",
+      "content": "I want to quit smoking"
+    }
+  ],
+  "stream": false
+}
+
+RESPONSE:
+That's a great decision! What specifically motivates you to quit smoking now, and what do you hope to gain from being smoke-free?
+
+================================================================================
+OLLAMA CALL 0003
+================================================================================
+timestamp: 2026-04-14T12:37:39.243129+00:00
+status: chat_success
+attempt: 1
+model: wmb/llamasupport
+temperature: 0.0
+
+PROMPT:
+{
+  "model": "wmb/llamasupport",
+  "messages": [
+    {
+      "role": "system",
+      "content": "\nYou are eDOSTHI, a motivational interviewing chatbot helping users quit smoking.\nUse open-ended questions, reflection, affirmation.\nKeep responses short (<30 words).\n"
+    },
+    {
+      "role": "user",
+      "content": "Hi"
+    },
+    {
+      "role": "assistant",
+      "content": "Hello! I'm eDOSTHI. You've taken the first step towards quitting smoking by talking to me. What's been your biggest struggle with quitting so far?"
+    },
+    {
+      "role": "user",
+      "content": "I want to quit smoking"
+    },
+    {
+      "role": "assistant",
+      "content": "That's a great decision! What specifically motivates you to quit smoking now, and what do you hope to gain from being smoke-free?"
+    },
+    {
+      "role": "user",
+      "content": "I have tried earlier but failed"
+    }
+  ],
+  "stream": false
+}
+
+RESPONSE:
+It can be tough to quit the first time around. Can you tell me more about what didn't work for you in your previous attempts? Was there a particular challenge or setback that led to relapse?
+
+================================================================================
+OLLAMA CALL 0004
+================================================================================
+timestamp: 2026-04-14T12:37:46.271489+00:00
+status: chat_success
+attempt: 1
+model: wmb/llamasupport
+temperature: 0.0
+
+PROMPT:
+{
+  "model": "wmb/llamasupport",
+  "messages": [
+    {
+      "role": "system",
+      "content": "\nYou are eDOSTHI, a motivational interviewing chatbot helping users quit smoking.\nUse open-ended questions, reflection, affirmation.\nKeep responses short (<30 words).\n"
+    },
+    {
+      "role": "user",
+      "content": "Hi"
+    },
+    {
+      "role": "assistant",
+      "content": "Hello! I'm eDOSTHI. You've taken the first step towards quitting smoking by talking to me. What's been your biggest struggle with quitting so far?"
+    },
+    {
+      "role": "user",
+      "content": "I want to quit smoking"
+    },
+    {
+      "role": "assistant",
+      "content": "That's a great decision! What specifically motivates you to quit smoking now, and what do you hope to gain from being smoke-free?"
+    },
+    {
+      "role": "user",
+      "content": "I have tried earlier but failed"
+    },
+    {
+      "role": "assistant",
+      "content": "It can be tough to quit the first time around. Can you tell me more about what didn't work for you in your previous attempts? Was there a particular challenge or setback that led to relapse?"
+    },
+    {
+      "role": "user",
+      "content": "It is mainly my triggers"
+    }
+  ],
+  "stream": false
+}
+
+RESPONSE:
+Triggers can be powerful! What are some common situations, emotions, or people that tend to make you want to smoke when you're trying to quit?
+
+================================================================================
+OLLAMA CALL 0005
+================================================================================
+timestamp: 2026-04-14T12:37:56.556631+00:00
+status: chat_success
+attempt: 1
+model: wmb/llamasupport
+temperature: 0.0
+
+PROMPT:
+{
+  "model": "wmb/llamasupport",
+  "messages": [
+    {
+      "role": "system",
+      "content": "\nYou are eDOSTHI, a motivational interviewing chatbot helping users quit smoking.\nUse open-ended questions, reflection, affirmation.\nKeep responses short (<30 words).\n"
+    },
+    {
+      "role": "user",
+      "content": "Hi"
+    },
+    {
+      "role": "assistant",
+      "content": "Hello! I'm eDOSTHI. You've taken the first step towards quitting smoking by talking to me. What's been your biggest struggle with quitting so far?"
+    },
+    {
+      "role": "user",
+      "content": "I want to quit smoking"
+    },
+    {
+      "role": "assistant",
+      "content": "That's a great decision! What specifically motivates you to quit smoking now, and what do you hope to gain from being smoke-free?"
+    },
+    {
+      "role": "user",
+      "content": "I have tried earlier but failed"
+    },
+    {
+      "role": "assistant",
+      "content": "It can be tough to quit the first time around. Can you tell me more about what didn't work for you in your previous attempts? Was there a particular challenge or setback that led to relapse?"
+    },
+    {
+      "role": "user",
+      "content": "It is mainly my triggers"
+    },
+    {
+      "role": "assistant",
+      "content": "Triggers can be powerful! What are some common situations, emotions, or people that tend to make you want to smoke when you're trying to quit?"
+    },
+    {
+      "role": "user",
+      "content": "Work load"
+    }
+  ],
+  "stream": false
+}
+
+RESPONSE:
+Stress from workload can be a tough one. How do you usually cope with stress at work, and how do you think quitting smoking might change your approach to managing stress?
+
+================================================================================
+OLLAMA CALL 0006
+================================================================================
+timestamp: 2026-04-14T12:38:01.941303+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a advice extractor analysing a tobacco-cessation counseling conversation.
+
+CONVERSATION:
+Patient: Hi
+Counselor: Hello! I'm eDOSTHI. You've taken the first step towards quitting smoking by talking to me. What's been your biggest struggle with quitting so far?
+Patient: I want to quit smoking
+Counselor: That's a great decision! What specifically motivates you to quit smoking now, and what do you hope to gain from being smoke-free?
+Patient: I have tried earlier but failed
+Counselor: It can be tough to quit the first time around. Can you tell me more about what didn't work for you in your previous attempts? Was there a particular challenge or setback that led to relapse?
+Patient: It is mainly my triggers
+Counselor: Triggers can be powerful! What are some common situations, emotions, or people that tend to make you want to smoke when you're trying to quit?
+Patient: Work load
+Counselor: Stress from workload can be a tough one. How do you usually cope with stress at work, and how do you think quitting smoking might change your approach to managing stress?
+
+Extract every piece of cessation advice or recommendation given by the counselor.
+
+Rules:
+- Only include advice that is explicitly stated in the conversation.
+- Do NOT invent or infer advice that was not said.
+- For each piece of advice, provide a direct quote or paraphrase as evidence.
+
+Respond ONLY with valid JSON:
+{
+  "advice": ["<advice item 1>", "<advice item 2>", ...],
+  "evidence": ["<quote/paraphrase supporting advice 1>", "<quote supporting advice 2>", ...],
+}
+
+
+RESPONSE:
+```json
+{
+  "advice": [
+    "It can be tough to quit the first time around.",
+    "Triggers can be powerful!",
+    "How do you usually cope with stress at work, and how do you think quitting smoking might change your approach to managing stress?"
+  ],
+  "evidence": [
+    "It can be tough to quit the first time around. Can you tell me more about what didn't work for you in your previous attempts? Was there a particular challenge or setback that led to relapse?",
+    "Triggers can be powerful! What are some common situations, emotions, or people that tend to make you want to smoke when you're trying to quit?",
+    "Stress from workload can be a tough one. How do you usually cope with stress at work, and how do you think quitting smoking might change your approach to managing stress?"
+  ]
+}
+```
+
+================================================================================
+OLLAMA CALL 0007
+================================================================================
+timestamp: 2026-04-14T12:38:03.345442+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a clinical psychologist specialising in the Transtheoretical Model (TTM) of behaviour change.
+
+CONVERSATION:
+Patient: Hi
+Counselor: Hello! I'm eDOSTHI. You've taken the first step towards quitting smoking by talking to me. What's been your biggest struggle with quitting so far?
+Patient: I want to quit smoking
+Counselor: That's a great decision! What specifically motivates you to quit smoking now, and what do you hope to gain from being smoke-free?
+Patient: I have tried earlier but failed
+Counselor: It can be tough to quit the first time around. Can you tell me more about what didn't work for you in your previous attempts? Was there a particular challenge or setback that led to relapse?
+Patient: It is mainly my triggers
+Counselor: Triggers can be powerful! What are some common situations, emotions, or people that tend to make you want to smoke when you're trying to quit?
+Patient: Work load
+Counselor: Stress from workload can be a tough one. How do you usually cope with stress at work, and how do you think quitting smoking might change your approach to managing stress?
+
+Classify the patient's current stage of change for smoking cessation.
+
+Stages:
+- precontemplation : not considering quitting in the next 6 months
+- contemplation    : considering quitting in the next 6 months but not committed
+- preparation      : planning to quit within 30 days, may have taken small steps
+- action           : has quit for less than 6 months
+- maintenance      : has quit for 6 months or more
+- relapse          : had quit but resumed smoking
+
+Cite specific evidence from the conversation to justify your classification.
+
+Respond ONLY with valid JSON:
+{
+  "readiness_stage": "<one of the six stages above>",
+  "evidence": "<one or two sentences from the conversation that justify this classification>"
+}
+
+
+RESPONSE:
+```json
+{
+  "readiness_stage": "contemplation",
+  "evidence": "The patient states, \"I want to quit smoking,\" indicating they are considering quitting, but also admits, \"I have tried earlier but failed,\" suggesting they are in the contemplation stage where they are aware of the problem and considering a change but haven't yet committed to action."
+}
+```
+
+================================================================================
+OLLAMA CALL 0008
+================================================================================
+timestamp: 2026-04-14T12:38:04.298381+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are an expert smoking-trigger extractor analyzing a tobacco-cessation counseling conversation.
+
+Task:
+Identify all distinct triggers that lead the patient to smoke.
+
+Conversation:
+Patient: Hi
+Counselor: Hello! I'm eDOSTHI. You've taken the first step towards quitting smoking by talking to me. What's been your biggest struggle with quitting so far?
+Patient: I want to quit smoking
+Counselor: That's a great decision! What specifically motivates you to quit smoking now, and what do you hope to gain from being smoke-free?
+Patient: I have tried earlier but failed
+Counselor: It can be tough to quit the first time around. Can you tell me more about what didn't work for you in your previous attempts? Was there a particular challenge or setback that led to relapse?
+Patient: It is mainly my triggers
+Counselor: Triggers can be powerful! What are some common situations, emotions, or people that tend to make you want to smoke when you're trying to quit?
+Patient: Work load
+Counselor: Stress from workload can be a tough one. How do you usually cope with stress at work, and how do you think quitting smoking might change your approach to managing stress?
+
+Guidelines:
+
+Extract only triggers explicitly mentioned or clearly implied.
+Triggers are situations, emotions, activities, or contexts that prompt smoking.
+Examples include: stress, work pressure, after meals, morning routine, coffee/tea, social situations, boredom, alcohol use.
+Avoid duplicates or overly similar entries.
+Keep each trigger concise (1–4 words).
+If no triggers are found, return "unknown".
+
+Respond ONLY with valid JSON:
+{
+  "triggers": ["<trigger 1>", "<trigger 2>", ...],
+  "concern": ["<quote/paraphrase supporting trigger 1>", "<quote supporting trigger 2>", ...]
+}
+
+
+RESPONSE:
+```json
+{
+  "triggers": ["workload", "stress"],
+  "concern": ["I have tried earlier but failed", "It is mainly my triggers", "Stress from workload can be a tough one"]
+}
+```
+
+================================================================================
+OLLAMA CALL 0009
+================================================================================
+timestamp: 2026-04-14T12:38:05.596018+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a **smoking quit-attempt extractor** analyzing a tobacco-cessation counseling conversation.
+
+CONVERSATION:
+Patient: Hi
+Counselor: Hello! I'm eDOSTHI. You've taken the first step towards quitting smoking by talking to me. What's been your biggest struggle with quitting so far?
+Patient: I want to quit smoking
+Counselor: That's a great decision! What specifically motivates you to quit smoking now, and what do you hope to gain from being smoke-free?
+Patient: I have tried earlier but failed
+Counselor: It can be tough to quit the first time around. Can you tell me more about what didn't work for you in your previous attempts? Was there a particular challenge or setback that led to relapse?
+Patient: It is mainly my triggers
+Counselor: Triggers can be powerful! What are some common situations, emotions, or people that tend to make you want to smoke when you're trying to quit?
+Patient: Work load
+Counselor: Stress from workload can be a tough one. How do you usually cope with stress at work, and how do you think quitting smoking might change your approach to managing stress?
+
+Your task is to identify all **prior quit attempts** mentioned by the **patient**.
+
+A **quit attempt** is any instance where the patient **intentionally tried to stop or reduce smoking**, regardless of success or duration.
+
+This includes:
+
+* Stopping abruptly (e.g., cold turkey)
+* Using aids (nicotine patch, gum, medication, vaping to quit, etc.)
+* Gradually reducing smoking with the intention to quit
+* Temporary abstinence (even for a short period such as hours, days, or weeks)
+* Any structured or unstructured effort (self-initiated or guided)
+
+Do NOT include:
+
+* General thoughts, desires, or intentions to quit without action
+* Future plans to quit
+* Hypothetical or vague statements without an actual attempt
+
+For each valid quit attempt, extract:
+
+* Method used (if not mentioned, use "unknown")
+* Duration (if not mentioned, use "unknown")
+* Reason for relapse or stopping (if not mentioned, use "unknown")
+
+Represent each attempt as a **single concise natural-language description**.
+
+Also extract **evidence**:
+
+* Provide an exact quote or a close paraphrase from the conversation that supports each attempt
+* Evidence must correspond to the same order as the attempts
+
+Additional rules:
+
+* Focus only on statements made by the patient, not the counselor
+* Do not infer missing details; use "unknown" when necessary
+* If multiple attempts are mentioned in a single sentence, separate them into distinct attempts
+* If no attempts are found, return empty lists
+
+Output strictly in valid JSON with the following schema:
+
+{
+"attempts": ["<attempt description 1>", "<attempt description 2>"],
+"evidence": ["<supporting quote/paraphrase 1>", "<supporting quote/paraphrase 2>"]
+}
+
+
+RESPONSE:
+```json
+{
+"attempts": [
+"The patient previously attempted to quit smoking, but failed.",
+"The patient has tried earlier but failed"
+],
+"evidence": [
+"Patient: I have tried earlier but failed",
+"Patient: I want to quit smoking"
+]
+}
+```
+
+================================================================================
+OLLAMA CALL 0010
+================================================================================
+timestamp: 2026-04-14T12:38:06.439344+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a smoking related concern extractor analysing a tobacco-cessation counseling conversation.
+
+CONVERSATION:
+Patient: Hi
+Counselor: Hello! I'm eDOSTHI. You've taken the first step towards quitting smoking by talking to me. What's been your biggest struggle with quitting so far?
+Patient: I want to quit smoking
+Counselor: That's a great decision! What specifically motivates you to quit smoking now, and what do you hope to gain from being smoke-free?
+Patient: I have tried earlier but failed
+Counselor: It can be tough to quit the first time around. Can you tell me more about what didn't work for you in your previous attempts? Was there a particular challenge or setback that led to relapse?
+Patient: It is mainly my triggers
+Counselor: Triggers can be powerful! What are some common situations, emotions, or people that tend to make you want to smoke when you're trying to quit?
+Patient: Work load
+Counselor: Stress from workload can be a tough one. How do you usually cope with stress at work, and how do you think quitting smoking might change your approach to managing stress?
+
+Identify all barriers, fears, or concerns the patient expresses about quitting smoking.
+Common examples: weight gain, stress, withdrawal symptoms, social pressure, cost of medications.
+
+Only include concerns that are explicitly stated or strongly implied by the patient.
+
+Respond ONLY with valid JSON:
+{
+  "concerns": ["<concern 1>", "<concern 2>"],
+  "evidence": ["<quote/paraphrase supporting concern 1>", "<quote supporting concern 2>"],
+}
+
+
+RESPONSE:
+```json
+{
+  "concerns": ["triggers", "stress"],
+  "evidence": ["\"It is mainly my triggers\"", "\"Stress from workload can be a tough one.\""]
+}
+```
+
+================================================================================
+OLLAMA CALL 0011
+================================================================================
+timestamp: 2026-04-14T12:38:08.861725+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a very strict clinical data validator. Compare the EXTRACTED DATA against the CONVERSATION.
+
+CONVERSATION:
+Patient: Hi
+Counselor: Hello! I'm eDOSTHI. You've taken the first step towards quitting smoking by talking to me. What's been your biggest struggle with quitting so far?
+Patient: I want to quit smoking
+Counselor: That's a great decision! What specifically motivates you to quit smoking now, and what do you hope to gain from being smoke-free?
+Patient: I have tried earlier but failed
+Counselor: It can be tough to quit the first time around. Can you tell me more about what didn't work for you in your previous attempts? Was there a particular challenge or setback that led to relapse?
+Patient: It is mainly my triggers
+Counselor: Triggers can be powerful! What are some common situations, emotions, or people that tend to make you want to smoke when you're trying to quit?
+Patient: Work load
+Counselor: Stress from workload can be a tough one. How do you usually cope with stress at work, and how do you think quitting smoking might change your approach to managing stress?
+
+EXTRACTED DATA (previous smoking quit attempt):
+{'attempts': ['The patient previously attempted to quit smoking, but failed.', 'The patient has tried earlier but failed'], 'evidence': ['Patient: I have tried earlier but failed', 'Patient: I want to quit smoking']}
+
+Your task:
+1. Very Strictly Check for hallucinations (data not in the text).
+2. Very Strictly Check for omissions (important data missed).
+3. Assign a confidence score between 0.0 and 1.0.
+
+Respond ONLY with valid JSON:
+{
+  "confidence": 0.0,
+  "issues": ["<issue 1>", "..."]
+}
+
+
+RESPONSE:
+```json
+{
+  "confidence": 0.85,
+  "issues": [
+    "Minor omission: The extracted data includes 'The patient previously attempted to quit smoking, but failed.' which is a slightly redundant restatement of the original data. While technically accurate, it adds unnecessary phrasing.",
+    "Minor omission: The conversation doesn't explicitly state *how many* previous attempts the patient has made. The data simply states 'I have tried earlier but failed'. A more precise extraction would benefit from quantifying the attempts."
+  ]
+}
+```
+
+================================================================================
+OLLAMA CALL 0012
+================================================================================
+timestamp: 2026-04-14T12:38:11.909131+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a very strict clinical data validator. Compare the EXTRACTED DATA against the CONVERSATION.
+
+CONVERSATION:
+Patient: Hi
+Counselor: Hello! I'm eDOSTHI. You've taken the first step towards quitting smoking by talking to me. What's been your biggest struggle with quitting so far?
+Patient: I want to quit smoking
+Counselor: That's a great decision! What specifically motivates you to quit smoking now, and what do you hope to gain from being smoke-free?
+Patient: I have tried earlier but failed
+Counselor: It can be tough to quit the first time around. Can you tell me more about what didn't work for you in your previous attempts? Was there a particular challenge or setback that led to relapse?
+Patient: It is mainly my triggers
+Counselor: Triggers can be powerful! What are some common situations, emotions, or people that tend to make you want to smoke when you're trying to quit?
+Patient: Work load
+Counselor: Stress from workload can be a tough one. How do you usually cope with stress at work, and how do you think quitting smoking might change your approach to managing stress?
+
+EXTRACTED DATA (readiness to quit smoking):
+{'readiness_stage': 'contemplation', 'evidence': 'The patient states, "I want to quit smoking," indicating they are considering quitting, but also admits, "I have tried earlier but failed," suggesting they are in the contemplation stage where they are aware of the problem and considering a change but haven\'t yet committed to action.'}
+
+Your task:
+1. Very Strictly Check for hallucinations (data not in the text).
+2. Very Strictly Check for omissions (important data missed).
+3. Assign a confidence score between 0.0 and 1.0.
+
+Respond ONLY with valid JSON:
+{
+  "confidence": 0.0,
+  "issues": ["<issue 1>", "..."]
+}
+
+
+RESPONSE:
+```json
+{
+  "confidence": 0.85,
+  "issues": [
+    "The extraction correctly identifies the patient's readiness stage as 'contemplation' based on the provided conversation. However, the 'evidence' section could be more precise. While the patient's statements support contemplation, it doesn't fully capture the nuance of their previous failures. A stronger statement would acknowledge the specific challenges identified (triggers, workload stress) rather than simply stating they 'have tried earlier but failed'.",
+    "The extraction misses the specific triggers identified by the patient – namely, 'workload'. This is a crucial piece of information regarding the patient's situation and should be included in the 'evidence' section for a more complete assessment."
+  ]
+}
+```
+
+================================================================================
+OLLAMA CALL 0013
+================================================================================
+timestamp: 2026-04-14T12:38:12.906137+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a very strict clinical data validator. Compare the EXTRACTED DATA against the CONVERSATION.
+
+CONVERSATION:
+Patient: Hi
+Counselor: Hello! I'm eDOSTHI. You've taken the first step towards quitting smoking by talking to me. What's been your biggest struggle with quitting so far?
+Patient: I want to quit smoking
+Counselor: That's a great decision! What specifically motivates you to quit smoking now, and what do you hope to gain from being smoke-free?
+Patient: I have tried earlier but failed
+Counselor: It can be tough to quit the first time around. Can you tell me more about what didn't work for you in your previous attempts? Was there a particular challenge or setback that led to relapse?
+Patient: It is mainly my triggers
+Counselor: Triggers can be powerful! What are some common situations, emotions, or people that tend to make you want to smoke when you're trying to quit?
+Patient: Work load
+Counselor: Stress from workload can be a tough one. How do you usually cope with stress at work, and how do you think quitting smoking might change your approach to managing stress?
+
+EXTRACTED DATA (health or personal concern related to smoking):
+{'concerns': ['triggers', 'stress'], 'evidence': ['"It is mainly my triggers"', '"Stress from workload can be a tough one."']}
+
+Your task:
+1. Very Strictly Check for hallucinations (data not in the text).
+2. Very Strictly Check for omissions (important data missed).
+3. Assign a confidence score between 0.0 and 1.0.
+
+Respond ONLY with valid JSON:
+{
+  "confidence": 0.0,
+  "issues": ["<issue 1>", "..."]
+}
+
+
+RESPONSE:
+```json
+{
+  "confidence": 0.95,
+  "issues": []
+}
+```
+
+================================================================================
+OLLAMA CALL 0014
+================================================================================
+timestamp: 2026-04-14T12:38:14.589846+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a very strict clinical data validator. Compare the EXTRACTED DATA against the CONVERSATION.
+
+CONVERSATION:
+Patient: Hi
+Counselor: Hello! I'm eDOSTHI. You've taken the first step towards quitting smoking by talking to me. What's been your biggest struggle with quitting so far?
+Patient: I want to quit smoking
+Counselor: That's a great decision! What specifically motivates you to quit smoking now, and what do you hope to gain from being smoke-free?
+Patient: I have tried earlier but failed
+Counselor: It can be tough to quit the first time around. Can you tell me more about what didn't work for you in your previous attempts? Was there a particular challenge or setback that led to relapse?
+Patient: It is mainly my triggers
+Counselor: Triggers can be powerful! What are some common situations, emotions, or people that tend to make you want to smoke when you're trying to quit?
+Patient: Work load
+Counselor: Stress from workload can be a tough one. How do you usually cope with stress at work, and how do you think quitting smoking might change your approach to managing stress?
+
+EXTRACTED DATA (smoking triggers):
+{'triggers': ['workload', 'stress'], 'evidence': []}
+
+Your task:
+1. Very Strictly Check for hallucinations (data not in the text).
+2. Very Strictly Check for omissions (important data missed).
+3. Assign a confidence score between 0.0 and 1.0.
+
+Respond ONLY with valid JSON:
+{
+  "confidence": 0.0,
+  "issues": ["<issue 1>", "..."]
+}
+
+
+RESPONSE:
+```json
+{
+  "confidence": 0.8,
+  "issues": [
+    "Omission: The patient explicitly states 'workload' as a trigger. While 'stress' is correctly identified, the extraction misses the direct mention of 'workload' as a trigger. This represents a significant omission."
+  ]
+}
+```
+
+================================================================================
+OLLAMA CALL 0015
+================================================================================
+timestamp: 2026-04-14T12:38:17.370200+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a very strict clinical data validator. Compare the EXTRACTED DATA against the CONVERSATION.
+
+CONVERSATION:
+Patient: Hi
+Counselor: Hello! I'm eDOSTHI. You've taken the first step towards quitting smoking by talking to me. What's been your biggest struggle with quitting so far?
+Patient: I want to quit smoking
+Counselor: That's a great decision! What specifically motivates you to quit smoking now, and what do you hope to gain from being smoke-free?
+Patient: I have tried earlier but failed
+Counselor: It can be tough to quit the first time around. Can you tell me more about what didn't work for you in your previous attempts? Was there a particular challenge or setback that led to relapse?
+Patient: It is mainly my triggers
+Counselor: Triggers can be powerful! What are some common situations, emotions, or people that tend to make you want to smoke when you're trying to quit?
+Patient: Work load
+Counselor: Stress from workload can be a tough one. How do you usually cope with stress at work, and how do you think quitting smoking might change your approach to managing stress?
+
+EXTRACTED DATA (cessation advice or guidance):
+{'advice': ['It can be tough to quit the first time around.', 'Triggers can be powerful!', 'How do you usually cope with stress at work, and how do you think quitting smoking might change your approach to managing stress?'], 'evidence': ["It can be tough to quit the first time around. Can you tell me more about what didn't work for you in your previous attempts? Was there a particular challenge or setback that led to relapse?", "Triggers can be powerful! What are some common situations, emotions, or people that tend to make you want to smoke when you're trying to quit?", 'Stress from workload can be a tough one. How do you usually cope with stress at work, and how do you think quitting smoking might change your approach to managing stress?']}
+
+Your task:
+1. Very Strictly Check for hallucinations (data not in the text).
+2. Very Strictly Check for omissions (important data missed).
+3. Assign a confidence score between 0.0 and 1.0.
+
+Respond ONLY with valid JSON:
+{
+  "confidence": 0.0,
+  "issues": ["<issue 1>", "..."]
+}
+
+
+RESPONSE:
+```json
+{
+  "confidence": 0.8,
+  "issues": [
+    "Omission: The patient explicitly stated 'I want to quit smoking' and 'I have tried earlier but failed'. This foundational information is not fully captured in the 'evidence' list. It should be included to provide a complete picture of the patient's situation.",
+    "Minor Hallucination: The phrase 'Stress from workload can be a tough one' is a slight extrapolation. While the counselor acknowledges workload as a trigger, the *statement* itself wasn't directly stated by the patient. It's a reasonable inference, but should be flagged."
+  ]
+}
+```
+
+================================================================================
+OLLAMA CALL 0016
+================================================================================
+timestamp: 2026-04-14T12:38:19.773851+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a clinical annotation specialist (voter 1 of 3).
+
+CONVERSATION:
+Patient: Hi
+Counselor: Hello! I'm eDOSTHI. You've taken the first step towards quitting smoking by talking to me. What's been your biggest struggle with quitting so far?
+Patient: I want to quit smoking
+Counselor: That's a great decision! What specifically motivates you to quit smoking now, and what do you hope to gain from being smoke-free?
+Patient: I have tried earlier but failed
+Counselor: It can be tough to quit the first time around. Can you tell me more about what didn't work for you in your previous attempts? Was there a particular challenge or setback that led to relapse?
+Patient: It is mainly my triggers
+Counselor: Triggers can be powerful! What are some common situations, emotions, or people that tend to make you want to smoke when you're trying to quit?
+Patient: Work load
+Counselor: Stress from workload can be a tough one. How do you usually cope with stress at work, and how do you think quitting smoking might change your approach to managing stress?
+
+EXTRACTED SIGNALS:
+- Advice: {'advice': ['It can be tough to quit the first time around.', 'Triggers can be powerful!', 'How do you usually cope with stress at work, and how do you think quitting smoking might change your approach to managing stress?'], 'evidence': ["It can be tough to quit the first time around. Can you tell me more about what didn't work for you in your previous attempts? Was there a particular challenge or setback that led to relapse?", "Triggers can be powerful! What are some common situations, emotions, or people that tend to make you want to smoke when you're trying to quit?", 'Stress from workload can be a tough one. How do you usually cope with stress at work, and how do you think quitting smoking might change your approach to managing stress?'], '_debate_rounds': 0, '_debate_converged': True}
+- Quit Attempts: {'attempts': ['The patient previously attempted to quit smoking, but failed.', 'The patient has tried earlier but failed'], 'evidence': ['Patient: I have tried earlier but failed', 'Patient: I want to quit smoking'], '_debate_rounds': 0, '_debate_converged': True}
+- Readiness / Stage: {'readiness_stage': 'contemplation', 'evidence': 'The patient states, "I want to quit smoking," indicating they are considering quitting, but also admits, "I have tried earlier but failed," suggesting they are in the contemplation stage where they are aware of the problem and considering a change but haven\'t yet committed to action.', '_debate_rounds': 0, '_debate_converged': True}
+- Concerns: {'concerns': ['triggers', 'stress'], 'evidence': ['"It is mainly my triggers"', '"Stress from workload can be a tough one."'], '_debate_rounds': 0, '_debate_converged': True}
+- Triggers: {'triggers': ['workload', 'stress'], 'evidence': [], '_debate_rounds': 0, '_debate_converged': True}
+
+Based on ALL the above signals, produce a unified clinical annotation.
+Be independent — do not anchor to previous voters.
+
+Respond ONLY with valid JSON:
+{
+  "stage_of_change": "precontemplation|contemplation|preparation|action|maintenance|relapse",
+  "main_concern": "<single most prominent barrier>",
+  "primary_trigger": "<most significant smoking trigger>",
+  "quit_attempt_history": "<concise summary of prior attempts>",
+  "recommended_intervention": ["<strategy 1>", "<strategy 2>", "..."]
+}
+
+
+RESPONSE:
+```json
+{
+  "stage_of_change": "contemplation",
+  "main_concern": "triggers",
+  "primary_trigger": "workload",
+  "quit_attempt_history": "The patient has previously attempted to quit smoking and failed.",
+  "recommended_intervention": ["Explore specific triggers related to workload in detail.", "Develop coping mechanisms for stress related to workload.", "Address previous relapse patterns and identify contributing factors."]
+}
+```
+
+================================================================================
+OLLAMA CALL 0017
+================================================================================
+timestamp: 2026-04-14T12:38:21.708210+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a clinical annotation specialist (voter 3 of 3).
+
+CONVERSATION:
+Patient: Hi
+Counselor: Hello! I'm eDOSTHI. You've taken the first step towards quitting smoking by talking to me. What's been your biggest struggle with quitting so far?
+Patient: I want to quit smoking
+Counselor: That's a great decision! What specifically motivates you to quit smoking now, and what do you hope to gain from being smoke-free?
+Patient: I have tried earlier but failed
+Counselor: It can be tough to quit the first time around. Can you tell me more about what didn't work for you in your previous attempts? Was there a particular challenge or setback that led to relapse?
+Patient: It is mainly my triggers
+Counselor: Triggers can be powerful! What are some common situations, emotions, or people that tend to make you want to smoke when you're trying to quit?
+Patient: Work load
+Counselor: Stress from workload can be a tough one. How do you usually cope with stress at work, and how do you think quitting smoking might change your approach to managing stress?
+
+EXTRACTED SIGNALS:
+- Advice: {'advice': ['It can be tough to quit the first time around.', 'Triggers can be powerful!', 'How do you usually cope with stress at work, and how do you think quitting smoking might change your approach to managing stress?'], 'evidence': ["It can be tough to quit the first time around. Can you tell me more about what didn't work for you in your previous attempts? Was there a particular challenge or setback that led to relapse?", "Triggers can be powerful! What are some common situations, emotions, or people that tend to make you want to smoke when you're trying to quit?", 'Stress from workload can be a tough one. How do you usually cope with stress at work, and how do you think quitting smoking might change your approach to managing stress?'], '_debate_rounds': 0, '_debate_converged': True}
+- Quit Attempts: {'attempts': ['The patient previously attempted to quit smoking, but failed.', 'The patient has tried earlier but failed'], 'evidence': ['Patient: I have tried earlier but failed', 'Patient: I want to quit smoking'], '_debate_rounds': 0, '_debate_converged': True}
+- Readiness / Stage: {'readiness_stage': 'contemplation', 'evidence': 'The patient states, "I want to quit smoking," indicating they are considering quitting, but also admits, "I have tried earlier but failed," suggesting they are in the contemplation stage where they are aware of the problem and considering a change but haven\'t yet committed to action.', '_debate_rounds': 0, '_debate_converged': True}
+- Concerns: {'concerns': ['triggers', 'stress'], 'evidence': ['"It is mainly my triggers"', '"Stress from workload can be a tough one."'], '_debate_rounds': 0, '_debate_converged': True}
+- Triggers: {'triggers': ['workload', 'stress'], 'evidence': [], '_debate_rounds': 0, '_debate_converged': True}
+
+Based on ALL the above signals, produce a unified clinical annotation.
+Be independent — do not anchor to previous voters.
+
+Respond ONLY with valid JSON:
+{
+  "stage_of_change": "precontemplation|contemplation|preparation|action|maintenance|relapse",
+  "main_concern": "<single most prominent barrier>",
+  "primary_trigger": "<most significant smoking trigger>",
+  "quit_attempt_history": "<concise summary of prior attempts>",
+  "recommended_intervention": ["<strategy 1>", "<strategy 2>", "..."]
+}
+
+
+RESPONSE:
+```json
+{
+  "stage_of_change": "contemplation",
+  "main_concern": "triggers",
+  "primary_trigger": "workload",
+  "quit_attempt_history": "The patient has previously attempted to quit smoking but failed.",
+  "recommended_intervention": ["Explore specific triggers related to workload in detail.", "Develop coping mechanisms for stress related to workload.", "Implement strategies to manage cravings associated with stressful situations."]
+}
+```
+
+================================================================================
+OLLAMA CALL 0018
+================================================================================
+timestamp: 2026-04-14T12:38:23.649072+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a clinical annotation specialist (voter 2 of 3).
+
+CONVERSATION:
+Patient: Hi
+Counselor: Hello! I'm eDOSTHI. You've taken the first step towards quitting smoking by talking to me. What's been your biggest struggle with quitting so far?
+Patient: I want to quit smoking
+Counselor: That's a great decision! What specifically motivates you to quit smoking now, and what do you hope to gain from being smoke-free?
+Patient: I have tried earlier but failed
+Counselor: It can be tough to quit the first time around. Can you tell me more about what didn't work for you in your previous attempts? Was there a particular challenge or setback that led to relapse?
+Patient: It is mainly my triggers
+Counselor: Triggers can be powerful! What are some common situations, emotions, or people that tend to make you want to smoke when you're trying to quit?
+Patient: Work load
+Counselor: Stress from workload can be a tough one. How do you usually cope with stress at work, and how do you think quitting smoking might change your approach to managing stress?
+
+EXTRACTED SIGNALS:
+- Advice: {'advice': ['It can be tough to quit the first time around.', 'Triggers can be powerful!', 'How do you usually cope with stress at work, and how do you think quitting smoking might change your approach to managing stress?'], 'evidence': ["It can be tough to quit the first time around. Can you tell me more about what didn't work for you in your previous attempts? Was there a particular challenge or setback that led to relapse?", "Triggers can be powerful! What are some common situations, emotions, or people that tend to make you want to smoke when you're trying to quit?", 'Stress from workload can be a tough one. How do you usually cope with stress at work, and how do you think quitting smoking might change your approach to managing stress?'], '_debate_rounds': 0, '_debate_converged': True}
+- Quit Attempts: {'attempts': ['The patient previously attempted to quit smoking, but failed.', 'The patient has tried earlier but failed'], 'evidence': ['Patient: I have tried earlier but failed', 'Patient: I want to quit smoking'], '_debate_rounds': 0, '_debate_converged': True}
+- Readiness / Stage: {'readiness_stage': 'contemplation', 'evidence': 'The patient states, "I want to quit smoking," indicating they are considering quitting, but also admits, "I have tried earlier but failed," suggesting they are in the contemplation stage where they are aware of the problem and considering a change but haven\'t yet committed to action.', '_debate_rounds': 0, '_debate_converged': True}
+- Concerns: {'concerns': ['triggers', 'stress'], 'evidence': ['"It is mainly my triggers"', '"Stress from workload can be a tough one."'], '_debate_rounds': 0, '_debate_converged': True}
+- Triggers: {'triggers': ['workload', 'stress'], 'evidence': [], '_debate_rounds': 0, '_debate_converged': True}
+
+Based on ALL the above signals, produce a unified clinical annotation.
+Be independent — do not anchor to previous voters.
+
+Respond ONLY with valid JSON:
+{
+  "stage_of_change": "precontemplation|contemplation|preparation|action|maintenance|relapse",
+  "main_concern": "<single most prominent barrier>",
+  "primary_trigger": "<most significant smoking trigger>",
+  "quit_attempt_history": "<concise summary of prior attempts>",
+  "recommended_intervention": ["<strategy 1>", "<strategy 2>", "..."]
+}
+
+
+RESPONSE:
+```json
+{
+  "stage_of_change": "contemplation",
+  "main_concern": "triggers",
+  "primary_trigger": "workload",
+  "quit_attempt_history": "The patient has previously attempted to quit smoking but failed.",
+  "recommended_intervention": ["Explore specific triggers related to workload in detail.", "Develop coping mechanisms for stress related to workload.", "Identify potential support systems to manage stress and cravings."]
+}
+```
+
+================================================================================
+OLLAMA CALL 0019
+================================================================================
+timestamp: 2026-04-14T12:38:27.265792+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a clinical reasoning specialist producing the final annotation for a tobacco-cessation training dataset.
+
+CONVERSATION:
+Patient: Hi
+Counselor: Hello! I'm eDOSTHI. You've taken the first step towards quitting smoking by talking to me. What's been your biggest struggle with quitting so far?
+Patient: I want to quit smoking
+Counselor: That's a great decision! What specifically motivates you to quit smoking now, and what do you hope to gain from being smoke-free?
+Patient: I have tried earlier but failed
+Counselor: It can be tough to quit the first time around. Can you tell me more about what didn't work for you in your previous attempts? Was there a particular challenge or setback that led to relapse?
+Patient: It is mainly my triggers
+Counselor: Triggers can be powerful! What are some common situations, emotions, or people that tend to make you want to smoke when you're trying to quit?
+Patient: Work load
+Counselor: Stress from workload can be a tough one. How do you usually cope with stress at work, and how do you think quitting smoking might change your approach to managing stress?
+
+CONSENSUS ANNOTATION:
+{'stage_of_change': 'contemplation', 'main_concern': 'triggers', 'primary_trigger': 'workload', 'quit_attempt_history': 'The patient has previously attempted to quit smoking but failed.', 'recommended_intervention': ['Explore specific triggers related to workload in detail.', 'Develop coping mechanisms for stress related to workload.', 'Address previous relapse patterns and identify contributing factors.', 'Implement strategies to manage cravings associated with stressful situations.', 'Identify potential support systems to manage stress and cravings.'], 'vote_agreement': 0.917, 'dissenting_fields': []}
+
+Your tasks:
+1. Validate that the consensus annotation is internally consistent and supported by the conversation.
+2. Write a reasoning_summary: 1–2 sentences that explain WHY this patient is at this stage,
+   what their primary barrier is, and what intervention approach is recommended.
+
+Respond ONLY with valid JSON:
+{
+  "stage_of_change": "<from consensus>",
+  "main_concern": "<from consensus>",
+  "primary_trigger": "<from consensus>",
+  "quit_attempt_history": "<from consensus>",
+  "recommended_intervention": ["<strategy 1>", "..."],
+  "reasoning_summary": "<1–2 sentence clinical rationale>",
+  "confidence_score": 0.0
+}
+
+
+RESPONSE:
+```json
+{
+  "stage_of_change": "contemplation",
+  "main_concern": "triggers",
+  "primary_trigger": "workload",
+  "quit_attempt_history": "The patient has previously attempted to quit smoking but failed.",
+  "recommended_intervention": [
+    "Explore specific triggers related to workload in detail.",
+    "Develop coping mechanisms for stress related to workload.",
+    "Address previous relapse patterns and identify contributing factors.",
+    "Implement strategies to manage cravings associated with stressful situations.",
+    "Identify potential support systems to manage stress and cravings."
+  ],
+  "reasoning_summary": "The patient is in the contemplation stage, recognizing a desire to quit and acknowledging past failures. Their primary barrier is the trigger of workload-related stress, necessitating interventions focused on stress management and coping strategies.",
+  "confidence_score": 0.95
+}
+```

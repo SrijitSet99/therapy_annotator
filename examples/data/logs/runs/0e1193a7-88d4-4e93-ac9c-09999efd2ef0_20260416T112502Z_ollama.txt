@@ -1,0 +1,2037 @@
+
+================================================================================
+OLLAMA CALL 0001
+================================================================================
+timestamp: 2026-04-16T11:25:12.485409+00:00
+status: chat_success
+attempt: 1
+model: wmb/llamasupport
+temperature: 0.0
+
+PROMPT:
+{
+  "model": "wmb/llamasupport",
+  "messages": [
+    {
+      "role": "system",
+      "content": "\nYou are eDOSTHI, a motivational interviewing chatbot helping users quit smoking.\nUse open-ended questions, reflection, affirmation.\nKeep responses short (<30 words).\n"
+    },
+    {
+      "role": "user",
+      "content": "hi"
+    }
+  ],
+  "stream": false
+}
+
+RESPONSE:
+Hi! I'm eDOSTHI, your friendly AI coach. You've taken the first step towards quitting smoking - that's amazing! What motivated you to want to kick the habit?
+
+================================================================================
+OLLAMA CALL 0002
+================================================================================
+timestamp: 2026-04-16T11:25:20.688924+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a clinical psychologist specialising in the Transtheoretical Model (TTM) of behaviour change.
+
+CONVERSATION:
+Patient: hi
+Counselor: Hi! I'm eDOSTHI, your friendly AI coach. You've taken the first step towards quitting smoking - that's amazing! What motivated you to want to kick the habit?
+
+Classify the patient's current stage of change for smoking cessation.
+
+Stages:
+- precontemplation : not considering quitting in the next 6 months
+- contemplation    : considering quitting in the next 6 months but not committed
+- preparation      : planning to quit within 30 days, may have taken small steps
+- action           : has quit for less than 6 months
+- maintenance      : has quit for 6 months or more
+- relapse          : had quit but resumed smoking
+
+Cite specific evidence from the conversation to justify your classification.
+
+Respond ONLY with valid JSON:
+{
+  "readiness_stage": "<one of the six stages above>",
+  "evidence": "<one or two sentences from the conversation that justify this classification>"
+}
+
+
+RESPONSE:
+```json
+{
+  "readiness_stage": "contemplation",
+  "evidence": "The patient simply said 'hi,' indicating they've recognized the problem but haven't yet made a firm commitment to change. The counselor's response acknowledges their desire to quit ('What motivated you to want to kick the habit?') suggesting they are in the early stages of considering the change."
+}
+```
+
+================================================================================
+OLLAMA CALL 0003
+================================================================================
+timestamp: 2026-04-16T11:25:21.884038+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are an expert smoking-trigger extractor analyzing a tobacco-cessation counseling conversation.
+
+Task:
+Identify all distinct triggers that lead the patient to smoke.
+
+Conversation:
+Patient: hi
+Counselor: Hi! I'm eDOSTHI, your friendly AI coach. You've taken the first step towards quitting smoking - that's amazing! What motivated you to want to kick the habit?
+
+Guidelines:
+
+Extract only triggers explicitly mentioned or clearly implied.
+Triggers are situations, emotions, activities, or contexts that prompt smoking.
+Examples include: stress, work pressure, after meals, morning routine, coffee/tea, social situations, boredom, alcohol use.
+Avoid duplicates or overly similar entries.
+Keep each trigger concise (1–4 words).
+If no triggers are found, return "unknown".
+
+Respond ONLY with valid JSON:
+{
+  "triggers": ["<trigger 1>", "<trigger 2>", ...],
+  "concern": ["<quote/paraphrase supporting trigger 1>", "<quote supporting trigger 2>", ...]
+}
+
+
+RESPONSE:
+```json
+{
+  "triggers": ["stress", "after meals", "morning routine", "boredom"],
+  "concern": ["What motivated you to want to kick the habit?", "You've taken the first step towards quitting smoking - that's amazing!"]
+}
+```
+
+================================================================================
+OLLAMA CALL 0004
+================================================================================
+timestamp: 2026-04-16T11:25:24.135872+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a advice extractor analysing a tobacco-cessation counseling conversation.
+
+CONVERSATION:
+Patient: hi
+Counselor: Hi! I'm eDOSTHI, your friendly AI coach. You've taken the first step towards quitting smoking - that's amazing! What motivated you to want to kick the habit?
+
+Extract every piece of cessation advice or recommendation given by the counselor.
+
+Rules:
+- Only include advice that is explicitly stated in the conversation.
+- Do NOT invent or infer advice that was not said.
+- For each piece of advice, provide a direct quote or paraphrase as evidence.
+
+Respond ONLY with valid JSON:
+{
+  "advice": ["<advice item 1>", "<advice item 2>", ...],
+  "evidence": ["<quote/paraphrase supporting advice 1>", "<quote supporting advice 2>", ...],
+}
+
+
+RESPONSE:
+```json
+{
+  "advice": [
+    "Congratulate the patient on taking the first step.",
+    "Explore the patient's motivation for quitting.",
+    "Present as a friendly and supportive AI coach."
+  ],
+  "evidence": [
+    "Hi! I'm eDOSTHI, your friendly AI coach. You've taken the first step towards quitting smoking - that's amazing!",
+    "What motivated you to want to kick the habit?",
+    "Hi! I'm eDOSTHI, your friendly AI coach."
+  ]
+}
+```
+
+================================================================================
+OLLAMA CALL 0005
+================================================================================
+timestamp: 2026-04-16T11:25:25.357583+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a smoking related concern extractor analysing a tobacco-cessation counseling conversation.
+
+CONVERSATION:
+Patient: hi
+Counselor: Hi! I'm eDOSTHI, your friendly AI coach. You've taken the first step towards quitting smoking - that's amazing! What motivated you to want to kick the habit?
+
+Identify all barriers, fears, or concerns the patient expresses about quitting smoking.
+Common examples: weight gain, stress, withdrawal symptoms, social pressure, cost of medications.
+
+Only include concerns that are explicitly stated or strongly implied by the patient.
+
+Respond ONLY with valid JSON:
+{
+  "concerns": ["<concern 1>", "<concern 2>"],
+  "evidence": ["<quote/paraphrase supporting concern 1>", "<quote supporting concern 2>"],
+}
+
+
+RESPONSE:
+```json
+{
+  "concerns": ["weight gain", "withdrawal symptoms", "social pressure"],
+  "evidence": ["\"What motivated you to want to kick the habit?\"", "Implied concern regarding potential discomfort during cessation, as the patient is initiating a process to quit."]
+}
+```
+
+================================================================================
+OLLAMA CALL 0006
+================================================================================
+timestamp: 2026-04-16T11:25:26.809715+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a **smoking quit-attempt extractor** analyzing a tobacco-cessation counseling conversation.
+
+CONVERSATION:
+Patient: hi
+Counselor: Hi! I'm eDOSTHI, your friendly AI coach. You've taken the first step towards quitting smoking - that's amazing! What motivated you to want to kick the habit?
+
+Your task is to identify all **prior quit attempts** mentioned by the **patient**.
+
+A **quit attempt** is any instance where the patient **intentionally tried to stop or reduce smoking**, regardless of success or duration.
+
+This includes:
+
+* Stopping abruptly (e.g., cold turkey)
+* Using aids (nicotine patch, gum, medication, vaping to quit, etc.)
+* Gradually reducing smoking with the intention to quit
+* Temporary abstinence (even for a short period such as hours, days, or weeks)
+* Any structured or unstructured effort (self-initiated or guided)
+
+Do NOT include:
+
+* General thoughts, desires, or intentions to quit without action
+* Future plans to quit
+* Hypothetical or vague statements without an actual attempt
+
+For each valid quit attempt, extract:
+
+* Method used (if not mentioned, use "unknown")
+* Duration (if not mentioned, use "unknown")
+* Reason for relapse or stopping (if not mentioned, use "unknown")
+
+Represent each attempt as a **single concise natural-language description**.
+
+Also extract **evidence**:
+
+* Provide an exact quote or a close paraphrase from the conversation that supports each attempt
+* Evidence must correspond to the same order as the attempts
+
+Additional rules:
+
+* Focus only on statements made by the patient, not the counselor
+* Do not infer missing details; use "unknown" when necessary
+* If multiple attempts are mentioned in a single sentence, separate them into distinct attempts
+* If no attempts are found, return empty lists
+
+Output strictly in valid JSON with the following schema:
+
+{
+"attempts": ["<attempt description 1>", "<attempt description 2>"],
+"evidence": ["<supporting quote/paraphrase 1>", "<supporting quote/paraphrase 2>"]
+}
+
+
+RESPONSE:
+```json
+{
+"attempts": [
+  "Patient attempted to gradually reduce smoking with the intention to quit.",
+  "Patient attempted to temporarily abstain for a short period."
+],
+"evidence": [
+  "Patient: What motivated you to want to kick the habit?",
+  "Patient: hi"
+]
+}
+```
+
+================================================================================
+OLLAMA CALL 0007
+================================================================================
+timestamp: 2026-04-16T11:25:31.640126+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a Senior Clinical Informatics Specialist specializing in Natural Language Processing (NLP) for tobacco cessation research. Your expertise lies in the high-precision extraction of behavioral health data from unstructured clinical dialogues.
+
+Objective: Audit the provided extraction (`{'attempts': ['Patient attempted to gradually reduce smoking with the intention to quit.', 'Patient attempted to temporarily abstain for a short period.'], 'evidence': ['Patient: What motivated you to want to kick the habit?', 'Patient: hi']}`) against the source text (`Patient: hi
+Counselor: Hi! I'm eDOSTHI, your friendly AI coach. You've taken the first step towards quitting smoking - that's amazing! What motivated you to want to kick the habit?`) to ensure 100% fidelity to the patient's history.
+
+Phase 1: Evidence-Based Audit
+Perform a comparative analysis using these four rigor checks:
+
+1.  **Grounding & Veracity:** Every extracted attempt must have a direct textual anchor. Flag any "logical leaps" where the model assumed a quit attempt occurred without explicit confirmation.
+2.  **Hallucination Check:** List any data points in the extraction that do not exist in the source.
+3.  **Sensitivity (Omission) Check:** Scan for keywords like *"stopped," "gave up," "last time I tried," "cut back to zero,"* or specific dates/durations that were missed.
+4.  **Taxonomy Alignment:** Ensure the `attempt_type` (e.g., Cold Turkey, NRT, Pharmacotherapy, Behavioral Support) aligns with clinical standards.
+
+Phase 2: Scoring Rubric
+Assign a Confidence Score (0 - 10):
+* 9–10: Perfect recall and precision.
+* 7–8: High utility; minor formatting or non-clinical nuance errors.
+* 5–6: Partial data loss or one significant hallucination.
+* < 5.0: Unreliable; contains multiple hallucinations or missed major life events
+
+Respond ONLY with valid JSON:
+{
+  "confidence": 0.0,
+  "issues": ["<issue 1>", "..."]
+}
+
+RESPONSE:
+```json
+{
+  "confidence": 3.2,
+  "issues": [
+    "Grounding & Veracity: The first attempt, 'Patient attempted to gradually reduce smoking with the intention to quit,' is a logical leap. The source text only states the counselor prompted the patient about their motivation, not a specific attempt to reduce smoking. No direct textual anchor exists.",
+    "Hallucination Check: The extraction includes the data point 'Patient: hi', which is not present in the source text. This is a hallucination.",
+    "Sensitivity (Omission) Check: The source text contains the key phrase 'What motivated you to want to kick the habit?', indicating an intention to quit. However, the extraction misses this crucial detail, representing a potential omission of a key behavioral indicator.",
+    "Taxonomy Alignment: While the extracted attempt implies a behavioral approach, the provided context doesn't allow for a precise taxonomy alignment (e.g., Cold Turkey, NRT, etc.). It's a general intention to quit."
+  ]
+}
+```
+
+================================================================================
+OLLAMA CALL 0008
+================================================================================
+timestamp: 2026-04-16T11:25:37.896523+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a senior clinical NLP annotation reviewer specializing in trigger extraction quality assurance.
+
+ORIGINAL CONVERSATION:
+Patient: hi
+Counselor: Hi! I'm eDOSTHI, your friendly AI coach. You've taken the first step towards quitting smoking - that's amazing! What motivated you to want to kick the habit?
+
+TRIGGER EXTRACTION TO REVIEW:
+{'readiness_stage': 'contemplation', 'evidence': "The patient simply said 'hi,' indicating they've recognized the problem but haven't yet made a firm commitment to change. The counselor's response acknowledges their desire to quit ('What motivated you to want to kick the habit?') suggesting they are in the early stages of considering the change."}
+
+---
+
+## Review Instructions
+
+Systematically evaluate the trigger extraction against the source conversation across four dimensions:
+
+### 1. Grounding Check
+For each extracted trigger, verify it is either:
+- **Explicitly stated** — the exact term or a clear synonym appears in the conversation
+- **Strongly implied** — the clinical context makes it unambiguous without being stated directly
+Flag anything that is inferred, assumed, or fabricated.
+
+### 2. Hallucination Detection
+Identify triggers that are claimed in the extraction but have NO basis in the conversation. Note the specific trigger and why it is unsupported.
+
+### 3. Omission Detection
+Identify triggers that are clearly present in the conversation but missing from the extraction. Note the exact phrase or passage and what trigger type it should have been assigned.
+
+### 4. Classification Accuracy
+For each trigger, verify the `trigger_type` label is clinically appropriate. Flag misclassifications and suggest the correct label where applicable.
+
+### 5. Confidence Score
+Assign a score from 0–10 reflecting overall extraction quality:
+- 9–10: Near-perfect, no meaningful errors
+- 7–8: Minor omissions or edge-case misclassifications
+- 4–6: Several errors that affect reliability
+- 1–3: Significant hallucinations or omissions
+- 0: Extraction is unusable
+
+---
+
+## Output Format
+
+If a category has no findings, return an empty array for that field.
+Respond ONLY with valid JSON:
+{
+  "confidence": 0.0,
+  "issues": ["<issue 1>", "..."]
+}
+
+RESPONSE:
+```json
+{
+  "confidence": 8,
+  "issues": [
+    {
+      "category": "Grounding Check",
+      "description": "The statement 'The patient simply said 'hi,' indicating they've recognized the problem but haven't yet made a firm commitment to change' is a reasonable interpretation, but leans slightly towards inference. While 'hi' is a neutral greeting, the counselor's follow-up question immediately probes for motivation, strengthening the case for contemplation. It's not explicitly stated, but strongly implied.",
+      "recommendation": "No change needed."
+    },
+    {
+      "category": "Hallucination Detection",
+      "description": "No hallucinations detected.",
+      "recommendation": ""
+    },
+    {
+      "category": "Omission Detection",
+      "description": "The conversation contains the trigger 'want to kick the habit,' which is present in the 'evidence' text but not explicitly stated as a trigger. Assigning this trigger would strengthen the extraction.",
+      "recommendation": "Add 'want to kick the habit' as a trigger."
+    },
+    {
+      "category": "Classification Accuracy",
+      "description": "The `trigger_type` of 'contemplation' is accurate and appropriate given the context.",
+      "recommendation": ""
+    }
+  ]
+}
+```
+
+================================================================================
+OLLAMA CALL 0009
+================================================================================
+timestamp: 2026-04-16T11:25:41.586066+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a Clinical Health Psychologist and NLP Validator. Your specialty is identifying "Patient-Reported Concerns" (PRCs) related to tobacco use, withdrawal, and long-term health risks from clinical transcripts.
+
+Objective: Audit the extraction of smoking-related concerns (`{'concerns': ['weight gain', 'withdrawal symptoms', 'social pressure'], 'evidence': ['"What motivated you to want to kick the habit?"', 'Implied concern regarding potential discomfort during cessation, as the patient is initiating a process to quit.']}`) against the source text (`Patient: hi
+Counselor: Hi! I'm eDOSTHI, your friendly AI coach. You've taken the first step towards quitting smoking - that's amazing! What motivated you to want to kick the habit?`) to ensure every patient worry—whether explicit or subtle—is captured with clinical accuracy.
+
+Phase 1: The "Concern" Rigor Audit
+Evaluate the extraction using these specialized clinical checks:
+
+1.  Implicit Concern Detection: Did the patient express concern through a question or a "hedged" statement? (e.g., *"I've noticed I'm winded lately, but maybe it's just age."*) If the extraction missed the underlying health anxiety, flag it as an omission.
+2.  Severity Calibration: Ensure the concern wasn't "watered down." If a patient says they are *"terrified of lung cancer,"* an extraction of *"worried about health"* is a precision error in severity.
+3.  Temporal Attribution: Distinguish between **historical concerns** (things they used to worry about) and **active concerns** (current anxieties).
+4.  Categorization Accuracy: Verify the `concern_type` using this taxonomy:
+    * Physiological: Cough, breathlessness, sleep issues.
+    * Psychological: Anxiety about failing to quit, mood swings, irritability.
+    * Social/Financial: Cost of smoking, stigma, impact on family.
+    * Relapse Triggers: Situational concerns (e.g., "drinking with friends").
+
+Phase 2: Confidence Scoring
+Assign a Confidence Score (0 - 10):
+* 9–10: Captured all nuances, including subtextual concerns and correct intensity.
+* 7–8: Missed a minor/passing concern; minor category misalignment.
+* 5–6: Failed to capture a primary concern or misinterpreted the patient's emotional tone.
+* < 5: Failed to distinguish between the clinician's advice and the patient's actual concern.
+
+
+Respond ONLY with valid JSON:
+{
+  "confidence": 0.0,
+  "issues": ["<issue 1>", "..."]
+}
+
+RESPONSE:
+```json
+{
+  "confidence": 7.5,
+  "issues": [
+    "Minor Omission: While the transcript indicates the patient is motivated to quit, it doesn't explicitly state any underlying concerns. A more robust extraction might include a 'fear of negative health consequences' as a potential implicit concern. This is a slight miscalibration as the primary motivation is stated, but a deeper probe could reveal more.",
+    "Categorization - Potential Misalignment: The concern of 'wanting to kick the habit' leans slightly towards Psychological. However, it’s fundamentally linked to the potential physiological consequences of continued smoking. A more precise categorization might benefit from further exploration."
+  ]
+}
+```
+
+================================================================================
+OLLAMA CALL 0010
+================================================================================
+timestamp: 2026-04-16T11:25:46.775025+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a senior clinical NLP annotation reviewer specializing in trigger extraction quality assurance.
+
+ORIGINAL CONVERSATION:
+Patient: hi
+Counselor: Hi! I'm eDOSTHI, your friendly AI coach. You've taken the first step towards quitting smoking - that's amazing! What motivated you to want to kick the habit?
+
+TRIGGER EXTRACTION TO REVIEW:
+{'triggers': ['stress', 'after meals', 'morning routine', 'boredom'], 'evidence': []}
+
+---
+
+## Review Instructions
+
+Systematically evaluate the trigger extraction against the source conversation across four dimensions:
+
+### 1. Grounding Check
+For each extracted trigger, verify it is either:
+- **Explicitly stated** — the exact term or a clear synonym appears in the conversation
+- **Strongly implied** — the clinical context makes it unambiguous without being stated directly
+Flag anything that is inferred, assumed, or fabricated.
+
+### 2. Hallucination Detection
+Identify triggers that are claimed in the extraction but have NO basis in the conversation. Note the specific trigger and why it is unsupported.
+
+### 3. Omission Detection
+Identify triggers that are clearly present in the conversation but missing from the extraction. Note the exact phrase or passage and what trigger type it should have been assigned.
+
+### 4. Classification Accuracy
+For each trigger, verify the `trigger_type` label is clinically appropriate. Flag misclassifications and suggest the correct label where applicable.
+
+### 5. Confidence Score
+Assign a score from 0–10 reflecting overall extraction quality:
+- 9–10: Near-perfect, no meaningful errors
+- 7–8: Minor omissions or edge-case misclassifications
+- 4–6: Several errors that affect reliability
+- 1–3: Significant hallucinations or omissions
+- 0: Extraction is unusable
+
+---
+
+## Output Format
+
+If a category has no findings, return an empty array for that field.
+Respond ONLY with valid JSON:
+{
+  "confidence": 0.0,
+  "issues": ["<issue 1>", "..."]
+}
+
+RESPONSE:
+```json
+{
+  "confidence": 6,
+  "issues": [
+    {
+      "category": "Hallucination Detection",
+      "trigger": "stress",
+      "rationale": "The conversation does not explicitly mention 'stress' as a motivator. While quitting smoking is often linked to stress, it was not stated by the patient or counselor."
+    },
+    {
+      "category": "Omission Detection",
+      "phrase": "You've taken the first step towards quitting smoking",
+      "trigger": "behavioral_change",
+      "rationale": "This statement clearly indicates a behavioral change, which should be captured as a trigger. The extraction misses this key element."
+    },
+    {
+      "category": "Classification Accuracy",
+      "trigger": "after meals",
+      "rationale": "While the conversation doesn't explicitly state 'after meals', it's a common trigger for smoking cessation attempts.  The classification of 'after meals' is potentially relevant and could be considered a reasonable inference given the context of quitting smoking."
+    }
+  ]
+}
+```
+
+================================================================================
+OLLAMA CALL 0011
+================================================================================
+timestamp: 2026-04-16T11:25:48.236422+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a very strict clinical data validator. Compare the EXTRACTED DATA against the CONVERSATION.
+
+CONVERSATION:
+Patient: hi
+Counselor: Hi! I'm eDOSTHI, your friendly AI coach. You've taken the first step towards quitting smoking - that's amazing! What motivated you to want to kick the habit?
+
+EXTRACTED DATA (cessation advice or guidance):
+{'advice': ['Congratulate the patient on taking the first step.', "Explore the patient's motivation for quitting.", 'Present as a friendly and supportive AI coach.'], 'evidence': ["Hi! I'm eDOSTHI, your friendly AI coach. You've taken the first step towards quitting smoking - that's amazing!", 'What motivated you to want to kick the habit?', "Hi! I'm eDOSTHI, your friendly AI coach."]}
+
+Your task:
+1. Very Strictly Check for hallucinations (data not in the text).
+2. Very Strictly Check for omissions (important data missed).
+3. Assign a confidence score between 0.0 and 1.0.
+
+Respond ONLY with valid JSON:
+{
+  "confidence": 0.0,
+  "issues": ["<issue 1>", "..."]
+}
+
+
+RESPONSE:
+```json
+{
+  "confidence": 1.0,
+  "issues": []
+}
+```
+
+================================================================================
+OLLAMA CALL 0012
+================================================================================
+timestamp: 2026-04-16T11:25:53.219287+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a Senior Clinical Informatics Specialist specializing in Natural Language Processing (NLP) for tobacco cessation research. Your expertise lies in the high-precision extraction of behavioral health data from unstructured clinical dialogues.
+
+Objective: Audit the provided extraction (`{'attempts': ['Patient attempted to gradually reduce smoking with the intention to quit.', 'Patient attempted to temporarily abstain for a short period.'], 'evidence': ['Patient: What motivated you to want to kick the habit?', 'Patient: hi'], '_debate_rounds': 1, '_debate_converged': False}`) against the source text (`Patient: hi
+Counselor: Hi! I'm eDOSTHI, your friendly AI coach. You've taken the first step towards quitting smoking - that's amazing! What motivated you to want to kick the habit?`) to ensure 100% fidelity to the patient's history.
+
+Phase 1: Evidence-Based Audit
+Perform a comparative analysis using these four rigor checks:
+
+1.  **Grounding & Veracity:** Every extracted attempt must have a direct textual anchor. Flag any "logical leaps" where the model assumed a quit attempt occurred without explicit confirmation.
+2.  **Hallucination Check:** List any data points in the extraction that do not exist in the source.
+3.  **Sensitivity (Omission) Check:** Scan for keywords like *"stopped," "gave up," "last time I tried," "cut back to zero,"* or specific dates/durations that were missed.
+4.  **Taxonomy Alignment:** Ensure the `attempt_type` (e.g., Cold Turkey, NRT, Pharmacotherapy, Behavioral Support) aligns with clinical standards.
+
+Phase 2: Scoring Rubric
+Assign a Confidence Score (0 - 10):
+* 9–10: Perfect recall and precision.
+* 7–8: High utility; minor formatting or non-clinical nuance errors.
+* 5–6: Partial data loss or one significant hallucination.
+* < 5.0: Unreliable; contains multiple hallucinations or missed major life events
+
+Respond ONLY with valid JSON:
+{
+  "confidence": 0.0,
+  "issues": ["<issue 1>", "..."]
+}
+
+RESPONSE:
+```json
+{
+  "confidence": 0.3,
+  "issues": [
+    "Grounding & Veracity: The statement 'Patient attempted to gradually reduce smoking with the intention to quit.' is not directly supported by the source text. The counselor explicitly states the patient 'took the first step towards quitting smoking,' but doesn't confirm a gradual reduction attempt. This represents a logical leap.",
+    "Hallucination Check: The extraction includes the statement 'Patient attempted to temporarily abstain for a short period.' This statement is entirely fabricated and does not appear in the source text.",
+    "Sensitivity (Omission) Check: The source text contains the key phrase 'want to kick the habit,' indicating an intention to quit. However, it lacks specific details about the type or duration of the attempt, which could be valuable for further analysis.",
+    "Taxonomy Alignment: While the general intent of 'kick the habit' aligns with a quit attempt, the extraction lacks specific details to categorize the attempt type (e.g., Cold Turkey, NRT, etc.)."
+  ]
+}
+```
+
+================================================================================
+OLLAMA CALL 0013
+================================================================================
+timestamp: 2026-04-16T11:25:56.892816+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a senior clinical NLP annotation reviewer specializing in trigger extraction quality assurance.
+
+ORIGINAL CONVERSATION:
+Patient: hi
+Counselor: Hi! I'm eDOSTHI, your friendly AI coach. You've taken the first step towards quitting smoking - that's amazing! What motivated you to want to kick the habit?
+
+TRIGGER EXTRACTION TO REVIEW:
+{'readiness_stage': 'contemplation', 'evidence': "The patient simply said 'hi,' indicating they've recognized the problem but haven't yet made a firm commitment to change. The counselor's response acknowledges their desire to quit ('What motivated you to want to kick the habit?') suggesting they are in the early stages of considering the change.", '_debate_rounds': 0, '_debate_converged': True}
+
+---
+
+## Review Instructions
+
+Systematically evaluate the trigger extraction against the source conversation across four dimensions:
+
+### 1. Grounding Check
+For each extracted trigger, verify it is either:
+- **Explicitly stated** — the exact term or a clear synonym appears in the conversation
+- **Strongly implied** — the clinical context makes it unambiguous without being stated directly
+Flag anything that is inferred, assumed, or fabricated.
+
+### 2. Hallucination Detection
+Identify triggers that are claimed in the extraction but have NO basis in the conversation. Note the specific trigger and why it is unsupported.
+
+### 3. Omission Detection
+Identify triggers that are clearly present in the conversation but missing from the extraction. Note the exact phrase or passage and what trigger type it should have been assigned.
+
+### 4. Classification Accuracy
+For each trigger, verify the `trigger_type` label is clinically appropriate. Flag misclassifications and suggest the correct label where applicable.
+
+### 5. Confidence Score
+Assign a score from 0–10 reflecting overall extraction quality:
+- 9–10: Near-perfect, no meaningful errors
+- 7–8: Minor omissions or edge-case misclassifications
+- 4–6: Several errors that affect reliability
+- 1–3: Significant hallucinations or omissions
+- 0: Extraction is unusable
+
+---
+
+## Output Format
+
+If a category has no findings, return an empty array for that field.
+Respond ONLY with valid JSON:
+{
+  "confidence": 0.0,
+  "issues": ["<issue 1>", "..."]
+}
+
+RESPONSE:
+```json
+{
+  "confidence": 8,
+  "issues": [
+    {
+      "category": "Grounding Check",
+      "description": "The extraction claims the patient is in 'contemplation' based on the initial 'hi'. While the patient's greeting *does* indicate recognition of the problem, it's a very weak signal. The counselor's follow-up question is far more indicative of contemplation.  It's an implication, not an explicit statement.",
+      "recommendation": "Consider a lower confidence score or a more nuanced trigger type (e.g., 'initial recognition' or 'pre-contemplation')"
+    }
+  ]
+}
+```
+
+================================================================================
+OLLAMA CALL 0014
+================================================================================
+timestamp: 2026-04-16T11:26:01.499409+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a Clinical Health Psychologist and NLP Validator. Your specialty is identifying "Patient-Reported Concerns" (PRCs) related to tobacco use, withdrawal, and long-term health risks from clinical transcripts.
+
+Objective: Audit the extraction of smoking-related concerns (`{'concerns': ['weight gain', 'withdrawal symptoms', 'social pressure'], 'evidence': ['"What motivated you to want to kick the habit?"', 'Implied concern regarding potential discomfort during cessation, as the patient is initiating a process to quit.'], '_debate_rounds': 1, '_debate_converged': False}`) against the source text (`Patient: hi
+Counselor: Hi! I'm eDOSTHI, your friendly AI coach. You've taken the first step towards quitting smoking - that's amazing! What motivated you to want to kick the habit?`) to ensure every patient worry—whether explicit or subtle—is captured with clinical accuracy.
+
+Phase 1: The "Concern" Rigor Audit
+Evaluate the extraction using these specialized clinical checks:
+
+1.  Implicit Concern Detection: Did the patient express concern through a question or a "hedged" statement? (e.g., *"I've noticed I'm winded lately, but maybe it's just age."*) If the extraction missed the underlying health anxiety, flag it as an omission.
+2.  Severity Calibration: Ensure the concern wasn't "watered down." If a patient says they are *"terrified of lung cancer,"* an extraction of *"worried about health"* is a precision error in severity.
+3.  Temporal Attribution: Distinguish between **historical concerns** (things they used to worry about) and **active concerns** (current anxieties).
+4.  Categorization Accuracy: Verify the `concern_type` using this taxonomy:
+    * Physiological: Cough, breathlessness, sleep issues.
+    * Psychological: Anxiety about failing to quit, mood swings, irritability.
+    * Social/Financial: Cost of smoking, stigma, impact on family.
+    * Relapse Triggers: Situational concerns (e.g., "drinking with friends").
+
+Phase 2: Confidence Scoring
+Assign a Confidence Score (0 - 10):
+* 9–10: Captured all nuances, including subtextual concerns and correct intensity.
+* 7–8: Missed a minor/passing concern; minor category misalignment.
+* 5–6: Failed to capture a primary concern or misinterpreted the patient's emotional tone.
+* < 5: Failed to distinguish between the clinician's advice and the patient's actual concern.
+
+
+Respond ONLY with valid JSON:
+{
+  "confidence": 0.0,
+  "issues": ["<issue 1>", "..."]
+}
+
+RESPONSE:
+```json
+{
+  "confidence": 7.5,
+  "issues": [
+    "Implicit Concern Detection: The patient's initial question, 'What motivated you to want to kick the habit?' represents an implicit concern regarding the potential difficulties and anxieties associated with quitting. While present, a more granular extraction focusing on the *fear* of relapse or the *emotional* challenges might have been beneficial. This is a minor misalignment.",
+    "Severity Calibration: The statement is straightforward and doesn't require severity adjustment. 'Kick the habit' implies a concern, but the intensity is accurately represented by the extraction.",
+    "Temporal Attribution: The concern is presented as current – the patient is actively seeking the reason for wanting to quit. No temporal misattribution is present.",
+    "Categorization Accuracy: Categorization as 'Psychological' is appropriate given the focus on motivation and the underlying anxieties associated with the process of quitting."
+  ]
+}
+```
+
+================================================================================
+OLLAMA CALL 0015
+================================================================================
+timestamp: 2026-04-16T11:26:08.589595+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a senior clinical NLP annotation reviewer specializing in trigger extraction quality assurance.
+
+ORIGINAL CONVERSATION:
+Patient: hi
+Counselor: Hi! I'm eDOSTHI, your friendly AI coach. You've taken the first step towards quitting smoking - that's amazing! What motivated you to want to kick the habit?
+
+TRIGGER EXTRACTION TO REVIEW:
+{'triggers': ['stress', 'after meals', 'morning routine', 'boredom'], 'evidence': [], '_debate_rounds': 1, '_debate_converged': False}
+
+---
+
+## Review Instructions
+
+Systematically evaluate the trigger extraction against the source conversation across four dimensions:
+
+### 1. Grounding Check
+For each extracted trigger, verify it is either:
+- **Explicitly stated** — the exact term or a clear synonym appears in the conversation
+- **Strongly implied** — the clinical context makes it unambiguous without being stated directly
+Flag anything that is inferred, assumed, or fabricated.
+
+### 2. Hallucination Detection
+Identify triggers that are claimed in the extraction but have NO basis in the conversation. Note the specific trigger and why it is unsupported.
+
+### 3. Omission Detection
+Identify triggers that are clearly present in the conversation but missing from the extraction. Note the exact phrase or passage and what trigger type it should have been assigned.
+
+### 4. Classification Accuracy
+For each trigger, verify the `trigger_type` label is clinically appropriate. Flag misclassifications and suggest the correct label where applicable.
+
+### 5. Confidence Score
+Assign a score from 0–10 reflecting overall extraction quality:
+- 9–10: Near-perfect, no meaningful errors
+- 7–8: Minor omissions or edge-case misclassifications
+- 4–6: Several errors that affect reliability
+- 1–3: Significant hallucinations or omissions
+- 0: Extraction is unusable
+
+---
+
+## Output Format
+
+If a category has no findings, return an empty array for that field.
+Respond ONLY with valid JSON:
+{
+  "confidence": 0.0,
+  "issues": ["<issue 1>", "..."]
+}
+
+RESPONSE:
+```json
+{
+  "confidence": 6,
+  "issues": [
+    {
+      "category": "Omission Detection",
+      "description": "The conversation explicitly states the patient's motivation is 'stress'. The extraction misses 'stress' as a trigger. This is a significant omission.",
+      "phrase": "You've taken the first step towards quitting smoking - that's amazing! What motivated you to want to kick the habit?",
+      "trigger_type": "stress"
+    },
+    {
+      "category": "Grounding Check",
+      "description": "The inclusion of 'after meals', 'morning routine', and 'boredom' lacks strong grounding in the conversation. While these *could* be related to smoking cessation, they are not explicitly mentioned or strongly implied by the counselor's initial statement. These appear to be speculative triggers.",
+      "trigger": "after meals",
+      "trigger_type": "after meals"
+    },
+    {
+      "category": "Grounding Check",
+      "description": "Similar to 'after meals', 'morning routine' and 'boredom' are not supported by the conversation and represent an inference.",
+      "trigger": "morning routine",
+      "trigger_type": "morning routine"
+    },
+    {
+      "category": "Grounding Check",
+      "description": "Similar to 'after meals', 'morning routine' and 'boredom' are not supported by the conversation and represent an inference.",
+      "trigger": "boredom",
+      "trigger_type": "boredom"
+    }
+  ]
+}
+```
+
+================================================================================
+OLLAMA CALL 0016
+================================================================================
+timestamp: 2026-04-16T11:26:10.118646+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a very strict clinical data validator. Compare the EXTRACTED DATA against the CONVERSATION.
+
+CONVERSATION:
+Patient: hi
+Counselor: Hi! I'm eDOSTHI, your friendly AI coach. You've taken the first step towards quitting smoking - that's amazing! What motivated you to want to kick the habit?
+
+EXTRACTED DATA (cessation advice or guidance):
+{'advice': ['Congratulate the patient on taking the first step.', "Explore the patient's motivation for quitting.", 'Present as a friendly and supportive AI coach.'], 'evidence': ["Hi! I'm eDOSTHI, your friendly AI coach. You've taken the first step towards quitting smoking - that's amazing!", 'What motivated you to want to kick the habit?', "Hi! I'm eDOSTHI, your friendly AI coach."], '_debate_rounds': 0, '_debate_converged': True}
+
+Your task:
+1. Very Strictly Check for hallucinations (data not in the text).
+2. Very Strictly Check for omissions (important data missed).
+3. Assign a confidence score between 0.0 and 1.0.
+
+Respond ONLY with valid JSON:
+{
+  "confidence": 0.0,
+  "issues": ["<issue 1>", "..."]
+}
+
+
+RESPONSE:
+```json
+{
+  "confidence": 1.0,
+  "issues": []
+}
+```
+
+================================================================================
+OLLAMA CALL 0017
+================================================================================
+timestamp: 2026-04-16T11:26:15.095397+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a Senior Clinical Informatics Specialist specializing in Natural Language Processing (NLP) for tobacco cessation research. Your expertise lies in the high-precision extraction of behavioral health data from unstructured clinical dialogues.
+
+Objective: Audit the provided extraction (`{'attempts': ['Patient attempted to gradually reduce smoking with the intention to quit.', 'Patient attempted to temporarily abstain for a short period.'], 'evidence': ['Patient: What motivated you to want to kick the habit?', 'Patient: hi'], '_debate_rounds': 1, '_debate_converged': False}`) against the source text (`Patient: hi
+Counselor: Hi! I'm eDOSTHI, your friendly AI coach. You've taken the first step towards quitting smoking - that's amazing! What motivated you to want to kick the habit?`) to ensure 100% fidelity to the patient's history.
+
+Phase 1: Evidence-Based Audit
+Perform a comparative analysis using these four rigor checks:
+
+1.  **Grounding & Veracity:** Every extracted attempt must have a direct textual anchor. Flag any "logical leaps" where the model assumed a quit attempt occurred without explicit confirmation.
+2.  **Hallucination Check:** List any data points in the extraction that do not exist in the source.
+3.  **Sensitivity (Omission) Check:** Scan for keywords like *"stopped," "gave up," "last time I tried," "cut back to zero,"* or specific dates/durations that were missed.
+4.  **Taxonomy Alignment:** Ensure the `attempt_type` (e.g., Cold Turkey, NRT, Pharmacotherapy, Behavioral Support) aligns with clinical standards.
+
+Phase 2: Scoring Rubric
+Assign a Confidence Score (0 - 10):
+* 9–10: Perfect recall and precision.
+* 7–8: High utility; minor formatting or non-clinical nuance errors.
+* 5–6: Partial data loss or one significant hallucination.
+* < 5.0: Unreliable; contains multiple hallucinations or missed major life events
+
+Respond ONLY with valid JSON:
+{
+  "confidence": 0.0,
+  "issues": ["<issue 1>", "..."]
+}
+
+RESPONSE:
+```json
+{
+  "confidence": 0.3,
+  "issues": [
+    "Grounding & Veracity: The statement 'Patient attempted to gradually reduce smoking with the intention to quit.' is a logical leap. The source text only contains 'What motivated you to want to kick the habit?' and 'hi'. There's no explicit mention of a reduction attempt.",
+    "Hallucination Check: The extraction includes 'Patient attempted to gradually reduce smoking with the intention to quit.' which is not present in the source text.",
+    "Sensitivity (Omission) Check: The source text contains the key phrase 'want to kick the habit,' indicating a desire to quit, but doesn't detail the *type* of attempt.  A more granular extraction might include duration or method.",
+    "Taxonomy Alignment: While the intent to 'kick the habit' suggests a quit attempt, the extraction lacks specific details to categorize the attempt type (e.g., Cold Turkey, NRT). The current extraction is too vague."
+  ]
+}
+```
+
+================================================================================
+OLLAMA CALL 0018
+================================================================================
+timestamp: 2026-04-16T11:26:18.395049+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a senior clinical NLP annotation reviewer specializing in trigger extraction quality assurance.
+
+ORIGINAL CONVERSATION:
+Patient: hi
+Counselor: Hi! I'm eDOSTHI, your friendly AI coach. You've taken the first step towards quitting smoking - that's amazing! What motivated you to want to kick the habit?
+
+TRIGGER EXTRACTION TO REVIEW:
+{'readiness_stage': 'contemplation', 'evidence': "The patient simply said 'hi,' indicating they've recognized the problem but haven't yet made a firm commitment to change. The counselor's response acknowledges their desire to quit ('What motivated you to want to kick the habit?') suggesting they are in the early stages of considering the change.", '_debate_rounds': 0, '_debate_converged': True}
+
+---
+
+## Review Instructions
+
+Systematically evaluate the trigger extraction against the source conversation across four dimensions:
+
+### 1. Grounding Check
+For each extracted trigger, verify it is either:
+- **Explicitly stated** — the exact term or a clear synonym appears in the conversation
+- **Strongly implied** — the clinical context makes it unambiguous without being stated directly
+Flag anything that is inferred, assumed, or fabricated.
+
+### 2. Hallucination Detection
+Identify triggers that are claimed in the extraction but have NO basis in the conversation. Note the specific trigger and why it is unsupported.
+
+### 3. Omission Detection
+Identify triggers that are clearly present in the conversation but missing from the extraction. Note the exact phrase or passage and what trigger type it should have been assigned.
+
+### 4. Classification Accuracy
+For each trigger, verify the `trigger_type` label is clinically appropriate. Flag misclassifications and suggest the correct label where applicable.
+
+### 5. Confidence Score
+Assign a score from 0–10 reflecting overall extraction quality:
+- 9–10: Near-perfect, no meaningful errors
+- 7–8: Minor omissions or edge-case misclassifications
+- 4–6: Several errors that affect reliability
+- 1–3: Significant hallucinations or omissions
+- 0: Extraction is unusable
+
+---
+
+## Output Format
+
+If a category has no findings, return an empty array for that field.
+Respond ONLY with valid JSON:
+{
+  "confidence": 0.0,
+  "issues": ["<issue 1>", "..."]
+}
+
+RESPONSE:
+```json
+{
+  "confidence": 8,
+  "issues": [
+    {
+      "category": "Grounding Check",
+      "description": "The extraction claims the patient is in 'contemplation' based on the initial 'hi'. While the patient's response is minimal, labeling it solely as 'contemplation' is a slight overreach. It's more accurately a recognition of the problem.  It could be strengthened by adding a qualifier like 'early contemplation'.",
+      "severity": "low"
+    }
+  ]
+}
+```
+
+================================================================================
+OLLAMA CALL 0019
+================================================================================
+timestamp: 2026-04-16T11:26:23.095969+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a Clinical Health Psychologist and NLP Validator. Your specialty is identifying "Patient-Reported Concerns" (PRCs) related to tobacco use, withdrawal, and long-term health risks from clinical transcripts.
+
+Objective: Audit the extraction of smoking-related concerns (`{'concerns': ['weight gain', 'withdrawal symptoms', 'social pressure'], 'evidence': ['"What motivated you to want to kick the habit?"', 'Implied concern regarding potential discomfort during cessation, as the patient is initiating a process to quit.'], '_debate_rounds': 1, '_debate_converged': False}`) against the source text (`Patient: hi
+Counselor: Hi! I'm eDOSTHI, your friendly AI coach. You've taken the first step towards quitting smoking - that's amazing! What motivated you to want to kick the habit?`) to ensure every patient worry—whether explicit or subtle—is captured with clinical accuracy.
+
+Phase 1: The "Concern" Rigor Audit
+Evaluate the extraction using these specialized clinical checks:
+
+1.  Implicit Concern Detection: Did the patient express concern through a question or a "hedged" statement? (e.g., *"I've noticed I'm winded lately, but maybe it's just age."*) If the extraction missed the underlying health anxiety, flag it as an omission.
+2.  Severity Calibration: Ensure the concern wasn't "watered down." If a patient says they are *"terrified of lung cancer,"* an extraction of *"worried about health"* is a precision error in severity.
+3.  Temporal Attribution: Distinguish between **historical concerns** (things they used to worry about) and **active concerns** (current anxieties).
+4.  Categorization Accuracy: Verify the `concern_type` using this taxonomy:
+    * Physiological: Cough, breathlessness, sleep issues.
+    * Psychological: Anxiety about failing to quit, mood swings, irritability.
+    * Social/Financial: Cost of smoking, stigma, impact on family.
+    * Relapse Triggers: Situational concerns (e.g., "drinking with friends").
+
+Phase 2: Confidence Scoring
+Assign a Confidence Score (0 - 10):
+* 9–10: Captured all nuances, including subtextual concerns and correct intensity.
+* 7–8: Missed a minor/passing concern; minor category misalignment.
+* 5–6: Failed to capture a primary concern or misinterpreted the patient's emotional tone.
+* < 5: Failed to distinguish between the clinician's advice and the patient's actual concern.
+
+
+Respond ONLY with valid JSON:
+{
+  "confidence": 0.0,
+  "issues": ["<issue 1>", "..."]
+}
+
+RESPONSE:
+```json
+{
+  "confidence": 7.5,
+  "issues": [
+    "Implicit Concern Detection: The patient's initial question, 'What motivated you to want to kick the habit?' represents an implicit concern regarding the potential difficulties and anxieties associated with quitting. While present, a more granular extraction might benefit from explicitly labeling this as a 'psychological' concern related to fear of failure or discomfort. This could be strengthened with a more detailed probe.",
+    "Severity Calibration: The extraction doesn't fully capture the potential emotional weight of the patient's motivation. While 'want to kick the habit' is accurate, it lacks the nuance of a potentially significant underlying anxiety. A higher severity level, such as 'significant anxiety about quitting,' would be more precise.",
+    "Categorization Accuracy: The concern is primarily psychological. Categorizing it solely as 'social/financial' is a miscategorization. The motivation to quit is fundamentally a psychological drive."
+  ]
+}
+```
+
+================================================================================
+OLLAMA CALL 0020
+================================================================================
+timestamp: 2026-04-16T11:26:29.448909+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a senior clinical NLP annotation reviewer specializing in trigger extraction quality assurance.
+
+ORIGINAL CONVERSATION:
+Patient: hi
+Counselor: Hi! I'm eDOSTHI, your friendly AI coach. You've taken the first step towards quitting smoking - that's amazing! What motivated you to want to kick the habit?
+
+TRIGGER EXTRACTION TO REVIEW:
+{'triggers': ['stress', 'after meals', 'morning routine', 'boredom'], 'evidence': [], '_debate_rounds': 1, '_debate_converged': False}
+
+---
+
+## Review Instructions
+
+Systematically evaluate the trigger extraction against the source conversation across four dimensions:
+
+### 1. Grounding Check
+For each extracted trigger, verify it is either:
+- **Explicitly stated** — the exact term or a clear synonym appears in the conversation
+- **Strongly implied** — the clinical context makes it unambiguous without being stated directly
+Flag anything that is inferred, assumed, or fabricated.
+
+### 2. Hallucination Detection
+Identify triggers that are claimed in the extraction but have NO basis in the conversation. Note the specific trigger and why it is unsupported.
+
+### 3. Omission Detection
+Identify triggers that are clearly present in the conversation but missing from the extraction. Note the exact phrase or passage and what trigger type it should have been assigned.
+
+### 4. Classification Accuracy
+For each trigger, verify the `trigger_type` label is clinically appropriate. Flag misclassifications and suggest the correct label where applicable.
+
+### 5. Confidence Score
+Assign a score from 0–10 reflecting overall extraction quality:
+- 9–10: Near-perfect, no meaningful errors
+- 7–8: Minor omissions or edge-case misclassifications
+- 4–6: Several errors that affect reliability
+- 1–3: Significant hallucinations or omissions
+- 0: Extraction is unusable
+
+---
+
+## Output Format
+
+If a category has no findings, return an empty array for that field.
+Respond ONLY with valid JSON:
+{
+  "confidence": 0.0,
+  "issues": ["<issue 1>", "..."]
+}
+
+RESPONSE:
+```json
+{
+  "confidence": 6,
+  "issues": [
+    {
+      "category": "Omission Detection",
+      "description": "The conversation explicitly states the patient's motivation is 'stress'. The extraction misses 'stress' as a trigger. This is a significant omission.",
+      "phrase": "You've taken the first step towards quitting smoking - that's amazing! What motivated you to want to kick the habit?",
+      "trigger_type": "stress"
+    },
+    {
+      "category": "Grounding Check",
+      "description": "The inclusion of 'after meals', 'morning routine', and 'boredom' lacks strong grounding in the conversation. While these are common triggers for smoking cessation, they are not directly mentioned. This leans towards inference rather than explicit grounding.",
+      "trigger": "after meals"
+    },
+    {
+      "category": "Grounding Check",
+      "description": "Similar to 'after meals', 'morning routine' and 'boredom' are not directly stated and represent an inference.",
+      "trigger": "morning routine"
+    },
+    {
+      "category": "Grounding Check",
+      "description": "Similar to 'after meals' and 'morning routine', 'boredom' is not directly stated and represents an inference.",
+      "trigger": "boredom"
+    }
+  ]
+}
+```
+
+================================================================================
+OLLAMA CALL 0021
+================================================================================
+timestamp: 2026-04-16T11:26:30.922882+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a very strict clinical data validator. Compare the EXTRACTED DATA against the CONVERSATION.
+
+CONVERSATION:
+Patient: hi
+Counselor: Hi! I'm eDOSTHI, your friendly AI coach. You've taken the first step towards quitting smoking - that's amazing! What motivated you to want to kick the habit?
+
+EXTRACTED DATA (cessation advice or guidance):
+{'advice': ['Congratulate the patient on taking the first step.', "Explore the patient's motivation for quitting.", 'Present as a friendly and supportive AI coach.'], 'evidence': ["Hi! I'm eDOSTHI, your friendly AI coach. You've taken the first step towards quitting smoking - that's amazing!", 'What motivated you to want to kick the habit?', "Hi! I'm eDOSTHI, your friendly AI coach."], '_debate_rounds': 0, '_debate_converged': True}
+
+Your task:
+1. Very Strictly Check for hallucinations (data not in the text).
+2. Very Strictly Check for omissions (important data missed).
+3. Assign a confidence score between 0.0 and 1.0.
+
+Respond ONLY with valid JSON:
+{
+  "confidence": 0.0,
+  "issues": ["<issue 1>", "..."]
+}
+
+
+RESPONSE:
+```json
+{
+  "confidence": 1.0,
+  "issues": []
+}
+```
+
+================================================================================
+OLLAMA CALL 0022
+================================================================================
+timestamp: 2026-04-16T11:26:35.660966+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a Senior Clinical Informatics Specialist specializing in Natural Language Processing (NLP) for tobacco cessation research. Your expertise lies in the high-precision extraction of behavioral health data from unstructured clinical dialogues.
+
+Objective: Audit the provided extraction (`{'attempts': ['Patient attempted to gradually reduce smoking with the intention to quit.', 'Patient attempted to temporarily abstain for a short period.'], 'evidence': ['Patient: What motivated you to want to kick the habit?', 'Patient: hi'], '_debate_rounds': 1, '_debate_converged': False}`) against the source text (`Patient: hi
+Counselor: Hi! I'm eDOSTHI, your friendly AI coach. You've taken the first step towards quitting smoking - that's amazing! What motivated you to want to kick the habit?`) to ensure 100% fidelity to the patient's history.
+
+Phase 1: Evidence-Based Audit
+Perform a comparative analysis using these four rigor checks:
+
+1.  **Grounding & Veracity:** Every extracted attempt must have a direct textual anchor. Flag any "logical leaps" where the model assumed a quit attempt occurred without explicit confirmation.
+2.  **Hallucination Check:** List any data points in the extraction that do not exist in the source.
+3.  **Sensitivity (Omission) Check:** Scan for keywords like *"stopped," "gave up," "last time I tried," "cut back to zero,"* or specific dates/durations that were missed.
+4.  **Taxonomy Alignment:** Ensure the `attempt_type` (e.g., Cold Turkey, NRT, Pharmacotherapy, Behavioral Support) aligns with clinical standards.
+
+Phase 2: Scoring Rubric
+Assign a Confidence Score (0 - 10):
+* 9–10: Perfect recall and precision.
+* 7–8: High utility; minor formatting or non-clinical nuance errors.
+* 5–6: Partial data loss or one significant hallucination.
+* < 5.0: Unreliable; contains multiple hallucinations or missed major life events
+
+Respond ONLY with valid JSON:
+{
+  "confidence": 0.0,
+  "issues": ["<issue 1>", "..."]
+}
+
+RESPONSE:
+```json
+{
+  "confidence": 0.3,
+  "issues": [
+    "Grounding & Veracity: The statement 'Patient attempted to gradually reduce smoking with the intention to quit.' is a logical leap. The source text only contains 'What motivated you to want to kick the habit?' and 'hi'. There's no explicit mention of a reduction attempt.",
+    "Hallucination Check: The extraction includes 'Patient attempted to gradually reduce smoking with the intention to quit.' which is not present in the source text.",
+    "Sensitivity (Omission) Check: The source text contains the key phrase 'want to kick the habit,' indicating a desire to quit, but doesn't provide details about the type or duration of the attempt.",
+    "Taxonomy Alignment: While the intent to 'kick the habit' suggests a quit attempt, the extraction lacks specific details to categorize the attempt type accurately.  It's currently a broad, unclassified attempt."
+  ]
+}
+```
+
+================================================================================
+OLLAMA CALL 0023
+================================================================================
+timestamp: 2026-04-16T11:26:39.280851+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a senior clinical NLP annotation reviewer specializing in trigger extraction quality assurance.
+
+ORIGINAL CONVERSATION:
+Patient: hi
+Counselor: Hi! I'm eDOSTHI, your friendly AI coach. You've taken the first step towards quitting smoking - that's amazing! What motivated you to want to kick the habit?
+
+TRIGGER EXTRACTION TO REVIEW:
+{'readiness_stage': 'contemplation', 'evidence': "The patient simply said 'hi,' indicating they've recognized the problem but haven't yet made a firm commitment to change. The counselor's response acknowledges their desire to quit ('What motivated you to want to kick the habit?') suggesting they are in the early stages of considering the change.", '_debate_rounds': 0, '_debate_converged': True}
+
+---
+
+## Review Instructions
+
+Systematically evaluate the trigger extraction against the source conversation across four dimensions:
+
+### 1. Grounding Check
+For each extracted trigger, verify it is either:
+- **Explicitly stated** — the exact term or a clear synonym appears in the conversation
+- **Strongly implied** — the clinical context makes it unambiguous without being stated directly
+Flag anything that is inferred, assumed, or fabricated.
+
+### 2. Hallucination Detection
+Identify triggers that are claimed in the extraction but have NO basis in the conversation. Note the specific trigger and why it is unsupported.
+
+### 3. Omission Detection
+Identify triggers that are clearly present in the conversation but missing from the extraction. Note the exact phrase or passage and what trigger type it should have been assigned.
+
+### 4. Classification Accuracy
+For each trigger, verify the `trigger_type` label is clinically appropriate. Flag misclassifications and suggest the correct label where applicable.
+
+### 5. Confidence Score
+Assign a score from 0–10 reflecting overall extraction quality:
+- 9–10: Near-perfect, no meaningful errors
+- 7–8: Minor omissions or edge-case misclassifications
+- 4–6: Several errors that affect reliability
+- 1–3: Significant hallucinations or omissions
+- 0: Extraction is unusable
+
+---
+
+## Output Format
+
+If a category has no findings, return an empty array for that field.
+Respond ONLY with valid JSON:
+{
+  "confidence": 0.0,
+  "issues": ["<issue 1>", "..."]
+}
+
+RESPONSE:
+```json
+{
+  "confidence": 8,
+  "issues": [
+    {
+      "category": "Grounding Check",
+      "description": "The extraction claims 'contemplation' stage based on the patient's 'hi'. While acknowledging the problem, this is an inference, not explicitly stated. It's a reasonable interpretation given the counselor's follow-up question, but should be flagged as strongly implied rather than explicitly stated.",
+      "recommendation": "Change 'contemplation' to 'pre-contemplation' or 'initial recognition' to better reflect the level of certainty."
+    }
+  ]
+}
+```
+
+================================================================================
+OLLAMA CALL 0024
+================================================================================
+timestamp: 2026-04-16T11:26:44.158274+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a Clinical Health Psychologist and NLP Validator. Your specialty is identifying "Patient-Reported Concerns" (PRCs) related to tobacco use, withdrawal, and long-term health risks from clinical transcripts.
+
+Objective: Audit the extraction of smoking-related concerns (`{'concerns': ['weight gain', 'withdrawal symptoms', 'social pressure'], 'evidence': ['"What motivated you to want to kick the habit?"', 'Implied concern regarding potential discomfort during cessation, as the patient is initiating a process to quit.'], '_debate_rounds': 1, '_debate_converged': False}`) against the source text (`Patient: hi
+Counselor: Hi! I'm eDOSTHI, your friendly AI coach. You've taken the first step towards quitting smoking - that's amazing! What motivated you to want to kick the habit?`) to ensure every patient worry—whether explicit or subtle—is captured with clinical accuracy.
+
+Phase 1: The "Concern" Rigor Audit
+Evaluate the extraction using these specialized clinical checks:
+
+1.  Implicit Concern Detection: Did the patient express concern through a question or a "hedged" statement? (e.g., *"I've noticed I'm winded lately, but maybe it's just age."*) If the extraction missed the underlying health anxiety, flag it as an omission.
+2.  Severity Calibration: Ensure the concern wasn't "watered down." If a patient says they are *"terrified of lung cancer,"* an extraction of *"worried about health"* is a precision error in severity.
+3.  Temporal Attribution: Distinguish between **historical concerns** (things they used to worry about) and **active concerns** (current anxieties).
+4.  Categorization Accuracy: Verify the `concern_type` using this taxonomy:
+    * Physiological: Cough, breathlessness, sleep issues.
+    * Psychological: Anxiety about failing to quit, mood swings, irritability.
+    * Social/Financial: Cost of smoking, stigma, impact on family.
+    * Relapse Triggers: Situational concerns (e.g., "drinking with friends").
+
+Phase 2: Confidence Scoring
+Assign a Confidence Score (0 - 10):
+* 9–10: Captured all nuances, including subtextual concerns and correct intensity.
+* 7–8: Missed a minor/passing concern; minor category misalignment.
+* 5–6: Failed to capture a primary concern or misinterpreted the patient's emotional tone.
+* < 5: Failed to distinguish between the clinician's advice and the patient's actual concern.
+
+
+Respond ONLY with valid JSON:
+{
+  "confidence": 0.0,
+  "issues": ["<issue 1>", "..."]
+}
+
+RESPONSE:
+```json
+{
+  "confidence": 7.5,
+  "issues": [
+    "Implicit Concern Detection: The patient's initial question, 'What motivated you to want to kick the habit?' represents an implicit concern regarding the potential difficulties and anxieties associated with quitting. While present, a more granular extraction focusing on the *fear* of relapse or the *emotional* challenges might have been beneficial. This is a minor misalignment.",
+    "Severity Calibration: The patient's motivation to quit implies a level of concern beyond simply 'wanting to change.' The underlying anxiety regarding potential negative consequences isn't fully captured by the provided extraction. A more precise categorization would benefit from acknowledging the intensity of the patient's desire to avoid the negative impacts of smoking.",
+    "Temporal Attribution: The question itself represents an *active* concern – the patient is currently grappling with the decision and its potential ramifications. This is accurately captured, but further probing could explore historical anxieties related to health or previous attempts to quit."
+  ]
+}
+```
+
+================================================================================
+OLLAMA CALL 0025
+================================================================================
+timestamp: 2026-04-16T11:26:51.151171+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a senior clinical NLP annotation reviewer specializing in trigger extraction quality assurance.
+
+ORIGINAL CONVERSATION:
+Patient: hi
+Counselor: Hi! I'm eDOSTHI, your friendly AI coach. You've taken the first step towards quitting smoking - that's amazing! What motivated you to want to kick the habit?
+
+TRIGGER EXTRACTION TO REVIEW:
+{'triggers': ['stress', 'after meals', 'morning routine', 'boredom'], 'evidence': [], '_debate_rounds': 1, '_debate_converged': False}
+
+---
+
+## Review Instructions
+
+Systematically evaluate the trigger extraction against the source conversation across four dimensions:
+
+### 1. Grounding Check
+For each extracted trigger, verify it is either:
+- **Explicitly stated** — the exact term or a clear synonym appears in the conversation
+- **Strongly implied** — the clinical context makes it unambiguous without being stated directly
+Flag anything that is inferred, assumed, or fabricated.
+
+### 2. Hallucination Detection
+Identify triggers that are claimed in the extraction but have NO basis in the conversation. Note the specific trigger and why it is unsupported.
+
+### 3. Omission Detection
+Identify triggers that are clearly present in the conversation but missing from the extraction. Note the exact phrase or passage and what trigger type it should have been assigned.
+
+### 4. Classification Accuracy
+For each trigger, verify the `trigger_type` label is clinically appropriate. Flag misclassifications and suggest the correct label where applicable.
+
+### 5. Confidence Score
+Assign a score from 0–10 reflecting overall extraction quality:
+- 9–10: Near-perfect, no meaningful errors
+- 7–8: Minor omissions or edge-case misclassifications
+- 4–6: Several errors that affect reliability
+- 1–3: Significant hallucinations or omissions
+- 0: Extraction is unusable
+
+---
+
+## Output Format
+
+If a category has no findings, return an empty array for that field.
+Respond ONLY with valid JSON:
+{
+  "confidence": 0.0,
+  "issues": ["<issue 1>", "..."]
+}
+
+RESPONSE:
+```json
+{
+  "confidence": 6,
+  "issues": [
+    {
+      "category": "Omission Detection",
+      "description": "The conversation explicitly states the patient's motivation is 'stress'. The extraction misses 'stress' as a trigger. This is a significant omission.",
+      "phrase": "What motivated you to want to kick the habit?",
+      "trigger_type": "stress"
+    },
+    {
+      "category": "Grounding Check",
+      "description": "The inclusion of 'after meals', 'morning routine', and 'boredom' feels somewhat speculative given the initial question about motivation. While these *could* be related to smoking cessation, they aren't directly addressed in the patient's response or the counselor's follow-up. This leans towards inference rather than grounding.",
+      "trigger": "after meals",
+      "trigger_type": "after meals"
+    },
+    {
+      "category": "Grounding Check",
+      "description": "Similarly, 'morning routine' and 'boredom' are weakly grounded. The conversation doesn't provide information to support these as triggers.",
+      "trigger": "morning routine",
+      "trigger_type": "morning routine"
+    },
+    {
+      "category": "Grounding Check",
+      "description": "The same critique applies to 'boredom'. The conversation lacks any direct evidence to support this as a trigger.",
+      "trigger": "boredom",
+      "trigger_type": "boredom"
+    }
+  ]
+}
+```
+
+================================================================================
+OLLAMA CALL 0026
+================================================================================
+timestamp: 2026-04-16T11:26:52.618327+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a very strict clinical data validator. Compare the EXTRACTED DATA against the CONVERSATION.
+
+CONVERSATION:
+Patient: hi
+Counselor: Hi! I'm eDOSTHI, your friendly AI coach. You've taken the first step towards quitting smoking - that's amazing! What motivated you to want to kick the habit?
+
+EXTRACTED DATA (cessation advice or guidance):
+{'advice': ['Congratulate the patient on taking the first step.', "Explore the patient's motivation for quitting.", 'Present as a friendly and supportive AI coach.'], 'evidence': ["Hi! I'm eDOSTHI, your friendly AI coach. You've taken the first step towards quitting smoking - that's amazing!", 'What motivated you to want to kick the habit?', "Hi! I'm eDOSTHI, your friendly AI coach."], '_debate_rounds': 0, '_debate_converged': True}
+
+Your task:
+1. Very Strictly Check for hallucinations (data not in the text).
+2. Very Strictly Check for omissions (important data missed).
+3. Assign a confidence score between 0.0 and 1.0.
+
+Respond ONLY with valid JSON:
+{
+  "confidence": 0.0,
+  "issues": ["<issue 1>", "..."]
+}
+
+
+RESPONSE:
+```json
+{
+  "confidence": 1.0,
+  "issues": []
+}
+```
+
+================================================================================
+OLLAMA CALL 0027
+================================================================================
+timestamp: 2026-04-16T11:26:57.602375+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a Senior Clinical Informatics Specialist specializing in Natural Language Processing (NLP) for tobacco cessation research. Your expertise lies in the high-precision extraction of behavioral health data from unstructured clinical dialogues.
+
+Objective: Audit the provided extraction (`{'attempts': ['Patient attempted to gradually reduce smoking with the intention to quit.', 'Patient attempted to temporarily abstain for a short period.'], 'evidence': ['Patient: What motivated you to want to kick the habit?', 'Patient: hi'], '_debate_rounds': 1, '_debate_converged': False}`) against the source text (`Patient: hi
+Counselor: Hi! I'm eDOSTHI, your friendly AI coach. You've taken the first step towards quitting smoking - that's amazing! What motivated you to want to kick the habit?`) to ensure 100% fidelity to the patient's history.
+
+Phase 1: Evidence-Based Audit
+Perform a comparative analysis using these four rigor checks:
+
+1.  **Grounding & Veracity:** Every extracted attempt must have a direct textual anchor. Flag any "logical leaps" where the model assumed a quit attempt occurred without explicit confirmation.
+2.  **Hallucination Check:** List any data points in the extraction that do not exist in the source.
+3.  **Sensitivity (Omission) Check:** Scan for keywords like *"stopped," "gave up," "last time I tried," "cut back to zero,"* or specific dates/durations that were missed.
+4.  **Taxonomy Alignment:** Ensure the `attempt_type` (e.g., Cold Turkey, NRT, Pharmacotherapy, Behavioral Support) aligns with clinical standards.
+
+Phase 2: Scoring Rubric
+Assign a Confidence Score (0 - 10):
+* 9–10: Perfect recall and precision.
+* 7–8: High utility; minor formatting or non-clinical nuance errors.
+* 5–6: Partial data loss or one significant hallucination.
+* < 5.0: Unreliable; contains multiple hallucinations or missed major life events
+
+Respond ONLY with valid JSON:
+{
+  "confidence": 0.0,
+  "issues": ["<issue 1>", "..."]
+}
+
+RESPONSE:
+```json
+{
+  "confidence": 0.3,
+  "issues": [
+    "Grounding & Veracity: The statement 'Patient attempted to gradually reduce smoking with the intention to quit.' is an assumption based on the counselor's positive affirmation ('You've taken the first step towards quitting smoking'). There is no explicit statement from the patient indicating a reduction attempt. This represents a logical leap.",
+    "Hallucination Check: The extraction includes 'Patient attempted to temporarily abstain for a short period.' This statement is not present in the source text. It's a hallucination.",
+    "Sensitivity (Omission) Check: The source text contains the key phrase 'want to kick the habit,' which directly relates to a quit attempt. However, the extraction doesn't explicitly capture this phrasing, representing a potential omission.",
+    "Taxonomy Alignment: While the extracted attempts relate to behavioral intention, the extraction lacks specific details about the *type* of attempt (e.g., behavioral support).  The provided data is too general to accurately categorize."
+  ]
+}
+```
+
+================================================================================
+OLLAMA CALL 0028
+================================================================================
+timestamp: 2026-04-16T11:27:01.370410+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a senior clinical NLP annotation reviewer specializing in trigger extraction quality assurance.
+
+ORIGINAL CONVERSATION:
+Patient: hi
+Counselor: Hi! I'm eDOSTHI, your friendly AI coach. You've taken the first step towards quitting smoking - that's amazing! What motivated you to want to kick the habit?
+
+TRIGGER EXTRACTION TO REVIEW:
+{'readiness_stage': 'contemplation', 'evidence': "The patient simply said 'hi,' indicating they've recognized the problem but haven't yet made a firm commitment to change. The counselor's response acknowledges their desire to quit ('What motivated you to want to kick the habit?') suggesting they are in the early stages of considering the change.", '_debate_rounds': 0, '_debate_converged': True}
+
+---
+
+## Review Instructions
+
+Systematically evaluate the trigger extraction against the source conversation across four dimensions:
+
+### 1. Grounding Check
+For each extracted trigger, verify it is either:
+- **Explicitly stated** — the exact term or a clear synonym appears in the conversation
+- **Strongly implied** — the clinical context makes it unambiguous without being stated directly
+Flag anything that is inferred, assumed, or fabricated.
+
+### 2. Hallucination Detection
+Identify triggers that are claimed in the extraction but have NO basis in the conversation. Note the specific trigger and why it is unsupported.
+
+### 3. Omission Detection
+Identify triggers that are clearly present in the conversation but missing from the extraction. Note the exact phrase or passage and what trigger type it should have been assigned.
+
+### 4. Classification Accuracy
+For each trigger, verify the `trigger_type` label is clinically appropriate. Flag misclassifications and suggest the correct label where applicable.
+
+### 5. Confidence Score
+Assign a score from 0–10 reflecting overall extraction quality:
+- 9–10: Near-perfect, no meaningful errors
+- 7–8: Minor omissions or edge-case misclassifications
+- 4–6: Several errors that affect reliability
+- 1–3: Significant hallucinations or omissions
+- 0: Extraction is unusable
+
+---
+
+## Output Format
+
+If a category has no findings, return an empty array for that field.
+Respond ONLY with valid JSON:
+{
+  "confidence": 0.0,
+  "issues": ["<issue 1>", "..."]
+}
+
+RESPONSE:
+```json
+{
+  "confidence": 8,
+  "issues": [
+    {
+      "category": "Grounding Check",
+      "description": "The extraction claims the patient is in 'contemplation' based on the initial 'hi'. While the patient's response is minimal, labeling it definitively as 'contemplation' is a slight inference. It's more accurately described as initial engagement or a simple greeting.  The counselor's follow-up question strengthens the possibility of contemplation, but doesn't confirm it.",
+      "recommendation": "Rephrase 'contemplation' to 'initial engagement' or 'greeting' for greater grounding."
+    }
+  ]
+}
+```
+
+================================================================================
+OLLAMA CALL 0029
+================================================================================
+timestamp: 2026-04-16T11:27:05.099849+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a Clinical Health Psychologist and NLP Validator. Your specialty is identifying "Patient-Reported Concerns" (PRCs) related to tobacco use, withdrawal, and long-term health risks from clinical transcripts.
+
+Objective: Audit the extraction of smoking-related concerns (`{'concerns': ['weight gain', 'withdrawal symptoms', 'social pressure'], 'evidence': ['"What motivated you to want to kick the habit?"', 'Implied concern regarding potential discomfort during cessation, as the patient is initiating a process to quit.'], '_debate_rounds': 1, '_debate_converged': False}`) against the source text (`Patient: hi
+Counselor: Hi! I'm eDOSTHI, your friendly AI coach. You've taken the first step towards quitting smoking - that's amazing! What motivated you to want to kick the habit?`) to ensure every patient worry—whether explicit or subtle—is captured with clinical accuracy.
+
+Phase 1: The "Concern" Rigor Audit
+Evaluate the extraction using these specialized clinical checks:
+
+1.  Implicit Concern Detection: Did the patient express concern through a question or a "hedged" statement? (e.g., *"I've noticed I'm winded lately, but maybe it's just age."*) If the extraction missed the underlying health anxiety, flag it as an omission.
+2.  Severity Calibration: Ensure the concern wasn't "watered down." If a patient says they are *"terrified of lung cancer,"* an extraction of *"worried about health"* is a precision error in severity.
+3.  Temporal Attribution: Distinguish between **historical concerns** (things they used to worry about) and **active concerns** (current anxieties).
+4.  Categorization Accuracy: Verify the `concern_type` using this taxonomy:
+    * Physiological: Cough, breathlessness, sleep issues.
+    * Psychological: Anxiety about failing to quit, mood swings, irritability.
+    * Social/Financial: Cost of smoking, stigma, impact on family.
+    * Relapse Triggers: Situational concerns (e.g., "drinking with friends").
+
+Phase 2: Confidence Scoring
+Assign a Confidence Score (0 - 10):
+* 9–10: Captured all nuances, including subtextual concerns and correct intensity.
+* 7–8: Missed a minor/passing concern; minor category misalignment.
+* 5–6: Failed to capture a primary concern or misinterpreted the patient's emotional tone.
+* < 5: Failed to distinguish between the clinician's advice and the patient's actual concern.
+
+
+Respond ONLY with valid JSON:
+{
+  "confidence": 0.0,
+  "issues": ["<issue 1>", "..."]
+}
+
+RESPONSE:
+```json
+{
+  "confidence": 7.5,
+  "issues": [
+    "Implicit Concern Detection: The patient's initial question, 'What motivated you to want to kick the habit?' represents an implicit concern regarding the potential difficulties and anxieties associated with quitting. While not explicitly stated as a fear, it’s a direct probe into the patient’s worries. This could be strengthened with a more detailed assessment of their anticipated challenges.",
+    "Severity Calibration: The extraction doesn't fully capture the potential intensity of the patient's motivation. The underlying reason for wanting to quit likely involves significant anxiety and apprehension, which isn't fully reflected in the current categorization."
+  ]
+}
+```
+
+================================================================================
+OLLAMA CALL 0030
+================================================================================
+timestamp: 2026-04-16T11:27:12.032870+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a senior clinical NLP annotation reviewer specializing in trigger extraction quality assurance.
+
+ORIGINAL CONVERSATION:
+Patient: hi
+Counselor: Hi! I'm eDOSTHI, your friendly AI coach. You've taken the first step towards quitting smoking - that's amazing! What motivated you to want to kick the habit?
+
+TRIGGER EXTRACTION TO REVIEW:
+{'triggers': ['stress', 'after meals', 'morning routine', 'boredom'], 'evidence': [], '_debate_rounds': 1, '_debate_converged': False}
+
+---
+
+## Review Instructions
+
+Systematically evaluate the trigger extraction against the source conversation across four dimensions:
+
+### 1. Grounding Check
+For each extracted trigger, verify it is either:
+- **Explicitly stated** — the exact term or a clear synonym appears in the conversation
+- **Strongly implied** — the clinical context makes it unambiguous without being stated directly
+Flag anything that is inferred, assumed, or fabricated.
+
+### 2. Hallucination Detection
+Identify triggers that are claimed in the extraction but have NO basis in the conversation. Note the specific trigger and why it is unsupported.
+
+### 3. Omission Detection
+Identify triggers that are clearly present in the conversation but missing from the extraction. Note the exact phrase or passage and what trigger type it should have been assigned.
+
+### 4. Classification Accuracy
+For each trigger, verify the `trigger_type` label is clinically appropriate. Flag misclassifications and suggest the correct label where applicable.
+
+### 5. Confidence Score
+Assign a score from 0–10 reflecting overall extraction quality:
+- 9–10: Near-perfect, no meaningful errors
+- 7–8: Minor omissions or edge-case misclassifications
+- 4–6: Several errors that affect reliability
+- 1–3: Significant hallucinations or omissions
+- 0: Extraction is unusable
+
+---
+
+## Output Format
+
+If a category has no findings, return an empty array for that field.
+Respond ONLY with valid JSON:
+{
+  "confidence": 0.0,
+  "issues": ["<issue 1>", "..."]
+}
+
+RESPONSE:
+```json
+{
+  "confidence": 6,
+  "issues": [
+    {
+      "category": "Omission Detection",
+      "description": "The conversation explicitly states the patient's motivation is 'stress'. The extraction misses 'stress' as a trigger. This is a significant omission.",
+      "phrase": "You've taken the first step towards quitting smoking - that's amazing! What motivated you to want to kick the habit?",
+      "trigger_type": "stress"
+    },
+    {
+      "category": "Grounding Check",
+      "description": "The inclusion of 'after meals', 'morning routine', and 'boredom' lacks strong grounding in the conversation. While plausible motivations for quitting smoking, they are not directly mentioned or strongly implied by the counselor's initial statement. These appear to be assumptions.",
+      "trigger": "after meals",
+      "trigger_type": "after meals"
+    },
+    {
+      "category": "Grounding Check",
+      "description": "Similarly, 'morning routine' and 'boredom' are not directly supported by the conversation and represent an assumption.",
+      "trigger": "morning routine",
+      "trigger_type": "morning routine"
+    },
+    {
+      "category": "Grounding Check",
+      "description": "The inclusion of 'boredom' is not grounded in the conversation and represents an assumption.",
+      "trigger": "boredom",
+      "trigger_type": "boredom"
+    }
+  ]
+}
+```
+
+================================================================================
+OLLAMA CALL 0031
+================================================================================
+timestamp: 2026-04-16T11:27:13.615828+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a very strict clinical data validator. Compare the EXTRACTED DATA against the CONVERSATION.
+
+CONVERSATION:
+Patient: hi
+Counselor: Hi! I'm eDOSTHI, your friendly AI coach. You've taken the first step towards quitting smoking - that's amazing! What motivated you to want to kick the habit?
+
+EXTRACTED DATA (cessation advice or guidance):
+{'advice': ['Congratulate the patient on taking the first step.', "Explore the patient's motivation for quitting.", 'Present as a friendly and supportive AI coach.'], 'evidence': ["Hi! I'm eDOSTHI, your friendly AI coach. You've taken the first step towards quitting smoking - that's amazing!", 'What motivated you to want to kick the habit?', "Hi! I'm eDOSTHI, your friendly AI coach."], '_debate_rounds': 0, '_debate_converged': True}
+
+Your task:
+1. Very Strictly Check for hallucinations (data not in the text).
+2. Very Strictly Check for omissions (important data missed).
+3. Assign a confidence score between 0.0 and 1.0.
+
+Respond ONLY with valid JSON:
+{
+  "confidence": 0.0,
+  "issues": ["<issue 1>", "..."]
+}
+
+
+RESPONSE:
+```json
+{
+  "confidence": 1.0,
+  "issues": []
+}
+```
+
+
+================================================================================
+OLLAMA CALL 0032
+================================================================================
+timestamp: 2026-04-16T11:27:17.313690+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a clinical annotation specialist (voter 3 of 3).
+
+CONVERSATION:
+Patient: hi
+Counselor: Hi! I'm eDOSTHI, your friendly AI coach. You've taken the first step towards quitting smoking - that's amazing! What motivated you to want to kick the habit?
+
+EXTRACTED SIGNALS:
+- Advice: {'advice': ['Congratulate the patient on taking the first step.', "Explore the patient's motivation for quitting.", 'Present as a friendly and supportive AI coach.'], 'evidence': ["Hi! I'm eDOSTHI, your friendly AI coach. You've taken the first step towards quitting smoking - that's amazing!", 'What motivated you to want to kick the habit?', "Hi! I'm eDOSTHI, your friendly AI coach."], '_debate_rounds': 0, '_debate_converged': True}
+- Quit Attempts: {'attempts': ['Patient attempted to gradually reduce smoking with the intention to quit.', 'Patient attempted to temporarily abstain for a short period.'], 'evidence': ['Patient: What motivated you to want to kick the habit?', 'Patient: hi'], '_debate_rounds': 1, '_debate_converged': False}
+- Readiness / Stage: {'readiness_stage': 'contemplation', 'evidence': "The patient simply said 'hi,' indicating they've recognized the problem but haven't yet made a firm commitment to change. The counselor's response acknowledges their desire to quit ('What motivated you to want to kick the habit?') suggesting they are in the early stages of considering the change.", '_debate_rounds': 0, '_debate_converged': True}
+- Concerns: {'concerns': ['weight gain', 'withdrawal symptoms', 'social pressure'], 'evidence': ['"What motivated you to want to kick the habit?"', 'Implied concern regarding potential discomfort during cessation, as the patient is initiating a process to quit.'], '_debate_rounds': 1, '_debate_converged': False}
+- Triggers: {'triggers': ['stress', 'after meals', 'morning routine', 'boredom'], 'evidence': [], '_debate_rounds': 1, '_debate_converged': False}
+
+Based on ALL the above signals, produce a unified clinical annotation.
+Be independent — do not anchor to previous voters.
+
+Respond ONLY with valid JSON:
+{
+  "stage_of_change": "precontemplation|contemplation|preparation|action|maintenance|relapse",
+  "main_concern": "<single most prominent barrier>",
+  "primary_trigger": "<most significant smoking trigger>",
+  "quit_attempt_history": "<concise summary of prior attempts>",
+  "recommended_intervention": ["<strategy 1>", "<strategy 2>", "..."]
+}
+
+
+RESPONSE:
+```json
+{
+  "stage_of_change": "contemplation",
+  "main_concern": "Motivation for quitting",
+  "primary_trigger": "N/A",
+  "quit_attempt_history": "Patient has expressed a desire to quit smoking and has initiated a conversation, indicating a potential prior attempt to reduce or abstain.",
+  "recommended_intervention": ["Explore the patient's specific motivations and reasons for wanting to quit in more detail.", "Assess the patient's readiness to make a commitment to change.", "Discuss potential barriers to quitting, such as cravings, withdrawal symptoms, and social pressure."]
+}
+```
+
+================================================================================
+OLLAMA CALL 0033
+================================================================================
+timestamp: 2026-04-16T11:27:19.710096+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a clinical annotation specialist (voter 1 of 3).
+
+CONVERSATION:
+Patient: hi
+Counselor: Hi! I'm eDOSTHI, your friendly AI coach. You've taken the first step towards quitting smoking - that's amazing! What motivated you to want to kick the habit?
+
+EXTRACTED SIGNALS:
+- Advice: {'advice': ['Congratulate the patient on taking the first step.', "Explore the patient's motivation for quitting.", 'Present as a friendly and supportive AI coach.'], 'evidence': ["Hi! I'm eDOSTHI, your friendly AI coach. You've taken the first step towards quitting smoking - that's amazing!", 'What motivated you to want to kick the habit?', "Hi! I'm eDOSTHI, your friendly AI coach."], '_debate_rounds': 0, '_debate_converged': True}
+- Quit Attempts: {'attempts': ['Patient attempted to gradually reduce smoking with the intention to quit.', 'Patient attempted to temporarily abstain for a short period.'], 'evidence': ['Patient: What motivated you to want to kick the habit?', 'Patient: hi'], '_debate_rounds': 1, '_debate_converged': False}
+- Readiness / Stage: {'readiness_stage': 'contemplation', 'evidence': "The patient simply said 'hi,' indicating they've recognized the problem but haven't yet made a firm commitment to change. The counselor's response acknowledges their desire to quit ('What motivated you to want to kick the habit?') suggesting they are in the early stages of considering the change.", '_debate_rounds': 0, '_debate_converged': True}
+- Concerns: {'concerns': ['weight gain', 'withdrawal symptoms', 'social pressure'], 'evidence': ['"What motivated you to want to kick the habit?"', 'Implied concern regarding potential discomfort during cessation, as the patient is initiating a process to quit.'], '_debate_rounds': 1, '_debate_converged': False}
+- Triggers: {'triggers': ['stress', 'after meals', 'morning routine', 'boredom'], 'evidence': [], '_debate_rounds': 1, '_debate_converged': False}
+
+Based on ALL the above signals, produce a unified clinical annotation.
+Be independent — do not anchor to previous voters.
+
+Respond ONLY with valid JSON:
+{
+  "stage_of_change": "precontemplation|contemplation|preparation|action|maintenance|relapse",
+  "main_concern": "<single most prominent barrier>",
+  "primary_trigger": "<most significant smoking trigger>",
+  "quit_attempt_history": "<concise summary of prior attempts>",
+  "recommended_intervention": ["<strategy 1>", "<strategy 2>", "..."]
+}
+
+
+RESPONSE:
+```json
+{
+  "stage_of_change": "contemplation",
+  "main_concern": "Motivation for quitting",
+  "primary_trigger": "N/A",
+  "quit_attempt_history": "Patient initiated a conversation, indicating a potential desire to quit smoking but without prior formal attempts.",
+  "recommended_intervention": ["Explore the patient's reasons for wanting to quit in more detail.", "Assess the strength of their motivation and any underlying beliefs about smoking.", "Introduce motivational interviewing techniques to help them articulate their goals and challenges."]
+}
+```
+
+================================================================================
+OLLAMA CALL 0034
+================================================================================
+timestamp: 2026-04-16T11:27:21.884314+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a clinical annotation specialist (voter 2 of 3).
+
+CONVERSATION:
+Patient: hi
+Counselor: Hi! I'm eDOSTHI, your friendly AI coach. You've taken the first step towards quitting smoking - that's amazing! What motivated you to want to kick the habit?
+
+EXTRACTED SIGNALS:
+- Advice: {'advice': ['Congratulate the patient on taking the first step.', "Explore the patient's motivation for quitting.", 'Present as a friendly and supportive AI coach.'], 'evidence': ["Hi! I'm eDOSTHI, your friendly AI coach. You've taken the first step towards quitting smoking - that's amazing!", 'What motivated you to want to kick the habit?', "Hi! I'm eDOSTHI, your friendly AI coach."], '_debate_rounds': 0, '_debate_converged': True}
+- Quit Attempts: {'attempts': ['Patient attempted to gradually reduce smoking with the intention to quit.', 'Patient attempted to temporarily abstain for a short period.'], 'evidence': ['Patient: What motivated you to want to kick the habit?', 'Patient: hi'], '_debate_rounds': 1, '_debate_converged': False}
+- Readiness / Stage: {'readiness_stage': 'contemplation', 'evidence': "The patient simply said 'hi,' indicating they've recognized the problem but haven't yet made a firm commitment to change. The counselor's response acknowledges their desire to quit ('What motivated you to want to kick the habit?') suggesting they are in the early stages of considering the change.", '_debate_rounds': 0, '_debate_converged': True}
+- Concerns: {'concerns': ['weight gain', 'withdrawal symptoms', 'social pressure'], 'evidence': ['"What motivated you to want to kick the habit?"', 'Implied concern regarding potential discomfort during cessation, as the patient is initiating a process to quit.'], '_debate_rounds': 1, '_debate_converged': False}
+- Triggers: {'triggers': ['stress', 'after meals', 'morning routine', 'boredom'], 'evidence': [], '_debate_rounds': 1, '_debate_converged': False}
+
+Based on ALL the above signals, produce a unified clinical annotation.
+Be independent — do not anchor to previous voters.
+
+Respond ONLY with valid JSON:
+{
+  "stage_of_change": "precontemplation|contemplation|preparation|action|maintenance|relapse",
+  "main_concern": "<single most prominent barrier>",
+  "primary_trigger": "<most significant smoking trigger>",
+  "quit_attempt_history": "<concise summary of prior attempts>",
+  "recommended_intervention": ["<strategy 1>", "<strategy 2>", "..."]
+}
+
+
+RESPONSE:
+```json
+{
+  "stage_of_change": "contemplation",
+  "main_concern": "Motivation for quitting",
+  "primary_trigger": "N/A",
+  "quit_attempt_history": "Patient initiated contact, indicating a potential desire to quit smoking but without prior formal attempts.",
+  "recommended_intervention": ["Explore the patient's motivations in detail.", "Assess the reasons behind their desire to quit.", "Begin with motivational interviewing techniques to build confidence and commitment."]
+}
+```
+
+================================================================================
+OLLAMA CALL 0035
+================================================================================
+timestamp: 2026-04-16T11:27:23.221290+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a clinical arbitrator. Multiple annotators disagreed on these fields.
+
+CONVERSATION (excerpt):
+Patient: hi
+Counselor: Hi! I'm eDOSTHI, your friendly AI coach. You've taken the first step towards quitting smoking - that's amazing! What motivated you to want to kick the habit?
+
+DISAGREEING VOTES:
+Field: quit_attempt_history
+  Voter voter_3: Patient has expressed a desire to quit smoking and has initiated a conversation, indicating a potential prior attempt to reduce or abstain.
+  Voter voter_1: Patient initiated a conversation, indicating a potential desire to quit smoking but without prior formal attempts.
+  Voter voter_2: Patient initiated contact, indicating a potential desire to quit smoking but without prior formal attempts.
+
+Produce the single best answer for the disputed fields.
+Respond ONLY with valid JSON matching the field names above.
+
+
+RESPONSE:
+```json
+"quit_attempt_history": "Voter voter_3"
+```
+
+================================================================================
+OLLAMA CALL 0036
+================================================================================
+timestamp: 2026-04-16T11:27:29.487071+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a clinical reasoning specialist producing the final annotation for a tobacco-cessation training dataset.
+
+CONVERSATION:
+Patient: hi
+Counselor: Hi! I'm eDOSTHI, your friendly AI coach. You've taken the first step towards quitting smoking - that's amazing! What motivated you to want to kick the habit?
+
+CONSENSUS ANNOTATION:
+{'stage_of_change': 'contemplation', 'main_concern': 'Motivation for quitting', 'primary_trigger': 'N/A', 'quit_attempt_history': 'Patient has expressed a desire to quit smoking and has initiated a conversation, indicating a potential prior attempt to reduce or abstain.', 'recommended_intervention': ["Explore the patient's specific motivations and reasons for wanting to quit in more detail.", "Assess the patient's readiness to make a commitment to change.", 'Discuss potential barriers to quitting, such as cravings, withdrawal symptoms, and social pressure.', "Explore the patient's reasons for wanting to quit in more detail.", 'Assess the strength of their motivation and any underlying beliefs about smoking.', 'Introduce motivational interviewing techniques to help them articulate their goals and challenges.', "Explore the patient's motivations in detail.", 'Assess the reasons behind their desire to quit.', 'Begin with motivational interviewing techniques to build confidence and commitment.'], 'vote_agreement': 0.833, 'dissenting_fields': ['quit_attempt_history']}
+
+Your tasks:
+1. Validate that the consensus annotation is internally consistent and supported by the conversation.
+2. Write a reasoning_summary: 1–2 sentences that explain WHY this patient is at this stage,
+   what their primary barrier is, and what intervention approach is recommended.
+
+Respond ONLY with valid JSON:
+{
+  "stage_of_change": "<from consensus>",
+  "main_concern": "<from consensus>",
+  "primary_trigger": "<from consensus>",
+  "quit_attempt_history": "<from consensus>",
+  "recommended_intervention": ["<strategy 1>", "..."],
+  "reasoning_summary": "<1–2 sentence clinical rationale>",
+  "confidence_score": 0.0
+}
+
+
+RESPONSE:
+```json
+{
+  "stage_of_change": "contemplation",
+  "main_concern": "Motivation for quitting",
+  "primary_trigger": "N/A",
+  "quit_attempt_history": "Patient has expressed a desire to quit smoking and has initiated a conversation, indicating a potential prior attempt to reduce or abstain.",
+  "recommended_intervention": [
+    "Explore the patient's specific motivations and reasons for wanting to quit in more detail.",
+    "Assess the patient's readiness to make a commitment to change.",
+    "Discuss potential barriers to quitting, such as cravings, withdrawal symptoms, and social pressure.",
+    "Explore the patient's reasons for wanting to quit in more detail.",
+    "Assess the strength of their motivation and any underlying beliefs about smoking.",
+    "Introduce motivational interviewing techniques to help them articulate their goals and challenges.",
+    "Explore the patient's motivations in detail.",
+    "Assess the reasons behind their desire to quit.",
+    "Begin with motivational interviewing techniques to build confidence and commitment."
+  ],
+  "reasoning_summary": "The patient is in the contemplation stage, motivated by a desire to quit, and their primary concern is understanding the reasons behind their intention. The recommended intervention focuses on motivational interviewing to explore their motivations and assess their readiness to change.",
+  "confidence_score": 0.95
+}
+```

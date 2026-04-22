@@ -1,0 +1,46 @@
+=== LLM Response Log — 20260416_170131 ===
+
+--- [CONFIDENCE_CHECK] attempt @ 17:01:36.164 ---
+{
+  "confidence": 0.3,
+  "issues": [
+    "Grounding & Veracity: The extraction includes 'The patient has tried to quit twice before.' which is a direct quote from the source text. This meets the grounding requirement.",
+    "Hallucination Check: No hallucinated data points exist. The extraction accurately reflects the source.",
+    "Sensitivity (Omission) Check: The source text explicitly states 'Patient has tried to quit twice before.' There are no missed keywords or details regarding the type of attempts or duration.",
+    "Taxonomy Alignment: While the extraction doesn't specify the attempt type, the source simply states the patient 'tried to quit,' which is a reasonable starting point for further investigation. However, without additional information, assigning a specific attempt type is premature and introduces potential for error. Therefore, a lower confidence score is warranted."
+  ]
+}
+
+--- [CONFIDENCE_CHECK] readiness @ 17:01:37.764 ---
+{
+  "confidence": 0.9,
+  "issues": []
+}
+
+--- [CONFIDENCE_CHECK] concern @ 17:01:42.183 ---
+{
+  "confidence": 0.75,
+  "issues": [
+    "Implicit Concern Detection: The transcript contains both 'worried about weight' and 'has tried to quit twice before'. While not explicitly stated as anxiety, the 'has tried to quit twice before' strongly suggests an underlying psychological concern related to relapse and potentially, fear of failure. This could be strengthened with a more specific categorization (Psychological).",
+    "Severity Calibration: 'Has tried to quit twice before' could be interpreted as a moderate concern. While not 'terrified,' it represents a significant history of unsuccessful attempts and warrants a more precise categorization than simply 'previous quitting attempts'.",
+    "Temporal Attribution: The statement is currently categorized as 'previous quitting attempts,' which is a historical concern.  A more nuanced approach might benefit from explicitly labeling it as a contributing factor to current anxiety or fear."
+  ]
+}
+
+--- [CONFIDENCE_CHECK] triggers @ 17:01:45.040 ---
+{
+  "confidence": 0.7,
+  "issues": [
+    "{'category': 'Grounding Check', 'description': \"The trigger 'substance use' is not supported by the conversation. The patient's concern is about weight, not substance use.\", 'severity': 'High', 'recommendation': \"Remove 'substance use' from the triggers.\"}"
+  ]
+}
+
+--- [CONFIDENCE_CHECK] advice @ 17:01:48.525 ---
+{
+  "confidence": 0.85,
+  "issues": [
+    "Omission: The conversation mentions the patient has attempted cessation twice, which should be explicitly captured as a key element of the patient's history and a factor in cessation advice. The extracted data only includes 'Recognize the patient has attempted cessation previously.' as a single item, it should be a more detailed statement.",
+    "Potential Hallucination: 'Consider strategies to manage cravings.' is an implied suggestion based on the conversation, but it's not directly stated. While reasonable, it leans towards a potential hallucination as it goes beyond a direct extraction of the conversation's content."
+  ]
+}
+

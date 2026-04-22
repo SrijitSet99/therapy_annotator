@@ -1,0 +1,47 @@
+=== LLM Response Log — 20260416_170216 ===
+
+--- [CONFIDENCE_CHECK] attempt @ 17:02:20.969 ---
+{
+  "confidence": 0.3,
+  "issues": [
+    "Grounding & Veracity: The extraction includes 'The patient has tried to quit twice before.' which is a direct quote from the source text. This check passes.",
+    "Hallucination Check: No data points exist in the source text beyond the provided quote. This check passes.",
+    "Sensitivity (Omission) Check: The source text explicitly states 'Patient has tried to quit twice before.' This check fails due to the omission of the key phrase itself, which should have been extracted.",
+    "Taxonomy Alignment: While the statement implies a quit attempt, the extraction lacks detail regarding the *type* of attempt.  A more robust system would ideally capture this, but given the limited source data, this check is difficult to definitively assess.  We assume a general 'attempt' for now."
+  ]
+}
+
+--- [CONFIDENCE_CHECK] readiness @ 17:02:22.564 ---
+{
+  "confidence": 0.9,
+  "issues": []
+}
+
+--- [CONFIDENCE_CHECK] concern @ 17:02:27.979 ---
+{
+  "confidence": 0.75,
+  "issues": [
+    "Implicit Concern Detection: The transcript contains both 'worried about weight' and 'has tried to quit twice before'. While not explicitly framed as a question, the repetition of 'tried to quit' strongly suggests an ongoing psychological concern related to relapse and the anxiety associated with it. This could be strengthened by categorizing it as 'Psychological: Anxiety about failing to quit'.",
+    "Severity Calibration: 'Worried about weight' is a reasonable representation of the patient's concern, but a more precise categorization might benefit from assessing the *intensity* of the worry.  A more granular assessment could consider if the patient described a significant change in weight or a specific fear related to weight loss/gain.  Currently, it\u2019s a relatively broad categorization.",
+    "Temporal Attribution: The phrase 'has tried to quit twice before' clearly indicates a *historical* concern.  It\u2019s important to distinguish this from a current, active concern about relapse.  The extraction correctly identifies this as a historical attempt, but the context doesn't explicitly state it's a current worry."
+  ]
+}
+
+--- [CONFIDENCE_CHECK] triggers @ 17:02:32.203 ---
+{
+  "confidence": 0.7,
+  "issues": [
+    "{'category': 'Grounding Check', 'trigger': 'substance use', 'rationale': \"The conversation mentions a previous relapse attempt but does not explicitly state substance use. This is a strong implication, but not explicitly stated, and therefore warrants caution. It's possible this was intended, but needs verification.\"}",
+    "{'category': 'Omission Detection', 'phrase': 'Patient has tried to quit twice before.', 'trigger': 'relapse', 'rationale': \"The phrase 'tried to quit twice before' clearly indicates a history of relapse, which should be captured as a 'relapse' trigger.\"}"
+  ]
+}
+
+--- [CONFIDENCE_CHECK] advice @ 17:02:35.548 ---
+{
+  "confidence": 0.85,
+  "issues": [
+    "Omission: The conversation mentions the patient has attempted cessation twice, which should be explicitly captured as a key element of the patient's history and a factor in cessation advice. The extracted data includes this, but the confidence score is slightly reduced due to this oversight.",
+    "Potential Hallucination: 'Recognize the patient has attempted cessation previously.' - While plausible, this is an interpretation and not directly stated. It leans towards a slight hallucination, though the source conversation supports the idea. This is mitigated by the inclusion of the direct quote."
+  ]
+}
+

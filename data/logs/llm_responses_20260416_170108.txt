@@ -1,0 +1,47 @@
+=== LLM Response Log — 20260416_170108 ===
+
+--- [CONFIDENCE_CHECK] attempt @ 17:01:12.868 ---
+{
+  "confidence": 0.5,
+  "issues": [
+    "Grounding & Veracity: The extraction relies solely on the phrase 'Patient has tried to quit twice before.' which is a direct quote from the source. This meets the grounding requirement.",
+    "Hallucination Check: No hallucinated data points exist. The extraction accurately reflects the source text.",
+    "Sensitivity (Omission) Check: The source text lacks specific details regarding the *type* of attempts (Cold Turkey, NRT, etc.) or durations. The extraction captures the fact of prior attempts but misses this crucial contextual information. This represents a significant omission.",
+    "Taxonomy Alignment: While the extraction correctly identifies a 'quit attempt,' it doesn't specify the *type* of attempt, failing to align with clinical standards.  A more robust extraction would include this detail."
+  ]
+}
+
+--- [CONFIDENCE_CHECK] readiness @ 17:01:14.446 ---
+{
+  "confidence": 0.9,
+  "issues": []
+}
+
+--- [CONFIDENCE_CHECK] concern @ 17:01:19.215 ---
+{
+  "confidence": 0.75,
+  "issues": [
+    "Implicit Concern Detection: The transcript contains both a direct worry ('worried about weight') and a hedged statement ('maybe it's just age'). The extraction captured 'worried about weight,' but missed the 'maybe it's just age' which represents a potential underlying anxiety about health and a reluctance to acknowledge it fully. This represents a minor omission.",
+    "Severity Calibration: While 'worried about weight' is a reasonable representation of the patient's stated concern, the intensity of the worry isn't fully captured. The patient\u2019s phrasing suggests a significant level of anxiety. A more precise extraction might have included terms like 'significant worry' or 'substantial concern'.",
+    "Temporal Attribution: The concern regarding weight gain is presented as a current worry.  The temporal aspect is accurately captured, but a more detailed assessment could explore if this is a recurring concern or a new development."
+  ]
+}
+
+--- [CONFIDENCE_CHECK] triggers @ 17:01:22.942 ---
+{
+  "confidence": 0.7,
+  "issues": [
+    "{'category': 'Hallucination Detection', 'trigger': 'stress', 'rationale': \"The conversation does not explicitly mention stress. While the patient's worry about weight could be linked to stress, it's an assumption and not directly stated.\"}",
+    "{'category': 'Omission Detection', 'phrase': 'Worried about weight', 'trigger': 'weight', 'rationale': \"The phrase 'Worried about weight' clearly indicates the presence of the 'weight' trigger. This was not included in the extraction.\"}"
+  ]
+}
+
+--- [CONFIDENCE_CHECK] advice @ 17:01:25.975 ---
+{
+  "confidence": 0.85,
+  "issues": [
+    "Omission: The conversation mentions the patient has attempted cessation twice, which should be explicitly captured as a key element of the patient's history and a factor in cessation advice. This is not fully represented in the 'evidence' field.",
+    "Potential Hallucination: 'Recognize the patient has attempted cessation previously.' - While implied, this feels slightly like an interpretation beyond the direct statement. A more cautious phrasing might be warranted."
+  ]
+}
+

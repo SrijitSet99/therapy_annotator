@@ -1,0 +1,116 @@
+{
+  "events": {
+    "agent_manager": {
+      "confidence_result": {
+        "attempt": {
+          "confidence": 0.8,
+          "issues": [
+            "Hallucination: The phrase 'previous smoking quit attempt' is not present in the conversation. This is a hallucination.",
+            "Omission: The conversation explicitly states the patient *wants* to quit smoking, but the extracted data doesn't capture the intent or motivation behind this desire. A more detailed extraction would benefit from capturing the patient's stated reason ('i want to quit smoking')."
+          ],
+          "severity": "none"
+        },
+        "concern": {
+          "confidence": 0.8,
+          "issues": [
+            "Hallucination: The extracted data includes 'weight gain' which is not explicitly stated in the conversation. This is a hallucination.",
+            "Omission: The conversation clearly indicates the patient's primary motivation is quitting smoking. The extracted data does not explicitly capture this core reason."
+          ],
+          "severity": "none"
+        },
+        "readiness": {
+          "confidence": 0.8,
+          "issues": [
+            "The extraction correctly identifies the patient's stated desire to quit smoking as indicative of the contemplation stage.",
+            "There is no hallucination present.",
+            "The extraction adequately captures the core information from the conversation."
+          ],
+          "severity": "none"
+        },
+        "triggers": {
+          "confidence": 0.2,
+          "issues": [
+            "Omission: The patient explicitly states 'i want to quit smoking'. This is a key trigger and should be included.",
+            "Hallucination: The inclusion of 'stress' as a trigger is not supported by the conversation. The patient only stated they 'want to quit'."
+          ],
+          "severity": "none"
+        }
+      },
+      "extractor_output": {
+        "attempt": {
+          "attempts": [
+            "Patient attempted to quit smoking",
+            "Patient attempted to quit smoking"
+          ],
+          "evidence": [
+            "Patient: i want to quit smoking",
+            "Patient: i want to quit smoking"
+          ]
+        },
+        "concern": {
+          "concerns": [
+            "weight gain",
+            "withdrawal symptoms"
+          ],
+          "evidence": [
+            "\"i want to quit smoking\"",
+            "Implied concern about withdrawal symptoms due to the patient's stated desire to quit."
+          ]
+        },
+        "readiness": {
+          "evidence": "The patient stated, \"I want to quit smoking,\" indicating they are considering quitting but haven't yet made a firm commitment or taken concrete steps towards it, which aligns with the contemplation stage.",
+          "readiness_stage": "contemplation"
+        },
+        "triggers": {
+          "evidence": [],
+          "triggers": [
+            "stress",
+            "want to quit"
+          ]
+        }
+      },
+      "final_output": {
+        "attempt": {
+          "_debate_converged": true,
+          "_debate_rounds": 0,
+          "attempts": [
+            "Patient attempted to quit smoking",
+            "Patient attempted to quit smoking"
+          ],
+          "evidence": [
+            "Patient: i want to quit smoking",
+            "Patient: i want to quit smoking"
+          ]
+        },
+        "concern": {
+          "_debate_converged": true,
+          "_debate_rounds": 0,
+          "concerns": [
+            "weight gain",
+            "withdrawal symptoms"
+          ],
+          "evidence": [
+            "\"i want to quit smoking\"",
+            "Implied concern about withdrawal symptoms due to the patient's stated desire to quit."
+          ]
+        },
+        "readiness": {
+          "_debate_converged": true,
+          "_debate_rounds": 0,
+          "evidence": "The patient stated, \"I want to quit smoking,\" indicating they are considering quitting but haven't yet made a firm commitment or taken concrete steps towards it, which aligns with the contemplation stage.",
+          "readiness_stage": "contemplation"
+        }
+      }
+    },
+    "run_chat": {
+      "transcript": {
+        "session_id": "a5324d34-810f-4293-8a37-1d0d0317ca83",
+        "transcript": "Patient: Hi\nCounselor: Welcome! I'm eDOSTHI. You've taken the first step towards quitting smoking. What's driving you to want to quit this time?\nPatient: i want to quit smoking\nCounselor: That's a great start! Can you tell me what's most important to you about quitting smoking right now?"
+      }
+    }
+  },
+  "meta": {
+    "session_id": "a5324d34-810f-4293-8a37-1d0d0317ca83",
+    "started_at": "20260414T123311Z"
+  }
+}

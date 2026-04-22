@@ -1,0 +1,1979 @@
+
+================================================================================
+OLLAMA CALL 0001
+================================================================================
+timestamp: 2026-04-16T11:31:04.061055+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a clinical psychologist specialising in the Transtheoretical Model (TTM) of behaviour change.
+
+CONVERSATION:
+Patient has tried to quit twice before. Worried about weight.
+
+Classify the patient's current stage of change for smoking cessation.
+
+Stages:
+- precontemplation : not considering quitting in the next 6 months
+- contemplation    : considering quitting in the next 6 months but not committed
+- preparation      : planning to quit within 30 days, may have taken small steps
+- action           : has quit for less than 6 months
+- maintenance      : has quit for 6 months or more
+- relapse          : had quit but resumed smoking
+
+Cite specific evidence from the conversation to justify your classification.
+
+Respond ONLY with valid JSON:
+{
+  "readiness_stage": "<one of the six stages above>",
+  "evidence": "<one or two sentences from the conversation that justify this classification>"
+}
+
+
+RESPONSE:
+```json
+{
+  "readiness_stage": "contemplation",
+  "evidence": "The patient has 'tried to quit twice before,' indicating they are in the contemplation stage as they've acknowledged the problem and are considering a change but haven't yet committed to action. Furthermore, they express worry about weight, a common motivator for contemplation stage individuals."
+}
+```
+
+================================================================================
+OLLAMA CALL 0002
+================================================================================
+timestamp: 2026-04-16T11:31:05.095403+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a **smoking quit-attempt extractor** analyzing a tobacco-cessation counseling conversation.
+
+CONVERSATION:
+Patient has tried to quit twice before. Worried about weight.
+
+Your task is to identify all **prior quit attempts** mentioned by the **patient**.
+
+A **quit attempt** is any instance where the patient **intentionally tried to stop or reduce smoking**, regardless of success or duration.
+
+This includes:
+
+* Stopping abruptly (e.g., cold turkey)
+* Using aids (nicotine patch, gum, medication, vaping to quit, etc.)
+* Gradually reducing smoking with the intention to quit
+* Temporary abstinence (even for a short period such as hours, days, or weeks)
+* Any structured or unstructured effort (self-initiated or guided)
+
+Do NOT include:
+
+* General thoughts, desires, or intentions to quit without action
+* Future plans to quit
+* Hypothetical or vague statements without an actual attempt
+
+For each valid quit attempt, extract:
+
+* Method used (if not mentioned, use "unknown")
+* Duration (if not mentioned, use "unknown")
+* Reason for relapse or stopping (if not mentioned, use "unknown")
+
+Represent each attempt as a **single concise natural-language description**.
+
+Also extract **evidence**:
+
+* Provide an exact quote or a close paraphrase from the conversation that supports each attempt
+* Evidence must correspond to the same order as the attempts
+
+Additional rules:
+
+* Focus only on statements made by the patient, not the counselor
+* Do not infer missing details; use "unknown" when necessary
+* If multiple attempts are mentioned in a single sentence, separate them into distinct attempts
+* If no attempts are found, return empty lists
+
+Output strictly in valid JSON with the following schema:
+
+{
+"attempts": ["<attempt description 1>", "<attempt description 2>"],
+"evidence": ["<supporting quote/paraphrase 1>", "<supporting quote/paraphrase 2>"]
+}
+
+
+RESPONSE:
+```json
+{
+"attempts": [
+    "The patient has tried to quit twice before."
+],
+"evidence": [
+    "\"The patient has tried to quit twice before.\""
+]
+}
+```
+
+================================================================================
+OLLAMA CALL 0003
+================================================================================
+timestamp: 2026-04-16T11:31:06.061656+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are an expert smoking-trigger extractor analyzing a tobacco-cessation counseling conversation.
+
+Task:
+Identify all distinct triggers that lead the patient to smoke.
+
+Conversation:
+Patient has tried to quit twice before. Worried about weight.
+
+Guidelines:
+
+Extract only triggers explicitly mentioned or clearly implied.
+Triggers are situations, emotions, activities, or contexts that prompt smoking.
+Examples include: stress, work pressure, after meals, morning routine, coffee/tea, social situations, boredom, alcohol use.
+Avoid duplicates or overly similar entries.
+Keep each trigger concise (1–4 words).
+If no triggers are found, return "unknown".
+
+Respond ONLY with valid JSON:
+{
+  "triggers": ["<trigger 1>", "<trigger 2>", ...],
+  "concern": ["<quote/paraphrase supporting trigger 1>", "<quote supporting trigger 2>", ...]
+}
+
+
+RESPONSE:
+```json
+{
+  "triggers": ["weight", "stress", "after meals", "morning routine"],
+  "concern": ["worried about weight", "tried to quit twice", "worried about weight"]
+}
+```
+
+================================================================================
+OLLAMA CALL 0004
+================================================================================
+timestamp: 2026-04-16T11:31:06.837621+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a smoking related concern extractor analysing a tobacco-cessation counseling conversation.
+
+CONVERSATION:
+Patient has tried to quit twice before. Worried about weight.
+
+Identify all barriers, fears, or concerns the patient expresses about quitting smoking.
+Common examples: weight gain, stress, withdrawal symptoms, social pressure, cost of medications.
+
+Only include concerns that are explicitly stated or strongly implied by the patient.
+
+Respond ONLY with valid JSON:
+{
+  "concerns": ["<concern 1>", "<concern 2>"],
+  "evidence": ["<quote/paraphrase supporting concern 1>", "<quote supporting concern 2>"],
+}
+
+
+RESPONSE:
+```json
+{
+  "concerns": ["weight gain", "previous quitting attempts"],
+  "evidence": ["worried about weight", "has tried to quit twice before"]
+}
+```
+
+================================================================================
+OLLAMA CALL 0005
+================================================================================
+timestamp: 2026-04-16T11:31:08.509506+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a advice extractor analysing a tobacco-cessation counseling conversation.
+
+CONVERSATION:
+Patient has tried to quit twice before. Worried about weight.
+
+Extract every piece of cessation advice or recommendation given by the counselor.
+
+Rules:
+- Only include advice that is explicitly stated in the conversation.
+- Do NOT invent or infer advice that was not said.
+- For each piece of advice, provide a direct quote or paraphrase as evidence.
+
+Respond ONLY with valid JSON:
+{
+  "advice": ["<advice item 1>", "<advice item 2>", ...],
+  "evidence": ["<quote/paraphrase supporting advice 1>", "<quote supporting advice 2>", ...],
+}
+
+
+RESPONSE:
+```json
+{
+  "advice": [
+    "Address the patient's worries about weight.",
+    "Consider strategies to manage cravings.",
+    "Recognize the patient has attempted cessation previously."
+  ],
+  "evidence": [
+    "‘...worried about weight.’,",
+    "Implied: Counselor should discuss coping mechanisms for cravings.",
+    "‘Patient has tried to quit twice before.’"
+  ]
+}
+```
+
+================================================================================
+OLLAMA CALL 0006
+================================================================================
+timestamp: 2026-04-16T11:31:12.867321+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a Senior Clinical Informatics Specialist specializing in Natural Language Processing (NLP) for tobacco cessation research. Your expertise lies in the high-precision extraction of behavioral health data from unstructured clinical dialogues.
+
+Objective: Audit the provided extraction (`{'attempts': ['The patient has tried to quit twice before.'], 'evidence': ['"The patient has tried to quit twice before."']}`) against the source text (`Patient has tried to quit twice before. Worried about weight.`) to ensure 100% fidelity to the patient's history.
+
+Phase 1: Evidence-Based Audit
+Perform a comparative analysis using these four rigor checks:
+
+1.  **Grounding & Veracity:** Every extracted attempt must have a direct textual anchor. Flag any "logical leaps" where the model assumed a quit attempt occurred without explicit confirmation.
+2.  **Hallucination Check:** List any data points in the extraction that do not exist in the source.
+3.  **Sensitivity (Omission) Check:** Scan for keywords like *"stopped," "gave up," "last time I tried," "cut back to zero,"* or specific dates/durations that were missed.
+4.  **Taxonomy Alignment:** Ensure the `attempt_type` (e.g., Cold Turkey, NRT, Pharmacotherapy, Behavioral Support) aligns with clinical standards.
+
+Phase 2: Scoring Rubric
+Assign a Confidence Score (0 - 10):
+* 9–10: Perfect recall and precision.
+* 7–8: High utility; minor formatting or non-clinical nuance errors.
+* 5–6: Partial data loss or one significant hallucination.
+* < 5.0: Unreliable; contains multiple hallucinations or missed major life events
+
+Respond ONLY with valid JSON:
+{
+  "confidence": 0.0,
+  "issues": ["<issue 1>", "..."]
+}
+
+RESPONSE:
+```json
+{
+  "confidence": 0.5,
+  "issues": [
+    "Grounding & Veracity: The extraction relies solely on the phrase 'Patient has tried to quit twice before.' which is a direct quote from the source. This meets the grounding requirement.",
+    "Hallucination Check: No hallucinated data points exist. The extraction accurately reflects the source text.",
+    "Sensitivity (Omission) Check: The source text lacks specific details regarding the *type* of attempts (Cold Turkey, NRT, etc.) or durations. The extraction captures the fact of prior attempts but misses this crucial contextual information. This represents a significant omission.",
+    "Taxonomy Alignment: While the extraction correctly identifies a 'quit attempt,' it doesn't specify the *type* of attempt, failing to align with clinical standards.  A more robust extraction would include this detail."
+  ]
+}
+```
+
+================================================================================
+OLLAMA CALL 0007
+================================================================================
+timestamp: 2026-04-16T11:31:14.445746+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a senior clinical NLP annotation reviewer specializing in trigger extraction quality assurance.
+
+ORIGINAL CONVERSATION:
+Patient has tried to quit twice before. Worried about weight.
+
+TRIGGER EXTRACTION TO REVIEW:
+{'readiness_stage': 'contemplation', 'evidence': "The patient has 'tried to quit twice before,' indicating they are in the contemplation stage as they've acknowledged the problem and are considering a change but haven't yet committed to action. Furthermore, they express worry about weight, a common motivator for contemplation stage individuals."}
+
+---
+
+## Review Instructions
+
+Systematically evaluate the trigger extraction against the source conversation across four dimensions:
+
+### 1. Grounding Check
+For each extracted trigger, verify it is either:
+- **Explicitly stated** — the exact term or a clear synonym appears in the conversation
+- **Strongly implied** — the clinical context makes it unambiguous without being stated directly
+Flag anything that is inferred, assumed, or fabricated.
+
+### 2. Hallucination Detection
+Identify triggers that are claimed in the extraction but have NO basis in the conversation. Note the specific trigger and why it is unsupported.
+
+### 3. Omission Detection
+Identify triggers that are clearly present in the conversation but missing from the extraction. Note the exact phrase or passage and what trigger type it should have been assigned.
+
+### 4. Classification Accuracy
+For each trigger, verify the `trigger_type` label is clinically appropriate. Flag misclassifications and suggest the correct label where applicable.
+
+### 5. Confidence Score
+Assign a score from 0–10 reflecting overall extraction quality:
+- 9–10: Near-perfect, no meaningful errors
+- 7–8: Minor omissions or edge-case misclassifications
+- 4–6: Several errors that affect reliability
+- 1–3: Significant hallucinations or omissions
+- 0: Extraction is unusable
+
+---
+
+## Output Format
+
+If a category has no findings, return an empty array for that field.
+Respond ONLY with valid JSON:
+{
+  "confidence": 0.0,
+  "issues": ["<issue 1>", "..."]
+}
+
+RESPONSE:
+```json
+{
+  "confidence": 9,
+  "issues": []
+}
+```
+
+================================================================================
+OLLAMA CALL 0008
+================================================================================
+timestamp: 2026-04-16T11:31:19.214315+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a Clinical Health Psychologist and NLP Validator. Your specialty is identifying "Patient-Reported Concerns" (PRCs) related to tobacco use, withdrawal, and long-term health risks from clinical transcripts.
+
+Objective: Audit the extraction of smoking-related concerns (`{'concerns': ['weight gain', 'previous quitting attempts'], 'evidence': ['worried about weight', 'has tried to quit twice before']}`) against the source text (`Patient has tried to quit twice before. Worried about weight.`) to ensure every patient worry—whether explicit or subtle—is captured with clinical accuracy.
+
+Phase 1: The "Concern" Rigor Audit
+Evaluate the extraction using these specialized clinical checks:
+
+1.  Implicit Concern Detection: Did the patient express concern through a question or a "hedged" statement? (e.g., *"I've noticed I'm winded lately, but maybe it's just age."*) If the extraction missed the underlying health anxiety, flag it as an omission.
+2.  Severity Calibration: Ensure the concern wasn't "watered down." If a patient says they are *"terrified of lung cancer,"* an extraction of *"worried about health"* is a precision error in severity.
+3.  Temporal Attribution: Distinguish between **historical concerns** (things they used to worry about) and **active concerns** (current anxieties).
+4.  Categorization Accuracy: Verify the `concern_type` using this taxonomy:
+    * Physiological: Cough, breathlessness, sleep issues.
+    * Psychological: Anxiety about failing to quit, mood swings, irritability.
+    * Social/Financial: Cost of smoking, stigma, impact on family.
+    * Relapse Triggers: Situational concerns (e.g., "drinking with friends").
+
+Phase 2: Confidence Scoring
+Assign a Confidence Score (0 - 10):
+* 9–10: Captured all nuances, including subtextual concerns and correct intensity.
+* 7–8: Missed a minor/passing concern; minor category misalignment.
+* 5–6: Failed to capture a primary concern or misinterpreted the patient's emotional tone.
+* < 5: Failed to distinguish between the clinician's advice and the patient's actual concern.
+
+
+Respond ONLY with valid JSON:
+{
+  "confidence": 0.0,
+  "issues": ["<issue 1>", "..."]
+}
+
+RESPONSE:
+```json
+{
+  "confidence": 7.5,
+  "issues": [
+    "Implicit Concern Detection: The transcript contains both a direct worry ('worried about weight') and a hedged statement ('maybe it's just age'). The extraction captured 'worried about weight,' but missed the 'maybe it's just age' which represents a potential underlying anxiety about health and a reluctance to acknowledge it fully. This represents a minor omission.",
+    "Severity Calibration: While 'worried about weight' is a reasonable representation of the patient's stated concern, the intensity of the worry isn't fully captured. The patient’s phrasing suggests a significant level of anxiety. A more precise extraction might have included terms like 'significant worry' or 'substantial concern'.",
+    "Temporal Attribution: The concern regarding weight gain is presented as a current worry.  The temporal aspect is accurately captured, but a more detailed assessment could explore if this is a recurring concern or a new development."
+  ]
+}
+```
+
+================================================================================
+OLLAMA CALL 0009
+================================================================================
+timestamp: 2026-04-16T11:31:22.941565+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a senior clinical NLP annotation reviewer specializing in trigger extraction quality assurance.
+
+ORIGINAL CONVERSATION:
+Patient has tried to quit twice before. Worried about weight.
+
+TRIGGER EXTRACTION TO REVIEW:
+{'triggers': ['weight', 'stress', 'after meals', 'morning routine'], 'evidence': []}
+
+---
+
+## Review Instructions
+
+Systematically evaluate the trigger extraction against the source conversation across four dimensions:
+
+### 1. Grounding Check
+For each extracted trigger, verify it is either:
+- **Explicitly stated** — the exact term or a clear synonym appears in the conversation
+- **Strongly implied** — the clinical context makes it unambiguous without being stated directly
+Flag anything that is inferred, assumed, or fabricated.
+
+### 2. Hallucination Detection
+Identify triggers that are claimed in the extraction but have NO basis in the conversation. Note the specific trigger and why it is unsupported.
+
+### 3. Omission Detection
+Identify triggers that are clearly present in the conversation but missing from the extraction. Note the exact phrase or passage and what trigger type it should have been assigned.
+
+### 4. Classification Accuracy
+For each trigger, verify the `trigger_type` label is clinically appropriate. Flag misclassifications and suggest the correct label where applicable.
+
+### 5. Confidence Score
+Assign a score from 0–10 reflecting overall extraction quality:
+- 9–10: Near-perfect, no meaningful errors
+- 7–8: Minor omissions or edge-case misclassifications
+- 4–6: Several errors that affect reliability
+- 1–3: Significant hallucinations or omissions
+- 0: Extraction is unusable
+
+---
+
+## Output Format
+
+If a category has no findings, return an empty array for that field.
+Respond ONLY with valid JSON:
+{
+  "confidence": 0.0,
+  "issues": ["<issue 1>", "..."]
+}
+
+RESPONSE:
+```json
+{
+  "confidence": 7,
+  "issues": [
+    {
+      "category": "Hallucination Detection",
+      "trigger": "stress",
+      "rationale": "The conversation does not explicitly mention stress. While the patient's worry about weight could be linked to stress, it's an assumption and not directly stated."
+    },
+    {
+      "category": "Omission Detection",
+      "phrase": "Worried about weight",
+      "trigger": "weight",
+      "rationale": "The phrase 'Worried about weight' clearly indicates the presence of the 'weight' trigger. This was not included in the extraction."
+    }
+  ]
+}
+```
+
+================================================================================
+OLLAMA CALL 0010
+================================================================================
+timestamp: 2026-04-16T11:31:25.975074+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a very strict clinical data validator. Compare the EXTRACTED DATA against the CONVERSATION.
+
+CONVERSATION:
+Patient has tried to quit twice before. Worried about weight.
+
+EXTRACTED DATA (cessation advice or guidance):
+{'advice': ["Address the patient's worries about weight.", 'Consider strategies to manage cravings.', 'Recognize the patient has attempted cessation previously.'], 'evidence': ['‘...worried about weight.’,', 'Implied: Counselor should discuss coping mechanisms for cravings.', '‘Patient has tried to quit twice before.’']}
+
+Your task:
+1. Very Strictly Check for hallucinations (data not in the text).
+2. Very Strictly Check for omissions (important data missed).
+3. Assign a confidence score between 0.0 and 1.0.
+
+Respond ONLY with valid JSON:
+{
+  "confidence": 0.0,
+  "issues": ["<issue 1>", "..."]
+}
+
+
+RESPONSE:
+```json
+{
+  "confidence": 0.85,
+  "issues": [
+    "Omission: The conversation mentions the patient has attempted cessation twice, which should be explicitly captured as a key element of the patient's history and a factor in cessation advice. This is not fully represented in the 'evidence' field.",
+    "Potential Hallucination: 'Recognize the patient has attempted cessation previously.' - While implied, this feels slightly like an interpretation beyond the direct statement. A more cautious phrasing might be warranted."
+  ]
+}
+```
+
+================================================================================
+OLLAMA CALL 0011
+================================================================================
+timestamp: 2026-04-16T11:31:28.003554+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a clinical annotation reviser specializing in tobacco cessation data extraction.
+
+ORIGINAL CONVERSATION:
+Patient has tried to quit twice before. Worried about weight.
+
+ORIGINAL EXTRACTION:
+{'attempts': ['The patient has tried to quit twice before.'], 'evidence': ['"The patient has tried to quit twice before."']}
+
+REVIEWER FEEDBACK:
+Grounding & Veracity: The extraction relies solely on the phrase 'Patient has tried to quit twice before.' which is a direct quote from the source. This meets the grounding requirement.
+Hallucination Check: No hallucinated data points exist. The extraction accurately reflects the source text.
+Sensitivity (Omission) Check: The source text lacks specific details regarding the *type* of attempts (Cold Turkey, NRT, etc.) or durations. The extraction captures the fact of prior attempts but misses this crucial contextual information. This represents a significant omission.
+Taxonomy Alignment: While the extraction correctly identifies a 'quit attempt,' it doesn't specify the *type* of attempt, failing to align with clinical standards.  A more robust extraction would include this detail.
+
+Produce a revised extraction that addresses all reviewer feedback:
+- Remove any hallucinated items.
+- Add any omitted items that are genuinely present in the conversation.
+- Keep the same JSON field structure.
+- Return ONLY valid JSON.
+
+Respond ONLY with valid JSON matching the original structure.
+
+
+RESPONSE:
+```json
+{
+  "attempts": [
+    "The patient has tried to quit twice before."
+  ],
+  "evidence": [
+    "\"The patient has tried to quit twice before.\"\""
+  ]
+}
+```
+
+================================================================================
+OLLAMA CALL 0012
+================================================================================
+timestamp: 2026-04-16T11:31:30.128159+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a clinical annotation reviser specializing in tobacco cessation data extraction.
+
+ORIGINAL CONVERSATION:
+Patient has tried to quit twice before. Worried about weight.
+
+ORIGINAL EXTRACTION:
+{'concerns': ['weight gain', 'previous quitting attempts'], 'evidence': ['worried about weight', 'has tried to quit twice before']}
+
+REVIEWER FEEDBACK:
+Implicit Concern Detection: The transcript contains both a direct worry ('worried about weight') and a hedged statement ('maybe it's just age'). The extraction captured 'worried about weight,' but missed the 'maybe it's just age' which represents a potential underlying anxiety about health and a reluctance to acknowledge it fully. This represents a minor omission.
+Severity Calibration: While 'worried about weight' is a reasonable representation of the patient's stated concern, the intensity of the worry isn't fully captured. The patient’s phrasing suggests a significant level of anxiety. A more precise extraction might have included terms like 'significant worry' or 'substantial concern'.
+Temporal Attribution: The concern regarding weight gain is presented as a current worry.  The temporal aspect is accurately captured, but a more detailed assessment could explore if this is a recurring concern or a new development.
+
+Produce a revised extraction that addresses all reviewer feedback:
+- Remove any hallucinated items.
+- Add any omitted items that are genuinely present in the conversation.
+- Keep the same JSON field structure.
+- Return ONLY valid JSON.
+
+Respond ONLY with valid JSON matching the original structure.
+
+
+RESPONSE:
+```json
+{
+  "concerns": [
+    "weight gain",
+    "previous quitting attempts",
+    "potential underlying anxiety"
+  ],
+  "evidence": [
+    "worried about weight",
+    "has tried to quit twice before"
+  ]
+}
+```
+
+================================================================================
+OLLAMA CALL 0013
+================================================================================
+timestamp: 2026-04-16T11:31:31.852134+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a clinical annotation reviser.
+
+ORIGINAL CONVERSATION:
+Patient has tried to quit twice before. Worried about weight.
+
+ORIGINAL TRIGGER EXTRACTION:
+{'triggers': ['weight', 'stress', 'after meals', 'morning routine'], 'evidence': []}
+
+REVIEWER FEEDBACK:
+No specific suggestions provided.
+
+Produce a corrected trigger extraction that addresses all reviewer feedback.
+- Remove any hallucinated triggers.
+- Add any omitted triggers that are genuinely present in the conversation.
+- Re-classify trigger_type if needed.
+- Update confidence to reflect your certainty in the revised output.
+
+Respond ONLY with valid JSON:
+{
+  "triggers": ["<corrected trigger 1>", "..."],
+  "trigger_type": "<emotional|situational|social|habitual|mixed>",
+  "confidence": 0.0
+}
+
+
+RESPONSE:
+```json
+{
+  "triggers": ["weight", "substance use"],
+  "trigger_type": "mixed",
+  "confidence": 0.95
+}
+```
+
+================================================================================
+OLLAMA CALL 0014
+================================================================================
+timestamp: 2026-04-16T11:31:36.163442+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a Senior Clinical Informatics Specialist specializing in Natural Language Processing (NLP) for tobacco cessation research. Your expertise lies in the high-precision extraction of behavioral health data from unstructured clinical dialogues.
+
+Objective: Audit the provided extraction (`{'attempts': ['The patient has tried to quit twice before.'], 'evidence': ['"The patient has tried to quit twice before.""']}`) against the source text (`Patient has tried to quit twice before. Worried about weight.`) to ensure 100% fidelity to the patient's history.
+
+Phase 1: Evidence-Based Audit
+Perform a comparative analysis using these four rigor checks:
+
+1.  **Grounding & Veracity:** Every extracted attempt must have a direct textual anchor. Flag any "logical leaps" where the model assumed a quit attempt occurred without explicit confirmation.
+2.  **Hallucination Check:** List any data points in the extraction that do not exist in the source.
+3.  **Sensitivity (Omission) Check:** Scan for keywords like *"stopped," "gave up," "last time I tried," "cut back to zero,"* or specific dates/durations that were missed.
+4.  **Taxonomy Alignment:** Ensure the `attempt_type` (e.g., Cold Turkey, NRT, Pharmacotherapy, Behavioral Support) aligns with clinical standards.
+
+Phase 2: Scoring Rubric
+Assign a Confidence Score (0 - 10):
+* 9–10: Perfect recall and precision.
+* 7–8: High utility; minor formatting or non-clinical nuance errors.
+* 5–6: Partial data loss or one significant hallucination.
+* < 5.0: Unreliable; contains multiple hallucinations or missed major life events
+
+Respond ONLY with valid JSON:
+{
+  "confidence": 0.0,
+  "issues": ["<issue 1>", "..."]
+}
+
+RESPONSE:
+```json
+{
+  "confidence": 0.3,
+  "issues": [
+    "Grounding & Veracity: The extraction includes 'The patient has tried to quit twice before.' which is a direct quote from the source text. This meets the grounding requirement.",
+    "Hallucination Check: No hallucinated data points exist. The extraction accurately reflects the source.",
+    "Sensitivity (Omission) Check: The source text explicitly states 'Patient has tried to quit twice before.' There are no missed keywords or details regarding the type of attempts or duration.",
+    "Taxonomy Alignment: While the extraction doesn't specify the attempt type, the source simply states the patient 'tried to quit,' which is a reasonable starting point for further investigation. However, without additional information, assigning a specific attempt type is premature and introduces potential for error. Therefore, a lower confidence score is warranted."
+  ]
+}
+```
+
+================================================================================
+OLLAMA CALL 0015
+================================================================================
+timestamp: 2026-04-16T11:31:37.763449+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a senior clinical NLP annotation reviewer specializing in trigger extraction quality assurance.
+
+ORIGINAL CONVERSATION:
+Patient has tried to quit twice before. Worried about weight.
+
+TRIGGER EXTRACTION TO REVIEW:
+{'readiness_stage': 'contemplation', 'evidence': "The patient has 'tried to quit twice before,' indicating they are in the contemplation stage as they've acknowledged the problem and are considering a change but haven't yet committed to action. Furthermore, they express worry about weight, a common motivator for contemplation stage individuals."}
+
+---
+
+## Review Instructions
+
+Systematically evaluate the trigger extraction against the source conversation across four dimensions:
+
+### 1. Grounding Check
+For each extracted trigger, verify it is either:
+- **Explicitly stated** — the exact term or a clear synonym appears in the conversation
+- **Strongly implied** — the clinical context makes it unambiguous without being stated directly
+Flag anything that is inferred, assumed, or fabricated.
+
+### 2. Hallucination Detection
+Identify triggers that are claimed in the extraction but have NO basis in the conversation. Note the specific trigger and why it is unsupported.
+
+### 3. Omission Detection
+Identify triggers that are clearly present in the conversation but missing from the extraction. Note the exact phrase or passage and what trigger type it should have been assigned.
+
+### 4. Classification Accuracy
+For each trigger, verify the `trigger_type` label is clinically appropriate. Flag misclassifications and suggest the correct label where applicable.
+
+### 5. Confidence Score
+Assign a score from 0–10 reflecting overall extraction quality:
+- 9–10: Near-perfect, no meaningful errors
+- 7–8: Minor omissions or edge-case misclassifications
+- 4–6: Several errors that affect reliability
+- 1–3: Significant hallucinations or omissions
+- 0: Extraction is unusable
+
+---
+
+## Output Format
+
+If a category has no findings, return an empty array for that field.
+Respond ONLY with valid JSON:
+{
+  "confidence": 0.0,
+  "issues": ["<issue 1>", "..."]
+}
+
+RESPONSE:
+```json
+{
+  "confidence": 9,
+  "issues": []
+}
+```
+
+================================================================================
+OLLAMA CALL 0016
+================================================================================
+timestamp: 2026-04-16T11:31:42.182300+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a Clinical Health Psychologist and NLP Validator. Your specialty is identifying "Patient-Reported Concerns" (PRCs) related to tobacco use, withdrawal, and long-term health risks from clinical transcripts.
+
+Objective: Audit the extraction of smoking-related concerns (`{'concerns': ['weight gain', 'previous quitting attempts', 'potential underlying anxiety'], 'evidence': ['worried about weight', 'has tried to quit twice before']}`) against the source text (`Patient has tried to quit twice before. Worried about weight.`) to ensure every patient worry—whether explicit or subtle—is captured with clinical accuracy.
+
+Phase 1: The "Concern" Rigor Audit
+Evaluate the extraction using these specialized clinical checks:
+
+1.  Implicit Concern Detection: Did the patient express concern through a question or a "hedged" statement? (e.g., *"I've noticed I'm winded lately, but maybe it's just age."*) If the extraction missed the underlying health anxiety, flag it as an omission.
+2.  Severity Calibration: Ensure the concern wasn't "watered down." If a patient says they are *"terrified of lung cancer,"* an extraction of *"worried about health"* is a precision error in severity.
+3.  Temporal Attribution: Distinguish between **historical concerns** (things they used to worry about) and **active concerns** (current anxieties).
+4.  Categorization Accuracy: Verify the `concern_type` using this taxonomy:
+    * Physiological: Cough, breathlessness, sleep issues.
+    * Psychological: Anxiety about failing to quit, mood swings, irritability.
+    * Social/Financial: Cost of smoking, stigma, impact on family.
+    * Relapse Triggers: Situational concerns (e.g., "drinking with friends").
+
+Phase 2: Confidence Scoring
+Assign a Confidence Score (0 - 10):
+* 9–10: Captured all nuances, including subtextual concerns and correct intensity.
+* 7–8: Missed a minor/passing concern; minor category misalignment.
+* 5–6: Failed to capture a primary concern or misinterpreted the patient's emotional tone.
+* < 5: Failed to distinguish between the clinician's advice and the patient's actual concern.
+
+
+Respond ONLY with valid JSON:
+{
+  "confidence": 0.0,
+  "issues": ["<issue 1>", "..."]
+}
+
+RESPONSE:
+```json
+{
+  "confidence": 7.5,
+  "issues": [
+    "Implicit Concern Detection: The transcript contains both 'worried about weight' and 'has tried to quit twice before'. While not explicitly stated as anxiety, the 'has tried to quit twice before' strongly suggests an underlying psychological concern related to relapse and potentially, fear of failure. This could be strengthened with a more specific categorization (Psychological).",
+    "Severity Calibration: 'Has tried to quit twice before' could be interpreted as a moderate concern. While not 'terrified,' it represents a significant history of unsuccessful attempts and warrants a more precise categorization than simply 'previous quitting attempts'.",
+    "Temporal Attribution: The statement is currently categorized as 'previous quitting attempts,' which is a historical concern.  A more nuanced approach might benefit from explicitly labeling it as a contributing factor to current anxiety or fear."
+  ]
+}
+```
+
+================================================================================
+OLLAMA CALL 0017
+================================================================================
+timestamp: 2026-04-16T11:31:45.039415+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a senior clinical NLP annotation reviewer specializing in trigger extraction quality assurance.
+
+ORIGINAL CONVERSATION:
+Patient has tried to quit twice before. Worried about weight.
+
+TRIGGER EXTRACTION TO REVIEW:
+{'triggers': ['weight', 'substance use'], 'evidence': []}
+
+---
+
+## Review Instructions
+
+Systematically evaluate the trigger extraction against the source conversation across four dimensions:
+
+### 1. Grounding Check
+For each extracted trigger, verify it is either:
+- **Explicitly stated** — the exact term or a clear synonym appears in the conversation
+- **Strongly implied** — the clinical context makes it unambiguous without being stated directly
+Flag anything that is inferred, assumed, or fabricated.
+
+### 2. Hallucination Detection
+Identify triggers that are claimed in the extraction but have NO basis in the conversation. Note the specific trigger and why it is unsupported.
+
+### 3. Omission Detection
+Identify triggers that are clearly present in the conversation but missing from the extraction. Note the exact phrase or passage and what trigger type it should have been assigned.
+
+### 4. Classification Accuracy
+For each trigger, verify the `trigger_type` label is clinically appropriate. Flag misclassifications and suggest the correct label where applicable.
+
+### 5. Confidence Score
+Assign a score from 0–10 reflecting overall extraction quality:
+- 9–10: Near-perfect, no meaningful errors
+- 7–8: Minor omissions or edge-case misclassifications
+- 4–6: Several errors that affect reliability
+- 1–3: Significant hallucinations or omissions
+- 0: Extraction is unusable
+
+---
+
+## Output Format
+
+If a category has no findings, return an empty array for that field.
+Respond ONLY with valid JSON:
+{
+  "confidence": 0.0,
+  "issues": ["<issue 1>", "..."]
+}
+
+RESPONSE:
+```json
+{
+  "confidence": 7,
+  "issues": [
+    {
+      "category": "Grounding Check",
+      "description": "The trigger 'substance use' is not supported by the conversation. The patient's concern is about weight, not substance use.",
+      "severity": "High",
+      "recommendation": "Remove 'substance use' from the triggers."
+    }
+  ]
+}
+```
+
+================================================================================
+OLLAMA CALL 0018
+================================================================================
+timestamp: 2026-04-16T11:31:48.523312+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a very strict clinical data validator. Compare the EXTRACTED DATA against the CONVERSATION.
+
+CONVERSATION:
+Patient has tried to quit twice before. Worried about weight.
+
+EXTRACTED DATA (cessation advice or guidance):
+{'advice': ["Address the patient's worries about weight.", 'Consider strategies to manage cravings.', 'Recognize the patient has attempted cessation previously.'], 'evidence': ['‘...worried about weight.’,', 'Implied: Counselor should discuss coping mechanisms for cravings.', '‘Patient has tried to quit twice before.’']}
+
+Your task:
+1. Very Strictly Check for hallucinations (data not in the text).
+2. Very Strictly Check for omissions (important data missed).
+3. Assign a confidence score between 0.0 and 1.0.
+
+Respond ONLY with valid JSON:
+{
+  "confidence": 0.0,
+  "issues": ["<issue 1>", "..."]
+}
+
+
+RESPONSE:
+```json
+{
+  "confidence": 0.85,
+  "issues": [
+    "Omission: The conversation mentions the patient has attempted cessation twice, which should be explicitly captured as a key element of the patient's history and a factor in cessation advice. The extracted data only includes 'Recognize the patient has attempted cessation previously.' as a single item, it should be a more detailed statement.",
+    "Potential Hallucination: 'Consider strategies to manage cravings.' is an implied suggestion based on the conversation, but it's not directly stated. While reasonable, it leans towards a potential hallucination as it goes beyond a direct extraction of the conversation's content."
+  ]
+}
+```
+
+================================================================================
+OLLAMA CALL 0019
+================================================================================
+timestamp: 2026-04-16T11:31:50.503079+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a clinical annotation reviser specializing in tobacco cessation data extraction.
+
+ORIGINAL CONVERSATION:
+Patient has tried to quit twice before. Worried about weight.
+
+ORIGINAL EXTRACTION:
+{'attempts': ['The patient has tried to quit twice before.'], 'evidence': ['"The patient has tried to quit twice before.""']}
+
+REVIEWER FEEDBACK:
+Grounding & Veracity: The extraction includes 'The patient has tried to quit twice before.' which is a direct quote from the source text. This meets the grounding requirement.
+Hallucination Check: No hallucinated data points exist. The extraction accurately reflects the source.
+Sensitivity (Omission) Check: The source text explicitly states 'Patient has tried to quit twice before.' There are no missed keywords or details regarding the type of attempts or duration.
+Taxonomy Alignment: While the extraction doesn't specify the attempt type, the source simply states the patient 'tried to quit,' which is a reasonable starting point for further investigation. However, without additional information, assigning a specific attempt type is premature and introduces potential for error. Therefore, a lower confidence score is warranted.
+
+Produce a revised extraction that addresses all reviewer feedback:
+- Remove any hallucinated items.
+- Add any omitted items that are genuinely present in the conversation.
+- Keep the same JSON field structure.
+- Return ONLY valid JSON.
+
+Respond ONLY with valid JSON matching the original structure.
+
+
+RESPONSE:
+```json
+{
+  "attempts": [
+    "The patient has tried to quit twice before."
+  ],
+  "evidence": [
+    "\"The patient has tried to quit twice before.\"\""
+  ]
+}
+```
+
+================================================================================
+OLLAMA CALL 0020
+================================================================================
+timestamp: 2026-04-16T11:31:52.652393+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a clinical annotation reviser specializing in tobacco cessation data extraction.
+
+ORIGINAL CONVERSATION:
+Patient has tried to quit twice before. Worried about weight.
+
+ORIGINAL EXTRACTION:
+{'concerns': ['weight gain', 'previous quitting attempts', 'potential underlying anxiety'], 'evidence': ['worried about weight', 'has tried to quit twice before']}
+
+REVIEWER FEEDBACK:
+Implicit Concern Detection: The transcript contains both 'worried about weight' and 'has tried to quit twice before'. While not explicitly stated as anxiety, the 'has tried to quit twice before' strongly suggests an underlying psychological concern related to relapse and potentially, fear of failure. This could be strengthened with a more specific categorization (Psychological).
+Severity Calibration: 'Has tried to quit twice before' could be interpreted as a moderate concern. While not 'terrified,' it represents a significant history of unsuccessful attempts and warrants a more precise categorization than simply 'previous quitting attempts'.
+Temporal Attribution: The statement is currently categorized as 'previous quitting attempts,' which is a historical concern.  A more nuanced approach might benefit from explicitly labeling it as a contributing factor to current anxiety or fear.
+
+Produce a revised extraction that addresses all reviewer feedback:
+- Remove any hallucinated items.
+- Add any omitted items that are genuinely present in the conversation.
+- Keep the same JSON field structure.
+- Return ONLY valid JSON.
+
+Respond ONLY with valid JSON matching the original structure.
+
+
+RESPONSE:
+```json
+{
+  "concerns": [
+    "weight gain",
+    "previous quitting attempts",
+    "potential psychological distress"
+  ],
+  "evidence": [
+    "worried about weight",
+    "has tried to quit twice before"
+  ]
+}
+```
+
+================================================================================
+OLLAMA CALL 0021
+================================================================================
+timestamp: 2026-04-16T11:31:54.400419+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a clinical annotation reviser.
+
+ORIGINAL CONVERSATION:
+Patient has tried to quit twice before. Worried about weight.
+
+ORIGINAL TRIGGER EXTRACTION:
+{'triggers': ['weight', 'substance use'], 'evidence': []}
+
+REVIEWER FEEDBACK:
+No specific suggestions provided.
+
+Produce a corrected trigger extraction that addresses all reviewer feedback.
+- Remove any hallucinated triggers.
+- Add any omitted triggers that are genuinely present in the conversation.
+- Re-classify trigger_type if needed.
+- Update confidence to reflect your certainty in the revised output.
+
+Respond ONLY with valid JSON:
+{
+  "triggers": ["<corrected trigger 1>", "..."],
+  "trigger_type": "<emotional|situational|social|habitual|mixed>",
+  "confidence": 0.0
+}
+
+
+RESPONSE:
+```json
+{
+  "triggers": ["weight", "substance use", "relapse"],
+  "trigger_type": "mixed",
+  "confidence": 0.95
+}
+```
+
+================================================================================
+OLLAMA CALL 0022
+================================================================================
+timestamp: 2026-04-16T11:31:58.775056+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a Senior Clinical Informatics Specialist specializing in Natural Language Processing (NLP) for tobacco cessation research. Your expertise lies in the high-precision extraction of behavioral health data from unstructured clinical dialogues.
+
+Objective: Audit the provided extraction (`{'attempts': ['The patient has tried to quit twice before.'], 'evidence': ['"The patient has tried to quit twice before.""']}`) against the source text (`Patient has tried to quit twice before. Worried about weight.`) to ensure 100% fidelity to the patient's history.
+
+Phase 1: Evidence-Based Audit
+Perform a comparative analysis using these four rigor checks:
+
+1.  **Grounding & Veracity:** Every extracted attempt must have a direct textual anchor. Flag any "logical leaps" where the model assumed a quit attempt occurred without explicit confirmation.
+2.  **Hallucination Check:** List any data points in the extraction that do not exist in the source.
+3.  **Sensitivity (Omission) Check:** Scan for keywords like *"stopped," "gave up," "last time I tried," "cut back to zero,"* or specific dates/durations that were missed.
+4.  **Taxonomy Alignment:** Ensure the `attempt_type` (e.g., Cold Turkey, NRT, Pharmacotherapy, Behavioral Support) aligns with clinical standards.
+
+Phase 2: Scoring Rubric
+Assign a Confidence Score (0 - 10):
+* 9–10: Perfect recall and precision.
+* 7–8: High utility; minor formatting or non-clinical nuance errors.
+* 5–6: Partial data loss or one significant hallucination.
+* < 5.0: Unreliable; contains multiple hallucinations or missed major life events
+
+Respond ONLY with valid JSON:
+{
+  "confidence": 0.0,
+  "issues": ["<issue 1>", "..."]
+}
+
+RESPONSE:
+```json
+{
+  "confidence": 0.3,
+  "issues": [
+    "Grounding & Veracity: The extraction includes 'The patient has tried to quit twice before.' which is a direct quote from the source text. This meets the grounding requirement.",
+    "Hallucination Check: No hallucinated data points exist. The extraction accurately reflects the source.",
+    "Sensitivity (Omission) Check: The source text explicitly states 'Patient has tried to quit twice before.' This covers the core information. No relevant keywords or dates were missed.",
+    "Taxonomy Alignment: While not explicitly stated, the phrase 'tried to quit' implies a quit attempt.  Without further context, assigning a specific attempt type is speculative and introduces potential inaccuracy.  A more nuanced approach would be needed to determine the *type* of attempt, but the current extraction is overly broad."
+  ]
+}
+```
+
+================================================================================
+OLLAMA CALL 0023
+================================================================================
+timestamp: 2026-04-16T11:32:00.341044+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a senior clinical NLP annotation reviewer specializing in trigger extraction quality assurance.
+
+ORIGINAL CONVERSATION:
+Patient has tried to quit twice before. Worried about weight.
+
+TRIGGER EXTRACTION TO REVIEW:
+{'readiness_stage': 'contemplation', 'evidence': "The patient has 'tried to quit twice before,' indicating they are in the contemplation stage as they've acknowledged the problem and are considering a change but haven't yet committed to action. Furthermore, they express worry about weight, a common motivator for contemplation stage individuals."}
+
+---
+
+## Review Instructions
+
+Systematically evaluate the trigger extraction against the source conversation across four dimensions:
+
+### 1. Grounding Check
+For each extracted trigger, verify it is either:
+- **Explicitly stated** — the exact term or a clear synonym appears in the conversation
+- **Strongly implied** — the clinical context makes it unambiguous without being stated directly
+Flag anything that is inferred, assumed, or fabricated.
+
+### 2. Hallucination Detection
+Identify triggers that are claimed in the extraction but have NO basis in the conversation. Note the specific trigger and why it is unsupported.
+
+### 3. Omission Detection
+Identify triggers that are clearly present in the conversation but missing from the extraction. Note the exact phrase or passage and what trigger type it should have been assigned.
+
+### 4. Classification Accuracy
+For each trigger, verify the `trigger_type` label is clinically appropriate. Flag misclassifications and suggest the correct label where applicable.
+
+### 5. Confidence Score
+Assign a score from 0–10 reflecting overall extraction quality:
+- 9–10: Near-perfect, no meaningful errors
+- 7–8: Minor omissions or edge-case misclassifications
+- 4–6: Several errors that affect reliability
+- 1–3: Significant hallucinations or omissions
+- 0: Extraction is unusable
+
+---
+
+## Output Format
+
+If a category has no findings, return an empty array for that field.
+Respond ONLY with valid JSON:
+{
+  "confidence": 0.0,
+  "issues": ["<issue 1>", "..."]
+}
+
+RESPONSE:
+```json
+{
+  "confidence": 9,
+  "issues": []
+}
+```
+
+================================================================================
+OLLAMA CALL 0024
+================================================================================
+timestamp: 2026-04-16T11:32:04.161559+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a Clinical Health Psychologist and NLP Validator. Your specialty is identifying "Patient-Reported Concerns" (PRCs) related to tobacco use, withdrawal, and long-term health risks from clinical transcripts.
+
+Objective: Audit the extraction of smoking-related concerns (`{'concerns': ['weight gain', 'previous quitting attempts', 'potential psychological distress'], 'evidence': ['worried about weight', 'has tried to quit twice before']}`) against the source text (`Patient has tried to quit twice before. Worried about weight.`) to ensure every patient worry—whether explicit or subtle—is captured with clinical accuracy.
+
+Phase 1: The "Concern" Rigor Audit
+Evaluate the extraction using these specialized clinical checks:
+
+1.  Implicit Concern Detection: Did the patient express concern through a question or a "hedged" statement? (e.g., *"I've noticed I'm winded lately, but maybe it's just age."*) If the extraction missed the underlying health anxiety, flag it as an omission.
+2.  Severity Calibration: Ensure the concern wasn't "watered down." If a patient says they are *"terrified of lung cancer,"* an extraction of *"worried about health"* is a precision error in severity.
+3.  Temporal Attribution: Distinguish between **historical concerns** (things they used to worry about) and **active concerns** (current anxieties).
+4.  Categorization Accuracy: Verify the `concern_type` using this taxonomy:
+    * Physiological: Cough, breathlessness, sleep issues.
+    * Psychological: Anxiety about failing to quit, mood swings, irritability.
+    * Social/Financial: Cost of smoking, stigma, impact on family.
+    * Relapse Triggers: Situational concerns (e.g., "drinking with friends").
+
+Phase 2: Confidence Scoring
+Assign a Confidence Score (0 - 10):
+* 9–10: Captured all nuances, including subtextual concerns and correct intensity.
+* 7–8: Missed a minor/passing concern; minor category misalignment.
+* 5–6: Failed to capture a primary concern or misinterpreted the patient's emotional tone.
+* < 5: Failed to distinguish between the clinician's advice and the patient's actual concern.
+
+
+Respond ONLY with valid JSON:
+{
+  "confidence": 0.0,
+  "issues": ["<issue 1>", "..."]
+}
+
+RESPONSE:
+```json
+{
+  "confidence": 7.5,
+  "issues": [
+    "Implicit Concern Detection: The transcript contains both 'worried about weight' and 'has tried to quit twice before,' indicating a psychological concern related to relapse attempts. While not explicitly stated as 'anxiety about failing to quit,' the history of previous attempts strongly suggests an underlying psychological concern. This could be improved with a more nuanced extraction.",
+    "Severity Calibration: 'Worried about weight' is a reasonable representation of the patient's concern, but a more precise categorization might benefit from assessing the *degree* of worry. The transcript doesn't provide enough information to definitively calibrate the severity, hence the slightly lower score."
+  ]
+}
+```
+
+================================================================================
+OLLAMA CALL 0025
+================================================================================
+timestamp: 2026-04-16T11:32:08.054050+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a senior clinical NLP annotation reviewer specializing in trigger extraction quality assurance.
+
+ORIGINAL CONVERSATION:
+Patient has tried to quit twice before. Worried about weight.
+
+TRIGGER EXTRACTION TO REVIEW:
+{'triggers': ['weight', 'substance use', 'relapse'], 'evidence': []}
+
+---
+
+## Review Instructions
+
+Systematically evaluate the trigger extraction against the source conversation across four dimensions:
+
+### 1. Grounding Check
+For each extracted trigger, verify it is either:
+- **Explicitly stated** — the exact term or a clear synonym appears in the conversation
+- **Strongly implied** — the clinical context makes it unambiguous without being stated directly
+Flag anything that is inferred, assumed, or fabricated.
+
+### 2. Hallucination Detection
+Identify triggers that are claimed in the extraction but have NO basis in the conversation. Note the specific trigger and why it is unsupported.
+
+### 3. Omission Detection
+Identify triggers that are clearly present in the conversation but missing from the extraction. Note the exact phrase or passage and what trigger type it should have been assigned.
+
+### 4. Classification Accuracy
+For each trigger, verify the `trigger_type` label is clinically appropriate. Flag misclassifications and suggest the correct label where applicable.
+
+### 5. Confidence Score
+Assign a score from 0–10 reflecting overall extraction quality:
+- 9–10: Near-perfect, no meaningful errors
+- 7–8: Minor omissions or edge-case misclassifications
+- 4–6: Several errors that affect reliability
+- 1–3: Significant hallucinations or omissions
+- 0: Extraction is unusable
+
+---
+
+## Output Format
+
+If a category has no findings, return an empty array for that field.
+Respond ONLY with valid JSON:
+{
+  "confidence": 0.0,
+  "issues": ["<issue 1>", "..."]
+}
+
+RESPONSE:
+```json
+{
+  "confidence": 7,
+  "issues": [
+    {
+      "category": "Grounding Check",
+      "trigger": "substance use",
+      "rationale": "The conversation mentions attempts to quit twice, indicating a history of substance use, but does not explicitly state it. This is an implication, not an explicit statement."
+    },
+    {
+      "category": "Omission Detection",
+      "phrase": "Patient has tried to quit twice before",
+      "trigger": "relapse",
+      "rationale": "The phrase 'tried to quit twice before' strongly implies a history of relapse, which should be captured as a 'relapse' trigger."
+    }
+  ]
+}
+```
+
+================================================================================
+OLLAMA CALL 0026
+================================================================================
+timestamp: 2026-04-16T11:32:10.838800+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a very strict clinical data validator. Compare the EXTRACTED DATA against the CONVERSATION.
+
+CONVERSATION:
+Patient has tried to quit twice before. Worried about weight.
+
+EXTRACTED DATA (cessation advice or guidance):
+{'advice': ["Address the patient's worries about weight.", 'Consider strategies to manage cravings.', 'Recognize the patient has attempted cessation previously.'], 'evidence': ['‘...worried about weight.’,', 'Implied: Counselor should discuss coping mechanisms for cravings.', '‘Patient has tried to quit twice before.’']}
+
+Your task:
+1. Very Strictly Check for hallucinations (data not in the text).
+2. Very Strictly Check for omissions (important data missed).
+3. Assign a confidence score between 0.0 and 1.0.
+
+Respond ONLY with valid JSON:
+{
+  "confidence": 0.0,
+  "issues": ["<issue 1>", "..."]
+}
+
+
+RESPONSE:
+```json
+{
+  "confidence": 0.85,
+  "issues": [
+    "Omission: The conversation mentions prior cessation attempts, but the extracted data doesn't explicitly state the *number* of attempts. This is a significant omission.",
+    "Potential Hallucination: 'Recognize the patient has attempted cessation previously.' - While implied, this feels slightly like an interpretation beyond the explicit statement. A more cautious phrasing might be warranted."
+  ]
+}
+```
+
+================================================================================
+OLLAMA CALL 0027
+================================================================================
+timestamp: 2026-04-16T11:32:12.782822+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a clinical annotation reviser specializing in tobacco cessation data extraction.
+
+ORIGINAL CONVERSATION:
+Patient has tried to quit twice before. Worried about weight.
+
+ORIGINAL EXTRACTION:
+{'attempts': ['The patient has tried to quit twice before.'], 'evidence': ['"The patient has tried to quit twice before.""']}
+
+REVIEWER FEEDBACK:
+Grounding & Veracity: The extraction includes 'The patient has tried to quit twice before.' which is a direct quote from the source text. This meets the grounding requirement.
+Hallucination Check: No hallucinated data points exist. The extraction accurately reflects the source.
+Sensitivity (Omission) Check: The source text explicitly states 'Patient has tried to quit twice before.' This covers the core information. No relevant keywords or dates were missed.
+Taxonomy Alignment: While not explicitly stated, the phrase 'tried to quit' implies a quit attempt.  Without further context, assigning a specific attempt type is speculative and introduces potential inaccuracy.  A more nuanced approach would be needed to determine the *type* of attempt, but the current extraction is overly broad.
+
+Produce a revised extraction that addresses all reviewer feedback:
+- Remove any hallucinated items.
+- Add any omitted items that are genuinely present in the conversation.
+- Keep the same JSON field structure.
+- Return ONLY valid JSON.
+
+Respond ONLY with valid JSON matching the original structure.
+
+
+RESPONSE:
+```json
+{
+  "attempts": [
+    "The patient has tried to quit twice before."
+  ],
+  "evidence": [
+    "\"The patient has tried to quit twice before.\"\""
+  ]
+}
+```
+
+================================================================================
+OLLAMA CALL 0028
+================================================================================
+timestamp: 2026-04-16T11:32:14.835865+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a clinical annotation reviser specializing in tobacco cessation data extraction.
+
+ORIGINAL CONVERSATION:
+Patient has tried to quit twice before. Worried about weight.
+
+ORIGINAL EXTRACTION:
+{'concerns': ['weight gain', 'previous quitting attempts', 'potential psychological distress'], 'evidence': ['worried about weight', 'has tried to quit twice before']}
+
+REVIEWER FEEDBACK:
+Implicit Concern Detection: The transcript contains both 'worried about weight' and 'has tried to quit twice before,' indicating a psychological concern related to relapse attempts. While not explicitly stated as 'anxiety about failing to quit,' the history of previous attempts strongly suggests an underlying psychological concern. This could be improved with a more nuanced extraction.
+Severity Calibration: 'Worried about weight' is a reasonable representation of the patient's concern, but a more precise categorization might benefit from assessing the *degree* of worry. The transcript doesn't provide enough information to definitively calibrate the severity, hence the slightly lower score.
+
+Produce a revised extraction that addresses all reviewer feedback:
+- Remove any hallucinated items.
+- Add any omitted items that are genuinely present in the conversation.
+- Keep the same JSON field structure.
+- Return ONLY valid JSON.
+
+Respond ONLY with valid JSON matching the original structure.
+
+
+RESPONSE:
+```json
+{
+  "concerns": [
+    "previous quitting attempts",
+    "weight gain concerns"
+  ],
+  "evidence": [
+    "worried about weight",
+    "has tried to quit twice before"
+  ]
+}
+```
+
+================================================================================
+OLLAMA CALL 0029
+================================================================================
+timestamp: 2026-04-16T11:32:16.586985+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a clinical annotation reviser.
+
+ORIGINAL CONVERSATION:
+Patient has tried to quit twice before. Worried about weight.
+
+ORIGINAL TRIGGER EXTRACTION:
+{'triggers': ['weight', 'substance use', 'relapse'], 'evidence': []}
+
+REVIEWER FEEDBACK:
+No specific suggestions provided.
+
+Produce a corrected trigger extraction that addresses all reviewer feedback.
+- Remove any hallucinated triggers.
+- Add any omitted triggers that are genuinely present in the conversation.
+- Re-classify trigger_type if needed.
+- Update confidence to reflect your certainty in the revised output.
+
+Respond ONLY with valid JSON:
+{
+  "triggers": ["<corrected trigger 1>", "..."],
+  "trigger_type": "<emotional|situational|social|habitual|mixed>",
+  "confidence": 0.0
+}
+
+
+RESPONSE:
+```json
+{
+  "triggers": ["weight", "relapse", "substance use"],
+  "trigger_type": "mixed",
+  "confidence": 0.95
+}
+```
+
+================================================================================
+OLLAMA CALL 0030
+================================================================================
+timestamp: 2026-04-16T11:32:20.969481+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a Senior Clinical Informatics Specialist specializing in Natural Language Processing (NLP) for tobacco cessation research. Your expertise lies in the high-precision extraction of behavioral health data from unstructured clinical dialogues.
+
+Objective: Audit the provided extraction (`{'attempts': ['The patient has tried to quit twice before.'], 'evidence': ['"The patient has tried to quit twice before.""']}`) against the source text (`Patient has tried to quit twice before. Worried about weight.`) to ensure 100% fidelity to the patient's history.
+
+Phase 1: Evidence-Based Audit
+Perform a comparative analysis using these four rigor checks:
+
+1.  **Grounding & Veracity:** Every extracted attempt must have a direct textual anchor. Flag any "logical leaps" where the model assumed a quit attempt occurred without explicit confirmation.
+2.  **Hallucination Check:** List any data points in the extraction that do not exist in the source.
+3.  **Sensitivity (Omission) Check:** Scan for keywords like *"stopped," "gave up," "last time I tried," "cut back to zero,"* or specific dates/durations that were missed.
+4.  **Taxonomy Alignment:** Ensure the `attempt_type` (e.g., Cold Turkey, NRT, Pharmacotherapy, Behavioral Support) aligns with clinical standards.
+
+Phase 2: Scoring Rubric
+Assign a Confidence Score (0 - 10):
+* 9–10: Perfect recall and precision.
+* 7–8: High utility; minor formatting or non-clinical nuance errors.
+* 5–6: Partial data loss or one significant hallucination.
+* < 5.0: Unreliable; contains multiple hallucinations or missed major life events
+
+Respond ONLY with valid JSON:
+{
+  "confidence": 0.0,
+  "issues": ["<issue 1>", "..."]
+}
+
+RESPONSE:
+```json
+{
+  "confidence": 0.3,
+  "issues": [
+    "Grounding & Veracity: The extraction includes 'The patient has tried to quit twice before.' which is a direct quote from the source text. This check passes.",
+    "Hallucination Check: No data points exist in the source text beyond the provided quote. This check passes.",
+    "Sensitivity (Omission) Check: The source text explicitly states 'Patient has tried to quit twice before.' This check fails due to the omission of the key phrase itself, which should have been extracted.",
+    "Taxonomy Alignment: While the statement implies a quit attempt, the extraction lacks detail regarding the *type* of attempt.  A more robust system would ideally capture this, but given the limited source data, this check is difficult to definitively assess.  We assume a general 'attempt' for now."
+  ]
+}
+```
+
+================================================================================
+OLLAMA CALL 0031
+================================================================================
+timestamp: 2026-04-16T11:32:22.563277+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a senior clinical NLP annotation reviewer specializing in trigger extraction quality assurance.
+
+ORIGINAL CONVERSATION:
+Patient has tried to quit twice before. Worried about weight.
+
+TRIGGER EXTRACTION TO REVIEW:
+{'readiness_stage': 'contemplation', 'evidence': "The patient has 'tried to quit twice before,' indicating they are in the contemplation stage as they've acknowledged the problem and are considering a change but haven't yet committed to action. Furthermore, they express worry about weight, a common motivator for contemplation stage individuals."}
+
+---
+
+## Review Instructions
+
+Systematically evaluate the trigger extraction against the source conversation across four dimensions:
+
+### 1. Grounding Check
+For each extracted trigger, verify it is either:
+- **Explicitly stated** — the exact term or a clear synonym appears in the conversation
+- **Strongly implied** — the clinical context makes it unambiguous without being stated directly
+Flag anything that is inferred, assumed, or fabricated.
+
+### 2. Hallucination Detection
+Identify triggers that are claimed in the extraction but have NO basis in the conversation. Note the specific trigger and why it is unsupported.
+
+### 3. Omission Detection
+Identify triggers that are clearly present in the conversation but missing from the extraction. Note the exact phrase or passage and what trigger type it should have been assigned.
+
+### 4. Classification Accuracy
+For each trigger, verify the `trigger_type` label is clinically appropriate. Flag misclassifications and suggest the correct label where applicable.
+
+### 5. Confidence Score
+Assign a score from 0–10 reflecting overall extraction quality:
+- 9–10: Near-perfect, no meaningful errors
+- 7–8: Minor omissions or edge-case misclassifications
+- 4–6: Several errors that affect reliability
+- 1–3: Significant hallucinations or omissions
+- 0: Extraction is unusable
+
+---
+
+## Output Format
+
+If a category has no findings, return an empty array for that field.
+Respond ONLY with valid JSON:
+{
+  "confidence": 0.0,
+  "issues": ["<issue 1>", "..."]
+}
+
+RESPONSE:
+```json
+{
+  "confidence": 9,
+  "issues": []
+}
+```
+
+================================================================================
+OLLAMA CALL 0032
+================================================================================
+timestamp: 2026-04-16T11:32:27.978719+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a Clinical Health Psychologist and NLP Validator. Your specialty is identifying "Patient-Reported Concerns" (PRCs) related to tobacco use, withdrawal, and long-term health risks from clinical transcripts.
+
+Objective: Audit the extraction of smoking-related concerns (`{'concerns': ['previous quitting attempts', 'weight gain concerns'], 'evidence': ['worried about weight', 'has tried to quit twice before']}`) against the source text (`Patient has tried to quit twice before. Worried about weight.`) to ensure every patient worry—whether explicit or subtle—is captured with clinical accuracy.
+
+Phase 1: The "Concern" Rigor Audit
+Evaluate the extraction using these specialized clinical checks:
+
+1.  Implicit Concern Detection: Did the patient express concern through a question or a "hedged" statement? (e.g., *"I've noticed I'm winded lately, but maybe it's just age."*) If the extraction missed the underlying health anxiety, flag it as an omission.
+2.  Severity Calibration: Ensure the concern wasn't "watered down." If a patient says they are *"terrified of lung cancer,"* an extraction of *"worried about health"* is a precision error in severity.
+3.  Temporal Attribution: Distinguish between **historical concerns** (things they used to worry about) and **active concerns** (current anxieties).
+4.  Categorization Accuracy: Verify the `concern_type` using this taxonomy:
+    * Physiological: Cough, breathlessness, sleep issues.
+    * Psychological: Anxiety about failing to quit, mood swings, irritability.
+    * Social/Financial: Cost of smoking, stigma, impact on family.
+    * Relapse Triggers: Situational concerns (e.g., "drinking with friends").
+
+Phase 2: Confidence Scoring
+Assign a Confidence Score (0 - 10):
+* 9–10: Captured all nuances, including subtextual concerns and correct intensity.
+* 7–8: Missed a minor/passing concern; minor category misalignment.
+* 5–6: Failed to capture a primary concern or misinterpreted the patient's emotional tone.
+* < 5: Failed to distinguish between the clinician's advice and the patient's actual concern.
+
+
+Respond ONLY with valid JSON:
+{
+  "confidence": 0.0,
+  "issues": ["<issue 1>", "..."]
+}
+
+RESPONSE:
+```json
+{
+  "confidence": 7.5,
+  "issues": [
+    "Implicit Concern Detection: The transcript contains both 'worried about weight' and 'has tried to quit twice before'. While not explicitly framed as a question, the repetition of 'tried to quit' strongly suggests an ongoing psychological concern related to relapse and the anxiety associated with it. This could be strengthened by categorizing it as 'Psychological: Anxiety about failing to quit'.",
+    "Severity Calibration: 'Worried about weight' is a reasonable representation of the patient's concern, but a more precise categorization might benefit from assessing the *intensity* of the worry.  A more granular assessment could consider if the patient described a significant change in weight or a specific fear related to weight loss/gain.  Currently, it’s a relatively broad categorization.",
+    "Temporal Attribution: The phrase 'has tried to quit twice before' clearly indicates a *historical* concern.  It’s important to distinguish this from a current, active concern about relapse.  The extraction correctly identifies this as a historical attempt, but the context doesn't explicitly state it's a current worry."
+  ]
+}
+```
+
+================================================================================
+OLLAMA CALL 0033
+================================================================================
+timestamp: 2026-04-16T11:32:32.202389+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a senior clinical NLP annotation reviewer specializing in trigger extraction quality assurance.
+
+ORIGINAL CONVERSATION:
+Patient has tried to quit twice before. Worried about weight.
+
+TRIGGER EXTRACTION TO REVIEW:
+{'triggers': ['weight', 'relapse', 'substance use'], 'evidence': []}
+
+---
+
+## Review Instructions
+
+Systematically evaluate the trigger extraction against the source conversation across four dimensions:
+
+### 1. Grounding Check
+For each extracted trigger, verify it is either:
+- **Explicitly stated** — the exact term or a clear synonym appears in the conversation
+- **Strongly implied** — the clinical context makes it unambiguous without being stated directly
+Flag anything that is inferred, assumed, or fabricated.
+
+### 2. Hallucination Detection
+Identify triggers that are claimed in the extraction but have NO basis in the conversation. Note the specific trigger and why it is unsupported.
+
+### 3. Omission Detection
+Identify triggers that are clearly present in the conversation but missing from the extraction. Note the exact phrase or passage and what trigger type it should have been assigned.
+
+### 4. Classification Accuracy
+For each trigger, verify the `trigger_type` label is clinically appropriate. Flag misclassifications and suggest the correct label where applicable.
+
+### 5. Confidence Score
+Assign a score from 0–10 reflecting overall extraction quality:
+- 9–10: Near-perfect, no meaningful errors
+- 7–8: Minor omissions or edge-case misclassifications
+- 4–6: Several errors that affect reliability
+- 1–3: Significant hallucinations or omissions
+- 0: Extraction is unusable
+
+---
+
+## Output Format
+
+If a category has no findings, return an empty array for that field.
+Respond ONLY with valid JSON:
+{
+  "confidence": 0.0,
+  "issues": ["<issue 1>", "..."]
+}
+
+RESPONSE:
+```json
+{
+  "confidence": 7,
+  "issues": [
+    {
+      "category": "Grounding Check",
+      "trigger": "substance use",
+      "rationale": "The conversation mentions a previous relapse attempt but does not explicitly state substance use. This is a strong implication, but not explicitly stated, and therefore warrants caution. It's possible this was intended, but needs verification."
+    },
+    {
+      "category": "Omission Detection",
+      "phrase": "Patient has tried to quit twice before.",
+      "trigger": "relapse",
+      "rationale": "The phrase 'tried to quit twice before' clearly indicates a history of relapse, which should be captured as a 'relapse' trigger."
+    }
+  ]
+}
+```
+
+================================================================================
+OLLAMA CALL 0034
+================================================================================
+timestamp: 2026-04-16T11:32:35.547816+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a very strict clinical data validator. Compare the EXTRACTED DATA against the CONVERSATION.
+
+CONVERSATION:
+Patient has tried to quit twice before. Worried about weight.
+
+EXTRACTED DATA (cessation advice or guidance):
+{'advice': ["Address the patient's worries about weight.", 'Consider strategies to manage cravings.', 'Recognize the patient has attempted cessation previously.'], 'evidence': ['‘...worried about weight.’,', 'Implied: Counselor should discuss coping mechanisms for cravings.', '‘Patient has tried to quit twice before.’']}
+
+Your task:
+1. Very Strictly Check for hallucinations (data not in the text).
+2. Very Strictly Check for omissions (important data missed).
+3. Assign a confidence score between 0.0 and 1.0.
+
+Respond ONLY with valid JSON:
+{
+  "confidence": 0.0,
+  "issues": ["<issue 1>", "..."]
+}
+
+
+RESPONSE:
+```json
+{
+  "confidence": 0.85,
+  "issues": [
+    "Omission: The conversation mentions the patient has attempted cessation twice, which should be explicitly captured as a key element of the patient's history and a factor in cessation advice. The extracted data includes this, but the confidence score is slightly reduced due to this oversight.",
+    "Potential Hallucination: 'Recognize the patient has attempted cessation previously.' - While plausible, this is an interpretation and not directly stated. It leans towards a slight hallucination, though the source conversation supports the idea. This is mitigated by the inclusion of the direct quote."
+  ]
+}
+```
+
+================================================================================
+OLLAMA CALL 0035
+================================================================================
+timestamp: 2026-04-16T11:32:38.663669+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a clinical annotation specialist (voter 1 of 3).
+
+CONVERSATION:
+Patient has tried to quit twice before. Worried about weight.
+
+EXTRACTED SIGNALS:
+- Advice: {'advice': ["Address the patient's worries about weight.", 'Consider strategies to manage cravings.', 'Recognize the patient has attempted cessation previously.'], 'evidence': ['‘...worried about weight.’,', 'Implied: Counselor should discuss coping mechanisms for cravings.', '‘Patient has tried to quit twice before.’']}
+- Quit Attempts: {'attempts': ['The patient has tried to quit twice before.'], 'evidence': ['"The patient has tried to quit twice before.""']}
+- Readiness / Stage: {'readiness_stage': 'contemplation', 'evidence': "The patient has 'tried to quit twice before,' indicating they are in the contemplation stage as they've acknowledged the problem and are considering a change but haven't yet committed to action. Furthermore, they express worry about weight, a common motivator for contemplation stage individuals."}
+- Concerns: {'concerns': ['previous quitting attempts', 'weight gain concerns'], 'evidence': ['worried about weight', 'has tried to quit twice before']}
+- Triggers: {'triggers': ['weight', 'relapse', 'substance use'], 'evidence': []}
+
+Based on ALL the above signals, produce a unified clinical annotation.
+Be independent — do not anchor to previous voters.
+
+Respond ONLY with valid JSON:
+{
+  "stage_of_change": "precontemplation|contemplation|preparation|action|maintenance|relapse",
+  "main_concern": "<single most prominent barrier>",
+  "primary_trigger": "<most significant smoking trigger>",
+  "quit_attempt_history": "<concise summary of prior attempts>",
+  "recommended_intervention": ["<strategy 1>", "<strategy 2>", "..."]
+}
+
+
+RESPONSE:
+```json
+{
+  "stage_of_change": "contemplation",
+  "main_concern": "weight gain concerns",
+  "primary_trigger": "weight",
+  "quit_attempt_history": "The patient has attempted to quit twice previously.",
+  "recommended_intervention": [
+    "Address the patient's worries about weight.",
+    "Consider strategies to manage cravings.",
+    "Recognize the patient has attempted cessation previously."
+  ]
+}
+```
+
+================================================================================
+OLLAMA CALL 0036
+================================================================================
+timestamp: 2026-04-16T11:32:40.684356+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a clinical annotation specialist (voter 2 of 3).
+
+CONVERSATION:
+Patient has tried to quit twice before. Worried about weight.
+
+EXTRACTED SIGNALS:
+- Advice: {'advice': ["Address the patient's worries about weight.", 'Consider strategies to manage cravings.', 'Recognize the patient has attempted cessation previously.'], 'evidence': ['‘...worried about weight.’,', 'Implied: Counselor should discuss coping mechanisms for cravings.', '‘Patient has tried to quit twice before.’']}
+- Quit Attempts: {'attempts': ['The patient has tried to quit twice before.'], 'evidence': ['"The patient has tried to quit twice before.""']}
+- Readiness / Stage: {'readiness_stage': 'contemplation', 'evidence': "The patient has 'tried to quit twice before,' indicating they are in the contemplation stage as they've acknowledged the problem and are considering a change but haven't yet committed to action. Furthermore, they express worry about weight, a common motivator for contemplation stage individuals."}
+- Concerns: {'concerns': ['previous quitting attempts', 'weight gain concerns'], 'evidence': ['worried about weight', 'has tried to quit twice before']}
+- Triggers: {'triggers': ['weight', 'relapse', 'substance use'], 'evidence': []}
+
+Based on ALL the above signals, produce a unified clinical annotation.
+Be independent — do not anchor to previous voters.
+
+Respond ONLY with valid JSON:
+{
+  "stage_of_change": "precontemplation|contemplation|preparation|action|maintenance|relapse",
+  "main_concern": "<single most prominent barrier>",
+  "primary_trigger": "<most significant smoking trigger>",
+  "quit_attempt_history": "<concise summary of prior attempts>",
+  "recommended_intervention": ["<strategy 1>", "<strategy 2>", "..."]
+}
+
+
+RESPONSE:
+```json
+{
+  "stage_of_change": "contemplation",
+  "main_concern": "weight gain concerns",
+  "primary_trigger": "weight",
+  "quit_attempt_history": "The patient has attempted to quit twice before.",
+  "recommended_intervention": [
+    "Address the patient's worries about weight.",
+    "Consider strategies to manage cravings.",
+    "Recognize the patient has attempted cessation previously."
+  ]
+}
+```
+
+================================================================================
+OLLAMA CALL 0037
+================================================================================
+timestamp: 2026-04-16T11:32:42.736164+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a clinical annotation specialist (voter 3 of 3).
+
+CONVERSATION:
+Patient has tried to quit twice before. Worried about weight.
+
+EXTRACTED SIGNALS:
+- Advice: {'advice': ["Address the patient's worries about weight.", 'Consider strategies to manage cravings.', 'Recognize the patient has attempted cessation previously.'], 'evidence': ['‘...worried about weight.’,', 'Implied: Counselor should discuss coping mechanisms for cravings.', '‘Patient has tried to quit twice before.’']}
+- Quit Attempts: {'attempts': ['The patient has tried to quit twice before.'], 'evidence': ['"The patient has tried to quit twice before.""']}
+- Readiness / Stage: {'readiness_stage': 'contemplation', 'evidence': "The patient has 'tried to quit twice before,' indicating they are in the contemplation stage as they've acknowledged the problem and are considering a change but haven't yet committed to action. Furthermore, they express worry about weight, a common motivator for contemplation stage individuals."}
+- Concerns: {'concerns': ['previous quitting attempts', 'weight gain concerns'], 'evidence': ['worried about weight', 'has tried to quit twice before']}
+- Triggers: {'triggers': ['weight', 'relapse', 'substance use'], 'evidence': []}
+
+Based on ALL the above signals, produce a unified clinical annotation.
+Be independent — do not anchor to previous voters.
+
+Respond ONLY with valid JSON:
+{
+  "stage_of_change": "precontemplation|contemplation|preparation|action|maintenance|relapse",
+  "main_concern": "<single most prominent barrier>",
+  "primary_trigger": "<most significant smoking trigger>",
+  "quit_attempt_history": "<concise summary of prior attempts>",
+  "recommended_intervention": ["<strategy 1>", "<strategy 2>", "..."]
+}
+
+
+RESPONSE:
+```json
+{
+  "stage_of_change": "contemplation",
+  "main_concern": "weight gain concerns",
+  "primary_trigger": "weight",
+  "quit_attempt_history": "The patient has attempted to quit twice previously.",
+  "recommended_intervention": [
+    "Address the patient's worries about weight.",
+    "Consider strategies to manage cravings.",
+    "Recognize the patient has attempted cessation previously."
+  ]
+}
+```
+
+================================================================================
+OLLAMA CALL 0038
+================================================================================
+timestamp: 2026-04-16T11:32:46.924620+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a clinical reasoning specialist producing the final annotation for a tobacco-cessation training dataset.
+
+CONVERSATION:
+Patient has tried to quit twice before. Worried about weight.
+
+CONSENSUS ANNOTATION:
+{'stage_of_change': 'contemplation', 'main_concern': 'weight gain concerns', 'primary_trigger': 'weight', 'quit_attempt_history': 'The patient has attempted to quit twice previously.', 'recommended_intervention': ["Address the patient's worries about weight.", 'Consider strategies to manage cravings.', 'Recognize the patient has attempted cessation previously.'], 'vote_agreement': 0.917, 'dissenting_fields': []}
+
+Your tasks:
+1. Validate that the consensus annotation is internally consistent and supported by the conversation.
+2. Write a reasoning_summary: 1–2 sentences that explain WHY this patient is at this stage,
+   what their primary barrier is, and what intervention approach is recommended.
+
+Respond ONLY with valid JSON:
+{
+  "stage_of_change": "<from consensus>",
+  "main_concern": "<from consensus>",
+  "primary_trigger": "<from consensus>",
+  "quit_attempt_history": "<from consensus>",
+  "recommended_intervention": ["<strategy 1>", "..."],
+  "reasoning_summary": "<1–2 sentence clinical rationale>",
+  "confidence_score": 0.0
+}
+
+
+RESPONSE:
+```json
+{
+  "stage_of_change": "contemplation",
+  "main_concern": "weight gain concerns",
+  "primary_trigger": "weight",
+  "quit_attempt_history": "The patient has attempted to quit twice previously.",
+  "recommended_intervention": [
+    "Address the patient’s worries about weight.",
+    "Consider strategies to manage cravings.",
+    "Recognize the patient has attempted cessation previously."
+  ],
+  "reasoning_summary": "The patient's previous unsuccessful attempts and expressed worry about weight gain indicate they are in the contemplation stage, where they are seriously considering quitting but haven't yet made a firm commitment.  Therefore, interventions should focus on directly addressing their weight concerns and offering craving management strategies.",
+  "confidence_score": 0.95
+}
+```

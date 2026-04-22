@@ -1,0 +1,41 @@
+=== LLM Response Log — 20260417_133552 ===
+
+--- [CONFIDENCE_CHECK] attempt @ 13:35:53.467 ---
+{
+  "confidence": 1.0,
+  "issues": []
+}
+
+--- [CONFIDENCE_CHECK] readiness @ 13:35:56.613 ---
+{
+  "confidence": 0.8,
+  "issues": [
+    "While the patient expresses a desire to quit smoking ('\u0986\u09ae\u09bf \u09b8\u09c1\u09b8\u09cd\u09a5 \u099c\u09c0\u09ac\u09a8 \u09af\u09be\u09aa\u09a8 \u098f\u09b0 \u099c\u09a8\u09cd\u09af \u09a7\u09c2\u09ae\u09aa\u09be\u09a8 \u099b\u09be\u09dc\u09a4\u09c7 \u099a\u09be\u0987'), the counselor's follow-up question about the importance of the desire ('\u09b8\u09c1\u09b8\u09cd\u09a5 \u099c\u09c0\u09ac\u09a8\u09af\u09be\u09aa\u09a8 \u0995\u09b0\u09be\u09b0 \u098f\u0987 \u0987\u099a\u09cd\u099b\u09be\u0995\u09c7 \u0986\u09aa\u09a8\u09bf \u0995\u09a4\u099f\u09be \u0997\u09c1\u09b0\u09c1\u09a4\u09cd\u09ac \u09a6\u09c7\u09a8?') leans towards the Contemplation stage. The patient's initial statement is more reflective of Precontemplation.  A stronger focus on the *importance* of the goal suggests a move beyond simply wanting to quit.",
+    "There is a slight ambiguity. The conversation doesn't definitively place the patient within a single stage. Further probing would be needed to solidify the classification. It\u2019s borderline between Precontemplation and Contemplation."
+  ]
+}
+
+--- [CONFIDENCE_CHECK] concern @ 13:35:59.572 ---
+{
+  "confidence": 0.8,
+  "issues": [
+    "Minor concern missed: The patient explicitly states a desire for a 'healthy life,' indicating a potential concern regarding the impact of smoking on their health. This could be categorized as a psychological concern (fear of illness/poor health outcomes).",
+    "Categorization Accuracy - Potential Misalignment: While '\u09b8\u09c1\u09b8\u09cd\u09a5 \u099c\u09c0\u09ac\u09a8\u09af\u09be\u09aa\u09a8 \u0995\u09b0\u09be\u09b0 \u098f\u0987 \u0987\u099a\u09cd\u099b\u09be\u0995\u09c7 \u0986\u09aa\u09a8\u09bf \u0995\u09a4\u099f\u09be \u0997\u09c1\u09b0\u09c1\u09a4\u09cd\u09ac \u09a6\u09c7\u09a8?' (How seriously do you take the desire for a healthy life?) is relevant, it's more accurately categorized as a psychological concern related to motivation and commitment rather than a direct physiological or situational concern."
+  ]
+}
+
+--- [CONFIDENCE_CHECK] triggers @ 13:36:02.146 ---
+{
+  "confidence": 0.6,
+  "issues": [
+    "Omission Detection: The trigger '\u09a7\u09c2\u09ae\u09aa\u09be\u09a8 \u099b\u09c7\u09dc\u09c7 \u09a6\u09bf\u09a4\u09c7 \u099a\u09be\u0987' is explicitly stated in the conversation and should be included. The extraction misses this key trigger.",
+    "Classification Accuracy: The trigger '\u09b8\u09c1\u09b8\u09cd\u09a5 \u099c\u09c0\u09ac\u09a8 \u09af\u09be\u09aa\u09a8' is classified as 'goal' which is appropriate, but the conversation focuses on the *desire* to achieve that goal, rather than the goal itself. A more accurate classification might be 'motivation' or 'intent'. "
+  ]
+}
+
+--- [CONFIDENCE_CHECK] advice @ 13:36:03.135 ---
+{
+  "confidence": 0.95,
+  "issues": []
+}
+

@@ -1,0 +1,163 @@
+=== LLM Response Log — 20260414_125108 ===
+
+--- [EXTRACTOR] attempt @ 12:51:15.202 ---
+{
+  "attempts": [
+    "Patient previously attempted to quit smoking.",
+    "Patient previously attempted to quit smoking."
+  ],
+  "evidence": [
+    "Patient: My cravings",
+    "Patient: My cravings"
+  ]
+}
+
+--- [CONFIDENCE] attempt @ 12:51:17.276 ---
+{
+  "confidence": 0.2,
+  "issues": [
+    "Hallucination: The statement 'Patient previously attempted to quit smoking.' is not supported by the conversation. This is a hallucination.",
+    "Omission: The conversation clearly establishes the patient's primary challenge as cravings. The extracted data does not explicitly state this as a key element of the patient's experience."
+  ],
+  "severity": "none"
+}
+
+--- [DEBATE] attempt @ 12:52:24.974 ---
+{
+  "attempts": [
+    "Patient: My cravings",
+    "Counselor: Can you tell me more about what your cravings are like when they hit? Is it a physical sensation, an emotional feeling, or something else?"
+  ],
+  "evidence": [
+    "Patient: My cravings",
+    "Counselor: Can you tell me more about what your cravings are like when they hit? Is it a physical sensation, an emotional feeling, or something else?"
+  ],
+  "analysis": "This exchange marks the beginning of a deeper exploration of the patient\u2019s experience, initiated by the patient\u2019s self-identification of cravings. The patient identified cravings as a significant challenge, prompting the counselor to elicit further information about the nature and characteristics of those cravings. This demonstrates an attempt to understand the patient\u2019s subjective experience and gather data for potential support strategies.",
+  "_debate_rounds": 6,
+  "_debate_converged": true
+}
+
+--- [EXTRACTOR] readiness @ 12:52:24.975 ---
+{
+  "readiness_stage": "contemplation",
+  "evidence": "The patient has acknowledged a challenge \u2013 \u2018My cravings\u2019 \u2013 indicating they are considering quitting (contemplation) but haven't yet taken concrete steps like planning or quitting within a short timeframe."
+}
+
+--- [CONFIDENCE] readiness @ 12:52:27.557 ---
+{
+  "confidence": 0.8,
+  "issues": [
+    "Hallucination: The extracted data states the patient hasn't taken 'concrete steps like planning or quitting within a short timeframe.' This is not explicitly stated in the conversation. The patient simply stated 'My cravings.'",
+    "Omission: The conversation establishes the patient is in the contemplation stage, but the extracted data doesn't explicitly state this. While the 'cravings' comment suggests contemplation, it's not explicitly labeled as such.",
+    "Low Confidence: Overall confidence is moderate due to the reliance on interpretation of the patient's statement rather than direct evidence."
+  ],
+  "severity": "none"
+}
+
+--- [DEBATE] readiness @ 12:52:27.563 ---
+{
+  "readiness_stage": "contemplation",
+  "evidence": "The patient has acknowledged a challenge \u2013 \u2018My cravings\u2019 \u2013 indicating they are considering quitting (contemplation) but haven't yet taken concrete steps like planning or quitting within a short timeframe.",
+  "_debate_rounds": 0,
+  "_debate_converged": true
+}
+
+--- [EXTRACTOR] concern @ 12:52:27.564 ---
+{
+  "concerns": [
+    "cravings",
+    "withdrawal symptoms"
+  ],
+  "evidence": [
+    "\"My cravings\"",
+    "Cravings can be tough!\" (Implied concern about the difficulty of managing cravings and potential withdrawal symptoms)"
+  ]
+}
+
+--- [CONFIDENCE] concern @ 12:52:29.666 ---
+{
+  "confidence": 0.85,
+  "issues": [
+    "Hallucination: The extracted data includes 'withdrawal symptoms' which is not explicitly stated in the conversation. This is a hallucination.",
+    "Omission: The conversation does not explicitly mention the *type* of cravings (e.g., nicotine cravings, sensory cravings). While 'cravings' is extracted, a more granular level of detail is missing."
+  ],
+  "severity": "none"
+}
+
+--- [DEBATE] concern @ 12:52:29.667 ---
+{
+  "concerns": [
+    "cravings",
+    "withdrawal symptoms"
+  ],
+  "evidence": [
+    "\"My cravings\"",
+    "Cravings can be tough!\" (Implied concern about the difficulty of managing cravings and potential withdrawal symptoms)"
+  ],
+  "_debate_rounds": 0,
+  "_debate_converged": true
+}
+
+--- [EXTRACTOR] triggers @ 12:52:29.669 ---
+{
+  "triggers": [
+    "cravings",
+    "emotional feeling"
+  ],
+  "evidence": []
+}
+
+--- [CONFIDENCE] triggers @ 12:52:31.512 ---
+{
+  "confidence": 0.8,
+  "issues": [
+    "Missing specific details about the emotional feeling. The conversation mentions 'emotional feeling' as a potential aspect of the cravings, but doesn't explore what that feeling is.",
+    "The conversation mentions 'physical sensation' as a potential aspect of the cravings, but doesn't explore what that sensation is."
+  ],
+  "severity": "none"
+}
+
+--- [DEBATE] triggers @ 12:52:31.513 ---
+{
+  "triggers": [
+    "cravings",
+    "emotional feeling"
+  ],
+  "evidence": [],
+  "_debate_rounds": 0,
+  "_debate_converged": true
+}
+
+--- [EXTRACTOR] advice @ 12:52:31.514 ---
+{
+  "advice": [
+    "Acknowledge that cravings can be tough!",
+    "Explore the nature of cravings (physical sensation, emotional feeling, or something else)."
+  ],
+  "evidence": [
+    "\"Cravings can be tough!\"",
+    "\"Can you tell me more about what your cravings are like when they hit? Is it a physical sensation, an emotional feeling, or something else?\""
+  ]
+}
+
+--- [CONFIDENCE] advice @ 12:52:32.470 ---
+{
+  "confidence": 0.95,
+  "issues": [],
+  "severity": "none"
+}
+
+--- [DEBATE] advice @ 12:52:32.471 ---
+{
+  "advice": [
+    "Acknowledge that cravings can be tough!",
+    "Explore the nature of cravings (physical sensation, emotional feeling, or something else)."
+  ],
+  "evidence": [
+    "\"Cravings can be tough!\"",
+    "\"Can you tell me more about what your cravings are like when they hit? Is it a physical sensation, an emotional feeling, or something else?\""
+  ],
+  "_debate_rounds": 0,
+  "_debate_converged": true
+}
+

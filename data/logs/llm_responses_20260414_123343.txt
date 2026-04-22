@@ -1,0 +1,152 @@
+=== LLM Response Log — 20260414_123343 ===
+
+--- [EXTRACTOR] attempt @ 12:33:52.714 ---
+{
+  "attempts": [],
+  "evidence": [
+    "Patient: I want to quit smoking for good because I want to improve my health"
+  ]
+}
+
+--- [CONFIDENCE] attempt @ 12:33:54.803 ---
+{
+  "confidence": 0.2,
+  "issues": [
+    "Hallucination: The extracted data includes 'attempts' which is not present in the conversation.",
+    "Omission: The conversation contains the patient's stated motivation ('I want to quit smoking for good because I want to improve my health') but this is only a single extracted evidence item. A more comprehensive extraction would include the counselor's response and the follow-up questions regarding feelings and desired changes."
+  ],
+  "severity": "none"
+}
+
+--- [DEBATE] attempt @ 12:34:02.323 ---
+{
+  "attempts": [],
+  "evidence": [
+    "Patient: I want to quit smoking for good because I want to improve my health",
+    "Counselor: That\u2019s a great motivation! How does the thought of improving your health make you feel, and what specific changes do you hope to see in your life once you\u2019ve quit smoking?"
+  ],
+  "_debate_rounds": 1,
+  "_debate_converged": true
+}
+
+--- [EXTRACTOR] readiness @ 12:34:02.324 ---
+{
+  "readiness_stage": "contemplation",
+  "evidence": "The patient stated 'I want to quit smoking for good because I want to improve my health,' indicating they are considering quitting (contemplation) but haven't yet made a firm commitment or taken concrete steps."
+}
+
+--- [CONFIDENCE] readiness @ 12:34:03.253 ---
+{
+  "confidence": 0.95,
+  "issues": [],
+  "severity": "none"
+}
+
+--- [DEBATE] readiness @ 12:34:03.254 ---
+{
+  "readiness_stage": "contemplation",
+  "evidence": "The patient stated 'I want to quit smoking for good because I want to improve my health,' indicating they are considering quitting (contemplation) but haven't yet made a firm commitment or taken concrete steps.",
+  "_debate_rounds": 0,
+  "_debate_converged": true
+}
+
+--- [EXTRACTOR] concern @ 12:34:03.255 ---
+{
+  "concerns": [
+    "health",
+    "weight gain"
+  ],
+  "evidence": [
+    "\"I want to quit smoking for good because I want to improve my health\"",
+    "The patient's stated motivation is centered around improving their health, implicitly suggesting a concern about the negative health consequences of smoking."
+  ]
+}
+
+--- [CONFIDENCE] concern @ 12:34:05.496 ---
+{
+  "confidence": 0.95,
+  "issues": [
+    "Hallucination: The extracted data includes 'weight gain', which is not explicitly stated in the conversation. This is a hallucination.",
+    "Omission: The conversation clearly states the patient's motivation is to 'improve my health'. The extracted data correctly captures this, but a more detailed exploration of *why* improving health is important for the patient could be added for a more comprehensive extraction."
+  ],
+  "severity": "none"
+}
+
+--- [DEBATE] concern @ 12:34:05.501 ---
+{
+  "concerns": [
+    "health",
+    "weight gain"
+  ],
+  "evidence": [
+    "\"I want to quit smoking for good because I want to improve my health\"",
+    "The patient's stated motivation is centered around improving their health, implicitly suggesting a concern about the negative health consequences of smoking."
+  ],
+  "_debate_rounds": 0,
+  "_debate_converged": true
+}
+
+--- [EXTRACTOR] triggers @ 12:34:05.502 ---
+{
+  "triggers": [
+    "improving health",
+    "specific changes"
+  ],
+  "evidence": []
+}
+
+--- [CONFIDENCE] triggers @ 12:34:06.803 ---
+{
+  "confidence": 0.8,
+  "issues": [
+    "Omission: The patient explicitly states their motivation is to 'quit smoking for good'. This is a key trigger and was not included."
+  ],
+  "severity": "none"
+}
+
+--- [DEBATE] triggers @ 12:34:06.809 ---
+{
+  "triggers": [
+    "improving health",
+    "specific changes"
+  ],
+  "evidence": [],
+  "_debate_rounds": 0,
+  "_debate_converged": true
+}
+
+--- [EXTRACTOR] advice @ 12:34:06.810 ---
+{
+  "advice": [
+    "That's a great motivation!",
+    "What specific changes do you hope to see in your life once you've quit smoking?"
+  ],
+  "evidence": [
+    "Counselor: That's a great motivation!",
+    "Counselor: How does the thought of improving your health make you feel, and what specific changes do you hope to see in your life once you've quit smoking?"
+  ]
+}
+
+--- [CONFIDENCE] advice @ 12:34:08.671 ---
+{
+  "confidence": 0.85,
+  "issues": [
+    "Omission: The patient's stated motivation - 'I want to quit smoking for good because I want to improve my health' - is not fully captured. While the counselor acknowledged the motivation, the core statement itself is missing from the 'advice' field."
+  ],
+  "severity": "none"
+}
+
+--- [DEBATE] advice @ 12:34:08.672 ---
+{
+  "advice": [
+    "That's a great motivation!",
+    "What specific changes do you hope to see in your life once you've quit smoking?"
+  ],
+  "evidence": [
+    "Counselor: That's a great motivation!",
+    "Counselor: How does the thought of improving your health make you feel, and what specific changes do you hope to see in your life once you've quit smoking?"
+  ],
+  "_debate_rounds": 0,
+  "_debate_converged": true
+}
+

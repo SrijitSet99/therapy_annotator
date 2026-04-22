@@ -1,0 +1,309 @@
+{
+  "events": {
+    "agent_manager": {
+      "confidence_results": {
+        "advice": {
+          "confidence": 0.95,
+          "issues": []
+        },
+        "attempt": {
+          "confidence": 1.0,
+          "issues": []
+        },
+        "concern": {
+          "confidence": 0.8,
+          "issues": [
+            "The extraction missed a potential implicit concern regarding physiological impact. While the patient stated 'আমি সুস্থ জীবন যাপন এর জন্য ধূমপান ছাড়তে চাই' (I want to quit smoking for a healthy life), a more nuanced extraction could have included a concern about potential physical withdrawal symptoms or the impact of quitting on their body. This represents a minor omission.",
+            "The categorization of 'সুস্থ জীবনযাপন করার এই ইচ্ছাকে আপনি কতটা গুরুত্ব দেন?' (How much importance do you place on this desire to live a healthy life?) as psychological is reasonable, but could benefit from a slightly more granular approach. It leans towards a motivational concern rather than a purely psychological anxiety. A slight category misalignment exists."
+          ]
+        },
+        "readiness": {
+          "confidence": 0.8,
+          "issues": [
+            "The classification is tentatively assigned to precontemplation. While the patient states a desire to quit smoking for a 'healthy life,' the initial question from the counselor focuses on *wanting* to quit, rather than any concrete steps taken or intentions to change. A stronger indication of contemplation or preparation would be present if the patient discussed past attempts, barriers, or potential strategies. The conversation lacks evidence to definitively rule out precontemplation, but it leans towards it.",
+            "There are no immediately obvious contradicting statements. However, the counselor's follow-up question – ‘how much you value this desire’ – strongly suggests the patient is at least in the contemplation stage, as it requires an assessment of their commitment. This subtle shift in the counselor's line of questioning could be interpreted as a probe to determine if the patient is seriously considering change."
+          ]
+        },
+        "triggers": {
+          "confidence": 0.92,
+          "issues": [
+            "Omission Detection: The trigger 'সুস্থ জীবন যাপন' (healthy lifestyle) is present in the conversation but not extracted. This should be classified as a 'motivation' trigger.",
+            "Classification Accuracy: While 'ধূমপান ছেড়ে দিতে চাই' (wanting to quit smoking) is correctly classified as 'motivation', a more granular classification could be considered.  It could also be categorized as 'goal' given the patient's stated desire.  The confidence score could be lowered slightly to reflect this nuanced need for more precise categorization."
+          ]
+        }
+      },
+      "extractor_output": {
+        "advice": {
+          "advice": [
+            "ধুমপান ছেড়ে দিতে চান, এটা জেনে ভালো লাগলো।",
+            "সুস্থ জীবনযাপন করার এই ইচ্ছাকে আপনি কতটা গুরুত্ব দেন?"
+          ],
+          "evidence": [
+            "ধুমপান ছেড়ে দিতে চান, এটা জেনে ভালো লাগলো।",
+            "সুস্থ জীবনযাপন করার এই ইচ্ছাকে আপনি কতটা গুরুত্ব দেন?"
+          ]
+        },
+        "attempt": {
+          "attempts": [
+            "I want to quit smoking to live a healthy life."
+          ],
+          "evidence": [
+            "আমি সুস্থ জীবন যাপন এর জন্য ধূমপান ছাড়তে চাই"
+          ]
+        },
+        "concern": {
+          "concerns": [
+            "Weight gain",
+            "Fear of failure"
+          ],
+          "evidence": [
+            "আমি সুস্থ জীবন যাপন এর জন্য ধূমপান ছাড়তে চাই",
+            "সুস্থ জীবনযাপন করার এই ইচ্ছাকে আপনি কতটা গুরুত্ব দেন?"
+          ]
+        },
+        "readiness": {
+          "evidence": "The patient states, \"আমি সুস্থ জীবন যাপন এর জন্য ধূমপান ছাড়তে চাই\" (I want to quit smoking for a healthy lifestyle), indicating awareness of the need to quit and considering it. Furthermore, they express a desire to quit, aligning with the definition of the contemplation stage.",
+          "readiness_stage": "contemplation"
+        },
+        "triggers": {
+          "evidence": [
+            "আমি সুস্থ জীবন যাপন এর জন্য ধূমপান ছাড়তে চাই"
+          ],
+          "triggers": [
+            "সুস্থ জীবন যাপন"
+          ]
+        }
+      },
+      "final_output": {
+        "advice": {
+          "advice": [
+            "ধুমপান ছেড়ে দিতে চান, এটা জেনে ভালো লাগলো।",
+            "সুস্থ জীবনযাপন করার এই ইচ্ছাকে আপনি কতটা গুরুত্ব দেন?"
+          ],
+          "evidence": [
+            "ধুমপান ছেড়ে দিতে চান, এটা জেনে ভালো লাগলো।",
+            "সুস্থ জীবনযাপন করার এই ইচ্ছাকে আপনি কতটা গুরুত্ব দেন?"
+          ]
+        },
+        "attempt": {
+          "attempts": [
+            "I want to quit smoking to live a healthy life."
+          ],
+          "evidence": [
+            "আমি সুস্থ জীবন যাপন এর জন্য ধূমপান ছাড়তে চাই"
+          ]
+        },
+        "concern": {
+          "concerns": [
+            "Weight gain",
+            "Fear of failure"
+          ],
+          "evidence": [
+            "আমি সুস্থ জীবন যাপন এর জন্য ধূমপান ছাড়তে চাই",
+            "সুস্থ জীবনযাপন করার এই ইচ্ছাকে আপনি কতটা গুরুত্ব দেন?"
+          ]
+        },
+        "readiness": {
+          "evidence": "The patient states, \"আমি সুস্থ জীবন যাপন এর জন্য ধূমপান ছাড়তে চাই\" (I want to quit smoking for a healthy lifestyle), indicating awareness of the need to quit and considering it. Furthermore, they express a desire to quit, aligning with the definition of the contemplation stage.",
+          "readiness_stage": "contemplation"
+        },
+        "triggers": {
+          "evidence": [
+            "আমি সুস্থ জীবন যাপন এর জন্য ধূমপান ছাড়তে চাই"
+          ],
+          "triggers": [
+            "সুস্থ জীবন যাপন"
+          ]
+        }
+      },
+      "revised_output": {
+        "triggers": {
+          "confidence": 0.98,
+          "trigger_type": "motivation",
+          "triggers": [
+            "ধূমপান ছেড়ে দিতে চাই",
+            "সুস্থ জীবন যাপন এর জন্য ধূমপান ছাড়তে চাই"
+          ]
+        }
+      }
+    },
+    "consensus_agent": {
+      "output": {
+        "consensus": {
+          "dissenting_fields": [],
+          "main_concern": "Desire for a healthy lifestyle",
+          "primary_trigger": "Desire to quit smoking for a healthy lifestyle",
+          "quit_attempt_history": "Patient expresses a desire to quit smoking to live a healthy life.",
+          "recommended_intervention": [
+            "Explore the patient's motivations for wanting a healthy lifestyle in detail.",
+            "Discuss the benefits of quitting smoking in terms of health and well-being.",
+            "Assess the patient's readiness to make a change and address any immediate barriers.",
+            "Explore the patient's motivations for wanting a healthy lifestyle in more detail.",
+            "Assess the patient's current understanding of the challenges associated with quitting.",
+            "Assess the patient's current understanding of the benefits of quitting smoking.",
+            "Discuss potential barriers to quitting and strategies for overcoming them.",
+            "Set realistic goals and expectations for the quitting process."
+          ],
+          "stage_of_change": "contemplation",
+          "vote_agreement": 0.917
+        }
+      }
+    },
+    "longitudinal_sanity": {
+      "output": {
+        "longitudinal_sanity": {
+          "flags": [],
+          "passed": true,
+          "severity": "none"
+        }
+      }
+    },
+    "profile_update_agent": {
+      "output": {
+        "dataset_row": {
+          "confidence_score": 1.0,
+          "debate_rounds_used": 0,
+          "inconsistencies": [],
+          "longitudinal_flags": [],
+          "longitudinal_sanity_passed": true,
+          "main_concern": "Desire for a healthy lifestyle",
+          "primary_trigger": "Desire to quit smoking for a healthy lifestyle",
+          "quit_attempt_history": "Patient expresses a desire to quit smoking to live a healthy life.",
+          "reasoning_summary": "The patient clearly articulates a desire for a healthy lifestyle as the primary driver for quitting, placing them firmly in the contemplation stage. An appropriate intervention involves exploring these motivations further and highlighting the tangible health benefits of cessation to reinforce their commitment.",
+          "recommended_intervention": [
+            "Explore the patient's motivations for wanting a healthy lifestyle in detail.",
+            "Discuss the benefits of quitting smoking in terms of health and well-being."
+          ],
+          "sanity_passed": true,
+          "session_number": 1,
+          "stage_of_change": "contemplation",
+          "vote_agreement": 0.917
+        },
+        "longitudinal_output": {
+          "current_annotation": {
+            "confidence_score": 1.0,
+            "debate_rounds_used": 0,
+            "inconsistencies": [],
+            "longitudinal_flags": [],
+            "longitudinal_sanity_passed": true,
+            "main_concern": "Desire for a healthy lifestyle",
+            "primary_trigger": "Desire to quit smoking for a healthy lifestyle",
+            "quit_attempt_history": "Patient expresses a desire to quit smoking to live a healthy life.",
+            "reasoning_summary": "The patient clearly articulates a desire for a healthy lifestyle as the primary driver for quitting, placing them firmly in the contemplation stage. An appropriate intervention involves exploring these motivations further and highlighting the tangible health benefits of cessation to reinforce their commitment.",
+            "recommended_intervention": [
+              "Explore the patient's motivations for wanting a healthy lifestyle in detail.",
+              "Discuss the benefits of quitting smoking in terms of health and well-being."
+            ],
+            "sanity_passed": true,
+            "session_number": 1,
+            "stage_of_change": "contemplation",
+            "vote_agreement": 0.917
+          },
+          "delta": null,
+          "interventions_tried": [],
+          "longitudinal_flags": [],
+          "overall_progress": "unknown",
+          "patient_id": "081015a0-c88c-4d45-8b18-9fb419a261cf",
+          "persistent_concerns": [],
+          "persistent_triggers": [],
+          "relapse_detected": false,
+          "session_number": 1,
+          "stage_trajectory": [
+            "contemplation"
+          ],
+          "stagnation_detected": false
+        },
+        "patient_profile_id": "081015a0-c88c-4d45-8b18-9fb419a261cf",
+        "session_count": 1
+      }
+    },
+    "reasoning_agent": {
+      "output": {
+        "dataset_row": {
+          "confidence_score": 1.0,
+          "debate_rounds_used": 0,
+          "inconsistencies": [],
+          "main_concern": "Desire for a healthy lifestyle",
+          "primary_trigger": "Desire to quit smoking for a healthy lifestyle",
+          "quit_attempt_history": "Patient expresses a desire to quit smoking to live a healthy life.",
+          "reasoning_summary": "The patient clearly articulates a desire for a healthy lifestyle as the primary driver for quitting, placing them firmly in the contemplation stage. An appropriate intervention involves exploring these motivations further and highlighting the tangible health benefits of cessation to reinforce their commitment.",
+          "recommended_intervention": [
+            "Explore the patient's motivations for wanting a healthy lifestyle in detail.",
+            "Discuss the benefits of quitting smoking in terms of health and well-being."
+          ],
+          "sanity_passed": true,
+          "stage_of_change": "contemplation",
+          "vote_agreement": 0.917
+        }
+      }
+    },
+    "run_chat": {
+      "final_result": {
+        "dataset_row": {
+          "confidence_score": 1.0,
+          "debate_rounds_used": 0,
+          "inconsistencies": [],
+          "longitudinal_flags": [],
+          "longitudinal_sanity_passed": true,
+          "main_concern": "Desire for a healthy lifestyle",
+          "primary_trigger": "Desire to quit smoking for a healthy lifestyle",
+          "quit_attempt_history": "Patient expresses a desire to quit smoking to live a healthy life.",
+          "reasoning_summary": "The patient clearly articulates a desire for a healthy lifestyle as the primary driver for quitting, placing them firmly in the contemplation stage. An appropriate intervention involves exploring these motivations further and highlighting the tangible health benefits of cessation to reinforce their commitment.",
+          "recommended_intervention": [
+            "Explore the patient's motivations for wanting a healthy lifestyle in detail.",
+            "Discuss the benefits of quitting smoking in terms of health and well-being."
+          ],
+          "sanity_passed": true,
+          "session_number": 1,
+          "stage_of_change": "contemplation",
+          "vote_agreement": 0.917
+        },
+        "longitudinal_output": {
+          "current_annotation": {
+            "confidence_score": 1.0,
+            "debate_rounds_used": 0,
+            "inconsistencies": [],
+            "longitudinal_flags": [],
+            "longitudinal_sanity_passed": true,
+            "main_concern": "Desire for a healthy lifestyle",
+            "primary_trigger": "Desire to quit smoking for a healthy lifestyle",
+            "quit_attempt_history": "Patient expresses a desire to quit smoking to live a healthy life.",
+            "reasoning_summary": "The patient clearly articulates a desire for a healthy lifestyle as the primary driver for quitting, placing them firmly in the contemplation stage. An appropriate intervention involves exploring these motivations further and highlighting the tangible health benefits of cessation to reinforce their commitment.",
+            "recommended_intervention": [
+              "Explore the patient's motivations for wanting a healthy lifestyle in detail.",
+              "Discuss the benefits of quitting smoking in terms of health and well-being."
+            ],
+            "sanity_passed": true,
+            "session_number": 1,
+            "stage_of_change": "contemplation",
+            "vote_agreement": 0.917
+          },
+          "delta": null,
+          "interventions_tried": [],
+          "longitudinal_flags": [],
+          "overall_progress": "unknown",
+          "patient_id": "081015a0-c88c-4d45-8b18-9fb419a261cf",
+          "persistent_concerns": [],
+          "persistent_triggers": [],
+          "relapse_detected": false,
+          "session_number": 1,
+          "stage_trajectory": [
+            "contemplation"
+          ],
+          "stagnation_detected": false
+        },
+        "patient_id": "081015a0-c88c-4d45-8b18-9fb419a261cf",
+        "session_number": 1
+      },
+      "transcript": {
+        "session_id": "081015a0-c88c-4d45-8b18-9fb419a261cf",
+        "transcript": "Patient: নমস্কার\nCounselor: নমস্কার! ধূমপান ছেড়ে দিতে আপনি কী করতে চান, বলুন তো? আপনার লক্ষ্য কী?\nPatient: আমি সুস্থ জীবন যাপন এর জন্য ধূমপান ছাড়তে চাই\nCounselor: ধুমপান ছেড়ে দিতে চান, এটা জেনে ভালো লাগলো। সুস্থ জীবনযাপন করার এই ইচ্ছাকে আপনি কতটা গুরুত্ব দেন?"
+      }
+    }
+  },
+  "meta": {
+    "language": "bn",
+    "session_id": "081015a0-c88c-4d45-8b18-9fb419a261cf",
+    "started_at": "20260417T080241Z"
+  }
+}

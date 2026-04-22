@@ -1,0 +1,45 @@
+=== LLM Response Log — 20260416_165354 ===
+
+=== LLM Response Log — 20260416_165354 ===
+
+--- [CONFIDENCE_CHECK] attempt @ 16:53:59.401 ---
+{
+  "confidence": 0.5,
+  "issues": [
+    "Grounding & Veracity: The statement 'The patient has tried to quit smoking twice before.' is extracted, but the source text only states 'Patient has tried to quit smoking twice before.' This is a direct textual anchor, so this check passes. However, the extraction includes 'The patient' which is an unnecessary and potentially problematic addition.",
+    "Hallucination Check: No data points exist in the source that are not present in the source. This check passes.",
+    "Sensitivity (Omission) Check: The source text contains the key phrase 'tried to quit smoking twice before,' fulfilling the criteria for this check. No other relevant keywords were missed.",
+    "Taxonomy Alignment: While not explicitly stated, the phrase 'tried to quit smoking' implies a quit attempt.  Without further context, assigning a specific attempt type (Cold Turkey, NRT, etc.) is speculative.  A more robust system would require additional data. This represents a minor misalignment, but not a critical one given the limited information."
+  ]
+}
+
+--- [CONFIDENCE_CHECK] readiness @ 16:54:00.959 ---
+{
+  "confidence": 0.9,
+  "issues": []
+}
+
+--- [CONFIDENCE_CHECK] concern @ 16:54:06.958 ---
+{
+  "confidence": 0.75,
+  "issues": [
+    "{'concern': 'previous failed quit attempts', 'evidence': 'Patient has tried to quit smoking twice before.', 'assessment': 'Correctly identified a relevant concern. Categorized accurately as Psychological. Temporal attribution is appropriate (active concern).', 'confidence_score': 9}",
+    "{'concern': 'weight gain', 'evidence': 'I am worried about weight gain.', 'assessment': 'Correctly identified a relevant concern. Categorized accurately as Physiological.  The patient\u2019s explicit statement indicates a clear concern.  Temporal attribution is appropriate (active concern).', 'confidence_score': 9}",
+    "{'concern': 'missed implicit anxiety regarding long-term health risks', 'evidence': 'Patient has tried to quit smoking twice before. I am worried about weight gain.', 'assessment': \"Omission detected. While the patient explicitly states worry about weight gain, the transcript *could* contain an underlying anxiety about broader health consequences of smoking, which wasn't captured. This represents a minor missed nuance.  Severity is appropriately calibrated. Temporal attribution is appropriate (active concern).\", 'confidence_score': 6}"
+  ]
+}
+
+--- [CONFIDENCE_CHECK] triggers @ 16:54:10.084 ---
+{
+  "confidence": 0.8,
+  "issues": [
+    "{'category': 'Grounding Check', 'description': \"The trigger 'past failures' is strongly implied, but could benefit from explicit phrasing for increased robustness. While the context of 'tried to quit smoking twice before' strongly suggests this, explicitly stating 'past failures' would improve grounding.\", 'recommendation': \"Consider adding 'past failures' as an explicit trigger or refining the phrasing to more directly reflect the concept.\"}"
+  ]
+}
+
+--- [CONFIDENCE_CHECK] advice @ 16:54:11.548 ---
+{
+  "confidence": 0.95,
+  "issues": []
+}
+

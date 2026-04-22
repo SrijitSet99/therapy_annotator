@@ -1,0 +1,53 @@
+=== LLM Response Log — 20260415_151514 ===
+
+--- [EXTRACTOR] attempt @ 15:15:24.367 ---
+{
+  "attempts": [
+    "Patient attempted to use nicotine gum to quit smoking.",
+    "Patient attempted to gradually reduce smoking with the intention to quit."
+  ],
+  "evidence": [
+    "Patient: hi",
+    "Patient: What's been on your mind lately about quitting smoking?"
+  ]
+}
+
+--- [EXTRACTOR] readiness @ 15:15:24.371 ---
+{
+  "readiness_stage": "precontemplation",
+  "evidence": "The patient simply said \"hi,\" indicating they haven't yet engaged with the topic of quitting smoking or expressed any thoughts about it, fitting the definition of precontemplation \u2013 not considering quitting in the next 6 months."
+}
+
+--- [EXTRACTOR] concern @ 15:15:24.372 ---
+{
+  "concerns": [
+    "What's been on your mind lately about quitting smoking?"
+  ],
+  "evidence": [
+    "Patient: \"What's been on your mind lately about quitting smoking?\""
+  ]
+}
+
+--- [EXTRACTOR] triggers @ 15:15:24.374 ---
+{
+  "triggers": [
+    "stress",
+    "after meals",
+    "morning routine",
+    "boredom"
+  ],
+  "evidence": []
+}
+
+--- [EXTRACTOR] advice @ 15:15:24.375 ---
+{
+  "advice": [
+    "Ready to help you kick the habit and live smoke-free?",
+    "What's been on your mind lately about quitting smoking?"
+  ],
+  "evidence": [
+    "\"Ready to help you kick the habit and live smoke-free?\"",
+    "\"What's been on your mind lately about quitting smoking?\""
+  ]
+}
+

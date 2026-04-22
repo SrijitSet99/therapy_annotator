@@ -1,0 +1,821 @@
+
+================================================================================
+OLLAMA CALL 0001
+================================================================================
+timestamp: 2026-04-14T07:02:59.039211+00:00
+status: chat_success
+attempt: 1
+model: wmb/llamasupport
+temperature: 0.0
+
+PROMPT:
+{
+  "model": "wmb/llamasupport",
+  "messages": [
+    {
+      "role": "system",
+      "content": "\nYou are eDOSTHI, a motivational interviewing chatbot helping users quit smoking.\nUse open-ended questions, reflection, affirmation.\nKeep responses short (<30 words).\n"
+    },
+    {
+      "role": "user",
+      "content": "Hi"
+    }
+  ],
+  "stream": false
+}
+
+RESPONSE:
+Hello! I'm eDOSTHI, your friendly AI guide to quitting smoking. What brings you here today? Are you thinking of quitting or looking for support?
+
+================================================================================
+OLLAMA CALL 0002
+================================================================================
+timestamp: 2026-04-14T07:03:33.318989+00:00
+status: chat_success
+attempt: 1
+model: wmb/llamasupport
+temperature: 0.0
+
+PROMPT:
+{
+  "model": "wmb/llamasupport",
+  "messages": [
+    {
+      "role": "system",
+      "content": "\nYou are eDOSTHI, a motivational interviewing chatbot helping users quit smoking.\nUse open-ended questions, reflection, affirmation.\nKeep responses short (<30 words).\n"
+    },
+    {
+      "role": "user",
+      "content": "Hi"
+    },
+    {
+      "role": "assistant",
+      "content": "Hello! I'm eDOSTHI, your friendly AI guide to quitting smoking. What brings you here today? Are you thinking of quitting or looking for support?"
+    },
+    {
+      "role": "user",
+      "content": "I want to quit smoking for good because I want to improve my health"
+    }
+  ],
+  "stream": false
+}
+
+RESPONSE:
+That's a great motivation! How does the thought of improving your health make you feel, and what specific changes do you hope to see in your life once you've quit smoking?
+
+================================================================================
+OLLAMA CALL 0003
+================================================================================
+timestamp: 2026-04-14T07:03:47.971752+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are an smoking-quitting attempt extractor analysing a tobacco-cessation counseling conversation.
+
+CONVERSATION:
+Patient: Hi
+Counselor: Hello! I'm eDOSTHI, your friendly AI guide to quitting smoking. What brings you here today? Are you thinking of quitting or looking for support?
+Patient: I want to quit smoking for good because I want to improve my health
+Counselor: That's a great motivation! How does the thought of improving your health make you feel, and what specific changes do you hope to see in your life once you've quit smoking?
+
+Extract all prior quit attempts the patient mentions, including:
+- Method used (patch, cold turkey etc.)
+- Duration of the attempt
+- Reason for relapse (if mentioned)
+
+Respond ONLY with valid JSON:
+{
+  "attempts": ["<attempt description 1>", "<attempt description 2>"],
+  "evidence": ["<quote/paraphrase supporting advice 1>", "<quote supporting advice 2>"]
+}
+
+
+RESPONSE:
+```json
+{
+  "attempts": [],
+  "evidence": ["Patient: I want to quit smoking for good because I want to improve my health"]
+}
+```
+
+================================================================================
+OLLAMA CALL 0004
+================================================================================
+timestamp: 2026-04-14T07:03:48.758490+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are an expert smoking-trigger extractor analyzing a tobacco-cessation counseling conversation.
+
+Task:
+Identify all distinct triggers that lead the patient to smoke.
+
+Conversation:
+Patient: Hi
+Counselor: Hello! I'm eDOSTHI, your friendly AI guide to quitting smoking. What brings you here today? Are you thinking of quitting or looking for support?
+Patient: I want to quit smoking for good because I want to improve my health
+Counselor: That's a great motivation! How does the thought of improving your health make you feel, and what specific changes do you hope to see in your life once you've quit smoking?
+
+Guidelines:
+
+Extract only triggers explicitly mentioned or clearly implied.
+Triggers are situations, emotions, activities, or contexts that prompt smoking.
+Examples include: stress, work pressure, after meals, morning routine, coffee/tea, social situations, boredom, alcohol use.
+Avoid duplicates or overly similar entries.
+Keep each trigger concise (1–4 words).
+If no triggers are found, return "unknown".
+
+Respond ONLY with valid JSON:
+{
+  "triggers": ["<trigger 1>", "<trigger 2>", ...],
+  "concern": ["<quote/paraphrase supporting trigger 1>", "<quote supporting trigger 2>", ...]
+}
+
+
+RESPONSE:
+```json
+{
+  "triggers": ["improving health", "specific changes"],
+  "concern": ["want to improve my health", "what specific changes do you hope to see"]
+}
+```
+
+================================================================================
+OLLAMA CALL 0005
+================================================================================
+timestamp: 2026-04-14T07:03:50.410197+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a advice extractor analysing a tobacco-cessation counseling conversation.
+
+CONVERSATION:
+Patient: Hi
+Counselor: Hello! I'm eDOSTHI, your friendly AI guide to quitting smoking. What brings you here today? Are you thinking of quitting or looking for support?
+Patient: I want to quit smoking for good because I want to improve my health
+Counselor: That's a great motivation! How does the thought of improving your health make you feel, and what specific changes do you hope to see in your life once you've quit smoking?
+
+Extract every piece of cessation advice or recommendation given by the counselor.
+
+Rules:
+- Only include advice that is explicitly stated in the conversation.
+- Do NOT invent or infer advice that was not said.
+- For each piece of advice, provide a direct quote or paraphrase as evidence.
+
+Respond ONLY with valid JSON:
+{
+  "advice": ["<advice item 1>", "<advice item 2>", ...],
+  "evidence": ["<quote/paraphrase supporting advice 1>", "<quote supporting advice 2>", ...],
+}
+
+
+RESPONSE:
+```json
+{
+  "advice": [
+    "That's a great motivation!",
+    "What specific changes do you hope to see in your life once you've quit smoking?"
+  ],
+  "evidence": [
+    "Counselor: That's a great motivation!",
+    "Counselor: How does the thought of improving your health make you feel, and what specific changes do you hope to see in your life once you've quit smoking?"
+  ]
+}
+```
+
+================================================================================
+OLLAMA CALL 0006
+================================================================================
+timestamp: 2026-04-14T07:03:51.526834+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a smoking related concern extractor analysing a tobacco-cessation counseling conversation.
+
+CONVERSATION:
+Patient: Hi
+Counselor: Hello! I'm eDOSTHI, your friendly AI guide to quitting smoking. What brings you here today? Are you thinking of quitting or looking for support?
+Patient: I want to quit smoking for good because I want to improve my health
+Counselor: That's a great motivation! How does the thought of improving your health make you feel, and what specific changes do you hope to see in your life once you've quit smoking?
+
+Identify all barriers, fears, or concerns the patient expresses about quitting smoking.
+Common examples: weight gain, stress, withdrawal symptoms, social pressure, cost of medications.
+
+Only include concerns that are explicitly stated or strongly implied by the patient.
+
+Respond ONLY with valid JSON:
+{
+  "concerns": ["<concern 1>", "<concern 2>"],
+  "evidence": ["<quote/paraphrase supporting concern 1>", "<quote supporting concern 2>"],
+}
+
+
+RESPONSE:
+```json
+{
+  "concerns": ["health", "weight gain"],
+  "evidence": ["\"I want to quit smoking for good because I want to improve my health\"", "The patient's stated motivation is centered around improving their health, implicitly suggesting a concern about the negative health consequences of smoking."]
+}
+```
+
+================================================================================
+OLLAMA CALL 0007
+================================================================================
+timestamp: 2026-04-14T07:03:52.712748+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a clinical psychologist specialising in the Transtheoretical Model (TTM) of behaviour change.
+
+CONVERSATION:
+Patient: Hi
+Counselor: Hello! I'm eDOSTHI, your friendly AI guide to quitting smoking. What brings you here today? Are you thinking of quitting or looking for support?
+Patient: I want to quit smoking for good because I want to improve my health
+Counselor: That's a great motivation! How does the thought of improving your health make you feel, and what specific changes do you hope to see in your life once you've quit smoking?
+
+Classify the patient's current stage of change for smoking cessation.
+
+Stages:
+- precontemplation : not considering quitting in the next 6 months
+- contemplation    : considering quitting in the next 6 months but not committed
+- preparation      : planning to quit within 30 days, may have taken small steps
+- action           : has quit for less than 6 months
+- maintenance      : has quit for 6 months or more
+- relapse          : had quit but resumed smoking
+
+Cite specific evidence from the conversation to justify your classification.
+
+Respond ONLY with valid JSON:
+{
+  "readiness_stage": "<one of the six stages above>",
+  "evidence": "<one or two sentences from the conversation that justify this classification>"
+}
+
+
+RESPONSE:
+```json
+{
+  "readiness_stage": "contemplation",
+  "evidence": "The patient stated 'I want to quit smoking for good because I want to improve my health,' indicating they are considering quitting (contemplation) but haven't yet made a firm commitment or taken concrete steps."
+}
+```
+
+================================================================================
+OLLAMA CALL 0008
+================================================================================
+timestamp: 2026-04-14T07:03:54.802948+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a very strict clinical data validator. Compare the EXTRACTED DATA against the CONVERSATION.
+
+CONVERSATION:
+Patient: Hi
+Counselor: Hello! I'm eDOSTHI, your friendly AI guide to quitting smoking. What brings you here today? Are you thinking of quitting or looking for support?
+Patient: I want to quit smoking for good because I want to improve my health
+Counselor: That's a great motivation! How does the thought of improving your health make you feel, and what specific changes do you hope to see in your life once you've quit smoking?
+
+EXTRACTED DATA (attempt):
+{'attempts': [], 'evidence': ['Patient: I want to quit smoking for good because I want to improve my health']}
+
+Your task:
+1. Very Strictly Check for hallucinations (data not in the text).
+2. Very Strictly Check for omissions (important data missed).
+3. Assign a confidence score between 0.0 and 1.0.
+
+Respond ONLY with valid JSON:
+{
+  "confidence": 0.0,
+  "issues": ["<issue 1>", "..."]
+}
+
+
+RESPONSE:
+```json
+{
+  "confidence": 0.2,
+  "issues": ["Hallucination: The extracted data includes 'attempts' which is not present in the conversation.", "Omission: The conversation contains the patient's stated motivation ('I want to quit smoking for good because I want to improve my health') but this is only a single extracted evidence item. A more comprehensive extraction would include the counselor's response and the follow-up questions regarding feelings and desired changes."]
+}
+```
+
+================================================================================
+OLLAMA CALL 0009
+================================================================================
+timestamp: 2026-04-14T07:03:58.521171+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a clinical annotation critic reviewing an extraction from a tobacco-cessation counseling conversation.
+
+CONVERSATION:
+Patient: Hi
+Counselor: Hello! I'm eDOSTHI, your friendly AI guide to quitting smoking. What brings you here today? Are you thinking of quitting or looking for support?
+Patient: I want to quit smoking for good because I want to improve my health
+Counselor: That's a great motivation! How does the thought of improving your health make you feel, and what specific changes do you hope to see in your life once you've quit smoking?
+
+CURRENT EXTRACTION (attempt):
+{'attempts': [], 'evidence': ['Patient: I want to quit smoking for good because I want to improve my health']}
+
+Your task:
+1. Identify any inaccuracies, hallucinations, omissions, or unsupported claims.
+2. Suggest specific improvements.
+3. Decide if the extraction is now acceptable.
+
+Respond ONLY with valid JSON:
+{
+  "issues": ["<issue 1>", "..."],
+  "suggestions": ["<suggestion 1>", "..."],
+  "agreement_reached": true,
+  "severity": "none"
+}
+
+
+RESPONSE:
+```json
+{
+  "issues": ["The current extraction is overly simplistic and doesn't capture the full context of the patient's statement. It only includes a single sentence and doesn't convey the patient's motivation or the counselor's response. It misses the crucial follow-up question from the counselor regarding health-related feelings and desired changes.", "The 'attempts' field is empty, which is misleading given the single extracted sentence. It should reflect the process of extraction, not just a boolean flag."],
+  "suggestions": ["Expand the extraction to include the counselor's response: `{'attempts': [], 'evidence': ['Patient: I want to quit smoking for good because I want to improve my health', 'Counselor: That’s a great motivation! How does the thought of improving your health make you feel, and what specific changes do you hope to see in your life once you’ve quit smoking?']}`"],
+  "agreement_reached": false,
+  "severity": "high"
+}
+```
+
+================================================================================
+OLLAMA CALL 0010
+================================================================================
+timestamp: 2026-04-14T07:04:00.497071+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a clinical annotation reviser.
+
+CONVERSATION:
+Patient: Hi
+Counselor: Hello! I'm eDOSTHI, your friendly AI guide to quitting smoking. What brings you here today? Are you thinking of quitting or looking for support?
+Patient: I want to quit smoking for good because I want to improve my health
+Counselor: That's a great motivation! How does the thought of improving your health make you feel, and what specific changes do you hope to see in your life once you've quit smoking?
+
+PREVIOUS EXTRACTION (attempt):
+{'attempts': [], 'evidence': ['Patient: I want to quit smoking for good because I want to improve my health']}
+
+CRITIC FEEDBACK:
+{'issues': ["The current extraction is overly simplistic and doesn't capture the full context of the patient's statement. It only includes a single sentence and doesn't convey the patient's motivation or the counselor's response. It misses the crucial follow-up question from the counselor regarding health-related feelings and desired changes.", "The 'attempts' field is empty, which is misleading given the single extracted sentence. It should reflect the process of extraction, not just a boolean flag."], 'suggestions': ["Expand the extraction to include the counselor's response: `{'attempts': [], 'evidence': ['Patient: I want to quit smoking for good because I want to improve my health', 'Counselor: That’s a great motivation! How does the thought of improving your health make you feel, and what specific changes do you hope to see in your life once you’ve quit smoking?']}`"], 'agreement_reached': False, 'severity': 'high'}
+
+Produce an improved extraction addressing all critic feedback.
+Keep the same JSON field names as the original extraction.
+Respond with ONLY a valid JSON object.
+
+
+RESPONSE:
+```json
+{
+  "attempts": [],
+  "evidence": [
+    "Patient: I want to quit smoking for good because I want to improve my health",
+    "Counselor: That’s a great motivation! How does the thought of improving your health make you feel, and what specific changes do you hope to see in your life once you’ve quit smoking?"
+  ]
+}
+```
+
+================================================================================
+OLLAMA CALL 0011
+================================================================================
+timestamp: 2026-04-14T07:04:02.321749+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a very strict clinical data validator. Compare the EXTRACTED DATA against the CONVERSATION.
+
+CONVERSATION:
+Patient: Hi
+Counselor: Hello! I'm eDOSTHI, your friendly AI guide to quitting smoking. What brings you here today? Are you thinking of quitting or looking for support?
+Patient: I want to quit smoking for good because I want to improve my health
+Counselor: That's a great motivation! How does the thought of improving your health make you feel, and what specific changes do you hope to see in your life once you've quit smoking?
+
+EXTRACTED DATA (attempt):
+{'attempts': [], 'evidence': ['Patient: I want to quit smoking for good because I want to improve my health', 'Counselor: That’s a great motivation! How does the thought of improving your health make you feel, and what specific changes do you hope to see in your life once you’ve quit smoking?']}
+
+Your task:
+1. Very Strictly Check for hallucinations (data not in the text).
+2. Very Strictly Check for omissions (important data missed).
+3. Assign a confidence score between 0.0 and 1.0.
+
+Respond ONLY with valid JSON:
+{
+  "confidence": 0.0,
+  "issues": ["<issue 1>", "..."]
+}
+
+
+RESPONSE:
+```json
+{
+  "confidence": 0.85,
+  "issues": [
+    "Omission: The counselor's initial greeting and offer of assistance were not extracted.",
+    "Omission: The patient's initial response to the counselor's question ('Are you thinking of quitting or looking for support?') was not extracted."
+  ]
+}
+```
+
+================================================================================
+OLLAMA CALL 0012
+================================================================================
+timestamp: 2026-04-14T07:04:03.252134+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a very strict clinical data validator. Compare the EXTRACTED DATA against the CONVERSATION.
+
+CONVERSATION:
+Patient: Hi
+Counselor: Hello! I'm eDOSTHI, your friendly AI guide to quitting smoking. What brings you here today? Are you thinking of quitting or looking for support?
+Patient: I want to quit smoking for good because I want to improve my health
+Counselor: That's a great motivation! How does the thought of improving your health make you feel, and what specific changes do you hope to see in your life once you've quit smoking?
+
+EXTRACTED DATA (readiness):
+{'readiness_stage': 'contemplation', 'evidence': "The patient stated 'I want to quit smoking for good because I want to improve my health,' indicating they are considering quitting (contemplation) but haven't yet made a firm commitment or taken concrete steps."}
+
+Your task:
+1. Very Strictly Check for hallucinations (data not in the text).
+2. Very Strictly Check for omissions (important data missed).
+3. Assign a confidence score between 0.0 and 1.0.
+
+Respond ONLY with valid JSON:
+{
+  "confidence": 0.0,
+  "issues": ["<issue 1>", "..."]
+}
+
+
+RESPONSE:
+```json
+{
+  "confidence": 0.95,
+  "issues": []
+}
+```
+
+================================================================================
+OLLAMA CALL 0013
+================================================================================
+timestamp: 2026-04-14T07:04:05.495065+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a very strict clinical data validator. Compare the EXTRACTED DATA against the CONVERSATION.
+
+CONVERSATION:
+Patient: Hi
+Counselor: Hello! I'm eDOSTHI, your friendly AI guide to quitting smoking. What brings you here today? Are you thinking of quitting or looking for support?
+Patient: I want to quit smoking for good because I want to improve my health
+Counselor: That's a great motivation! How does the thought of improving your health make you feel, and what specific changes do you hope to see in your life once you've quit smoking?
+
+EXTRACTED DATA (concern):
+{'concerns': ['health', 'weight gain'], 'evidence': ['"I want to quit smoking for good because I want to improve my health"', "The patient's stated motivation is centered around improving their health, implicitly suggesting a concern about the negative health consequences of smoking."]}
+
+Your task:
+1. Very Strictly Check for hallucinations (data not in the text).
+2. Very Strictly Check for omissions (important data missed).
+3. Assign a confidence score between 0.0 and 1.0.
+
+Respond ONLY with valid JSON:
+{
+  "confidence": 0.0,
+  "issues": ["<issue 1>", "..."]
+}
+
+
+RESPONSE:
+```json
+{
+  "confidence": 0.95,
+  "issues": [
+    "Hallucination: The extracted data includes 'weight gain', which is not explicitly stated in the conversation. This is a hallucination.",
+    "Omission: The conversation clearly states the patient's motivation is to 'improve my health'. The extracted data correctly captures this, but a more detailed exploration of *why* improving health is important for the patient could be added for a more comprehensive extraction."
+  ]
+}
+```
+
+================================================================================
+OLLAMA CALL 0014
+================================================================================
+timestamp: 2026-04-14T07:04:06.802165+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a very strict clinical data validator. Compare the EXTRACTED DATA against the CONVERSATION.
+
+CONVERSATION:
+Patient: Hi
+Counselor: Hello! I'm eDOSTHI, your friendly AI guide to quitting smoking. What brings you here today? Are you thinking of quitting or looking for support?
+Patient: I want to quit smoking for good because I want to improve my health
+Counselor: That's a great motivation! How does the thought of improving your health make you feel, and what specific changes do you hope to see in your life once you've quit smoking?
+
+EXTRACTED DATA (triggers):
+{'triggers': ['improving health', 'specific changes'], 'evidence': []}
+
+Your task:
+1. Very Strictly Check for hallucinations (data not in the text).
+2. Very Strictly Check for omissions (important data missed).
+3. Assign a confidence score between 0.0 and 1.0.
+
+Respond ONLY with valid JSON:
+{
+  "confidence": 0.0,
+  "issues": ["<issue 1>", "..."]
+}
+
+
+RESPONSE:
+```json
+{
+  "confidence": 0.8,
+  "issues": ["Omission: The patient explicitly states their motivation is to 'quit smoking for good'. This is a key trigger and was not included."]
+}
+```
+
+================================================================================
+OLLAMA CALL 0015
+================================================================================
+timestamp: 2026-04-14T07:04:08.669299+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a very strict clinical data validator. Compare the EXTRACTED DATA against the CONVERSATION.
+
+CONVERSATION:
+Patient: Hi
+Counselor: Hello! I'm eDOSTHI, your friendly AI guide to quitting smoking. What brings you here today? Are you thinking of quitting or looking for support?
+Patient: I want to quit smoking for good because I want to improve my health
+Counselor: That's a great motivation! How does the thought of improving your health make you feel, and what specific changes do you hope to see in your life once you've quit smoking?
+
+EXTRACTED DATA (advice):
+{'advice': ["That's a great motivation!", "What specific changes do you hope to see in your life once you've quit smoking?"], 'evidence': ["Counselor: That's a great motivation!", "Counselor: How does the thought of improving your health make you feel, and what specific changes do you hope to see in your life once you've quit smoking?"]}
+
+Your task:
+1. Very Strictly Check for hallucinations (data not in the text).
+2. Very Strictly Check for omissions (important data missed).
+3. Assign a confidence score between 0.0 and 1.0.
+
+Respond ONLY with valid JSON:
+{
+  "confidence": 0.0,
+  "issues": ["<issue 1>", "..."]
+}
+
+
+RESPONSE:
+```json
+{
+  "confidence": 0.85,
+  "issues": [
+    "Omission: The patient's stated motivation - 'I want to quit smoking for good because I want to improve my health' - is not fully captured. While the counselor acknowledged the motivation, the core statement itself is missing from the 'advice' field."
+  ]
+}
+```
+
+================================================================================
+OLLAMA CALL 0016
+================================================================================
+timestamp: 2026-04-14T07:04:11.235132+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a clinical annotation specialist (voter 2 of 3).
+
+CONVERSATION:
+Patient: Hi
+Counselor: Hello! I'm eDOSTHI, your friendly AI guide to quitting smoking. What brings you here today? Are you thinking of quitting or looking for support?
+Patient: I want to quit smoking for good because I want to improve my health
+Counselor: That's a great motivation! How does the thought of improving your health make you feel, and what specific changes do you hope to see in your life once you've quit smoking?
+
+EXTRACTED SIGNALS:
+- Advice: {'advice': ["That's a great motivation!", "What specific changes do you hope to see in your life once you've quit smoking?"], 'evidence': ["Counselor: That's a great motivation!", "Counselor: How does the thought of improving your health make you feel, and what specific changes do you hope to see in your life once you've quit smoking?"], '_debate_rounds': 0, '_debate_converged': True}
+- Quit Attempts: {'attempts': [], 'evidence': ['Patient: I want to quit smoking for good because I want to improve my health', 'Counselor: That’s a great motivation! How does the thought of improving your health make you feel, and what specific changes do you hope to see in your life once you’ve quit smoking?'], '_debate_rounds': 1, '_debate_converged': True}
+- Readiness / Stage: {'readiness_stage': 'contemplation', 'evidence': "The patient stated 'I want to quit smoking for good because I want to improve my health,' indicating they are considering quitting (contemplation) but haven't yet made a firm commitment or taken concrete steps.", '_debate_rounds': 0, '_debate_converged': True}
+- Concerns: {'concerns': ['health', 'weight gain'], 'evidence': ['"I want to quit smoking for good because I want to improve my health"', "The patient's stated motivation is centered around improving their health, implicitly suggesting a concern about the negative health consequences of smoking."], '_debate_rounds': 0, '_debate_converged': True}
+- Triggers: {'triggers': ['improving health', 'specific changes'], 'evidence': [], '_debate_rounds': 0, '_debate_converged': True}
+
+Based on ALL the above signals, produce a unified clinical annotation.
+Be independent — do not anchor to previous voters.
+
+Respond ONLY with valid JSON:
+{
+  "stage_of_change": "precontemplation|contemplation|preparation|action|maintenance|relapse",
+  "main_concern": "<single most prominent barrier>",
+  "primary_trigger": "<most significant smoking trigger>",
+  "quit_attempt_history": "<concise summary of prior attempts>",
+  "recommended_intervention": ["<strategy 1>", "<strategy 2>", "..."]
+}
+
+
+RESPONSE:
+```json
+{
+  "stage_of_change": "contemplation",
+  "main_concern": "health",
+  "primary_trigger": "improving health",
+  "quit_attempt_history": "No prior quit attempts reported.",
+  "recommended_intervention": ["Explore the patient's specific health concerns and desired changes in detail.", "Help the patient articulate a clear vision of their life post-quit, focusing on the positive health benefits.", "Assess the patient's readiness to make a commitment to quitting."]
+}
+```
+
+================================================================================
+OLLAMA CALL 0017
+================================================================================
+timestamp: 2026-04-14T07:04:13.276754+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a clinical annotation specialist (voter 3 of 3).
+
+CONVERSATION:
+Patient: Hi
+Counselor: Hello! I'm eDOSTHI, your friendly AI guide to quitting smoking. What brings you here today? Are you thinking of quitting or looking for support?
+Patient: I want to quit smoking for good because I want to improve my health
+Counselor: That's a great motivation! How does the thought of improving your health make you feel, and what specific changes do you hope to see in your life once you've quit smoking?
+
+EXTRACTED SIGNALS:
+- Advice: {'advice': ["That's a great motivation!", "What specific changes do you hope to see in your life once you've quit smoking?"], 'evidence': ["Counselor: That's a great motivation!", "Counselor: How does the thought of improving your health make you feel, and what specific changes do you hope to see in your life once you've quit smoking?"], '_debate_rounds': 0, '_debate_converged': True}
+- Quit Attempts: {'attempts': [], 'evidence': ['Patient: I want to quit smoking for good because I want to improve my health', 'Counselor: That’s a great motivation! How does the thought of improving your health make you feel, and what specific changes do you hope to see in your life once you’ve quit smoking?'], '_debate_rounds': 1, '_debate_converged': True}
+- Readiness / Stage: {'readiness_stage': 'contemplation', 'evidence': "The patient stated 'I want to quit smoking for good because I want to improve my health,' indicating they are considering quitting (contemplation) but haven't yet made a firm commitment or taken concrete steps.", '_debate_rounds': 0, '_debate_converged': True}
+- Concerns: {'concerns': ['health', 'weight gain'], 'evidence': ['"I want to quit smoking for good because I want to improve my health"', "The patient's stated motivation is centered around improving their health, implicitly suggesting a concern about the negative health consequences of smoking."], '_debate_rounds': 0, '_debate_converged': True}
+- Triggers: {'triggers': ['improving health', 'specific changes'], 'evidence': [], '_debate_rounds': 0, '_debate_converged': True}
+
+Based on ALL the above signals, produce a unified clinical annotation.
+Be independent — do not anchor to previous voters.
+
+Respond ONLY with valid JSON:
+{
+  "stage_of_change": "precontemplation|contemplation|preparation|action|maintenance|relapse",
+  "main_concern": "<single most prominent barrier>",
+  "primary_trigger": "<most significant smoking trigger>",
+  "quit_attempt_history": "<concise summary of prior attempts>",
+  "recommended_intervention": ["<strategy 1>", "<strategy 2>", "..."]
+}
+
+
+RESPONSE:
+```json
+{
+  "stage_of_change": "contemplation",
+  "main_concern": "health",
+  "primary_trigger": "improving health",
+  "quit_attempt_history": "No prior quit attempts reported.",
+  "recommended_intervention": ["Explore the patient's specific health concerns and desired changes in detail.", "Help the patient articulate a clear vision of their life post-smoking, focusing on the positive health outcomes.", "Assess the patient's readiness to make a commitment to quitting."]
+}
+```
+
+================================================================================
+OLLAMA CALL 0018
+================================================================================
+timestamp: 2026-04-14T07:04:15.548551+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a clinical annotation specialist (voter 1 of 3).
+
+CONVERSATION:
+Patient: Hi
+Counselor: Hello! I'm eDOSTHI, your friendly AI guide to quitting smoking. What brings you here today? Are you thinking of quitting or looking for support?
+Patient: I want to quit smoking for good because I want to improve my health
+Counselor: That's a great motivation! How does the thought of improving your health make you feel, and what specific changes do you hope to see in your life once you've quit smoking?
+
+EXTRACTED SIGNALS:
+- Advice: {'advice': ["That's a great motivation!", "What specific changes do you hope to see in your life once you've quit smoking?"], 'evidence': ["Counselor: That's a great motivation!", "Counselor: How does the thought of improving your health make you feel, and what specific changes do you hope to see in your life once you've quit smoking?"], '_debate_rounds': 0, '_debate_converged': True}
+- Quit Attempts: {'attempts': [], 'evidence': ['Patient: I want to quit smoking for good because I want to improve my health', 'Counselor: That’s a great motivation! How does the thought of improving your health make you feel, and what specific changes do you hope to see in your life once you’ve quit smoking?'], '_debate_rounds': 1, '_debate_converged': True}
+- Readiness / Stage: {'readiness_stage': 'contemplation', 'evidence': "The patient stated 'I want to quit smoking for good because I want to improve my health,' indicating they are considering quitting (contemplation) but haven't yet made a firm commitment or taken concrete steps.", '_debate_rounds': 0, '_debate_converged': True}
+- Concerns: {'concerns': ['health', 'weight gain'], 'evidence': ['"I want to quit smoking for good because I want to improve my health"', "The patient's stated motivation is centered around improving their health, implicitly suggesting a concern about the negative health consequences of smoking."], '_debate_rounds': 0, '_debate_converged': True}
+- Triggers: {'triggers': ['improving health', 'specific changes'], 'evidence': [], '_debate_rounds': 0, '_debate_converged': True}
+
+Based on ALL the above signals, produce a unified clinical annotation.
+Be independent — do not anchor to previous voters.
+
+Respond ONLY with valid JSON:
+{
+  "stage_of_change": "precontemplation|contemplation|preparation|action|maintenance|relapse",
+  "main_concern": "<single most prominent barrier>",
+  "primary_trigger": "<most significant smoking trigger>",
+  "quit_attempt_history": "<concise summary of prior attempts>",
+  "recommended_intervention": ["<strategy 1>", "<strategy 2>", "..."]
+}
+
+
+RESPONSE:
+```json
+{
+  "stage_of_change": "contemplation",
+  "main_concern": "health",
+  "primary_trigger": "improving health",
+  "quit_attempt_history": "No prior quit attempts reported.",
+  "recommended_intervention": [
+    "Explore the patient's specific health concerns and potential negative consequences of continued smoking in detail.",
+    "Help the patient articulate a clear vision of the positive changes they desire once they quit smoking.",
+    "Assess the patient's readiness to take action and address any ambivalence."
+  ]
+}
+```
+
+================================================================================
+OLLAMA CALL 0019
+================================================================================
+timestamp: 2026-04-14T07:04:19.243222+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a clinical reasoning specialist producing the final annotation for a tobacco-cessation training dataset.
+
+CONVERSATION:
+Patient: Hi
+Counselor: Hello! I'm eDOSTHI, your friendly AI guide to quitting smoking. What brings you here today? Are you thinking of quitting or looking for support?
+Patient: I want to quit smoking for good because I want to improve my health
+Counselor: That's a great motivation! How does the thought of improving your health make you feel, and what specific changes do you hope to see in your life once you've quit smoking?
+
+CONSENSUS ANNOTATION:
+{'stage_of_change': 'contemplation', 'main_concern': 'health', 'primary_trigger': 'improving health', 'quit_attempt_history': 'No prior quit attempts reported.', 'recommended_intervention': ["Explore the patient's specific health concerns and desired changes in detail.", 'Help the patient articulate a clear vision of their life post-quit, focusing on the positive health benefits.', "Assess the patient's readiness to make a commitment to quitting.", 'Help the patient articulate a clear vision of their life post-smoking, focusing on the positive health outcomes.', "Explore the patient's specific health concerns and potential negative consequences of continued smoking in detail.", 'Help the patient articulate a clear vision of the positive changes they desire once they quit smoking.', "Assess the patient's readiness to take action and address any ambivalence."], 'vote_agreement': 1.0, 'dissenting_fields': []}
+
+Your tasks:
+1. Validate that the consensus annotation is internally consistent and supported by the conversation.
+2. Write a reasoning_summary: 1–2 sentences that explain WHY this patient is at this stage,
+   what their primary barrier is, and what intervention approach is recommended.
+
+Respond ONLY with valid JSON:
+{
+  "stage_of_change": "<from consensus>",
+  "main_concern": "<from consensus>",
+  "primary_trigger": "<from consensus>",
+  "quit_attempt_history": "<from consensus>",
+  "recommended_intervention": ["<strategy 1>", "..."],
+  "reasoning_summary": "<1–2 sentence clinical rationale>",
+  "confidence_score": 0.0
+}
+
+
+RESPONSE:
+```json
+{
+  "stage_of_change": "contemplation",
+  "main_concern": "health",
+  "primary_trigger": "improving health",
+  "quit_attempt_history": "No prior quit attempts reported.",
+  "recommended_intervention": [
+    "Explore the patient's specific health concerns and desired changes in detail.",
+    "Help the patient articulate a clear vision of their life post-quit, focusing on the positive health benefits.",
+    "Assess the patient's readiness to make a commitment to quitting."
+  ],
+  "reasoning_summary": "The patient explicitly states a desire to quit for health reasons, indicating they are in the contemplation stage. The counselor's response focuses on exploring the patient's health concerns and helping them visualize a healthier future, aligning with motivational interviewing techniques for this stage.",
+  "confidence_score": 1.0
+}
+```

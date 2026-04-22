@@ -1,0 +1,8 @@
+=== LLM Response Log — 20260416_170046 ===
+
+--- [REVISION] prompt_advice @ 17:00:46.841 ---
+"You are a clinical annotation reviser.\n\nORIGINAL CONVERSATION:\nYou should try nicotine replacement therapy and also try to manage stress.\n\nORIGINAL EXTRACTION:\n{'advice': ['try nicotine gum']}\n\nREVIEWER FEEDBACK:\nMissing advice about stress management\n\nProduce a corrected advice extraction that addresses all reviewer feedback.\n- Remove any hallucinated items.\n- Add any omitted items that are genuinely present in the conversation.\n- Keep the same JSON field structure.\n- Update the confidence score to reflect your certainty in the revised output.\n\nRespond ONLY with valid JSON:\n{\n  \"advice\": [\"<corrected advice 1>\", \"...\"],\n  \"evidence\": [\"<supporting evidence 1>\", \"...\"],\n  \"confidence\": 0.0\n}\n"
+
+--- [REVISION] response_advice @ 17:00:48.763 ---
+"```json\n{\n  \"advice\": [\"try nicotine replacement therapy\", \"manage stress\"],\n  \"evidence\": [\"You should try nicotine replacement therapy and also try to manage stress.\"],\n  \"confidence\": 1.0\n}\n```"
+

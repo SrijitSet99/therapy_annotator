@@ -1,0 +1,39 @@
+=== LLM Response Log — 20260416_182645 ===
+
+--- [CONFIDENCE_CHECK] attempt @ 18:26:49.748 ---
+{
+  "confidence": 0.5,
+  "issues": [
+    "Grounding & Veracity: The statement 'Patient has tried to quit twice.' is directly grounded in the source text. No logical leaps detected.",
+    "Hallucination Check: No data points exist in the source text that are not present in the extraction.",
+    "Sensitivity (Omission) Check: The source text lacks specific details regarding the types of attempts (Cold Turkey, NRT, etc.) or durations. This represents a potential omission, though the extraction itself is faithful to the provided text.",
+    "Taxonomy Alignment: While the extraction accurately reflects the patient's statement, it lacks the crucial 'attempt_type' field. This is a significant area for improvement and represents a failure to adhere to clinical standards."
+  ]
+}
+
+--- [CONFIDENCE_CHECK] readiness @ 18:26:51.323 ---
+{
+  "confidence": 0.9,
+  "issues": []
+}
+
+--- [CONFIDENCE_CHECK] concern @ 18:26:53.115 ---
+{
+  "confidence": 0.5,
+  "issues": []
+}
+
+--- [CONFIDENCE_CHECK] triggers @ 18:26:56.324 ---
+{
+  "confidence": 0.8,
+  "issues": [
+    "{'category': 'Grounding Check', 'description': \"The trigger 'past failures' is strongly implied but could benefit from explicit confirmation. While the patient's attempts to quit twice suggest past failures, explicitly stating 'past failures' would improve grounding.\", 'recommendation': \"Consider adding 'past failures' to the triggers if the annotator feels it's a strong inference. Otherwise, this is a minor point.\"}"
+  ]
+}
+
+--- [CONFIDENCE_CHECK] advice @ 18:26:57.828 ---
+{
+  "confidence": 0.95,
+  "issues": []
+}
+

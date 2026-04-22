@@ -1,0 +1,49 @@
+=== LLM Response Log — 20260416_165652 ===
+
+=== LLM Response Log — 20260416_165652 ===
+
+--- [CONFIDENCE_CHECK] attempt @ 16:56:57.602 ---
+{
+  "confidence": 0.3,
+  "issues": [
+    "Grounding & Veracity: The statement 'Patient attempted to gradually reduce smoking with the intention to quit.' is an assumption based on the counselor's positive affirmation ('You've taken the first step towards quitting smoking'). There is no explicit statement from the patient indicating a reduction attempt. This represents a logical leap.",
+    "Hallucination Check: The extraction includes 'Patient attempted to temporarily abstain for a short period.' This statement is not present in the source text. It's a hallucination.",
+    "Sensitivity (Omission) Check: The source text contains the key phrase 'want to kick the habit,' which directly relates to a quit attempt. However, the extraction doesn't explicitly capture this phrasing, representing a potential omission.",
+    "Taxonomy Alignment: While the extracted attempts relate to behavioral intention, the extraction lacks specific details about the *type* of attempt (e.g., behavioral support).  The provided data is too general to accurately categorize."
+  ]
+}
+
+--- [CONFIDENCE_CHECK] readiness @ 16:57:01.371 ---
+{
+  "confidence": 0.8,
+  "issues": [
+    "{'category': 'Grounding Check', 'description': \"The extraction claims the patient is in 'contemplation' based on the initial 'hi'. While the patient's response is minimal, labeling it definitively as 'contemplation' is a slight inference. It's more accurately described as initial engagement or a simple greeting.  The counselor's follow-up question strengthens the possibility of contemplation, but doesn't confirm it.\", 'recommendation': \"Rephrase 'contemplation' to 'initial engagement' or 'greeting' for greater grounding.\"}"
+  ]
+}
+
+--- [CONFIDENCE_CHECK] concern @ 16:57:05.100 ---
+{
+  "confidence": 0.75,
+  "issues": [
+    "Implicit Concern Detection: The patient's initial question, 'What motivated you to want to kick the habit?' represents an implicit concern regarding the potential difficulties and anxieties associated with quitting. While not explicitly stated as a fear, it\u2019s a direct probe into the patient\u2019s worries. This could be strengthened with a more detailed assessment of their anticipated challenges.",
+    "Severity Calibration: The extraction doesn't fully capture the potential intensity of the patient's motivation. The underlying reason for wanting to quit likely involves significant anxiety and apprehension, which isn't fully reflected in the current categorization."
+  ]
+}
+
+--- [CONFIDENCE_CHECK] triggers @ 16:57:12.033 ---
+{
+  "confidence": 0.6,
+  "issues": [
+    "{'category': 'Omission Detection', 'description': \"The conversation explicitly states the patient's motivation is 'stress'. The extraction misses 'stress' as a trigger. This is a significant omission.\", 'phrase': \"You've taken the first step towards quitting smoking - that's amazing! What motivated you to want to kick the habit?\", 'trigger_type': 'stress'}",
+    "{'category': 'Grounding Check', 'description': \"The inclusion of 'after meals', 'morning routine', and 'boredom' lacks strong grounding in the conversation. While plausible motivations for quitting smoking, they are not directly mentioned or strongly implied by the counselor's initial statement. These appear to be assumptions.\", 'trigger': 'after meals', 'trigger_type': 'after meals'}",
+    "{'category': 'Grounding Check', 'description': \"Similarly, 'morning routine' and 'boredom' are not directly supported by the conversation and represent an assumption.\", 'trigger': 'morning routine', 'trigger_type': 'morning routine'}",
+    "{'category': 'Grounding Check', 'description': \"The inclusion of 'boredom' is not grounded in the conversation and represents an assumption.\", 'trigger': 'boredom', 'trigger_type': 'boredom'}"
+  ]
+}
+
+--- [CONFIDENCE_CHECK] advice @ 16:57:13.616 ---
+{
+  "confidence": 1.0,
+  "issues": []
+}
+

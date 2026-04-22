@@ -1,0 +1,30 @@
+=== LLM Response Log — 20260413_122552 ===
+
+=== LLM Response Log — 20260413_122552 ===
+
+=== LLM Response Log — 20260413_122552 ===
+
+=== LLM Response Log — 20260413_122552 ===
+
+=== LLM Response Log — 20260413_122552 ===
+
+=== LLM Response Log — 20260413_122552 ===
+
+--- [ADVICE] prompt @ 12:26:01.132 ---
+"You are a advice extractor analysing a tobacco-cessation counseling conversation.\n\nCONVERSATION:\nPatient: hi\nCounselor: Hi! I'm eDOSTHI, your motivational interviewing chatbot. I'm here to help you quit smoking. What brings you to this moment, and what's your motivation to quit?\n\nExtract every piece of cessation advice or recommendation given by the counselor.\n\nRules:\n- Only include advice that is explicitly stated in the conversation.\n- Do NOT invent or infer advice that was not said.\n- For each piece of advice, provide a direct quote or paraphrase as evidence.\n\nRespond ONLY with valid JSON:\n{\n  \"advice\": [\"<advice item 1>\", \"<advice item 2>\"],\n  \"evidence\": [\"<quote/paraphrase supporting advice 1>\", \"<quote supporting advice 2>\"],\n}\n"
+
+--- [PROMPT] attempt @ 12:26:01.133 ---
+"You are an smoking-quitting attempt extractor analysing a tobacco-cessation counseling conversation.\n\nCONVERSATION:\nPatient: hi\nCounselor: Hi! I'm eDOSTHI, your motivational interviewing chatbot. I'm here to help you quit smoking. What brings you to this moment, and what's your motivation to quit?\n\nExtract all prior quit attempts the patient mentions, including:\n- Method used (patch, cold turkey etc.)\n- Duration of the attempt\n- Reason for relapse (if mentioned)\n\nRespond ONLY with valid JSON:\n{\n  \"attempts\": [\"<attempt description 1>\", \"<attempt description 2>\"],\n  \"most_recent_attempt\": \"<most recent attempt or null>\",\n  \"longest_attempt\": \"<longest attempt or null>\",\n}\n"
+
+--- [CONCERN] prompt @ 12:26:01.134 ---
+"You are a smoking related concern extractor analysing a tobacco-cessation counseling conversation.\n\nCONVERSATION:\nPatient: hi\nCounselor: Hi! I'm eDOSTHI, your motivational interviewing chatbot. I'm here to help you quit smoking. What brings you to this moment, and what's your motivation to quit?\n\nIdentify all barriers, fears, or concerns the patient expresses about quitting smoking.\nCommon examples: weight gain, stress, withdrawal symptoms, social pressure, cost of medications.\n\nOnly include concerns that are explicitly stated or strongly implied by the patient.\n\nRespond ONLY with valid JSON:\n{\n  \"concerns\": [\"<concern 1>\", \"<concern 2>\"],\n  \"primary_concern\": \"<the single most prominent concern, or null if unclear>\",\n}\n"
+
+--- [READINESS] prompt @ 12:26:01.136 ---
+"You are a clinical psychologist specialising in the Transtheoretical Model (TTM) of behaviour change.\n\nCONVERSATION:\nPatient: hi\nCounselor: Hi! I'm eDOSTHI, your motivational interviewing chatbot. I'm here to help you quit smoking. What brings you to this moment, and what's your motivation to quit?\n\nClassify the patient's current stage of change for smoking cessation.\n\nStages:\n- precontemplation : not considering quitting in the next 6 months\n- contemplation    : considering quitting in the next 6 months but not committed\n- preparation      : planning to quit within 30 days, may have taken small steps\n- action           : has quit for less than 6 months\n- maintenance      : has quit for 6 months or more\n- relapse          : had quit but resumed smoking\n\nCite specific evidence from the conversation to justify your classification.\n\nRespond ONLY with valid JSON:\n{\n  \"readiness_stage\": \"<one of the six stages above>\",\n  \"evidence\": \"<one or two sentences from the conversation that justify this classification>\"\n}\n"
+
+--- [TRIGGER] prompt @ 12:26:01.136 ---
+"You are an expert smoking-trigger extractor analyzing a tobacco-cessation counseling conversation.\n\nTask:\nIdentify all distinct triggers that lead the patient to smoke.\n\nConversation:\nPatient: hi\nCounselor: Hi! I'm eDOSTHI, your motivational interviewing chatbot. I'm here to help you quit smoking. What brings you to this moment, and what's your motivation to quit?\n\nGuidelines:\n\nExtract only triggers explicitly mentioned or clearly implied.\nTriggers are situations, emotions, activities, or contexts that prompt smoking.\nExamples include: stress, work pressure, after meals, morning routine, coffee/tea, social situations, boredom, alcohol use.\nAvoid duplicates or overly similar entries.\nKeep each trigger concise (1\u20134 words).\nIf no triggers are found, return \"unknown\".\n\nRespond ONLY with valid JSON:\n{\n  \"triggers\": [\"<trigger 1>\", \"<trigger 2>\"],\n}\n"
+
+--- [CONFIDENCE] prompt @ 12:26:06.936 ---
+"You are a very strict clinical data validator. Compare the EXTRACTED DATA against the CONVERSATION.\n\nCONVERSATION:\nPatient: hi\nCounselor: Hi! I'm eDOSTHI, your motivational interviewing chatbot. I'm here to help you quit smoking. What brings you to this moment, and what's your motivation to quit?\n\nEXTRACTED DATA (attempt):\n{'attempts': [], 'most_recent_attempt': None, 'longest_attempt': None}\n\nYour task:\n1. Very Strictly Check for hallucinations (data not in the text).\n2. Very Strictly Check for omissions (important data missed).\n3. Assign a confidence score between 0.0 and 1.0.\n\nRespond ONLY with valid JSON:\n{\n  \"confidence\": 0.0,\n  \"issues\": [\"<issue 1>\", \"...\"]\n}\n"
+

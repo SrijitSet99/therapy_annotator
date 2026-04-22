@@ -1,0 +1,314 @@
+{
+  "events": {
+    "agent_manager": {
+      "confidence_result": {
+        "advice": {
+          "confidence": 0.2,
+          "issues": [
+            "Missing motivation for quitting. The conversation explicitly asks 'What's your motivation for quitting today?' and the extracted data contains an empty list for 'advice'."
+          ],
+          "severity": "none"
+        },
+        "attempt": {
+          "confidence": 0.1,
+          "issues": [
+            "Missing Motivation: The conversation starts with asking about the patient's motivation for quitting, but this is not extracted.",
+            "Missing Goal: The chatbot's goal (quitting smoking) is not explicitly stated in the extracted data."
+          ],
+          "severity": "none"
+        },
+        "concern": {
+          "confidence": 0.2,
+          "issues": [
+            "Missing motivation for quitting. The conversation explicitly asks 'What's your motivation for quitting today?' and the extracted data contains an empty list for 'concerns' which is a critical omission."
+          ],
+          "severity": "none"
+        },
+        "readiness": {
+          "confidence": 0.85,
+          "issues": [
+            "The hallucination of 'precontemplation' is a significant issue. The conversation only contains a greeting. Assigning a readiness stage based solely on a 'hi' is an unsupported inference.",
+            "Omission: The conversation lacks any indication of the patient's current smoking habits (e.g., how long they've smoked, number of cigarettes, etc.). This is crucial context for assessing readiness."
+          ],
+          "severity": "none"
+        },
+        "triggers": {
+          "confidence": 0.2,
+          "issues": [
+            "Hallucination: The extracted data includes triggers ('stress', 'after meals', 'morning routine', 'boredom') which were not mentioned in the conversation. The counselor only asked about the patient's motivation for quitting smoking.",
+            "Omission: The conversation provides no information about the patient's reasons for wanting to quit smoking, their current smoking habits, or any specific goals they have. This is a critical omission for a motivational interviewing chatbot."
+          ],
+          "severity": "none"
+        }
+      },
+      "confidence_results": {
+        "advice": {
+          "confidence": 0.2,
+          "issues": [
+            "Missing motivation for quitting. The conversation explicitly asks 'What's your motivation for quitting today?' and the extracted data contains an empty list for 'advice'."
+          ],
+          "severity": "none"
+        },
+        "attempt": {
+          "confidence": 0.1,
+          "issues": [
+            "Missing Motivation: The conversation starts with asking about the patient's motivation for quitting, but this is not extracted.",
+            "Missing Goal: The chatbot's goal (quitting smoking) is not explicitly stated in the extracted data."
+          ],
+          "severity": "none"
+        },
+        "concern": {
+          "confidence": 0.2,
+          "issues": [
+            "Missing motivation for quitting. The conversation explicitly asks 'What's your motivation for quitting today?' and the extracted data contains an empty list for 'concerns' which is a critical omission."
+          ],
+          "severity": "none"
+        },
+        "readiness": {
+          "confidence": 0.85,
+          "issues": [
+            "The hallucination of 'precontemplation' is a significant issue. The conversation only contains a greeting. Assigning a readiness stage based solely on a 'hi' is an unsupported inference.",
+            "Omission: The conversation lacks any indication of the patient's current smoking habits (e.g., how long they've smoked, number of cigarettes, etc.). This is crucial context for assessing readiness."
+          ],
+          "severity": "none"
+        },
+        "triggers": {
+          "confidence": 0.2,
+          "issues": [
+            "Hallucination: The extracted data includes triggers ('stress', 'after meals', 'morning routine', 'boredom') which were not mentioned in the conversation. The counselor only asked about the patient's motivation for quitting smoking.",
+            "Omission: The conversation provides no information about the patient's reasons for wanting to quit smoking, their current smoking habits, or any specific goals they have. This is a critical omission for a motivational interviewing chatbot."
+          ],
+          "severity": "none"
+        }
+      },
+      "extractor_output": {
+        "advice": {
+          "advice": [],
+          "evidence": null
+        },
+        "attempt": {
+          "attempts": [],
+          "evidence": null
+        },
+        "concern": {
+          "concerns": [],
+          "evidence": null
+        },
+        "readiness": {
+          "evidence": "The patient simply said 'hi,' indicating they haven't yet engaged with the topic of quitting smoking or expressed any intention to do so. The counselor's initial question about motivation suggests the patient hasn't yet seriously considered quitting.",
+          "readiness_stage": "precontemplation"
+        },
+        "triggers": {
+          "evidence": null,
+          "triggers": [
+            "stress",
+            "after meals",
+            "morning routine",
+            "boredom"
+          ]
+        }
+      },
+      "final_output": {
+        "advice": {
+          "_debate_converged": true,
+          "_debate_rounds": 1,
+          "advice": [
+            "Hi! I'm eDOSTHI, your motivational interviewing chatbot. I'm here to help you quit smoking. What’s your motivation for quitting today?"
+          ],
+          "evidence": null,
+          "speaker": "Counselor"
+        },
+        "attempt": {
+          "_debate_converged": true,
+          "_debate_rounds": 1,
+          "attempts": [],
+          "evidence": null
+        },
+        "concern": {
+          "_debate_converged": true,
+          "_debate_rounds": 1,
+          "concerns": [
+            "Patient's motivation for quitting is being explored"
+          ],
+          "evidence": "Conversation excerpt: Patient: hi Counselor: Hi! I'm eDOSTHI, your motivational interviewing chatbot. I'm here to help you quit smoking. What’s your motivation for quitting today?"
+        },
+        "readiness": {
+          "_debate_converged": true,
+          "_debate_rounds": 0,
+          "evidence": "The patient simply said 'hi,' indicating they haven't yet engaged with the topic of quitting smoking or expressed any intention to do so. The counselor's initial question about motivation suggests the patient hasn't yet seriously considered quitting.",
+          "readiness_stage": "precontemplation"
+        },
+        "triggers": {
+          "_debate_converged": true,
+          "_debate_rounds": 1,
+          "agreement_reached": false,
+          "evidence": "Patient: What's your motivation for quitting today?",
+          "intent": "Elicit patient's motivation for quitting smoking",
+          "severity": "high",
+          "triggers": [
+            "motivation for quitting"
+          ]
+        }
+      }
+    },
+    "consensus_agent": {
+      "output": {
+        "consensus": {
+          "dissenting_fields": [],
+          "main_concern": "Lack of expressed motivation to quit smoking",
+          "primary_trigger": "motivation for quitting",
+          "quit_attempt_history": "None reported",
+          "recommended_intervention": [
+            "Explore patient's reasons for wanting to quit.",
+            "Assess the patient's readiness to change.",
+            "Start with open-ended questions to understand their perspective.",
+            "Assess current smoking behaviors and attitudes.",
+            "Start with open-ended questions to understand the patient's perspective."
+          ],
+          "stage_of_change": "precontemplation",
+          "vote_agreement": 0.917
+        }
+      }
+    },
+    "longitudinal_sanity": {
+      "output": {
+        "longitudinal_sanity": {
+          "flags": [],
+          "passed": true,
+          "severity": "none"
+        }
+      }
+    },
+    "profile_update_agent": {
+      "output": {
+        "dataset_row": {
+          "confidence_score": null,
+          "debate_rounds_used": 4,
+          "inconsistencies": [],
+          "longitudinal_flags": [],
+          "longitudinal_sanity_passed": true,
+          "main_concern": "unknown",
+          "primary_trigger": "unknown",
+          "quit_attempt_history": "unknown",
+          "reasoning_summary": null,
+          "recommended_intervention": [],
+          "sanity_passed": true,
+          "session_number": 1,
+          "stage_of_change": "unknown",
+          "vote_agreement": 0.917
+        },
+        "longitudinal_output": {
+          "current_annotation": {
+            "confidence_score": null,
+            "debate_rounds_used": 4,
+            "inconsistencies": [],
+            "longitudinal_flags": [],
+            "longitudinal_sanity_passed": true,
+            "main_concern": "unknown",
+            "primary_trigger": "unknown",
+            "quit_attempt_history": "unknown",
+            "reasoning_summary": null,
+            "recommended_intervention": [],
+            "sanity_passed": true,
+            "session_number": 1,
+            "stage_of_change": "unknown",
+            "vote_agreement": 0.917
+          },
+          "delta": null,
+          "interventions_tried": [],
+          "longitudinal_flags": [],
+          "overall_progress": "unknown",
+          "patient_id": "d4987c05-3966-4974-b294-0afe37769c07",
+          "persistent_concerns": [],
+          "persistent_triggers": [],
+          "relapse_detected": false,
+          "session_number": 1,
+          "stage_trajectory": [
+            "unknown"
+          ],
+          "stagnation_detected": false
+        },
+        "patient_profile_id": "d4987c05-3966-4974-b294-0afe37769c07",
+        "session_count": 1
+      }
+    },
+    "reasoning_agent": {
+      "output": {
+        "dataset_row": {
+          "confidence_score": null,
+          "debate_rounds_used": 4,
+          "inconsistencies": [],
+          "main_concern": "unknown",
+          "primary_trigger": "unknown",
+          "quit_attempt_history": "unknown",
+          "reasoning_summary": null,
+          "recommended_intervention": [],
+          "sanity_passed": true,
+          "stage_of_change": "unknown",
+          "vote_agreement": 0.917
+        }
+      }
+    },
+    "run_chat": {
+      "final_result": {
+        "dataset_row": {
+          "confidence_score": null,
+          "debate_rounds_used": 4,
+          "inconsistencies": [],
+          "longitudinal_flags": [],
+          "longitudinal_sanity_passed": true,
+          "main_concern": "unknown",
+          "primary_trigger": "unknown",
+          "quit_attempt_history": "unknown",
+          "reasoning_summary": null,
+          "recommended_intervention": [],
+          "sanity_passed": true,
+          "session_number": 1,
+          "stage_of_change": "unknown",
+          "vote_agreement": 0.917
+        },
+        "longitudinal_output": {
+          "current_annotation": {
+            "confidence_score": null,
+            "debate_rounds_used": 4,
+            "inconsistencies": [],
+            "longitudinal_flags": [],
+            "longitudinal_sanity_passed": true,
+            "main_concern": "unknown",
+            "primary_trigger": "unknown",
+            "quit_attempt_history": "unknown",
+            "reasoning_summary": null,
+            "recommended_intervention": [],
+            "sanity_passed": true,
+            "session_number": 1,
+            "stage_of_change": "unknown",
+            "vote_agreement": 0.917
+          },
+          "delta": null,
+          "interventions_tried": [],
+          "longitudinal_flags": [],
+          "overall_progress": "unknown",
+          "patient_id": "d4987c05-3966-4974-b294-0afe37769c07",
+          "persistent_concerns": [],
+          "persistent_triggers": [],
+          "relapse_detected": false,
+          "session_number": 1,
+          "stage_trajectory": [
+            "unknown"
+          ],
+          "stagnation_detected": false
+        },
+        "patient_id": "d4987c05-3966-4974-b294-0afe37769c07",
+        "session_number": 1
+      },
+      "transcript": {
+        "session_id": "d4987c05-3966-4974-b294-0afe37769c07",
+        "transcript": "Patient: hi\nCounselor: Hi! I'm eDOSTHI, your motivational interviewing chatbot. I'm here to help you quit smoking. What's your motivation for quitting today?"
+      }
+    }
+  },
+  "meta": {
+    "session_id": "d4987c05-3966-4974-b294-0afe37769c07",
+    "started_at": "20260413T105330Z"
+  }
+}

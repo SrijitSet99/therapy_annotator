@@ -1,0 +1,385 @@
+{
+  "events": {
+    "agent_manager": {
+      "confidence_result": {
+        "advice": {
+          "confidence": 0.85,
+          "issues": [
+            "Minor omission: The patient's initial statement 'I want to quit smoking to improve my health' is not fully captured. While 'That's a great goal!' is present, the core motivation expressed by the patient is missing from the 'advice' field."
+          ],
+          "severity": "none"
+        },
+        "attempt": {
+          "confidence": 0.1,
+          "issues": [
+            "Hallucination: The extracted data claims 'attempts' and 'most_recent_attempt' are present, which is false.",
+            "Omission: The patient's stated motivation ('I want to quit smoking to improve my health') is completely missing from the extracted data.",
+            "Omission: The counselor's response confirming the goal and prompting for more detail is also missing."
+          ],
+          "severity": "none"
+        },
+        "concern": {
+          "confidence": 0.2,
+          "issues": [
+            "The extracted data includes 'weight gain', 'withdrawal symptoms', and 'stress' as concerns, but these were not explicitly stated in the conversation.",
+            "The primary concern is incorrectly identified as 'weight gain' when the patient's stated motivation was simply 'to improve my health'."
+          ],
+          "severity": "none"
+        },
+        "readiness": {
+          "confidence": 0.6,
+          "issues": [
+            "The statement about 'considering quitting within the next 6 months' is a hallucination. The conversation does not provide any information about the patient's timeline or commitment level.",
+            "The assessment of the counselor prompting for details as 'weighing pros and cons' is a reasonable interpretation but could be strengthened with more explicit evidence from the conversation. It's a slightly weak connection."
+          ],
+          "severity": "none"
+        },
+        "triggers": {
+          "confidence": 0.2,
+          "issues": [
+            "Hallucination: The extracted data includes 'stress', which was not mentioned in the conversation.",
+            "Omission: The patient explicitly stated 'improve my health' as their motivation. This is a key trigger that was not captured."
+          ],
+          "severity": "none"
+        }
+      },
+      "confidence_results": {
+        "advice": {
+          "confidence": 0.85,
+          "issues": [
+            "Minor omission: The patient's initial statement 'I want to quit smoking to improve my health' is not fully captured. While 'That's a great goal!' is present, the core motivation expressed by the patient is missing from the 'advice' field."
+          ],
+          "severity": "none"
+        },
+        "attempt": {
+          "confidence": 0.1,
+          "issues": [
+            "Hallucination: The extracted data claims 'attempts' and 'most_recent_attempt' are present, which is false.",
+            "Omission: The patient's stated motivation ('I want to quit smoking to improve my health') is completely missing from the extracted data.",
+            "Omission: The counselor's response confirming the goal and prompting for more detail is also missing."
+          ],
+          "severity": "none"
+        },
+        "concern": {
+          "confidence": 0.2,
+          "issues": [
+            "The extracted data includes 'weight gain', 'withdrawal symptoms', and 'stress' as concerns, but these were not explicitly stated in the conversation.",
+            "The primary concern is incorrectly identified as 'weight gain' when the patient's stated motivation was simply 'to improve my health'."
+          ],
+          "severity": "none"
+        },
+        "readiness": {
+          "confidence": 0.6,
+          "issues": [
+            "The statement about 'considering quitting within the next 6 months' is a hallucination. The conversation does not provide any information about the patient's timeline or commitment level.",
+            "The assessment of the counselor prompting for details as 'weighing pros and cons' is a reasonable interpretation but could be strengthened with more explicit evidence from the conversation. It's a slightly weak connection."
+          ],
+          "severity": "none"
+        },
+        "triggers": {
+          "confidence": 0.2,
+          "issues": [
+            "Hallucination: The extracted data includes 'stress', which was not mentioned in the conversation.",
+            "Omission: The patient explicitly stated 'improve my health' as their motivation. This is a key trigger that was not captured."
+          ],
+          "severity": "none"
+        }
+      },
+      "extractor_output": {
+        "advice": {
+          "advice": [
+            "Can you tell me more about what's driving your desire to improve your health? What specific benefits are you hoping to gain from quitting?",
+            "That's a great goal!"
+          ],
+          "evidence": [
+            "Counselor: Can you tell me more about what's driving your desire to improve your health? What specific benefits are you hoping to gain from quitting?",
+            "Counselor: That's a great goal!"
+          ]
+        },
+        "attempt": {
+          "attempts": [],
+          "longest_attempt": "null",
+          "most_recent_attempt": "null"
+        },
+        "concern": {
+          "concerns": [
+            "weight gain",
+            "withdrawal symptoms",
+            "stress"
+          ],
+          "primary_concern": "weight gain"
+        },
+        "readiness": {
+          "evidence": "The patient stated, \"I want to quit smoking to improve my health,\" indicating they are considering quitting within the next 6 months, which aligns with the contemplation stage. Furthermore, the counselor prompted for more detail about specific benefits, suggesting the patient is weighing the pros and cons of quitting.",
+          "readiness_stage": "contemplation"
+        },
+        "triggers": {
+          "triggers": [
+            "improve health",
+            "stress"
+          ]
+        }
+      },
+      "final_output": {
+        "advice": {
+          "_debate_converged": true,
+          "_debate_rounds": 0,
+          "advice": [
+            "Can you tell me more about what's driving your desire to improve your health? What specific benefits are you hoping to gain from quitting?",
+            "That's a great goal!"
+          ],
+          "evidence": [
+            "Counselor: Can you tell me more about what's driving your desire to improve your health? What specific benefits are you hoping to gain from quitting?",
+            "Counselor: That's a great goal!"
+          ]
+        },
+        "attempt": {
+          "_debate_converged": true,
+          "_debate_rounds": 3,
+          "attempts": [
+            "Patient: I want to quit smoking to improve my health. Counselor: That’s a great goal! Can you tell me more about what’s driving your desire to improve your health?"
+          ],
+          "confidence": 0.8,
+          "context": "initial_assessment",
+          "intent": "motivation_for_quitting",
+          "longest_attempt": "Patient: I want to quit smoking to improve my health. Counselor: That’s a great goal! Can you tell me more about what’s driving your desire to improve your health?",
+          "most_recent_attempt": "Patient: I want to quit smoking to improve my health. Counselor: That’s a great goal! Can you tell me more about what’s driving your desire to improve your health?",
+          "turn": "patient_counselor"
+        },
+        "concern": {
+          "_debate_converged": true,
+          "_debate_rounds": 1,
+          "concerns": [
+            "unspecified health benefits",
+            "unspecified concerns"
+          ],
+          "notes": "Prioritize the patient's stated motivation ('to improve my health') when extracting concerns.  'Withdrawal symptoms' and 'stress' were not mentioned and are therefore not valid concerns.",
+          "primary_concern": "unspecified health benefits"
+        },
+        "readiness": {
+          "_debate_converged": true,
+          "_debate_rounds": 1,
+          "evidence": "The patient explicitly stated their desire to quit smoking to 'improve my health,' demonstrating a clear consideration of cessation. The counselor's follow-up question regarding specific benefits reinforces this contemplation stage, as the patient is being prompted to articulate the potential positive outcomes of quitting.",
+          "readiness_stage": "contemplation"
+        },
+        "triggers": {
+          "_debate_converged": true,
+          "_debate_rounds": 1,
+          "triggers": [
+            "improve health",
+            "want to quit smoking"
+          ]
+        }
+      }
+    },
+    "consensus_agent": {
+      "output": {
+        "consensus": {
+          "dissenting_fields": [
+            "quit_attempt_history"
+          ],
+          "main_concern": "unspecified health benefits",
+          "primary_trigger": "improve health",
+          "quit_attempt_history": "Patient initially stated a desire to quit smoking to improve health. Counselor is exploring this motivation further.",
+          "recommended_intervention": [
+            "Explore specific health benefits the patient envisions.",
+            "Elaborate on the potential positive outcomes of quitting smoking.",
+            "Assess the patient's current understanding of the health risks associated with smoking.",
+            "Explore specific health benefits the patient desires (e.g., increased energy, reduced risk of disease).",
+            "Assess current health status and potential health risks associated with continued smoking.",
+            "Explore specific health benefits in detail.",
+            "Assess patient's current understanding of the health risks associated with smoking.",
+            "Collaboratively set specific, measurable, achievable, relevant, and time-bound (SMART) goals related to improved health."
+          ],
+          "stage_of_change": "contemplation",
+          "vote_agreement": 0.833
+        }
+      }
+    },
+    "longitudinal_sanity": {
+      "output": {
+        "longitudinal_sanity": {
+          "flags": [],
+          "passed": true,
+          "severity": "none"
+        }
+      }
+    },
+    "profile_update_agent": {
+      "output": {
+        "dataset_row": {
+          "confidence_score": 0.95,
+          "debate_rounds_used": 6,
+          "inconsistencies": [],
+          "longitudinal_flags": [],
+          "longitudinal_sanity_passed": true,
+          "main_concern": "unspecified health benefits",
+          "primary_trigger": "improve health",
+          "quit_attempt_history": "Patient initially stated a desire to quit smoking to improve health. Counselor is exploring this motivation further.",
+          "reasoning_summary": "The patient is in the contemplation stage, expressing a general desire to improve their health as a motivator for quitting. The counselor is appropriately using motivational interviewing techniques to delve deeper into the patient's specific health goals and potential barriers, recommending a detailed exploration of health benefits and risk assessment.",
+          "recommended_intervention": [
+            "Explore specific health benefits the patient envisions.",
+            "Elaborate on the potential positive outcomes of quitting smoking.",
+            "Assess the patient's current understanding of the health risks associated with smoking.",
+            "Explore specific health benefits the patient desires (e.g., increased energy, reduced risk of disease).",
+            "Assess current health status and potential health risks associated with continued smoking.",
+            "Explore specific health benefits in detail.",
+            "Assess patient's current understanding of the health risks associated with smoking.",
+            "Collaboratively set specific, measurable, achievable, relevant, and time-bound (SMART) goals related to improved health."
+          ],
+          "sanity_passed": true,
+          "session_number": 1,
+          "stage_of_change": "contemplation",
+          "vote_agreement": 0.833
+        },
+        "longitudinal_output": {
+          "current_annotation": {
+            "confidence_score": 0.95,
+            "debate_rounds_used": 6,
+            "inconsistencies": [],
+            "longitudinal_flags": [],
+            "longitudinal_sanity_passed": true,
+            "main_concern": "unspecified health benefits",
+            "primary_trigger": "improve health",
+            "quit_attempt_history": "Patient initially stated a desire to quit smoking to improve health. Counselor is exploring this motivation further.",
+            "reasoning_summary": "The patient is in the contemplation stage, expressing a general desire to improve their health as a motivator for quitting. The counselor is appropriately using motivational interviewing techniques to delve deeper into the patient's specific health goals and potential barriers, recommending a detailed exploration of health benefits and risk assessment.",
+            "recommended_intervention": [
+              "Explore specific health benefits the patient envisions.",
+              "Elaborate on the potential positive outcomes of quitting smoking.",
+              "Assess the patient's current understanding of the health risks associated with smoking.",
+              "Explore specific health benefits the patient desires (e.g., increased energy, reduced risk of disease).",
+              "Assess current health status and potential health risks associated with continued smoking.",
+              "Explore specific health benefits in detail.",
+              "Assess patient's current understanding of the health risks associated with smoking.",
+              "Collaboratively set specific, measurable, achievable, relevant, and time-bound (SMART) goals related to improved health."
+            ],
+            "sanity_passed": true,
+            "session_number": 1,
+            "stage_of_change": "contemplation",
+            "vote_agreement": 0.833
+          },
+          "delta": null,
+          "interventions_tried": [],
+          "longitudinal_flags": [],
+          "overall_progress": "unknown",
+          "patient_id": "91e51dd9-0521-4952-8eae-663049002b91",
+          "persistent_concerns": [],
+          "persistent_triggers": [],
+          "relapse_detected": false,
+          "session_number": 1,
+          "stage_trajectory": [
+            "contemplation"
+          ],
+          "stagnation_detected": false
+        },
+        "patient_profile_id": "91e51dd9-0521-4952-8eae-663049002b91",
+        "session_count": 1
+      }
+    },
+    "reasoning_agent": {
+      "output": {
+        "dataset_row": {
+          "confidence_score": 0.95,
+          "debate_rounds_used": 6,
+          "inconsistencies": [],
+          "main_concern": "unspecified health benefits",
+          "primary_trigger": "improve health",
+          "quit_attempt_history": "Patient initially stated a desire to quit smoking to improve health. Counselor is exploring this motivation further.",
+          "reasoning_summary": "The patient is in the contemplation stage, expressing a general desire to improve their health as a motivator for quitting. The counselor is appropriately using motivational interviewing techniques to delve deeper into the patient's specific health goals and potential barriers, recommending a detailed exploration of health benefits and risk assessment.",
+          "recommended_intervention": [
+            "Explore specific health benefits the patient envisions.",
+            "Elaborate on the potential positive outcomes of quitting smoking.",
+            "Assess the patient's current understanding of the health risks associated with smoking.",
+            "Explore specific health benefits the patient desires (e.g., increased energy, reduced risk of disease).",
+            "Assess current health status and potential health risks associated with continued smoking.",
+            "Explore specific health benefits in detail.",
+            "Assess patient's current understanding of the health risks associated with smoking.",
+            "Collaboratively set specific, measurable, achievable, relevant, and time-bound (SMART) goals related to improved health."
+          ],
+          "sanity_passed": true,
+          "stage_of_change": "contemplation",
+          "vote_agreement": 0.833
+        }
+      }
+    },
+    "run_chat": {
+      "final_result": {
+        "dataset_row": {
+          "confidence_score": 0.95,
+          "debate_rounds_used": 6,
+          "inconsistencies": [],
+          "longitudinal_flags": [],
+          "longitudinal_sanity_passed": true,
+          "main_concern": "unspecified health benefits",
+          "primary_trigger": "improve health",
+          "quit_attempt_history": "Patient initially stated a desire to quit smoking to improve health. Counselor is exploring this motivation further.",
+          "reasoning_summary": "The patient is in the contemplation stage, expressing a general desire to improve their health as a motivator for quitting. The counselor is appropriately using motivational interviewing techniques to delve deeper into the patient's specific health goals and potential barriers, recommending a detailed exploration of health benefits and risk assessment.",
+          "recommended_intervention": [
+            "Explore specific health benefits the patient envisions.",
+            "Elaborate on the potential positive outcomes of quitting smoking.",
+            "Assess the patient's current understanding of the health risks associated with smoking.",
+            "Explore specific health benefits the patient desires (e.g., increased energy, reduced risk of disease).",
+            "Assess current health status and potential health risks associated with continued smoking.",
+            "Explore specific health benefits in detail.",
+            "Assess patient's current understanding of the health risks associated with smoking.",
+            "Collaboratively set specific, measurable, achievable, relevant, and time-bound (SMART) goals related to improved health."
+          ],
+          "sanity_passed": true,
+          "session_number": 1,
+          "stage_of_change": "contemplation",
+          "vote_agreement": 0.833
+        },
+        "longitudinal_output": {
+          "current_annotation": {
+            "confidence_score": 0.95,
+            "debate_rounds_used": 6,
+            "inconsistencies": [],
+            "longitudinal_flags": [],
+            "longitudinal_sanity_passed": true,
+            "main_concern": "unspecified health benefits",
+            "primary_trigger": "improve health",
+            "quit_attempt_history": "Patient initially stated a desire to quit smoking to improve health. Counselor is exploring this motivation further.",
+            "reasoning_summary": "The patient is in the contemplation stage, expressing a general desire to improve their health as a motivator for quitting. The counselor is appropriately using motivational interviewing techniques to delve deeper into the patient's specific health goals and potential barriers, recommending a detailed exploration of health benefits and risk assessment.",
+            "recommended_intervention": [
+              "Explore specific health benefits the patient envisions.",
+              "Elaborate on the potential positive outcomes of quitting smoking.",
+              "Assess the patient's current understanding of the health risks associated with smoking.",
+              "Explore specific health benefits the patient desires (e.g., increased energy, reduced risk of disease).",
+              "Assess current health status and potential health risks associated with continued smoking.",
+              "Explore specific health benefits in detail.",
+              "Assess patient's current understanding of the health risks associated with smoking.",
+              "Collaboratively set specific, measurable, achievable, relevant, and time-bound (SMART) goals related to improved health."
+            ],
+            "sanity_passed": true,
+            "session_number": 1,
+            "stage_of_change": "contemplation",
+            "vote_agreement": 0.833
+          },
+          "delta": null,
+          "interventions_tried": [],
+          "longitudinal_flags": [],
+          "overall_progress": "unknown",
+          "patient_id": "91e51dd9-0521-4952-8eae-663049002b91",
+          "persistent_concerns": [],
+          "persistent_triggers": [],
+          "relapse_detected": false,
+          "session_number": 1,
+          "stage_trajectory": [
+            "contemplation"
+          ],
+          "stagnation_detected": false
+        },
+        "patient_id": "91e51dd9-0521-4952-8eae-663049002b91",
+        "session_number": 1
+      },
+      "transcript": {
+        "session_id": "91e51dd9-0521-4952-8eae-663049002b91",
+        "transcript": "Patient: Hi\nCounselor: Hi! I'm eDOSTHI, your motivational interviewing chatbot. I'm here to help you quit smoking. What's your motivation for quitting today?\nPatient: I want to quit smoking to improve my health\nCounselor: That's a great goal! Can you tell me more about what's driving your desire to improve your health? What specific benefits are you hoping to gain from quitting?"
+      }
+    }
+  },
+  "meta": {
+    "session_id": "91e51dd9-0521-4952-8eae-663049002b91",
+    "started_at": "20260413T053139Z"
+  }
+}

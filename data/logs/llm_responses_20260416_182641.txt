@@ -1,0 +1,25 @@
+=== LLM Response Log — 20260416_182641 ===
+
+--- [REVISION] attempt @ 18:26:43.306 ---
+{
+  "attempts": [
+    "Patient has tried to quit twice."
+  ],
+  "evidence": [
+    "I am worried about weight gain."
+  ]
+}
+
+--- [REVISION] concern @ 18:26:45.505 ---
+{
+  "concerns": [
+    "weight gain",
+    "previous quitting attempts",
+    "fear"
+  ],
+  "evidence": [
+    "I am worried about weight gain.",
+    "Patient has tried to quit twice."
+  ]
+}
+

@@ -1,0 +1,15 @@
+
+================================================================================
+OLLAMA CALL 0001
+================================================================================
+timestamp: 2026-04-13T05:46:01.312649+00:00
+status: success
+attempt: 1
+model: test-model
+temperature: 0.1
+
+PROMPT:
+PROMPT EXAMPLE
+
+RESPONSE:
+RESPONSE EXAMPLE

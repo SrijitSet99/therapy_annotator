@@ -1,0 +1,17 @@
+=== LLM Response Log — 20260416_194459 ===
+
+--- [REVISION] readiness @ 19:45:04.184 ---
+{
+  "readiness_stage": "unknown",
+  "evidence": null
+}
+
+--- [REVISION] triggers @ 19:45:05.652 ---
+{
+  "triggers": [
+    "stress",
+    "cravings"
+  ],
+  "evidence": []
+}
+

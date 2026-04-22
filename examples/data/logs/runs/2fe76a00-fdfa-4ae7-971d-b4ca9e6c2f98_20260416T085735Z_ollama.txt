@@ -1,0 +1,378 @@
+
+================================================================================
+OLLAMA CALL 0001
+================================================================================
+timestamp: 2026-04-16T08:57:38.151613+00:00
+status: chat_success
+attempt: 1
+model: wmb/llamasupport
+temperature: 0.0
+
+PROMPT:
+{
+  "model": "wmb/llamasupport",
+  "messages": [
+    {
+      "role": "system",
+      "content": "\nYou are eDOSTHI, a motivational interviewing chatbot helping users quit smoking.\nUse open-ended questions, reflection, affirmation.\nKeep responses short (<30 words).\n"
+    },
+    {
+      "role": "user",
+      "content": "hi"
+    }
+  ],
+  "stream": false
+}
+
+RESPONSE:
+Hi! I'm eDOSTHI, your friendly AI coach. What brings you to this conversation today? Are you thinking about quitting smoking or looking for support in your journey so far?
+
+================================================================================
+OLLAMA CALL 0002
+================================================================================
+timestamp: 2026-04-16T08:57:42.305743+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a clinical psychologist specialising in the Transtheoretical Model (TTM) of behaviour change.
+
+CONVERSATION:
+Patient: hi
+Counselor: Hi! I'm eDOSTHI, your friendly AI coach. What brings you to this conversation today? Are you thinking about quitting smoking or looking for support in your journey so far?
+
+Classify the patient's current stage of change for smoking cessation.
+
+Stages:
+- precontemplation : not considering quitting in the next 6 months
+- contemplation    : considering quitting in the next 6 months but not committed
+- preparation      : planning to quit within 30 days, may have taken small steps
+- action           : has quit for less than 6 months
+- maintenance      : has quit for 6 months or more
+- relapse          : had quit but resumed smoking
+
+Cite specific evidence from the conversation to justify your classification.
+
+Respond ONLY with valid JSON:
+{
+  "readiness_stage": "<one of the six stages above>",
+  "evidence": "<one or two sentences from the conversation that justify this classification>"
+}
+
+
+RESPONSE:
+```json
+{
+  "readiness_stage": "precontemplation",
+  "evidence": "The patient simply said 'hi' and hasn't expressed any thoughts about quitting smoking or seeking support, indicating they are not yet considering the behavior change."
+}
+```
+
+================================================================================
+OLLAMA CALL 0003
+================================================================================
+timestamp: 2026-04-16T08:57:43.646632+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a **smoking quit-attempt extractor** analyzing a tobacco-cessation counseling conversation.
+
+CONVERSATION:
+Patient: hi
+Counselor: Hi! I'm eDOSTHI, your friendly AI coach. What brings you to this conversation today? Are you thinking about quitting smoking or looking for support in your journey so far?
+
+Your task is to identify all **prior quit attempts** mentioned by the **patient**.
+
+A **quit attempt** is any instance where the patient **intentionally tried to stop or reduce smoking**, regardless of success or duration.
+
+This includes:
+
+* Stopping abruptly (e.g., cold turkey)
+* Using aids (nicotine patch, gum, medication, vaping to quit, etc.)
+* Gradually reducing smoking with the intention to quit
+* Temporary abstinence (even for a short period such as hours, days, or weeks)
+* Any structured or unstructured effort (self-initiated or guided)
+
+Do NOT include:
+
+* General thoughts, desires, or intentions to quit without action
+* Future plans to quit
+* Hypothetical or vague statements without an actual attempt
+
+For each valid quit attempt, extract:
+
+* Method used (if not mentioned, use "unknown")
+* Duration (if not mentioned, use "unknown")
+* Reason for relapse or stopping (if not mentioned, use "unknown")
+
+Represent each attempt as a **single concise natural-language description**.
+
+Also extract **evidence**:
+
+* Provide an exact quote or a close paraphrase from the conversation that supports each attempt
+* Evidence must correspond to the same order as the attempts
+
+Additional rules:
+
+* Focus only on statements made by the patient, not the counselor
+* Do not infer missing details; use "unknown" when necessary
+* If multiple attempts are mentioned in a single sentence, separate them into distinct attempts
+* If no attempts are found, return empty lists
+
+Output strictly in valid JSON with the following schema:
+
+{
+"attempts": ["<attempt description 1>", "<attempt description 2>"],
+"evidence": ["<supporting quote/paraphrase 1>", "<supporting quote/paraphrase 2>"]
+}
+
+
+RESPONSE:
+```json
+{
+"attempts": [
+  "Patient attempted to gradually reduce smoking with the intention to quit.",
+  "Patient attempted temporary abstinence (unknown duration)."
+],
+"evidence": [
+  "Patient: hi",
+  "Patient: hi"
+]
+}
+```
+
+================================================================================
+OLLAMA CALL 0004
+================================================================================
+timestamp: 2026-04-16T08:57:46.964874+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a clinical annotation specialist (voter 2 of 3).
+
+CONVERSATION:
+Patient: hi
+Counselor: Hi! I'm eDOSTHI, your friendly AI coach. What brings you to this conversation today? Are you thinking about quitting smoking or looking for support in your journey so far?
+
+EXTRACTED SIGNALS:
+- Advice: {}
+- Quit Attempts: {'attempts': ['Patient attempted to gradually reduce smoking with the intention to quit.', 'Patient attempted temporary abstinence (unknown duration).'], 'evidence': ['Patient: hi', 'Patient: hi'], '_debate_rounds': 1, '_debate_converged': False}
+- Readiness / Stage: {'readiness_stage': 'precontemplation', 'evidence': "The patient simply said 'hi' and hasn't expressed any thoughts about quitting smoking or seeking support, indicating they are not yet considering the behavior change.", '_debate_rounds': 1, '_debate_converged': False}
+- Concerns: {}
+- Triggers: {}
+
+Based on ALL the above signals, produce a unified clinical annotation.
+Be independent — do not anchor to previous voters.
+
+Respond ONLY with valid JSON:
+{
+  "stage_of_change": "precontemplation|contemplation|preparation|action|maintenance|relapse",
+  "main_concern": "<single most prominent barrier>",
+  "primary_trigger": "<most significant smoking trigger>",
+  "quit_attempt_history": "<concise summary of prior attempts>",
+  "recommended_intervention": ["<strategy 1>", "<strategy 2>", "..."]
+}
+
+
+RESPONSE:
+```json
+{
+  "stage_of_change": "precontemplation",
+  "main_concern": "Lack of engagement",
+  "primary_trigger": "N/A",
+  "quit_attempt_history": "Patient has made previous, unspecified attempts at gradually reducing smoking and temporary abstinence.",
+  "recommended_intervention": ["Explore patient's current thoughts and feelings regarding smoking.", "Assess reasons for not considering quitting or seeking support.", "Start with open-ended questions to understand the patient's perspective."]
+}
+```
+
+================================================================================
+OLLAMA CALL 0005
+================================================================================
+timestamp: 2026-04-16T08:57:49.215613+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a clinical annotation specialist (voter 3 of 3).
+
+CONVERSATION:
+Patient: hi
+Counselor: Hi! I'm eDOSTHI, your friendly AI coach. What brings you to this conversation today? Are you thinking about quitting smoking or looking for support in your journey so far?
+
+EXTRACTED SIGNALS:
+- Advice: {}
+- Quit Attempts: {'attempts': ['Patient attempted to gradually reduce smoking with the intention to quit.', 'Patient attempted temporary abstinence (unknown duration).'], 'evidence': ['Patient: hi', 'Patient: hi'], '_debate_rounds': 1, '_debate_converged': False}
+- Readiness / Stage: {'readiness_stage': 'precontemplation', 'evidence': "The patient simply said 'hi' and hasn't expressed any thoughts about quitting smoking or seeking support, indicating they are not yet considering the behavior change.", '_debate_rounds': 1, '_debate_converged': False}
+- Concerns: {}
+- Triggers: {}
+
+Based on ALL the above signals, produce a unified clinical annotation.
+Be independent — do not anchor to previous voters.
+
+Respond ONLY with valid JSON:
+{
+  "stage_of_change": "precontemplation|contemplation|preparation|action|maintenance|relapse",
+  "main_concern": "<single most prominent barrier>",
+  "primary_trigger": "<most significant smoking trigger>",
+  "quit_attempt_history": "<concise summary of prior attempts>",
+  "recommended_intervention": ["<strategy 1>", "<strategy 2>", "..."]
+}
+
+
+RESPONSE:
+```json
+{
+  "stage_of_change": "precontemplation",
+  "main_concern": "Lack of engagement",
+  "primary_trigger": "N/A",
+  "quit_attempt_history": "Patient has made occasional, unspecified attempts to reduce smoking and has engaged in temporary abstinence, but details are limited.",
+  "recommended_intervention": ["Explore patient's current thoughts and feelings regarding smoking.", "Assess reasons for not wanting to quit or seek support.", "Start with motivational interviewing techniques to build rapport and explore ambivalence."]
+}
+```
+
+================================================================================
+OLLAMA CALL 0006
+================================================================================
+timestamp: 2026-04-16T08:57:51.509803+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a clinical annotation specialist (voter 1 of 3).
+
+CONVERSATION:
+Patient: hi
+Counselor: Hi! I'm eDOSTHI, your friendly AI coach. What brings you to this conversation today? Are you thinking about quitting smoking or looking for support in your journey so far?
+
+EXTRACTED SIGNALS:
+- Advice: {}
+- Quit Attempts: {'attempts': ['Patient attempted to gradually reduce smoking with the intention to quit.', 'Patient attempted temporary abstinence (unknown duration).'], 'evidence': ['Patient: hi', 'Patient: hi'], '_debate_rounds': 1, '_debate_converged': False}
+- Readiness / Stage: {'readiness_stage': 'precontemplation', 'evidence': "The patient simply said 'hi' and hasn't expressed any thoughts about quitting smoking or seeking support, indicating they are not yet considering the behavior change.", '_debate_rounds': 1, '_debate_converged': False}
+- Concerns: {}
+- Triggers: {}
+
+Based on ALL the above signals, produce a unified clinical annotation.
+Be independent — do not anchor to previous voters.
+
+Respond ONLY with valid JSON:
+{
+  "stage_of_change": "precontemplation|contemplation|preparation|action|maintenance|relapse",
+  "main_concern": "<single most prominent barrier>",
+  "primary_trigger": "<most significant smoking trigger>",
+  "quit_attempt_history": "<concise summary of prior attempts>",
+  "recommended_intervention": ["<strategy 1>", "<strategy 2>", "..."]
+}
+
+
+RESPONSE:
+```json
+{
+  "stage_of_change": "precontemplation",
+  "main_concern": "Lack of expressed intent to quit smoking or seek support.",
+  "primary_trigger": "N/A",
+  "quit_attempt_history": "Patient has made brief, unspecified attempts at gradual reduction and temporary abstinence.",
+  "recommended_intervention": ["Explore patient's current thoughts and feelings regarding smoking.", "Assess the reasons behind the initial contact and identify any underlying motivations for change.", "Introduce motivational interviewing techniques to encourage exploration of the potential benefits of quitting."]
+}
+```
+
+================================================================================
+OLLAMA CALL 0007
+================================================================================
+timestamp: 2026-04-16T08:57:53.072861+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a clinical arbitrator. Multiple annotators disagreed on these fields.
+
+CONVERSATION (excerpt):
+Patient: hi
+Counselor: Hi! I'm eDOSTHI, your friendly AI coach. What brings you to this conversation today? Are you thinking about quitting smoking or looking for support in your journey so far?
+
+DISAGREEING VOTES:
+Field: quit_attempt_history
+  Voter voter_2: Patient has made previous, unspecified attempts at gradually reducing smoking and temporary abstinence.
+  Voter voter_3: Patient has made occasional, unspecified attempts to reduce smoking and has engaged in temporary abstinence, but details are limited.
+  Voter voter_1: Patient has made brief, unspecified attempts at gradual reduction and temporary abstinence.
+
+Produce the single best answer for the disputed fields.
+Respond ONLY with valid JSON matching the field names above.
+
+
+RESPONSE:
+```json
+{
+  "quit_attempt_history": "Patient has made brief, unspecified attempts at gradual reduction and temporary abstinence."
+}
+```
+
+================================================================================
+OLLAMA CALL 0008
+================================================================================
+timestamp: 2026-04-16T08:57:58.519794+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a clinical reasoning specialist producing the final annotation for a tobacco-cessation training dataset.
+
+CONVERSATION:
+Patient: hi
+Counselor: Hi! I'm eDOSTHI, your friendly AI coach. What brings you to this conversation today? Are you thinking about quitting smoking or looking for support in your journey so far?
+
+CONSENSUS ANNOTATION:
+{'stage_of_change': 'precontemplation', 'main_concern': 'Lack of engagement', 'primary_trigger': 'N/A', 'quit_attempt_history': 'Patient has made brief, unspecified attempts at gradual reduction and temporary abstinence.', 'recommended_intervention': ["Explore patient's current thoughts and feelings regarding smoking.", 'Assess reasons for not considering quitting or seeking support.', "Start with open-ended questions to understand the patient's perspective.", 'Assess reasons for not wanting to quit or seek support.', 'Start with motivational interviewing techniques to build rapport and explore ambivalence.', 'Assess the reasons behind the initial contact and identify any underlying motivations for change.', 'Introduce motivational interviewing techniques to encourage exploration of the potential benefits of quitting.'], 'vote_agreement': 0.75, 'dissenting_fields': ['quit_attempt_history']}
+
+Your tasks:
+1. Validate that the consensus annotation is internally consistent and supported by the conversation.
+2. Write a reasoning_summary: 1–2 sentences that explain WHY this patient is at this stage,
+   what their primary barrier is, and what intervention approach is recommended.
+
+Respond ONLY with valid JSON:
+{
+  "stage_of_change": "<from consensus>",
+  "main_concern": "<from consensus>",
+  "primary_trigger": "<from consensus>",
+  "quit_attempt_history": "<from consensus>",
+  "recommended_intervention": ["<strategy 1>", "..."],
+  "reasoning_summary": "<1–2 sentence clinical rationale>",
+  "confidence_score": 0.0
+}
+
+
+RESPONSE:
+```json
+{
+  "stage_of_change": "precontemplation",
+  "main_concern": "Lack of engagement",
+  "primary_trigger": "N/A",
+  "quit_attempt_history": "Patient has made brief, unspecified attempts at gradual reduction and temporary abstinence.",
+  "recommended_intervention": [
+    "Explore patient's current thoughts and feelings regarding smoking.",
+    "Assess reasons for not considering quitting or seeking support.",
+    "Start with open-ended questions to understand the patient's perspective.",
+    "Assess reasons for not wanting to quit or seek support.",
+    "Start with motivational interviewing techniques to build rapport and explore ambivalence.",
+    "Assess the reasons behind the initial contact and identify any underlying motivations for change.",
+    "Introduce motivational interviewing techniques to encourage exploration of the potential benefits of quitting."
+  ],
+  "reasoning_summary": "The patient's initial greeting indicates they are simply exploring options, suggesting precontemplation. Their primary barrier is a lack of engagement, necessitating an intervention focused on building rapport and understanding their motivations through motivational interviewing techniques.",
+  "confidence_score": 0.95
+}
+```

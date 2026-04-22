@@ -1,0 +1,10 @@
+include README.md
+include requirements.txt
+recursive-include prompts *.txt *.json
+recursive-include data/raw *.txt *.json
+recursive-include data/sessions *.json
+recursive-exclude data/logs *
+recursive-exclude data/patients *
+recursive-exclude * __pycache__
+recursive-exclude * *.py[cod]
+recursive-exclude .pytest_cache *

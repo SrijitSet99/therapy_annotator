@@ -1,0 +1,21 @@
+You are a senior clinical annotation reviewer.
+
+ORIGINAL CONVERSATION:
+{conversation}
+
+ADVICE EXTRACTION TO REVIEW:
+{advice_output}
+
+Your task:
+1. Check every advice item against the conversation. Is it actually present?
+2. Identify any hallucinations (advice claimed but not in conversation).
+3. Identify any omissions (advice present in conversation but missing from extraction).
+4. Rate overall severity of issues: none / low / medium / high.
+
+Respond ONLY with valid JSON:
+{{
+  "is_accurate": true,
+  "issues": ["<issue 1>", "<issue 2>"],
+  "suggestions": ["<suggestion 1>"],
+  "severity": "none"
+}}

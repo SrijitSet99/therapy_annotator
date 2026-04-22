@@ -1,0 +1,104 @@
+=== LLM Response Log — 20260416_193633 ===
+
+--- [EXTRACTOR] attempt @ 19:36:39.604 ---
+{
+  "attempts": [
+    "I've tried to quit before.",
+    "I've had a few attempts in the past."
+  ],
+  "evidence": [
+    "Patient: hi",
+    "Patient: I've had a few attempts in the past."
+  ]
+}
+
+--- [DEBATE] attempt @ 19:36:42.902 ---
+{
+  "attempts": [
+    "I've tried to quit before.",
+    "I've had a few attempts in the past."
+  ],
+  "evidence": [
+    "Patient: hi",
+    "Patient: I've had a few attempts in the past."
+  ],
+  "_debate_rounds": 1,
+  "_debate_converged": false
+}
+
+--- [EXTRACTOR] readiness @ 19:36:42.909 ---
+{
+  "readiness_stage": "contemplation",
+  "evidence": "The patient stated \"hi\" and then asked \"What's been on your mind lately about quitting?\" This indicates they are aware of the need to quit and considering it, aligning with the contemplation stage."
+}
+
+--- [DEBATE] readiness @ 19:36:44.018 ---
+{
+  "readiness_stage": "contemplation",
+  "evidence": "The patient stated \"hi\" and then asked \"What's been on your mind lately about quitting?\" This indicates they are aware of the need to quit and considering it, aligning with the contemplation stage.",
+  "_debate_rounds": 0,
+  "_debate_converged": true
+}
+
+--- [EXTRACTOR] concern @ 19:36:44.020 ---
+{
+  "concerns": [
+    "Weight gain",
+    "Anxiety"
+  ],
+  "evidence": [
+    "What\u2019s been on your mind lately about quitting?",
+    "I'm eDOSTHI, your friendly AI coach to help you quit smoking. What\u2019s been on your mind lately about quitting?"
+  ]
+}
+
+--- [DEBATE] concern @ 19:36:46.800 ---
+{
+  "concerns": [
+    "Weight gain",
+    "Anxiety"
+  ],
+  "evidence": [
+    "What\u2019s been on your mind lately about quitting?",
+    "I'm eDOSTHI, your friendly AI coach to help you quit smoking. What\u2019s been on your mind lately about quitting?"
+  ],
+  "_debate_rounds": 1,
+  "_debate_converged": false
+}
+
+--- [EXTRACTOR] triggers @ 19:36:46.802 ---
+{
+  "triggers": [],
+  "evidence": []
+}
+
+--- [DEBATE] triggers @ 19:36:49.643 ---
+{
+  "triggers": [],
+  "evidence": [],
+  "_debate_rounds": 0,
+  "_debate_converged": true
+}
+
+--- [EXTRACTOR] advice @ 19:36:49.646 ---
+{
+  "advice": [
+    "I'm eDOSTHI, your friendly AI coach to help you quit smoking."
+  ],
+  "evidence": [
+    "Hi! I'm eDOSTHI, your friendly AI coach to help you quit smoking."
+  ]
+}
+
+--- [DEBATE] advice @ 19:36:50.620 ---
+{
+  "advice": [
+    "I'm eDOSTHI, your friendly AI coach to help you quit smoking."
+  ],
+  "evidence": [
+    "Hi! I'm eDOSTHI, your friendly AI coach to help you quit smoking."
+  ],
+  "_debate_rounds": 0,
+  "_debate_converged": true
+}
+

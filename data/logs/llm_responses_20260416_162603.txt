@@ -1,0 +1,48 @@
+=== LLM Response Log — 20260416_162603 ===
+
+--- [CONFIDENCE_CHECK] attempt @ 16:26:06.316 ---
+{
+  "confidence": 0.2,
+  "issues": [
+    "Hallucination: The extracted data states 'Patient attempted to quit smoking.' and 'Patient used nicotine gum to quit smoking.' which are not explicitly stated in the conversation. This is a hallucination.",
+    "Omission: The conversation provides no information about the *number* of previous attempts, only that the patient is considering quitting.  Quantifying the attempts is crucial.",
+    "Omission: The conversation doesn't specify *why* the patient is considering quitting, only that they are asked about it."
+  ]
+}
+
+--- [CONFIDENCE_CHECK] readiness @ 16:26:09.249 ---
+{
+  "confidence": 0.85,
+  "issues": [
+    "Minor hallucination: The statement 'indicating they are in the initial stages of seeking help' is inferred, not directly stated in the conversation. While plausible, it represents an interpretation beyond the explicit text.",
+    "Omission: The conversation lacks any explicit indication of the patient's current nicotine use or history.",
+    "The 'contemplation' stage classification is reasonable given the limited data, but could benefit from more explicit confirmation from the patient."
+  ]
+}
+
+--- [CONFIDENCE_CHECK] concern @ 16:26:12.266 ---
+{
+  "confidence": 0.2,
+  "issues": [
+    "Hallucination: The extracted data includes 'weight gain' which was not explicitly stated in the conversation. The 'Implied concern about stress' is a weak interpretation and requires stronger textual evidence.",
+    "Omission: The conversation clearly indicates the patient's initial inquiry is related to quitting smoking. This is not explicitly captured in the 'concerns' field.",
+    "Low Confidence: The confidence score is low due to the reliance on interpretation and the presence of a hallucinated item."
+  ]
+}
+
+--- [CONFIDENCE_CHECK] triggers @ 16:26:15.335 ---
+{
+  "confidence": 0.2,
+  "issues": [
+    "Hallucination: The extracted data includes 'stress', 'after meals', 'boredom', 'morning routine', and 'coffee' as smoking triggers, none of which were explicitly stated in the conversation.",
+    "Omission: The conversation does not provide any information about the patient's reasons for wanting to quit smoking, beyond the initial question about it.",
+    "Low Confidence: The confidence score is low due to the presence of hallucinations and a significant omission of key information needed to accurately assess smoking triggers."
+  ]
+}
+
+--- [CONFIDENCE_CHECK] advice @ 16:26:16.802 ---
+{
+  "confidence": 0.95,
+  "issues": []
+}
+

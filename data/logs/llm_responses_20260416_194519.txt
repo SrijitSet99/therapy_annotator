@@ -1,0 +1,17 @@
+=== LLM Response Log — 20260416_194519 ===
+
+--- [REVISION] readiness @ 19:45:21.404 ---
+{
+  "readiness_stage": "precontemplation",
+  "evidence": "Patient expresses difficulty quitting due to cravings and lack of coping strategies. Counselor explores triggers (stress) and offers suggestions for alternative behaviors (deep breaths, walk, music, relaxation techniques, journaling)."
+}
+
+--- [REVISION] triggers @ 19:45:22.767 ---
+{
+  "triggers": [
+    "stress",
+    "cravings"
+  ],
+  "evidence": []
+}
+

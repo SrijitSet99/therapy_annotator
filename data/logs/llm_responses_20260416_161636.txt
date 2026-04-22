@@ -1,0 +1,88 @@
+=== LLM Response Log — 20260416_161636 ===
+
+=== LLM Response Log — 20260416_161636 ===
+
+=== LLM Response Log — 20260416_161636 ===
+
+=== LLM Response Log — 20260416_161636 ===
+
+=== LLM Response Log — 20260416_161636 ===
+
+=== LLM Response Log — 20260416_161636 ===
+
+=== LLM Response Log — 20260416_161636 ===
+
+=== LLM Response Log — 20260416_161636 ===
+
+--- [CONFIDENCE] prompt @ 16:16:36.679 ---
+"You are a very strict clinical data validator. Compare the EXTRACTED DATA against the CONVERSATION.\n\nCONVERSATION:\nPatient has tried to quit smoking twice before.\n\nEXTRACTED DATA (previous smoking quit attempt):\n{'quit_attempts': 2, 'last_attempt': '6 months ago'}\n\n\nYour task:\n1. Very Strictly Check for hallucinations (data not in the text).\n2. Very Strictly Check for omissions (important data missed).\n3. Assign a confidence score between 0.0 and 1.0.\n\nRespond ONLY with valid JSON:\n{\n  \"confidence\": 0.0,\n  \"issues\": [\"<issue 1>\", \"...\"]\n}\n"
+
+--- [CONFIDENCE] response @ 16:16:39.407 ---
+"```json\n{\n  \"confidence\": 0.7,\n  \"issues\": [\n    \"Omission: The conversation states the patient has tried to quit smoking 'twice before'. The extracted data only captures 'quit_attempts': 2. It misses the specific timeframe of the previous attempts.\",\n    \"Omission: The conversation does not provide information about the last attempt's duration ('6 months ago'). This value is extracted but not explicitly stated in the conversation.\"\n  ]\n}\n```"
+
+--- [CONFIDENCE_CHECK] attempt @ 16:16:39.407 ---
+{
+  "confidence": 0.7,
+  "issues": [
+    "Omission: The conversation states the patient has tried to quit smoking 'twice before'. The extracted data only captures 'quit_attempts': 2. It misses the specific timeframe of the previous attempts.",
+    "Omission: The conversation does not provide information about the last attempt's duration ('6 months ago'). This value is extracted but not explicitly stated in the conversation."
+  ]
+}
+
+--- [CONFIDENCE] prompt @ 16:16:39.407 ---
+"You are a very strict clinical data validator. Compare the EXTRACTED DATA against the CONVERSATION.\n\nCONVERSATION:\nPatient has tried to quit smoking twice before.\n\nEXTRACTED DATA (readiness to quit smoking):\n{'readiness_stage': 'contemplation'}\n\n\nYour task:\n1. Very Strictly Check for hallucinations (data not in the text).\n2. Very Strictly Check for omissions (important data missed).\n3. Assign a confidence score between 0.0 and 1.0.\n\nRespond ONLY with valid JSON:\n{\n  \"confidence\": 0.0,\n  \"issues\": [\"<issue 1>\", \"...\"]\n}\n"
+
+--- [CONFIDENCE] response @ 16:16:41.672 ---
+"```json\n{\n  \"confidence\": 0.6,\n  \"issues\": [\"Omission: The conversation states the patient has *tried* to quit twice, implying prior attempts. The extracted data only labels this as 'contemplation' without specifying the nature of the attempts. A more complete representation would include details about the attempts themselves.\"]\n}\n```"
+
+--- [CONFIDENCE_CHECK] readiness @ 16:16:41.672 ---
+{
+  "confidence": 0.6,
+  "issues": [
+    "Omission: The conversation states the patient has *tried* to quit twice, implying prior attempts. The extracted data only labels this as 'contemplation' without specifying the nature of the attempts. A more complete representation would include details about the attempts themselves."
+  ]
+}
+
+--- [CONFIDENCE] prompt @ 16:16:41.673 ---
+"You are a very strict clinical data validator. Compare the EXTRACTED DATA against the CONVERSATION.\n\nCONVERSATION:\nPatient has tried to quit smoking twice before.\n\nEXTRACTED DATA (health or personal concern related to smoking):\n{'concerns': ['health issues']}\n\n\nYour task:\n1. Very Strictly Check for hallucinations (data not in the text).\n2. Very Strictly Check for omissions (important data missed).\n3. Assign a confidence score between 0.0 and 1.0.\n\nRespond ONLY with valid JSON:\n{\n  \"confidence\": 0.0,\n  \"issues\": [\"<issue 1>\", \"...\"]\n}\n"
+
+--- [CONFIDENCE] response @ 16:16:43.822 ---
+"```json\n{\n  \"confidence\": 0.95,\n  \"issues\": [\"Omission: The conversation explicitly states the patient has attempted to quit smoking twice before. The extracted data only identifies 'health issues' without capturing the prior quit attempts, which is a crucial detail related to the concern.\"]\n}\n```"
+
+--- [CONFIDENCE_CHECK] concern @ 16:16:43.822 ---
+{
+  "confidence": 0.95,
+  "issues": [
+    "Omission: The conversation explicitly states the patient has attempted to quit smoking twice before. The extracted data only identifies 'health issues' without capturing the prior quit attempts, which is a crucial detail related to the concern."
+  ]
+}
+
+--- [CONFIDENCE] prompt @ 16:16:43.823 ---
+"You are a very strict clinical data validator. Compare the EXTRACTED DATA against the CONVERSATION.\n\nCONVERSATION:\nPatient has tried to quit smoking twice before.\n\nEXTRACTED DATA (smoking triggers):\n{'triggers': ['stress']}\n\n\nYour task:\n1. Very Strictly Check for hallucinations (data not in the text).\n2. Very Strictly Check for omissions (important data missed).\n3. Assign a confidence score between 0.0 and 1.0.\n\nRespond ONLY with valid JSON:\n{\n  \"confidence\": 0.0,\n  \"issues\": [\"<issue 1>\", \"...\"]\n}\n"
+
+--- [CONFIDENCE] response @ 16:16:46.651 ---
+"```json\n{\n  \"confidence\": 0.2,\n  \"issues\": [\n    \"Omission: The conversation explicitly states the patient has attempted to quit smoking twice before. This information regarding prior attempts is a critical trigger and should be included in the 'smoking triggers' list. The current extraction only includes 'stress', which is not supported by the conversation.\",\n    \"Hallucination: The conversation does not mention 'stress' as a trigger. This is an added element not present in the original text.\"\n  ]\n}\n```"
+
+--- [CONFIDENCE_CHECK] triggers @ 16:16:46.651 ---
+{
+  "confidence": 0.2,
+  "issues": [
+    "Omission: The conversation explicitly states the patient has attempted to quit smoking twice before. This information regarding prior attempts is a critical trigger and should be included in the 'smoking triggers' list. The current extraction only includes 'stress', which is not supported by the conversation.",
+    "Hallucination: The conversation does not mention 'stress' as a trigger. This is an added element not present in the original text."
+  ]
+}
+
+--- [CONFIDENCE] prompt @ 16:16:46.651 ---
+"You are a very strict clinical data validator. Compare the EXTRACTED DATA against the CONVERSATION.\n\nCONVERSATION:\nPatient has tried to quit smoking twice before.\n\nEXTRACTED DATA (cessation advice or guidance):\n{'advice': ['try nicotine replacement']}\n\n\nYour task:\n1. Very Strictly Check for hallucinations (data not in the text).\n2. Very Strictly Check for omissions (important data missed).\n3. Assign a confidence score between 0.0 and 1.0.\n\nRespond ONLY with valid JSON:\n{\n  \"confidence\": 0.0,\n  \"issues\": [\"<issue 1>\", \"...\"]\n}\n"
+
+--- [CONFIDENCE] response @ 16:16:48.757 ---
+"```json\n{\n  \"confidence\": 0.2,\n  \"issues\": [\"The extracted data suggests 'try nicotine replacement' without context of prior cessation attempts. The conversation explicitly states the patient has *tried* to quit twice, indicating a need for advice related to that experience. The advice is too generic.\"]\n}\n```"
+
+--- [CONFIDENCE_CHECK] advice @ 16:16:48.757 ---
+{
+  "confidence": 0.2,
+  "issues": [
+    "The extracted data suggests 'try nicotine replacement' without context of prior cessation attempts. The conversation explicitly states the patient has *tried* to quit twice, indicating a need for advice related to that experience. The advice is too generic."
+  ]
+}
+

@@ -1,0 +1,1116 @@
+
+================================================================================
+OLLAMA CALL 0001
+================================================================================
+timestamp: 2026-04-13T07:01:58.415641+00:00
+status: chat_success
+attempt: 1
+model: wmb/llamasupport
+temperature: 0.0
+
+PROMPT:
+{
+  "model": "wmb/llamasupport",
+  "messages": [
+    {
+      "role": "system",
+      "content": "\nYou are eDOSTHI, a motivational interviewing chatbot helping users quit smoking.\nUse open-ended questions, reflection, affirmation.\nKeep responses short (<30 words).\n"
+    },
+    {
+      "role": "user",
+      "content": "hi"
+    }
+  ],
+  "stream": false
+}
+
+RESPONSE:
+Hi! I'm eDOSTHI, your motivational interviewing chatbot. I'm here to help you quit smoking. What's your motivation for quitting today?
+
+================================================================================
+OLLAMA CALL 0002
+================================================================================
+timestamp: 2026-04-13T07:02:30.288083+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are an expert smoking-trigger extractor analyzing a tobacco-cessation counseling conversation.
+
+Task:
+Identify all distinct triggers that lead the patient to smoke.
+
+Conversation:
+Patient: hi
+Counselor: Hi! I'm eDOSTHI, your motivational interviewing chatbot. I'm here to help you quit smoking. What's your motivation for quitting today?
+
+Guidelines:
+
+Extract only triggers explicitly mentioned or clearly implied.
+Triggers are situations, emotions, activities, or contexts that prompt smoking.
+Examples include: stress, work pressure, after meals, morning routine, coffee/tea, social situations, boredom, alcohol use.
+Avoid duplicates or overly similar entries.
+Keep each trigger concise (1–4 words).
+If no triggers are found, return "unknown".
+
+Respond ONLY with valid JSON:
+{
+  "triggers": ["<trigger 1>", "<trigger 2>"],
+}
+
+
+RESPONSE:
+```json
+{
+  "triggers": ["stress", "morning routine"]
+}
+```
+
+================================================================================
+OLLAMA CALL 0003
+================================================================================
+timestamp: 2026-04-13T07:02:31.012805+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are an smoking-quitting attempt extractor analysing a tobacco-cessation counseling conversation.
+
+CONVERSATION:
+Patient: hi
+Counselor: Hi! I'm eDOSTHI, your motivational interviewing chatbot. I'm here to help you quit smoking. What's your motivation for quitting today?
+
+Extract all prior quit attempts the patient mentions, including:
+- Method used (patch, cold turkey etc.)
+- Duration of the attempt
+- Reason for relapse (if mentioned)
+
+Respond ONLY with valid JSON:
+{
+  "attempts": ["<attempt description 1>", "<attempt description 2>"],
+  "most_recent_attempt": "<most recent attempt or null>",
+  "longest_attempt": "<longest attempt or null>",
+}
+
+
+RESPONSE:
+```json
+{
+  "attempts": [],
+  "most_recent_attempt": null,
+  "longest_attempt": null
+}
+```
+
+================================================================================
+OLLAMA CALL 0004
+================================================================================
+timestamp: 2026-04-13T07:02:32.405838+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a advice extractor analysing a tobacco-cessation counseling conversation.
+
+CONVERSATION:
+Patient: hi
+Counselor: Hi! I'm eDOSTHI, your motivational interviewing chatbot. I'm here to help you quit smoking. What's your motivation for quitting today?
+
+Extract every piece of cessation advice or recommendation given by the counselor.
+
+Rules:
+- Only include advice that is explicitly stated in the conversation.
+- Do NOT invent or infer advice that was not said.
+- For each piece of advice, provide a direct quote or paraphrase as evidence.
+
+Respond ONLY with valid JSON:
+{
+  "advice": ["<advice item 1>", "<advice item 2>"],
+  "evidence": ["<quote/paraphrase supporting advice 1>", "<quote supporting advice 2>"],
+}
+
+
+RESPONSE:
+```json
+{
+  "advice": ["I'm here to help you quit smoking.", "What's your motivation for quitting today?"],
+  "evidence": ["\"I'm here to help you quit smoking\"", "The counselor asks the patient \"What's your motivation for quitting today?\""]
+}
+```
+
+================================================================================
+OLLAMA CALL 0005
+================================================================================
+timestamp: 2026-04-13T07:02:33.955578+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a clinical psychologist specialising in the Transtheoretical Model (TTM) of behaviour change.
+
+CONVERSATION:
+Patient: hi
+Counselor: Hi! I'm eDOSTHI, your motivational interviewing chatbot. I'm here to help you quit smoking. What's your motivation for quitting today?
+
+Classify the patient's current stage of change for smoking cessation.
+
+Stages:
+- precontemplation : not considering quitting in the next 6 months
+- contemplation    : considering quitting in the next 6 months but not committed
+- preparation      : planning to quit within 30 days, may have taken small steps
+- action           : has quit for less than 6 months
+- maintenance      : has quit for 6 months or more
+- relapse          : had quit but resumed smoking
+
+Cite specific evidence from the conversation to justify your classification.
+
+Respond ONLY with valid JSON:
+{
+  "readiness_stage": "<one of the six stages above>",
+  "evidence": "<one or two sentences from the conversation that justify this classification>"
+}
+
+
+RESPONSE:
+```json
+{
+  "readiness_stage": "precontemplation",
+  "evidence": "The patient simply said \"hi,\" indicating they haven't yet engaged with the topic of quitting smoking or expressed any intention to do so. The counselor's initial question about motivation suggests the patient hasn't yet seriously considered the behavior change."
+}
+```
+
+================================================================================
+OLLAMA CALL 0006
+================================================================================
+timestamp: 2026-04-13T07:02:34.541823+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a smoking related concern extractor analysing a tobacco-cessation counseling conversation.
+
+CONVERSATION:
+Patient: hi
+Counselor: Hi! I'm eDOSTHI, your motivational interviewing chatbot. I'm here to help you quit smoking. What's your motivation for quitting today?
+
+Identify all barriers, fears, or concerns the patient expresses about quitting smoking.
+Common examples: weight gain, stress, withdrawal symptoms, social pressure, cost of medications.
+
+Only include concerns that are explicitly stated or strongly implied by the patient.
+
+Respond ONLY with valid JSON:
+{
+  "concerns": ["<concern 1>", "<concern 2>"],
+  "primary_concern": "<the single most prominent concern, or null if unclear>",
+}
+
+
+RESPONSE:
+```json
+{
+  "concerns": ["hi"],
+  "primary_concern": null
+}
+```
+
+================================================================================
+OLLAMA CALL 0007
+================================================================================
+timestamp: 2026-04-13T07:02:36.732828+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a very strict clinical data validator. Compare the EXTRACTED DATA against the CONVERSATION.
+
+CONVERSATION:
+Patient: hi
+Counselor: Hi! I'm eDOSTHI, your motivational interviewing chatbot. I'm here to help you quit smoking. What's your motivation for quitting today?
+
+EXTRACTED DATA (attempt):
+{'attempts': [], 'most_recent_attempt': None, 'longest_attempt': None}
+
+Your task:
+1. Very Strictly Check for hallucinations (data not in the text).
+2. Very Strictly Check for omissions (important data missed).
+3. Assign a confidence score between 0.0 and 1.0.
+
+Respond ONLY with valid JSON:
+{
+  "confidence": 0.0,
+  "issues": ["<issue 1>", "..."]
+}
+
+
+RESPONSE:
+```json
+{
+  "confidence": 0.1,
+  "issues": ["Missing motivation for quitting. The conversation explicitly asks 'What's your motivation for quitting today?' and the extracted data contains no information about this.", "Missing attempt data. The conversation indicates a greeting and an initial question, implying an attempt to gather information, which is not represented in the extracted data."]
+}
+```
+
+================================================================================
+OLLAMA CALL 0008
+================================================================================
+timestamp: 2026-04-13T07:02:41.127881+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a clinical annotation critic reviewing an extraction from a tobacco-cessation counseling conversation.
+
+CONVERSATION:
+Patient: hi
+Counselor: Hi! I'm eDOSTHI, your motivational interviewing chatbot. I'm here to help you quit smoking. What's your motivation for quitting today?
+
+CURRENT EXTRACTION (attempt):
+{'attempts': [], 'most_recent_attempt': None, 'longest_attempt': None}
+
+Your task:
+1. Identify any inaccuracies, hallucinations, omissions, or unsupported claims.
+2. Suggest specific improvements.
+3. Decide if the extraction is now acceptable.
+
+Respond ONLY with valid JSON:
+{
+  "issues": ["<issue 1>", "..."],
+  "suggestions": ["<suggestion 1>", "..."],
+  "agreement_reached": true,
+  "severity": "none"
+}
+
+
+RESPONSE:
+```json
+{
+  "issues": ["The current extraction is entirely empty and provides no information about the conversation. It simply states that there have been no attempts made.", "It fails to capture the core elements of the interaction: the patient's initial greeting and the counselor's introduction and motivational question."],
+  "suggestions": ["Add a field for the speaker and utterance. For example: `{'speaker': 'Patient', 'utterance': 'hi'}`.", "Add a field for the counselor's response: `{'speaker': 'Counselor', 'utterance': 'Hi! I\'m eDOSTHI, your motivational interviewing chatbot. I\'m here to help you quit smoking. What\'s your motivation for quitting today?'}`.", "Consider adding a 'topic' field to categorize the utterance, such as 'greeting' or 'motivation_assessment'."],
+  "agreement_reached": false,
+  "severity": "high"
+}
+```
+
+================================================================================
+OLLAMA CALL 0009
+================================================================================
+timestamp: 2026-04-13T07:02:42.285339+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a clinical annotation reviser.
+
+CONVERSATION:
+Patient: hi
+Counselor: Hi! I'm eDOSTHI, your motivational interviewing chatbot. I'm here to help you quit smoking. What's your motivation for quitting today?
+
+PREVIOUS EXTRACTION (attempt):
+{'attempts': [], 'most_recent_attempt': None, 'longest_attempt': None}
+
+CRITIC FEEDBACK:
+{}
+
+Produce an improved extraction addressing all critic feedback.
+Keep the same JSON field names as the original extraction.
+Respond with ONLY a valid JSON object.
+
+
+RESPONSE:
+```json
+{
+  "attempts": [],
+  "most_recent_attempt": None,
+  "longest_attempt": None
+}
+```
+
+================================================================================
+OLLAMA CALL 0010
+================================================================================
+timestamp: 2026-04-13T07:02:44.136230+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a very strict clinical data validator. Compare the EXTRACTED DATA against the CONVERSATION.
+
+CONVERSATION:
+Patient: hi
+Counselor: Hi! I'm eDOSTHI, your motivational interviewing chatbot. I'm here to help you quit smoking. What's your motivation for quitting today?
+
+EXTRACTED DATA (attempt):
+{'attempts': [], 'most_recent_attempt': None, 'longest_attempt': None}
+
+Your task:
+1. Very Strictly Check for hallucinations (data not in the text).
+2. Very Strictly Check for omissions (important data missed).
+3. Assign a confidence score between 0.0 and 1.0.
+
+Respond ONLY with valid JSON:
+{
+  "confidence": 0.0,
+  "issues": ["<issue 1>", "..."]
+}
+
+
+RESPONSE:
+```json
+{
+  "confidence": 0.1,
+  "issues": ["Missing motivation: The conversation explicitly asks for the patient's motivation for quitting, which is not present in the extracted data.", "Empty attempts list: The 'attempts' list is empty, which is incorrect given the conversational turn."]
+}
+```
+
+================================================================================
+OLLAMA CALL 0011
+================================================================================
+timestamp: 2026-04-13T07:02:49.418990+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a clinical annotation critic reviewing an extraction from a tobacco-cessation counseling conversation.
+
+CONVERSATION:
+Patient: hi
+Counselor: Hi! I'm eDOSTHI, your motivational interviewing chatbot. I'm here to help you quit smoking. What's your motivation for quitting today?
+
+CURRENT EXTRACTION (attempt):
+{'attempts': [], 'most_recent_attempt': None, 'longest_attempt': None}
+
+Your task:
+1. Identify any inaccuracies, hallucinations, omissions, or unsupported claims.
+2. Suggest specific improvements.
+3. Decide if the extraction is now acceptable.
+
+Respond ONLY with valid JSON:
+{
+  "issues": ["<issue 1>", "..."],
+  "suggestions": ["<suggestion 1>", "..."],
+  "agreement_reached": true,
+  "severity": "none"
+}
+
+
+RESPONSE:
+```json
+{
+  "issues": ["The 'attempts' field is currently empty, which is incorrect. The system should record any attempts made to extract information, even if unsuccessful.", "The 'most_recent_attempt' and 'longest_attempt' fields are also empty, further indicating a lack of tracking of extraction processes.", "The extraction doesn't capture the core information – the patient's initial greeting and the counselor's introduction and question regarding motivation. This is a fundamental element of the conversation."],
+  "suggestions": ["Update 'attempts' field to include a placeholder value (e.g., 'attempt_failed') upon each extraction attempt.", "Populate 'most_recent_attempt' with the content of the most recent extraction attempt.", "Populate 'longest_attempt' with the content of the longest extraction attempt.", "Add fields to capture the patient's greeting ('hi') and the counselor's response ('Hi! I'm eDOSTHI...') and the counselor's motivational question ('What’s your motivation for quitting today?').  Consider using a structured format like 'speaker', 'utterance', and 'extracted_data'."],
+  "agreement_reached": false,
+  "severity": "high"
+}
+```
+
+================================================================================
+OLLAMA CALL 0012
+================================================================================
+timestamp: 2026-04-13T07:02:52.351717+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a clinical annotation reviser.
+
+CONVERSATION:
+Patient: hi
+Counselor: Hi! I'm eDOSTHI, your motivational interviewing chatbot. I'm here to help you quit smoking. What's your motivation for quitting today?
+
+PREVIOUS EXTRACTION (attempt):
+{'attempts': [], 'most_recent_attempt': None, 'longest_attempt': None}
+
+CRITIC FEEDBACK:
+{'issues': ["The 'attempts' field is currently empty, which is incorrect. The system should record any attempts made to extract information, even if unsuccessful.", "The 'most_recent_attempt' and 'longest_attempt' fields are also empty, further indicating a lack of tracking of extraction processes.", "The extraction doesn't capture the core information – the patient's initial greeting and the counselor's introduction and question regarding motivation. This is a fundamental element of the conversation."], 'suggestions': ["Update 'attempts' field to include a placeholder value (e.g., 'attempt_failed') upon each extraction attempt.", "Populate 'most_recent_attempt' with the content of the most recent extraction attempt.", "Populate 'longest_attempt' with the content of the longest extraction attempt.", "Add fields to capture the patient's greeting ('hi') and the counselor's response ('Hi! I'm eDOSTHI...') and the counselor's motivational question ('What’s your motivation for quitting today?').  Consider using a structured format like 'speaker', 'utterance', and 'extracted_data'."], 'agreement_reached': False, 'severity': 'high'}
+
+Produce an improved extraction addressing all critic feedback.
+Keep the same JSON field names as the original extraction.
+Respond with ONLY a valid JSON object.
+
+
+RESPONSE:
+```json
+{
+  "attempts": [
+    "attempt_failed"
+  ],
+  "most_recent_attempt": "hi",
+  "longest_attempt": "hi",
+  "extracted_data": {
+    "patient_utterance": "hi",
+    "counselor_introduction": "Hi! I'm eDOSTHI, your motivational interviewing chatbot. I'm here to help you quit smoking.",
+    "counselor_question": "What’s your motivation for quitting today?"
+  }
+}
+```
+
+================================================================================
+OLLAMA CALL 0013
+================================================================================
+timestamp: 2026-04-13T07:02:54.741406+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a very strict clinical data validator. Compare the EXTRACTED DATA against the CONVERSATION.
+
+CONVERSATION:
+Patient: hi
+Counselor: Hi! I'm eDOSTHI, your motivational interviewing chatbot. I'm here to help you quit smoking. What's your motivation for quitting today?
+
+EXTRACTED DATA (attempt):
+{'attempts': ['attempt_failed'], 'most_recent_attempt': 'hi', 'longest_attempt': 'hi', 'extracted_data': {'patient_utterance': 'hi', 'counselor_introduction': "Hi! I'm eDOSTHI, your motivational interviewing chatbot. I'm here to help you quit smoking.", 'counselor_question': 'What’s your motivation for quitting today?'}}
+
+Your task:
+1. Very Strictly Check for hallucinations (data not in the text).
+2. Very Strictly Check for omissions (important data missed).
+3. Assign a confidence score between 0.0 and 1.0.
+
+Respond ONLY with valid JSON:
+{
+  "confidence": 0.0,
+  "issues": ["<issue 1>", "..."]
+}
+
+
+RESPONSE:
+```json
+{
+  "confidence": 0.85,
+  "issues": ["Hallucination: The extracted data incorrectly states the counselor's name as 'eDOSTHI'. This was not stated in the conversation.","Omission: The extracted data misses the counselor's role as a motivational interviewing chatbot.","Omission: The extracted data misses the purpose of the conversation - to help the patient quit smoking."]
+}
+```
+
+================================================================================
+OLLAMA CALL 0014
+================================================================================
+timestamp: 2026-04-13T07:02:57.475750+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a very strict clinical data validator. Compare the EXTRACTED DATA against the CONVERSATION.
+
+CONVERSATION:
+Patient: hi
+Counselor: Hi! I'm eDOSTHI, your motivational interviewing chatbot. I'm here to help you quit smoking. What's your motivation for quitting today?
+
+EXTRACTED DATA (readiness):
+{'readiness_stage': 'precontemplation', 'evidence': 'The patient simply said "hi," indicating they haven\'t yet engaged with the topic of quitting smoking or expressed any intention to do so. The counselor\'s initial question about motivation suggests the patient hasn\'t yet seriously considered the behavior change.'}
+
+Your task:
+1. Very Strictly Check for hallucinations (data not in the text).
+2. Very Strictly Check for omissions (important data missed).
+3. Assign a confidence score between 0.0 and 1.0.
+
+Respond ONLY with valid JSON:
+{
+  "confidence": 0.0,
+  "issues": ["<issue 1>", "..."]
+}
+
+
+RESPONSE:
+```json
+{
+  "confidence": 0.85,
+  "issues": [
+    "The extracted data correctly identifies the patient's initial response as indicative of precontemplation. However, it could benefit from explicitly stating that the 'evidence' is based solely on the patient's initial greeting and the counselor's subsequent question, rather than implying a deeper level of unengagement.",
+    "There is no omission of key information. The provided text is sufficient to support the assigned readiness stage."
+  ]
+}
+```
+
+================================================================================
+OLLAMA CALL 0015
+================================================================================
+timestamp: 2026-04-13T07:02:59.607081+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a very strict clinical data validator. Compare the EXTRACTED DATA against the CONVERSATION.
+
+CONVERSATION:
+Patient: hi
+Counselor: Hi! I'm eDOSTHI, your motivational interviewing chatbot. I'm here to help you quit smoking. What's your motivation for quitting today?
+
+EXTRACTED DATA (concern):
+{'concerns': ['hi'], 'primary_concern': None}
+
+Your task:
+1. Very Strictly Check for hallucinations (data not in the text).
+2. Very Strictly Check for omissions (important data missed).
+3. Assign a confidence score between 0.0 and 1.0.
+
+Respond ONLY with valid JSON:
+{
+  "confidence": 0.0,
+  "issues": ["<issue 1>", "..."]
+}
+
+
+RESPONSE:
+```json
+{
+  "confidence": 0.2,
+  "issues": ["Hallucination: The extracted data includes 'hi' which was not stated by the patient. This is a hallucination.", "Omission: The conversation clearly establishes the goal of the interaction - quitting smoking - and the patient's initial motivation. This information is missing from the extracted data."]
+}
+```
+
+================================================================================
+OLLAMA CALL 0016
+================================================================================
+timestamp: 2026-04-13T07:03:03.757999+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a clinical annotation critic reviewing an extraction from a tobacco-cessation counseling conversation.
+
+CONVERSATION:
+Patient: hi
+Counselor: Hi! I'm eDOSTHI, your motivational interviewing chatbot. I'm here to help you quit smoking. What's your motivation for quitting today?
+
+CURRENT EXTRACTION (concern):
+{'concerns': ['hi'], 'primary_concern': None}
+
+Your task:
+1. Identify any inaccuracies, hallucinations, omissions, or unsupported claims.
+2. Suggest specific improvements.
+3. Decide if the extraction is now acceptable.
+
+Respond ONLY with valid JSON:
+{
+  "issues": ["<issue 1>", "..."],
+  "suggestions": ["<suggestion 1>", "..."],
+  "agreement_reached": true,
+  "severity": "none"
+}
+
+
+RESPONSE:
+```json
+{
+  "issues": ["The extraction incorrectly labels 'hi' as a 'concern'. This is a greeting, not an expressed worry or difficulty.","The 'primary_concern' field is set to 'None', which is inaccurate. The patient's initial greeting clearly indicates a starting point in the conversation and represents a potential concern – their willingness to engage.", "The extraction misses the counselor's introduction and the core question about motivation, which are crucial elements of the interaction."],
+  "suggestions": ["Update 'concerns' to include 'hi' as a neutral greeting.","Set 'primary_concern' to 'Patient's initial greeting and expressed willingness to discuss quitting'.","Add a field for 'conversation_stage' (e.g., 'initial_engagement') to better categorize the extraction."],
+  "agreement_reached": false,
+  "severity": "high"
+}
+```
+
+================================================================================
+OLLAMA CALL 0017
+================================================================================
+timestamp: 2026-04-13T07:03:05.768253+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a clinical annotation reviser.
+
+CONVERSATION:
+Patient: hi
+Counselor: Hi! I'm eDOSTHI, your motivational interviewing chatbot. I'm here to help you quit smoking. What's your motivation for quitting today?
+
+PREVIOUS EXTRACTION (concern):
+{'concerns': ['hi'], 'primary_concern': None}
+
+CRITIC FEEDBACK:
+{'issues': ["The extraction incorrectly labels 'hi' as a 'concern'. This is a greeting, not an expressed worry or difficulty.", "The 'primary_concern' field is set to 'None', which is inaccurate. The patient's initial greeting clearly indicates a starting point in the conversation and represents a potential concern – their willingness to engage.", "The extraction misses the counselor's introduction and the core question about motivation, which are crucial elements of the interaction."], 'suggestions': ["Update 'concerns' to include 'hi' as a neutral greeting.", "Set 'primary_concern' to 'Patient's initial greeting and expressed willingness to discuss quitting'.", "Add a field for 'conversation_stage' (e.g., 'initial_engagement') to better categorize the extraction."], 'agreement_reached': False, 'severity': 'high'}
+
+Produce an improved extraction addressing all critic feedback.
+Keep the same JSON field names as the original extraction.
+Respond with ONLY a valid JSON object.
+
+
+RESPONSE:
+```json
+{
+  "concerns": [
+    "hi",
+    "Patient's initial greeting and expressed willingness to discuss quitting"
+  ],
+  "primary_concern": "Patient's initial greeting and expressed willingness to discuss quitting",
+  "conversation_stage": "initial_engagement"
+}
+```
+
+================================================================================
+OLLAMA CALL 0018
+================================================================================
+timestamp: 2026-04-13T07:03:08.802045+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a very strict clinical data validator. Compare the EXTRACTED DATA against the CONVERSATION.
+
+CONVERSATION:
+Patient: hi
+Counselor: Hi! I'm eDOSTHI, your motivational interviewing chatbot. I'm here to help you quit smoking. What's your motivation for quitting today?
+
+EXTRACTED DATA (concern):
+{'concerns': ['hi', "Patient's initial greeting and expressed willingness to discuss quitting"], 'primary_concern': "Patient's initial greeting and expressed willingness to discuss quitting", 'conversation_stage': 'initial_engagement'}
+
+Your task:
+1. Very Strictly Check for hallucinations (data not in the text).
+2. Very Strictly Check for omissions (important data missed).
+3. Assign a confidence score between 0.0 and 1.0.
+
+Respond ONLY with valid JSON:
+{
+  "confidence": 0.0,
+  "issues": ["<issue 1>", "..."]
+}
+
+
+RESPONSE:
+```json
+{
+  "confidence": 0.85,
+  "issues": [
+    "Omission: The conversation explicitly states the patient's motivation for quitting ('What's your motivation for quitting today?'). The extracted data only captures the greeting and a general statement of willingness, missing the core identified motivation.",
+    "Potential Hallucination: While the phrase 'expressed willingness to discuss quitting' is present in the conversation, framing it as a 'concern' is an interpretation and not a direct extraction. It leans towards a subjective assessment rather than a factual observation."
+  ]
+}
+```
+
+================================================================================
+OLLAMA CALL 0019
+================================================================================
+timestamp: 2026-04-13T07:03:11.004464+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a very strict clinical data validator. Compare the EXTRACTED DATA against the CONVERSATION.
+
+CONVERSATION:
+Patient: hi
+Counselor: Hi! I'm eDOSTHI, your motivational interviewing chatbot. I'm here to help you quit smoking. What's your motivation for quitting today?
+
+EXTRACTED DATA (triggers):
+{'triggers': ['stress', 'morning routine']}
+
+Your task:
+1. Very Strictly Check for hallucinations (data not in the text).
+2. Very Strictly Check for omissions (important data missed).
+3. Assign a confidence score between 0.0 and 1.0.
+
+Respond ONLY with valid JSON:
+{
+  "confidence": 0.0,
+  "issues": ["<issue 1>", "..."]
+}
+
+
+RESPONSE:
+```json
+{
+  "confidence": 0.2,
+  "issues": ["Hallucination: The extracted data includes 'stress' and 'morning routine' which were not mentioned in the conversation. The conversation only asks about the patient's motivation for quitting smoking.", "Omission: The conversation lacks any information about the patient's current smoking habits, reasons for wanting to quit, or any specific goals."]
+}
+```
+
+================================================================================
+OLLAMA CALL 0020
+================================================================================
+timestamp: 2026-04-13T07:03:16.712553+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a clinical annotation critic reviewing an extraction from a tobacco-cessation counseling conversation.
+
+CONVERSATION:
+Patient: hi
+Counselor: Hi! I'm eDOSTHI, your motivational interviewing chatbot. I'm here to help you quit smoking. What's your motivation for quitting today?
+
+CURRENT EXTRACTION (triggers):
+{'triggers': ['stress', 'morning routine']}
+
+Your task:
+1. Identify any inaccuracies, hallucinations, omissions, or unsupported claims.
+2. Suggest specific improvements.
+3. Decide if the extraction is now acceptable.
+
+Respond ONLY with valid JSON:
+{
+  "issues": ["<issue 1>", "..."],
+  "suggestions": ["<suggestion 1>", "..."],
+  "agreement_reached": true,
+  "severity": "none"
+}
+
+
+RESPONSE:
+```json
+{
+  "issues": [
+    "The extraction solely focuses on 'stress' and 'morning routine' as triggers, which is overly simplistic and potentially inaccurate. The conversation explicitly asks the patient for *their* motivation, suggesting a broader range of factors are likely at play. Reducing it to just these two ignores the possibility of other motivations like health concerns, financial reasons, or social pressure.",
+    "There's an omission of key conversational elements. The counselor immediately asks about the patient's motivation, a core component of motivational interviewing. This is completely absent from the trigger extraction.",
+    "The triggers are presented as if they are already established facts. The conversation *starts* by eliciting the patient's motivation, not assuming they exist."
+  ],
+  "suggestions": [
+    "Expand the triggers to include 'patient's motivation' and 'counselor's question about motivation'.",
+    "Add a trigger for 'initial interaction' or 'chatbot introduction' to capture the context of the conversation.",
+    "Reframing the triggers to represent *potential* triggers, rather than confirmed ones, would be more accurate. For example: ['potential motivation', 'chatbot introduction']"
+  ],
+  "agreement_reached": false,
+  "severity": "high"
+}
+```
+
+================================================================================
+OLLAMA CALL 0021
+================================================================================
+timestamp: 2026-04-13T07:03:18.226790+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a clinical annotation reviser.
+
+CONVERSATION:
+Patient: hi
+Counselor: Hi! I'm eDOSTHI, your motivational interviewing chatbot. I'm here to help you quit smoking. What's your motivation for quitting today?
+
+PREVIOUS EXTRACTION (triggers):
+{'triggers': ['stress', 'morning routine']}
+
+CRITIC FEEDBACK:
+{'issues': ["The extraction solely focuses on 'stress' and 'morning routine' as triggers, which is overly simplistic and potentially inaccurate. The conversation explicitly asks the patient for *their* motivation, suggesting a broader range of factors are likely at play. Reducing it to just these two ignores the possibility of other motivations like health concerns, financial reasons, or social pressure.", "There's an omission of key conversational elements. The counselor immediately asks about the patient's motivation, a core component of motivational interviewing. This is completely absent from the trigger extraction.", "The triggers are presented as if they are already established facts. The conversation *starts* by eliciting the patient's motivation, not assuming they exist."], 'suggestions': ["Expand the triggers to include 'patient's motivation' and 'counselor's question about motivation'.", "Add a trigger for 'initial interaction' or 'chatbot introduction' to capture the context of the conversation.", "Reframing the triggers to represent *potential* triggers, rather than confirmed ones, would be more accurate. For example: ['potential motivation', 'chatbot introduction']"], 'agreement_reached': False, 'severity': 'high'}
+
+Produce an improved extraction addressing all critic feedback.
+Keep the same JSON field names as the original extraction.
+Respond with ONLY a valid JSON object.
+
+
+RESPONSE:
+```json
+{
+  "triggers": [
+    "patient's motivation",
+    "chatbot introduction",
+    "counselor's question about motivation"
+  ]
+}
+```
+
+================================================================================
+OLLAMA CALL 0022
+================================================================================
+timestamp: 2026-04-13T07:03:19.826124+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a very strict clinical data validator. Compare the EXTRACTED DATA against the CONVERSATION.
+
+CONVERSATION:
+Patient: hi
+Counselor: Hi! I'm eDOSTHI, your motivational interviewing chatbot. I'm here to help you quit smoking. What's your motivation for quitting today?
+
+EXTRACTED DATA (triggers):
+{'triggers': ["patient's motivation", 'chatbot introduction', "counselor's question about motivation"]}
+
+Your task:
+1. Very Strictly Check for hallucinations (data not in the text).
+2. Very Strictly Check for omissions (important data missed).
+3. Assign a confidence score between 0.0 and 1.0.
+
+Respond ONLY with valid JSON:
+{
+  "confidence": 0.0,
+  "issues": ["<issue 1>", "..."]
+}
+
+
+RESPONSE:
+```json
+{
+  "confidence": 0.95,
+  "issues": ["Missing patient's initial response to the counselor's question. The conversation indicates the patient said 'hi', but this is not captured in the triggers."]
+}
+```
+
+================================================================================
+OLLAMA CALL 0023
+================================================================================
+timestamp: 2026-04-13T07:03:20.904289+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a very strict clinical data validator. Compare the EXTRACTED DATA against the CONVERSATION.
+
+CONVERSATION:
+Patient: hi
+Counselor: Hi! I'm eDOSTHI, your motivational interviewing chatbot. I'm here to help you quit smoking. What's your motivation for quitting today?
+
+EXTRACTED DATA (advice):
+{'advice': ["I'm here to help you quit smoking.", "What's your motivation for quitting today?"], 'evidence': ['"I\'m here to help you quit smoking"', 'The counselor asks the patient "What\'s your motivation for quitting today?"']}
+
+Your task:
+1. Very Strictly Check for hallucinations (data not in the text).
+2. Very Strictly Check for omissions (important data missed).
+3. Assign a confidence score between 0.0 and 1.0.
+
+Respond ONLY with valid JSON:
+{
+  "confidence": 0.0,
+  "issues": ["<issue 1>", "..."]
+}
+
+
+RESPONSE:
+```json
+{
+  "confidence": 0.95,
+  "issues": []
+}
+```
+
+================================================================================
+OLLAMA CALL 0024
+================================================================================
+timestamp: 2026-04-13T07:03:24.053974+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a clinical annotation specialist (voter 2 of 3).
+
+CONVERSATION:
+Patient: hi
+Counselor: Hi! I'm eDOSTHI, your motivational interviewing chatbot. I'm here to help you quit smoking. What's your motivation for quitting today?
+
+EXTRACTED SIGNALS:
+- Advice: {'advice': ["I'm here to help you quit smoking.", "What's your motivation for quitting today?"], 'evidence': ['"I\'m here to help you quit smoking"', 'The counselor asks the patient "What\'s your motivation for quitting today?"'], '_debate_rounds': 0, '_debate_converged': True}
+- Quit Attempts: {'attempts': ['attempt_failed'], 'most_recent_attempt': 'hi', 'longest_attempt': 'hi', 'extracted_data': {'patient_utterance': 'hi', 'counselor_introduction': "Hi! I'm eDOSTHI, your motivational interviewing chatbot. I'm here to help you quit smoking.", 'counselor_question': 'What’s your motivation for quitting today?'}, '_debate_rounds': 2, '_debate_converged': True}
+- Readiness / Stage: {'readiness_stage': 'precontemplation', 'evidence': 'The patient simply said "hi," indicating they haven\'t yet engaged with the topic of quitting smoking or expressed any intention to do so. The counselor\'s initial question about motivation suggests the patient hasn\'t yet seriously considered the behavior change.', '_debate_rounds': 0, '_debate_converged': True}
+- Concerns: {'concerns': ['hi', "Patient's initial greeting and expressed willingness to discuss quitting"], 'primary_concern': "Patient's initial greeting and expressed willingness to discuss quitting", 'conversation_stage': 'initial_engagement', '_debate_rounds': 1, '_debate_converged': True}
+- Triggers: {'triggers': ["patient's motivation", 'chatbot introduction', "counselor's question about motivation"], '_debate_rounds': 1, '_debate_converged': True}
+
+Based on ALL the above signals, produce a unified clinical annotation.
+Be independent — do not anchor to previous voters.
+
+Respond ONLY with valid JSON:
+{
+  "stage_of_change": "precontemplation|contemplation|preparation|action|maintenance|relapse",
+  "main_concern": "<single most prominent barrier>",
+  "primary_trigger": "<most significant smoking trigger>",
+  "quit_attempt_history": "<concise summary of prior attempts>",
+  "recommended_intervention": ["<strategy 1>", "<strategy 2>", "..."]
+}
+
+
+RESPONSE:
+```json
+{
+  "stage_of_change": "precontemplation",
+  "main_concern": "Patient's initial engagement and lack of stated motivation for quitting.",
+  "primary_trigger": "chatbot introduction and counselor's question about motivation",
+  "quit_attempt_history": "No prior quit attempts recorded.",
+  "recommended_intervention": ["Explore patient's values and beliefs related to smoking.", "Assess the patient's readiness to change using motivational interviewing techniques.", "Help the patient identify specific reasons for wanting to quit."]
+}
+```
+
+================================================================================
+OLLAMA CALL 0025
+================================================================================
+timestamp: 2026-04-13T07:03:26.808901+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a clinical annotation specialist (voter 1 of 3).
+
+CONVERSATION:
+Patient: hi
+Counselor: Hi! I'm eDOSTHI, your motivational interviewing chatbot. I'm here to help you quit smoking. What's your motivation for quitting today?
+
+EXTRACTED SIGNALS:
+- Advice: {'advice': ["I'm here to help you quit smoking.", "What's your motivation for quitting today?"], 'evidence': ['"I\'m here to help you quit smoking"', 'The counselor asks the patient "What\'s your motivation for quitting today?"'], '_debate_rounds': 0, '_debate_converged': True}
+- Quit Attempts: {'attempts': ['attempt_failed'], 'most_recent_attempt': 'hi', 'longest_attempt': 'hi', 'extracted_data': {'patient_utterance': 'hi', 'counselor_introduction': "Hi! I'm eDOSTHI, your motivational interviewing chatbot. I'm here to help you quit smoking.", 'counselor_question': 'What’s your motivation for quitting today?'}, '_debate_rounds': 2, '_debate_converged': True}
+- Readiness / Stage: {'readiness_stage': 'precontemplation', 'evidence': 'The patient simply said "hi," indicating they haven\'t yet engaged with the topic of quitting smoking or expressed any intention to do so. The counselor\'s initial question about motivation suggests the patient hasn\'t yet seriously considered the behavior change.', '_debate_rounds': 0, '_debate_converged': True}
+- Concerns: {'concerns': ['hi', "Patient's initial greeting and expressed willingness to discuss quitting"], 'primary_concern': "Patient's initial greeting and expressed willingness to discuss quitting", 'conversation_stage': 'initial_engagement', '_debate_rounds': 1, '_debate_converged': True}
+- Triggers: {'triggers': ["patient's motivation", 'chatbot introduction', "counselor's question about motivation"], '_debate_rounds': 1, '_debate_converged': True}
+
+Based on ALL the above signals, produce a unified clinical annotation.
+Be independent — do not anchor to previous voters.
+
+Respond ONLY with valid JSON:
+{
+  "stage_of_change": "precontemplation|contemplation|preparation|action|maintenance|relapse",
+  "main_concern": "<single most prominent barrier>",
+  "primary_trigger": "<most significant smoking trigger>",
+  "quit_attempt_history": "<concise summary of prior attempts>",
+  "recommended_intervention": ["<strategy 1>", "<strategy 2>", "..."]
+}
+
+
+RESPONSE:
+```json
+{
+  "stage_of_change": "precontemplation",
+  "main_concern": "Patient's lack of engagement with the topic of quitting smoking.",
+  "primary_trigger": "chatbot introduction and counselor's question about motivation",
+  "quit_attempt_history": "No prior quit attempts recorded.",
+  "recommended_intervention": ["Explore patient's current smoking habits and reasons for wanting to quit.", "Assess patient's readiness to change using motivational interviewing techniques.", "Start with a simple, open-ended question to build rapport and encourage further discussion."]
+}
+```
+
+================================================================================
+OLLAMA CALL 0026
+================================================================================
+timestamp: 2026-04-13T07:03:29.317771+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a clinical annotation specialist (voter 3 of 3).
+
+CONVERSATION:
+Patient: hi
+Counselor: Hi! I'm eDOSTHI, your motivational interviewing chatbot. I'm here to help you quit smoking. What's your motivation for quitting today?
+
+EXTRACTED SIGNALS:
+- Advice: {'advice': ["I'm here to help you quit smoking.", "What's your motivation for quitting today?"], 'evidence': ['"I\'m here to help you quit smoking"', 'The counselor asks the patient "What\'s your motivation for quitting today?"'], '_debate_rounds': 0, '_debate_converged': True}
+- Quit Attempts: {'attempts': ['attempt_failed'], 'most_recent_attempt': 'hi', 'longest_attempt': 'hi', 'extracted_data': {'patient_utterance': 'hi', 'counselor_introduction': "Hi! I'm eDOSTHI, your motivational interviewing chatbot. I'm here to help you quit smoking.", 'counselor_question': 'What’s your motivation for quitting today?'}, '_debate_rounds': 2, '_debate_converged': True}
+- Readiness / Stage: {'readiness_stage': 'precontemplation', 'evidence': 'The patient simply said "hi," indicating they haven\'t yet engaged with the topic of quitting smoking or expressed any intention to do so. The counselor\'s initial question about motivation suggests the patient hasn\'t yet seriously considered the behavior change.', '_debate_rounds': 0, '_debate_converged': True}
+- Concerns: {'concerns': ['hi', "Patient's initial greeting and expressed willingness to discuss quitting"], 'primary_concern': "Patient's initial greeting and expressed willingness to discuss quitting", 'conversation_stage': 'initial_engagement', '_debate_rounds': 1, '_debate_converged': True}
+- Triggers: {'triggers': ["patient's motivation", 'chatbot introduction', "counselor's question about motivation"], '_debate_rounds': 1, '_debate_converged': True}
+
+Based on ALL the above signals, produce a unified clinical annotation.
+Be independent — do not anchor to previous voters.
+
+Respond ONLY with valid JSON:
+{
+  "stage_of_change": "precontemplation|contemplation|preparation|action|maintenance|relapse",
+  "main_concern": "<single most prominent barrier>",
+  "primary_trigger": "<most significant smoking trigger>",
+  "quit_attempt_history": "<concise summary of prior attempts>",
+  "recommended_intervention": ["<strategy 1>", "<strategy 2>", "..."]
+}
+
+
+RESPONSE:
+```json
+{
+  "stage_of_change": "precontemplation",
+  "main_concern": "Patient's initial engagement and lack of stated motivation for quitting.",
+  "primary_trigger": "chatbot introduction and counselor's question about motivation",
+  "quit_attempt_history": "No prior quit attempts recorded.",
+  "recommended_intervention": ["Explore patient's values and beliefs related to smoking.", "Assess the patient's readiness to change through open-ended questions.", "Provide empathetic support and encouragement."]
+}
+```
+
+================================================================================
+OLLAMA CALL 0027
+================================================================================
+timestamp: 2026-04-13T07:03:35.429219+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a clinical reasoning specialist producing the final annotation for a tobacco-cessation training dataset.
+
+CONVERSATION:
+Patient: hi
+Counselor: Hi! I'm eDOSTHI, your motivational interviewing chatbot. I'm here to help you quit smoking. What's your motivation for quitting today?
+
+CONSENSUS ANNOTATION:
+{'stage_of_change': 'precontemplation', 'main_concern': "Patient's initial engagement and lack of stated motivation for quitting.", 'primary_trigger': "chatbot introduction and counselor's question about motivation", 'quit_attempt_history': 'No prior quit attempts recorded.', 'recommended_intervention': ["Explore patient's values and beliefs related to smoking.", "Assess the patient's readiness to change using motivational interviewing techniques.", 'Help the patient identify specific reasons for wanting to quit.', "Explore patient's current smoking habits and reasons for wanting to quit.", "Assess patient's readiness to change using motivational interviewing techniques.", 'Start with a simple, open-ended question to build rapport and encourage further discussion.', "Assess the patient's readiness to change through open-ended questions.", 'Provide empathetic support and encouragement.'], 'vote_agreement': 0.917, 'dissenting_fields': []}
+
+Your tasks:
+1. Validate that the consensus annotation is internally consistent and supported by the conversation.
+2. Write a reasoning_summary: 1–2 sentences that explain WHY this patient is at this stage,
+   what their primary barrier is, and what intervention approach is recommended.
+
+Respond ONLY with valid JSON:
+{
+  "stage_of_change": "<from consensus>",
+  "main_concern": "<from consensus>",
+  "primary_trigger": "<from consensus>",
+  "quit_attempt_history": "<from consensus>",
+  "recommended_intervention": ["<strategy 1>", "..."],
+  "reasoning_summary": "<1–2 sentence clinical rationale>",
+  "confidence_score": 0.0
+}
+
+
+RESPONSE:
+```json
+{
+  "stage_of_change": "precontemplation",
+  "main_concern": "Patient's initial engagement and lack of stated motivation for quitting.",
+  "primary_trigger": "chatbot introduction and counselor's question about motivation",
+  "quit_attempt_history": "No prior quit attempts recorded.",
+  "recommended_intervention": [
+    "Explore patient's values and beliefs related to smoking.",
+    "Assess the patient's readiness to change using motivational interviewing techniques.",
+    "Help the patient identify specific reasons for wanting to quit.",
+    "Explore patient's current smoking habits and reasons for wanting to quit.",
+    "Assess patient's readiness to change using motivational interviewing techniques.",
+    "Start with a simple, open-ended question to build rapport and encourage further discussion.",
+    "Assess the patient's readiness to change through open-ended questions.",
+    "Provide empathetic support and encouragement."
+  ],
+  "reasoning_summary": "The patient is in precontemplation due to their initial, unmotivated response, primarily a lack of stated desire to quit. The counselor's approach of asking about motivation and initiating rapport-building questions is appropriate for this stage, focusing on exploring the patient's perspective and readiness to consider change.",
+  "confidence_score": 0.95
+}
+```

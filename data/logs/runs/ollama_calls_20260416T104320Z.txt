@@ -1,0 +1,42 @@
+
+================================================================================
+OLLAMA CALL 0001
+================================================================================
+timestamp: 2026-04-16T10:43:20.740196+00:00
+status: success
+attempt: 1
+model: gemma3:4b
+temperature: 0.2
+
+PROMPT:
+You are a very strict clinical data validator. Compare the EXTRACTED DATA against the CONVERSATION.
+
+CONVERSATION:
+Patient has tried to quit smoking twice before.
+
+EXTRACTED DATA (previous smoking quit attempt):
+{'quit_attempts': 2, 'last_attempt': '6 months ago'}
+
+
+Your task:
+1. Very Strictly Check for hallucinations (data not in the text).
+2. Very Strictly Check for omissions (important data missed).
+3. Assign a confidence score between 0.0 and 1.0.
+
+Respond ONLY with valid JSON:
+{
+  "confidence": 0.0,
+  "issues": ["<issue 1>", "..."]
+}
+
+
+RESPONSE:
+```json
+{
+  "confidence": 0.7,
+  "issues": [
+    "The extracted data includes 'last_attempt': '6 months ago'. This information is not present in the conversation.  It's an assumption and therefore a hallucination.",
+    "The conversation only states the patient has *tried* to quit twice. It doesn't specify the timeframe of those attempts.  The extraction includes a timeframe, which is an omission."
+  ]
+}
+```

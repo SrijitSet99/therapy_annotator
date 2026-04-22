@@ -1,0 +1,2698 @@
+
+================================================================================
+FILE: /data1/students/srijit/cc/agents/__init__.py
+================================================================================
+
+# agents package
+
+
+
+================================================================================
+FILE: /data1/students/srijit/cc/agents/registry.py
+================================================================================
+
+"""
+agents/registry.py  — upgraded with smart selection + metadata support
+"""
+import importlib
+import inspect
+from pathlib import Path
+from concurrent.futures import ThreadPoolExecutor, as_completed
+from typing import Dict, Any, Callable, List, Optional
+
+from utils.logger import log, warning
+
+_SKIP_AGENTS = {"advice_agent"}
+AgentFn = Callable[[Dict[str, Any]], Dict[str, Any]]
+
+
+class AgentRegistry:
+    def __init__(self) -> None:
+        self._agents: Dict[str, AgentFn] = {}
+        self._metadata: Dict[str, Dict[str, Any]] = {}
+
+    def discover(self, skip: set = _SKIP_AGENTS) -> None:
+        extractors_dir = Path(__file__).resolve().parent / "extractors"
+        for py_file in sorted(extractors_dir.glob("*.py")):
+            if py_file.stem.startswith("_") or py_file.stem in skip:
+                continue
+            module_path = f"agents.extractors.{py_file.stem}"
+            try:
+                module = importlib.import_module(module_path)
+            except Exception as exc:
+                warning(f"registry: could not import {module_path}: {exc}")
+                continue
+            fn = getattr(module, py_file.stem, None)
+            if fn is None or not callable(fn):
+                warning(f"registry: no callable '{py_file.stem}' in {module_path}")
+                continue
+            if len(inspect.signature(fn).parameters) < 1:
+                warning(f"registry: {py_file.stem} has no parameters — skipping")
+                continue
+            self._agents[py_file.stem] = fn
+            log(f"registry: registered '{py_file.stem}'")
+        log(f"registry: {len(self._agents)} agent(s) registered.")
+
+    def register(self, name: str, fn: AgentFn, metadata: Optional[Dict[str, Any]] = None) -> None:
+        self._agents[name] = fn
+        if metadata:
+            self._metadata[name] = metadata
+        log(f"registry: manually registered '{name}'")
+
+    def unregister(self, name: str) -> None:
+        self._agents.pop(name, None)
+        self._metadata.pop(name, None)
+
+    @property
+    def agent_names(self) -> List[str]:
+        return list(self._agents.keys())
+
+    def select_agents(self, state: Dict[str, Any], min_relevance: float = 0.0) -> List[str]:
+        """Select agents by relevance metadata — hook for market-based coordination."""
+        if not self._metadata:
+            return self.agent_names
+        selected = [n for n in self._agents if self._metadata.get(n, {}).get("relevance", 1.0) >= min_relevance]
+        log(f"registry: selected {len(selected)}/{len(self._agents)} agents")
+        return selected
+
+    def run_one(self, name: str, state: Dict[str, Any]) -> Dict[str, Any]:
+        return self._agents[name](state)
+
+    def run_all_sequential(self, state: Dict[str, Any]) -> Dict[str, Any]:
+        merged: Dict[str, Any] = {}
+        for name, fn in self._agents.items():
+            log(f"registry: running '{name}' ...")
+            merged.update(fn({**state, **merged}))
+        return merged
+
+    def run_all_parallel(self, state: Dict[str, Any], max_workers: int = 5, selected: Optional[List[str]] = None) -> Dict[str, Any]:
+        agents_to_run = {n: fn for n, fn in self._agents.items() if selected is None or n in selected}
+        merged: Dict[str, Any] = {}
+        errors: Dict[str, str] = {}
+        with ThreadPoolExecutor(max_workers=max_workers) as executor:
+            future_to_name = {executor.submit(fn, state): name for name, fn in agents_to_run.items()}
+            for future in as_completed(future_to_name):
+                name = future_to_name[future]
+                try:
+                    merged.update(future.result())
+                    log(f"registry: '{name}' completed.")
+                except Exception as exc:
+                    errors[name] = str(exc)
+                    warning(f"registry: '{name}' raised: {exc}")
+        if errors:
+            warning(f"registry: {len(errors)} agent(s) failed: {list(errors.keys())}")
+        return merged
+
+
+_default_registry: Optional[AgentRegistry] = None
+
+
+def get_registry(auto_discover: bool = True) -> AgentRegistry:
+    global _default_registry
+    if _default_registry is None:
+        _default_registry = AgentRegistry()
+        if auto_discover:
+            _default_registry.discover()
+    return _default_registry
+
+
+
+================================================================================
+FILE: /data1/students/srijit/cc/agents/consensus/__init__.py
+================================================================================
+
+
+
+
+================================================================================
+FILE: /data1/students/srijit/cc/agents/consensus/consensus_agent.py
+================================================================================
+
+"""
+agents/consensus/consensus_agent.py
+-------------------------------------
+Multi-voter consensus with arbitration.
+
+Instead of a single consensus call, three independent LLM calls produce
+three ConsensusVote objects. The arbitration step then:
+  - computes agreement scores per field
+  - returns the majority answer for high-agreement fields
+  - calls an arbitration LLM for fields with low agreement
+
+This is a major research upgrade: the system now quantifies its own
+inter-agent disagreement and exposes it in the final DatasetRow.
+"""
+from typing import Dict, Any, List
+from concurrent.futures import ThreadPoolExecutor, as_completed
+
+from llm.ollama_client import call_ollama
+from llm.json_parser import repair_json
+from utils.logger import log, warning
+from schemas.clinical_schema import ConsensusVote, ArbitrationResult
+from config.settings import CONSENSUS_VOTERS, DISAGREEMENT_ARBITRATION_THRESHOLD
+
+
+_CONSENSUS_PROMPT = """You are a clinical annotation specialist (voter {voter_id} of {total_voters}).
+
+CONVERSATION:
+{conversation}
+
+EXTRACTED SIGNALS:
+- Advice: {advice}
+- Quit Attempts: {attempts}
+- Readiness / Stage: {readiness}
+- Concerns: {concerns}
+- Triggers: {triggers}
+
+Based on ALL the above signals, produce a unified clinical annotation.
+Be independent — do not anchor to previous voters.
+
+Respond ONLY with valid JSON:
+{{
+  "stage_of_change": "precontemplation|contemplation|preparation|action|maintenance|relapse",
+  "main_concern": "<single most prominent barrier>",
+  "primary_trigger": "<most significant smoking trigger>",
+  "quit_attempt_history": "<concise summary of prior attempts>",
+  "recommended_intervention": ["<strategy 1>", "<strategy 2>", "..."],
+  "confidence": 0.0
+}}
+"""
+
+_ARBITRATION_PROMPT = """You are a clinical arbitrator. Multiple annotators disagreed on these fields.
+
+CONVERSATION (excerpt):
+{conversation_excerpt}
+
+DISAGREEING VOTES:
+{votes_summary}
+
+Produce the single best answer for the disputed fields.
+Respond ONLY with valid JSON matching the field names above.
+"""
+
+
+def _single_vote(voter_id: int, total: int, state: Dict[str, Any]) -> ConsensusVote:
+    advice = state.get("revised_outputs", {}).get("advice") or state.get("advice", {})
+    prompt = _CONSENSUS_PROMPT.format(
+        voter_id=voter_id,
+        total_voters=total,
+        conversation=state["chat"],
+        advice=advice,
+        attempts=state.get("attempt", {}),
+        readiness=state.get("readiness", {}),
+        concerns=state.get("concern", {}),
+        triggers=state.get("triggers", {}),
+    )
+    raw = call_ollama(prompt)
+    parsed = repair_json(raw)
+    try:
+        vote = ConsensusVote(voter_id=f"voter_{voter_id}", **parsed)
+    except Exception as exc:
+        warning(f"consensus voter {voter_id}: parse warning — {exc}")
+        vote = ConsensusVote(
+            voter_id=f"voter_{voter_id}",
+            stage_of_change=parsed.get("stage_of_change", "unknown"),
+            main_concern=parsed.get("main_concern", "unknown"),
+            primary_trigger=parsed.get("primary_trigger", "unknown"),
+            quit_attempt_history=parsed.get("quit_attempt_history", "unknown"),
+            recommended_intervention=parsed.get("recommended_intervention", []),
+            confidence=parsed.get("confidence", 0.5),
+        )
+    return vote
+
+
+def _majority(values: List[str]) -> str:
+    if not values:
+        return "unknown"
+    return max(set(values), key=values.count)
+
+
+def _agreement_score(values: List[str]) -> float:
+    if not values:
+        return 0.0
+    top_count = max(values.count(v) for v in set(values))
+    return top_count / len(values)
+
+
+def _arbitrate(field_name: str, votes: List[ConsensusVote], conversation: str) -> str:
+    votes_summary = "\n".join(
+        f"  Voter {v.voter_id}: {getattr(v, field_name)}" for v in votes
+    )
+    prompt = _ARBITRATION_PROMPT.format(
+        conversation_excerpt=conversation[:800],
+        votes_summary=f"Field: {field_name}\n{votes_summary}",
+    )
+    raw = call_ollama(prompt)
+    parsed = repair_json(raw)
+    return str(parsed.get(field_name, votes[0].__dict__[field_name]))
+
+
+def consensus_agent(state: Dict[str, Any]) -> Dict[str, Any]:
+    """
+    Run CONSENSUS_VOTERS independent votes in parallel, then arbitrate
+    on any field where vote agreement is below the threshold.
+    """
+    n = CONSENSUS_VOTERS
+    log(f"consensus_agent: collecting {n} independent votes ...")
+
+    votes: List[ConsensusVote] = []
+    with ThreadPoolExecutor(max_workers=n) as ex:
+        futures = {ex.submit(_single_vote, i + 1, n, state): i for i in range(n)}
+        for future in as_completed(futures):
+            try:
+                votes.append(future.result())
+            except Exception as exc:
+                warning(f"consensus_agent: a vote failed — {exc}")
+
+    if not votes:
+        warning("consensus_agent: all votes failed — returning empty consensus.")
+        return {"consensus": {}}
+
+    log(f"consensus_agent: {len(votes)} votes collected.")
+
+    # ------------------------------------------------------------------
+    # Compute agreement per field; arbitrate where agreement is low
+    # ------------------------------------------------------------------
+    fields = ["stage_of_change", "main_concern", "primary_trigger", "quit_attempt_history"]
+    result: Dict[str, Any] = {}
+    dissenting: List[str] = []
+    agreement_scores: List[float] = []
+
+    for field in fields:
+        values = [str(getattr(v, field)) for v in votes]
+        score = _agreement_score(values)
+        agreement_scores.append(score)
+        log(f"consensus_agent: field={field}, agreement={score:.2f}, values={values}")
+
+        if score >= DISAGREEMENT_ARBITRATION_THRESHOLD:
+            result[field] = _majority(values)
+        else:
+            log(f"consensus_agent: low agreement on '{field}' — arbitrating ...")
+            dissenting.append(field)
+            result[field] = _arbitrate(field, votes, state["chat"])
+
+    # Merge recommended_intervention by union of all voters (preserving order)
+    seen: set = set()
+    merged_interventions: List[str] = []
+    for v in votes:
+        for item in v.recommended_intervention:
+            if item not in seen:
+                seen.add(item)
+                merged_interventions.append(item)
+    result["recommended_intervention"] = merged_interventions
+
+    overall_agreement = sum(agreement_scores) / len(agreement_scores) if agreement_scores else 0.0
+    result["vote_agreement"] = round(overall_agreement, 3)
+    result["dissenting_fields"] = dissenting
+
+    log(f"consensus_agent: overall_agreement={overall_agreement:.3f}, dissenting={dissenting}")
+    return {"consensus": result}
+
+
+
+================================================================================
+FILE: /data1/students/srijit/cc/agents/reasoning/__init__.py
+================================================================================
+
+
+
+
+================================================================================
+FILE: /data1/students/srijit/cc/agents/reasoning/reasoning_agent.py
+================================================================================
+
+"""
+agents/reasoning/reasoning_agent.py
+-------------------------------------
+Produces the final training-ready DatasetRow.
+
+Upgrade: now injects research metadata from the full pipeline run:
+  - debate_rounds_used  (total debate rounds across all signals)
+  - vote_agreement      (from multi-voter consensus)
+  - sanity_passed       (from sanity check agent)
+  - inconsistencies     (list of flagged issues)
+"""
+from typing import Dict, Any
+from llm.ollama_client import call_ollama
+from llm.json_parser import repair_json
+from utils.prompt_loader import load_prompt
+from utils.logger import log
+from schemas.clinical_schema import DatasetRow
+
+
+def reasoning_agent(state: Dict[str, Any]) -> Dict[str, Any]:
+    log("reasoning_agent: producing final dataset row ...")
+    prompt = load_prompt("reasoning.txt").format(
+        conversation=state["chat"],
+        consensus=state["consensus"],
+    )
+    response = call_ollama(prompt)
+    parsed = repair_json(response)
+
+    try:
+        validated = DatasetRow(**parsed)
+    except Exception as exc:
+        log(f"reasoning_agent: validation warning — {exc}. Attempting partial construction.")
+        fallback = {**state["consensus"], **parsed}
+        try:
+            validated = DatasetRow(**fallback)
+        except Exception:
+            validated = DatasetRow(
+                stage_of_change=parsed.get("stage_of_change", state["consensus"].get("stage_of_change", "unknown")),
+                main_concern=parsed.get("main_concern", state["consensus"].get("main_concern", "unknown")),
+                primary_trigger=parsed.get("primary_trigger", state["consensus"].get("primary_trigger", "unknown")),
+                quit_attempt_history=parsed.get("quit_attempt_history", state["consensus"].get("quit_attempt_history", "unknown")),
+                recommended_intervention=parsed.get("recommended_intervention", state["consensus"].get("recommended_intervention", [])),
+            )
+
+    row_dict = validated.model_dump()
+
+    # Inject research metadata
+    debate_rounds = sum(
+        state.get(sig, {}).get("_debate_rounds", 0)
+        for sig in ("advice", "attempt", "readiness", "concern", "triggers")
+    )
+    row_dict["debate_rounds_used"] = debate_rounds
+    row_dict["vote_agreement"] = state.get("consensus", {}).get("vote_agreement")
+    sanity = state.get("sanity_check", {})
+    row_dict["sanity_passed"] = sanity.get("passed", True)
+    row_dict["inconsistencies"] = sanity.get("inconsistencies", [])
+
+    log(
+        f"reasoning_agent: done | confidence={row_dict.get('confidence_score')} | "
+        f"debate_rounds={debate_rounds} | vote_agreement={row_dict.get('vote_agreement')} | "
+        f"sanity_passed={row_dict.get('sanity_passed')}"
+    )
+    return {"dataset_row": row_dict}
+
+
+
+================================================================================
+FILE: /data1/students/srijit/cc/agents/judge/__init__.py
+================================================================================
+
+
+
+
+================================================================================
+FILE: /data1/students/srijit/cc/agents/judge/sanity_check_agent.py
+================================================================================
+
+"""
+agents/judge/sanity_check_agent.py
+------------------------------------
+Post-hoc validation agent that catches logical inconsistencies in the
+assembled annotation BEFORE the final DatasetRow is emitted.
+
+Examples of inconsistencies caught:
+  - stage=precontemplation but intervention="quit immediately"
+  - stage=maintenance but concern="not ready to quit"
+  - critical fields resolved to "unknown"
+  - low voter agreement but high reported confidence
+"""
+from typing import Dict, Any, List
+from utils.logger import log
+from schemas.clinical_schema import SanityCheckResult
+
+
+def _check_stage_intervention_conflict(state: Dict[str, Any]) -> List[str]:
+    issues = []
+    stage = state.get("consensus", {}).get("stage_of_change", "").lower()
+    interventions = [i.lower() for i in state.get("consensus", {}).get("recommended_intervention", [])]
+    aggressive_keywords = {"quit immediately", "set a quit date today", "start medication now"}
+    passive_stages = {"precontemplation", "contemplation"}
+    if stage in passive_stages:
+        for kw in aggressive_keywords:
+            if any(kw in iv for iv in interventions):
+                issues.append(f"Stage '{stage}' is pre-action but intervention includes aggressive directive: '{kw}'")
+    return issues
+
+
+def _check_maintenance_stage_concerns(state: Dict[str, Any]) -> List[str]:
+    issues = []
+    stage = state.get("consensus", {}).get("stage_of_change", "").lower()
+    concern = state.get("consensus", {}).get("main_concern", "").lower()
+    not_ready_phrases = ["not ready", "don't want to quit", "not considering"]
+    if stage == "maintenance":
+        for phrase in not_ready_phrases:
+            if phrase in concern:
+                issues.append(f"Stage is 'maintenance' but main_concern implies unwillingness: '{concern}'")
+    return issues
+
+
+def _check_unknown_fields(state: Dict[str, Any]) -> List[str]:
+    issues = []
+    consensus = state.get("consensus", {})
+    for field in ["stage_of_change", "main_concern", "primary_trigger"]:
+        if consensus.get(field, "unknown").lower() in ("unknown", "", "none"):
+            issues.append(f"Critical field '{field}' resolved to 'unknown' — extraction may have failed.")
+    return issues
+
+
+def _check_low_agreement_high_confidence(state: Dict[str, Any]) -> List[str]:
+    issues = []
+    agreement = state.get("consensus", {}).get("vote_agreement", 1.0)
+    confidence = (state.get("dataset_row", {}).get("confidence_score") or 0.5)
+    if agreement < 0.4 and confidence > 0.8:
+        issues.append(
+            f"Voter agreement is low ({agreement:.2f}) but confidence_score is high ({confidence:.2f}). "
+            "Confidence may be overestimated."
+        )
+    return issues
+
+
+_CHECKS = [
+    _check_stage_intervention_conflict,
+    _check_maintenance_stage_concerns,
+    _check_unknown_fields,
+    _check_low_agreement_high_confidence,
+]
+
+
+def sanity_check_agent(state: Dict[str, Any]) -> Dict[str, Any]:
+    log("sanity_check_agent: running consistency checks ...")
+    all_issues: List[str] = []
+    for check_fn in _CHECKS:
+        try:
+            all_issues.extend(check_fn(state))
+        except Exception as exc:
+            log(f"sanity_check_agent: check '{check_fn.__name__}' raised {exc}")
+
+    passed = len(all_issues) == 0
+    severity = "none" if passed else ("high" if len(all_issues) >= 3 else "medium")
+
+    result = SanityCheckResult(passed=passed, inconsistencies=all_issues, severity=severity)
+    if not passed:
+        log(f"sanity_check_agent: FAILED — {len(all_issues)} issue(s) (severity={severity})")
+        for issue in all_issues:
+            log(f"  WARNING: {issue}")
+    else:
+        log("sanity_check_agent: all checks passed.")
+    return {"sanity_check": result.model_dump()}
+
+
+
+================================================================================
+FILE: /data1/students/srijit/cc/agents/review/advice_review_agent.py
+================================================================================
+
+from typing import Dict, Any
+from llm.ollama_client import call_ollama
+from llm.json_parser import repair_json
+from utils.prompt_loader import load_prompt
+from utils.logger import log
+from schemas.clinical_schema import ReviewOutput
+
+
+def advice_review_agent(state: Dict[str, Any]) -> Dict[str, Any]:
+    log("advice_review_agent: reviewing advice extraction ...")
+    prompt = load_prompt("advice_review.txt").format(
+        conversation=state["chat"],
+        advice_output=state["advice"],
+    )
+    response = call_ollama(prompt)
+    parsed = repair_json(response)
+    try:
+        validated = ReviewOutput(**parsed)
+    except Exception as exc:
+        log(f"advice_review_agent: validation warning — {exc}. Using raw output.")
+        validated = ReviewOutput(is_accurate=True, severity="low")
+    log(f"advice_review_agent: is_accurate={validated.is_accurate}, severity={validated.severity}")
+    return {"reviews": {"advice_review": validated.model_dump()}}
+
+
+
+================================================================================
+FILE: /data1/students/srijit/cc/agents/review/__init__.py
+================================================================================
+
+
+
+
+================================================================================
+FILE: /data1/students/srijit/cc/agents/review/trigger_review_agent.py
+================================================================================
+
+from typing import Dict, Any
+from llm.ollama_client import call_ollama
+from llm.json_parser import repair_json
+from utils.prompt_loader import load_prompt
+from utils.logger import log
+from schemas.clinical_schema import ReviewOutput
+
+
+def trigger_review_agent(state: Dict[str, Any]) -> Dict[str, Any]:
+    """Review the trigger extraction for accuracy, omissions, and hallucinations."""
+    log("trigger_review_agent: reviewing trigger extraction ...")
+    prompt = load_prompt("trigger_review.txt").format(
+        conversation=state["chat"],
+        trigger_output=state["triggers"],
+    )
+    response = call_ollama(prompt)
+    parsed = repair_json(response)
+    try:
+        validated = ReviewOutput(**parsed)
+    except Exception as exc:
+        log(f"trigger_review_agent: validation warning — {exc}. Using raw output.")
+        validated = ReviewOutput(is_accurate=True, severity="low")
+    log(f"trigger_review_agent: is_accurate={validated.is_accurate}, severity={validated.severity}")
+    return {"reviews": {**state.get("reviews", {}), "trigger_review": validated.model_dump()}}
+
+
+
+================================================================================
+FILE: /data1/students/srijit/cc/agents/confidence/__init__.py
+================================================================================
+
+
+
+
+================================================================================
+FILE: /data1/students/srijit/cc/agents/confidence/confidence.py
+================================================================================
+
+"""
+agents/confidence/confidence.py
+-----------------------------
+Evaluation logic to verify extraction accuracy against the source text.
+"""
+from typing import Dict, Any, List
+from llm.ollama_client import call_ollama
+from llm.json_parser import repair_json
+from utils.logger import log
+from schemas.clinical_schema import ConfidenceResult
+
+_CONFIDENCE_PROMPT = """You are a very strict clinical data validator. Compare the EXTRACTED DATA against the CONVERSATION.
+
+CONVERSATION:
+{conversation}
+
+EXTRACTED DATA ({signal_name}):
+{extracted_signal}
+
+Your task:
+1. Very Strictly Check for hallucinations (data not in the text).
+2. Very Strictly Check for omissions (important data missed).
+3. Assign a confidence score between 0.0 and 1.0.
+
+Respond ONLY with valid JSON:
+{{
+  "confidence": 0.0,
+  "issues": ["<issue 1>", "..."]
+}}
+"""
+
+def run_confidence_check(
+    signal_name: str,
+    extracted_signal: Dict[str, Any],
+    conversation: str
+) -> ConfidenceResult:
+    """Evaluates the quality of an extraction to decide if debate is needed."""
+    log(f"confidence_check: evaluating '{signal_name}'...")
+    
+    prompt = _CONFIDENCE_PROMPT.format(
+        conversation=conversation[:4000], # Context window safety
+        signal_name=signal_name,
+        extracted_signal=extracted_signal
+    )
+    
+    raw = call_ollama(prompt)
+    parsed = repair_json(raw)
+    
+    conf_score = float(parsed.get("confidence", 0.5))
+    issues = parsed.get("issues", [])
+    
+    return ConfidenceResult(
+        confidence=conf_score,
+        issues=issues
+    )
+
+
+================================================================================
+FILE: /data1/students/srijit/cc/agents/debate/debate_loop.py
+================================================================================
+
+"""
+agents/debate/debate_loop.py
+-----------------------------
+Implements the Proposer → Critic → Revision loop.
+
+For any extractor output with confidence below the threshold, the debate
+loop runs up to DEBATE_MAX_ROUNDS rounds of:
+  1. Critic:   finds flaws, omissions, or hallucinations in the current output
+  2. Revision: produces an improved output based on critic feedback
+
+The loop terminates early if the critic declares agreement_reached=True
+or if max rounds is exhausted.
+
+This is the key upgrade that transforms the pipeline into a true MAS:
+agents now actively influence each other's outputs through structured
+disagreement and negotiation.
+"""
+from typing import Dict, Any
+
+from llm.ollama_client import call_ollama
+from llm.json_parser import repair_json
+from utils.logger import log
+from schemas.clinical_schema import DebateRound, DebateResult
+from config.settings import DEBATE_MAX_ROUNDS
+
+
+_CRITIC_PROMPT = """You are a clinical annotation critic reviewing an extraction from a tobacco-cessation counseling conversation.
+
+CONVERSATION:
+{conversation}
+
+CURRENT EXTRACTION ({signal_name}):
+{current_output}
+
+Your task:
+1. Identify any inaccuracies, hallucinations, omissions, or unsupported claims.
+2. Suggest specific improvements.
+3. Decide if the extraction is now acceptable.
+
+Respond ONLY with valid JSON:
+{{
+  "issues": ["<issue 1>", "..."],
+  "suggestions": ["<suggestion 1>", "..."],
+  "agreement_reached": true,
+  "severity": "none"
+}}
+"""
+
+_REVISION_PROMPT = """You are a clinical annotation reviser.
+
+CONVERSATION:
+{conversation}
+
+PREVIOUS EXTRACTION ({signal_name}):
+{current_output}
+
+CRITIC FEEDBACK:
+{critic_feedback}
+
+Produce an improved extraction addressing all critic feedback.
+Keep the same JSON field names as the original extraction.
+Also include a "confidence" field (0.0-1.0) reflecting your certainty.
+
+Respond with ONLY a valid JSON object.
+"""
+
+
+def run_debate(
+    signal_name: str,
+    initial_output: Dict[str, Any],
+    conversation: str,
+    max_rounds: int = DEBATE_MAX_ROUNDS,
+) -> DebateResult:
+    """
+    Run a Critic-Revision debate for a single clinical signal.
+
+    Returns a DebateResult with the full round trace and final_output.
+    """
+    log(f"debate_loop [{signal_name}]: starting (max_rounds={max_rounds}) ...")
+
+    current_output = initial_output
+    rounds = []
+
+    for round_num in range(1, max_rounds + 1):
+        log(f"debate_loop [{signal_name}]: round {round_num}/{max_rounds}")
+
+        critic_prompt = _CRITIC_PROMPT.format(
+            conversation=conversation,
+            signal_name=signal_name,
+            current_output=current_output,
+        )
+        critic_raw = call_ollama(critic_prompt)
+        critic_parsed = repair_json(critic_raw)
+
+        agreement = critic_parsed.get("agreement_reached", False)
+        severity = critic_parsed.get("severity", "low")
+        critic_feedback_str = str(critic_parsed)
+
+        log(f"debate_loop [{signal_name}]: critic severity={severity}, agreement={agreement}")
+
+        if agreement or severity == "none":
+            rounds.append(DebateRound(
+                round_number=round_num,
+                proposer_output=current_output,
+                critic_feedback=critic_feedback_str,
+                revised_output=current_output,
+                agreement_reached=True,
+            ))
+            log(f"debate_loop [{signal_name}]: converged at round {round_num}.")
+            return DebateResult(
+                agent_name=signal_name,
+                rounds=rounds,
+                final_output=current_output,
+                total_rounds=round_num,
+                converged=True,
+            )
+
+        revision_prompt = _REVISION_PROMPT.format(
+            conversation=conversation,
+            signal_name=signal_name,
+            current_output=current_output,
+            critic_feedback=critic_feedback_str,
+        )
+        revised_raw = call_ollama(revision_prompt)
+        revised = repair_json(revised_raw)
+
+        if not revised:
+            log(f"debate_loop [{signal_name}]: revision returned empty — keeping previous.")
+            revised = current_output
+
+        rounds.append(DebateRound(
+            round_number=round_num,
+            proposer_output=current_output,
+            critic_feedback=critic_feedback_str,
+            revised_output=revised,
+            agreement_reached=False,
+        ))
+        current_output = revised
+
+    log(f"debate_loop [{signal_name}]: max rounds reached without full convergence.")
+    return DebateResult(
+        agent_name=signal_name,
+        rounds=rounds,
+        final_output=current_output,
+        total_rounds=max_rounds,
+        converged=False,
+    )
+
+
+def maybe_debate(
+    signal_name: str,
+    extractor_output: Dict[str, Any],
+    conversation: str,
+    confidence_threshold: float,
+) -> Dict[str, Any]:
+    """
+    Run debate only if the extractor's confidence is below threshold.
+    Injects _debate_rounds and _debate_converged metadata into the returned dict.
+    """
+    confidence = extractor_output.get("confidence", 0.5)
+
+    if confidence >= confidence_threshold:
+        log(f"debate [{signal_name}]: confidence={confidence:.2f} >= threshold — skipping.")
+        extractor_output["_debate_rounds"] = 0
+        extractor_output["_debate_converged"] = True
+        return extractor_output
+
+    log(f"debate [{signal_name}]: confidence={confidence:.2f} < threshold — entering debate.")
+    result = run_debate(signal_name, extractor_output, conversation)
+
+    final = result.final_output
+    final["_debate_rounds"] = result.total_rounds
+    final["_debate_converged"] = result.converged
+    return final
+
+
+
+================================================================================
+FILE: /data1/students/srijit/cc/agents/debate/__init__.py
+================================================================================
+
+
+
+
+================================================================================
+FILE: /data1/students/srijit/cc/agents/revision/__init__.py
+================================================================================
+
+
+
+
+================================================================================
+FILE: /data1/students/srijit/cc/agents/revision/trigger_revision_agent.py
+================================================================================
+
+from typing import Dict, Any
+from llm.ollama_client import call_ollama
+from llm.json_parser import repair_json
+from utils.prompt_loader import load_prompt
+from utils.logger import log
+from schemas.clinical_schema import TriggerOutput
+
+
+def trigger_revision_agent(state: Dict[str, Any]) -> Dict[str, Any]:
+    """
+    Revise the trigger extraction based on reviewer feedback.
+    Short-circuits if review found no significant issues.
+    """
+    review = state["reviews"].get("trigger_review", {})
+    severity = review.get("severity", "low")
+    is_accurate = review.get("is_accurate", True)
+
+    if is_accurate and severity in ("none", "low") and not review.get("issues"):
+        log("trigger_revision_agent: no issues found — passing original output through.")
+        current = state.get("revised_outputs", {})
+        return {"revised_outputs": {**current, "triggers": state["triggers"]}}
+
+    log(f"trigger_revision_agent: revising triggers (severity={severity}) ...")
+    prompt = load_prompt("trigger_revision.txt").format(
+        conversation=state["chat"],
+        original_output=state["triggers"],
+        reviewer_feedback=review,
+    )
+    response = call_ollama(prompt)
+    revised = repair_json(response)
+    try:
+        validated = TriggerOutput(**revised)
+        revised = validated.model_dump()
+    except Exception as exc:
+        log(f"trigger_revision_agent: validation warning — {exc}. Using raw revised output.")
+
+    log(f"trigger_revision_agent: revision complete — {len(revised.get('triggers', []))} trigger(s).")
+    current = state.get("revised_outputs", {})
+    return {"revised_outputs": {**current, "triggers": revised}}
+
+
+
+================================================================================
+FILE: /data1/students/srijit/cc/agents/revision/advice_revision_agent.py
+================================================================================
+
+from typing import Dict, Any
+from llm.ollama_client import call_ollama
+from llm.json_parser import repair_json
+from utils.prompt_loader import load_prompt
+from utils.logger import log
+from schemas.clinical_schema import AdviceOutput
+
+
+def advice_revision_agent(state: Dict[str, Any]) -> Dict[str, Any]:
+    review = state["reviews"].get("advice_review", {})
+    severity = review.get("severity", "low")
+    is_accurate = review.get("is_accurate", True)
+
+    if is_accurate and severity in ("none", "low") and not review.get("issues"):
+        log("advice_revision_agent: no issues found — passing original output through.")
+        return {"revised_outputs": {"advice": state["advice"]}}
+
+    log(f"advice_revision_agent: revising advice (severity={severity}) ...")
+    prompt = load_prompt("advice_revision.txt").format(
+        conversation=state["chat"],
+        original_output=state["advice"],
+        reviewer_feedback=review,
+    )
+    response = call_ollama(prompt)
+    revised = repair_json(response)
+    try:
+        validated = AdviceOutput(**revised)
+        revised = validated.model_dump()
+    except Exception as exc:
+        log(f"advice_revision_agent: validation warning — {exc}.")
+    log(f"advice_revision_agent: complete — {len(revised.get('advice', []))} items.")
+    return {"revised_outputs": {"advice": revised}}
+
+
+
+================================================================================
+FILE: /data1/students/srijit/cc/agents/longitudinal/profile_update_agent.py
+================================================================================
+
+"""
+agents/longitudinal/profile_update_agent.py
+---------------------------------------------
+Final node in the longitudinal pipeline. Runs after delta_agent and longitudinal_sanity_agent.
+
+Responsibilities:
+  1. Inject longitudinal metadata into the DatasetRow
+  2. Build the LongitudinalAnnotation (full multi-session output)
+  3. Create a SessionRecord from the completed DatasetRow
+  4. Append the SessionRecord to the PatientProfile
+  5. Persist the updated PatientProfile via PatientMemory
+
+After this node, the state contains:
+  dataset_row          — enriched with longitudinal metadata
+  longitudinal_output  — full LongitudinalAnnotation dict
+  patient_profile      — updated with the new session appended
+"""
+from __future__ import annotations
+
+from typing import Dict, Any
+
+from agents.memory.patient_memory import PatientMemory
+from utils.logger import log, warning
+from schemas.longitudinal_schema import LongitudinalAnnotation
+
+
+def profile_update_agent(
+    state: Dict[str, Any],
+    patient_memory: PatientMemory,
+) -> Dict[str, Any]:
+    """
+    Update the PatientProfile with the just-completed session and assemble
+    the final LongitudinalAnnotation.
+    """
+    profile      = state.get("patient_profile")
+    dataset_row  = state.get("dataset_row", {})
+    delta        = state.get("session_delta")
+    long_sanity  = state.get("longitudinal_sanity", {})
+    conversation = state.get("chat", "")
+    conv_id      = state.get("conversation_id")
+
+    if profile is None:
+        log("profile_update_agent: no patient_profile in state — skipping update.")
+        return {}
+
+    session_number = profile.session_count + 1
+    log(f"profile_update_agent: finalising session {session_number} "
+        f"for patient '{profile.patient_id}'")
+
+    # ── 1. Enrich DatasetRow with longitudinal metadata ───────────────
+    longitudinal_flags = state.get("longitudinal_flags", [])
+    sanity_flags       = long_sanity.get("flags", [])
+    all_flags          = longitudinal_flags + sanity_flags
+
+    dataset_row["session_number"]             = session_number
+    dataset_row["longitudinal_flags"]         = all_flags
+    # FIX 1: was `long_sanity.get("passed", True)` — silently returns True when
+    # the key is absent, masking a missing sanity check.  Default to False so
+    # any absent result is treated as a failure rather than a silent pass.
+    dataset_row["longitudinal_sanity_passed"] = long_sanity.get("passed", False)
+
+    if delta:
+        dataset_row["stage_direction"]          = delta.get("stage_direction", "unknown")
+        dataset_row["new_triggers"]             = delta.get("new_triggers", [])
+        dataset_row["resolved_triggers"]        = delta.get("resolved_triggers", [])
+        dataset_row["new_concerns"]             = delta.get("new_concerns", [])
+        dataset_row["resolved_concerns"]        = delta.get("resolved_concerns", [])
+        dataset_row["new_interventions"]        = delta.get("new_interventions", [])
+        dataset_row["continuing_interventions"] = delta.get("continuing_interventions", [])
+        dataset_row["dropped_interventions"]    = delta.get("dropped_interventions", [])
+        dataset_row["clinical_summary"]         = delta.get("clinical_summary", "")
+
+    # ── 2. Build LongitudinalAnnotation ──────────────────────────────
+    # FIX 2: _overall_progress must be called BEFORE append_session (step 4),
+    # because it reads profile.stage_direction_history from the *pre-update*
+    # profile.  After append_session the history already includes the current
+    # session, so the delta direction would be double-counted.
+    overall_progress = _overall_progress(profile, delta)
+
+    # FIX 3: stage_trajectory was built by concatenating the existing list with
+    # a one-element list — correct — but the existing list came from
+    # profile.stage_trajectory which is the *pre-update* snapshot.  That is
+    # intentional here (we haven't called append_session yet), so this is fine
+    # as written.  However, the trajectory should use the resolved stage from
+    # the delta (stage_after) when available, not the raw dataset_row value,
+    # because delta_agent may have corrected an "unknown" stage.
+    resolved_stage = (
+        delta.get("stage_after", dataset_row.get("stage_of_change", "unknown"))
+        if delta
+        else dataset_row.get("stage_of_change", "unknown")
+    )
+
+    long_output = LongitudinalAnnotation(
+        patient_id=profile.patient_id,
+        session_number=session_number,
+        current_annotation=dataset_row,
+        delta=delta,
+        stage_trajectory=profile.stage_trajectory + [resolved_stage],
+        persistent_triggers=profile.persistent_triggers,
+        persistent_concerns=profile.persistent_concerns,
+        interventions_tried=profile.interventions_tried,
+        relapse_detected=delta.get("relapse_detected", False) if delta else False,
+        stagnation_detected=delta.get("stagnation_detected", False) if delta else False,
+        overall_progress=overall_progress,
+        longitudinal_flags=all_flags,
+    )
+
+    # ── 3. Build SessionRecord ────────────────────────────────────────
+    record = PatientMemory.build_session_record(
+        dataset_row=dataset_row,
+        conversation=conversation,
+        conversation_id=conv_id,
+        all_triggers=state.get("triggers", {}).get("triggers", []),
+        all_concerns=state.get("concern", {}).get("concerns", []),
+    )
+
+    # ── 4. Append to profile and recompute derived fields ─────────────
+    profile = patient_memory.append_session(profile, record)
+
+    # ── 5. Persist ───────────────────────────────────────────────────
+    try:
+        patient_memory.save(profile)
+    except Exception as exc:
+        warning(f"profile_update_agent: save failed — {exc}")
+
+    log(f"profile_update_agent: done | trajectory={profile.stage_trajectory} | "
+        f"stagnation={profile.stagnation_count} | overall={overall_progress}")
+
+    return {
+        "dataset_row":         dataset_row,
+        "longitudinal_output": long_output.model_dump(),
+        "patient_profile":     profile,
+    }
+
+
+def _overall_progress(profile, delta) -> str:
+    """Classify overall patient trajectory for the LongitudinalAnnotation."""
+    if not profile.stage_direction_history and delta is None:
+        return "unknown"
+
+    history = list(profile.stage_direction_history)
+    if delta:
+        history.append(delta.get("stage_direction", "stable"))
+
+    if not history:
+        return "unknown"
+
+    # FIX 4: "relapse" is a stage name, not a direction label — it will never
+    # appear in stage_direction_history (which holds values like "progress",
+    # "regression", "stable", "recovery").  The relapse flag lives on the delta
+    # and on profile.sessions[].  Check the delta and the last few session
+    # records instead of scanning direction strings.
+    recent_sessions = profile.sessions[-3:] if profile.sessions else []
+    recent_relapse = any(
+        getattr(s, "stage_of_change", "") == "relapse" for s in recent_sessions
+    )
+    if recent_relapse or (delta and delta.get("relapse_detected", False)):
+        return "relapse"
+
+    # Count progress vs regression in last 3 direction entries
+    recent = history[-3:]
+    progress_count   = recent.count("progress") + recent.count("recovery")
+    regression_count = recent.count("regression")
+    stable_count     = recent.count("stable")
+
+    if progress_count > regression_count:
+        return "improving"
+    if regression_count > progress_count:
+        return "regression"
+    if stable_count == len(recent):
+        return "stable"
+    return "mixed"
+
+
+================================================================================
+FILE: /data1/students/srijit/cc/agents/longitudinal/__init__.py
+================================================================================
+
+
+
+
+================================================================================
+FILE: /data1/students/srijit/cc/agents/longitudinal/delta_agent.py
+================================================================================
+
+"""
+agents/longitudinal/delta_agent.py
+------------------------------------
+Runs AFTER the reasoning agent on sessions 2+.
+
+Computes the SessionDelta between the just-completed session N and
+the previous session N-1, then calls the LLM to produce a clinical
+narrative summary of the changes.
+
+Delta computation is split into two parts:
+  1. Structural diff — pure Python, deterministic (triggers, concerns,
+     interventions, stage direction)
+  2. Clinical narrative — one LLM call that interprets the structural
+     diff in clinical language
+
+This separation means the structural facts are always correct even if
+the LLM narrative call fails.
+"""
+from __future__ import annotations
+
+from typing import Dict, Any, List, Set, Tuple
+
+from llm.ollama_client import call_ollama
+from llm.json_parser import repair_json
+from utils.logger import log, warning
+from schemas.longitudinal_schema import SessionDelta, stage_direction, STAGE_ORDER
+
+
+_DELTA_NARRATIVE_PROMPT = """You are a clinical psychologist reviewing the progress of a tobacco-cessation patient across two counseling sessions.
+
+SESSION {n_minus_1} ANNOTATION:
+  Stage of change:  {stage_before}
+  Main concern:     {concern_before}
+  Primary trigger:  {trigger_before}
+  Interventions:    {interventions_before}
+
+SESSION {n} ANNOTATION (current):
+  Stage of change:  {stage_after}
+  Main concern:     {concern_after}
+  Primary trigger:  {trigger_after}
+  Interventions:    {interventions_after}
+
+STRUCTURAL CHANGES DETECTED:
+  Stage direction:      {stage_direction}
+  New triggers:         {new_triggers}
+  Resolved triggers:    {resolved_triggers}
+  New concerns:         {new_concerns}
+  Resolved concerns:    {resolved_concerns}
+  New interventions:    {new_interventions}
+
+Write a concise 2-3 sentence clinical narrative summarising what changed between these two sessions and what it means for the patient's cessation journey. Be specific — reference the actual changes above.
+
+Respond ONLY with valid JSON:
+{{
+  "clinical_summary": "<2-3 sentence narrative>",
+  "delta_confidence": 0.0
+}}
+"""
+
+# FIX 1: These were broken module-level f-strings that would crash at import.
+# Converted to plain strings; {signal} is substituted at call time via .format().
+_SEMANTIC_DIFF_PROMPT = """You are a clinical assistant helping to compare smoking related {signal}s mentioned across two sessions.
+
+PREVIOUS SESSION {signal}s:
+{prev_items}
+
+CURRENT SESSION {signal}s:
+{curr_items}
+
+Your tasks:
+1. Identify which current {signal}s are genuinely NEW (not semantically equivalent to any previous {signal}).
+2. Identify which previous {signal}s are PERSISTENT (still present, even if phrased differently).
+3. Write just the {signal} and no other metadata.
+Respond ONLY with valid JSON:
+{{
+  "new_{signal}s": ["<{signal}>", ...],
+  "persistent_{signal}s": ["<{signal}>", ...]
+}}
+"""
+
+_RESOLVED_VALIDATION_PROMPT = """You are a clinical assistant reviewing a therapy session transcript for tobacco cessation.
+
+A patient had the following {signal}s noted in a PREVIOUS session:
+{prev_items}
+
+CURRENT SESSION TRANSCRIPT:
+\"\"\"
+{transcript}
+\"\"\"
+
+For each previous {signal} listed above, determine whether the patient has EXPLICITLY stated that this {signal} is no longer a problem, that they have overcome it, or that they no longer experience it.
+
+Rules:
+- A {signal} is ONLY resolved if the patient makes an explicit statement of resolution.
+- The {signal} NOT being mentioned in the current session does NOT count as resolved.
+- Therapist statements alone do not count — the resolution must come from the patient.
+
+Respond ONLY with valid JSON — one entry per previous {signal}:
+{{
+  "resolved_{signal}s": ["<{signal}>", ...],
+  "unresolved_{signal}s": ["<{signal}>", ...]
+}}
+"""
+
+
+def delta_agent(state: Dict[str, Any]) -> Dict[str, Any]:
+    """
+    Compute the SessionDelta between session N-1 and the current session.
+
+    If no prior session exists (first session), returns empty delta.
+    Injects the delta into state under 'session_delta'.
+    """
+    profile = state.get("patient_profile")
+    current_row = state.get("dataset_row", {})
+
+    if profile is None or profile.session_count == 0:
+        log("delta_agent: no prior session — skipping delta computation.")
+        return {"session_delta": None}
+
+    prev = profile.sessions[-1]     # last completed session (N-1)
+    n = profile.session_count + 1   # current session number
+
+    log(f"delta_agent: computing delta between session {prev.session_number} and {n}")
+
+    # ── 1. Structural diff — stage ────────────────────────────────────
+
+    stage_before = prev.stage_of_change
+    stage_after  = current_row.get("stage_of_change", "unknown")
+
+    # FIX 2: was `=` (assignment); must be `==` (comparison).
+    # FIX 3: logic was inverted — direction is computed in both branches,
+    #         but stage fallback only applies when stage_after is unknown.
+    if stage_after == "unknown":
+        stage_after = stage_before
+
+    direction = stage_direction(stage_before, stage_after)
+
+    # ── 2. Trigger diff with semantic equivalence + explicit resolution ──
+
+    # FIX 9: removed stray bare `Modify` token that caused NameError.
+    prev_triggers_raw = list(_normalise_set(prev.all_triggers))
+    curr_triggers_raw = list(_normalise_set(state.get("triggers", {}).get("triggers", [])))
+    transcript        = state.get("chat", "")
+
+    # FIX 4 & 5: was calling non-existent function with misaligned args.
+    new_triggers, persistent_triggers, resolved_triggers = _compute_delta(
+        signal_type=  "trigger",
+        prev=         prev_triggers_raw,
+        curr=         curr_triggers_raw,
+        transcript=   transcript,
+    )
+
+    # ── 3. Concern diff with semantic equivalence + explicit resolution ──
+
+    # FIX 9: removed stray bare `Modify` token.
+    prev_concerns_raw = list(_normalise_set(prev.all_concerns))
+    curr_concerns_raw = list(_normalise_set(state.get("concern", {}).get("concerns", [])))
+
+    # FIX 5: was calling non-existent `_compute_concern_delta`; unified to `_compute_delta`.
+    new_concerns, persistent_concerns, resolved_concerns = _compute_delta(
+        signal_type= "concern",
+        prev=        prev_concerns_raw,
+        curr=        curr_concerns_raw,
+        transcript=  transcript,
+    )
+
+    # ── 4. Intervention diff (no resolution check — transcript not needed) ──
+
+    # FIX 9: removed stray bare `Modify` token.
+    prev_interventions_raw = list(_normalise_set(prev.recommended_intervention))
+    curr_interventions_raw = list(_normalise_set(current_row.get("recommended_intervention", [])))
+
+    # FIX 5: was calling non-existent `_compute_intervention_delta`; unified to `_compute_delta`.
+    # FIX 8: interventions have no transcript-based resolution check; pass empty string.
+    new_interventions, continuing_interventions, dropped_interventions = _compute_delta(
+        signal_type= "intervention",
+        prev=        prev_interventions_raw,
+        curr=        curr_interventions_raw,
+        transcript=  "",
+    )
+
+    # ── 5. Clinical flags ─────────────────────────────────────────────
+
+    relapse_detected = (stage_after == "relapse")
+
+    before_order = STAGE_ORDER.get(stage_before, -2)
+    after_order  = STAGE_ORDER.get(stage_after,  -2)
+    rapid_progress = (
+        direction == "progress"
+        and before_order >= 0
+        and after_order >= 0
+        and (after_order - before_order) > 1
+    )
+
+    stagnation = (direction == "stable" and profile.stagnation_count >= 2)
+
+    concern_shift = (
+        prev.main_concern.lower() != current_row.get("main_concern", "").lower()
+        and prev.main_concern not in ("unknown", "")
+    )
+
+    # ── 6. LLM narrative ─────────────────────────────────────────────
+
+    clinical_summary = ""
+    delta_confidence = 0.7
+
+    try:
+        prompt = _DELTA_NARRATIVE_PROMPT.format(
+            n_minus_1=prev.session_number,
+            n=n,
+            stage_before=stage_before,
+            stage_after=stage_after,
+            concern_before=prev.main_concern,
+            concern_after=current_row.get("main_concern", "unknown"),
+            trigger_before=prev.primary_trigger,
+            trigger_after=current_row.get("primary_trigger", "unknown"),
+            interventions_before=", ".join(prev.recommended_intervention) or "none",
+            interventions_after=", ".join(current_row.get("recommended_intervention", [])) or "none",
+            stage_direction=direction,
+            new_triggers=", ".join(new_triggers) or "none",
+            resolved_triggers=", ".join(resolved_triggers) or "none",
+            new_concerns=", ".join(new_concerns) or "none",
+            resolved_concerns=", ".join(resolved_concerns) or "none",
+            new_interventions=", ".join(new_interventions) or "none",
+        )
+        raw = call_ollama(prompt)
+        parsed = repair_json(raw)
+        clinical_summary = parsed.get("clinical_summary", "")
+        delta_confidence = float(parsed.get("delta_confidence", 0.7))
+    except Exception as exc:
+        warning(f"delta_agent: narrative call failed — {exc}. Using structural summary.")
+        clinical_summary = _fallback_narrative(
+            stage_before, stage_after, direction,
+            new_triggers, resolved_triggers, new_concerns
+        )
+
+    # ── 7. Build SessionDelta ─────────────────────────────────────────
+
+    delta = SessionDelta(
+        from_session=prev.session_number,
+        to_session=n,
+        from_date=prev.session_date,
+        stage_before=stage_before,
+        stage_after=stage_after,
+        stage_changed=(stage_before != stage_after),
+        stage_direction=direction,
+        new_triggers=new_triggers,
+        resolved_triggers=resolved_triggers,
+        persistent_triggers=persistent_triggers,
+        new_concerns=new_concerns,
+        resolved_concerns=resolved_concerns,
+        persistent_concerns=persistent_concerns,
+        new_interventions=new_interventions,
+        continuing_interventions=continuing_interventions,
+        dropped_interventions=dropped_interventions,
+        relapse_detected=relapse_detected,
+        rapid_progress_detected=rapid_progress,
+        stagnation_detected=stagnation,
+        concern_shift_detected=concern_shift,
+        trigger_resolved=len(resolved_triggers) > 0,
+        clinical_summary=clinical_summary,
+        delta_confidence=min(1.0, max(0.0, delta_confidence)),
+    )
+
+    log(
+        f"delta_agent: stage {stage_before} → {stage_after} ({direction}) | "
+        f"new_triggers={new_triggers} | resolved={resolved_triggers} | "
+        f"relapse={relapse_detected}"
+    )
+
+    return {"session_delta": delta.model_dump()}
+
+
+# ---------------------------------------------------------------------------
+# Generic signal delta (triggers, concerns, interventions)
+# ---------------------------------------------------------------------------
+
+def _compute_delta(
+    signal_type: str,
+    prev: List[str],
+    curr: List[str],
+    transcript: str,
+) -> Tuple[List[str], List[str], List[str]]:
+    """
+    Returns (new_items, persistent_items, resolved_items).
+
+    Step 1 — Semantic diff: ask the LLM which current items are genuinely
+              new vs. semantically equivalent to previous ones.
+    Step 2 — Resolution check: ask the LLM to scan the transcript and flag
+              only those previous items the patient explicitly said are gone.
+              Skipped when transcript is empty (e.g. interventions).
+
+    Falls back to naive set-difference if either LLM call fails.
+    """
+    if not prev and not curr:
+        return [], [], []
+
+    # ── Step 1: semantic equivalence diff ────────────────────────────
+    new: List[str] = []
+    persistent: List[str] = []
+
+    try:
+        # FIX 1 & 7: prompt is now a plain string formatted at call time.
+        sem_prompt = _SEMANTIC_DIFF_PROMPT.format(
+            signal=    signal_type,
+            prev_items="\n".join(f"- {t}" for t in prev) or "(none)",
+            curr_items="\n".join(f"- {t}" for t in curr) or "(none)",
+        )
+        raw = call_ollama(sem_prompt)
+        parsed = repair_json(raw)
+        # FIX 6: was using `prev_triggers`/`curr_triggers`; now uses the generic params.
+        new       = [t.strip().lower() for t in parsed.get(f"new_{signal_type}s", []) if t.strip()]
+        persistent= [t.strip().lower() for t in parsed.get(f"persistent_{signal_type}s", []) if t.strip()]
+        log(f"_compute_delta({signal_type}): semantic diff → new={new}, persistent={persistent}")
+    except Exception as exc:
+        warning(f"_compute_delta({signal_type}): semantic diff failed — {exc}. Falling back to set diff.")
+        prev_set = set(prev)
+        curr_set = set(curr)
+        new       = sorted(curr_set - prev_set)
+        persistent= sorted(curr_set & prev_set)
+
+    # ── Step 2: explicit resolution check ────────────────────────────
+    resolved: List[str] = []
+
+    if prev and transcript:
+        try:
+            # FIX 1 & 7: prompt is now a plain string formatted at call time.
+            res_prompt = _RESOLVED_VALIDATION_PROMPT.format(
+                signal=    signal_type,
+                prev_items="\n".join(f"- {t}" for t in prev),
+                transcript=transcript[:6000],   # guard against huge transcripts
+            )
+            raw = call_ollama(res_prompt)
+            parsed = repair_json(raw)
+            resolved = [
+                t.strip().lower()
+                for t in parsed.get(f"resolved_{signal_type}s", [])
+                if t.strip()
+            ]
+            log(f"_compute_delta({signal_type}): resolution check → resolved={resolved}")
+        except Exception as exc:
+            warning(f"_compute_delta({signal_type}): resolution check failed — {exc}. None marked resolved.")
+            resolved = []
+    else:
+        log(f"_compute_delta({signal_type}): no transcript — skipping resolution check.")
+
+    return sorted(new), sorted(persistent), sorted(resolved)
+
+
+# ---------------------------------------------------------------------------
+# Generic helpers
+# ---------------------------------------------------------------------------
+
+def _normalise_set(items: List[str]) -> Set[str]:
+    return {item.strip().lower() for item in items if item.strip()}
+
+
+def _fallback_narrative(
+    stage_before: str,
+    stage_after: str,
+    direction: str,
+    new_triggers: List[str],
+    resolved_triggers: List[str],
+    new_concerns: List[str],
+) -> str:
+    parts = []
+    if stage_before != stage_after:
+        parts.append(
+            f"Stage changed from {stage_before} to {stage_after} ({direction})."
+        )
+    else:
+        parts.append(f"Stage remained at {stage_after}.")
+    if new_triggers:
+        parts.append(f"New triggers identified: {', '.join(new_triggers)}.")
+    if resolved_triggers:
+        parts.append(f"Patient explicitly resolved the following triggers: {', '.join(resolved_triggers)}.")
+    if new_concerns:
+        parts.append(f"New concerns emerged: {', '.join(new_concerns)}.")
+    return " ".join(parts) or "No significant changes detected between sessions."
+
+
+================================================================================
+FILE: /data1/students/srijit/cc/agents/longitudinal/longitudinal_sanity.py
+================================================================================
+
+"""
+agents/longitudinal/longitudinal_sanity.py
+--------------------------------------------
+Cross-session consistency checker.
+
+Extends the within-session sanity_check_agent with rules that span
+multiple sessions. Runs after delta_agent has computed the SessionDelta.
+
+Rules checked:
+  1. Stage skip > 1 step forward in one session (likely extraction error)
+  2. Relapse detected but no mention of relapse in conversation
+  3. Previously failed intervention recommended again without acknowledgment
+  4. Stagnation: 4+ consecutive stable sessions (clinically significant flag)
+  5. Rapid regression: action/maintenance → precontemplation in one session
+  6. Conflicting concern: current main_concern contradicts patient's stated stage
+  7. Trigger persistence: critical trigger present for 3+ sessions unchanged
+"""
+from __future__ import annotations
+
+from typing import Dict, Any, List
+
+from utils.logger import log
+from schemas.longitudinal_schema import STAGE_ORDER
+
+
+def longitudinal_sanity_agent(state: Dict[str, Any]) -> Dict[str, Any]:
+    """
+    Check cross-session consistency.
+    Returns partial state update: 'longitudinal_sanity' dict.
+    """
+    profile     = state.get("patient_profile")
+    delta       = state.get("session_delta")
+    current_row = state.get("dataset_row", {})
+    conversation = state.get("chat", "").lower()
+
+    if profile is None or profile.session_count == 0 or delta is None:
+        log("longitudinal_sanity: first session — skipping cross-session checks.")
+        return {"longitudinal_sanity": {"passed": True, "flags": [], "severity": "none"}}
+
+    flags: List[str] = []
+
+    # ── Rule 1: Stage skip > 1 step ───────────────────────────────────
+    before_order = STAGE_ORDER.get(delta.get("stage_before", "unknown"), -2)
+    after_order  = STAGE_ORDER.get(delta.get("stage_after",  "unknown"), -2)
+    if (before_order >= 0 and after_order >= 0
+            and (after_order - before_order) > 1):
+        flags.append(
+            f"STAGE_SKIP: jumped from '{delta['stage_before']}' to "
+            f"'{delta['stage_after']}' in one session (skipped "
+            f"{after_order - before_order - 1} stage(s)). "
+            f"Verify extraction accuracy."
+        )
+
+    # ── Rule 2: Relapse detected but no relapse language in chat ──────
+    if delta.get("relapse_detected"):
+        relapse_keywords = ["relapse", "started smoking again", "gave up", "went back",
+                            "smoking again", "failed", "slipped"]
+        mentioned = any(kw in conversation for kw in relapse_keywords)
+        if not mentioned:
+            flags.append(
+                "SILENT_RELAPSE: stage annotated as 'relapse' but no relapse "
+                "language found in conversation. Check extraction."
+            )
+
+    # ── Rule 3: Previously failed intervention re-recommended ─────────
+    # (Simple heuristic: if an intervention was tried in session 1 and
+    #  recommended again in session 3+ without the word "again" or "continue")
+    if profile.session_count >= 2:
+        tried_set = {i.lower().strip() for i in profile.interventions_tried}
+        current_new = [i for i in delta.get("new_interventions", [])
+                       if i.lower().strip() in tried_set]
+        if current_new:
+            flags.append(
+                f"REPEATED_INTERVENTION: {current_new} was previously tried "
+                f"and is being recommended again. Consider noting outcome of prior use."
+            )
+
+    # ── Rule 4: Stagnation ≥ 4 consecutive stable sessions ───────────
+    if profile.stagnation_count >= 4:
+        flags.append(
+            f"PROLONGED_STAGNATION: patient has been in '{profile.current_stage}' "
+            f"for {profile.stagnation_count} consecutive sessions. "
+            f"Consider escalating or changing approach."
+        )
+
+    # ── Rule 5: Rapid regression from high stage ──────────────────────
+    if (before_order >= STAGE_ORDER.get("action", 3)
+            and after_order <= STAGE_ORDER.get("contemplation", 1)
+            and after_order >= 0):
+        flags.append(
+            f"SEVERE_REGRESSION: dropped from '{delta['stage_before']}' to "
+            f"'{delta['stage_after']}' in one session. Assess for crisis or "
+            f"significant life event."
+        )
+
+    # ── Rule 6: Trigger persistent for 3+ sessions without intervention ──
+    sessions_with_trigger: Dict[str, int] = {}
+    for session in profile.sessions:
+        for t in session.all_triggers:
+            key = t.lower().strip()
+            sessions_with_trigger[key] = sessions_with_trigger.get(key, 0) + 1
+
+    stuck_triggers = [t for t, count in sessions_with_trigger.items() if count >= 3]
+    current_interventions_lower = {
+        i.lower() for i in current_row.get("recommended_intervention", [])
+    }
+    for stuck in stuck_triggers:
+        # Check if any current intervention addresses this trigger
+        addressed = any(stuck in iv or iv in stuck
+                        for iv in current_interventions_lower)
+        if not addressed:
+            flags.append(
+                f"UNADDRESSED_PERSISTENT_TRIGGER: '{stuck}' has been present for "
+                f"{sessions_with_trigger[stuck]} sessions without a targeted intervention."
+            )
+
+    # ── Rule 7: Concern contradicts stage ────────────────────────────
+    stage = current_row.get("stage_of_change", "unknown")
+    concern = current_row.get("main_concern", "").lower()
+    not_ready_phrases = ["not ready", "don't want", "not considering", "no interest"]
+    if stage in ("action", "maintenance"):
+        for phrase in not_ready_phrases:
+            if phrase in concern:
+                flags.append(
+                    f"CONCERN_STAGE_MISMATCH: stage is '{stage}' but concern suggests "
+                    f"ambivalence: '{concern}'"
+                )
+                break
+
+    # ── Severity ──────────────────────────────────────────────────────
+    passed = len(flags) == 0
+    severity = "none" if passed else ("high" if len(flags) >= 3 else "medium")
+
+    if flags:
+        log(f"longitudinal_sanity: {len(flags)} flag(s) (severity={severity})")
+        for f in flags:
+            log(f"  FLAG: {f}")
+    else:
+        log("longitudinal_sanity: all cross-session checks passed.")
+
+    return {
+        "longitudinal_sanity": {
+            "passed": passed,
+            "flags": flags,
+            "severity": severity,
+        }
+    }
+
+
+
+================================================================================
+FILE: /data1/students/srijit/cc/agents/longitudinal/context_agent.py
+================================================================================
+
+"""
+agents/longitudinal/context_agent.py
+--------------------------------------
+Runs BEFORE the extractor fan-out on sessions 2+.
+
+Takes the PatientProfile and enriches the GraphState with:
+  1. A structured context_summary string (already built by PatientMemory)
+  2. A session-aware version of the conversation text that extractors receive
+  3. Flags for the manager about what to watch for (e.g. relapse risk)
+
+For session 1 (no history) this agent is a no-op — it returns the state
+unchanged so the graph can use a single workflow for all session numbers.
+"""
+from __future__ import annotations
+
+from typing import Dict, Any
+
+from utils.logger import log
+
+
+def longitudinal_context_agent(state: Dict[str, Any]) -> Dict[str, Any]:
+    """
+    Enrich state with patient history context before extraction begins.
+
+    If no patient_profile is present (session 1 or profile-less run),
+    returns state unchanged.
+
+    Returns partial state update:
+      enriched_chat       — conversation + history header (used by extractors)
+      longitudinal_flags  — list of active warnings for downstream agents
+    """
+    profile = state.get("patient_profile")
+
+    if profile is None or profile.is_first_session:
+        log("longitudinal_context: no prior history — running as first session.")
+        return {
+            "enriched_chat": state.get("chat", ""),
+            "longitudinal_flags": [],
+        }
+
+    log(f"longitudinal_context: injecting history for session "
+        f"{profile.session_count + 1} (patient={profile.patient_id})")
+
+    context = profile.context_summary
+    raw_chat = state.get("chat", "")
+
+    # Build enriched conversation text — history header + separator + current chat
+    enriched = (
+        f"{context}\n"
+        f"{'='*60}\n"
+        f"CURRENT SESSION CONVERSATION:\n"
+        f"{raw_chat}"
+    )
+
+    # Compute active longitudinal warning flags
+    flags = _compute_flags(profile)
+    if flags:
+        log(f"longitudinal_context: active flags → {flags}")
+
+    return {
+        "enriched_chat": enriched,
+        "longitudinal_flags": flags,
+    }
+
+
+def _compute_flags(profile) -> list[str]:
+    """Generate warning flags from profile state for downstream agents."""
+    flags = []
+
+    if profile.stagnation_count >= 3:
+        flags.append(
+            f"STAGNATION: patient has been '{profile.current_stage}' for "
+            f"{profile.stagnation_count} consecutive sessions"
+        )
+
+    if profile.relapse_count > 0:
+        flags.append(
+            f"RELAPSE_HISTORY: {profile.relapse_count} relapse(s) in history — "
+            f"watch for relapse indicators in current session"
+        )
+
+    if profile.current_stage in ("action", "maintenance") and profile.relapse_count > 0:
+        flags.append(
+            "HIGH_RELAPSE_RISK: patient in post-action stage with prior relapse(s)"
+        )
+
+    if profile.stage_direction_history and profile.stage_direction_history[-1] == "regression":
+        flags.append(
+            f"RECENT_REGRESSION: last session showed regression from "
+            f"'{profile.previous_stage}' to '{profile.current_stage}'"
+        )
+
+    if len(profile.persistent_triggers) > 3:
+        flags.append(
+            f"PERSISTENT_TRIGGERS: {len(profile.persistent_triggers)} triggers "
+            f"unresolved across multiple sessions"
+        )
+
+    return flags
+
+
+
+================================================================================
+FILE: /data1/students/srijit/cc/agents/manager/__init__.py
+================================================================================
+
+
+
+
+================================================================================
+FILE: /data1/students/srijit/cc/agents/manager/agent_manager.py
+================================================================================
+
+"""
+agents/manager/agent_manager.py
+---------------------------------
+Central coordinator for parallel extractor fan-out and confidence-aware routing.
+"""
+from typing import Dict, Any, List, Optional
+
+from agents.registry import get_registry
+from agents.debate.debate_loop import maybe_debate
+from agents.confidence.confidence import run_confidence_check
+from agents.memory.agent_memory import AgentMemory
+from utils.logger import log, warning
+from config.settings import (
+    CONFIDENCE_DEBATE_THRESHOLD,
+    CONFIDENCE_SKIP_REVIEW_THRESHOLD,
+)
+
+# Map from registry key (function name) -> signal key (state key)
+_SIGNAL_MAP = {
+    "attempt_agent":   "attempt",
+    "readiness_agent": "readiness",
+    "concern_agent":   "concern",
+    "trigger_agent":   "triggers",
+    "advice_agent":    "advice",
+}
+
+class AgentManager:
+    """
+    Coordinates extractor agents with confidence-aware routing and
+    optional debate escalation.
+    """
+
+    def __init__(self, memory: Optional[AgentMemory] = None) -> None:
+        self.registry = get_registry()
+        self.memory = memory or AgentMemory()
+
+    def run_extractors(self, state: Dict[str, Any]) -> Dict[str, Any]:
+        """
+        Fan-out extractors, evaluate them via a judge, and route to debate if needed.
+        """
+        log("agent_manager: running parallel extractors ...")
+        
+        # 1. Run all registered extractors in parallel
+        # Note: registry.run_all_parallel returns a dict where keys match registry_keys
+        raw_outputs = self.registry.run_all_parallel(state, max_workers=5)
+        
+        final_outputs: Dict[str, Any] = {}
+        chat_text = state.get("chat", "")
+
+        # 2. Process and Validate each signal
+        for registry_key, state_key in _SIGNAL_MAP.items():
+            # Get output by registry_key (how it was saved in registry.run_all_parallel)
+            # or by state_key depending on registry implementation.
+            # Assuming registry returns {state_key: result} based on registry.py logic:
+            output = raw_outputs.get(state_key)
+            if not output:
+                continue
+
+            # 3. External Confidence Check (The Judge Pattern)
+            # We don't just trust the agent's self-reported confidence.
+            eval_result = run_confidence_check(
+                signal_name=state_key,
+                extracted_signal=output,
+                conversation=chat_text
+            )
+            
+            # Update output with verified metadata
+            output["confidence"] = eval_result.confidence
+            output["evaluation_issues"] = eval_result.issues
+            print(output["confidence"]) 
+            print(output["evaluation_issues"]) 
+            # 4. Route through debate if verified confidence is low
+            debated_output = maybe_debate(
+                signal_name=state_key,
+                extractor_output=output,
+                conversation=chat_text,
+                confidence_threshold=CONFIDENCE_DEBATE_THRESHOLD,
+            )
+            
+            final_outputs[state_key] = debated_output
+
+            # 5. Record run for historical performance tracking
+            self.memory.record_run(
+                registry_key, 
+                confidence=eval_result.confidence,
+                failed=(eval_result.confidence < 0.2) # Heuristic for "failed"
+            )
+
+        # 6. Advice-specific review logic
+        if "advice" in final_outputs:
+            adv_conf = final_outputs["advice"].get("confidence", 0.0)
+            final_outputs["_skip_advice_review"] = adv_conf >= CONFIDENCE_SKIP_REVIEW_THRESHOLD
+            log(f"agent_manager: advice validation confidence={adv_conf:.2f}")
+
+        return final_outputs
+
+    def compute_cross_signal_disagreement(self, state: Dict[str, Any]) -> float:
+        """
+        Standard deviation of confidence scores as a proxy for pipeline disagreement.
+        """
+        confidences = []
+        for key in _SIGNAL_MAP.values():
+            val = state.get(key, {}).get("confidence")
+            if isinstance(val, (int, float)):
+                confidences.append(float(val))
+
+        if len(confidences) < 2:
+            return 0.0
+
+        mean = sum(confidences) / len(confidences)
+        variance = sum((c - mean) ** 2 for c in confidences) / len(confidences)
+        return round(variance ** 0.5, 4)
+
+
+================================================================================
+FILE: /data1/students/srijit/cc/agents/extractors/readiness_agent.py
+================================================================================
+
+from typing import Dict, Any
+from llm.ollama_client import call_ollama
+from llm.json_parser import repair_json
+from utils.prompt_loader import load_prompt
+from utils.logger import log
+from schemas.clinical_schema import ReadinessOutput
+
+def readiness_agent(state: Dict[str, Any]) -> Dict[str, Any]:
+    """Classify TTM stage of change. v2: includes numeric confidence."""
+    log("readiness_agent: classifying stage of change …")
+    prompt = load_prompt("readiness.txt").format(conversation=state["chat"])
+    response = call_ollama(prompt)
+    parsed = repair_json(response)
+    try:
+        validated = ReadinessOutput(**parsed)
+    except Exception as exc:
+        log(f"readiness_agent: validation warning — {exc}. Defaulting to 'unknown'.")
+        validated = ReadinessOutput(readiness_stage="unknown")
+    log(f"readiness_agent: stage={validated.readiness_stage} (confidence={validated.confidence:.2f}).")
+    return {"readiness": validated.model_dump()}
+
+
+
+================================================================================
+FILE: /data1/students/srijit/cc/agents/extractors/__init__.py
+================================================================================
+
+# extractors package
+
+
+
+================================================================================
+FILE: /data1/students/srijit/cc/agents/extractors/advice_agent.py
+================================================================================
+
+from typing import Dict, Any
+from llm.ollama_client import call_ollama
+from llm.json_parser import repair_json
+from utils.prompt_loader import load_prompt
+from utils.logger import log
+from schemas.clinical_schema import AdviceOutput
+
+def advice_agent(state: Dict[str, Any]) -> Dict[str, Any]:
+    """Extract cessation advice. v2: includes confidence score."""
+    log("advice_agent: extracting advice …")
+    prompt = load_prompt("advice.txt").format(conversation=state["chat"])
+    response = call_ollama(prompt)
+    parsed = repair_json(response)
+    try:
+        validated = AdviceOutput(**parsed)
+    except Exception as exc:
+        log(f"advice_agent: validation warning — {exc}. Using raw parsed output.")
+        validated = AdviceOutput()
+    log(f"advice_agent: found {len(validated.advice)} advice items (confidence={validated.confidence:.2f}).")
+    return {"advice": validated.model_dump()}
+
+
+
+================================================================================
+FILE: /data1/students/srijit/cc/agents/extractors/concern_agent.py
+================================================================================
+
+from typing import Dict, Any
+from llm.ollama_client import call_ollama
+from llm.json_parser import repair_json
+from utils.prompt_loader import load_prompt
+from utils.logger import log
+from schemas.clinical_schema import ConcernOutput
+
+def concern_agent(state: Dict[str, Any]) -> Dict[str, Any]:
+    """Extract patient concerns. v2: includes confidence score."""
+    log("concern_agent: extracting patient concerns …")
+    prompt = load_prompt("concern.txt").format(conversation=state["chat"])
+    response = call_ollama(prompt)
+    parsed = repair_json(response)
+    try:
+        validated = ConcernOutput(**parsed)
+    except Exception as exc:
+        log(f"concern_agent: validation warning — {exc}. Using defaults.")
+        validated = ConcernOutput()
+    log(f"concern_agent: found {len(validated.concerns)} concern(s) (confidence={validated.confidence:.2f}).")
+    return {"concern": validated.model_dump()}
+
+
+
+================================================================================
+FILE: /data1/students/srijit/cc/agents/extractors/trigger_agent.py
+================================================================================
+
+from typing import Dict, Any
+from llm.ollama_client import call_ollama
+from llm.json_parser import repair_json
+from utils.prompt_loader import load_prompt
+from utils.logger import log
+from schemas.clinical_schema import TriggerOutput
+
+def trigger_agent(state: Dict[str, Any]) -> Dict[str, Any]:
+    """Identify smoking triggers"""
+    log("trigger_agent: identifying smoking triggers …")
+    prompt = load_prompt("trigger.txt").format(conversation=state["chat"])
+    response = call_ollama(prompt)
+    parsed = repair_json(response)
+    try:
+        validated = TriggerOutput(**parsed)
+    except Exception as exc:
+        log(f"trigger_agent: validation warning — {exc}. Using defaults.")
+        validated = TriggerOutput()
+    log(f"trigger_agent: found {len(validated.triggers)} trigger(s) (confidence={validated.confidence:.2f}).")
+    return {"triggers": validated.model_dump()}
+
+
+
+================================================================================
+FILE: /data1/students/srijit/cc/agents/extractors/attempt_agent.py
+================================================================================
+
+from typing import Dict, Any
+from llm.ollama_client import call_ollama
+from llm.json_parser import repair_json
+from utils.prompt_loader import load_prompt
+from utils.logger import log
+from schemas.clinical_schema import AttemptOutput
+
+def attempt_agent(state: Dict[str, Any]) -> Dict[str, Any]:
+    """Extract quit attempt history. v2: includes confidence score."""
+    log("attempt_agent: extracting quit attempt history …")
+    prompt = load_prompt("attempt.txt").format(conversation=state["chat"])
+    response = call_ollama(prompt)
+    parsed = repair_json(response)
+    try:
+        validated = AttemptOutput(**parsed)
+    except Exception as exc:
+        log(f"attempt_agent: validation warning — {exc}. Using defaults.")
+        validated = AttemptOutput()
+    log(f"attempt_agent: found {len(validated.attempts)} attempt(s) (confidence={validated.confidence:.2f}).")
+    return {"attempt": validated.model_dump()}
+
+
+
+================================================================================
+FILE: /data1/students/srijit/cc/agents/memory/agent_memory.py
+================================================================================
+
+"""
+agents/memory/agent_memory.py
+------------------------------
+Lightweight in-process memory for tracking per-agent performance over time.
+
+Stores:
+  - per-agent confidence history (rolling window)
+  - per-agent run count and failure count
+  - case-level memory: previous conversation outcomes for similarity lookup
+
+In a production system this would persist to Redis/SQLite. For the research
+prototype it lives in-memory and can optionally be serialised to JSON.
+"""
+import json
+from collections import defaultdict, deque
+from pathlib import Path
+from typing import Dict, Any, Optional, List
+
+from utils.logger import log
+
+_WINDOW = 50  # rolling window size for accuracy tracking
+
+
+class AgentMemory:
+    """
+    Tracks per-agent reliability and stores case-level outcomes.
+    """
+
+    def __init__(self, persist_path: Optional[str] = None) -> None:
+        # confidence_history[agent_name] = deque of confidence floats
+        self._confidence: Dict[str, deque] = defaultdict(lambda: deque(maxlen=_WINDOW))
+        # failure_count[agent_name] = int
+        self._failures: Dict[str, int] = defaultdict(int)
+        # run_count[agent_name] = int
+        self._runs: Dict[str, int] = defaultdict(int)
+        # case_memory: list of {"conversation_id": ..., "dataset_row": ...}
+        self._cases: List[Dict[str, Any]] = []
+        self._persist_path = Path(persist_path) if persist_path else None
+
+        if self._persist_path and self._persist_path.exists():
+            self._load()
+
+    # ------------------------------------------------------------------
+    # Per-agent tracking
+    # ------------------------------------------------------------------
+
+    def record_run(self, agent_name: str, confidence: float, failed: bool = False) -> None:
+        self._runs[agent_name] += 1
+        self._confidence[agent_name].append(confidence)
+        if failed:
+            self._failures[agent_name] += 1
+        log(f"memory: recorded run for '{agent_name}' (conf={confidence:.2f}, failed={failed})")
+
+    def get_accuracy(self, agent_name: str) -> Optional[float]:
+        """
+        Returns mean confidence over the rolling window, or None if no data.
+        Used as a proxy for accuracy until a gold-label evaluation is wired in.
+        """
+        history = self._confidence.get(agent_name)
+        if not history:
+            return None
+        return sum(history) / len(history)
+
+    def get_failure_rate(self, agent_name: str) -> float:
+        runs = self._runs[agent_name]
+        if runs == 0:
+            return 0.0
+        return self._failures[agent_name] / runs
+
+    def agent_stats(self) -> Dict[str, Dict[str, Any]]:
+        stats = {}
+        for name in self._runs:
+            stats[name] = {
+                "runs": self._runs[name],
+                "failures": self._failures[name],
+                "failure_rate": round(self.get_failure_rate(name), 3),
+                "mean_confidence": round(self.get_accuracy(name) or 0.0, 3),
+            }
+        return stats
+
+    # ------------------------------------------------------------------
+    # Case memory
+    # ------------------------------------------------------------------
+
+    def store_case(self, conversation_id: str, dataset_row: Dict[str, Any]) -> None:
+        self._cases.append({"conversation_id": conversation_id, "dataset_row": dataset_row})
+        if self._persist_path:
+            self._save()
+
+    def retrieve_similar_cases(self, stage: str, n: int = 3) -> List[Dict[str, Any]]:
+        """
+        Retrieve up to n past cases with the same stage_of_change.
+        Simple exact-match lookup — can be replaced with embedding similarity.
+        """
+        matched = [
+            c for c in self._cases
+            if c["dataset_row"].get("stage_of_change") == stage
+        ]
+        return matched[-n:]
+
+    # ------------------------------------------------------------------
+    # Persistence helpers
+    # ------------------------------------------------------------------
+
+    def _save(self) -> None:
+        data = {
+            "confidence": {k: list(v) for k, v in self._confidence.items()},
+            "failures": dict(self._failures),
+            "runs": dict(self._runs),
+            "cases": self._cases[-200:],  # keep last 200
+        }
+        self._persist_path.write_text(json.dumps(data, indent=2), encoding="utf-8")
+
+    def _load(self) -> None:
+        data = json.loads(self._persist_path.read_text(encoding="utf-8"))
+        for k, v in data.get("confidence", {}).items():
+            self._confidence[k] = deque(v, maxlen=_WINDOW)
+        self._failures.update(data.get("failures", {}))
+        self._runs.update(data.get("runs", {}))
+        self._cases = data.get("cases", [])
+        log(f"memory: loaded {len(self._cases)} cases from {self._persist_path}")
+
+
+
+================================================================================
+FILE: /data1/students/srijit/cc/agents/memory/__init__.py
+================================================================================
+
+
+
+
+================================================================================
+FILE: /data1/students/srijit/cc/agents/memory/patient_memory.py
+================================================================================
+
+"""
+agents/memory/patient_memory.py
+---------------------------------
+Persistent per-patient storage for longitudinal coherence.
+"""
+
+from __future__ import annotations
+
+import json
+from pathlib import Path
+from datetime import datetime
+from typing import Optional, List, Dict, Any
+
+from schemas.longitudinal_schema import (
+    PatientProfile, SessionRecord, SessionDelta,
+    STAGE_ORDER, stage_direction,
+)
+from utils.logger import log
+
+_DEFAULT_PATIENTS_DIR = Path(__file__).resolve().parent.parent.parent / "data" / "patients"
+
+
+# ---------------------------------------------------------------------------
+# 🔧 Normalization Utilities (CRITICAL FIX)
+# ---------------------------------------------------------------------------
+
+def _normalize_signal_list(items: Optional[List[Any]]) -> List[str]:
+    """
+    Normalize mixed list[str | dict] → list[str]
+
+    Supports:
+    - {"trigger_type": "...", "confidence": 0.8}
+    - {"concern_type": "..."}
+    - {"text": "..."}
+    - plain strings
+
+    Always returns clean List[str]
+    """
+    if not items:
+        return []
+
+    normalized: List[str] = []
+
+    for x in items:
+        if isinstance(x, dict):
+            val = (
+                x.get("trigger_type")
+                or x.get("concern_type")
+                or x.get("text")
+                or x.get("label")
+                or str(x)
+            )
+        else:
+            val = str(x)
+
+        val = val.strip()
+        if val:
+            normalized.append(val)
+
+    return normalized
+
+
+def _dedup(lst: List[str]) -> List[str]:
+    seen = set()
+    result = []
+    for item in lst:
+        key = item.strip().lower()
+        if key and key not in seen:
+            seen.add(key)
+            result.append(item.strip())
+    return result
+
+
+# ---------------------------------------------------------------------------
+# Patient Memory
+# ---------------------------------------------------------------------------
+
+class PatientMemory:
+
+    def __init__(self, patients_dir: Optional[str] = None) -> None:
+        self.patients_dir = Path(patients_dir) if patients_dir else _DEFAULT_PATIENTS_DIR
+        self.patients_dir.mkdir(parents=True, exist_ok=True)
+
+    # ------------------------------------------------------------------
+    # Load / Save
+    # ------------------------------------------------------------------
+
+    def load_or_create(self, patient_id: str) -> PatientProfile:
+        path = self._path(patient_id)
+        if path.exists():
+            data = json.loads(path.read_text(encoding="utf-8"))
+            profile = PatientProfile(**data)
+            log(f"Loaded patient '{patient_id}' ({profile.session_count} sessions)")
+            return profile
+
+        log(f"Creating new patient '{patient_id}'")
+        return PatientProfile(patient_id=patient_id)
+
+    def save(self, profile: PatientProfile) -> None:
+        profile.last_updated = datetime.utcnow().isoformat()
+        self._path(profile.patient_id).write_text(
+            profile.model_dump_json(indent=2), encoding="utf-8"
+        )
+
+    def _path(self, patient_id: str) -> Path:
+        safe_id = "".join(c if c.isalnum() or c in "-_" else "_" for c in patient_id)
+        return self.patients_dir / f"{safe_id}.json"
+
+    # ------------------------------------------------------------------
+    # Append Session
+    # ------------------------------------------------------------------
+
+    def append_session(self, profile: PatientProfile, record: SessionRecord) -> PatientProfile:
+        record.session_number = profile.session_count + 1
+        profile.sessions.append(record)
+        profile.total_sessions = len(profile.sessions)
+
+        self._recompute_trajectory(profile)
+        self._recompute_signal_sets(profile)
+        self._recompute_persistence(profile)
+        self._recompute_best_stage(profile)
+        self._recompute_stagnation(profile)
+        self._rebuild_context_summary(profile)
+
+        log(f"Session {record.session_number} added → {profile.stage_trajectory}")
+        return profile
+
+    # ------------------------------------------------------------------
+    # Recompute logic
+    # ------------------------------------------------------------------
+
+    def _recompute_trajectory(self, profile: PatientProfile):
+        profile.stage_trajectory = [s.stage_of_change for s in profile.sessions]
+
+        profile.stage_direction_history = []
+        for i in range(1, len(profile.sessions)):
+            profile.stage_direction_history.append(
+                stage_direction(
+                    profile.sessions[i - 1].stage_of_change,
+                    profile.sessions[i].stage_of_change
+                )
+            )
+
+        profile.relapse_count = profile.stage_trajectory.count("relapse")
+
+    def _recompute_signal_sets(self, profile: PatientProfile):
+        all_t, all_c, all_i = [], [], []
+
+        for s in profile.sessions:
+            all_t.extend(s.all_triggers)
+            all_c.extend(s.all_concerns)
+            all_i.extend(s.recommended_intervention)
+
+        profile.all_triggers_ever = _dedup(all_t)
+        profile.all_concerns_ever = _dedup(all_c)
+        profile.interventions_tried = _dedup(all_i)
+
+    def _recompute_persistence(self, profile: PatientProfile):
+        if len(profile.sessions) < 2:
+            last_triggers = set(profile.sessions[-1].all_triggers) if profile.sessions else set()
+            last_concerns = set(profile.sessions[-1].all_concerns) if profile.sessions else set()
+        else:
+            last_triggers = set(profile.sessions[-1].all_triggers) & set(profile.sessions[-2].all_triggers)
+            last_concerns = set(profile.sessions[-1].all_concerns) & set(profile.sessions[-2].all_concerns)
+
+        profile.persistent_triggers = sorted(last_triggers)
+        profile.persistent_concerns = sorted(last_concerns)
+
+        profile.resolved_triggers = sorted(
+            set(profile.all_triggers_ever) - set(profile.sessions[-1].all_triggers)
+        )
+
+    def _recompute_best_stage(self, profile: PatientProfile):
+        best_order = -2
+        best = "unknown"
+
+        for stage in profile.stage_trajectory:
+            if stage == "relapse":
+                continue
+
+            order = STAGE_ORDER.get(stage, -2)
+            if order > best_order:
+                best_order = order
+                best = stage
+
+        profile.best_stage_reached = best
+
+    def _recompute_stagnation(self, profile: PatientProfile):
+        count = 0
+        for d in reversed(profile.stage_direction_history):
+            if d == "stable":
+                count += 1
+            else:
+                break
+        profile.stagnation_count = count
+
+    def _rebuild_context_summary(self, profile: PatientProfile):
+        if profile.session_count == 0:
+            profile.context_summary = ""
+            return
+
+        lines = [
+            f"PATIENT HISTORY ({profile.session_count} sessions):",
+            f"Trajectory: {' → '.join(profile.stage_trajectory)}",
+            f"Current stage: {profile.current_stage}",
+            f"Best stage: {profile.best_stage_reached}",
+        ]
+
+        if profile.persistent_triggers:
+            lines.append(f"Persistent triggers: {', '.join(profile.persistent_triggers)}")
+
+        if profile.persistent_concerns:
+            lines.append(f"Persistent concerns: {', '.join(profile.persistent_concerns)}")
+
+        if profile.stagnation_count >= 2:
+            lines.append(f"⚠ Stagnation: {profile.stagnation_count} sessions")
+
+        if profile.relapse_count > 0:
+            lines.append(f"⚠ Relapse count: {profile.relapse_count}")
+
+        profile.context_summary = "\n".join(lines)
+
+    # ------------------------------------------------------------------
+    # ✅ FIXED: Session Record Builder
+    # ------------------------------------------------------------------
+
+    @staticmethod
+    def build_session_record(
+        dataset_row: Dict[str, Any],
+        conversation: str,
+        conversation_id: Optional[str] = None,
+        all_triggers: Optional[List[Any]] = None,
+        all_concerns: Optional[List[Any]] = None,
+    ) -> SessionRecord:
+
+        return SessionRecord(
+            session_number=0,
+            session_date=datetime.utcnow().isoformat(),
+            conversation_id=conversation_id,
+
+            stage_of_change=dataset_row.get("stage_of_change", "unknown"),
+            main_concern=dataset_row.get("main_concern", "unknown"),
+            primary_trigger=dataset_row.get("primary_trigger", "unknown"),
+            quit_attempt_history=dataset_row.get("quit_attempt_history", "unknown"),
+            recommended_intervention=dataset_row.get("recommended_intervention", []),
+
+            reasoning_summary=dataset_row.get("reasoning_summary"),
+            confidence_score=dataset_row.get("confidence_score"),
+
+            # 🔥 FIX APPLIED HERE
+            all_triggers=_normalize_signal_list(all_triggers),
+            all_concerns=_normalize_signal_list(all_concerns),
+
+            debate_rounds_used=dataset_row.get("debate_rounds_used"),
+            vote_agreement=dataset_row.get("vote_agreement"),
+            sanity_passed=dataset_row.get("sanity_passed", True),
+            inconsistencies=dataset_row.get("inconsistencies", []),
+
+            conversation_excerpt=conversation[:500] if conversation else None,
+        )
+
+
+================================================================================
+FILE: /data1/students/srijit/cc/agents/memory/patient_memory copy.py
+================================================================================
+
+"""
+agents/memory/patient_memory.py
+---------------------------------
+Persistent per-patient storage for longitudinal coherence.
+
+Extends AgentMemory with patient-level profile management:
+  - load/save PatientProfile JSON files
+  - append new SessionRecord (immutable)
+  - recompute all derived fields after each session
+  - build the context_summary string injected into future extractors
+
+Storage layout:
+  data/patients/{patient_id}.json   — one file per patient
+"""
+
+from __future__ import annotations
+
+import json
+from pathlib import Path
+from datetime import datetime
+from typing import Optional, List, Dict, Any
+
+from schemas.longitudinal_schema import (
+    PatientProfile, SessionRecord, SessionDelta,
+    STAGE_ORDER, stage_direction,
+)
+from utils.logger import log, warning
+
+_DEFAULT_PATIENTS_DIR = Path(__file__).resolve().parent.parent.parent / "data" / "patients"
+
+
+class PatientMemory:
+    """
+    Manages PatientProfile persistence and longitudinal state updates.
+
+    Usage
+    -----
+    memory = PatientMemory()
+    profile = memory.load_or_create("patient_001")
+    profile = memory.append_session(profile, session_record)
+    memory.save(profile)
+    context = profile.context_summary   # inject into extractor prompts
+    """
+
+    def __init__(self, patients_dir: Optional[str] = None) -> None:
+        self.patients_dir = Path(patients_dir) if patients_dir else _DEFAULT_PATIENTS_DIR
+        self.patients_dir.mkdir(parents=True, exist_ok=True)
+
+    # ------------------------------------------------------------------
+    # Load / Save
+    # ------------------------------------------------------------------
+
+    def load_or_create(self, patient_id: str) -> PatientProfile:
+        path = self._path(patient_id)
+        if path.exists():
+            data = json.loads(path.read_text(encoding="utf-8"))
+            profile = PatientProfile(**data)
+            log(f"patient_memory: loaded profile for '{patient_id}' "
+                f"({profile.session_count} sessions)")
+            return profile
+        log(f"patient_memory: creating new profile for '{patient_id}'")
+        return PatientProfile(patient_id=patient_id)
+
+    def save(self, profile: PatientProfile) -> None:
+        profile.last_updated = datetime.utcnow().isoformat()
+        self._path(profile.patient_id).write_text(
+            profile.model_dump_json(indent=2), encoding="utf-8"
+        )
+        log(f"patient_memory: saved profile for '{profile.patient_id}' "
+            f"({profile.session_count} sessions)")
+
+    def _path(self, patient_id: str) -> Path:
+        safe_id = "".join(c if c.isalnum() or c in "-_" else "_" for c in patient_id)
+        return self.patients_dir / f"{safe_id}.json"
+
+    def list_patients(self) -> List[str]:
+        return [p.stem for p in self.patients_dir.glob("*.json")]
+
+    # ------------------------------------------------------------------
+    # Session append + profile recomputation
+    # ------------------------------------------------------------------
+
+    def append_session(
+        self,
+        profile: PatientProfile,
+        record: SessionRecord,
+    ) -> PatientProfile:
+        """
+        Append a new SessionRecord and recompute all derived longitudinal fields.
+        Returns the updated profile (does not save — caller must call save()).
+        """
+        # Assign session number
+        record.session_number = profile.session_count + 1
+        profile.sessions.append(record)
+        profile.total_sessions = len(profile.sessions)
+
+        # Recompute all derived fields from the full session history
+        self._recompute_trajectory(profile)
+        self._recompute_signal_sets(profile)
+        self._recompute_persistence(profile)
+        self._recompute_best_stage(profile)
+        self._recompute_stagnation(profile)
+        self._rebuild_context_summary(profile)
+
+        log(f"patient_memory: appended session {record.session_number} for "
+            f"'{profile.patient_id}' | stage={record.stage_of_change} | "
+            f"trajectory={profile.stage_trajectory}")
+        return profile
+
+    # ------------------------------------------------------------------
+    # Derived field recomputation
+    # ------------------------------------------------------------------
+
+    def _recompute_trajectory(self, profile: PatientProfile) -> None:
+        profile.stage_trajectory = [s.stage_of_change for s in profile.sessions]
+        profile.stage_direction_history = []
+        for i in range(1, len(profile.sessions)):
+            direction = stage_direction(
+                profile.sessions[i - 1].stage_of_change,
+                profile.sessions[i].stage_of_change,
+            )
+            profile.stage_direction_history.append(direction)
+
+        # Count relapses
+        profile.relapse_count = profile.stage_trajectory.count("relapse")
+
+    def _recompute_signal_sets(self, profile: PatientProfile) -> None:
+        all_t: List[str] = []
+        all_c: List[str] = []
+        all_i: List[str] = []
+
+        for s in profile.sessions:
+            all_t.extend(s.all_triggers)
+            all_c.extend(s.all_concerns)
+            all_i.extend(s.recommended_intervention)
+
+        # Deduplicate preserving first-occurrence order
+        profile.all_triggers_ever  = _dedup(all_t)
+        profile.all_concerns_ever  = _dedup(all_c)
+        profile.interventions_tried = _dedup(all_i)
+
+    def _recompute_persistence(self, profile: PatientProfile) -> None:
+        """
+        A trigger/concern is 'persistent' if it appears in the last 2 sessions.
+        It is 'resolved' if it appeared before but not in the last 2 sessions.
+        """
+        if len(profile.sessions) < 2:
+            last2_triggers = set(profile.sessions[-1].all_triggers) if profile.sessions else set()
+            last2_concerns = set(profile.sessions[-1].all_concerns) if profile.sessions else set()
+        else:
+            last2_triggers = set(profile.sessions[-1].all_triggers) & \
+                             set(profile.sessions[-2].all_triggers)
+            last2_concerns = set(profile.sessions[-1].all_concerns) & \
+                             set(profile.sessions[-2].all_concerns)
+
+        all_t = set(profile.all_triggers_ever)
+        all_c = set(profile.all_concerns_ever)
+
+        profile.persistent_triggers = sorted(last2_triggers)
+        profile.persistent_concerns = sorted(last2_concerns)
+        profile.resolved_triggers   = sorted(all_t - set(profile.sessions[-1].all_triggers))
+
+    def _recompute_best_stage(self, profile: PatientProfile) -> None:
+        best_order = -2
+        best = "unknown"
+        for stage in profile.stage_trajectory:
+            if stage == "relapse":
+                continue
+            order = STAGE_ORDER.get(stage, -2)
+            if order > best_order:
+                best_order = order
+                best = stage
+        profile.best_stage_reached = best
+
+    def _recompute_stagnation(self, profile: PatientProfile) -> None:
+        """Count consecutive sessions with no stage change at the end of history."""
+        if len(profile.stage_direction_history) == 0:
+            profile.stagnation_count = 0
+            return
+        count = 0
+        for direction in reversed(profile.stage_direction_history):
+            if direction == "stable":
+                count += 1
+            else:
+                break
+        profile.stagnation_count = count
+
+    def _rebuild_context_summary(self, profile: PatientProfile) -> None:
+        """
+        Build a concise context paragraph injected into extractor prompts.
+        Structured so extractors can reference history without hallucinating.
+        """
+        n = profile.session_count
+        if n == 0:
+            profile.context_summary = ""
+            return
+
+        last = profile.sessions[-1]
+        lines = [
+            f"PATIENT HISTORY ({n} session{'s' if n > 1 else ''} on record):",
+            f"  Stage trajectory:        {' → '.join(profile.stage_trajectory)}",
+            f"  Current stage:           {profile.current_stage}",
+            f"  Best stage reached:      {profile.best_stage_reached}",
+        ]
+
+        if profile.stage_direction_history:
+            lines.append(f"  Recent direction:        {profile.stage_direction_history[-1]}")
+
+        if profile.persistent_triggers:
+            lines.append(f"  Persistent triggers:     {', '.join(profile.persistent_triggers)}")
+
+        if profile.resolved_triggers:
+            lines.append(f"  Previously resolved:     {', '.join(profile.resolved_triggers[:3])}")
+
+        if profile.persistent_concerns:
+            lines.append(f"  Persistent concerns:     {', '.join(profile.persistent_concerns)}")
+
+        if profile.interventions_tried:
+            lines.append(f"  Interventions tried:     {', '.join(profile.interventions_tried[:4])}")
+
+        if profile.stagnation_count >= 2:
+            lines.append(f"  ⚠ Stagnation warning:   {profile.stagnation_count} consecutive stable sessions")
+
+        if profile.relapse_count > 0:
+            lines.append(f"  ⚠ Relapse history:      {profile.relapse_count} relapse(s) recorded")
+
+        lines.append("")
+        lines.append("NOTE: If this session contradicts any of the above, flag it explicitly.")
+        lines.append("Do NOT silently override historical data — surface the discrepancy.")
+
+        profile.context_summary = "\n".join(lines)
+
+    # ------------------------------------------------------------------
+    # Session record builder from DatasetRow
+    # ------------------------------------------------------------------
+
+    @staticmethod
+    def build_session_record(
+        dataset_row: Dict[str, Any],
+        conversation: str,
+        conversation_id: Optional[str] = None,
+        all_triggers: Optional[List[str]] = None,
+        all_concerns: Optional[List[str]] = None,
+    ) -> SessionRecord:
+        """
+        Build an immutable SessionRecord from a completed DatasetRow dict.
+        Called by the runner after the pipeline finishes.
+        """
+        return SessionRecord(
+            session_number=0,   # assigned by append_session
+            session_date=datetime.utcnow().isoformat(),
+            conversation_id=conversation_id,
+            stage_of_change=dataset_row.get("stage_of_change", "unknown"),
+            main_concern=dataset_row.get("main_concern", "unknown"),
+            primary_trigger=dataset_row.get("primary_trigger", "unknown"),
+            quit_attempt_history=dataset_row.get("quit_attempt_history", "unknown"),
+            recommended_intervention=dataset_row.get("recommended_intervention", []),
+            reasoning_summary=dataset_row.get("reasoning_summary"),
+            confidence_score=dataset_row.get("confidence_score"),
+            all_triggers=all_triggers or [],
+            all_concerns=all_concerns or [],
+            debate_rounds_used=dataset_row.get("debate_rounds_used"),
+            vote_agreement=dataset_row.get("vote_agreement"),
+            sanity_passed=dataset_row.get("sanity_passed", True),
+            inconsistencies=dataset_row.get("inconsistencies", []),
+            conversation_excerpt=conversation[:500] if conversation else None,
+        )
+
+
+# ---------------------------------------------------------------------------
+# Utility
+# ---------------------------------------------------------------------------
+
+def _dedup(lst: List[str]) -> List[str]:
+    """Deduplicate preserving first-occurrence order."""
+    seen = set()
+    result = []
+    for item in lst:
+        key = item.strip().lower()
+        if key and key not in seen:
+            seen.add(key)
+            result.append(item.strip())
+    return result
+
+

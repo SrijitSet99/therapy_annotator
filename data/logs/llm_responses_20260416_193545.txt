@@ -1,0 +1,30 @@
+=== LLM Response Log — 20260416_193545 ===
+
+--- [REVISION] attempt @ 19:35:46.986 ---
+{
+  "attempts": [
+    "patch 6 weeks",
+    "cold turkey 2 or 3 days",
+    "brutal project and cracked one night",
+    "morning smokes every single morning"
+  ],
+  "evidence": []
+}
+
+--- [REVISION] readiness @ 19:35:48.679 ---
+{
+  "readiness_stage": "contemplation",
+  "evidence": "patient expressed desire to set a quit date, identified stress and morning smoking as triggers, verbalized concerns about past failures (patch, cold turkey), and expressed concerns about wife\u2019s weight gain."
+}
+
+--- [REVISION] triggers @ 19:35:50.860 ---
+{
+  "triggers": [
+    "work stress",
+    "morning coffee",
+    "wife's weight gain",
+    "stress"
+  ],
+  "evidence": []
+}
+

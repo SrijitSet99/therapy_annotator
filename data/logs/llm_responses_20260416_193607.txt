@@ -1,0 +1,31 @@
+=== LLM Response Log — 20260416_193607 ===
+
+--- [REVISION] attempt @ 19:36:09.829 ---
+{
+  "attempts": [
+    "nicotine patch 6 weeks",
+    "cold turkey 2 or 3 days",
+    "morning smokes every single morning"
+  ],
+  "evidence": [
+    "patient stated 'I\u2019m ready to actually try this time, not just think about it.'"
+  ]
+}
+
+--- [REVISION] readiness @ 19:36:11.595 ---
+{
+  "readiness_stage": "contemplation",
+  "evidence": "patient expressed desire to set a quit date, identified stress and morning smoking as triggers, verbalized concerns about past failures (nicotine patch and cold turkey attempts), and expressed concerns about stress and wife\u2019s weight gain."
+}
+
+--- [REVISION] triggers @ 19:36:13.426 ---
+{
+  "triggers": [
+    "work stress",
+    "morning coffee",
+    "wife's weight gain",
+    "stress"
+  ],
+  "evidence": []
+}
+

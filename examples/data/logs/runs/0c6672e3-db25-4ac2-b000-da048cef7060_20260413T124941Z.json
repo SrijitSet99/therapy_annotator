@@ -1,0 +1,374 @@
+{
+  "events": {
+    "agent_manager": {
+      "confidence_result": {
+        "advice": {
+          "confidence": 0.1,
+          "issues": [
+            "Omission: The patient stated 'bye', indicating a desire to end the conversation. This should be captured as a potential negative sentiment or reason for disengagement.",
+            "Hallucination: The extracted data contains no information about the patient's feelings or reasons for wanting to quit smoking, which are central to motivational interviewing."
+          ],
+          "severity": "none"
+        },
+        "attempt": {
+          "confidence": 0.1,
+          "issues": [
+            "Hallucination: The extracted data claims 'attempts': [], which is not present in the conversation.",
+            "Omission: The conversation clearly shows the patient initially said 'bye' and the counselor responded. This interaction is completely missing from the extracted data.",
+            "Omission: The counselor's questions regarding the patient's feelings and reasons for wanting to quit are absent."
+          ],
+          "severity": "none"
+        },
+        "concern": {
+          "confidence": 0.7,
+          "issues": [
+            "Omission: The patient said 'bye', indicating a desire to end the conversation. This should be recorded as a potential negative sentiment or reason for disengagement."
+          ],
+          "severity": "none"
+        },
+        "readiness": {
+          "confidence": 0.2,
+          "issues": [
+            "Hallucination: The statement 'indicating a lack of engagement and a refusal to continue the conversation, suggesting they are not considering quitting smoking in the next 6 months' is an interpretation and extrapolation not directly stated in the conversation. It's a speculative assessment.",
+            "Omission: The conversation provides no direct data regarding the patient's motivation, ambivalence, or any factors influencing their decision-making related to quitting smoking. The 'bye' response is simply a statement, and its interpretation is presented as fact without sufficient justification.",
+            "Unclear Reasoning: The connection between 'bye' and 'precontemplation' is weakly supported. While a negative response could indicate a lack of readiness, it's premature to definitively label the patient as 'precontemplation' based solely on this single utterance."
+          ],
+          "severity": "none"
+        },
+        "triggers": {
+          "confidence": 0.2,
+          "issues": [
+            "Omission: The conversation indicates the patient initially said 'bye', but this was followed by the counselor prompting about why they wanted to leave. This initial sentiment ('bye') is not captured in the 'triggers' list.",
+            "Potential Hallucination: While 'quitting smoking' is present, the conversation's initial context of the patient saying 'bye' is not reflected. A more comprehensive trigger list might include negative emotions or intentions."
+          ],
+          "severity": "none"
+        }
+      },
+      "confidence_results": {
+        "advice": {
+          "confidence": 0.1,
+          "issues": [
+            "Omission: The patient stated 'bye', indicating a desire to end the conversation. This should be captured as a potential negative sentiment or reason for disengagement.",
+            "Hallucination: The extracted data contains no information about the patient's feelings or reasons for wanting to quit smoking, which are central to motivational interviewing."
+          ],
+          "severity": "none"
+        },
+        "attempt": {
+          "confidence": 0.1,
+          "issues": [
+            "Hallucination: The extracted data claims 'attempts': [], which is not present in the conversation.",
+            "Omission: The conversation clearly shows the patient initially said 'bye' and the counselor responded. This interaction is completely missing from the extracted data.",
+            "Omission: The counselor's questions regarding the patient's feelings and reasons for wanting to quit are absent."
+          ],
+          "severity": "none"
+        },
+        "concern": {
+          "confidence": 0.7,
+          "issues": [
+            "Omission: The patient said 'bye', indicating a desire to end the conversation. This should be recorded as a potential negative sentiment or reason for disengagement."
+          ],
+          "severity": "none"
+        },
+        "readiness": {
+          "confidence": 0.2,
+          "issues": [
+            "Hallucination: The statement 'indicating a lack of engagement and a refusal to continue the conversation, suggesting they are not considering quitting smoking in the next 6 months' is an interpretation and extrapolation not directly stated in the conversation. It's a speculative assessment.",
+            "Omission: The conversation provides no direct data regarding the patient's motivation, ambivalence, or any factors influencing their decision-making related to quitting smoking. The 'bye' response is simply a statement, and its interpretation is presented as fact without sufficient justification.",
+            "Unclear Reasoning: The connection between 'bye' and 'precontemplation' is weakly supported. While a negative response could indicate a lack of readiness, it's premature to definitively label the patient as 'precontemplation' based solely on this single utterance."
+          ],
+          "severity": "none"
+        },
+        "triggers": {
+          "confidence": 0.2,
+          "issues": [
+            "Omission: The conversation indicates the patient initially said 'bye', but this was followed by the counselor prompting about why they wanted to leave. This initial sentiment ('bye') is not captured in the 'triggers' list.",
+            "Potential Hallucination: While 'quitting smoking' is present, the conversation's initial context of the patient saying 'bye' is not reflected. A more comprehensive trigger list might include negative emotions or intentions."
+          ],
+          "severity": "none"
+        }
+      },
+      "extractor_output": {
+        "advice": {
+          "advice": [],
+          "evidence": null
+        },
+        "attempt": {
+          "attempts": [],
+          "evidence": null
+        },
+        "concern": {
+          "concerns": [],
+          "evidence": null
+        },
+        "readiness": {
+          "evidence": "The patient stated 'bye' immediately after being greeted, indicating a lack of engagement and a refusal to continue the conversation, suggesting they are not considering quitting smoking in the next 6 months.",
+          "readiness_stage": "precontemplation"
+        },
+        "triggers": {
+          "evidence": null,
+          "triggers": [
+            "bye",
+            "quitting smoking"
+          ]
+        }
+      },
+      "final_output": {
+        "advice": {
+          "_debate_converged": true,
+          "_debate_rounds": 2,
+          "advice": [],
+          "evidence": [
+            {
+              "speaker": "Counselor",
+              "type": "attempt to elicit reasons for reluctance",
+              "utterance": "Don't go just yet! What's making you want to leave? Is there something specific that's bothering you about quitting smoking?"
+            },
+            {
+              "sentiment": "negative/dismissive",
+              "speaker": "Patient",
+              "utterance": "bye"
+            }
+          ]
+        },
+        "attempt": {
+          "_debate_converged": true,
+          "_debate_rounds": 4,
+          "agreement_reached": false,
+          "attempts": [
+            "Patient: bye"
+          ],
+          "evidence": [
+            "Patient: bye"
+          ],
+          "severity": "moderate",
+          "summary": "Patient abruptly ends the conversation, prompting the counselor to immediately attempt to understand the patient’s reluctance and explore underlying reasons for wanting to quit smoking, utilizing motivational interviewing techniques.",
+          "technique": "elicit reasons for disengagement",
+          "techniques_used": [
+            "attempting to elicit reasons for disengagement, motivational interviewing techniques (open-ended questioning, empathy)"
+          ]
+        },
+        "concern": {
+          "_debate_converged": true,
+          "_debate_rounds": 1,
+          "agreement_reached": false,
+          "concerns": [
+            "patient expressed desire to leave"
+          ],
+          "evidence": "Counselor: Don’t go just yet! What’s making you want to leave? Is there something specific that’s bothering you about quitting smoking?",
+          "severity": "high"
+        },
+        "readiness": {
+          "_debate_converged": true,
+          "_debate_rounds": 5,
+          "agreement_reached": false,
+          "evidence": "The patient’s brief response of \"bye\" requires further clarification. It is possible the patient was distracted or did not fully grasp the initial greeting. The counselor’s subsequent inquiry aimed to understand the patient’s feelings and concerns, a key element of motivational interviewing. The patient's short response suggests a need for a more direct and engaging introduction to establish rapport.",
+          "readiness_stage": "uncertain",
+          "severity": "moderate"
+        },
+        "triggers": {
+          "_debate_converged": true,
+          "_debate_rounds": 1,
+          "counselor_response": "Don't go just yet! What’s making you want to leave? Is there something specific that’s bothering you about quitting smoking?",
+          "evidence": "Patient's abrupt dismissal of the conversation: 'bye'",
+          "triggers": [
+            "bye",
+            "quitting smoking"
+          ]
+        }
+      }
+    },
+    "consensus_agent": {
+      "output": {
+        "consensus": {
+          "dissenting_fields": [
+            "main_concern"
+          ],
+          "main_concern": "Patient’s abrupt dismissal and desire to leave the conversation, indicating potential resistance to engagement.",
+          "primary_trigger": "bye",
+          "quit_attempt_history": "No prior quit attempts documented.",
+          "recommended_intervention": [
+            "Re-establish rapport with a more direct and empathetic greeting.",
+            "Explore the underlying reasons for the patient’s disengagement with open-ended questions.",
+            "Assess the patient’s readiness to discuss quitting smoking more thoroughly.",
+            "Utilize motivational interviewing techniques to address potential barriers and build a collaborative relationship.",
+            "Re-establish rapport with a more direct and empathetic approach.",
+            "Explore the underlying reasons for the patient’s disengagement – utilize open-ended questions to understand their feelings and concerns.",
+            "Assess the patient’s motivation for quitting smoking, focusing on their values and goals.",
+            "Normalize ambivalence about quitting and acknowledge the difficulty of the process.",
+            "Re-establish rapport with a more direct and engaging introduction.",
+            "Explore the underlying reasons for the patient’s disengagement and reluctance to continue the conversation.",
+            "Assess the patient’s immediate feelings and concerns regarding quitting smoking.",
+            "Utilize motivational interviewing techniques to build trust and encourage further exploration of the patient’s motivations and barriers."
+          ],
+          "stage_of_change": "precontemplation",
+          "vote_agreement": 0.833
+        }
+      }
+    },
+    "longitudinal_sanity": {
+      "output": {
+        "longitudinal_sanity": {
+          "flags": [],
+          "passed": true,
+          "severity": "none"
+        }
+      }
+    },
+    "profile_update_agent": {
+      "output": {
+        "dataset_row": {
+          "confidence_score": 0.95,
+          "debate_rounds_used": 13,
+          "inconsistencies": [],
+          "longitudinal_flags": [],
+          "longitudinal_sanity_passed": true,
+          "main_concern": "Patient’s abrupt dismissal and desire to leave the conversation, indicating potential resistance to engagement.",
+          "primary_trigger": "bye",
+          "quit_attempt_history": "No prior quit attempts documented.",
+          "reasoning_summary": "The patient’s immediate dismissal suggests they are in the precontemplation stage, likely resistant to discussing quitting. The counselor should attempt to re-establish rapport and explore the patient’s reasons for disengagement using open-ended questions to understand their underlying concerns.",
+          "recommended_intervention": [
+            "Re-establish rapport with a more direct and empathetic greeting.",
+            "Explore the underlying reasons for the patient’s disengagement with open-ended questions.",
+            "Assess the patient’s readiness to discuss quitting smoking more thoroughly.",
+            "Utilize motivational interviewing techniques to address potential barriers and build a collaborative relationship."
+          ],
+          "sanity_passed": true,
+          "session_number": 1,
+          "stage_of_change": "precontemplation",
+          "vote_agreement": 0.833
+        },
+        "longitudinal_output": {
+          "current_annotation": {
+            "confidence_score": 0.95,
+            "debate_rounds_used": 13,
+            "inconsistencies": [],
+            "longitudinal_flags": [],
+            "longitudinal_sanity_passed": true,
+            "main_concern": "Patient’s abrupt dismissal and desire to leave the conversation, indicating potential resistance to engagement.",
+            "primary_trigger": "bye",
+            "quit_attempt_history": "No prior quit attempts documented.",
+            "reasoning_summary": "The patient’s immediate dismissal suggests they are in the precontemplation stage, likely resistant to discussing quitting. The counselor should attempt to re-establish rapport and explore the patient’s reasons for disengagement using open-ended questions to understand their underlying concerns.",
+            "recommended_intervention": [
+              "Re-establish rapport with a more direct and empathetic greeting.",
+              "Explore the underlying reasons for the patient’s disengagement with open-ended questions.",
+              "Assess the patient’s readiness to discuss quitting smoking more thoroughly.",
+              "Utilize motivational interviewing techniques to address potential barriers and build a collaborative relationship."
+            ],
+            "sanity_passed": true,
+            "session_number": 1,
+            "stage_of_change": "precontemplation",
+            "vote_agreement": 0.833
+          },
+          "delta": null,
+          "interventions_tried": [],
+          "longitudinal_flags": [],
+          "overall_progress": "unknown",
+          "patient_id": "0c6672e3-db25-4ac2-b000-da048cef7060",
+          "persistent_concerns": [],
+          "persistent_triggers": [],
+          "relapse_detected": false,
+          "session_number": 1,
+          "stage_trajectory": [
+            "precontemplation"
+          ],
+          "stagnation_detected": false
+        },
+        "patient_profile_id": "0c6672e3-db25-4ac2-b000-da048cef7060",
+        "session_count": 1
+      }
+    },
+    "reasoning_agent": {
+      "output": {
+        "dataset_row": {
+          "confidence_score": 0.95,
+          "debate_rounds_used": 13,
+          "inconsistencies": [],
+          "main_concern": "Patient’s abrupt dismissal and desire to leave the conversation, indicating potential resistance to engagement.",
+          "primary_trigger": "bye",
+          "quit_attempt_history": "No prior quit attempts documented.",
+          "reasoning_summary": "The patient’s immediate dismissal suggests they are in the precontemplation stage, likely resistant to discussing quitting. The counselor should attempt to re-establish rapport and explore the patient’s reasons for disengagement using open-ended questions to understand their underlying concerns.",
+          "recommended_intervention": [
+            "Re-establish rapport with a more direct and empathetic greeting.",
+            "Explore the underlying reasons for the patient’s disengagement with open-ended questions.",
+            "Assess the patient’s readiness to discuss quitting smoking more thoroughly.",
+            "Utilize motivational interviewing techniques to address potential barriers and build a collaborative relationship."
+          ],
+          "sanity_passed": true,
+          "stage_of_change": "precontemplation",
+          "vote_agreement": 0.833
+        }
+      }
+    },
+    "run_chat": {
+      "final_result": {
+        "dataset_row": {
+          "confidence_score": 0.95,
+          "debate_rounds_used": 13,
+          "inconsistencies": [],
+          "longitudinal_flags": [],
+          "longitudinal_sanity_passed": true,
+          "main_concern": "Patient’s abrupt dismissal and desire to leave the conversation, indicating potential resistance to engagement.",
+          "primary_trigger": "bye",
+          "quit_attempt_history": "No prior quit attempts documented.",
+          "reasoning_summary": "The patient’s immediate dismissal suggests they are in the precontemplation stage, likely resistant to discussing quitting. The counselor should attempt to re-establish rapport and explore the patient’s reasons for disengagement using open-ended questions to understand their underlying concerns.",
+          "recommended_intervention": [
+            "Re-establish rapport with a more direct and empathetic greeting.",
+            "Explore the underlying reasons for the patient’s disengagement with open-ended questions.",
+            "Assess the patient’s readiness to discuss quitting smoking more thoroughly.",
+            "Utilize motivational interviewing techniques to address potential barriers and build a collaborative relationship."
+          ],
+          "sanity_passed": true,
+          "session_number": 1,
+          "stage_of_change": "precontemplation",
+          "vote_agreement": 0.833
+        },
+        "longitudinal_output": {
+          "current_annotation": {
+            "confidence_score": 0.95,
+            "debate_rounds_used": 13,
+            "inconsistencies": [],
+            "longitudinal_flags": [],
+            "longitudinal_sanity_passed": true,
+            "main_concern": "Patient’s abrupt dismissal and desire to leave the conversation, indicating potential resistance to engagement.",
+            "primary_trigger": "bye",
+            "quit_attempt_history": "No prior quit attempts documented.",
+            "reasoning_summary": "The patient’s immediate dismissal suggests they are in the precontemplation stage, likely resistant to discussing quitting. The counselor should attempt to re-establish rapport and explore the patient’s reasons for disengagement using open-ended questions to understand their underlying concerns.",
+            "recommended_intervention": [
+              "Re-establish rapport with a more direct and empathetic greeting.",
+              "Explore the underlying reasons for the patient’s disengagement with open-ended questions.",
+              "Assess the patient’s readiness to discuss quitting smoking more thoroughly.",
+              "Utilize motivational interviewing techniques to address potential barriers and build a collaborative relationship."
+            ],
+            "sanity_passed": true,
+            "session_number": 1,
+            "stage_of_change": "precontemplation",
+            "vote_agreement": 0.833
+          },
+          "delta": null,
+          "interventions_tried": [],
+          "longitudinal_flags": [],
+          "overall_progress": "unknown",
+          "patient_id": "0c6672e3-db25-4ac2-b000-da048cef7060",
+          "persistent_concerns": [],
+          "persistent_triggers": [],
+          "relapse_detected": false,
+          "session_number": 1,
+          "stage_trajectory": [
+            "precontemplation"
+          ],
+          "stagnation_detected": false
+        },
+        "patient_id": "0c6672e3-db25-4ac2-b000-da048cef7060",
+        "session_number": 1
+      },
+      "transcript": {
+        "session_id": "0c6672e3-db25-4ac2-b000-da048cef7060",
+        "transcript": "Patient: Hi\nCounselor: Hello! I'm eDOSTHI, your motivational interviewing chatbot to help you quit smoking. How are you feeling about quitting smoking today?\nPatient: bye\nCounselor: Don't go just yet! What's making you want to leave? Is there something specific that's bothering you about quitting smoking?"
+      }
+    }
+  },
+  "meta": {
+    "session_id": "0c6672e3-db25-4ac2-b000-da048cef7060",
+    "started_at": "20260413T124941Z"
+  }
+}

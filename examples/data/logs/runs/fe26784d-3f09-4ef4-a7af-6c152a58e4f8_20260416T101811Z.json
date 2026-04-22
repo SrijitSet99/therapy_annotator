@@ -1,0 +1,235 @@
+{
+  "events": {
+    "agent_manager": {
+      "confidence_results": {
+        "advice": {
+          "confidence": 0.0,
+          "issues": [
+            "signal not extracted"
+          ]
+        },
+        "attempt": {
+          "confidence": 0.5,
+          "issues": [
+            "'AgentRegistry' object has no attribute 'run_one'"
+          ]
+        },
+        "concern": {
+          "confidence": 0.0,
+          "issues": [
+            "signal not extracted"
+          ]
+        },
+        "readiness": {
+          "confidence": 0.5,
+          "issues": [
+            "'AgentRegistry' object has no attribute 'run_one'"
+          ]
+        },
+        "triggers": {
+          "confidence": 0.0,
+          "issues": [
+            "signal not extracted"
+          ]
+        }
+      },
+      "extractor_output": {
+        "attempt": {
+          "attempts": [
+            "Patient attempted to quit smoking.",
+            "Patient attempted to use nicotine gum."
+          ],
+          "evidence": [
+            "Patient: hi",
+            "Patient: Patient attempted to use nicotine gum."
+          ]
+        },
+        "readiness": {
+          "evidence": "The patient simply said 'hi,' indicating they are in the initial stages of acknowledging the problem. The counselor's question about the 'hardest part' suggests the patient is at least considering the issue of quitting smoking, aligning with the contemplation stage.",
+          "readiness_stage": "contemplation"
+        }
+      },
+      "final_output": {
+        "attempt": {
+          "_debate_converged": false,
+          "_debate_rounds": 1,
+          "attempts": [
+            "Patient attempted to quit smoking.",
+            "Patient attempted to use nicotine gum."
+          ],
+          "evidence": [
+            "Patient: hi",
+            "Patient: Patient attempted to use nicotine gum."
+          ]
+        },
+        "readiness": {
+          "_debate_converged": false,
+          "_debate_rounds": 1,
+          "evidence": "The patient simply said 'hi,' indicating they are in the initial stages of acknowledging the problem. The counselor's question about the 'hardest part' suggests the patient is at least considering the issue of quitting smoking, aligning with the contemplation stage.",
+          "readiness_stage": "contemplation"
+        }
+      }
+    },
+    "consensus_agent": {
+      "output": {
+        "consensus": {
+          "dissenting_fields": [],
+          "main_concern": "Acknowledging the need to quit smoking",
+          "primary_trigger": "N/A",
+          "quit_attempt_history": "Patient has attempted to quit smoking and used nicotine gum.",
+          "recommended_intervention": [
+            "Explore the patient's feelings and motivations regarding smoking.",
+            "Help the patient identify specific triggers and develop coping strategies.",
+            "Discuss the benefits of quitting in more detail.",
+            "Explore the patient's reasons for wanting to quit.",
+            "Discuss the challenges associated with quitting smoking.",
+            "Assess the patient's readiness to make a change.",
+            "Assess the patient's readiness to make changes."
+          ],
+          "stage_of_change": "contemplation",
+          "vote_agreement": 0.833
+        }
+      }
+    },
+    "longitudinal_sanity": {
+      "output": {
+        "longitudinal_sanity": {
+          "flags": [],
+          "passed": true,
+          "severity": "none"
+        }
+      }
+    },
+    "profile_update_agent": {
+      "output": {
+        "dataset_row": {
+          "confidence_score": null,
+          "debate_rounds_used": 2,
+          "inconsistencies": [],
+          "longitudinal_flags": [],
+          "longitudinal_sanity_passed": true,
+          "main_concern": "unknown",
+          "primary_trigger": "unknown",
+          "quit_attempt_history": "unknown",
+          "reasoning_summary": null,
+          "recommended_intervention": [],
+          "sanity_passed": true,
+          "session_number": 1,
+          "stage_of_change": "unknown",
+          "vote_agreement": 0.833
+        },
+        "longitudinal_output": {
+          "current_annotation": {
+            "confidence_score": null,
+            "debate_rounds_used": 2,
+            "inconsistencies": [],
+            "longitudinal_flags": [],
+            "longitudinal_sanity_passed": true,
+            "main_concern": "unknown",
+            "primary_trigger": "unknown",
+            "quit_attempt_history": "unknown",
+            "reasoning_summary": null,
+            "recommended_intervention": [],
+            "sanity_passed": true,
+            "session_number": 1,
+            "stage_of_change": "unknown",
+            "vote_agreement": 0.833
+          },
+          "delta": null,
+          "interventions_tried": [],
+          "longitudinal_flags": [],
+          "overall_progress": "unknown",
+          "patient_id": "fe26784d-3f09-4ef4-a7af-6c152a58e4f8",
+          "persistent_concerns": [],
+          "persistent_triggers": [],
+          "relapse_detected": false,
+          "session_number": 1,
+          "stage_trajectory": [
+            "unknown"
+          ],
+          "stagnation_detected": false
+        },
+        "patient_profile_id": "fe26784d-3f09-4ef4-a7af-6c152a58e4f8",
+        "session_count": 1
+      }
+    },
+    "reasoning_agent": {
+      "output": {
+        "dataset_row": {
+          "confidence_score": null,
+          "debate_rounds_used": 2,
+          "inconsistencies": [],
+          "main_concern": "unknown",
+          "primary_trigger": "unknown",
+          "quit_attempt_history": "unknown",
+          "reasoning_summary": null,
+          "recommended_intervention": [],
+          "sanity_passed": true,
+          "stage_of_change": "unknown",
+          "vote_agreement": 0.833
+        }
+      }
+    },
+    "run_chat": {
+      "final_result": {
+        "dataset_row": {
+          "confidence_score": null,
+          "debate_rounds_used": 2,
+          "inconsistencies": [],
+          "longitudinal_flags": [],
+          "longitudinal_sanity_passed": true,
+          "main_concern": "unknown",
+          "primary_trigger": "unknown",
+          "quit_attempt_history": "unknown",
+          "reasoning_summary": null,
+          "recommended_intervention": [],
+          "sanity_passed": true,
+          "session_number": 1,
+          "stage_of_change": "unknown",
+          "vote_agreement": 0.833
+        },
+        "longitudinal_output": {
+          "current_annotation": {
+            "confidence_score": null,
+            "debate_rounds_used": 2,
+            "inconsistencies": [],
+            "longitudinal_flags": [],
+            "longitudinal_sanity_passed": true,
+            "main_concern": "unknown",
+            "primary_trigger": "unknown",
+            "quit_attempt_history": "unknown",
+            "reasoning_summary": null,
+            "recommended_intervention": [],
+            "sanity_passed": true,
+            "session_number": 1,
+            "stage_of_change": "unknown",
+            "vote_agreement": 0.833
+          },
+          "delta": null,
+          "interventions_tried": [],
+          "longitudinal_flags": [],
+          "overall_progress": "unknown",
+          "patient_id": "fe26784d-3f09-4ef4-a7af-6c152a58e4f8",
+          "persistent_concerns": [],
+          "persistent_triggers": [],
+          "relapse_detected": false,
+          "session_number": 1,
+          "stage_trajectory": [
+            "unknown"
+          ],
+          "stagnation_detected": false
+        },
+        "patient_id": "fe26784d-3f09-4ef4-a7af-6c152a58e4f8",
+        "session_number": 1
+      },
+      "transcript": {
+        "session_id": "fe26784d-3f09-4ef4-a7af-6c152a58e4f8",
+        "transcript": "Patient: hi\nCounselor: Hi! I'm eDOSTHI, your friendly AI companion to help you quit smoking. What's been the hardest part of quitting for you so far?"
+      }
+    }
+  },
+  "meta": {
+    "session_id": "fe26784d-3f09-4ef4-a7af-6c152a58e4f8",
+    "started_at": "20260416T101811Z"
+  }
+}

@@ -1,0 +1,313 @@
+{
+  "events": {
+    "agent_manager": {
+      "confidence_results": {
+        "advice": {
+          "confidence": 0.95,
+          "issues": []
+        },
+        "attempt": {
+          "confidence": 1.0,
+          "issues": []
+        },
+        "concern": {
+          "confidence": 0.8,
+          "issues": [
+            "Minor omission: While the patient explicitly stated 'I want to quit smoking,' a deeper exploration of the *reasoning* behind that desire could have revealed underlying anxieties. Specifically, a question probing about potential negative consequences (e.g., 'What are you most worried about if you try to quit?') would have captured a nascent psychological concern related to fear of failure and potential negative mood changes. This represents a slight underrepresentation of the patient's potential anxieties.",
+            "Category Alignment: The categorization of 'Cravings' as a primary concern is accurate based on the transcript. However, a more nuanced approach might benefit from acknowledging the potential for 'Fear of failure' to be a significant psychological concern alongside the craving."
+          ]
+        },
+        "readiness": {
+          "confidence": 0.7,
+          "issues": [
+            "The classification of precontemplation is borderline. While the patient states 'I want to quit smoking,' this is a very initial statement and lacks any indication of behavioral intention or commitment. A stronger indication of contemplation or early preparation would be needed to confidently assign it to precontemplation. The counselor's prompt about motivation is a key indicator that the conversation is moving beyond simply stating a desire to quit.",
+            "There is a slight gap in evidence grounding. The conversation doesn't explicitly demonstrate any active consideration of quitting (contemplation) or any steps taken towards quitting (preparation, action). It’s a nascent desire, which aligns with precontemplation, but the lack of further exploration makes it a somewhat weak classification."
+          ]
+        },
+        "triggers": {
+          "confidence": 0.95,
+          "issues": [
+            "Omission Detection: The conversation clearly indicates a desire to quit smoking. The extraction misses the explicit statement 'I want to quit smoking'. This is a critical omission.",
+            "Classification Accuracy: The trigger 'want to quit smoking' is correctly classified as a desire to quit, which aligns with the clinical context of smoking cessation support."
+          ]
+        }
+      },
+      "extractor_output": {
+        "advice": {
+          "advice": [
+            "That's a great step forward!",
+            "What specifically motivated you to want to quit this time around?"
+          ],
+          "evidence": [
+            "I'm eDOSTHI, your friendly AI companion to help you quit smoking. What's been on your mind lately about quitting?",
+            "What specifically motivated you to want to quit this time around?"
+          ]
+        },
+        "attempt": {
+          "attempts": [
+            "I want to quit smoking"
+          ],
+          "evidence": [
+            "Patient: I want to quit smoking"
+          ]
+        },
+        "concern": {
+          "concerns": [
+            "Cravings",
+            "Fear of failure"
+          ],
+          "evidence": [
+            "I want to quit smoking",
+            "What specifically motivated you to want to quit this time around?"
+          ]
+        },
+        "readiness": {
+          "evidence": "The patient stated, \"I want to quit smoking,\" indicating awareness of the problem, and the counselor immediately followed up by asking, \"What specifically motivated you to want to quit this time around?\" This exchange demonstrates the patient is in the contemplation stage, actively considering the behavior change.",
+          "readiness_stage": "contemplation"
+        },
+        "triggers": {
+          "evidence": [
+            "I want to quit smoking"
+          ],
+          "triggers": [
+            "want to quit smoking"
+          ]
+        }
+      },
+      "final_output": {
+        "advice": {
+          "_debate_converged": true,
+          "_debate_rounds": 0,
+          "advice": [
+            "That's a great step forward!",
+            "What specifically motivated you to want to quit this time around?"
+          ],
+          "evidence": [
+            "I'm eDOSTHI, your friendly AI companion to help you quit smoking. What's been on your mind lately about quitting?",
+            "What specifically motivated you to want to quit this time around?"
+          ]
+        },
+        "attempt": {
+          "_debate_converged": true,
+          "_debate_rounds": 0,
+          "attempts": [
+            "I want to quit smoking"
+          ],
+          "evidence": [
+            "Patient: I want to quit smoking"
+          ]
+        },
+        "concern": {
+          "_debate_converged": true,
+          "_debate_rounds": 0,
+          "concerns": [
+            "Cravings",
+            "Fear of failure"
+          ],
+          "evidence": [
+            "I want to quit smoking",
+            "What specifically motivated you to want to quit this time around?"
+          ]
+        },
+        "readiness": {
+          "_debate_converged": false,
+          "_debate_rounds": 1,
+          "evidence": "The patient stated, \"I want to quit smoking,\" indicating awareness of the problem, and the counselor immediately followed up by asking, \"What specifically motivated you to want to quit this time around?\" This exchange demonstrates the patient is in the contemplation stage, actively considering the behavior change.",
+          "readiness_stage": "contemplation"
+        },
+        "triggers": {
+          "_debate_converged": true,
+          "_debate_rounds": 0,
+          "evidence": [
+            "I want to quit smoking"
+          ],
+          "triggers": [
+            "want to quit smoking"
+          ]
+        }
+      },
+      "revised_output": {
+        "readiness": {
+          "evidence": "Patient states 'I want to quit smoking,' indicating a desire to quit but without any indication of behavioral intention or commitment. Counselor's follow-up question about motivation suggests a nascent level of contemplation is present.",
+          "readiness_stage": "precontemplation"
+        }
+      }
+    },
+    "consensus_agent": {
+      "output": {
+        "consensus": {
+          "dissenting_fields": [],
+          "main_concern": "Cravings, Fear of failure",
+          "primary_trigger": "want to quit smoking",
+          "quit_attempt_history": "Patient expressed a desire to quit smoking.",
+          "recommended_intervention": [
+            "Explore underlying motivations for wanting to quit.",
+            "Assess current cravings and potential triggers.",
+            "Introduce motivational interviewing techniques to build confidence and commitment.",
+            "Assess cravings and potential triggers.",
+            "Discuss the benefits of quitting smoking.",
+            "Assess readiness for change through further questioning.",
+            "Introduce motivational interviewing techniques to build confidence and address potential barriers."
+          ],
+          "stage_of_change": "precontemplation",
+          "vote_agreement": 0.833
+        }
+      }
+    },
+    "longitudinal_sanity": {
+      "output": {
+        "longitudinal_sanity": {
+          "flags": [],
+          "passed": true,
+          "severity": "none"
+        }
+      }
+    },
+    "profile_update_agent": {
+      "output": {
+        "dataset_row": {
+          "confidence_score": 1.0,
+          "debate_rounds_used": 0,
+          "inconsistencies": [],
+          "longitudinal_flags": [],
+          "longitudinal_sanity_passed": true,
+          "main_concern": "Cravings, Fear of failure",
+          "primary_trigger": "want to quit smoking",
+          "quit_attempt_history": "Patient expressed a desire to quit smoking.",
+          "reasoning_summary": "The patient's initial statement of wanting to quit smoking indicates precontemplation, as they haven't yet fully acknowledged the problem or considered change. Addressing cravings and exploring motivations is appropriate at this early stage to begin building awareness and commitment.",
+          "recommended_intervention": [
+            "Explore underlying motivations for wanting to quit.",
+            "Assess current cravings and potential triggers."
+          ],
+          "sanity_passed": true,
+          "session_number": 1,
+          "stage_of_change": "precontemplation",
+          "vote_agreement": 0.833
+        },
+        "longitudinal_output": {
+          "current_annotation": {
+            "confidence_score": 1.0,
+            "debate_rounds_used": 0,
+            "inconsistencies": [],
+            "longitudinal_flags": [],
+            "longitudinal_sanity_passed": true,
+            "main_concern": "Cravings, Fear of failure",
+            "primary_trigger": "want to quit smoking",
+            "quit_attempt_history": "Patient expressed a desire to quit smoking.",
+            "reasoning_summary": "The patient's initial statement of wanting to quit smoking indicates precontemplation, as they haven't yet fully acknowledged the problem or considered change. Addressing cravings and exploring motivations is appropriate at this early stage to begin building awareness and commitment.",
+            "recommended_intervention": [
+              "Explore underlying motivations for wanting to quit.",
+              "Assess current cravings and potential triggers."
+            ],
+            "sanity_passed": true,
+            "session_number": 1,
+            "stage_of_change": "precontemplation",
+            "vote_agreement": 0.833
+          },
+          "delta": null,
+          "interventions_tried": [],
+          "longitudinal_flags": [],
+          "overall_progress": "unknown",
+          "patient_id": "ba55e028-4c7f-4b8e-a5ee-7517d075771c",
+          "persistent_concerns": [],
+          "persistent_triggers": [],
+          "relapse_detected": false,
+          "session_number": 1,
+          "stage_trajectory": [
+            "precontemplation"
+          ],
+          "stagnation_detected": false
+        },
+        "patient_profile_id": "ba55e028-4c7f-4b8e-a5ee-7517d075771c",
+        "session_count": 1
+      }
+    },
+    "reasoning_agent": {
+      "output": {
+        "dataset_row": {
+          "confidence_score": 1.0,
+          "debate_rounds_used": 0,
+          "inconsistencies": [],
+          "main_concern": "Cravings, Fear of failure",
+          "primary_trigger": "want to quit smoking",
+          "quit_attempt_history": "Patient expressed a desire to quit smoking.",
+          "reasoning_summary": "The patient's initial statement of wanting to quit smoking indicates precontemplation, as they haven't yet fully acknowledged the problem or considered change. Addressing cravings and exploring motivations is appropriate at this early stage to begin building awareness and commitment.",
+          "recommended_intervention": [
+            "Explore underlying motivations for wanting to quit.",
+            "Assess current cravings and potential triggers."
+          ],
+          "sanity_passed": true,
+          "stage_of_change": "precontemplation",
+          "vote_agreement": 0.833
+        }
+      }
+    },
+    "run_chat": {
+      "final_result": {
+        "dataset_row": {
+          "confidence_score": 1.0,
+          "debate_rounds_used": 0,
+          "inconsistencies": [],
+          "longitudinal_flags": [],
+          "longitudinal_sanity_passed": true,
+          "main_concern": "Cravings, Fear of failure",
+          "primary_trigger": "want to quit smoking",
+          "quit_attempt_history": "Patient expressed a desire to quit smoking.",
+          "reasoning_summary": "The patient's initial statement of wanting to quit smoking indicates precontemplation, as they haven't yet fully acknowledged the problem or considered change. Addressing cravings and exploring motivations is appropriate at this early stage to begin building awareness and commitment.",
+          "recommended_intervention": [
+            "Explore underlying motivations for wanting to quit.",
+            "Assess current cravings and potential triggers."
+          ],
+          "sanity_passed": true,
+          "session_number": 1,
+          "stage_of_change": "precontemplation",
+          "vote_agreement": 0.833
+        },
+        "longitudinal_output": {
+          "current_annotation": {
+            "confidence_score": 1.0,
+            "debate_rounds_used": 0,
+            "inconsistencies": [],
+            "longitudinal_flags": [],
+            "longitudinal_sanity_passed": true,
+            "main_concern": "Cravings, Fear of failure",
+            "primary_trigger": "want to quit smoking",
+            "quit_attempt_history": "Patient expressed a desire to quit smoking.",
+            "reasoning_summary": "The patient's initial statement of wanting to quit smoking indicates precontemplation, as they haven't yet fully acknowledged the problem or considered change. Addressing cravings and exploring motivations is appropriate at this early stage to begin building awareness and commitment.",
+            "recommended_intervention": [
+              "Explore underlying motivations for wanting to quit.",
+              "Assess current cravings and potential triggers."
+            ],
+            "sanity_passed": true,
+            "session_number": 1,
+            "stage_of_change": "precontemplation",
+            "vote_agreement": 0.833
+          },
+          "delta": null,
+          "interventions_tried": [],
+          "longitudinal_flags": [],
+          "overall_progress": "unknown",
+          "patient_id": "ba55e028-4c7f-4b8e-a5ee-7517d075771c",
+          "persistent_concerns": [],
+          "persistent_triggers": [],
+          "relapse_detected": false,
+          "session_number": 1,
+          "stage_trajectory": [
+            "precontemplation"
+          ],
+          "stagnation_detected": false
+        },
+        "patient_id": "ba55e028-4c7f-4b8e-a5ee-7517d075771c",
+        "session_number": 1
+      },
+      "transcript": {
+        "session_id": "ba55e028-4c7f-4b8e-a5ee-7517d075771c",
+        "transcript": "Patient: Hi\nCounselor: Hi! I'm eDOSTHI, your friendly AI companion to help you quit smoking. What's been on your mind lately about quitting?\nPatient: I want to quit smoking\nCounselor: That's a great step forward! What specifically motivated you to want to quit this time around?"
+      }
+    }
+  },
+  "meta": {
+    "session_id": "ba55e028-4c7f-4b8e-a5ee-7517d075771c",
+    "started_at": "20260417T063332Z"
+  }
+}

@@ -1,0 +1,390 @@
+{
+  "events": {
+    "agent_manager": {
+      "confidence_result": {
+        "advice": {
+          "confidence": 0.8,
+          "issues": [
+            "Omission: The counselor's initial statement 'You're here to talk about quitting smoking!' is not included in the extracted advice. This is a crucial element of the conversation establishing the topic.",
+            "Minor Hallucination: 'Asking the patient about their thoughts regarding quitting.' - While accurate in describing the counselor's action, it adds an interpretation not explicitly stated in the conversation. It's a reasonable inference but leans towards interpretation rather than direct extraction."
+          ],
+          "severity": "none"
+        },
+        "attempt": {
+          "confidence": 0.1,
+          "issues": [
+            "Hallucination: The extracted data contains 'ho' which is not present in the conversation. This is a hallucination.",
+            "Omission: The conversation clearly indicates the topic is quitting smoking and the patient's thoughts about it. The extracted data only captures a single, isolated word without any context or indication of the conversation's subject matter."
+          ],
+          "severity": "none"
+        },
+        "concern": {
+          "confidence": 0.5,
+          "issues": [
+            "The extracted concern 'ho' is not supported by the conversation. The patient states 'ho', which is unclear and requires clarification. This is a hallucination or misinterpretation.",
+            "The primary concern is missing. The conversation explicitly asks 'What's been on your mind lately about quitting?' indicating a concern about quitting smoking."
+          ],
+          "severity": "none"
+        },
+        "readiness": {
+          "confidence": 0.85,
+          "issues": [
+            "Hallucination: The extracted data states the patient hasn't begun to seriously consider quitting, which isn't explicitly stated in the conversation. The conversation only provides a single, unclear utterance ('ho').",
+            "Omission: The conversation lacks any indication of the patient's current beliefs, attitudes, or behaviors related to smoking. A more nuanced assessment of the patient's perspective would be needed to determine readiness accurately."
+          ],
+          "severity": "none"
+        },
+        "triggers": {
+          "confidence": 0.1,
+          "issues": [
+            "The extracted trigger 'ho' does not appear in the conversation. This suggests a hallucination or misinterpretation of the patient's utterance.",
+            "The conversation lacks key information such as the patient's name, the specific reasons for wanting to quit smoking, and any initial assessment of their smoking habits. This represents a significant omission."
+          ],
+          "severity": "none"
+        }
+      },
+      "confidence_results": {
+        "advice": {
+          "confidence": 0.8,
+          "issues": [
+            "Omission: The counselor's initial statement 'You're here to talk about quitting smoking!' is not included in the extracted advice. This is a crucial element of the conversation establishing the topic.",
+            "Minor Hallucination: 'Asking the patient about their thoughts regarding quitting.' - While accurate in describing the counselor's action, it adds an interpretation not explicitly stated in the conversation. It's a reasonable inference but leans towards interpretation rather than direct extraction."
+          ],
+          "severity": "none"
+        },
+        "attempt": {
+          "confidence": 0.1,
+          "issues": [
+            "Hallucination: The extracted data contains 'ho' which is not present in the conversation. This is a hallucination.",
+            "Omission: The conversation clearly indicates the topic is quitting smoking and the patient's thoughts about it. The extracted data only captures a single, isolated word without any context or indication of the conversation's subject matter."
+          ],
+          "severity": "none"
+        },
+        "concern": {
+          "confidence": 0.5,
+          "issues": [
+            "The extracted concern 'ho' is not supported by the conversation. The patient states 'ho', which is unclear and requires clarification. This is a hallucination or misinterpretation.",
+            "The primary concern is missing. The conversation explicitly asks 'What's been on your mind lately about quitting?' indicating a concern about quitting smoking."
+          ],
+          "severity": "none"
+        },
+        "readiness": {
+          "confidence": 0.85,
+          "issues": [
+            "Hallucination: The extracted data states the patient hasn't begun to seriously consider quitting, which isn't explicitly stated in the conversation. The conversation only provides a single, unclear utterance ('ho').",
+            "Omission: The conversation lacks any indication of the patient's current beliefs, attitudes, or behaviors related to smoking. A more nuanced assessment of the patient's perspective would be needed to determine readiness accurately."
+          ],
+          "severity": "none"
+        },
+        "triggers": {
+          "confidence": 0.1,
+          "issues": [
+            "The extracted trigger 'ho' does not appear in the conversation. This suggests a hallucination or misinterpretation of the patient's utterance.",
+            "The conversation lacks key information such as the patient's name, the specific reasons for wanting to quit smoking, and any initial assessment of their smoking habits. This represents a significant omission."
+          ],
+          "severity": "none"
+        }
+      },
+      "extractor_output": {
+        "advice": {
+          "advice": [
+            "Quitting smoking is a huge step towards a healthier you.",
+            "What's been on your mind lately about quitting?"
+          ],
+          "evidence": [
+            "\"You're here to talk about quitting smoking! That's a huge step towards a healthier you.\"",
+            "Asking the patient about their thoughts regarding quitting."
+          ]
+        },
+        "attempt": {
+          "attempts": [
+            "ho"
+          ],
+          "longest_attempt": null,
+          "most_recent_attempt": "ho"
+        },
+        "concern": {
+          "concerns": [
+            "ho"
+          ],
+          "primary_concern": null
+        },
+        "readiness": {
+          "evidence": "The patient simply said 'ho,' indicating they haven't yet begun to seriously consider quitting smoking. The counselor's initial statement focuses on the positive outcome of quitting ('a healthier you') rather than addressing any existing thoughts or concerns about cessation, suggesting the patient isn't yet in the contemplation stage.",
+          "readiness_stage": "precontemplation"
+        },
+        "triggers": {
+          "triggers": [
+            "ho"
+          ]
+        }
+      },
+      "final_output": {
+        "advice": {
+          "_debate_converged": true,
+          "_debate_rounds": 0,
+          "advice": [
+            "Quitting smoking is a huge step towards a healthier you.",
+            "What's been on your mind lately about quitting?"
+          ],
+          "evidence": [
+            "\"You're here to talk about quitting smoking! That's a huge step towards a healthier you.\"",
+            "Asking the patient about their thoughts regarding quitting."
+          ]
+        },
+        "attempt": {
+          "_debate_converged": true,
+          "_debate_rounds": 5,
+          "attempts": [
+            "ho",
+            "you're here to talk about quitting smoking",
+            "you're here to talk about quitting smoking!"
+          ],
+          "extracted_utterance": "You're here to talk about quitting smoking.",
+          "longest_attempt": "you're here to talk about quitting smoking!",
+          "most_recent_attempt": "you're here to talk about quitting smoking!"
+        },
+        "concern": {
+          "_debate_converged": true,
+          "_debate_rounds": 3,
+          "concerns": [
+            "potentially unintelligible utterance",
+            "potential difficulty articulating concerns"
+          ],
+          "confidence_level": "medium",
+          "notes": "Patient's initial utterance ('ho') is potentially unintelligible. The counselor's response frames this as a starting point for discussing quitting smoking. Further investigation is needed to determine the reason for the unclear utterance.",
+          "primary_concern": "potentially unintelligible utterance"
+        },
+        "readiness": {
+          "_debate_converged": true,
+          "_debate_rounds": 0,
+          "evidence": "The patient simply said 'ho,' indicating they haven't yet begun to seriously consider quitting smoking. The counselor's initial statement focuses on the positive outcome of quitting ('a healthier you') rather than addressing any existing thoughts or concerns about cessation, suggesting the patient isn't yet in the contemplation stage.",
+          "readiness_stage": "precontemplation"
+        },
+        "triggers": {
+          "_debate_converged": true,
+          "_debate_rounds": 1,
+          "agreement_reached": false,
+          "conversation_segments": [
+            "You're here to talk about quitting smoking! That's a huge step towards a healthier you. What’s been on your mind lately about quitting?",
+            "ho"
+          ],
+          "sentiment": "neutral",
+          "severity": "high",
+          "topic": "Smoking Cessation",
+          "triggers": [
+            "unintelligible utterance",
+            "quitting smoking"
+          ]
+        }
+      }
+    },
+    "consensus_agent": {
+      "output": {
+        "consensus": {
+          "dissenting_fields": [],
+          "main_concern": "potentially unintelligible utterance",
+          "primary_trigger": "unintelligible utterance",
+          "quit_attempt_history": "Patient offered a brief, unintelligible response ('ho'). Counselor initiated a discussion about quitting smoking.",
+          "recommended_intervention": [
+            "Explore the patient's initial utterance to understand their thoughts and concerns.",
+            "Provide a more concrete explanation of the benefits of quitting smoking, focusing on specific health outcomes.",
+            "Use open-ended questions to encourage the patient to elaborate on their motivations and barriers to cessation.",
+            "Explore the patient's initial utterance to understand their thoughts and concerns regarding smoking.",
+            "Use open-ended questions to encourage the patient to elaborate on their motivations and challenges related to smoking.",
+            "Explore the meaning of the patient's initial utterance to understand any underlying concerns or hesitations.",
+            "Expand on the benefits of quitting smoking, focusing on personalized health goals.",
+            "Utilize open-ended questions to encourage the patient to elaborate on their thoughts and feelings regarding smoking cessation."
+          ],
+          "stage_of_change": "precontemplation",
+          "vote_agreement": 1.0
+        }
+      }
+    },
+    "longitudinal_sanity": {
+      "output": {
+        "longitudinal_sanity": {
+          "flags": [],
+          "passed": true,
+          "severity": "none"
+        }
+      }
+    },
+    "profile_update_agent": {
+      "output": {
+        "dataset_row": {
+          "confidence_score": 0.95,
+          "debate_rounds_used": 9,
+          "inconsistencies": [],
+          "longitudinal_flags": [],
+          "longitudinal_sanity_passed": true,
+          "main_concern": "potentially unintelligible utterance",
+          "primary_trigger": "unintelligible utterance",
+          "quit_attempt_history": "Patient offered a brief, unintelligible response ('ho'). Counselor initiated a discussion about quitting smoking.",
+          "reasoning_summary": "The patient's unintelligible response indicates precontemplation, suggesting a lack of awareness or motivation to quit. The counselor's approach focuses on gently exploring the patient's initial thoughts and feelings through open-ended questions and highlighting the benefits of cessation.",
+          "recommended_intervention": [
+            "Explore the patient's initial utterance to understand their thoughts and concerns.",
+            "Provide a more concrete explanation of the benefits of quitting smoking, focusing on specific health outcomes.",
+            "Use open-ended questions to encourage the patient to elaborate on their motivations and barriers to cessation.",
+            "Explore the patient's initial utterance to understand their thoughts and concerns regarding smoking.",
+            "Use open-ended questions to encourage the patient to elaborate on their motivations and challenges related to smoking.",
+            "Explore the meaning of the patient's initial utterance to understand any underlying concerns or hesitations.",
+            "Expand on the benefits of quitting smoking, focusing on personalized health goals.",
+            "Utilize open-ended questions to encourage the patient to elaborate on their thoughts and feelings regarding smoking cessation."
+          ],
+          "sanity_passed": true,
+          "session_number": 1,
+          "stage_of_change": "precontemplation",
+          "vote_agreement": 1.0
+        },
+        "longitudinal_output": {
+          "current_annotation": {
+            "confidence_score": 0.95,
+            "debate_rounds_used": 9,
+            "inconsistencies": [],
+            "longitudinal_flags": [],
+            "longitudinal_sanity_passed": true,
+            "main_concern": "potentially unintelligible utterance",
+            "primary_trigger": "unintelligible utterance",
+            "quit_attempt_history": "Patient offered a brief, unintelligible response ('ho'). Counselor initiated a discussion about quitting smoking.",
+            "reasoning_summary": "The patient's unintelligible response indicates precontemplation, suggesting a lack of awareness or motivation to quit. The counselor's approach focuses on gently exploring the patient's initial thoughts and feelings through open-ended questions and highlighting the benefits of cessation.",
+            "recommended_intervention": [
+              "Explore the patient's initial utterance to understand their thoughts and concerns.",
+              "Provide a more concrete explanation of the benefits of quitting smoking, focusing on specific health outcomes.",
+              "Use open-ended questions to encourage the patient to elaborate on their motivations and barriers to cessation.",
+              "Explore the patient's initial utterance to understand their thoughts and concerns regarding smoking.",
+              "Use open-ended questions to encourage the patient to elaborate on their motivations and challenges related to smoking.",
+              "Explore the meaning of the patient's initial utterance to understand any underlying concerns or hesitations.",
+              "Expand on the benefits of quitting smoking, focusing on personalized health goals.",
+              "Utilize open-ended questions to encourage the patient to elaborate on their thoughts and feelings regarding smoking cessation."
+            ],
+            "sanity_passed": true,
+            "session_number": 1,
+            "stage_of_change": "precontemplation",
+            "vote_agreement": 1.0
+          },
+          "delta": null,
+          "interventions_tried": [],
+          "longitudinal_flags": [],
+          "overall_progress": "unknown",
+          "patient_id": "7cde98db-6c31-4d46-8146-5622799190af",
+          "persistent_concerns": [],
+          "persistent_triggers": [],
+          "relapse_detected": false,
+          "session_number": 1,
+          "stage_trajectory": [
+            "precontemplation"
+          ],
+          "stagnation_detected": false
+        },
+        "patient_profile_id": "7cde98db-6c31-4d46-8146-5622799190af",
+        "session_count": 1
+      }
+    },
+    "reasoning_agent": {
+      "output": {
+        "dataset_row": {
+          "confidence_score": 0.95,
+          "debate_rounds_used": 9,
+          "inconsistencies": [],
+          "main_concern": "potentially unintelligible utterance",
+          "primary_trigger": "unintelligible utterance",
+          "quit_attempt_history": "Patient offered a brief, unintelligible response ('ho'). Counselor initiated a discussion about quitting smoking.",
+          "reasoning_summary": "The patient's unintelligible response indicates precontemplation, suggesting a lack of awareness or motivation to quit. The counselor's approach focuses on gently exploring the patient's initial thoughts and feelings through open-ended questions and highlighting the benefits of cessation.",
+          "recommended_intervention": [
+            "Explore the patient's initial utterance to understand their thoughts and concerns.",
+            "Provide a more concrete explanation of the benefits of quitting smoking, focusing on specific health outcomes.",
+            "Use open-ended questions to encourage the patient to elaborate on their motivations and barriers to cessation.",
+            "Explore the patient's initial utterance to understand their thoughts and concerns regarding smoking.",
+            "Use open-ended questions to encourage the patient to elaborate on their motivations and challenges related to smoking.",
+            "Explore the meaning of the patient's initial utterance to understand any underlying concerns or hesitations.",
+            "Expand on the benefits of quitting smoking, focusing on personalized health goals.",
+            "Utilize open-ended questions to encourage the patient to elaborate on their thoughts and feelings regarding smoking cessation."
+          ],
+          "sanity_passed": true,
+          "stage_of_change": "precontemplation",
+          "vote_agreement": 1.0
+        }
+      }
+    },
+    "run_chat": {
+      "final_result": {
+        "dataset_row": {
+          "confidence_score": 0.95,
+          "debate_rounds_used": 9,
+          "inconsistencies": [],
+          "longitudinal_flags": [],
+          "longitudinal_sanity_passed": true,
+          "main_concern": "potentially unintelligible utterance",
+          "primary_trigger": "unintelligible utterance",
+          "quit_attempt_history": "Patient offered a brief, unintelligible response ('ho'). Counselor initiated a discussion about quitting smoking.",
+          "reasoning_summary": "The patient's unintelligible response indicates precontemplation, suggesting a lack of awareness or motivation to quit. The counselor's approach focuses on gently exploring the patient's initial thoughts and feelings through open-ended questions and highlighting the benefits of cessation.",
+          "recommended_intervention": [
+            "Explore the patient's initial utterance to understand their thoughts and concerns.",
+            "Provide a more concrete explanation of the benefits of quitting smoking, focusing on specific health outcomes.",
+            "Use open-ended questions to encourage the patient to elaborate on their motivations and barriers to cessation.",
+            "Explore the patient's initial utterance to understand their thoughts and concerns regarding smoking.",
+            "Use open-ended questions to encourage the patient to elaborate on their motivations and challenges related to smoking.",
+            "Explore the meaning of the patient's initial utterance to understand any underlying concerns or hesitations.",
+            "Expand on the benefits of quitting smoking, focusing on personalized health goals.",
+            "Utilize open-ended questions to encourage the patient to elaborate on their thoughts and feelings regarding smoking cessation."
+          ],
+          "sanity_passed": true,
+          "session_number": 1,
+          "stage_of_change": "precontemplation",
+          "vote_agreement": 1.0
+        },
+        "longitudinal_output": {
+          "current_annotation": {
+            "confidence_score": 0.95,
+            "debate_rounds_used": 9,
+            "inconsistencies": [],
+            "longitudinal_flags": [],
+            "longitudinal_sanity_passed": true,
+            "main_concern": "potentially unintelligible utterance",
+            "primary_trigger": "unintelligible utterance",
+            "quit_attempt_history": "Patient offered a brief, unintelligible response ('ho'). Counselor initiated a discussion about quitting smoking.",
+            "reasoning_summary": "The patient's unintelligible response indicates precontemplation, suggesting a lack of awareness or motivation to quit. The counselor's approach focuses on gently exploring the patient's initial thoughts and feelings through open-ended questions and highlighting the benefits of cessation.",
+            "recommended_intervention": [
+              "Explore the patient's initial utterance to understand their thoughts and concerns.",
+              "Provide a more concrete explanation of the benefits of quitting smoking, focusing on specific health outcomes.",
+              "Use open-ended questions to encourage the patient to elaborate on their motivations and barriers to cessation.",
+              "Explore the patient's initial utterance to understand their thoughts and concerns regarding smoking.",
+              "Use open-ended questions to encourage the patient to elaborate on their motivations and challenges related to smoking.",
+              "Explore the meaning of the patient's initial utterance to understand any underlying concerns or hesitations.",
+              "Expand on the benefits of quitting smoking, focusing on personalized health goals.",
+              "Utilize open-ended questions to encourage the patient to elaborate on their thoughts and feelings regarding smoking cessation."
+            ],
+            "sanity_passed": true,
+            "session_number": 1,
+            "stage_of_change": "precontemplation",
+            "vote_agreement": 1.0
+          },
+          "delta": null,
+          "interventions_tried": [],
+          "longitudinal_flags": [],
+          "overall_progress": "unknown",
+          "patient_id": "7cde98db-6c31-4d46-8146-5622799190af",
+          "persistent_concerns": [],
+          "persistent_triggers": [],
+          "relapse_detected": false,
+          "session_number": 1,
+          "stage_trajectory": [
+            "precontemplation"
+          ],
+          "stagnation_detected": false
+        },
+        "patient_id": "7cde98db-6c31-4d46-8146-5622799190af",
+        "session_number": 1
+      },
+      "transcript": {
+        "session_id": "7cde98db-6c31-4d46-8146-5622799190af",
+        "transcript": "Patient: ho\nCounselor: You're here to talk about quitting smoking! That's a huge step towards a healthier you. What's been on your mind lately about quitting?"
+      }
+    }
+  },
+  "meta": {
+    "session_id": "7cde98db-6c31-4d46-8146-5622799190af",
+    "started_at": "20260413T093649Z"
+  }
+}
