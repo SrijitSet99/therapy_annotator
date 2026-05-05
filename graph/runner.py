@@ -6,22 +6,43 @@ Public API for single-session and multi-session pipeline runs.
 run_pipeline()           — single session, no longitudinal tracking
 run_session()            — multi-session, full longitudinal coherence
 run_patient_sessions()   — convenience wrapper to run all sessions for a patient
+
+`enable_debate=True` lifts the workflow's confidence/revision loop to use
+DEBATE_CONFIDENCE_THRESHOLD and DEBATE_MAX_REVISION_ROUNDS — i.e. it runs
+longer with a stricter acceptance bar. There is no separate per-extractor
+debate loop.
 """
 from typing import Dict, Any, Optional, List
 
 from annotate.graph.workflow import build_graph
 from annotate.agents.memory.patient_memory import PatientMemory
 from annotate.agents.memory.agent_memory import AgentMemory
+from annotate.config.settings import (
+    CONFIDENCE_DEBATE_THRESHOLD, MAX_REVISION_ROUNDS,
+    DEBATE_CONFIDENCE_THRESHOLD, DEBATE_MAX_REVISION_ROUNDS,
+)
 from annotate.utils.logger import log
 
 _graph = None
 
 
-def _get_graph(enable_debate: bool = False) -> Any:
+def _get_graph() -> Any:
     global _graph
     if _graph is None:
-        _graph = build_graph(enable_debate=enable_debate)
+        _graph = build_graph()
     return _graph
+
+
+def _debate_config(enable_debate: bool) -> Dict[str, Any]:
+    if enable_debate:
+        return {
+            "confidence_threshold":  DEBATE_CONFIDENCE_THRESHOLD,
+            "max_revision_rounds":   DEBATE_MAX_REVISION_ROUNDS,
+        }
+    return {
+        "confidence_threshold":  CONFIDENCE_DEBATE_THRESHOLD,
+        "max_revision_rounds":   MAX_REVISION_ROUNDS,
+    }
 
 
 # ---------------------------------------------------------------------------
@@ -32,12 +53,13 @@ def run_pipeline(
     chat: str,
     conversation_id: Optional[str] = None,
     memory: Optional[AgentMemory] = None,
+    enable_debate: bool = False,
 ) -> Dict[str, Any]:
     """
     Run a single conversation through the pipeline without longitudinal tracking.
-    Backwards-compatible with all existing callers.
     """
-    log(f"run_pipeline: starting{('  id=' + conversation_id) if conversation_id else ''}")
+    log(f"run_pipeline: starting{('  id=' + conversation_id) if conversation_id else ''}"
+        f"{' (debate mode)' if enable_debate else ''}")
 
     initial_state: Dict[str, Any] = {
         "chat": chat,
@@ -50,6 +72,7 @@ def run_pipeline(
         "revision_count": 0,           # initialise loop counter
         "session_delta": None,
         "dataset_row": {}, "longitudinal_output": {},
+        **_debate_config(enable_debate),
     }
     if conversation_id:
         initial_state["conversation_id"] = conversation_id
@@ -95,11 +118,12 @@ def run_session(
         "revision_count": 0,           # initialise loop counter
         "session_delta": None,
         "dataset_row": {}, "longitudinal_output": {},
+        **_debate_config(enable_debate),
     }
     if conversation_id:
         initial_state["conversation_id"] = conversation_id
 
-    result = _get_graph(enable_debate=enable_debate).invoke(initial_state)
+    result = _get_graph().invoke(initial_state)
 
     log(f"run_session: complete — session {session_number} for '{patient_id}'")
 

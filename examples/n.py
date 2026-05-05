@@ -307,8 +307,8 @@ def run_chat(session_id: Optional[str] = None, enable_debate: bool = False, lang
     print("=" * 60)
 
     print("Stage:", row.get("stage_of_change"))
-    print("Concern:", row.get("main_concern"))
-    print("Trigger:", row.get("primary_trigger"))
+    print("Concerns:", ", ".join(row.get("all_concerns", [])) or "none")
+    print("Triggers:", ", ".join(row.get("all_triggers", [])) or "none")
     print("Confidence:", row.get("confidence_score"))
 
     print("\n--- Longitudinal ---")

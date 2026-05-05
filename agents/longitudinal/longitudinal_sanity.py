@@ -12,7 +12,7 @@ Rules checked:
   3. Previously failed intervention recommended again without acknowledgment
   4. Stagnation: 4+ consecutive stable sessions (clinically significant flag)
   5. Rapid regression: action/maintenance → precontemplation in one session
-  6. Conflicting concern: current main_concern contradicts patient's stated stage
+  6. Conflicting concern: a current concern contradicts patient's stated stage
   7. Trigger persistence: critical trigger present for 3+ sessions unchanged
 """
 from __future__ import annotations
@@ -118,13 +118,13 @@ def longitudinal_sanity_agent(state: Dict[str, Any]) -> Dict[str, Any]:
 
     # ── Rule 7: Concern contradicts stage ────────────────────────────
     stage = current_row.get("stage_of_change", "unknown")
-    concern = current_row.get("main_concern", "").lower()
+    concerns_lower = [c.lower() for c in current_row.get("all_concerns", [])]
     not_ready_phrases = ["not ready", "don't want", "not considering", "no interest"]
     if stage in ("action", "maintenance"):
-        for phrase in not_ready_phrases:
-            if phrase in concern:
+        for concern in concerns_lower:
+            if any(phrase in concern for phrase in not_ready_phrases):
                 flags.append(
-                    f"CONCERN_STAGE_MISMATCH: stage is '{stage}' but concern suggests "
+                    f"CONCERN_STAGE_MISMATCH: stage is '{stage}' but a concern suggests "
                     f"ambivalence: '{concern}'"
                 )
                 break

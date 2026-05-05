@@ -233,6 +233,10 @@ class PatientMemory:
         all_triggers: Optional[List[Any]] = None,
         all_concerns: Optional[List[Any]] = None,
     ) -> SessionRecord:
+        # Prefer caller-supplied lists (extractor outputs) when present;
+        # otherwise fall back to the lists already on the dataset row.
+        triggers = all_triggers if all_triggers is not None else dataset_row.get("all_triggers", [])
+        concerns = all_concerns if all_concerns is not None else dataset_row.get("all_concerns", [])
 
         return SessionRecord(
             session_number=0,
@@ -240,17 +244,14 @@ class PatientMemory:
             conversation_id=conversation_id,
 
             stage_of_change=dataset_row.get("stage_of_change", "unknown"),
-            main_concern=dataset_row.get("main_concern", "unknown"),
-            primary_trigger=dataset_row.get("primary_trigger", "unknown"),
             quit_attempt_history=dataset_row.get("quit_attempt_history", "unknown"),
             recommended_intervention=dataset_row.get("recommended_intervention", []),
 
             reasoning_summary=dataset_row.get("reasoning_summary"),
             confidence_score=dataset_row.get("confidence_score"),
 
-            # 🔥 FIX APPLIED HERE
-            all_triggers=_normalize_signal_list(all_triggers),
-            all_concerns=_normalize_signal_list(all_concerns),
+            all_triggers=_normalize_signal_list(triggers),
+            all_concerns=_normalize_signal_list(concerns),
 
             debate_rounds_used=dataset_row.get("debate_rounds_used"),
             vote_agreement=dataset_row.get("vote_agreement"),

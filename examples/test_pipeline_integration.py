@@ -31,7 +31,6 @@ import annotate.agents.extractors.concern_agent       # noqa: E402
 import annotate.agents.extractors.trigger_agent       # noqa: E402
 import annotate.agents.consensus.consensus_agent      # noqa: E402
 import annotate.agents.reasoning.reasoning_agent      # noqa: E402
-import annotate.agents.debate.debate_loop             # noqa: E402
 import annotate.agents.confidence.confidence          # noqa: E402
 import annotate.agents.revision.revision_agent        # noqa: E402
 import annotate.agents.longitudinal.delta_agent       # noqa: E402
@@ -69,8 +68,8 @@ def _make_mock():
         if "voter" in p or ("unified" in p and "annotation" in p):
             return json.dumps({
                 "stage_of_change": "preparation",
-                "main_concern": "stress management",
-                "primary_trigger": "work stress",
+                "all_concerns": ["stress management", "fear of failure"],
+                "all_triggers": ["work stress", "after meals"],
                 "quit_attempt_history": "nicotine patch 6 weeks; cold turkey 2 days",
                 "recommended_intervention": ["varenicline", "stress management plan"],
             })
@@ -79,8 +78,8 @@ def _make_mock():
         if "reasoning_summary" in p or ("rationale" in p and "confidence_score" in p):
             return json.dumps({
                 "stage_of_change": "preparation",
-                "main_concern": "stress management",
-                "primary_trigger": "work stress",
+                "all_concerns": ["stress management", "fear of failure"],
+                "all_triggers": ["work stress", "after meals"],
                 "quit_attempt_history": "nicotine patch 6 weeks; cold turkey 2 days",
                 "recommended_intervention": ["varenicline", "stress management plan"],
                 "reasoning_summary": "Patient in preparation stage with prior attempts and clear quit plan.",
@@ -220,49 +219,6 @@ def test_sanity_fields_always_in_result():
     _reset_graph()
 
 
-def test_debate_skips_on_high_confidence():
-    """Debate loop is skipped when the external confidence check meets threshold."""
-    from annotate.agents.debate.debate_loop import maybe_debate
-    output = {"concerns": ["stress"], "primary_concern": "stress"}
-    # No mock needed — should short-circuit before any LLM call
-    result = maybe_debate("concern", output, SAMPLE_CHAT, confidence_threshold=0.6, confidence_score=0.95)
-    assert result["_debate_rounds"] == 0
-    assert result["_debate_converged"] is True
-    print("PASS test_debate_skips_on_high_confidence")
-
-
-def test_debate_runs_and_converges_on_low_confidence():
-    """Debate loop runs and terminates when critic approves."""
-    from unittest.mock import MagicMock
-    from annotate.agents.debate.debate_loop import maybe_debate
-    output = {"concerns": ["stress"]}
-    high_conf = MagicMock(confidence=0.8, issues=[])
-    with patch("annotate.agents.debate.debate_loop.revise_signal", return_value=output), \
-         patch("annotate.agents.debate.debate_loop.run_confidence_check", return_value=high_conf):
-        result = maybe_debate("concern", output, SAMPLE_CHAT, confidence_threshold=0.6, confidence_score=0.3)
-    assert result["_debate_rounds"] == 1
-    assert result["_debate_converged"] is True
-    print("PASS test_debate_runs_and_converges_on_low_confidence")
-
-
-def test_debate_stops_when_revised_confidence_crosses_threshold():
-    """Debate loop converges as soon as revised output clears the confidence threshold."""
-    from unittest.mock import MagicMock
-    from annotate.agents.debate.debate_loop import maybe_debate
-
-    output = {"concerns": ["stress"]}
-    revised = {"concerns": ["stress", "weight gain"]}
-
-    high_conf = MagicMock(confidence=0.9, issues=[])
-    with patch("annotate.agents.debate.debate_loop.revise_signal", return_value=revised), \
-         patch("annotate.agents.debate.debate_loop.run_confidence_check", return_value=high_conf):
-        result = maybe_debate("concern", output, SAMPLE_CHAT, confidence_threshold=0.6, confidence_score=0.2)
-
-    assert result["_debate_rounds"] == 1
-    assert result["_debate_converged"] is True
-    print("PASS test_debate_stops_when_revised_confidence_crosses_threshold")
-
-
 def test_agent_manager_disagreement_score():
     """Cross-signal disagreement is non-zero when confidences differ."""
     from annotate.agents.manager.agent_manager import AgentManager
@@ -308,8 +264,8 @@ def test_sanity_check_catches_stage_conflict():
         "chat": SAMPLE_CHAT,
         "consensus": {
             "stage_of_change": "precontemplation",
-            "main_concern": "no motivation",
-            "primary_trigger": "stress",
+            "all_concerns": ["no motivation"],
+            "all_triggers": ["stress"],
             "recommended_intervention": ["quit immediately", "set a quit date today"],
             "vote_agreement": 0.8,
         },
@@ -348,8 +304,8 @@ def test_evaluator_full_metrics():
     preds = [
         {
             "stage_of_change": "preparation",
-            "main_concern": "stress at work",
-            "primary_trigger": "work stress",
+            "all_concerns": ["stress at work"],
+            "all_triggers": ["work stress"],
             "recommended_intervention": ["varenicline", "NRT"],
             "confidence_score": 0.87,
             "debate_rounds_used": 1,
@@ -358,8 +314,8 @@ def test_evaluator_full_metrics():
         },
         {
             "stage_of_change": "precontemplation",
-            "main_concern": "no motivation to quit",
-            "primary_trigger": "stress relief",
+            "all_concerns": ["no motivation to quit"],
+            "all_triggers": ["stress relief"],
             "recommended_intervention": ["motivational interviewing"],
             "confidence_score": 0.75,
             "debate_rounds_used": 0,
@@ -370,14 +326,14 @@ def test_evaluator_full_metrics():
     golds = [
         {
             "stage_of_change": "preparation",
-            "main_concern": "stress at work",
-            "primary_trigger": "work stress",
+            "all_concerns": ["stress at work"],
+            "all_triggers": ["work stress"],
             "recommended_intervention": ["varenicline", "counseling"],
         },
         {
             "stage_of_change": "precontemplation",
-            "main_concern": "not motivated to quit",
-            "primary_trigger": "stress relief after work",
+            "all_concerns": ["not motivated to quit"],
+            "all_triggers": ["stress relief after work"],
             "recommended_intervention": ["motivational interviewing"],
         },
     ]
@@ -400,9 +356,6 @@ if __name__ == "__main__":
         test_parallel_workflow_end_to_end,
         test_pipeline_persists_to_memory,
         test_sanity_fields_always_in_result,
-        test_debate_skips_on_high_confidence,
-        test_debate_runs_and_converges_on_low_confidence,
-        test_debate_stops_when_revised_confidence_crosses_threshold,
         test_agent_manager_disagreement_score,
         test_registry_discovers_correct_agents,
         test_sanity_check_catches_stage_conflict,

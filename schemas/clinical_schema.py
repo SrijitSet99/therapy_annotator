@@ -66,42 +66,22 @@ class ReviewOutput(BaseModel):
 
 
 # ---------------------------------------------------------------------------
-# Debate (Proposer-Critic-Reviser loop)
-# ---------------------------------------------------------------------------
-
-class DebateRound(BaseModel):
-    round_number: int
-    proposer_output: Dict[str, Any] = Field(default_factory=dict)
-    critic_feedback: str = ""
-    revised_output: Dict[str, Any] = Field(default_factory=dict)
-    agreement_reached: bool = False
-
-
-class DebateResult(BaseModel):
-    agent_name: str = ""
-    rounds: List[DebateRound] = Field(default_factory=list)
-    final_output: Dict[str, Any] = Field(default_factory=dict)
-    total_rounds: int = 0
-    converged: bool = False
-
-
-# ---------------------------------------------------------------------------
 # Multi-voter Consensus & Arbitration
 # ---------------------------------------------------------------------------
 
 class ConsensusVote(BaseModel):
     voter_id: str
     stage_of_change: str = "unknown"
-    main_concern: str = "unknown"
-    primary_trigger: str = "unknown"
+    all_concerns: List[str] = Field(default_factory=list)
+    all_triggers: List[str] = Field(default_factory=list)
     quit_attempt_history: str = "unknown"
     recommended_intervention: List[str] = Field(default_factory=list)
 
 
 class ArbitrationResult(BaseModel):
     stage_of_change: str = "unknown"
-    main_concern: str = "unknown"
-    primary_trigger: str = "unknown"
+    all_concerns: List[str] = Field(default_factory=list)
+    all_triggers: List[str] = Field(default_factory=list)
     quit_attempt_history: str = "unknown"
     recommended_intervention: List[str] = Field(default_factory=list)
     vote_agreement: float = Field(default=0.0, ge=0.0, le=1.0)
@@ -125,11 +105,11 @@ class SanityCheckResult(BaseModel):
 class DatasetRow(BaseModel):
     # Clinical Fields
     stage_of_change: str = Field(default="unknown")
-    main_concern: str = Field(default="unknown")
-    primary_trigger: str = Field(default="unknown")
+    all_concerns: List[str] = Field(default_factory=list)
+    all_triggers: List[str] = Field(default_factory=list)
     quit_attempt_history: str = Field(default="unknown")
     recommended_intervention: List[str] = Field(default_factory=list)
-    
+
     # Reasoning & Quality Metadata
     reasoning_summary: Optional[str] = None
     confidence_score: Optional[float] = Field(None, ge=0.0, le=1.0)

@@ -30,22 +30,27 @@ def _check_stage_intervention_conflict(state: Dict[str, Any]) -> List[str]:
 
 def _check_maintenance_stage_concerns(state: Dict[str, Any]) -> List[str]:
     issues = []
-    stage = state.get("consensus", {}).get("stage_of_change", "").lower()
-    concern = state.get("consensus", {}).get("main_concern", "").lower()
+    consensus = state.get("consensus", {})
+    stage = consensus.get("stage_of_change", "").lower()
+    concerns = [c.lower() for c in consensus.get("all_concerns", [])]
     not_ready_phrases = ["not ready", "don't want to quit", "not considering"]
     if stage == "maintenance":
-        for phrase in not_ready_phrases:
-            if phrase in concern:
-                issues.append(f"Stage is 'maintenance' but main_concern implies unwillingness: '{concern}'")
+        for concern in concerns:
+            if any(phrase in concern for phrase in not_ready_phrases):
+                issues.append(f"Stage is 'maintenance' but a concern implies unwillingness: '{concern}'")
+                break
     return issues
 
 
 def _check_unknown_fields(state: Dict[str, Any]) -> List[str]:
     issues = []
     consensus = state.get("consensus", {})
-    for field in ["stage_of_change", "main_concern", "primary_trigger"]:
-        if consensus.get(field, "unknown").lower() in ("unknown", "", "none"):
-            issues.append(f"Critical field '{field}' resolved to 'unknown' — extraction may have failed.")
+    if consensus.get("stage_of_change", "unknown").lower() in ("unknown", "", "none"):
+        issues.append("Critical field 'stage_of_change' resolved to 'unknown' — extraction may have failed.")
+    if not consensus.get("all_concerns"):
+        issues.append("Critical field 'all_concerns' is empty — extraction may have failed.")
+    if not consensus.get("all_triggers"):
+        issues.append("Critical field 'all_triggers' is empty — extraction may have failed.")
     return issues
 
 

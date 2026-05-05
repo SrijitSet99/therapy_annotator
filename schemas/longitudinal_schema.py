@@ -80,16 +80,12 @@ class SessionRecord(BaseModel):
 
     # Core annotation fields (mirrors DatasetRow)
     stage_of_change: str = "unknown"
-    main_concern: str = "unknown"
-    primary_trigger: str = "unknown"
+    all_concerns: List[str] = Field(default_factory=list)
+    all_triggers: List[str] = Field(default_factory=list)
     quit_attempt_history: str = "unknown"
     recommended_intervention: List[str] = Field(default_factory=list)
     reasoning_summary: Optional[str] = None
     confidence_score: Optional[float] = None
-
-    # All extracted signals (for longitudinal diffing)
-    all_triggers: List[str] = Field(default_factory=list)
-    all_concerns: List[str] = Field(default_factory=list)
 
     # Pipeline metadata
     debate_rounds_used: Optional[int] = None

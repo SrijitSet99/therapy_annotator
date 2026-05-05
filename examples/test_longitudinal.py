@@ -33,7 +33,6 @@ import annotate.agents.extractors.concern_agent
 import annotate.agents.extractors.trigger_agent
 import annotate.agents.consensus.consensus_agent
 import annotate.agents.reasoning.reasoning_agent
-import annotate.agents.debate.debate_loop
 import annotate.agents.longitudinal.delta_agent
 import annotate.graph.runner
 import annotate.graph.workflow
@@ -58,7 +57,6 @@ _TARGETS = [
     "annotate.agents.extractors.trigger_agent.call_ollama",
     "annotate.agents.consensus.consensus_agent.call_ollama",
     "annotate.agents.reasoning.reasoning_agent.call_ollama",
-    "annotate.agents.debate.debate_loop.call_ollama",
     "annotate.agents.longitudinal.delta_agent.call_ollama",
 ]
 
@@ -67,12 +65,12 @@ def _make_mock(stage="preparation"):
     def mock(prompt: str, **kw) -> str:
         p = prompt.lower()
         if "voter" in p or ("unified" in p and "annotation" in p):
-            return json.dumps({"stage_of_change": stage, "main_concern": "stress",
-                "primary_trigger": "work stress", "quit_attempt_history": "patch 6 weeks",
+            return json.dumps({"stage_of_change": stage, "all_concerns": ["stress"],
+                "all_triggers": ["work stress"], "quit_attempt_history": "patch 6 weeks",
                 "recommended_intervention": ["varenicline", "stress management"], "confidence": 0.87})
         if "reasoning_summary" in p or ("rationale" in p and "confidence_score" in p):
-            return json.dumps({"stage_of_change": stage, "main_concern": "stress",
-                "primary_trigger": "work stress", "quit_attempt_history": "patch 6 weeks",
+            return json.dumps({"stage_of_change": stage, "all_concerns": ["stress"],
+                "all_triggers": ["work stress"], "quit_attempt_history": "patch 6 weeks",
                 "recommended_intervention": ["varenicline"], "reasoning_summary": "Patient progressing.",
                 "confidence_score": 0.87})
         if "reviewer" in p or ("review" in p and "inaccurac" in p):
@@ -107,8 +105,6 @@ def _make_session(number: int, stage: str, triggers=None, concerns=None, interve
     return SessionRecord(
         session_number=number,
         stage_of_change=stage,
-        main_concern=concerns[0] if concerns else "stress",
-        primary_trigger=triggers[0] if triggers else "work stress",
         quit_attempt_history="patch 6 weeks",
         recommended_intervention=interventions or ["varenicline"],
         all_triggers=triggers or ["work stress"],
@@ -323,7 +319,7 @@ def test_delta_agent_computes_progress():
         state = {
             "patient_profile": profile,
             "dataset_row": {"stage_of_change": "preparation",
-                           "main_concern": "stress", "primary_trigger": "work",
+                           "all_concerns": ["stress"], "all_triggers": ["work"],
                            "recommended_intervention": ["varenicline"]},
             "triggers": {"triggers": ["work stress", "morning coffee"]},
             "concern":  {"concerns": ["stress", "weight gain"]},
@@ -354,8 +350,8 @@ def test_delta_agent_detects_relapse():
 
         state = {
             "patient_profile": profile,
-            "dataset_row": {"stage_of_change": "relapse", "main_concern": "stress",
-                           "primary_trigger": "work", "recommended_intervention": []},
+            "dataset_row": {"stage_of_change": "relapse", "all_concerns": ["stress"],
+                           "all_triggers": ["work"], "recommended_intervention": []},
             "triggers": {"triggers": ["stress"]},
             "concern":  {"concerns": ["stress"]},
             "chat": "I started smoking again last week",
@@ -386,7 +382,7 @@ def test_longitudinal_sanity_passes_clean_state():
             "session_delta": {"stage_before": "contemplation", "stage_after": "preparation",
                              "stage_direction": "progress", "relapse_detected": False,
                              "new_interventions": [], "stagnation_detected": False},
-            "dataset_row": {"stage_of_change": "preparation", "main_concern": "stress",
+            "dataset_row": {"stage_of_change": "preparation", "all_concerns": ["stress"],
                            "recommended_intervention": ["varenicline"]},
             "chat": "I'm ready to set a quit date",
         }
@@ -407,7 +403,7 @@ def test_longitudinal_sanity_catches_stage_skip():
             "session_delta": {"stage_before": "precontemplation", "stage_after": "action",
                              "stage_direction": "progress", "relapse_detected": False,
                              "new_interventions": [], "stagnation_detected": False},
-            "dataset_row": {"stage_of_change": "action", "main_concern": "stress",
+            "dataset_row": {"stage_of_change": "action", "all_concerns": ["stress"],
                            "recommended_intervention": []},
             "chat": "I've been smoke-free",
         }
@@ -429,7 +425,7 @@ def test_longitudinal_sanity_catches_silent_relapse():
             "session_delta": {"stage_before": "action", "stage_after": "relapse",
                              "stage_direction": "relapse", "relapse_detected": True,
                              "new_interventions": [], "stagnation_detected": False},
-            "dataset_row": {"stage_of_change": "relapse", "main_concern": "stress",
+            "dataset_row": {"stage_of_change": "relapse", "all_concerns": ["stress"],
                            "recommended_intervention": []},
             "chat": "things have been stressful but I'm managing",  # no relapse language
         }
@@ -452,7 +448,7 @@ def test_longitudinal_sanity_catches_stagnation():
             "session_delta": {"stage_before": "contemplation", "stage_after": "contemplation",
                              "stage_direction": "stable", "relapse_detected": False,
                              "new_interventions": [], "stagnation_detected": True},
-            "dataset_row": {"stage_of_change": "contemplation", "main_concern": "not ready",
+            "dataset_row": {"stage_of_change": "contemplation", "all_concerns": ["not ready"],
                            "recommended_intervention": []},
             "chat": "still thinking about it",
         }

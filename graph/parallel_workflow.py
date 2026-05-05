@@ -3,7 +3,8 @@ graph/parallel_workflow.py
 ---------------------------
 Alternative entry point that bypasses LangGraph and calls the AgentManager
 directly. Useful for testing or environments where LangGraph is unavailable.
-All the same upgrades apply: debate, multi-consensus, sanity check.
+Single-pass: no confidence/revision loop is run here — for that path use
+run_pipeline() which drives the full graph.
 """
 from typing import Dict, Any
 
@@ -14,7 +15,7 @@ from annotate.agents.reasoning.reasoning_agent import reasoning_agent
 from annotate.utils.logger import log
 
 
-def run_parallel_pipeline(chat: str, conversation_id: str = "", enable_debate: bool = False) -> Dict[str, Any]:
+def run_parallel_pipeline(chat: str, conversation_id: str = "") -> Dict[str, Any]:
     manager = AgentManager()
 
     state: Dict[str, Any] = {
@@ -26,8 +27,8 @@ def run_parallel_pipeline(chat: str, conversation_id: str = "", enable_debate: b
     if conversation_id:
         state["conversation_id"] = conversation_id
 
-    log("parallel_workflow: fan-out extraction + debate ...")
-    state.update(manager.run_extractors(state, enable_debate=enable_debate))
+    log("parallel_workflow: fan-out extraction ...")
+    state.update(manager.run_extractors(state))
     state["cross_signal_disagreement"] = manager.compute_cross_signal_disagreement(state)
 
     log("parallel_workflow: multi-voter consensus ...")

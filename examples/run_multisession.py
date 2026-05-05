@@ -39,8 +39,8 @@ def _print_session_result(result: Dict, session_number: int) -> None:
 
     # Core annotation
     print(f"\n  Stage of change:       {row.get('stage_of_change')}")
-    print(f"  Main concern:          {row.get('main_concern')}")
-    print(f"  Primary trigger:       {row.get('primary_trigger')}")
+    print(f"  Concerns:              {', '.join(row.get('all_concerns', [])) or 'none'}")
+    print(f"  Triggers:              {', '.join(row.get('all_triggers', [])) or 'none'}")
     print(f"  Reasoning:             {row.get('reasoning_summary')}")
     print(f"  Confidence:            {row.get('confidence_score')}")
 

@@ -37,7 +37,7 @@ def main():
     print("CLINICAL ANNOTATION")
     print("=" * 60)
     clinical_fields = [
-        "stage_of_change", "main_concern", "primary_trigger",
+        "stage_of_change", "all_concerns", "all_triggers",
         "quit_attempt_history", "recommended_intervention",
         "reasoning_summary", "confidence_score",
     ]

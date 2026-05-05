@@ -54,8 +54,8 @@ def evaluate_against_gold(
         [p.get("stage_of_change", "") for p in predictions],
         [g.get("stage_of_change", "") for g in gold_labels],
     )
-    concern_f1 = mean([token_f1(p.get("main_concern", ""), g.get("main_concern", "")) for p, g in zip(predictions, gold_labels)])
-    trigger_f1 = mean([token_f1(p.get("primary_trigger", ""), g.get("primary_trigger", "")) for p, g in zip(predictions, gold_labels)])
+    concerns_j = mean([list_jaccard(p.get("all_concerns", []), g.get("all_concerns", [])) for p, g in zip(predictions, gold_labels)])
+    triggers_j = mean([list_jaccard(p.get("all_triggers", []), g.get("all_triggers", [])) for p, g in zip(predictions, gold_labels)])
     intervention_j = mean([list_jaccard(p.get("recommended_intervention", []), g.get("recommended_intervention", [])) for p, g in zip(predictions, gold_labels)])
 
     sanity_pass_rate = sum(1 for p in predictions if p.get("sanity_passed", True)) / len(predictions)
@@ -66,14 +66,14 @@ def evaluate_against_gold(
     return {
         "n_samples": len(predictions),
         "stage_of_change_accuracy": round(stage_acc, 4),
-        "main_concern_token_f1": concern_f1,
-        "primary_trigger_token_f1": trigger_f1,
+        "all_concerns_jaccard": concerns_j,
+        "all_triggers_jaccard": triggers_j,
         "intervention_jaccard": intervention_j,
         "sanity_pass_rate": round(sanity_pass_rate, 4),
         "mean_confidence_score": round(sum(confidences) / len(confidences), 4) if confidences else None,
         "mean_vote_agreement": round(sum(agreements) / len(agreements), 4) if agreements else None,
         "mean_debate_rounds": round(sum(debate_rounds) / len(debate_rounds), 2),
-        "aggregate_score": mean([stage_acc, concern_f1, trigger_f1, intervention_j]),
+        "aggregate_score": mean([stage_acc, concerns_j, triggers_j, intervention_j]),
     }
 
 

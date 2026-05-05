@@ -35,8 +35,8 @@ def jsonl_to_txt(input_file: str, output_file: str) -> None:
 
             outfile.write(f"Conversation ID: {data.get('_id', 'N/A')}\n")
             outfile.write(f"Stage of Change:        {data.get('stage_of_change', 'N/A')}\n")
-            outfile.write(f"Main Concern:           {data.get('main_concern', 'N/A')}\n")
-            outfile.write(f"Primary Trigger:        {data.get('primary_trigger', 'N/A')}\n")
+            outfile.write(f"Concerns:               {', '.join(data.get('all_concerns', [])) or 'N/A'}\n")
+            outfile.write(f"Triggers:               {', '.join(data.get('all_triggers', [])) or 'N/A'}\n")
             outfile.write(f"Quit Attempt History:   {data.get('quit_attempt_history', 'N/A')}\n")
 
             outfile.write("Recommended Interventions:\n")

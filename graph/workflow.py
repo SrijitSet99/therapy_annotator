@@ -43,6 +43,7 @@ from annotate.agents.memory.patient_memory import PatientMemory
 from annotate.config.settings import CONFIDENCE_DEBATE_THRESHOLD, MAX_REVISION_ROUNDS
 from annotate.utils.logger import log
 
+
 _manager = AgentManager()
 _patient_memory = PatientMemory()
 
@@ -51,68 +52,35 @@ _patient_memory = PatientMemory()
 # Node wrappers
 # ---------------------------------------------------------------------------
 
-def longitudinal_context_node(state: GraphState) -> Dict[str, Any]:
-    log("workflow: [longitudinal_context] ...")
-    return longitudinal_context_agent(state)
+def _logged(name, fn):
+    """Wrap a state-only agent so it logs its node name before delegating."""
+    def node(state: GraphState) -> Dict[str, Any]:
+        log(f"workflow: [{name}] ...")
+        return fn(state)
+    return node
 
 
-def parallel_extract_node(state: GraphState, enable_debate: bool = False) -> Dict[str, Any]:
+def parallel_extract_node(state: GraphState) -> Dict[str, Any]:
     log("workflow: [parallel_extract] ...")
     effective_state = dict(state)
     if state.get("enriched_chat"):
         effective_state["chat"] = state["enriched_chat"]
-    outputs = _manager.run_extractors(effective_state, enable_debate=enable_debate)
-    return outputs
+    return _manager.run_extractors(effective_state)
 
 
 def confidence_check_node(state: GraphState) -> Dict[str, Any]:
-    """
-    Runs per-signal confidence agents and aggregates results into
-    confidence_results. Also resets revision_count to 0 on the very
-    first call (i.e. when it hasn't been set yet).
-    """
     log("workflow: [confidence_check] ...")
     results = _manager.run_confidence_check(state)
-    # Initialise revision_count if this is the first confidence check
     if state.get("revision_count") is None:
         results["revision_count"] = 0
     return results
 
 
 def revision_node(state: GraphState) -> Dict[str, Any]:
-    """
-    Runs per-signal revision agents for all signals that are below
-    threshold, then increments revision_count.
-    """
     log("workflow: [revision] ...")
     revised = _manager.run_revision(state)
     revised["revision_count"] = state.get("revision_count", 0) + 1
     return revised
-
-
-def consensus_node(state: GraphState) -> Dict[str, Any]:
-    log("workflow: [multi_consensus] ...")
-    return consensus_agent(state)
-
-
-def sanity_check_node(state: GraphState) -> Dict[str, Any]:
-    log("workflow: [sanity_check] ...")
-    return sanity_check_agent(state)
-
-
-def reasoning_node(state: GraphState) -> Dict[str, Any]:
-    log("workflow: [reasoning] ...")
-    return reasoning_agent(state)
-
-
-def delta_compute_node(state: GraphState) -> Dict[str, Any]:
-    log("workflow: [delta_compute] ...")
-    return delta_agent(state)
-
-
-def longitudinal_sanity_node(state: GraphState) -> Dict[str, Any]:
-    log("workflow: [longitudinal_sanity] ...")
-    return longitudinal_sanity_agent(state)
 
 
 def profile_update_node(state: GraphState) -> Dict[str, Any]:
@@ -127,26 +95,30 @@ def profile_update_node(state: GraphState) -> Dict[str, Any]:
 def confidence_router(state: GraphState) -> str:
     """
     Route from confidence_check:
-      - If ALL signals meet the threshold  → 'multi_consensus'
-      - Otherwise                          → 'revision'
+      - If ALL signals meet the threshold → 'multi_consensus'
+      - Otherwise                         → 'revision'
+
+    Threshold and max-rounds are pulled from state (set by run_pipeline /
+    run_session based on enable_debate) with a fallback to config defaults.
     """
     revision_count = state.get("revision_count", 0)
     confidence_results = state.get("confidence_results", {})
+    threshold = state.get("confidence_threshold", CONFIDENCE_DEBATE_THRESHOLD)
+    max_rounds = state.get("max_revision_rounds", MAX_REVISION_ROUNDS)
 
-    if revision_count >= MAX_REVISION_ROUNDS:
+    if revision_count >= max_rounds:
         log(
             f"workflow: confidence_router → max revision rounds reached "
-            f"({MAX_REVISION_ROUNDS}); proceeding to consensus."
+            f"({max_rounds}); proceeding to consensus."
         )
         return "multi_consensus"
 
-    # Check every signal; route to revision if any are below threshold
     signals = ("advice", "attempt", "readiness", "concern", "triggers")
     for sig in signals:
         conf = confidence_results.get(sig, {}).get("confidence", 0.0)
-        if conf < CONFIDENCE_DEBATE_THRESHOLD:
+        if conf < threshold:
             log(f"workflow: confidence_router → '{sig}' confidence={conf:.3f} "
-                f"< {CONFIDENCE_DEBATE_THRESHOLD} (revision {revision_count + 1})")
+                f"< {threshold} (revision {revision_count + 1})")
             return "revision"
 
     log("workflow: confidence_router → all signals above threshold, proceeding to consensus.")
@@ -157,22 +129,19 @@ def confidence_router(state: GraphState) -> str:
 # Graph builder
 # ---------------------------------------------------------------------------
 
-def build_graph(enable_debate: bool = False):
+def build_graph():
     workflow = StateGraph(GraphState)
 
     # ── Nodes ──────────────────────────────────────────────────────────────
-    workflow.add_node("longitudinal_context",     longitudinal_context_node)
-    workflow.add_node(
-        "parallel_extract",
-        lambda state: parallel_extract_node(state, enable_debate=enable_debate),
-    )
-    workflow.add_node("confidence_check",         confidence_check_node)
-    workflow.add_node("revision",                 revision_node)
-    workflow.add_node("multi_consensus",          consensus_node)
-    workflow.add_node("reasoning",                reasoning_node)
-    workflow.add_node("delta_compute",            delta_compute_node)
-    workflow.add_node("longitudinal_sanity_check", longitudinal_sanity_node)
-    workflow.add_node("profile_update",           profile_update_node)
+    workflow.add_node("longitudinal_context", _logged("longitudinal_context", longitudinal_context_agent))
+    workflow.add_node("parallel_extract",     parallel_extract_node)
+    workflow.add_node("confidence_check",          confidence_check_node)
+    workflow.add_node("revision",                  revision_node)
+    workflow.add_node("multi_consensus",           _logged("multi_consensus", consensus_agent))
+    workflow.add_node("reasoning",                 _logged("reasoning", reasoning_agent))
+    workflow.add_node("delta_compute",             _logged("delta_compute", delta_agent))
+    workflow.add_node("longitudinal_sanity_check", _logged("longitudinal_sanity", longitudinal_sanity_agent))
+    workflow.add_node("profile_update",            profile_update_node)
 
     # ── Entry ──────────────────────────────────────────────────────────────
     workflow.set_entry_point("longitudinal_context")

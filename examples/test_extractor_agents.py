@@ -105,63 +105,6 @@ def test_trigger_agent_has_no_confidence():
 
 
 # ============================================================================
-# Debate loop
-# ============================================================================
-
-def test_debate_skipped_when_confidence_high():
-    from annotate.agents.debate.debate_loop import maybe_debate
-    output = {"concerns": ["stress"], "primary_concern": "stress"}
-    result = maybe_debate("concern", output, SAMPLE_CHAT, confidence_threshold=0.6, confidence_score=0.9)
-    assert result["_debate_rounds"] == 0
-    assert result["_debate_converged"] is True
-    print("PASS test_debate_skipped_when_confidence_high")
-
-
-def test_debate_runs_when_confidence_low():
-    from annotate.agents.debate.debate_loop import maybe_debate
-    output = {"concerns": ["stress"]}
-    high_conf = MagicMock(confidence=0.8, issues=[])
-    with patch("annotate.agents.debate.debate_loop.revise_signal", return_value=output), \
-         patch("annotate.agents.debate.debate_loop.run_confidence_check", return_value=high_conf):
-        result = maybe_debate("concern", output, SAMPLE_CHAT, confidence_threshold=0.6, confidence_score=0.3)
-    # Revised signal crossed the threshold immediately.
-    assert result["_debate_rounds"] == 1
-    assert result["_debate_converged"] is True
-    print("PASS test_debate_runs_when_confidence_low")
-
-
-def test_debate_revision_applied():
-    from annotate.agents.debate.debate_loop import run_debate
-    initial = {"concerns": ["stress"]}
-    revised    = {"concerns": ["stress", "weight gain"]}
-
-    high_conf = MagicMock(confidence=0.8, issues=[])
-    with patch("annotate.agents.debate.debate_loop.revise_signal", return_value=revised), \
-         patch("annotate.agents.debate.debate_loop.run_confidence_check", return_value=high_conf):
-        result = run_debate("concern", initial, SAMPLE_CHAT, confidence_threshold=0.6)
-
-    assert result.total_rounds >= 1
-    assert result.final_output == revised
-    print("PASS test_debate_revision_applied")
-
-
-def test_debate_converges_when_revised_confidence_crosses_threshold():
-    from annotate.agents.debate.debate_loop import maybe_debate
-    output = {"concerns": ["stress"]}
-    revised = {"concerns": ["stress", "weight gain"]}
-
-    high_conf = MagicMock(confidence=0.85, issues=[])
-    with patch("annotate.agents.debate.debate_loop.revise_signal", return_value=revised), \
-         patch("annotate.agents.debate.debate_loop.run_confidence_check", return_value=high_conf):
-        result = maybe_debate("concern", output, SAMPLE_CHAT, confidence_threshold=0.6, confidence_score=0.3)
-
-    assert result["_debate_rounds"] == 1
-    assert result["_debate_converged"] is True
-    assert result["concerns"] == ["stress", "weight gain"]
-    print("PASS test_debate_converges_when_revised_confidence_crosses_threshold")
-
-
-# ============================================================================
 # Sanity check agent
 # ============================================================================
 
@@ -171,8 +114,8 @@ def test_sanity_check_passes_clean_state():
         **BASE_STATE,
         "consensus": {
             "stage_of_change": "preparation",
-            "main_concern": "stress",
-            "primary_trigger": "work stress",
+            "all_concerns": ["stress"],
+            "all_triggers": ["work stress"],
             "recommended_intervention": ["varenicline", "stress management"],
             "vote_agreement": 0.9,
         },
@@ -190,8 +133,8 @@ def test_sanity_check_catches_stage_intervention_conflict():
         **BASE_STATE,
         "consensus": {
             "stage_of_change": "precontemplation",
-            "main_concern": "don't want to quit",
-            "primary_trigger": "stress",
+            "all_concerns": ["don't want to quit"],
+            "all_triggers": ["stress"],
             "recommended_intervention": ["quit immediately", "set a quit date today"],
             "vote_agreement": 0.6,
         },
@@ -209,8 +152,8 @@ def test_sanity_check_catches_unknown_fields():
         **BASE_STATE,
         "consensus": {
             "stage_of_change": "unknown",
-            "main_concern": "unknown",
-            "primary_trigger": "unknown",
+            "all_concerns": [],
+            "all_triggers": [],
             "recommended_intervention": [],
             "vote_agreement": 0.3,
         },
@@ -248,7 +191,7 @@ def test_agent_memory_unknown_agent_returns_none():
 def test_agent_memory_stores_and_retrieves_cases():
     from annotate.agents.memory.agent_memory import AgentMemory
     mem = AgentMemory()
-    row = {"stage_of_change": "preparation", "main_concern": "stress"}
+    row = {"stage_of_change": "preparation", "all_concerns": ["stress"]}
     mem.store_case("conv_001", row)
     similar = mem.retrieve_similar_cases("preparation")
     assert len(similar) == 1
@@ -284,13 +227,13 @@ def test_evaluator_list_jaccard():
 def test_evaluator_against_gold():
     from annotate.eval.evaluator import evaluate_against_gold
     preds = [
-        {"stage_of_change": "preparation", "main_concern": "stress", "primary_trigger": "work",
+        {"stage_of_change": "preparation", "all_concerns": ["stress"], "all_triggers": ["work"],
          "recommended_intervention": ["varenicline"], "confidence_score": 0.8,
          "debate_rounds_used": 1, "vote_agreement": 0.9, "sanity_passed": True}
     ]
     golds = [
-        {"stage_of_change": "preparation", "main_concern": "stress at work",
-         "primary_trigger": "work stress", "recommended_intervention": ["varenicline", "NRT"]}
+        {"stage_of_change": "preparation", "all_concerns": ["stress at work"],
+         "all_triggers": ["work stress"], "recommended_intervention": ["varenicline", "NRT"]}
     ]
     metrics = evaluate_against_gold(preds, golds)
     assert metrics["stage_of_change_accuracy"] == 1.0
@@ -340,10 +283,6 @@ if __name__ == "__main__":
     test_readiness_agent_invalid_stage_becomes_unknown()
     test_concern_agent_has_no_confidence()
     test_trigger_agent_has_no_confidence()
-
-    test_debate_skipped_when_confidence_high()
-    test_debate_runs_when_confidence_low()
-    test_debate_revision_applied()
 
     test_sanity_check_passes_clean_state()
     test_sanity_check_catches_stage_intervention_conflict()

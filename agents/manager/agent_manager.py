@@ -3,18 +3,19 @@ agents/manager/agent_manager.py
 ---------------------------------
 Central coordinator for parallel extractor fan-out and confidence-aware routing.
 
-Flow (when enable_debate=True):
-  1. run_extractors()     — parallel fan-out, returns raw extractor outputs
+Flow:
+  1. run_extractors()       — parallel fan-out, returns raw extractor outputs
   2. run_confidence_check() — evaluate every signal; called by the graph node
-  3. run_revision()        — revise only signals below threshold; called by graph node
-     Steps 2-3 repeat until all signals pass the configured confidence threshold
-  4. maybe_debate()        — optional deeper debate loop per signal (separate from graph loop)
+  3. run_revision()         — revise only signals below threshold; called by graph node
+  Steps 2-3 repeat (workflow loop) until all signals pass the threshold
+  or max revision rounds is reached. The threshold and max-rounds are pulled
+  from state (set by run_pipeline based on enable_debate) with a fallback to
+  config defaults.
 """
 from statistics import pstdev
 from typing import Dict, Any, List, Optional
 
 from annotate.agents.registry import get_registry
-from annotate.agents.debate.debate_loop import maybe_debate
 from annotate.agents.memory.agent_memory import AgentMemory
 from annotate.agents.confidence.confidence import run_confidence_check
 from annotate.agents.revision.revision_agent import run_revision as revise_signal
@@ -45,15 +46,12 @@ class AgentManager:
     # Step 1 — Parallel extraction (no confidence logic here)
     # ------------------------------------------------------------------
 
-    def run_extractors(
-        self,
-        state: Dict[str, Any],
-        enable_debate: bool = False,
-    ) -> Dict[str, Any]:
+    def run_extractors(self, state: Dict[str, Any]) -> Dict[str, Any]:
         """
         Fan out all registered extractors in parallel.
         Returns raw extractor outputs merged into a single dict.
-        Confidence checking and revision are done in separate graph nodes.
+        Confidence checking and revision are done in separate graph nodes
+        (the workflow's confidence ↔ revision loop).
         """
         log("agent_manager: running parallel extractors ...")
         logger = TextFileLogger()
@@ -63,39 +61,13 @@ class AgentManager:
         raw_outputs = self.registry.run_all_parallel(state, max_workers=5, selected=main_agents)
 
         final_outputs: Dict[str, Any] = {}
-
-        for registry_key, state_key in _SIGNAL_MAP.items():
+        for state_key in _SIGNAL_MAP.values():
             output = raw_outputs.get(state_key)
             if not output:
                 continue
             log_data(f"agent_manager.extractor_output.{state_key}", output)
             logger.save("extractor", state_key, output)
-
-            if enable_debate:
-                # Run the optional deep debate loop (separate from the graph-level loop)
-                confidence_result = self._run_signal_confidence(state, state_key, output)
-                confidence = confidence_result.get("confidence", 0.0)
-                issues = confidence_result.get("issues", [])
-
-                output = maybe_debate(
-                    signal_name=state_key,
-                    extractor_output=output,
-                    conversation=state.get("chat", ""),
-                    confidence_threshold=CONFIDENCE_DEBATE_THRESHOLD,
-                    confidence_score=confidence,
-                    confidence_suggestions=issues,
-                    registry=self.registry,
-                )
-                logger.save("debate", state_key, output)
-
-                self.memory.record_run(
-                    registry_key,
-                    confidence=confidence,
-                    failed=(confidence < 0.2),
-                )
-
             final_outputs[state_key] = output
-            log_data(f"agent_manager.final_output.{state_key}", output)
 
         # confidence_results starts empty; will be filled by run_confidence_check()
         final_outputs["confidence_results"] = {}
@@ -147,6 +119,7 @@ class AgentManager:
         logger = TextFileLogger()
 
         confidence_results = state.get("confidence_results", {})
+        threshold = state.get("confidence_threshold", CONFIDENCE_DEBATE_THRESHOLD)
         revised_outputs: Dict[str, Any] = {}
 
         for state_key in _SIGNAL_MAP.values():
@@ -154,7 +127,7 @@ class AgentManager:
             confidence = conf_entry.get("confidence", 0.0)
             issues = conf_entry.get("issues", [])
 
-            if confidence >= CONFIDENCE_DEBATE_THRESHOLD:
+            if confidence >= threshold:
                 log(f"agent_manager: '{state_key}' confidence={confidence:.3f} >= threshold "
                     f"— skipping revision.")
                 continue

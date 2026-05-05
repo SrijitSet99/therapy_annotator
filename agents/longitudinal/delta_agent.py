@@ -23,84 +23,8 @@ from typing import Dict, Any, List, Set, Tuple
 from annotate.llm.ollama_client import call_ollama
 from annotate.llm.json_parser import repair_json
 from annotate.utils.logger import log, warning, log_data
+from annotate.utils.prompt_loader import format_prompt, load_prompt
 from annotate.schemas.longitudinal_schema import SessionDelta, stage_direction, STAGE_ORDER
-
-
-_DELTA_NARRATIVE_PROMPT = """You are a clinical psychologist reviewing the progress of a tobacco-cessation patient across two counseling sessions.
-
-SESSION {n_minus_1} ANNOTATION:
-  Stage of change:  {stage_before}
-  Main concern:     {concern_before}
-  Primary trigger:  {trigger_before}
-  Interventions:    {interventions_before}
-
-SESSION {n} ANNOTATION (current):
-  Stage of change:  {stage_after}
-  Main concern:     {concern_after}
-  Primary trigger:  {trigger_after}
-  Interventions:    {interventions_after}
-
-STRUCTURAL CHANGES DETECTED:
-  Stage direction:      {stage_direction}
-  New triggers:         {new_triggers}
-  Resolved triggers:    {resolved_triggers}
-  New concerns:         {new_concerns}
-  Resolved concerns:    {resolved_concerns}
-  New interventions:    {new_interventions}
-
-Write a concise 2-3 sentence clinical narrative summarising what changed between these two sessions and what it means for the patient's cessation journey. Be specific — reference the actual changes above.
-
-Respond ONLY with valid JSON:
-{{
-  "clinical_summary": "<2-3 sentence narrative>",
-  "delta_confidence": 0.0
-}}
-"""
-
-# FIX 1: These were broken module-level f-strings that would crash at import.
-# Converted to plain strings; {signal} is substituted at call time via .format().
-_SEMANTIC_DIFF_PROMPT = """You are a clinical assistant helping to compare smoking related {signal}s mentioned across two sessions.
-
-PREVIOUS SESSION {signal}s:
-{prev_items}
-
-CURRENT SESSION {signal}s:
-{curr_items}
-
-Your tasks:
-1. Identify which current {signal}s are genuinely NEW (not semantically equivalent to any previous {signal}).
-2. Identify which previous {signal}s are PERSISTENT (still present, even if phrased differently).
-3. Write just the {signal} and no other metadata.
-Respond ONLY with valid JSON:
-{{
-  "new_{signal}s": ["<{signal}>", ...],
-  "persistent_{signal}s": ["<{signal}>", ...]
-}}
-"""
-
-_RESOLVED_VALIDATION_PROMPT = """You are a clinical assistant reviewing a therapy session transcript for tobacco cessation.
-
-A patient had the following {signal}s noted in a PREVIOUS session:
-{prev_items}
-
-CURRENT SESSION TRANSCRIPT:
-\"\"\"
-{transcript}
-\"\"\"
-
-For each previous {signal} listed above, determine whether the patient has EXPLICITLY stated that this {signal} is no longer a problem, that they have overcome it, or that they no longer experience it.
-
-Rules:
-- A {signal} is ONLY resolved if the patient makes an explicit statement of resolution.
-- The {signal} NOT being mentioned in the current session does NOT count as resolved.
-- Therapist statements alone do not count — the resolution must come from the patient.
-
-Respond ONLY with valid JSON — one entry per previous {signal}:
-{{
-  "resolved_{signal}s": ["<{signal}>", ...],
-  "unresolved_{signal}s": ["<{signal}>", ...]
-}}
-"""
 
 
 def delta_agent(state: Dict[str, Any]) -> Dict[str, Any]:
@@ -194,10 +118,8 @@ def delta_agent(state: Dict[str, Any]) -> Dict[str, Any]:
 
     stagnation = (direction == "stable" and profile.stagnation_count >= 2)
 
-    concern_shift = (
-        prev.main_concern.lower() != current_row.get("main_concern", "").lower()
-        and prev.main_concern not in ("unknown", "")
-    )
+    # Concern shift: any concern added or resolved between the two sessions.
+    concern_shift = bool(new_concerns or resolved_concerns)
 
     # ── 6. LLM narrative ─────────────────────────────────────────────
 
@@ -205,15 +127,16 @@ def delta_agent(state: Dict[str, Any]) -> Dict[str, Any]:
     delta_confidence = 0.7
 
     try:
-        prompt = _DELTA_NARRATIVE_PROMPT.format(
+        prompt = format_prompt(
+            load_prompt("longitudinal.delta_narrative"),
             n_minus_1=prev.session_number,
             n=n,
             stage_before=stage_before,
             stage_after=stage_after,
-            concern_before=prev.main_concern,
-            concern_after=current_row.get("main_concern", "unknown"),
-            trigger_before=prev.primary_trigger,
-            trigger_after=current_row.get("primary_trigger", "unknown"),
+            concerns_before=", ".join(prev.all_concerns) or "none",
+            concerns_after=", ".join(current_row.get("all_concerns", [])) or "none",
+            triggers_before=", ".join(prev.all_triggers) or "none",
+            triggers_after=", ".join(current_row.get("all_triggers", [])) or "none",
             interventions_before=", ".join(prev.recommended_intervention) or "none",
             interventions_after=", ".join(current_row.get("recommended_intervention", [])) or "none",
             stage_direction=direction,
@@ -302,8 +225,8 @@ def _compute_delta(
     persistent: List[str] = []
 
     try:
-        # FIX 1 & 7: prompt is now a plain string formatted at call time.
-        sem_prompt = _SEMANTIC_DIFF_PROMPT.format(
+        sem_prompt = format_prompt(
+            load_prompt("longitudinal.semantic_diff"),
             signal=    signal_type,
             prev_items="\n".join(f"- {t}" for t in prev) or "(none)",
             curr_items="\n".join(f"- {t}" for t in curr) or "(none)",
@@ -326,8 +249,8 @@ def _compute_delta(
 
     if prev and transcript:
         try:
-            # FIX 1 & 7: prompt is now a plain string formatted at call time.
-            res_prompt = _RESOLVED_VALIDATION_PROMPT.format(
+            res_prompt = format_prompt(
+                load_prompt("longitudinal.resolved_validation"),
                 signal=    signal_type,
                 prev_items="\n".join(f"- {t}" for t in prev),
                 transcript=transcript[:6000],   # guard against huge transcripts

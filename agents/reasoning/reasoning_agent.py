@@ -34,22 +34,22 @@ def reasoning_agent(state: Dict[str, Any]) -> Dict[str, Any]:
         try:
             validated = DatasetRow(**fallback)
         except Exception:
+            consensus = state["consensus"]
             validated = DatasetRow(
-                stage_of_change=parsed.get("stage_of_change", state["consensus"].get("stage_of_change", "unknown")),
-                main_concern=parsed.get("main_concern", state["consensus"].get("main_concern", "unknown")),
-                primary_trigger=parsed.get("primary_trigger", state["consensus"].get("primary_trigger", "unknown")),
-                quit_attempt_history=parsed.get("quit_attempt_history", state["consensus"].get("quit_attempt_history", "unknown")),
-                recommended_intervention=parsed.get("recommended_intervention", state["consensus"].get("recommended_intervention", [])),
+                stage_of_change=parsed.get("stage_of_change", consensus.get("stage_of_change", "unknown")),
+                all_concerns=parsed.get("all_concerns", consensus.get("all_concerns", [])) or [],
+                all_triggers=parsed.get("all_triggers", consensus.get("all_triggers", [])) or [],
+                quit_attempt_history=parsed.get("quit_attempt_history", consensus.get("quit_attempt_history", "unknown")),
+                recommended_intervention=parsed.get("recommended_intervention", consensus.get("recommended_intervention", [])) or [],
             )
 
     row_dict = validated.model_dump()
 
-    # Inject research metadata
-    debate_rounds = sum(
-        state.get(sig, {}).get("_debate_rounds", 0)
-        for sig in ("advice", "attempt", "readiness", "concern", "triggers")
-    )
-    row_dict["debate_rounds_used"] = debate_rounds
+    # Inject research metadata. debate_rounds_used now reflects how many
+    # passes the workflow's confidence/revision loop took (0 when extractors
+    # converged on the first try).
+    revision_count = state.get("revision_count", 0)
+    row_dict["debate_rounds_used"] = revision_count
     row_dict["vote_agreement"] = state.get("consensus", {}).get("vote_agreement")
     sanity = state.get("sanity_check", {})
     row_dict["sanity_passed"] = sanity.get("passed", True)
@@ -57,7 +57,7 @@ def reasoning_agent(state: Dict[str, Any]) -> Dict[str, Any]:
 
     log(
         f"reasoning_agent: done | confidence={row_dict.get('confidence_score')} | "
-        f"debate_rounds={debate_rounds} | vote_agreement={row_dict.get('vote_agreement')} | "
+        f"debate_rounds={revision_count} | vote_agreement={row_dict.get('vote_agreement')} | "
         f"sanity_passed={row_dict.get('sanity_passed')}"
     )
     payload = {"dataset_row": row_dict}

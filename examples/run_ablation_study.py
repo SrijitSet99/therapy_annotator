@@ -130,8 +130,8 @@ def main():
         print("=" * 60)
         metric_keys = [
             "stage_of_change_accuracy",
-            "main_concern_token_f1",
-            "primary_trigger_token_f1",
+            "all_concerns_jaccard",
+            "all_triggers_jaccard",
             "intervention_jaccard",
             "aggregate_score",
         ]
